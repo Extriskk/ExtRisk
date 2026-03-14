@@ -1,0 +1,3 @@
+# Install after requirements.txt if you use PostgreSQL (e.g. production).
+# Not needed for local dev (app defaults to SQLite).
+psycopg2-binary==2.9.9

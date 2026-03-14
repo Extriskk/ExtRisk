@@ -9,9 +9,10 @@ fastapi==0.109.0
 uvicorn==0.27.0
 python-multipart==0.0.6
 
-# Data storage
+# Data storage (default: SQLite; no extra deps needed)
 sqlalchemy==2.0.25
-psycopg2-binary==2.9.9
+# psycopg2-binary only if you use Postgres (DATABASE_URL=postgresql://...)
+# pip install -r requirements-postgres.txt
 alembic==1.13.1
 
 # Job queue
