@@ -1,0 +1,459 @@
+{
+  "extension_type": "vscode",
+  "name": "GitHub Pull Requests",
+  "identifier": "GitHub.vscode-pull-request-github",
+  "extension_id": "GitHub.vscode-pull-request-github",
+  "version": "0.129.2026022004",
+  "description": "Pull Request and Issue Provider for GitHub",
+  "publisher": "GitHub",
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "store_metadata": {
+    "available": true,
+    "store": "vscode",
+    "identifier": "GitHub.vscode-pull-request-github",
+    "name": "GitHub Pull Requests",
+    "publisher": "GitHub",
+    "publisher_id": "7c1c19cd-78eb-4dfb-8999-99caf7679002",
+    "publisher_domain": "https://github.com",
+    "publisher_verified": true,
+    "short_description": "Pull Request and Issue Provider for GitHub",
+    "version": "0.129.2026022004",
+    "last_updated": "2026-02-20T04:27:58.587Z",
+    "categories": [],
+    "tags": [],
+    "install_count": 32825523,
+    "rating_value": 4.07,
+    "rating_count": 136,
+    "flags": "validated, public",
+    "store_url": "https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github",
+    "risk_signals": {}
+  },
+  "metadata_risk": {
+    "findings": [
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onStartupFinished': Runs every launch - immediate execution",
+        "event": "onStartupFinished"
+      },
+      {
+        "type": "sensitive_contribution",
+        "severity": "medium",
+        "detail": "Contributes 'viewsContainers': Webview views - remote HTML/JS possible",
+        "contribution": "viewsContainers"
+      }
+    ],
+    "risk_score": 2,
+    "activation_events": [
+      "onStartupFinished",
+      "onFileSystem:newIssue",
+      "onFileSystem:pr",
+      "onFileSystem:githubpr",
+      "onFileSystem:githubcommit",
+      "onFileSystem:review",
+      "onWebviewPanel:IssueOverview",
+      "onWebviewPanel:PullRequestOverview",
+      "onChatContextProvider:githubpr",
+      "onChatContextProvider:githubissue"
+    ],
+    "contributes": [
+      "chatContext",
+      "configuration",
+      "viewsContainers",
+      "views",
+      "commands",
+      "viewsWelcome",
+      "keybindings",
+      "menus",
+      "colors",
+      "resourceLabelFormatters",
+      "chatSkills",
+      "languageModelTools"
+    ]
+  },
+  "package_json_deep": {
+    "findings": []
+  },
+  "supply_chain": {
+    "findings": [
+      {
+        "type": "lifecycle_script",
+        "severity": "high",
+        "detail": "'postinstall' script: yarn update-dts",
+        "script_name": "postinstall",
+        "script_content": "yarn update-dts"
+      },
+      {
+        "type": "lifecycle_script",
+        "severity": "info",
+        "detail": "'prepare' script: husky install",
+        "script_name": "prepare",
+        "script_content": "husky install"
+      }
+    ],
+    "risk_score": 4,
+    "dependency_count": 29,
+    "dev_dependency_count": 70,
+    "has_node_modules": false,
+    "dependency_vulns": [],
+    "bundled_js_vulns": []
+  },
+  "code_analysis": {
+    "all_findings": [
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "dist\\webview-create-pr-view-new.js",
+        "line": 900,
+        "evidence": "namespaceURI!==So.svg||\"innerHTML\"in e)e.innerHTML=t;else{for(Yn=Yn||document.createElement",
+        "path_type": "app"
+      },
+      {
+        "name": "constructor.prototype access",
+        "severity": "medium",
+        "description": "Accessing constructor.prototype (potential prototype pollution)",
+        "category": "prototype_pollution",
+        "file": "dist\\webview-create-pr-view-new.js",
+        "line": 900,
+        "evidence": "ue\",n=Object.getOwnPropertyDescriptor(e.constructor.prototype,t),r=\"\"+e[t];if(!e.hasOwnProperty(t)&&t",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\webview-create-pr-view-new.js",
+        "line": 906,
+        "evidence": "orEach(function(D){I[D]=D}),Object.keys(Object.assign({},I)).join(\"\")===\"abcdefghijklmnopqrst\"}c",
+        "path_type": "app"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "dist\\webview-open-pr-view.js",
+        "line": 572,
+        "evidence": "namespaceURI!==Wi.svg||\"innerHTML\"in e)e.innerHTML=t;else{for(Qr=Qr||document.createElement",
+        "path_type": "app"
+      },
+      {
+        "name": "constructor.prototype access",
+        "severity": "medium",
+        "description": "Accessing constructor.prototype (potential prototype pollution)",
+        "category": "prototype_pollution",
+        "file": "dist\\webview-open-pr-view.js",
+        "line": 572,
+        "evidence": "ue\",n=Object.getOwnPropertyDescriptor(e.constructor.prototype,t),r=\"\"+e[t];if(!e.hasOwnProperty(t)&&t",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\webview-open-pr-view.js",
+        "line": 776,
+        "evidence": "orEach(function(V){F[V]=V}),Object.keys(Object.assign({},F)).join(\"\")===\"abcdefghijklmnopqrst\"}c",
+        "path_type": "app"
+      },
+      {
+        "name": "Clipboard write access",
+        "severity": "medium",
+        "description": "Writes to clipboard - can inject content (URLs, crypto addresses)",
+        "category": "clipboard_access",
+        "file": "dist\\webview-open-pr-view.js",
+        "line": 791,
+        "evidence": "e:\"icon-button\",onClick:i(()=>navigator.clipboard.writeText(Vt),\"onClick\")},copyIcon):null,U?React.c",
+        "path_type": "app"
+      }
+    ],
+    "module_usage": {},
+    "external_urls": [
+      {
+        "url": "https://reactjs.org/docs/error-decoder.html?invariant=",
+        "file": "dist\\webview-create-pr-view-new.js",
+        "line": 899
+      },
+      {
+        "url": "https://reactjs.org/docs/error-decoder.html?invariant=",
+        "file": "dist\\webview-create-pr-view-new.js",
+        "line": 913
+      },
+      {
+        "url": "https://reactjs.org/docs/error-decoder.html?invariant=",
+        "file": "dist\\webview-open-pr-view.js",
+        "line": 571
+      },
+      {
+        "url": "https://reactjs.org/docs/error-decoder.html?invariant=",
+        "file": "dist\\webview-open-pr-view.js",
+        "line": 783
+      }
+    ],
+    "file_entropies": {
+      "dist\\webview-create-pr-view-new.js": 5.62,
+      "dist\\webview-open-pr-view.js": 5.62
+    },
+    "files_scanned": 7,
+    "findings_by_category": {
+      "webview_risk": [
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "dist\\webview-create-pr-view-new.js",
+          "line": 900,
+          "evidence": "namespaceURI!==So.svg||\"innerHTML\"in e)e.innerHTML=t;else{for(Yn=Yn||document.createElement",
+          "path_type": "app"
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "dist\\webview-open-pr-view.js",
+          "line": 572,
+          "evidence": "namespaceURI!==Wi.svg||\"innerHTML\"in e)e.innerHTML=t;else{for(Qr=Qr||document.createElement",
+          "path_type": "app"
+        }
+      ],
+      "prototype_pollution": [
+        {
+          "name": "constructor.prototype access",
+          "severity": "medium",
+          "description": "Accessing constructor.prototype (potential prototype pollution)",
+          "category": "prototype_pollution",
+          "file": "dist\\webview-create-pr-view-new.js",
+          "line": 900,
+          "evidence": "ue\",n=Object.getOwnPropertyDescriptor(e.constructor.prototype,t),r=\"\"+e[t];if(!e.hasOwnProperty(t)&&t",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\webview-create-pr-view-new.js",
+          "line": 906,
+          "evidence": "orEach(function(D){I[D]=D}),Object.keys(Object.assign({},I)).join(\"\")===\"abcdefghijklmnopqrst\"}c",
+          "path_type": "app"
+        },
+        {
+          "name": "constructor.prototype access",
+          "severity": "medium",
+          "description": "Accessing constructor.prototype (potential prototype pollution)",
+          "category": "prototype_pollution",
+          "file": "dist\\webview-open-pr-view.js",
+          "line": 572,
+          "evidence": "ue\",n=Object.getOwnPropertyDescriptor(e.constructor.prototype,t),r=\"\"+e[t];if(!e.hasOwnProperty(t)&&t",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\webview-open-pr-view.js",
+          "line": 776,
+          "evidence": "orEach(function(V){F[V]=V}),Object.keys(Object.assign({},F)).join(\"\")===\"abcdefghijklmnopqrst\"}c",
+          "path_type": "app"
+        }
+      ],
+      "clipboard_access": [
+        {
+          "name": "Clipboard write access",
+          "severity": "medium",
+          "description": "Writes to clipboard - can inject content (URLs, crypto addresses)",
+          "category": "clipboard_access",
+          "file": "dist\\webview-open-pr-view.js",
+          "line": 791,
+          "evidence": "e:\"icon-button\",onClick:i(()=>navigator.clipboard.writeText(Vt),\"onClick\")},copyIcon):null,U?React.c",
+          "path_type": "app"
+        }
+      ]
+    },
+    "findings_by_severity": {
+      "high": 2,
+      "medium": 5
+    },
+    "suppressed_false_positives": 0
+  },
+  "malicious_patterns": [
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "dist\\webview-create-pr-view-new.js",
+      "line": 900,
+      "evidence": "namespaceURI!==So.svg||\"innerHTML\"in e)e.innerHTML=t;else{for(Yn=Yn||document.createElement",
+      "path_type": "app"
+    },
+    {
+      "name": "constructor.prototype access",
+      "severity": "medium",
+      "description": "Accessing constructor.prototype (potential prototype pollution)",
+      "category": "prototype_pollution",
+      "file": "dist\\webview-create-pr-view-new.js",
+      "line": 900,
+      "evidence": "ue\",n=Object.getOwnPropertyDescriptor(e.constructor.prototype,t),r=\"\"+e[t];if(!e.hasOwnProperty(t)&&t",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\webview-create-pr-view-new.js",
+      "line": 906,
+      "evidence": "orEach(function(D){I[D]=D}),Object.keys(Object.assign({},I)).join(\"\")===\"abcdefghijklmnopqrst\"}c",
+      "path_type": "app"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "dist\\webview-open-pr-view.js",
+      "line": 572,
+      "evidence": "namespaceURI!==Wi.svg||\"innerHTML\"in e)e.innerHTML=t;else{for(Qr=Qr||document.createElement",
+      "path_type": "app"
+    },
+    {
+      "name": "constructor.prototype access",
+      "severity": "medium",
+      "description": "Accessing constructor.prototype (potential prototype pollution)",
+      "category": "prototype_pollution",
+      "file": "dist\\webview-open-pr-view.js",
+      "line": 572,
+      "evidence": "ue\",n=Object.getOwnPropertyDescriptor(e.constructor.prototype,t),r=\"\"+e[t];if(!e.hasOwnProperty(t)&&t",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\webview-open-pr-view.js",
+      "line": 776,
+      "evidence": "orEach(function(V){F[V]=V}),Object.keys(Object.assign({},F)).join(\"\")===\"abcdefghijklmnopqrst\"}c",
+      "path_type": "app"
+    },
+    {
+      "name": "Clipboard write access",
+      "severity": "medium",
+      "description": "Writes to clipboard - can inject content (URLs, crypto addresses)",
+      "category": "clipboard_access",
+      "file": "dist\\webview-open-pr-view.js",
+      "line": 791,
+      "evidence": "e:\"icon-button\",onClick:i(()=>navigator.clipboard.writeText(Vt),\"onClick\")},copyIcon):null,U?React.c",
+      "path_type": "app"
+    }
+  ],
+  "html_analysis": {
+    "findings": [],
+    "files_scanned": 0,
+    "iframe_urls": []
+  },
+  "permissions": {
+    "high_risk": [],
+    "medium_risk": [],
+    "low_risk": [],
+    "total": 0,
+    "all": []
+  },
+  "risk_score": 1.1,
+  "risk_level": "MINIMAL",
+  "risk_breakdown": {
+    "supply_chain": 2.0,
+    "metadata_publisher": 0.2,
+    "code_analysis": 0.4,
+    "behavioral_correlations": 0,
+    "infrastructure": 0,
+    "positive_signals": -1.5
+  },
+  "positive_signals": {
+    "signals": [
+      {
+        "signal": "no_network_access",
+        "description": "Extension has no network capabilities - data stays local",
+        "weight": 0.5
+      },
+      {
+        "signal": "no_obfuscation",
+        "description": "No code obfuscation or evasion techniques detected",
+        "weight": 0.3
+      },
+      {
+        "signal": "no_credential_access",
+        "description": "No access to credential files, SSH keys, or token stores",
+        "weight": 0.3
+      },
+      {
+        "signal": "scoped_activation",
+        "description": "Extension activates only on specific events, not wildcard",
+        "weight": 0.2
+      },
+      {
+        "signal": "no_exfiltration_pattern",
+        "description": "No compound attack patterns detected",
+        "weight": 0.2
+      }
+    ],
+    "reduction": 1.5,
+    "count": 5
+  },
+  "risk_classification": {
+    "classification": "BENIGN",
+    "summary": "Low-risk extension with minimal sensitive capabilities.",
+    "suspicion_indicators": 0,
+    "positive_signal_count": 5
+  },
+  "module_usage": {},
+  "external_urls": [
+    {
+      "url": "https://reactjs.org/docs/error-decoder.html?invariant=",
+      "file": "dist\\webview-create-pr-view-new.js",
+      "line": 899
+    },
+    {
+      "url": "https://reactjs.org/docs/error-decoder.html?invariant=",
+      "file": "dist\\webview-create-pr-view-new.js",
+      "line": 913
+    },
+    {
+      "url": "https://reactjs.org/docs/error-decoder.html?invariant=",
+      "file": "dist\\webview-open-pr-view.js",
+      "line": 571
+    },
+    {
+      "url": "https://reactjs.org/docs/error-decoder.html?invariant=",
+      "file": "dist\\webview-open-pr-view.js",
+      "line": 783
+    }
+  ],
+  "domain_intelligence": [
+    {
+      "domain": "reactjs.org",
+      "url": "https://reactjs.org/docs/error-decoder.html?invariant=",
+      "threat_level": "BENIGN",
+      "confidence": 95,
+      "classification": "Legitimate Infrastructure",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": true,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    }
+  ],
+  "virustotal_results": []
+}

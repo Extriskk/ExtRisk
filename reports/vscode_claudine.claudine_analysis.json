@@ -1,0 +1,2416 @@
+{
+  "extension_type": "vscode",
+  "name": "Claudine",
+  "identifier": "claudine.claudine",
+  "extension_id": "claudine.claudine",
+  "version": "0.1.0",
+  "description": "Kanban board for managing Claude Code conversations",
+  "publisher": "claudine",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "store_metadata": {
+    "available": true,
+    "store": "vscode",
+    "identifier": "claudine.claudine",
+    "name": "Claudine",
+    "publisher": "Claudine",
+    "publisher_id": "4ac9ed89-8144-4791-b36d-6ec9eb45fee1",
+    "publisher_domain": null,
+    "publisher_verified": false,
+    "short_description": "Kanban board for managing Claude Code conversations",
+    "version": "0.1.0",
+    "last_updated": "2026-02-08T19:40:01.297Z",
+    "categories": [],
+    "tags": [],
+    "install_count": 0,
+    "rating_value": 0,
+    "rating_count": 0,
+    "flags": "validated, public",
+    "store_url": "https://marketplace.visualstudio.com/items?itemName=claudine.claudine",
+    "risk_signals": {
+      "low_adoption": true,
+      "unverified_publisher": true,
+      "few_ratings": true
+    }
+  },
+  "metadata_risk": {
+    "findings": [
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onStartupFinished': Activates immediately after VS Code starts",
+        "event": "onStartupFinished"
+      },
+      {
+        "type": "sensitive_contribution",
+        "severity": "medium",
+        "detail": "Contributes 'walkthroughs': Can present guided flows to users",
+        "contribution": "walkthroughs"
+      },
+      {
+        "type": "unverified_publisher",
+        "severity": "medium",
+        "detail": "Publisher domain is not verified"
+      },
+      {
+        "type": "low_adoption",
+        "severity": "medium",
+        "detail": "Low install count (<500)"
+      },
+      {
+        "type": "few_ratings",
+        "severity": "low",
+        "detail": "Very few ratings (<5)"
+      }
+    ],
+    "risk_score": 4,
+    "activation_events": [
+      "onStartupFinished"
+    ],
+    "contributes": [
+      "commands",
+      "viewsContainers",
+      "views",
+      "configuration",
+      "menus",
+      "keybindings",
+      "walkthroughs"
+    ]
+  },
+  "package_json_deep": {
+    "findings": []
+  },
+  "supply_chain": {
+    "findings": [],
+    "risk_score": 0,
+    "dependency_count": 0,
+    "dev_dependency_count": 8,
+    "has_node_modules": false
+  },
+  "code_analysis": {
+    "all_findings": [
+      {
+        "name": "HTTP POST with sensitive data",
+        "severity": "medium",
+        "description": "Sends data via HTTP POST request",
+        "category": "network_exfil",
+        "file": "out\\extension.js",
+        "line": 41,
+        "evidence": "generateWithOpenAI(e,t){try{let s=await fetch(\"https://api.openai.com/v1/images/generations\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+      },
+      {
+        "name": "HTTP POST with sensitive data",
+        "severity": "medium",
+        "description": "Sends data via HTTP POST request",
+        "category": "network_exfil",
+        "file": "out\\extension.js",
+        "line": 41,
+        "evidence": "erateWithStability(e,t){try{let s=await fetch(\"https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/text-to-image\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+      },
+      {
+        "name": "Real-time document change listener",
+        "severity": "medium",
+        "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+        "category": "document_monitoring",
+        "file": "out\\extension.js",
+        "line": 1,
+        "evidence": "ger.scheduleFocusDetection()}),h.window.onDidChangeActiveTextEditor(()=>{this._tabManager.scheduleFocusDetect"
+      },
+      {
+        "name": "Secret storage access",
+        "severity": "medium",
+        "description": "Accesses VS Code secret storage API",
+        "category": "credential_theft",
+        "file": "out\\extension.js",
+        "line": 52,
+        "evidence": "\"imageGenerationApiKey\",\"\");e&&(await c.secrets.store(\"imageGenerationApiKey\",e),await a.work"
+      },
+      {
+        "name": "Secret storage access",
+        "severity": "medium",
+        "description": "Accesses VS Code secret storage API",
+        "category": "credential_theft",
+        "file": "out\\extension.js",
+        "line": 52,
+        "evidence": "tatus]=(d[p.status]||0)+1;let l=await c.secrets.get(\"imageGenerationApiKey\"),u=[`Claudine D"
+      },
+      {
+        "name": "Configuration modification",
+        "severity": "medium",
+        "description": "Modifies VS Code settings programmatically",
+        "category": "settings_manipulation",
+        "file": "out\\extension.js",
+        "line": 1,
+        "evidence": "updateSettings()}):t.includes(e.key)&&h.workspace.getConfiguration(\"claudine\").update(e.key,e.value,h.ConfigurationTarget.Glo"
+      },
+      {
+        "name": "Configuration modification",
+        "severity": "medium",
+        "description": "Modifies VS Code settings programmatically",
+        "category": "settings_manipulation",
+        "file": "out\\extension.js",
+        "line": 52,
+        "evidence": "tore(\"imageGenerationApiKey\",e),await a.workspace.getConfiguration(\"claudine\").update(\"imageGenerationApiKey\",void 0,a.Config"
+      },
+      {
+        "name": "Bulk file reading with variable path",
+        "severity": "medium",
+        "description": "Reads file content using variable path - bulk file harvesting indicator",
+        "category": "workspace_harvesting",
+        "file": "out\\extension.js",
+        "line": 35,
+        "evidence": "tate.json\");try{let s=await g.workspace.fs.readFile(t);return JSON.parse(s.toString())}catch{"
+      },
+      {
+        "name": "Bulk file reading with variable path",
+        "severity": "medium",
+        "description": "Reads file content using variable path - bulk file harvesting indicator",
+        "category": "workspace_harvesting",
+        "file": "out\\extension.js",
+        "line": 35,
+        "evidence": "afts.json\");try{let s=await g.workspace.fs.readFile(t);return JSON.parse(s.toString())}catch{"
+      },
+      {
+        "name": "Bulk file reading with variable path",
+        "severity": "medium",
+        "description": "Reads file content using variable path - bulk file harvesting indicator",
+        "category": "workspace_harvesting",
+        "file": "out\\extension.js",
+        "line": 52,
+        "evidence": "==0)return null;let e=await b.workspace.fs.readFile(c[0]),t=ct(Buffer.from(e).toString(\"utf-8"
+      },
+      {
+        "name": "File content read on editor change event",
+        "severity": "medium",
+        "description": "Registers handler for editor/document change events",
+        "category": "document_monitoring",
+        "file": "out\\extension.js",
+        "line": 1,
+        "evidence": "ger.scheduleFocusDetection()}),h.window.onDidChangeActiveTextEditor(()=>{this._tabManager.scheduleFocusDetection"
+      },
+      {
+        "name": "Plaintext HTTP endpoint (not HTTPS)",
+        "severity": "high",
+        "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+        "category": "insecure_endpoint",
+        "file": "out\\extension.js",
+        "line": 42,
+        "evidence": "${encodeURIComponent(`       <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 64 64\">"
+      },
+      {
+        "name": "Recursive directory reading",
+        "severity": "medium",
+        "description": "Reads directory contents - suspicious when combined with file reading and network",
+        "category": "workspace_harvesting",
+        "file": "out\\providers\\ClaudeCodeWatcher.js",
+        "line": 182,
+        "evidence": "try {                 const entries = fs.readdirSync(projectDir, { withFileTypes: true });"
+      },
+      {
+        "name": "Recursive directory reading",
+        "severity": "medium",
+        "description": "Reads directory contents - suspicious when combined with file reading and network",
+        "category": "workspace_harvesting",
+        "file": "out\\providers\\ClaudeCodeWatcher.js",
+        "line": 242,
+        "evidence": "ects');                 const entries = fs.readdirSync(projectsPath, { withFileTypes: true });"
+      },
+      {
+        "name": "Recursive directory reading",
+        "severity": "medium",
+        "description": "Reads directory contents - suspicious when combined with file reading and network",
+        "category": "workspace_harvesting",
+        "file": "out\\providers\\ClaudeCodeWatcher.js",
+        "line": 275,
+        "evidence": "try {                 const entries = fs.readdirSync(projectDir, { withFileTypes: true });"
+      },
+      {
+        "name": "Bulk file reading with variable path",
+        "severity": "medium",
+        "description": "Reads file content using variable path - bulk file harvesting indicator",
+        "category": "workspace_harvesting",
+        "file": "out\\providers\\ClaudeCodeWatcher.js",
+        "line": 281,
+        "evidence": "const content = fs.readFileSync(filePath, 'utf-8');                         if ("
+      },
+      {
+        "name": "Bulk file reading with variable path",
+        "severity": "medium",
+        "description": "Reads file content using variable path - bulk file harvesting indicator",
+        "category": "workspace_harvesting",
+        "file": "out\\providers\\ClaudeCodeWatcher.js",
+        "line": 344,
+        "evidence": "iles > 512KB             const buffer = fs.readFileSync(filePath);             const ext = path.extname("
+      },
+      {
+        "name": "Bulk file reading with variable path",
+        "severity": "medium",
+        "description": "Reads file content using variable path - bulk file harvesting indicator",
+        "category": "workspace_harvesting",
+        "file": "out\\providers\\ClaudeCodeWatcher.js",
+        "line": 366,
+        "evidence": "inue;                 const stateData = fs.readFileSync(statePath, 'utf-8');                 const state"
+      },
+      {
+        "name": "Workspace folder enumeration",
+        "severity": "low",
+        "description": "Accesses workspace root folder path",
+        "category": "workspace_harvesting",
+        "file": "out\\providers\\ClaudeCodeWatcher.js",
+        "line": 218,
+        "evidence": "}             const workspaceFolders = vscode.workspace.workspaceFolders;             if (workspaceFolders && wo"
+      },
+      {
+        "name": "Workspace folder enumeration",
+        "severity": "low",
+        "description": "Accesses workspace root folder path",
+        "category": "workspace_harvesting",
+        "file": "out\\providers\\ClaudeCodeWatcher.js",
+        "line": 358,
+        "evidence": "ons) {         const workspaceFolders = vscode.workspace.workspaceFolders;         if (!workspaceFolders)"
+      },
+      {
+        "name": "Bulk file reading with variable path",
+        "severity": "medium",
+        "description": "Reads file content using variable path - bulk file harvesting indicator",
+        "category": "workspace_harvesting",
+        "file": "out\\providers\\ConversationParser.js",
+        "line": 49,
+        "evidence": "eturn null;             const content = fs.readFileSync(filePath, 'utf-8');             if (!content.tri"
+      },
+      {
+        "name": "Real-time document change listener",
+        "severity": "medium",
+        "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+        "category": "document_monitoring",
+        "file": "out\\providers\\KanbanViewProvider.js",
+        "line": 90,
+        "evidence": "sDetection();         }), vscode.window.onDidChangeActiveTextEditor(() => {             this.scheduleFocusDet"
+      },
+      {
+        "name": "Webview with scripts enabled",
+        "severity": "medium",
+        "description": "Webview with JavaScript enabled (XSS vector if loading external content)",
+        "category": "webview_risk",
+        "file": "out\\providers\\KanbanViewProvider.js",
+        "line": 71,
+        "evidence": "iewView.webview.options = {             enableScripts: true,             localResourceRoots: ["
+      },
+      {
+        "name": "File content read on editor change event",
+        "severity": "medium",
+        "description": "Registers handler for editor/document change events",
+        "category": "document_monitoring",
+        "file": "out\\providers\\KanbanViewProvider.js",
+        "line": 90,
+        "evidence": "sDetection();         }), vscode.window.onDidChangeActiveTextEditor(() => {             this.scheduleFocusDetecti"
+      },
+      {
+        "name": "Bulk file reading with variable path",
+        "severity": "medium",
+        "description": "Reads file content using variable path - bulk file harvesting indicator",
+        "category": "workspace_harvesting",
+        "file": "out\\services\\CommandProcessor.js",
+        "line": 84,
+        "evidence": "nt;         try {             content = fs.readFileSync(this._commandsPath, 'utf-8');         }"
+      },
+      {
+        "name": "Bulk file reading with variable path",
+        "severity": "medium",
+        "description": "Reads file content using variable path - bulk file harvesting indicator",
+        "category": "workspace_harvesting",
+        "file": "out\\services\\CommandProcessor.js",
+        "line": 227,
+        "evidence": "existing = JSON.parse(fs.readFileSync(this._resultsPath, 'utf-8')).results || [];"
+      },
+      {
+        "name": "Workspace folder enumeration",
+        "severity": "low",
+        "description": "Accesses workspace root folder path",
+        "category": "workspace_harvesting",
+        "file": "out\\services\\CommandProcessor.js",
+        "line": 57,
+        "evidence": "ing() {         const workspaceFolder = vscode.workspace.workspaceFolders?.[0];         if (!workspaceFolder) {"
+      },
+      {
+        "name": "HTTP POST with sensitive data",
+        "severity": "medium",
+        "description": "Sends data via HTTP POST request",
+        "category": "network_exfil",
+        "file": "out\\services\\ImageGenerator.js",
+        "line": 97,
+        "evidence": "ry {             const response = await fetch('https://api.openai.com/v1/images/generations', {                 method: 'POST',                 headers: {"
+      },
+      {
+        "name": "HTTP POST with sensitive data",
+        "severity": "medium",
+        "description": "Sends data via HTTP POST request",
+        "category": "network_exfil",
+        "file": "out\\services\\ImageGenerator.js",
+        "line": 129,
+        "evidence": "ry {             const response = await fetch('https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/text-to-image', {                 method: 'POST',                 headers: {"
+      },
+      {
+        "name": "Plaintext HTTP endpoint (not HTTPS)",
+        "severity": "high",
+        "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+        "category": "insecure_endpoint",
+        "file": "out\\services\\ImageGenerator.js",
+        "line": 178,
+        "evidence": "${encodeURIComponent(`       <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 64 64\">"
+      },
+      {
+        "name": "Workspace file access",
+        "severity": "low",
+        "description": "Accesses workspace files",
+        "category": "data_access",
+        "file": "out\\services\\StorageService.js",
+        "line": 108,
+        "evidence": "{                 const content = await vscode.workspace.fs.readFile(statePath);                 return JSON"
+      },
+      {
+        "name": "Workspace file access",
+        "severity": "low",
+        "description": "Accesses workspace files",
+        "category": "data_access",
+        "file": "out\\services\\StorageService.js",
+        "line": 155,
+        "evidence": "try {             const content = await vscode.workspace.fs.readFile(draftsPath);             return JSON.pa"
+      },
+      {
+        "name": "Bulk file reading with variable path",
+        "severity": "medium",
+        "description": "Reads file content using variable path - bulk file harvesting indicator",
+        "category": "workspace_harvesting",
+        "file": "out\\services\\StorageService.js",
+        "line": 108,
+        "evidence": "const content = await vscode.workspace.fs.readFile(statePath);                 return JSON.parse(con"
+      },
+      {
+        "name": "Bulk file reading with variable path",
+        "severity": "medium",
+        "description": "Reads file content using variable path - bulk file harvesting indicator",
+        "category": "workspace_harvesting",
+        "file": "out\\services\\StorageService.js",
+        "line": 155,
+        "evidence": "const content = await vscode.workspace.fs.readFile(draftsPath);             return JSON.parse(content"
+      },
+      {
+        "name": "Workspace folder enumeration",
+        "severity": "low",
+        "description": "Accesses workspace root folder path",
+        "category": "workspace_harvesting",
+        "file": "out\\services\\StorageService.js",
+        "line": 86,
+        "evidence": "tate) {         const workspaceFolder = vscode.workspace.workspaceFolders?.[0];         if (!workspaceFolder) {"
+      },
+      {
+        "name": "Workspace folder enumeration",
+        "severity": "low",
+        "description": "Accesses workspace root folder path",
+        "category": "workspace_harvesting",
+        "file": "out\\services\\StorageService.js",
+        "line": 104,
+        "evidence": "ate() {         const workspaceFolder = vscode.workspace.workspaceFolders?.[0];         if (workspaceFolder) {"
+      },
+      {
+        "name": "Workspace folder enumeration",
+        "severity": "low",
+        "description": "Accesses workspace root folder path",
+        "category": "workspace_harvesting",
+        "file": "out\\services\\StorageService.js",
+        "line": 119,
+        "evidence": "Data) {         const workspaceFolder = vscode.workspace.workspaceFolders?.[0];         if (!workspaceFolder)"
+      },
+      {
+        "name": "Workspace folder enumeration",
+        "severity": "low",
+        "description": "Accesses workspace root folder path",
+        "category": "workspace_harvesting",
+        "file": "out\\services\\StorageService.js",
+        "line": 136,
+        "evidence": "afts) {         const workspaceFolder = vscode.workspace.workspaceFolders?.[0];         if (!workspaceFolder)"
+      },
+      {
+        "name": "Workspace folder enumeration",
+        "severity": "low",
+        "description": "Accesses workspace root folder path",
+        "category": "workspace_harvesting",
+        "file": "out\\services\\StorageService.js",
+        "line": 150,
+        "evidence": "fts() {         const workspaceFolder = vscode.workspace.workspaceFolders?.[0];         if (!workspaceFolder)"
+      },
+      {
+        "name": "Workspace folder enumeration",
+        "severity": "low",
+        "description": "Accesses workspace root folder path",
+        "category": "workspace_harvesting",
+        "file": "out\\services\\StorageService.js",
+        "line": 163,
+        "evidence": "onId) {         const workspaceFolder = vscode.workspace.workspaceFolders?.[0];         if (!workspaceFolder)"
+      },
+      {
+        "name": "VSCode filesystem bulk read",
+        "severity": "medium",
+        "description": "Reads files via VSCode workspace filesystem API",
+        "category": "workspace_harvesting",
+        "file": "out\\services\\StorageService.js",
+        "line": 108,
+        "evidence": "{                 const content = await vscode.workspace.fs.readFile(statePath);                 return JSON"
+      },
+      {
+        "name": "VSCode filesystem bulk read",
+        "severity": "medium",
+        "description": "Reads files via VSCode workspace filesystem API",
+        "category": "workspace_harvesting",
+        "file": "out\\services\\StorageService.js",
+        "line": 155,
+        "evidence": "try {             const content = await vscode.workspace.fs.readFile(draftsPath);             return JSON.pa"
+      },
+      {
+        "name": "Base64 encoding of content variable",
+        "severity": "high",
+        "description": "Base64 encodes content/file data - exfiltration preparation",
+        "category": "base64_exfil",
+        "file": "out\\services\\StorageService.js",
+        "line": 71,
+        "evidence": "buffer and save         const buffer = Buffer.from(iconData.replace(/^data:image\\/\\w+;base64,/, '')"
+      },
+      {
+        "name": "Base64 encoding of content variable",
+        "severity": "high",
+        "description": "Base64 encodes content/file data - exfiltration preparation",
+        "category": "base64_exfil",
+        "file": "out\\services\\StorageService.js",
+        "line": 131,
+        "evidence": "exist         }         const buffer = Buffer.from(iconData.replace(/^data:image\\/\\w+;base64,/, '')"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "webview\\dist\\assets\\index.js",
+        "line": 4,
+        "evidence": "-5\",n}function St(t){if(!cr){he||Qn(),he.innerHTML=\"\";var e=document.createTextNode(t);he.a"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "webview\\dist\\assets\\index.js",
+        "line": 4,
+        "evidence": "(i,l),v(i,o),q.m(i,null),v(i,s),v(i,u),u.innerHTML=d,v(i,f),J&&J.m(i,null),v(i,p),ne&&ne.m("
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "webview\\dist\\assets\\index.js",
+        "line": 4,
+        "evidence": "&16384)&&d!==(d=M[18](Lt(M[14]))+\"\")&&(u.innerHTML=d),(!F||K[0]&8192)&&a(u,\"title\",M[13]),M"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "webview\\dist\\assets\\index.js",
+        "line": 4,
+        "evidence": "l),v(o,s),U&&U.m(o,null),v(e,u),v(e,d),d.innerHTML=f,v(e,p),G&&G.m(e,null),v(e,c),H&&H.m(e,"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "webview\\dist\\assets\\index.js",
+        "line": 4,
+        "evidence": "&16384)&&f!==(f=P[18](Lt(P[14]))+\"\")&&(d.innerHTML=f),(!w||q[0]&8192)&&a(d,\"title\",P[13]),("
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "webview\\dist\\assets\\index.js",
+        "line": 4,
+        "evidence": ",O(e,\"expanded\",t[7])},m(l,o){E(l,e,o),e.innerHTML=n,r||(i=[z(e,\"click\",t[23]),z(e,\"keydown"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "webview\\dist\\assets\\index.js",
+        "line": 4,
+        "evidence": "){o[0]&4096&&n!==(n=l[18](l[12])+\"\")&&(e.innerHTML=n),o[0]&2048&&a(e,\"title\",l[11]),o[0]&12"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "webview\\dist\\assets\\index.js",
+        "line": 4,
+        "evidence": "},m(u,d){E(u,e,d),v(e,n),v(e,r),v(e,i),i.innerHTML=l,o||(s=[z(e,\"click\",t[24]),z(e,\"keydown"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "webview\\dist\\assets\\index.js",
+        "line": 4,
+        "evidence": "&&l!==(l=u[18](u[0].lastMessage)+\"\")&&(i.innerHTML=l),d[0]&256&&O(e,\"expanded\",u[8])},d(u){"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "webview\\dist\\assets\\index.js",
+        "line": 4,
+        "evidence": "){E(d,e,f),v(e,n),v(n,r),v(e,i),v(e,l),l.innerHTML=o,s||(u=z(e,\"click\",t[22]),s=!0)},p(d,f)"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "webview\\dist\\assets\\index.js",
+        "line": 4,
+        "evidence": "o!==(o=d[18](d[0].gitBranch||\"\")+\"\")&&(l.innerHTML=o)},d(d){d&&D(e),s=!1,u()}}}function Xr("
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "webview\\dist\\assets\\index.js",
+        "line": 4,
+        "evidence": "(t){let e,n,r;return{c(){e=_(\"button\"),e.innerHTML=`<svg viewBox=\"0 0 16 16\" fill=\"currentC"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "webview\\dist\\assets\\index.js",
+        "line": 5,
+        "evidence": "\">claudine.tools</a>',u=C(),d=_(\"div\"),d.innerHTML='Developed by <a href=\"https://github.co"
+      },
+      {
+        "name": "Plaintext HTTP endpoint (not HTTPS)",
+        "severity": "high",
+        "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+        "category": "insecure_endpoint",
+        "file": "webview\\dist\\assets\\index.js",
+        "line": 1,
+        "evidence": "on Q(t){return document.createElementNS(\"http://www.w3.org/2000/svg\",t)}function ee(t){return docu"
+      },
+      {
+        "name": "Potential data exfiltration: file monitoring + base64 encoding + network",
+        "severity": "critical",
+        "description": "Extension monitors file changes, encodes content, and has network access - potential data exfiltration capability. Review what data is sent and where.",
+        "category": "behavioral_correlation",
+        "file": "out\\extension.js",
+        "line": 0,
+        "evidence": "Real-time document change listener | Base64 encoding of content variable | HTTP POST with sensitive data",
+        "confidence": "HIGH",
+        "attack_type": "code_exfiltration"
+      },
+      {
+        "name": "Credential exposure risk: auth token handling + plaintext HTTP",
+        "severity": "critical",
+        "description": "Extension handles auth tokens AND uses plaintext HTTP - credentials may be sent unencrypted",
+        "category": "behavioral_correlation",
+        "file": "out\\extension.js",
+        "line": 0,
+        "evidence": "Secret storage access + Plaintext HTTP endpoint (not HTTPS)",
+        "confidence": "MEDIUM",
+        "attack_type": "credential_leak"
+      }
+    ],
+    "module_usage": {
+      "file_access": [
+        {
+          "module": "fs",
+          "file": "out\\extension.js",
+          "line": 1
+        },
+        {
+          "module": "path",
+          "file": "out\\extension.js",
+          "line": 1
+        },
+        {
+          "module": "path",
+          "file": "out\\extension.js",
+          "line": 15
+        },
+        {
+          "module": "fs",
+          "file": "out\\extension.js",
+          "line": 15
+        },
+        {
+          "module": "path",
+          "file": "out\\extension.js",
+          "line": 15
+        },
+        {
+          "module": "fs/promises",
+          "file": "out\\extension.js",
+          "line": 15
+        },
+        {
+          "module": "path",
+          "file": "out\\extension.js",
+          "line": 35
+        },
+        {
+          "module": "fs",
+          "file": "out\\extension.js",
+          "line": 47
+        },
+        {
+          "module": "path",
+          "file": "out\\extension.js",
+          "line": 47
+        },
+        {
+          "module": "path",
+          "file": "out\\providers\\ClaudeCodeWatcher.js",
+          "line": 38
+        },
+        {
+          "module": "fs",
+          "file": "out\\providers\\ClaudeCodeWatcher.js",
+          "line": 40
+        },
+        {
+          "module": "path",
+          "file": "out\\providers\\ConversationParser.js",
+          "line": 37
+        },
+        {
+          "module": "fs",
+          "file": "out\\providers\\ConversationParser.js",
+          "line": 38
+        },
+        {
+          "module": "fs",
+          "file": "out\\services\\CommandProcessor.js",
+          "line": 38
+        },
+        {
+          "module": "path",
+          "file": "out\\services\\CommandProcessor.js",
+          "line": 39
+        },
+        {
+          "module": "path",
+          "file": "out\\services\\StorageService.js",
+          "line": 38
+        }
+      ],
+      "crypto": [
+        {
+          "module": "crypto",
+          "file": "out\\extension.js",
+          "line": 1
+        },
+        {
+          "module": "crypto",
+          "file": "out\\providers\\KanbanViewProvider.js",
+          "line": 38
+        }
+      ],
+      "os_info": [
+        {
+          "module": "os",
+          "file": "out\\extension.js",
+          "line": 15
+        },
+        {
+          "module": "os",
+          "file": "out\\extension.js",
+          "line": 22
+        },
+        {
+          "module": "os",
+          "file": "out\\providers\\ClaudeCodeWatcher.js",
+          "line": 39
+        },
+        {
+          "module": "os",
+          "file": "out\\services\\SummaryService.js",
+          "line": 38
+        }
+      ],
+      "process_execution": [
+        {
+          "module": "child_process",
+          "file": "out\\extension.js",
+          "line": 22
+        },
+        {
+          "module": "child_process",
+          "file": "out\\services\\SummaryService.js",
+          "line": 39
+        }
+      ]
+    },
+    "external_urls": [
+      {
+        "url": "https://api.openai.com/v1/models",
+        "file": "out\\extension.js",
+        "line": 1
+      },
+      {
+        "url": "https://api.stability.ai/v1/user/account",
+        "file": "out\\extension.js",
+        "line": 1
+      },
+      {
+        "url": "https://api.openai.com/v1/images/generations",
+        "file": "out\\extension.js",
+        "line": 41
+      },
+      {
+        "url": "https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/text-to-image",
+        "file": "out\\extension.js",
+        "line": 41
+      },
+      {
+        "url": "https://api.openai.com/v1/images/generations",
+        "file": "out\\services\\ImageGenerator.js",
+        "line": 97
+      },
+      {
+        "url": "https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/text-to-image",
+        "file": "out\\services\\ImageGenerator.js",
+        "line": 129
+      },
+      {
+        "url": "https://claudine.tools",
+        "file": "webview\\dist\\assets\\index.js",
+        "line": 5
+      },
+      {
+        "url": "https://github.com/salam",
+        "file": "webview\\dist\\assets\\index.js",
+        "line": 5
+      }
+    ],
+    "file_entropies": {},
+    "files_scanned": 24,
+    "findings_by_category": {
+      "network_exfil": [
+        {
+          "name": "HTTP POST with sensitive data",
+          "severity": "medium",
+          "description": "Sends data via HTTP POST request",
+          "category": "network_exfil",
+          "file": "out\\extension.js",
+          "line": 41,
+          "evidence": "generateWithOpenAI(e,t){try{let s=await fetch(\"https://api.openai.com/v1/images/generations\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+        },
+        {
+          "name": "HTTP POST with sensitive data",
+          "severity": "medium",
+          "description": "Sends data via HTTP POST request",
+          "category": "network_exfil",
+          "file": "out\\extension.js",
+          "line": 41,
+          "evidence": "erateWithStability(e,t){try{let s=await fetch(\"https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/text-to-image\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+        },
+        {
+          "name": "HTTP POST with sensitive data",
+          "severity": "medium",
+          "description": "Sends data via HTTP POST request",
+          "category": "network_exfil",
+          "file": "out\\services\\ImageGenerator.js",
+          "line": 97,
+          "evidence": "ry {             const response = await fetch('https://api.openai.com/v1/images/generations', {                 method: 'POST',                 headers: {"
+        },
+        {
+          "name": "HTTP POST with sensitive data",
+          "severity": "medium",
+          "description": "Sends data via HTTP POST request",
+          "category": "network_exfil",
+          "file": "out\\services\\ImageGenerator.js",
+          "line": 129,
+          "evidence": "ry {             const response = await fetch('https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/text-to-image', {                 method: 'POST',                 headers: {"
+        }
+      ],
+      "document_monitoring": [
+        {
+          "name": "Real-time document change listener",
+          "severity": "medium",
+          "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+          "category": "document_monitoring",
+          "file": "out\\extension.js",
+          "line": 1,
+          "evidence": "ger.scheduleFocusDetection()}),h.window.onDidChangeActiveTextEditor(()=>{this._tabManager.scheduleFocusDetect"
+        },
+        {
+          "name": "File content read on editor change event",
+          "severity": "medium",
+          "description": "Registers handler for editor/document change events",
+          "category": "document_monitoring",
+          "file": "out\\extension.js",
+          "line": 1,
+          "evidence": "ger.scheduleFocusDetection()}),h.window.onDidChangeActiveTextEditor(()=>{this._tabManager.scheduleFocusDetection"
+        },
+        {
+          "name": "Real-time document change listener",
+          "severity": "medium",
+          "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+          "category": "document_monitoring",
+          "file": "out\\providers\\KanbanViewProvider.js",
+          "line": 90,
+          "evidence": "sDetection();         }), vscode.window.onDidChangeActiveTextEditor(() => {             this.scheduleFocusDet"
+        },
+        {
+          "name": "File content read on editor change event",
+          "severity": "medium",
+          "description": "Registers handler for editor/document change events",
+          "category": "document_monitoring",
+          "file": "out\\providers\\KanbanViewProvider.js",
+          "line": 90,
+          "evidence": "sDetection();         }), vscode.window.onDidChangeActiveTextEditor(() => {             this.scheduleFocusDetecti"
+        }
+      ],
+      "credential_theft": [
+        {
+          "name": "Secret storage access",
+          "severity": "medium",
+          "description": "Accesses VS Code secret storage API",
+          "category": "credential_theft",
+          "file": "out\\extension.js",
+          "line": 52,
+          "evidence": "\"imageGenerationApiKey\",\"\");e&&(await c.secrets.store(\"imageGenerationApiKey\",e),await a.work"
+        },
+        {
+          "name": "Secret storage access",
+          "severity": "medium",
+          "description": "Accesses VS Code secret storage API",
+          "category": "credential_theft",
+          "file": "out\\extension.js",
+          "line": 52,
+          "evidence": "tatus]=(d[p.status]||0)+1;let l=await c.secrets.get(\"imageGenerationApiKey\"),u=[`Claudine D"
+        }
+      ],
+      "settings_manipulation": [
+        {
+          "name": "Configuration modification",
+          "severity": "medium",
+          "description": "Modifies VS Code settings programmatically",
+          "category": "settings_manipulation",
+          "file": "out\\extension.js",
+          "line": 1,
+          "evidence": "updateSettings()}):t.includes(e.key)&&h.workspace.getConfiguration(\"claudine\").update(e.key,e.value,h.ConfigurationTarget.Glo"
+        },
+        {
+          "name": "Configuration modification",
+          "severity": "medium",
+          "description": "Modifies VS Code settings programmatically",
+          "category": "settings_manipulation",
+          "file": "out\\extension.js",
+          "line": 52,
+          "evidence": "tore(\"imageGenerationApiKey\",e),await a.workspace.getConfiguration(\"claudine\").update(\"imageGenerationApiKey\",void 0,a.Config"
+        }
+      ],
+      "workspace_harvesting": [
+        {
+          "name": "Bulk file reading with variable path",
+          "severity": "medium",
+          "description": "Reads file content using variable path - bulk file harvesting indicator",
+          "category": "workspace_harvesting",
+          "file": "out\\extension.js",
+          "line": 35,
+          "evidence": "tate.json\");try{let s=await g.workspace.fs.readFile(t);return JSON.parse(s.toString())}catch{"
+        },
+        {
+          "name": "Bulk file reading with variable path",
+          "severity": "medium",
+          "description": "Reads file content using variable path - bulk file harvesting indicator",
+          "category": "workspace_harvesting",
+          "file": "out\\extension.js",
+          "line": 35,
+          "evidence": "afts.json\");try{let s=await g.workspace.fs.readFile(t);return JSON.parse(s.toString())}catch{"
+        },
+        {
+          "name": "Bulk file reading with variable path",
+          "severity": "medium",
+          "description": "Reads file content using variable path - bulk file harvesting indicator",
+          "category": "workspace_harvesting",
+          "file": "out\\extension.js",
+          "line": 52,
+          "evidence": "==0)return null;let e=await b.workspace.fs.readFile(c[0]),t=ct(Buffer.from(e).toString(\"utf-8"
+        },
+        {
+          "name": "Recursive directory reading",
+          "severity": "medium",
+          "description": "Reads directory contents - suspicious when combined with file reading and network",
+          "category": "workspace_harvesting",
+          "file": "out\\providers\\ClaudeCodeWatcher.js",
+          "line": 182,
+          "evidence": "try {                 const entries = fs.readdirSync(projectDir, { withFileTypes: true });"
+        },
+        {
+          "name": "Recursive directory reading",
+          "severity": "medium",
+          "description": "Reads directory contents - suspicious when combined with file reading and network",
+          "category": "workspace_harvesting",
+          "file": "out\\providers\\ClaudeCodeWatcher.js",
+          "line": 242,
+          "evidence": "ects');                 const entries = fs.readdirSync(projectsPath, { withFileTypes: true });"
+        },
+        {
+          "name": "Recursive directory reading",
+          "severity": "medium",
+          "description": "Reads directory contents - suspicious when combined with file reading and network",
+          "category": "workspace_harvesting",
+          "file": "out\\providers\\ClaudeCodeWatcher.js",
+          "line": 275,
+          "evidence": "try {                 const entries = fs.readdirSync(projectDir, { withFileTypes: true });"
+        },
+        {
+          "name": "Bulk file reading with variable path",
+          "severity": "medium",
+          "description": "Reads file content using variable path - bulk file harvesting indicator",
+          "category": "workspace_harvesting",
+          "file": "out\\providers\\ClaudeCodeWatcher.js",
+          "line": 281,
+          "evidence": "const content = fs.readFileSync(filePath, 'utf-8');                         if ("
+        },
+        {
+          "name": "Bulk file reading with variable path",
+          "severity": "medium",
+          "description": "Reads file content using variable path - bulk file harvesting indicator",
+          "category": "workspace_harvesting",
+          "file": "out\\providers\\ClaudeCodeWatcher.js",
+          "line": 344,
+          "evidence": "iles > 512KB             const buffer = fs.readFileSync(filePath);             const ext = path.extname("
+        },
+        {
+          "name": "Bulk file reading with variable path",
+          "severity": "medium",
+          "description": "Reads file content using variable path - bulk file harvesting indicator",
+          "category": "workspace_harvesting",
+          "file": "out\\providers\\ClaudeCodeWatcher.js",
+          "line": 366,
+          "evidence": "inue;                 const stateData = fs.readFileSync(statePath, 'utf-8');                 const state"
+        },
+        {
+          "name": "Workspace folder enumeration",
+          "severity": "low",
+          "description": "Accesses workspace root folder path",
+          "category": "workspace_harvesting",
+          "file": "out\\providers\\ClaudeCodeWatcher.js",
+          "line": 218,
+          "evidence": "}             const workspaceFolders = vscode.workspace.workspaceFolders;             if (workspaceFolders && wo"
+        },
+        {
+          "name": "Workspace folder enumeration",
+          "severity": "low",
+          "description": "Accesses workspace root folder path",
+          "category": "workspace_harvesting",
+          "file": "out\\providers\\ClaudeCodeWatcher.js",
+          "line": 358,
+          "evidence": "ons) {         const workspaceFolders = vscode.workspace.workspaceFolders;         if (!workspaceFolders)"
+        },
+        {
+          "name": "Bulk file reading with variable path",
+          "severity": "medium",
+          "description": "Reads file content using variable path - bulk file harvesting indicator",
+          "category": "workspace_harvesting",
+          "file": "out\\providers\\ConversationParser.js",
+          "line": 49,
+          "evidence": "eturn null;             const content = fs.readFileSync(filePath, 'utf-8');             if (!content.tri"
+        },
+        {
+          "name": "Bulk file reading with variable path",
+          "severity": "medium",
+          "description": "Reads file content using variable path - bulk file harvesting indicator",
+          "category": "workspace_harvesting",
+          "file": "out\\services\\CommandProcessor.js",
+          "line": 84,
+          "evidence": "nt;         try {             content = fs.readFileSync(this._commandsPath, 'utf-8');         }"
+        },
+        {
+          "name": "Bulk file reading with variable path",
+          "severity": "medium",
+          "description": "Reads file content using variable path - bulk file harvesting indicator",
+          "category": "workspace_harvesting",
+          "file": "out\\services\\CommandProcessor.js",
+          "line": 227,
+          "evidence": "existing = JSON.parse(fs.readFileSync(this._resultsPath, 'utf-8')).results || [];"
+        },
+        {
+          "name": "Workspace folder enumeration",
+          "severity": "low",
+          "description": "Accesses workspace root folder path",
+          "category": "workspace_harvesting",
+          "file": "out\\services\\CommandProcessor.js",
+          "line": 57,
+          "evidence": "ing() {         const workspaceFolder = vscode.workspace.workspaceFolders?.[0];         if (!workspaceFolder) {"
+        },
+        {
+          "name": "Bulk file reading with variable path",
+          "severity": "medium",
+          "description": "Reads file content using variable path - bulk file harvesting indicator",
+          "category": "workspace_harvesting",
+          "file": "out\\services\\StorageService.js",
+          "line": 108,
+          "evidence": "const content = await vscode.workspace.fs.readFile(statePath);                 return JSON.parse(con"
+        },
+        {
+          "name": "Bulk file reading with variable path",
+          "severity": "medium",
+          "description": "Reads file content using variable path - bulk file harvesting indicator",
+          "category": "workspace_harvesting",
+          "file": "out\\services\\StorageService.js",
+          "line": 155,
+          "evidence": "const content = await vscode.workspace.fs.readFile(draftsPath);             return JSON.parse(content"
+        },
+        {
+          "name": "Workspace folder enumeration",
+          "severity": "low",
+          "description": "Accesses workspace root folder path",
+          "category": "workspace_harvesting",
+          "file": "out\\services\\StorageService.js",
+          "line": 86,
+          "evidence": "tate) {         const workspaceFolder = vscode.workspace.workspaceFolders?.[0];         if (!workspaceFolder) {"
+        },
+        {
+          "name": "Workspace folder enumeration",
+          "severity": "low",
+          "description": "Accesses workspace root folder path",
+          "category": "workspace_harvesting",
+          "file": "out\\services\\StorageService.js",
+          "line": 104,
+          "evidence": "ate() {         const workspaceFolder = vscode.workspace.workspaceFolders?.[0];         if (workspaceFolder) {"
+        },
+        {
+          "name": "Workspace folder enumeration",
+          "severity": "low",
+          "description": "Accesses workspace root folder path",
+          "category": "workspace_harvesting",
+          "file": "out\\services\\StorageService.js",
+          "line": 119,
+          "evidence": "Data) {         const workspaceFolder = vscode.workspace.workspaceFolders?.[0];         if (!workspaceFolder)"
+        },
+        {
+          "name": "Workspace folder enumeration",
+          "severity": "low",
+          "description": "Accesses workspace root folder path",
+          "category": "workspace_harvesting",
+          "file": "out\\services\\StorageService.js",
+          "line": 136,
+          "evidence": "afts) {         const workspaceFolder = vscode.workspace.workspaceFolders?.[0];         if (!workspaceFolder)"
+        },
+        {
+          "name": "Workspace folder enumeration",
+          "severity": "low",
+          "description": "Accesses workspace root folder path",
+          "category": "workspace_harvesting",
+          "file": "out\\services\\StorageService.js",
+          "line": 150,
+          "evidence": "fts() {         const workspaceFolder = vscode.workspace.workspaceFolders?.[0];         if (!workspaceFolder)"
+        },
+        {
+          "name": "Workspace folder enumeration",
+          "severity": "low",
+          "description": "Accesses workspace root folder path",
+          "category": "workspace_harvesting",
+          "file": "out\\services\\StorageService.js",
+          "line": 163,
+          "evidence": "onId) {         const workspaceFolder = vscode.workspace.workspaceFolders?.[0];         if (!workspaceFolder)"
+        },
+        {
+          "name": "VSCode filesystem bulk read",
+          "severity": "medium",
+          "description": "Reads files via VSCode workspace filesystem API",
+          "category": "workspace_harvesting",
+          "file": "out\\services\\StorageService.js",
+          "line": 108,
+          "evidence": "{                 const content = await vscode.workspace.fs.readFile(statePath);                 return JSON"
+        },
+        {
+          "name": "VSCode filesystem bulk read",
+          "severity": "medium",
+          "description": "Reads files via VSCode workspace filesystem API",
+          "category": "workspace_harvesting",
+          "file": "out\\services\\StorageService.js",
+          "line": 155,
+          "evidence": "try {             const content = await vscode.workspace.fs.readFile(draftsPath);             return JSON.pa"
+        }
+      ],
+      "insecure_endpoint": [
+        {
+          "name": "Plaintext HTTP endpoint (not HTTPS)",
+          "severity": "high",
+          "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+          "category": "insecure_endpoint",
+          "file": "out\\extension.js",
+          "line": 42,
+          "evidence": "${encodeURIComponent(`       <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 64 64\">"
+        },
+        {
+          "name": "Plaintext HTTP endpoint (not HTTPS)",
+          "severity": "high",
+          "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+          "category": "insecure_endpoint",
+          "file": "out\\services\\ImageGenerator.js",
+          "line": 178,
+          "evidence": "${encodeURIComponent(`       <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 64 64\">"
+        },
+        {
+          "name": "Plaintext HTTP endpoint (not HTTPS)",
+          "severity": "high",
+          "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+          "category": "insecure_endpoint",
+          "file": "webview\\dist\\assets\\index.js",
+          "line": 1,
+          "evidence": "on Q(t){return document.createElementNS(\"http://www.w3.org/2000/svg\",t)}function ee(t){return docu"
+        }
+      ],
+      "webview_risk": [
+        {
+          "name": "Webview with scripts enabled",
+          "severity": "medium",
+          "description": "Webview with JavaScript enabled (XSS vector if loading external content)",
+          "category": "webview_risk",
+          "file": "out\\providers\\KanbanViewProvider.js",
+          "line": 71,
+          "evidence": "iewView.webview.options = {             enableScripts: true,             localResourceRoots: ["
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "webview\\dist\\assets\\index.js",
+          "line": 4,
+          "evidence": "-5\",n}function St(t){if(!cr){he||Qn(),he.innerHTML=\"\";var e=document.createTextNode(t);he.a"
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "webview\\dist\\assets\\index.js",
+          "line": 4,
+          "evidence": "(i,l),v(i,o),q.m(i,null),v(i,s),v(i,u),u.innerHTML=d,v(i,f),J&&J.m(i,null),v(i,p),ne&&ne.m("
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "webview\\dist\\assets\\index.js",
+          "line": 4,
+          "evidence": "&16384)&&d!==(d=M[18](Lt(M[14]))+\"\")&&(u.innerHTML=d),(!F||K[0]&8192)&&a(u,\"title\",M[13]),M"
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "webview\\dist\\assets\\index.js",
+          "line": 4,
+          "evidence": "l),v(o,s),U&&U.m(o,null),v(e,u),v(e,d),d.innerHTML=f,v(e,p),G&&G.m(e,null),v(e,c),H&&H.m(e,"
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "webview\\dist\\assets\\index.js",
+          "line": 4,
+          "evidence": "&16384)&&f!==(f=P[18](Lt(P[14]))+\"\")&&(d.innerHTML=f),(!w||q[0]&8192)&&a(d,\"title\",P[13]),("
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "webview\\dist\\assets\\index.js",
+          "line": 4,
+          "evidence": ",O(e,\"expanded\",t[7])},m(l,o){E(l,e,o),e.innerHTML=n,r||(i=[z(e,\"click\",t[23]),z(e,\"keydown"
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "webview\\dist\\assets\\index.js",
+          "line": 4,
+          "evidence": "){o[0]&4096&&n!==(n=l[18](l[12])+\"\")&&(e.innerHTML=n),o[0]&2048&&a(e,\"title\",l[11]),o[0]&12"
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "webview\\dist\\assets\\index.js",
+          "line": 4,
+          "evidence": "},m(u,d){E(u,e,d),v(e,n),v(e,r),v(e,i),i.innerHTML=l,o||(s=[z(e,\"click\",t[24]),z(e,\"keydown"
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "webview\\dist\\assets\\index.js",
+          "line": 4,
+          "evidence": "&&l!==(l=u[18](u[0].lastMessage)+\"\")&&(i.innerHTML=l),d[0]&256&&O(e,\"expanded\",u[8])},d(u){"
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "webview\\dist\\assets\\index.js",
+          "line": 4,
+          "evidence": "){E(d,e,f),v(e,n),v(n,r),v(e,i),v(e,l),l.innerHTML=o,s||(u=z(e,\"click\",t[22]),s=!0)},p(d,f)"
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "webview\\dist\\assets\\index.js",
+          "line": 4,
+          "evidence": "o!==(o=d[18](d[0].gitBranch||\"\")+\"\")&&(l.innerHTML=o)},d(d){d&&D(e),s=!1,u()}}}function Xr("
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "webview\\dist\\assets\\index.js",
+          "line": 4,
+          "evidence": "(t){let e,n,r;return{c(){e=_(\"button\"),e.innerHTML=`<svg viewBox=\"0 0 16 16\" fill=\"currentC"
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "webview\\dist\\assets\\index.js",
+          "line": 5,
+          "evidence": "\">claudine.tools</a>',u=C(),d=_(\"div\"),d.innerHTML='Developed by <a href=\"https://github.co"
+        }
+      ],
+      "data_access": [
+        {
+          "name": "Workspace file access",
+          "severity": "low",
+          "description": "Accesses workspace files",
+          "category": "data_access",
+          "file": "out\\services\\StorageService.js",
+          "line": 108,
+          "evidence": "{                 const content = await vscode.workspace.fs.readFile(statePath);                 return JSON"
+        },
+        {
+          "name": "Workspace file access",
+          "severity": "low",
+          "description": "Accesses workspace files",
+          "category": "data_access",
+          "file": "out\\services\\StorageService.js",
+          "line": 155,
+          "evidence": "try {             const content = await vscode.workspace.fs.readFile(draftsPath);             return JSON.pa"
+        }
+      ],
+      "base64_exfil": [
+        {
+          "name": "Base64 encoding of content variable",
+          "severity": "high",
+          "description": "Base64 encodes content/file data - exfiltration preparation",
+          "category": "base64_exfil",
+          "file": "out\\services\\StorageService.js",
+          "line": 71,
+          "evidence": "buffer and save         const buffer = Buffer.from(iconData.replace(/^data:image\\/\\w+;base64,/, '')"
+        },
+        {
+          "name": "Base64 encoding of content variable",
+          "severity": "high",
+          "description": "Base64 encodes content/file data - exfiltration preparation",
+          "category": "base64_exfil",
+          "file": "out\\services\\StorageService.js",
+          "line": 131,
+          "evidence": "exist         }         const buffer = Buffer.from(iconData.replace(/^data:image\\/\\w+;base64,/, '')"
+        }
+      ],
+      "behavioral_correlation": [
+        {
+          "name": "Potential data exfiltration: file monitoring + base64 encoding + network",
+          "severity": "critical",
+          "description": "Extension monitors file changes, encodes content, and has network access - potential data exfiltration capability. Review what data is sent and where.",
+          "category": "behavioral_correlation",
+          "file": "out\\extension.js",
+          "line": 0,
+          "evidence": "Real-time document change listener | Base64 encoding of content variable | HTTP POST with sensitive data",
+          "confidence": "HIGH",
+          "attack_type": "code_exfiltration"
+        },
+        {
+          "name": "Credential exposure risk: auth token handling + plaintext HTTP",
+          "severity": "critical",
+          "description": "Extension handles auth tokens AND uses plaintext HTTP - credentials may be sent unencrypted",
+          "category": "behavioral_correlation",
+          "file": "out\\extension.js",
+          "line": 0,
+          "evidence": "Secret storage access + Plaintext HTTP endpoint (not HTTPS)",
+          "confidence": "MEDIUM",
+          "attack_type": "credential_leak"
+        }
+      ]
+    },
+    "findings_by_severity": {
+      "medium": 29,
+      "high": 18,
+      "low": 11,
+      "critical": 2
+    },
+    "suppressed_false_positives": 0
+  },
+  "malicious_patterns": [
+    {
+      "name": "HTTP POST with sensitive data",
+      "severity": "medium",
+      "description": "Sends data via HTTP POST request",
+      "category": "network_exfil",
+      "file": "out\\extension.js",
+      "line": 41,
+      "evidence": "generateWithOpenAI(e,t){try{let s=await fetch(\"https://api.openai.com/v1/images/generations\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+    },
+    {
+      "name": "HTTP POST with sensitive data",
+      "severity": "medium",
+      "description": "Sends data via HTTP POST request",
+      "category": "network_exfil",
+      "file": "out\\extension.js",
+      "line": 41,
+      "evidence": "erateWithStability(e,t){try{let s=await fetch(\"https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/text-to-image\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+    },
+    {
+      "name": "Real-time document change listener",
+      "severity": "medium",
+      "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+      "category": "document_monitoring",
+      "file": "out\\extension.js",
+      "line": 1,
+      "evidence": "ger.scheduleFocusDetection()}),h.window.onDidChangeActiveTextEditor(()=>{this._tabManager.scheduleFocusDetect"
+    },
+    {
+      "name": "Secret storage access",
+      "severity": "medium",
+      "description": "Accesses VS Code secret storage API",
+      "category": "credential_theft",
+      "file": "out\\extension.js",
+      "line": 52,
+      "evidence": "\"imageGenerationApiKey\",\"\");e&&(await c.secrets.store(\"imageGenerationApiKey\",e),await a.work"
+    },
+    {
+      "name": "Secret storage access",
+      "severity": "medium",
+      "description": "Accesses VS Code secret storage API",
+      "category": "credential_theft",
+      "file": "out\\extension.js",
+      "line": 52,
+      "evidence": "tatus]=(d[p.status]||0)+1;let l=await c.secrets.get(\"imageGenerationApiKey\"),u=[`Claudine D"
+    },
+    {
+      "name": "Configuration modification",
+      "severity": "medium",
+      "description": "Modifies VS Code settings programmatically",
+      "category": "settings_manipulation",
+      "file": "out\\extension.js",
+      "line": 1,
+      "evidence": "updateSettings()}):t.includes(e.key)&&h.workspace.getConfiguration(\"claudine\").update(e.key,e.value,h.ConfigurationTarget.Glo"
+    },
+    {
+      "name": "Configuration modification",
+      "severity": "medium",
+      "description": "Modifies VS Code settings programmatically",
+      "category": "settings_manipulation",
+      "file": "out\\extension.js",
+      "line": 52,
+      "evidence": "tore(\"imageGenerationApiKey\",e),await a.workspace.getConfiguration(\"claudine\").update(\"imageGenerationApiKey\",void 0,a.Config"
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "severity": "medium",
+      "description": "Reads file content using variable path - bulk file harvesting indicator",
+      "category": "workspace_harvesting",
+      "file": "out\\extension.js",
+      "line": 35,
+      "evidence": "tate.json\");try{let s=await g.workspace.fs.readFile(t);return JSON.parse(s.toString())}catch{"
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "severity": "medium",
+      "description": "Reads file content using variable path - bulk file harvesting indicator",
+      "category": "workspace_harvesting",
+      "file": "out\\extension.js",
+      "line": 35,
+      "evidence": "afts.json\");try{let s=await g.workspace.fs.readFile(t);return JSON.parse(s.toString())}catch{"
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "severity": "medium",
+      "description": "Reads file content using variable path - bulk file harvesting indicator",
+      "category": "workspace_harvesting",
+      "file": "out\\extension.js",
+      "line": 52,
+      "evidence": "==0)return null;let e=await b.workspace.fs.readFile(c[0]),t=ct(Buffer.from(e).toString(\"utf-8"
+    },
+    {
+      "name": "File content read on editor change event",
+      "severity": "medium",
+      "description": "Registers handler for editor/document change events",
+      "category": "document_monitoring",
+      "file": "out\\extension.js",
+      "line": 1,
+      "evidence": "ger.scheduleFocusDetection()}),h.window.onDidChangeActiveTextEditor(()=>{this._tabManager.scheduleFocusDetection"
+    },
+    {
+      "name": "Plaintext HTTP endpoint (not HTTPS)",
+      "severity": "high",
+      "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+      "category": "insecure_endpoint",
+      "file": "out\\extension.js",
+      "line": 42,
+      "evidence": "${encodeURIComponent(`       <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 64 64\">"
+    },
+    {
+      "name": "Recursive directory reading",
+      "severity": "medium",
+      "description": "Reads directory contents - suspicious when combined with file reading and network",
+      "category": "workspace_harvesting",
+      "file": "out\\providers\\ClaudeCodeWatcher.js",
+      "line": 182,
+      "evidence": "try {                 const entries = fs.readdirSync(projectDir, { withFileTypes: true });"
+    },
+    {
+      "name": "Recursive directory reading",
+      "severity": "medium",
+      "description": "Reads directory contents - suspicious when combined with file reading and network",
+      "category": "workspace_harvesting",
+      "file": "out\\providers\\ClaudeCodeWatcher.js",
+      "line": 242,
+      "evidence": "ects');                 const entries = fs.readdirSync(projectsPath, { withFileTypes: true });"
+    },
+    {
+      "name": "Recursive directory reading",
+      "severity": "medium",
+      "description": "Reads directory contents - suspicious when combined with file reading and network",
+      "category": "workspace_harvesting",
+      "file": "out\\providers\\ClaudeCodeWatcher.js",
+      "line": 275,
+      "evidence": "try {                 const entries = fs.readdirSync(projectDir, { withFileTypes: true });"
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "severity": "medium",
+      "description": "Reads file content using variable path - bulk file harvesting indicator",
+      "category": "workspace_harvesting",
+      "file": "out\\providers\\ClaudeCodeWatcher.js",
+      "line": 281,
+      "evidence": "const content = fs.readFileSync(filePath, 'utf-8');                         if ("
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "severity": "medium",
+      "description": "Reads file content using variable path - bulk file harvesting indicator",
+      "category": "workspace_harvesting",
+      "file": "out\\providers\\ClaudeCodeWatcher.js",
+      "line": 344,
+      "evidence": "iles > 512KB             const buffer = fs.readFileSync(filePath);             const ext = path.extname("
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "severity": "medium",
+      "description": "Reads file content using variable path - bulk file harvesting indicator",
+      "category": "workspace_harvesting",
+      "file": "out\\providers\\ClaudeCodeWatcher.js",
+      "line": 366,
+      "evidence": "inue;                 const stateData = fs.readFileSync(statePath, 'utf-8');                 const state"
+    },
+    {
+      "name": "Workspace folder enumeration",
+      "severity": "low",
+      "description": "Accesses workspace root folder path",
+      "category": "workspace_harvesting",
+      "file": "out\\providers\\ClaudeCodeWatcher.js",
+      "line": 218,
+      "evidence": "}             const workspaceFolders = vscode.workspace.workspaceFolders;             if (workspaceFolders && wo"
+    },
+    {
+      "name": "Workspace folder enumeration",
+      "severity": "low",
+      "description": "Accesses workspace root folder path",
+      "category": "workspace_harvesting",
+      "file": "out\\providers\\ClaudeCodeWatcher.js",
+      "line": 358,
+      "evidence": "ons) {         const workspaceFolders = vscode.workspace.workspaceFolders;         if (!workspaceFolders)"
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "severity": "medium",
+      "description": "Reads file content using variable path - bulk file harvesting indicator",
+      "category": "workspace_harvesting",
+      "file": "out\\providers\\ConversationParser.js",
+      "line": 49,
+      "evidence": "eturn null;             const content = fs.readFileSync(filePath, 'utf-8');             if (!content.tri"
+    },
+    {
+      "name": "Real-time document change listener",
+      "severity": "medium",
+      "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+      "category": "document_monitoring",
+      "file": "out\\providers\\KanbanViewProvider.js",
+      "line": 90,
+      "evidence": "sDetection();         }), vscode.window.onDidChangeActiveTextEditor(() => {             this.scheduleFocusDet"
+    },
+    {
+      "name": "Webview with scripts enabled",
+      "severity": "medium",
+      "description": "Webview with JavaScript enabled (XSS vector if loading external content)",
+      "category": "webview_risk",
+      "file": "out\\providers\\KanbanViewProvider.js",
+      "line": 71,
+      "evidence": "iewView.webview.options = {             enableScripts: true,             localResourceRoots: ["
+    },
+    {
+      "name": "File content read on editor change event",
+      "severity": "medium",
+      "description": "Registers handler for editor/document change events",
+      "category": "document_monitoring",
+      "file": "out\\providers\\KanbanViewProvider.js",
+      "line": 90,
+      "evidence": "sDetection();         }), vscode.window.onDidChangeActiveTextEditor(() => {             this.scheduleFocusDetecti"
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "severity": "medium",
+      "description": "Reads file content using variable path - bulk file harvesting indicator",
+      "category": "workspace_harvesting",
+      "file": "out\\services\\CommandProcessor.js",
+      "line": 84,
+      "evidence": "nt;         try {             content = fs.readFileSync(this._commandsPath, 'utf-8');         }"
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "severity": "medium",
+      "description": "Reads file content using variable path - bulk file harvesting indicator",
+      "category": "workspace_harvesting",
+      "file": "out\\services\\CommandProcessor.js",
+      "line": 227,
+      "evidence": "existing = JSON.parse(fs.readFileSync(this._resultsPath, 'utf-8')).results || [];"
+    },
+    {
+      "name": "Workspace folder enumeration",
+      "severity": "low",
+      "description": "Accesses workspace root folder path",
+      "category": "workspace_harvesting",
+      "file": "out\\services\\CommandProcessor.js",
+      "line": 57,
+      "evidence": "ing() {         const workspaceFolder = vscode.workspace.workspaceFolders?.[0];         if (!workspaceFolder) {"
+    },
+    {
+      "name": "HTTP POST with sensitive data",
+      "severity": "medium",
+      "description": "Sends data via HTTP POST request",
+      "category": "network_exfil",
+      "file": "out\\services\\ImageGenerator.js",
+      "line": 97,
+      "evidence": "ry {             const response = await fetch('https://api.openai.com/v1/images/generations', {                 method: 'POST',                 headers: {"
+    },
+    {
+      "name": "HTTP POST with sensitive data",
+      "severity": "medium",
+      "description": "Sends data via HTTP POST request",
+      "category": "network_exfil",
+      "file": "out\\services\\ImageGenerator.js",
+      "line": 129,
+      "evidence": "ry {             const response = await fetch('https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/text-to-image', {                 method: 'POST',                 headers: {"
+    },
+    {
+      "name": "Plaintext HTTP endpoint (not HTTPS)",
+      "severity": "high",
+      "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+      "category": "insecure_endpoint",
+      "file": "out\\services\\ImageGenerator.js",
+      "line": 178,
+      "evidence": "${encodeURIComponent(`       <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 64 64\">"
+    },
+    {
+      "name": "Workspace file access",
+      "severity": "low",
+      "description": "Accesses workspace files",
+      "category": "data_access",
+      "file": "out\\services\\StorageService.js",
+      "line": 108,
+      "evidence": "{                 const content = await vscode.workspace.fs.readFile(statePath);                 return JSON"
+    },
+    {
+      "name": "Workspace file access",
+      "severity": "low",
+      "description": "Accesses workspace files",
+      "category": "data_access",
+      "file": "out\\services\\StorageService.js",
+      "line": 155,
+      "evidence": "try {             const content = await vscode.workspace.fs.readFile(draftsPath);             return JSON.pa"
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "severity": "medium",
+      "description": "Reads file content using variable path - bulk file harvesting indicator",
+      "category": "workspace_harvesting",
+      "file": "out\\services\\StorageService.js",
+      "line": 108,
+      "evidence": "const content = await vscode.workspace.fs.readFile(statePath);                 return JSON.parse(con"
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "severity": "medium",
+      "description": "Reads file content using variable path - bulk file harvesting indicator",
+      "category": "workspace_harvesting",
+      "file": "out\\services\\StorageService.js",
+      "line": 155,
+      "evidence": "const content = await vscode.workspace.fs.readFile(draftsPath);             return JSON.parse(content"
+    },
+    {
+      "name": "Workspace folder enumeration",
+      "severity": "low",
+      "description": "Accesses workspace root folder path",
+      "category": "workspace_harvesting",
+      "file": "out\\services\\StorageService.js",
+      "line": 86,
+      "evidence": "tate) {         const workspaceFolder = vscode.workspace.workspaceFolders?.[0];         if (!workspaceFolder) {"
+    },
+    {
+      "name": "Workspace folder enumeration",
+      "severity": "low",
+      "description": "Accesses workspace root folder path",
+      "category": "workspace_harvesting",
+      "file": "out\\services\\StorageService.js",
+      "line": 104,
+      "evidence": "ate() {         const workspaceFolder = vscode.workspace.workspaceFolders?.[0];         if (workspaceFolder) {"
+    },
+    {
+      "name": "Workspace folder enumeration",
+      "severity": "low",
+      "description": "Accesses workspace root folder path",
+      "category": "workspace_harvesting",
+      "file": "out\\services\\StorageService.js",
+      "line": 119,
+      "evidence": "Data) {         const workspaceFolder = vscode.workspace.workspaceFolders?.[0];         if (!workspaceFolder)"
+    },
+    {
+      "name": "Workspace folder enumeration",
+      "severity": "low",
+      "description": "Accesses workspace root folder path",
+      "category": "workspace_harvesting",
+      "file": "out\\services\\StorageService.js",
+      "line": 136,
+      "evidence": "afts) {         const workspaceFolder = vscode.workspace.workspaceFolders?.[0];         if (!workspaceFolder)"
+    },
+    {
+      "name": "Workspace folder enumeration",
+      "severity": "low",
+      "description": "Accesses workspace root folder path",
+      "category": "workspace_harvesting",
+      "file": "out\\services\\StorageService.js",
+      "line": 150,
+      "evidence": "fts() {         const workspaceFolder = vscode.workspace.workspaceFolders?.[0];         if (!workspaceFolder)"
+    },
+    {
+      "name": "Workspace folder enumeration",
+      "severity": "low",
+      "description": "Accesses workspace root folder path",
+      "category": "workspace_harvesting",
+      "file": "out\\services\\StorageService.js",
+      "line": 163,
+      "evidence": "onId) {         const workspaceFolder = vscode.workspace.workspaceFolders?.[0];         if (!workspaceFolder)"
+    },
+    {
+      "name": "VSCode filesystem bulk read",
+      "severity": "medium",
+      "description": "Reads files via VSCode workspace filesystem API",
+      "category": "workspace_harvesting",
+      "file": "out\\services\\StorageService.js",
+      "line": 108,
+      "evidence": "{                 const content = await vscode.workspace.fs.readFile(statePath);                 return JSON"
+    },
+    {
+      "name": "VSCode filesystem bulk read",
+      "severity": "medium",
+      "description": "Reads files via VSCode workspace filesystem API",
+      "category": "workspace_harvesting",
+      "file": "out\\services\\StorageService.js",
+      "line": 155,
+      "evidence": "try {             const content = await vscode.workspace.fs.readFile(draftsPath);             return JSON.pa"
+    },
+    {
+      "name": "Base64 encoding of content variable",
+      "severity": "high",
+      "description": "Base64 encodes content/file data - exfiltration preparation",
+      "category": "base64_exfil",
+      "file": "out\\services\\StorageService.js",
+      "line": 71,
+      "evidence": "buffer and save         const buffer = Buffer.from(iconData.replace(/^data:image\\/\\w+;base64,/, '')"
+    },
+    {
+      "name": "Base64 encoding of content variable",
+      "severity": "high",
+      "description": "Base64 encodes content/file data - exfiltration preparation",
+      "category": "base64_exfil",
+      "file": "out\\services\\StorageService.js",
+      "line": 131,
+      "evidence": "exist         }         const buffer = Buffer.from(iconData.replace(/^data:image\\/\\w+;base64,/, '')"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "webview\\dist\\assets\\index.js",
+      "line": 4,
+      "evidence": "-5\",n}function St(t){if(!cr){he||Qn(),he.innerHTML=\"\";var e=document.createTextNode(t);he.a"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "webview\\dist\\assets\\index.js",
+      "line": 4,
+      "evidence": "(i,l),v(i,o),q.m(i,null),v(i,s),v(i,u),u.innerHTML=d,v(i,f),J&&J.m(i,null),v(i,p),ne&&ne.m("
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "webview\\dist\\assets\\index.js",
+      "line": 4,
+      "evidence": "&16384)&&d!==(d=M[18](Lt(M[14]))+\"\")&&(u.innerHTML=d),(!F||K[0]&8192)&&a(u,\"title\",M[13]),M"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "webview\\dist\\assets\\index.js",
+      "line": 4,
+      "evidence": "l),v(o,s),U&&U.m(o,null),v(e,u),v(e,d),d.innerHTML=f,v(e,p),G&&G.m(e,null),v(e,c),H&&H.m(e,"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "webview\\dist\\assets\\index.js",
+      "line": 4,
+      "evidence": "&16384)&&f!==(f=P[18](Lt(P[14]))+\"\")&&(d.innerHTML=f),(!w||q[0]&8192)&&a(d,\"title\",P[13]),("
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "webview\\dist\\assets\\index.js",
+      "line": 4,
+      "evidence": ",O(e,\"expanded\",t[7])},m(l,o){E(l,e,o),e.innerHTML=n,r||(i=[z(e,\"click\",t[23]),z(e,\"keydown"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "webview\\dist\\assets\\index.js",
+      "line": 4,
+      "evidence": "){o[0]&4096&&n!==(n=l[18](l[12])+\"\")&&(e.innerHTML=n),o[0]&2048&&a(e,\"title\",l[11]),o[0]&12"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "webview\\dist\\assets\\index.js",
+      "line": 4,
+      "evidence": "},m(u,d){E(u,e,d),v(e,n),v(e,r),v(e,i),i.innerHTML=l,o||(s=[z(e,\"click\",t[24]),z(e,\"keydown"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "webview\\dist\\assets\\index.js",
+      "line": 4,
+      "evidence": "&&l!==(l=u[18](u[0].lastMessage)+\"\")&&(i.innerHTML=l),d[0]&256&&O(e,\"expanded\",u[8])},d(u){"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "webview\\dist\\assets\\index.js",
+      "line": 4,
+      "evidence": "){E(d,e,f),v(e,n),v(n,r),v(e,i),v(e,l),l.innerHTML=o,s||(u=z(e,\"click\",t[22]),s=!0)},p(d,f)"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "webview\\dist\\assets\\index.js",
+      "line": 4,
+      "evidence": "o!==(o=d[18](d[0].gitBranch||\"\")+\"\")&&(l.innerHTML=o)},d(d){d&&D(e),s=!1,u()}}}function Xr("
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "webview\\dist\\assets\\index.js",
+      "line": 4,
+      "evidence": "(t){let e,n,r;return{c(){e=_(\"button\"),e.innerHTML=`<svg viewBox=\"0 0 16 16\" fill=\"currentC"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "webview\\dist\\assets\\index.js",
+      "line": 5,
+      "evidence": "\">claudine.tools</a>',u=C(),d=_(\"div\"),d.innerHTML='Developed by <a href=\"https://github.co"
+    },
+    {
+      "name": "Plaintext HTTP endpoint (not HTTPS)",
+      "severity": "high",
+      "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+      "category": "insecure_endpoint",
+      "file": "webview\\dist\\assets\\index.js",
+      "line": 1,
+      "evidence": "on Q(t){return document.createElementNS(\"http://www.w3.org/2000/svg\",t)}function ee(t){return docu"
+    },
+    {
+      "name": "Potential data exfiltration: file monitoring + base64 encoding + network",
+      "severity": "critical",
+      "description": "Extension monitors file changes, encodes content, and has network access - potential data exfiltration capability. Review what data is sent and where.",
+      "category": "behavioral_correlation",
+      "file": "out\\extension.js",
+      "line": 0,
+      "evidence": "Real-time document change listener | Base64 encoding of content variable | HTTP POST with sensitive data",
+      "confidence": "HIGH",
+      "attack_type": "code_exfiltration"
+    },
+    {
+      "name": "Credential exposure risk: auth token handling + plaintext HTTP",
+      "severity": "critical",
+      "description": "Extension handles auth tokens AND uses plaintext HTTP - credentials may be sent unencrypted",
+      "category": "behavioral_correlation",
+      "file": "out\\extension.js",
+      "line": 0,
+      "evidence": "Secret storage access + Plaintext HTTP endpoint (not HTTPS)",
+      "confidence": "MEDIUM",
+      "attack_type": "credential_leak"
+    }
+  ],
+  "html_analysis": {
+    "findings": [],
+    "files_scanned": 1,
+    "iframe_urls": []
+  },
+  "permissions": {
+    "high_risk": [
+      {
+        "permission": "child_process",
+        "description": "Can execute system commands",
+        "evidence": [
+          {
+            "module": "child_process",
+            "file": "out\\extension.js",
+            "line": 22
+          },
+          {
+            "module": "child_process",
+            "file": "out\\services\\SummaryService.js",
+            "line": 39
+          }
+        ]
+      },
+      {
+        "permission": "credential_access",
+        "description": "Accesses credential files/stores",
+        "finding_count": 2
+      }
+    ],
+    "medium_risk": [
+      {
+        "permission": "filesystem",
+        "description": "Can read/write files on disk",
+        "evidence": [
+          {
+            "module": "fs",
+            "file": "out\\extension.js",
+            "line": 1
+          },
+          {
+            "module": "path",
+            "file": "out\\extension.js",
+            "line": 1
+          },
+          {
+            "module": "path",
+            "file": "out\\extension.js",
+            "line": 15
+          },
+          {
+            "module": "fs",
+            "file": "out\\extension.js",
+            "line": 15
+          },
+          {
+            "module": "path",
+            "file": "out\\extension.js",
+            "line": 15
+          },
+          {
+            "module": "fs/promises",
+            "file": "out\\extension.js",
+            "line": 15
+          },
+          {
+            "module": "path",
+            "file": "out\\extension.js",
+            "line": 35
+          },
+          {
+            "module": "fs",
+            "file": "out\\extension.js",
+            "line": 47
+          },
+          {
+            "module": "path",
+            "file": "out\\extension.js",
+            "line": 47
+          },
+          {
+            "module": "path",
+            "file": "out\\providers\\ClaudeCodeWatcher.js",
+            "line": 38
+          },
+          {
+            "module": "fs",
+            "file": "out\\providers\\ClaudeCodeWatcher.js",
+            "line": 40
+          },
+          {
+            "module": "path",
+            "file": "out\\providers\\ConversationParser.js",
+            "line": 37
+          },
+          {
+            "module": "fs",
+            "file": "out\\providers\\ConversationParser.js",
+            "line": 38
+          },
+          {
+            "module": "fs",
+            "file": "out\\services\\CommandProcessor.js",
+            "line": 38
+          },
+          {
+            "module": "path",
+            "file": "out\\services\\CommandProcessor.js",
+            "line": 39
+          },
+          {
+            "module": "path",
+            "file": "out\\services\\StorageService.js",
+            "line": 38
+          }
+        ]
+      },
+      {
+        "permission": "real_time_document_monitoring",
+        "description": "Monitors text document changes in real time",
+        "finding_count": 4
+      }
+    ],
+    "low_risk": [
+      {
+        "permission": "os_info",
+        "description": "Can read OS information",
+        "evidence": [
+          {
+            "module": "os",
+            "file": "out\\extension.js",
+            "line": 15
+          },
+          {
+            "module": "os",
+            "file": "out\\extension.js",
+            "line": 22
+          },
+          {
+            "module": "os",
+            "file": "out\\providers\\ClaudeCodeWatcher.js",
+            "line": 39
+          },
+          {
+            "module": "os",
+            "file": "out\\services\\SummaryService.js",
+            "line": 38
+          }
+        ]
+      }
+    ],
+    "total": 5,
+    "all": [
+      "child_process",
+      "credential_access",
+      "filesystem",
+      "real_time_document_monitoring",
+      "os_info"
+    ]
+  },
+  "risk_score": 5.8,
+  "risk_level": "MEDIUM",
+  "risk_breakdown": {
+    "metadata_publisher": 0.8,
+    "supply_chain": 0.0,
+    "code_analysis": 3.0,
+    "behavioral_correlations": 2.0,
+    "infrastructure": 0
+  },
+  "module_usage": {
+    "file_access": [
+      {
+        "module": "fs",
+        "file": "out\\extension.js",
+        "line": 1
+      },
+      {
+        "module": "path",
+        "file": "out\\extension.js",
+        "line": 1
+      },
+      {
+        "module": "path",
+        "file": "out\\extension.js",
+        "line": 15
+      },
+      {
+        "module": "fs",
+        "file": "out\\extension.js",
+        "line": 15
+      },
+      {
+        "module": "path",
+        "file": "out\\extension.js",
+        "line": 15
+      },
+      {
+        "module": "fs/promises",
+        "file": "out\\extension.js",
+        "line": 15
+      },
+      {
+        "module": "path",
+        "file": "out\\extension.js",
+        "line": 35
+      },
+      {
+        "module": "fs",
+        "file": "out\\extension.js",
+        "line": 47
+      },
+      {
+        "module": "path",
+        "file": "out\\extension.js",
+        "line": 47
+      },
+      {
+        "module": "path",
+        "file": "out\\providers\\ClaudeCodeWatcher.js",
+        "line": 38
+      },
+      {
+        "module": "fs",
+        "file": "out\\providers\\ClaudeCodeWatcher.js",
+        "line": 40
+      },
+      {
+        "module": "path",
+        "file": "out\\providers\\ConversationParser.js",
+        "line": 37
+      },
+      {
+        "module": "fs",
+        "file": "out\\providers\\ConversationParser.js",
+        "line": 38
+      },
+      {
+        "module": "fs",
+        "file": "out\\services\\CommandProcessor.js",
+        "line": 38
+      },
+      {
+        "module": "path",
+        "file": "out\\services\\CommandProcessor.js",
+        "line": 39
+      },
+      {
+        "module": "path",
+        "file": "out\\services\\StorageService.js",
+        "line": 38
+      }
+    ],
+    "crypto": [
+      {
+        "module": "crypto",
+        "file": "out\\extension.js",
+        "line": 1
+      },
+      {
+        "module": "crypto",
+        "file": "out\\providers\\KanbanViewProvider.js",
+        "line": 38
+      }
+    ],
+    "os_info": [
+      {
+        "module": "os",
+        "file": "out\\extension.js",
+        "line": 15
+      },
+      {
+        "module": "os",
+        "file": "out\\extension.js",
+        "line": 22
+      },
+      {
+        "module": "os",
+        "file": "out\\providers\\ClaudeCodeWatcher.js",
+        "line": 39
+      },
+      {
+        "module": "os",
+        "file": "out\\services\\SummaryService.js",
+        "line": 38
+      }
+    ],
+    "process_execution": [
+      {
+        "module": "child_process",
+        "file": "out\\extension.js",
+        "line": 22
+      },
+      {
+        "module": "child_process",
+        "file": "out\\services\\SummaryService.js",
+        "line": 39
+      }
+    ]
+  },
+  "external_urls": [
+    {
+      "url": "https://api.openai.com/v1/models",
+      "file": "out\\extension.js",
+      "line": 1
+    },
+    {
+      "url": "https://api.stability.ai/v1/user/account",
+      "file": "out\\extension.js",
+      "line": 1
+    },
+    {
+      "url": "https://api.openai.com/v1/images/generations",
+      "file": "out\\extension.js",
+      "line": 41
+    },
+    {
+      "url": "https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/text-to-image",
+      "file": "out\\extension.js",
+      "line": 41
+    },
+    {
+      "url": "https://api.openai.com/v1/images/generations",
+      "file": "out\\services\\ImageGenerator.js",
+      "line": 97
+    },
+    {
+      "url": "https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/text-to-image",
+      "file": "out\\services\\ImageGenerator.js",
+      "line": 129
+    },
+    {
+      "url": "https://claudine.tools",
+      "file": "webview\\dist\\assets\\index.js",
+      "line": 5
+    },
+    {
+      "url": "https://github.com/salam",
+      "file": "webview\\dist\\assets\\index.js",
+      "line": 5
+    }
+  ],
+  "domain_intelligence": [
+    {
+      "domain": "api.openai.com",
+      "url": "https://api.openai.com/v1/models",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "api.stability.ai",
+      "url": "https://api.stability.ai/v1/user/account",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "claudine.tools",
+      "url": "https://claudine.tools",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "github.com",
+      "url": "https://github.com/salam",
+      "threat_level": "BENIGN",
+      "confidence": 95,
+      "classification": "Legitimate Infrastructure",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": true,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    }
+  ],
+  "virustotal_results": [
+    {
+      "available": true,
+      "domain": "api.stability.ai",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 62,
+        "undetected": 31
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2019-11-06",
+        "age_days": 2286,
+        "age_human": "6 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".ai",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/api.stability.ai"
+    },
+    {
+      "available": true,
+      "domain": "claudine.tools",
+      "known": false,
+      "message": "Domain not found in VirusTotal database"
+    },
+    {
+      "available": true,
+      "domain": "api.openai.com",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 64,
+        "undetected": 29
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {
+        "alphaMountain.ai": "Business/Economy, Information Technology (alphaMountain.ai)",
+        "BitDefender": "computersandsoftware",
+        "Dr.Web": "chats",
+        "Sophos": "information technology",
+        "Forcepoint ThreatSeeker": "generative ai - text and code"
+      },
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2007-01-19",
+        "age_days": 6959,
+        "age_human": "19 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".com",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/api.openai.com"
+    }
+  ]
+}

@@ -1,0 +1,425 @@
+{
+  "extension_type": "vscode",
+  "name": "CMake Tools",
+  "identifier": "ms-vscode.cmake-tools",
+  "extension_id": "ms-vscode.cmake-tools",
+  "version": "1.23.15",
+  "description": "Extended CMake support in Visual Studio Code",
+  "publisher": "ms-vscode",
+  "engines": {
+    "vscode": "^1.88.0"
+  },
+  "store_metadata": {
+    "available": true,
+    "store": "vscode",
+    "identifier": "ms-vscode.cmake-tools",
+    "name": "CMake Tools",
+    "publisher": "Microsoft",
+    "publisher_id": "5f5636e7-69ed-4afe-b5d6-8d231fb3d3ee",
+    "publisher_domain": "https://microsoft.com",
+    "publisher_verified": true,
+    "short_description": "Extended CMake support in Visual Studio Code",
+    "version": "1.23.15",
+    "last_updated": "2026-02-20T04:45:36.187Z",
+    "categories": [],
+    "tags": [],
+    "install_count": 55791950,
+    "rating_value": 4.46,
+    "rating_count": 76,
+    "flags": "validated, public",
+    "store_url": "https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools",
+    "risk_signals": {}
+  },
+  "metadata_risk": {
+    "findings": [
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:cmake.cacheVariable': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:cmake.cacheVariable"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:cmake.activeFolderName': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:cmake.activeFolderName"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:cmake.activeFolderPath': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:cmake.activeFolderPath"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:cmake.activeConfigurePresetName': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:cmake.activeConfigurePresetName"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:cmake.activeBuildPresetName': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:cmake.activeBuildPresetName"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:cmake.activeTestPresetName': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:cmake.activeTestPresetName"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:cmake.activePackagePresetName': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:cmake.activePackagePresetName"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:cmake.activeWorkflowPresetName': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:cmake.activeWorkflowPresetName"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:cmake.buildTargetName': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:cmake.buildTargetName"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:cmake.launchTargetPath': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:cmake.launchTargetPath"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:cmake.launchTargetDirectory': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:cmake.launchTargetDirectory"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:cmake.launchTargetFilename': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:cmake.launchTargetFilename"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:cmake.launchTargetName': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:cmake.launchTargetName"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:cmake.getLaunchTargetPath': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:cmake.getLaunchTargetPath"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:cmake.getLaunchTargetDirectory': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:cmake.getLaunchTargetDirectory"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:cmake.getLaunchTargetFilename': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:cmake.getLaunchTargetFilename"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:cmake.getlaunchTargetName': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:cmake.getlaunchTargetName"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:cmake.buildType': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:cmake.buildType"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:cmake.buildDirectory': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:cmake.buildDirectory"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:cmake.executableTargets': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:cmake.executableTargets"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:cmake.buildKit': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:cmake.buildKit"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:cmake.tasksBuildCommand': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:cmake.tasksBuildCommand"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:CMakeLists.txt': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:CMakeLists.txt"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:*/CMakeLists.txt': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:*/CMakeLists.txt"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:*/*/CMakeLists.txt': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:*/*/CMakeLists.txt"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:*/*/*/CMakeLists.txt': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:*/*/*/CMakeLists.txt"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:.vscode/cmake-kits.json': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:.vscode/cmake-kits.json"
+      },
+      {
+        "type": "sensitive_contribution",
+        "severity": "medium",
+        "detail": "Contributes 'taskDefinitions': Can define tasks that run shell commands",
+        "contribution": "taskDefinitions"
+      },
+      {
+        "type": "sensitive_contribution",
+        "severity": "medium",
+        "detail": "Contributes 'debuggers': Can inspect running processes and variables (run arbitrary programs)",
+        "contribution": "debuggers"
+      },
+      {
+        "type": "sensitive_contribution",
+        "severity": "medium",
+        "detail": "Contributes 'viewsContainers': Webview views - remote HTML/JS possible",
+        "contribution": "viewsContainers"
+      }
+    ],
+    "risk_score": 10,
+    "activation_events": [
+      "onCommand:cmake.cacheVariable",
+      "onCommand:cmake.activeFolderName",
+      "onCommand:cmake.activeFolderPath",
+      "onCommand:cmake.activeConfigurePresetName",
+      "onCommand:cmake.activeBuildPresetName",
+      "onCommand:cmake.activeTestPresetName",
+      "onCommand:cmake.activePackagePresetName",
+      "onCommand:cmake.activeWorkflowPresetName",
+      "onCommand:cmake.buildTargetName",
+      "onCommand:cmake.launchTargetPath",
+      "onCommand:cmake.launchTargetDirectory",
+      "onCommand:cmake.launchTargetFilename",
+      "onCommand:cmake.launchTargetName",
+      "onCommand:cmake.getLaunchTargetPath",
+      "onCommand:cmake.getLaunchTargetDirectory",
+      "onCommand:cmake.getLaunchTargetFilename",
+      "onCommand:cmake.getlaunchTargetName",
+      "onCommand:cmake.buildType",
+      "onCommand:cmake.buildDirectory",
+      "onCommand:cmake.executableTargets",
+      "onCommand:cmake.buildKit",
+      "onCommand:cmake.tasksBuildCommand",
+      "onDebugResolve:cmake",
+      "onDebugInitialConfigurations",
+      "onDebugDynamicConfigurations:cmake",
+      "workspaceContains:CMakeLists.txt",
+      "workspaceContains:*/CMakeLists.txt",
+      "workspaceContains:*/*/CMakeLists.txt",
+      "workspaceContains:*/*/*/CMakeLists.txt",
+      "workspaceContains:.vscode/cmake-kits.json",
+      "onFileSystem:cmake-tools-schema",
+      "onLanguage:cmake",
+      "onLanguage:cmake-cache"
+    ],
+    "contributes": [
+      "icons",
+      "languages",
+      "grammars",
+      "commands",
+      "taskDefinitions",
+      "breakpoints",
+      "debuggers",
+      "menus",
+      "configuration",
+      "keybindings",
+      "viewsContainers",
+      "views",
+      "viewsWelcome",
+      "yamlValidation",
+      "jsonValidation"
+    ]
+  },
+  "package_json_deep": {
+    "findings": []
+  },
+  "supply_chain": {
+    "findings": [
+      {
+        "type": "dependency_vulnerability",
+        "severity": "medium",
+        "package": "ajv",
+        "version": "7.1.0",
+        "cve_id": "GHSA-2g4f-4pwh-qvx6",
+        "link": "https://github.com/advisories/GHSA-2g4f-4pwh-qvx6",
+        "detail": "ajv@7.1.0 has known vulnerability GHSA-2g4f-4pwh-qvx6 \u2014 ajv has ReDoS when using `$data` option (fix: >=8.18.0)"
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "high",
+        "package": "parse-git-config",
+        "version": "3.0.0",
+        "cve_id": "GHSA-8g77-54rh-46hx",
+        "link": "https://github.com/advisories/GHSA-8g77-54rh-46hx",
+        "detail": "parse-git-config@3.0.0 has known vulnerability GHSA-8g77-54rh-46hx \u2014 Prototype Pollution Vulnerability in parse-git-config"
+      }
+    ],
+    "risk_score": 0.5,
+    "dependency_count": 21,
+    "dev_dependency_count": 53,
+    "has_node_modules": false,
+    "dependency_vulns": [
+      {
+        "package": "ajv",
+        "version": "7.1.0",
+        "dep_type": "runtime",
+        "vulns": [
+          {
+            "id": "GHSA-2g4f-4pwh-qvx6",
+            "link": "https://github.com/advisories/GHSA-2g4f-4pwh-qvx6",
+            "summary": "ajv has ReDoS when using `$data` option",
+            "severity": "medium",
+            "cwe_ids": [
+              "CWE-400"
+            ],
+            "fix_version": "8.18.0",
+            "aliases": [
+              "CVE-2025-69873"
+            ],
+            "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:P"
+          }
+        ]
+      },
+      {
+        "package": "parse-git-config",
+        "version": "3.0.0",
+        "dep_type": "dev",
+        "vulns": [
+          {
+            "id": "GHSA-8g77-54rh-46hx",
+            "link": "https://github.com/advisories/GHSA-8g77-54rh-46hx",
+            "summary": "Prototype Pollution Vulnerability in parse-git-config",
+            "severity": "high",
+            "cwe_ids": [
+              "CWE-1321",
+              "CWE-200"
+            ],
+            "aliases": [
+              "CVE-2025-25975"
+            ],
+            "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+          }
+        ]
+      }
+    ],
+    "bundled_js_vulns": []
+  },
+  "code_analysis": {
+    "all_findings": [],
+    "module_usage": {},
+    "external_urls": [],
+    "file_entropies": {},
+    "files_scanned": 1,
+    "findings_by_category": {},
+    "findings_by_severity": {},
+    "suppressed_false_positives": 0
+  },
+  "malicious_patterns": [],
+  "html_analysis": {
+    "findings": [],
+    "files_scanned": 0,
+    "iframe_urls": []
+  },
+  "permissions": {
+    "high_risk": [
+      {
+        "permission": "debugger",
+        "description": "Contributes a debugger (can inspect process state)"
+      }
+    ],
+    "medium_risk": [],
+    "low_risk": [],
+    "total": 1,
+    "all": [
+      "debugger"
+    ]
+  },
+  "risk_score": 5.0,
+  "risk_level": "MEDIUM",
+  "risk_breakdown": {
+    "supply_chain": 5.0,
+    "metadata_publisher": 1.0,
+    "code_analysis": 0,
+    "behavioral_correlations": 0,
+    "infrastructure": 0,
+    "positive_signals": -1.5
+  },
+  "positive_signals": {
+    "signals": [
+      {
+        "signal": "no_network_access",
+        "description": "Extension has no network capabilities - data stays local",
+        "weight": 0.5
+      },
+      {
+        "signal": "no_obfuscation",
+        "description": "No code obfuscation or evasion techniques detected",
+        "weight": 0.3
+      },
+      {
+        "signal": "no_credential_access",
+        "description": "No access to credential files, SSH keys, or token stores",
+        "weight": 0.3
+      },
+      {
+        "signal": "scoped_activation",
+        "description": "Extension activates only on specific events, not wildcard",
+        "weight": 0.2
+      },
+      {
+        "signal": "no_exfiltration_pattern",
+        "description": "No compound attack patterns detected",
+        "weight": 0.2
+      }
+    ],
+    "reduction": 1.5,
+    "count": 5
+  },
+  "risk_classification": {
+    "classification": "STANDARD_RISK",
+    "summary": "Moderate capabilities detected. Extension uses some sensitive APIs but no strong indicators of malicious intent.",
+    "suspicion_indicators": 0,
+    "positive_signal_count": 5
+  },
+  "module_usage": {},
+  "external_urls": [],
+  "domain_intelligence": [],
+  "virustotal_results": []
+}

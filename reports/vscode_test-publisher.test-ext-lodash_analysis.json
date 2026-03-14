@@ -1,0 +1,221 @@
+{
+  "extension_type": "vscode",
+  "name": "Test Extension (lodash vulnerable)",
+  "identifier": "test-publisher.test-ext-lodash",
+  "extension_id": "test-publisher.test-ext-lodash",
+  "version": "0.1.0",
+  "description": "Fixture extension with lodash@4.17.4 for analyzer testing",
+  "publisher": "test-publisher",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "store_metadata": {
+    "available": true,
+    "name": "Test Extension (lodash vulnerable)",
+    "publisher": "test-publisher",
+    "version": "0.1.0"
+  },
+  "metadata_risk": {
+    "findings": [],
+    "risk_score": 0,
+    "activation_events": [],
+    "contributes": []
+  },
+  "package_json_deep": {
+    "findings": []
+  },
+  "supply_chain": {
+    "findings": [
+      {
+        "type": "bundled_node_modules",
+        "severity": "info",
+        "detail": "1 bundled packages (1.3 MB)",
+        "count": 1,
+        "size_mb": 1.3
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "high",
+        "package": "lodash",
+        "version": "4.17.4",
+        "cve_id": "GHSA-29mw-wpgm-hmr9",
+        "link": "https://github.com/advisories/GHSA-29mw-wpgm-hmr9",
+        "detail": "lodash@4.17.4 has known vulnerability GHSA-29mw-wpgm-hmr9"
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "high",
+        "package": "lodash",
+        "version": "4.17.4",
+        "cve_id": "GHSA-35jh-r3h4-6jhm",
+        "link": "https://github.com/advisories/GHSA-35jh-r3h4-6jhm",
+        "detail": "lodash@4.17.4 has known vulnerability GHSA-35jh-r3h4-6jhm"
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "high",
+        "package": "lodash",
+        "version": "4.17.4",
+        "cve_id": "GHSA-4xc9-xhrj-v574",
+        "link": "https://github.com/advisories/GHSA-4xc9-xhrj-v574",
+        "detail": "lodash@4.17.4 has known vulnerability GHSA-4xc9-xhrj-v574"
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "high",
+        "package": "lodash",
+        "version": "4.17.4",
+        "cve_id": "GHSA-fvqr-27wr-82fm",
+        "link": "https://github.com/advisories/GHSA-fvqr-27wr-82fm",
+        "detail": "lodash@4.17.4 has known vulnerability GHSA-fvqr-27wr-82fm"
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "high",
+        "package": "lodash",
+        "version": "4.17.4",
+        "cve_id": "GHSA-jf85-cpcp-j695",
+        "link": "https://github.com/advisories/GHSA-jf85-cpcp-j695",
+        "detail": "lodash@4.17.4 has known vulnerability GHSA-jf85-cpcp-j695"
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "high",
+        "package": "lodash",
+        "version": "4.17.4",
+        "cve_id": "GHSA-p6mc-m468-83gw",
+        "link": "https://github.com/advisories/GHSA-p6mc-m468-83gw",
+        "detail": "lodash@4.17.4 has known vulnerability GHSA-p6mc-m468-83gw"
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "high",
+        "package": "lodash",
+        "version": "4.17.4",
+        "cve_id": "GHSA-x5rq-j2xg-h7qm",
+        "link": "https://github.com/advisories/GHSA-x5rq-j2xg-h7qm",
+        "detail": "lodash@4.17.4 has known vulnerability GHSA-x5rq-j2xg-h7qm"
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "high",
+        "package": "lodash",
+        "version": "4.17.4",
+        "cve_id": "GHSA-xxjr-mmjv-4gpg",
+        "link": "https://github.com/advisories/GHSA-xxjr-mmjv-4gpg",
+        "detail": "lodash@4.17.4 has known vulnerability GHSA-xxjr-mmjv-4gpg"
+      }
+    ],
+    "risk_score": 2.0,
+    "dependency_count": 1,
+    "dev_dependency_count": 0,
+    "has_node_modules": true,
+    "dependency_vulns": [
+      {
+        "package": "lodash",
+        "version": "4.17.4",
+        "vulns": [
+          {
+            "id": "GHSA-29mw-wpgm-hmr9",
+            "link": "https://github.com/advisories/GHSA-29mw-wpgm-hmr9"
+          },
+          {
+            "id": "GHSA-35jh-r3h4-6jhm",
+            "link": "https://github.com/advisories/GHSA-35jh-r3h4-6jhm"
+          },
+          {
+            "id": "GHSA-4xc9-xhrj-v574",
+            "link": "https://github.com/advisories/GHSA-4xc9-xhrj-v574"
+          },
+          {
+            "id": "GHSA-fvqr-27wr-82fm",
+            "link": "https://github.com/advisories/GHSA-fvqr-27wr-82fm"
+          },
+          {
+            "id": "GHSA-jf85-cpcp-j695",
+            "link": "https://github.com/advisories/GHSA-jf85-cpcp-j695"
+          },
+          {
+            "id": "GHSA-p6mc-m468-83gw",
+            "link": "https://github.com/advisories/GHSA-p6mc-m468-83gw"
+          },
+          {
+            "id": "GHSA-x5rq-j2xg-h7qm",
+            "link": "https://github.com/advisories/GHSA-x5rq-j2xg-h7qm"
+          },
+          {
+            "id": "GHSA-xxjr-mmjv-4gpg",
+            "link": "https://github.com/advisories/GHSA-xxjr-mmjv-4gpg"
+          }
+        ]
+      }
+    ]
+  },
+  "code_analysis": {
+    "all_findings": [],
+    "module_usage": {},
+    "external_urls": [],
+    "file_entropies": {},
+    "files_scanned": 1,
+    "findings_by_category": {},
+    "findings_by_severity": {},
+    "suppressed_false_positives": 0
+  },
+  "malicious_patterns": [],
+  "html_analysis": {
+    "findings": [],
+    "files_scanned": 0,
+    "iframe_urls": []
+  },
+  "permissions": {
+    "high_risk": [],
+    "medium_risk": [],
+    "low_risk": [],
+    "total": 0,
+    "all": []
+  },
+  "risk_score": 0.2,
+  "risk_level": "MEDIUM",
+  "risk_breakdown": {
+    "metadata_publisher": 0.0,
+    "supply_chain": 1.5,
+    "code_analysis": 0,
+    "behavioral_correlations": 0,
+    "infrastructure": 0,
+    "positive_signals": -1.3
+  },
+  "positive_signals": {
+    "signals": [
+      {
+        "signal": "no_network_access",
+        "description": "Extension has no network capabilities - data stays local",
+        "weight": 0.5
+      },
+      {
+        "signal": "no_obfuscation",
+        "description": "No code obfuscation or evasion techniques detected",
+        "weight": 0.3
+      },
+      {
+        "signal": "no_credential_access",
+        "description": "No access to credential files, SSH keys, or token stores",
+        "weight": 0.3
+      },
+      {
+        "signal": "no_exfiltration_pattern",
+        "description": "No compound attack patterns detected",
+        "weight": 0.2
+      }
+    ],
+    "reduction": 1.3,
+    "count": 4
+  },
+  "risk_classification": {
+    "classification": "STANDARD_RISK",
+    "summary": "Moderate capabilities detected. Extension uses some sensitive APIs but no strong indicators of malicious intent.",
+    "suspicion_indicators": 0,
+    "positive_signal_count": 4
+  },
+  "module_usage": {},
+  "external_urls": []
+}

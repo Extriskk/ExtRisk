@@ -1,0 +1,396 @@
+{
+  "extension_id": "pndmbpnfolikhfnfnkmjkkpcgkmaibec",
+  "name": "__MSG_appName__",
+  "version": "1.4",
+  "manifest_version": 3,
+  "description": "__MSG_shortDesc__",
+  "icon_base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAACK5SURBVHgB7Z0HeFRV2sf/985MZtIndZKQQBICoYQQCKABBBR0RUUBadICSAkqIpZVPhVZsa2Lih1derGAdBCkQyihQyCUENIhk0lPZjL93u+cGxIS0qtkn/t7noHbZybve8552zkDiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi0MhiIPJB4v3y8HSyW4TwjCSs9xvDWi5BKt2Z83y8FTYSoAA8YbWZFd7cyWEIEM6i6a3jgMCNhpzSFIrAQeWDwnhU9l2NwsSbhU4TzVi7ZKyr6AzQSUQFaEK/ZRweqXj76XJXnqDBJy0c9IIqwUEWUBo1AHAJaCCpgKjC6zTPcFPWPA1ffO3fIn4E0qfz1fq4KjInwhK+bXNh3tpXCyU4qbJ+ML8AXu1LLrrXyCNP89MglNAAp/of4ZuhQuU9mZjBn0vtxHKcEI7Va9fpsua9vyqijRxMgDJ8ti/K1Q0pbvWQl2RxeeowzaBUVr5KuvP++6YN9MOMxnyqf2bejs6AEJ24WCPtsSc/xKBpAq+8BfgsKas+ZTC9aOetDYJiBtp6eEoe2baFwcwPPcTAWFECfkQFDTo7aXFR02cbe4YhVofh1wuXLiWhmaMvmGekWlrTQ0mPm/JSl2b9NnEc2DaXX3N/6KUsmdxR6gGlLrwmCLiy2CMdpL+BsK0FajrHiDRLWvyFGYavtAX5t376v2WR8w2w2jfTs0wcBI0eg3TPDILW3h16thj5TDd2dO6TN85C7usE5KMjLmJfnlX7o0OPpe3Z/tDY/7yxjI/uZa9/hl8l79+rQxAjWPPitRPj+pcdMmVfey9ky+99k01J6jOGlz9XUDNNyDGXCp9Dt8vulcBaO9jBfo560OgVYOGiQtH1iwiem4uKX3UK72fV8fwFUERFQHz2K8x8tgubUKWjT0mApLq5wn0Quh3PHYLQZ/Bh6/etD8FZrr5vr1vZK2bVr7vp2vgsmpKRvRhPhNftYJBmCiCvHKOk+bzGpTUnRU3MPLNxT6WKW9ydGQbXPomN/XWAYJgwNoFUpwIbg4ABD4q2NnNkS3ufjT9AxMhKJGzdgW/83UZSUVOO9VqMRuZdjhdflJUvgFBiI0NffQJfZL3W98u03m9bt2HFOauXGjktLu4VGIBh7PL+QSETYp8IvvrZ1ROHxb2Oqup7nWSVTg2ny+jNtMZr0Al39HARlKNBb8MTHF9BUtBoFWB8Q0E6v026TOzl16/vVErh07ozoWbOQsnNHpWvtvLzgGBAAe7+2kNoqSPdogTY1FXlXroAMA8I1hYmJOPbKy1B26oxur85Bh/ETwk+8Pi9ujQTzJyenfYUG4D376FdElq+V7vMm7dm8iyteMJ7fmFDtTZxRC9am0mHa9VNCfO3R1k1Rdqz0eFPRKhRgpVKp5C3mfTJb2w79v/sezh06YM+wZ1BMxvpSnNq3J3bA82g3bBjsVCrIHB0rPYcOC7lXryJ1x3ak7t4NXXo68q9fQ/RLL8H/ueEYuHy5/Ob69V+u//WXXkZnl9emXbiQVZfPRy19hUG6hQh/UOkxs1a9Lnvd6NlkU1vjzRyfXFM0ZsHGRGyI0aA2OIvhChpAqwgEyZROn1rN5g5hb78NZXBH7Bs7pkz4Nk5O6PPRx3j6r70InTePGntVCp8itbODZ69egg0w7OAhhC9YALs2bYRzydu2Yu8IYkg+9TTC3p4/3sFq/WsZ6XVq+2zUilcYJBfKR+8ES3/d6BmoTfj02rxbu6o6Xmb119EGsFbznNp44BWAWPszrAZjVIdJk2g3jeNz56IoscSDc+naFU/v3YfgadME4dYHmYMDukTNxrADBxH6xhvUioKJuIz7Ro+CiQwT/b77roeT0vnw+g4dAmt6DkPcPGLs+Qs7nFVr0FyJIm7eHNx182ojZ9Os6xwZKqo772xXuwLwFkMMfQ4awAOtANsHhbubinXv2ri4IOyttxD34w9QHzsmnFP164fHf98A6vOXojNacStTj+jr+fjjtAa7L+bgbGIRMgtM1b4H7UG6v/Emhu76E47t2gmxg9glXyGFDBN9v/zK387DYy+NNVR3P2c2CIKmxp7x1uHReZtn/4Rybl5dMCQemk2Vp/wxJ7u6j86GtJNRaCAPdCBoXaD/Amux/l8hL7+CoIkTsefZYTBkZcGBCOrJ7Ttg6+EhXHcn34gvd6XhGBF8pQAJwUbKCNGzp3u649lwdzjIJVW+H7URjkbNwu39+4V938cfR+ibb+HQlMhrRoNx8KRr1zKquE3p9tzXE4oS9x0wXd7ZoFZI8Ri/fpHUqe17pftjHlZhBokGTl16FelVfKeyz6zTLMla+/w8NJAHVgF+7dfDx5yceVnu6ur6XPQxxPzzLaRs3w6W+PNPbtkKt7Aw4kLxWHE4A5/vSIXWYK3Tc1VKG0zq74U5//CFVFL565OoIi58/m9c/eEHYd/vySfRlSjgkVkzD44+d34I8bebK5ws9Ri7epHUJfCdut5gykn8LGdj5PuoZ49THgkeUIZLZBN5s2VUwIiRcAkJwen57whRvW6vzSPW/kgYzBz+77dEfLMnHSZL3WWiI4pygsTRt5zJgsrZBh29K9oOjEQC70cGwGLQI+vMGRQmJJBu3oQus2YF7HhskM+WwqIdaB644ritBxiJ7ADr4OnDyh2Dqr3QUHDRlHR8au7O15ajEcKnPLAKMMLBcTk4TtX7w3/hzpEjyCCRPlvi3kUs/gIyEu79ZFsyVh1Ro6EUECt714Uc6E0c+ndyppG0snN0myqBMT8PORcuII+4jh7hveAe1iN8QFLS1c25uVfRTJhun0stvrxxE9F2ogw2CVaLPhdmfSr57yJXlPmnPn7f27m75i3SJx2mww2HRvJADgF/9OwZqrtz+xJN6Dx7NBo7hwxGMUnodCMeQNjb72Db2Sy8tCIeTUW/YGcsn9kJjlW4XEemT0fqnyUe1uMb/wCJGmZmxZzqOyE1tdmTSS3BA+kF3ORdaQAFHr17Q5uSIgiflckQ8Pwo5Gkt+HRbk5XECRy/UYDRS67gTl5lYyti8WLB3qCcIAoYvuADlcK3zSr8j/DAKYD3zCNPZMo9ZtJtly5doTlX4iJ7kAAODfL8djKzSku/sVxO02H6z9ehKTRXOG6jVOLh/yyGnbc3yS7eRtzSH9Fl+oxHSGh6Ev4HeOAUgGHZTwPybwpWnXOnYKijS/z+ds8+S4w9DmujM9BcXErRYv6vt2DhKhqVriTg1HnmLGE7efNmKDt2JDmE4I+XBwc7opXzQCmAKuroPKUxv4eTVi18Lsd2/iS3XyJwmvw5n6RFSnbTt/7y7LmUg0Wbkisd7zJzJkklDxYCRTFv/xNh78z3kxuKG12U+XfzwCiA+8yj3uTDvNtWWmTNK9AyJisPex8f6HNywEqlcA3phsNX89ASrDySgYNx970X8Qx6vvue4CEU3roFY24uCRT9Y8Lazp290Yp5QBSAZ6Qs8wvLsK7ZmlypXq+HwcrR4UCIz9PIH431n7xbA9cQVIVpeCRhh/Dyz7kKkrOv9lorGQLmrbkJzX0hZGWnTugcVRJ1jfv2G3SaMcPLRi5/Da2YB0IBvGdGz6fZNI7nGQetWnBuWTtboYjDSkLttp6esJAeQZ1vqvezffKT8HLySvw+1ILvPhuDbz4eiTXPO2Ghehl6ph6u9r7sIjM+3V7Z2wieOk0wDGlaOT/+Blw7d56yJjTUHq2Uv70ewDsqegTpVv/F322R9F8a1OVZiVDIwVutkNraIldnRmZh3RSAtu6grFj0Sd6HvrIMIW+guJs3oHj27oPA0WPw6B9/YPXKtVjjOwZmqbzSczac1GDMQ56IIHmEUhx8fRE4ahSuL1uGxN9+o1VFnlkzZlAL8Us0EjodjIM1jLXw/jyL/PKl483F36oAXrP2dyEC/56EeMs+B9UDK/nHQmLyuKsUDLEBcrRmmGsJ+VLBh6YfQ5+UAwjMiRP2e69dV0H4ZdeSsbz96NF4mQiUXfATlgVNJwNR5bgYzTP8NjcEcum9c51nzMSNVauQde6cUIRq79vmeSQm1lkBKgiakYTxDB/Gcrw/GXuULI3Nkc9BMw5es48mq38ccATNyN+mAF6zYrowjOVPIuUKRlRpD2DUaklcnhUCQPRYQXH1yR6FWUeEvh99EvfBvbgkPCx1dARL/pA+jz2GmqAFpXP+Y4vseT9iS2fq2ldUgtO3CnGK2B4DOivLjjn4+cGrb18hPJ20ZTPaPfdc3z+0eaGjzl+JLX8vrRSSmyUDaxQ0+XZCeqkK5eNNhmaXz9+iAEItPGPeTL57pYqbUgUQXnqD0P1zxBawWCuHvWVWI/ol7sag+E1ECfSC0egzZAi6zn4J2rRU3Fy7tkKMvzw0maSQlZhANNI3fXQPxB66glse3Spd+/WetAoKQPEfPkJQgPR9+zBw+QrEffc9nfJVQQFKKoUY/9oELcBZtbzVoOYMhQnkdcVanHMxb/fbzdr6KS2uAD5Tj/jxYI+Rv0ebqs5rnbyJ8HnQ0d6QmwOpg4NQ5u0iq2yvDo1bh75EAegQ4TVwILq/+SbcuoeBJRm9LBJBlJNcwv3QsO+n25PJ2K7C5AFeZcc7jx+HsdHv4xNUVoCLyVrEpevQ1feerUfTxKdIPKD4zh2Sk9fBpVvIs3xk5KfMwoX3av45zp18mIoPu0/Q4M0JxtuX44pO/UALR2lRCC0waVSGrz60qAJ4zzzak2eZrRKG8bFW44Zp7T0FL0BHbIDCpGTYkDG2gKRklQpG6NK5u/f55cYjImmPMAMo4uuv4fvYYOF4/rWruPL996Rr3gIfohQVnk1SwdS9u01i/u+PCBCOFZOhhrZKO2LZP/ZYKFYeTkaGs3+F+2hvcfBKXgUFkJPrfQYOQvr+fUjb/SfcQkN7/vL7aqrUZa6DpSjlFYa1HfcgCLo6WkwBvKKOT2EZ/hsiQEdrDT64ztELVtpLEus/JykJDoGBxN2KB3v7FpxsJci/WyzZQRMrGHl0VhAVPk3Zxv3wA5K3bhGidZT75wpcTtUJwhfO6S0wm83Iz8sV9qXE1ugwYQJ6/foGdtynAJSNpzSY86Rvxe/Uv7+gAJrTZ9Dt9dfZxD829EM5Bcj6NZJa8c1uyTeGZo8DuM6JcfKaHf0Zy3M/UuHX5Z4iB5UwDGTcuAG3riElB28nw9VBVnaNi76kYlt9/DiOz30Vfw1/DkmbN5UJn6K7fRtm7b1SO6pApUPwAdKiJWSokJLhg9oJ9DgNNoV4yqr8TLTWkL4qfLduJcNFXtwVoZ5Q5uDYF62MZu0B1np4PPJt5pXPM9w7PWRh+DrXHmR6dYddkRrp5y+g17ixwrHc2FgEegYjUVNRCKbCQiRu3Fjlc2gcIWnbVnScMFHYD/axQ4CHrfCM9cczEebviDEPe4MjSkOVgdLVk7QJwd2s/HHPJxWhvcq2bN+lSxdhKDDm50OvySTDkfvDaGbWeLkP5HhmOPl8g4jiKkn8JJ8cTmYYfmukOqvevU2z9AArPTy81qg8fypSOB/McA7oQ7Jr9So8yXcLonPekZmcDJmTs+AK3j5wABFBDmXXFNi61+lZycQWKI0n0BrAhaP8ISP/03Dvm+sSMG9tAlj23p/BQekIuUVf5bOupFWcQ2rj7FxmaOqIoWqrUnmdnTlThmZgpZfSf5WX6hAPyWGGYV+7OxfQn/7PMFQh2FXkfBJVkPo8t0kVgM7gWe3p+TrLMmkkqDLzmne4xCKxqfd7ZHuHCUNAIXEDc+gw0L07Gc8TEeFcVNaFZzi1rdOzNDExSNu7t2x/cIgrtr3ZDZMf8cK4vp5Y8Lx/BVfRoq1+LsfF1KJKx2hkkEITRE6B7d1SYmJUaGKo8BnID9Vh6Rh/qiCrVR51XjWkyYaAZZ6ew4ngF5HNkNJjN9oNQEModA+C0Ya0dpMWCX/tRfuhQ5F19iwkl46hm18fxBJjLtU1GMUyB9iZa558Q22C8x9/BBUJ3NjcnTHUvZ2j8KqKtPgUmPxsqzxXVXm2fbuSUEYR6a08evdWGAwGuqpDOpqIcsL3Lz0mc3JC2yeHChNjKHlxcVCfOAFdelrJBQy7hPQEFyers2uNIzS6B1jl7h6+ystzt4xltjgHB4fQnHkp2RJnNJS0jk8KwaDY6GhajCm4aqnEwh/a3VU4X6RQ4rpXeJ2eRSt7T/3zn+AtNXtddK7glQxTlSFh4T31laORcheXu/feFial2rCsL5oQBjYflBe+CzGKnz9zFv2I6xs0bhzakcZBt4ft31+mEBRi1ayqy/MbrAArvBw8VqlU77ISNsbOy/vJ3p98IkyzojN36WwbSoayXYOLTtX+/YRh4I5GA83ly1A9HEF8/Gt4yiUbirujymn/IXV+Hp37d3R2VKV1A8pzmaR4T/lVHzqmFUn3Q2sVhHMF+cQgdIFRV6hEE1HS+pkppfv2JAT9j82bhRT53udH4rfgjtjUpzc2kxdVXq+Ie04IVZq62AP1VoCfvL3tVni6z5LA/qqNk+NHXebMkdKJlp2mTIWR+NSn3/0/wTJvLHk+PYRhwGC14MymTSR7N6pkjv/OTZh5d+2cZLfOSFcG1vmZqbt2YfdTQ0kI94iQZSyFKsW5RR9i06FEXPF5qNr7uSrCF/zdEDUdalgbGxB3wgZNBMvKu5ffp1PYaOPaO3Kk0OWXQiOlO4YMxrVl/61wP/lEU2p7j3rZAN8EBckVRUX7GBt5307TXkSXqFmk2/OGuahImE93fflyGHNy0FTcCR7Kt728kbl0/ASeeOstIeoXT7Jw4yKj8N+DrFDT/1fnCZh2clGd69tpUGk/6Tod/f3hGtqdRGpZqEkgZ4djBI6Gza7xXlkVM4nM2hLDkE4oEVLa5V2KxsLxYeXd0baku88kgtfeHeupLeB6N05ClcBUWABzucbHlFubqDrqpQD2Ot0zCg/3voNWrYZHz55CK7r288+IW7q0rHavPC7FGuTZeaKhZLcfhDaXNyLfoEfMihXoMHESLn+9BJrVP+H1p6Pw8ZYU3FR1x/5OY/H49d/r9ezb6kIcN2sQr+qBq6EfoljuVOs9dlXMKaS5AAotEqE5AcbCN0t4l2Ygaeungi4laOw49P7ww7J9eo7OoSjtga11kG+9FEDCWSfQ2bj23t5I3/sXzpNxvyC++gkaPgXJjVKAXM8QJpe4hK4ZFxHz55/o9cILgqGV8NuveGrMZOzws0cs8c2PdngWSn02eqccqPZZBpkdNI6+iPPqjeve4ci39YBRaluvz+PjUrl312tKFm+w9/Yp2baRNtmCUyQhpi19R1NB5WH12n9/Rtqe3cI2HR7ajx0rKEou8QooJHeSjVqoswJs8PW1LbaY+2WfP4/tAwdUCLFWR0A2ic9790FjSA6fAuedc6Em73d2zWqhGifuu++Q8u3n+OjtxRj73TUyFMixOSwKd5zbkZ5gI+xMJd2ymQzHF3wHCLYC7SmK5I2zz0L9KlZ+cSSXQI0vilOHICH3wNpIGz5f7T6KrJY4N0lJXIl273Tcp1lIe1+/MpevtEeg5gk1DkuFTzFw1lpnK9dpvNpAGn/410u+JaOR0JzrInxK14zTaCwFxBgkBiFPPYLo/Qeg7NBBGL/Tdu+Gy6X9iBpSklWmrtvJwKeweMg3+G+/hfjxkY+w8Ok12NwjCufbDmy08Cn9gis+I58EqYozM4VtWrWcfzOe4+ycKmSgPGdFd6cvNIDXs3L3W8utMnJp8WIh+kg9gVKXj9oBnWbMJMPBWNIbVFyELM5kWVrbe9RJAQwq1ZeG3NxpqCfUBgjMjkNjiR/4DkNDw1nE4Prrk08ROu91weo+8+67iOrOILJcXr/YxhG3PEKQ4tYJVrbpUh3UAOwRUDF4dOfQwbIws1MAncOgVssCAsqCQF6zj0SS2y7Sl2p29AW6LywDX3csRTz3WelO5skTODR1qrA9jDSGyRlqvHAjHn2IHUCNwzML3i+7sYCzbv02P7/W5WNr/Qut9fUNslrM0+k6ew2hS8YZJLp3RWMwOnrjTrfRvA/xCM7F30DoxYto+9RTSCV2Qcxbb2L+inWIVxfjZHzj3c/qGBzignbuFVd4pQtNUahdZENyFtrkpJTxBw7eq1w1m91xt9i0ZLVQdhVJQpDU+NFVvARbM78fsK22952bmfXFtyqPIU4MO4ju0zGfvmhJGh3vKbTbz71yb40oM8+rb5osC1EHau0BLGbzUNL125UGPOpLeOohKMzFaCxp4VMZE4kLFBqM2P79d/Ae9KjwB6BlWVc/fB8rZnREn/bNN1MrckDF+R/ZFy8g51JJA6N1hekH9tOBuMICfuplQ34yZ91YTJePKX+cBndYK7OVKEISea2spVcwXOOKXyjkucMVnk1afMLvvwuv+4V/SG8YUZfWT6lVAVgGtMgBxtw8vrr6upqwNeuIYbYBjcUid0DCo/OF8HCyVocDi/+Dnu+9D4lCgZtr10C96Tese6ULngpzRVMzqItLpZrA68uWC90/rUNsP+4FYVkZsnf/Sl3a7E3T31IvG9zNkHx8kqUoo8IgTesFhUhfydr/h6obIn7I0qnnZGYNvWYyLqQCruozUlshzWJetjG/4JH1hYUxqCO1LhAxwsGejP1MB+fA9pw+O4s1NyDK1zYvngwDIXyenUej1iMwKNuBNRbBXhMHTW4ebEkOPvTFF5FBF5AgLwc3V4yPHCykkuniUE2xloubgwwrojpVWK2LBpNoPSDFo1dvdCDu6flPP8m382v75u/JyVWtDlZsSNgfSxd+MHPa1Swjz2VltkpGqigzXmjolijDcKJUrzn0mupvFz4tWXduZWa5Z1iO6Q1Htut069vJbC5ZGD4+12pN0PN8TKrVsvrPgsL5K4q0a29ZrbW6fuWpVSAk0bOBfLDRrqGhHEl3srTkqiFkKAO5n/otZKk/3hgUpJML+mMW45CTACWxS6bOnQsXP19cIDEJahgKS8hOmYJNp7Px2bZkZDRgNlEp9nIWv8wJQa/Ae0MLDX7tHTkCmjNnhP1BK1cKsZDYLxZ/OzE1/dW6Px0ODr2m9LLrOnIuK7N/mJHaeN1/gV5hcclf8mg+mpFae4Dh9nahpOsfQPPk1AfNPHG8Qa3Y0ZDHSDkzibw1aE3jMiyQMAUkJaxMioZVX4AkYhCGdAuFz6ODBEv4zuFDpBFxeGz0EDwT7g6jmUPcbV2VcfyaoD/UsHxmZ/RuXzFCeHbhB0jZuVPY9h4wAB0nTcbxOa/yLJhXNuXl3anHW5hMdy4m6y79+rv2/Jr1MvfgS5DI7MqvDcRnXF+tv7azXi26vtRhCHC0J/3EeBL0YNy6hfA6tZqhsf+GQIcCg62SS1W2b9RQYJU7Ij/gEUEJjLo8JJ0/h04DByHg8ceF9YQ0J0+iOOMO/B8Kx9CItni8myuKjRahN6AVvjXhqJDgH6Gu+G5qMDq3qRj4odPBLn/1lTD2U3/80dVrBPtDc/LE4QkpqZ+i4WhLhwipS7tNnE5zw1KYsTp325zDaGZqFQQNAhWrPONJLxAotbPjOkZOYa7++EOjBLgp4g3rGVVEoxeossu5iU7bX4WNSQs3ewc8O28euoaFCSuK0Xi4fZs2CP9gIdo+/bRQ9ZOrNePQ1TycSihEbIpOWHiZKoSLvRQPBzkhjPj5Q0Jc4e+hqPReNNlFhU+jf5RHfvwRtiQRdihyssXKWEIm3Ui6gVZInQS5UqUaR7yBX+l24KjRfH78DYYWaTYUVqHgtoe+yB3zebTMsiIC4kg2rd6ZNKoEwUQJ5EQJnOzsMfC5Z/HsO+/g6MyZQpUOLSTx6tcPPebPh3uPnqgvNNR6dsECpP11z4Cny8wHR0biwITxKLgZ/8XElLQ30UqpUyvcqtPFxTo40lq3XgXXr6Pj5Ml83rVrjFWvR0PgLRYmOOMcI2N4U4JbVzrtspj4mOmkaz3Ds8xxksc8QUz4GKIUMaS3Pccw/CXib6WQO8nYw8jItXLmrgtrtnNDYduHoEyO5i3FhUz6zQRkEgNt6MpVcFSpoDkVQwI0yUj45RdhoUmzTkurd4XsXXVuLW3lmadP4epPS3Hi9XkouFHSuOkilRFffFmyZvGrrxJD8OwNz0GPvrAuNtaMVkqdu/INXbrYGPJy/kME8qrCxYXvOH067RKZ2sqsqn9nBm7dukE3eq45dc3ydbsk3WcePryw1ocFzbkp15qzvVne9BDHsJ3IF3iKKEtvW+1tvv3BRbBXx7EKqQy+RPijFn2I4H79cfaDBSRse+jeW5PcPc0nuIWGkm7cS1h3kMYTTPn5Qmyf/uoIrfLly01godG+vku+hjtJgx+cNh1pf+7RyB0U/SalpyegFVPvsZzWADJSyULyB+zdcdIkj1iiBCQ5VPtziMBdQ0Lg+dBDcA7qICz3nnPpInLIUGLMybk2WZ3ZlWngr3p5zTlKcrv8GIZhJ7U9+1Mvr9g/WKnFyMhtZOhNonTDiWvoQIRMl39NP3igxsrf+7Fr44uus6MQNGEiSfYkYPf4SSi6lZAq5y2DZhgMSWjlNMqYO/XJJ263li71MpuMdMnSCrVUtHt1Ipk79x49oHD3EKp5tKkpJH6/G2EkiHKaJHKshrKYiU7K8aETNJpGL77oE3WkR+eYL0c5xW6fSuLv3jaktduT1h0xbBj6T5wIv169kLZ/HzKPn0AW8R6Kb98uM+wo9LcG7H19hVk/3v37Cz8kUZSRgcur1uAs6f4ZK3fKSekW+eKd1mn03U+jFKAU0myZNd6eJIrFTCPbAX5P/MPkPXBAUN6VOMesM6eFX+8qX4zpPXAgJLa2SC+XvuQ5ftYUjeZnNBFvh4c7p8bHz7Lo9a/BavW2k9sI9XtBpNsPf+IJBA8dClVgoBDKpdFN2vVIbGyE0nG6PL02Kwt5iUm4uHo1bm7fCWN2dr6tg+MSGct99WpubvNlnVqYJlGAqljlrVrE8HivuvO0evjM+++V1RYQASTYqTM7jSlZGqDJmBoU5GG4fXsybzZOIdGgEAn5ytR6lJAeylFhC3diCyhJN0/DyDZESUyFRYLgC1NSiGIUkTSwpFiuUCxn7Zy/nK+mbsX/Fs2mAGtUKk9i0V8nlpRLVeepS+YZ8XDZsuwCPIZFZmbuRDMx2cOjB6vX9wfHPc2bzD0YnveQ8DxDXSFBMRhBMQxE6OnkdZTlcMDGxWnrwoyMxqczH1CaTQEoq1WeS4kxMKuqc9RG6EPi9xc++wzGgvzzEgY/W/Sm36fm5zdr7LuUhf7+inyO89EVFjopJBIb4s1wclvbYkeZc76rPDDn1YTdzbsi5QNCsyrAMl+PIJmFpXnpKjNAbqHd0WbIYJJI+XIGafnLINLiNOv6ANPTs26RHPnu6s7nxF6C3NUVCk+PRWTIaLVr7bVmmnuBCJ7huC9quuDGihV02TUvcuFUiLQ4zb5CSKRGc5L8V+3PotFf8LRxdCCJG78F652dXSDSorTIUrEkolrjIoq0zr/9uBc8zArFGxBpUVpEAexksq3Ez6920qCWROMUxBZw7dr1JTr5FCItRosowJj0dD0Jw31c0zWxX35B4u3jXeRW6+cQaTFabLVwnpFuIc5/bnXnDTk5wk/CqiIixq/18AiCSIvQYgowVa1OZsD/UdM1NGcfNG6cC8eyb0OkRWjR3wswW3ka96025UsSN8iNuwIHf/+JEGkRWlQBXtRoaFTwYE3X6NVqkjnUHYRIi9DivxjCM+yH1Z0ikens1B07f7FkauZApEVo1lxAdazx9BzJMYii2kf+T+DAnuKKi3dMLyzMhYiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIhIXfl/JM1z+l2pj4gAAAAASUVORK5CYII=",
+  "permissions": {
+    "total": 0,
+    "high_risk": [],
+    "medium_risk": [],
+    "low_risk": [],
+    "all": [],
+    "details": {}
+  },
+  "malicious_patterns": [],
+  "external_scripts": [
+    {
+      "url": "https://aiadgenerator.app/welcome",
+      "file": "js\\background.js",
+      "line": 10
+    },
+    {
+      "url": "https://aiadgenerator.app/uninstall",
+      "file": "js\\background.js",
+      "line": 25
+    },
+    {
+      "url": "https://headlinegenerator.app/api/generate-ads",
+      "file": "js\\index.js",
+      "line": 24
+    },
+    {
+      "url": "https://aiadgenerator.app/api/generate-ads",
+      "file": "js\\index.js",
+      "line": 25
+    }
+  ],
+  "obfuscation_indicators": {
+    "js\\background.js": {
+      "is_obfuscated": true,
+      "entropy": 4.931643484773725,
+      "hex_escapes": 0,
+      "unicode_escapes": 0,
+      "long_variables": 0,
+      "single_letter_ratio": 0.031578947368421054
+    },
+    "js\\index.js": {
+      "is_obfuscated": true,
+      "entropy": 4.940336046039591,
+      "hex_escapes": 0,
+      "unicode_escapes": 0,
+      "long_variables": 0,
+      "single_letter_ratio": 0.011299435028248588
+    },
+    "lib\\jquery\\jquery-3.7.1.min.js": {
+      "is_obfuscated": true,
+      "entropy": 5.262536918435756,
+      "hex_escapes": 12,
+      "unicode_escapes": 5,
+      "long_variables": 0,
+      "single_letter_ratio": 0.49279263113822597
+    }
+  },
+  "settings_overrides": {
+    "has_overrides": false,
+    "search_hijacking": null,
+    "homepage_hijacking": null,
+    "startup_hijacking": null,
+    "newtab_hijacking": null,
+    "severity": "NONE"
+  },
+  "campaign_attribution": null,
+  "domain_analysis": [],
+  "virustotal_results": [
+    {
+      "available": true,
+      "domain": "aiadgenerator.app",
+      "known": true,
+      "threat_level": "MALICIOUS",
+      "reputation": 0,
+      "stats": {
+        "malicious": 3,
+        "suspicious": 0,
+        "harmless": 60,
+        "undetected": 29
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [
+        {
+          "vendor": "alphaMountain.ai",
+          "result": "malicious"
+        },
+        {
+          "vendor": "Seclookup",
+          "result": "malicious"
+        },
+        {
+          "vendor": "SOCRadar",
+          "result": "phishing"
+        }
+      ],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2024-08-22",
+        "age_days": 523,
+        "age_human": "1 year",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".app",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/aiadgenerator.app"
+    },
+    {
+      "available": true,
+      "domain": "headlinegenerator.app",
+      "known": true,
+      "threat_level": "MALICIOUS",
+      "reputation": 0,
+      "stats": {
+        "malicious": 3,
+        "suspicious": 0,
+        "harmless": 61,
+        "undetected": 28
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {
+        "alphaMountain.ai": "Malicious (alphaMountain.ai)"
+      },
+      "malicious_vendors": [
+        {
+          "vendor": "alphaMountain.ai",
+          "result": "malicious"
+        },
+        {
+          "vendor": "Seclookup",
+          "result": "malicious"
+        },
+        {
+          "vendor": "SOCRadar",
+          "result": "phishing"
+        }
+      ],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2024-08-11",
+        "age_days": 534,
+        "age_human": "1 year",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".app",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/headlinegenerator.app"
+    }
+  ],
+  "ast_results": {
+    "files_analyzed": 3,
+    "network_calls": [],
+    "data_exfiltration": [],
+    "chrome_api_abuse": [
+      {
+        "api": "chrome.tabs.create",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 2
+      },
+      {
+        "api": "chrome.tabs",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 2
+      },
+      {
+        "api": "chrome.tabs.create",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 9
+      },
+      {
+        "api": "chrome.tabs",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 9
+      }
+    ],
+    "obfuscation": [],
+    "suspicious_patterns": []
+  },
+  "risk_score": 10.0,
+  "risk_level": "CRITICAL",
+  "store_metadata": {
+    "available": true,
+    "extension_id": "pndmbpnfolikhfnfnkmjkkpcgkmaibec",
+    "store_url": "https://chrome.google.com/webstore/detail/pndmbpnfolikhfnfnkmjkkpcgkmaibec",
+    "has_privacy_policy": true,
+    "privacy_policy_url": "https://myaccount.google.com/privacypolicy?hl=en-US",
+    "has_chrome_warning": false,
+    "risk_signals": {
+      "abandoned": false,
+      "new_extension": false,
+      "low_adoption": true,
+      "policy_violation": false,
+      "unverified_author": true,
+      "no_privacy_policy": false
+    }
+  },
+  "host_permissions": {
+    "host_permissions": [],
+    "content_scripts": [],
+    "web_accessible_resources": [],
+    "all_urls_access": false,
+    "sensitive_access": {},
+    "risk_assessment": {
+      "overall_risk": "LOW",
+      "risk_factors": [],
+      "risk_score": 0
+    },
+    "permission_scope": "MINIMAL",
+    "statistics": {
+      "total_host_permissions": 0,
+      "total_content_scripts": 0,
+      "total_sensitive_categories": 0,
+      "total_sensitive_domains": 0,
+      "has_all_urls": false
+    }
+  },
+  "domain_intelligence": [
+    {
+      "domain": "aiadgenerator.app",
+      "url": "https://aiadgenerator.app/welcome",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "headlinegenerator.app",
+      "url": "https://headlinegenerator.app/api/generate-ads",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    }
+  ],
+  "advanced_detection": {
+    "csp_manipulation": [],
+    "dom_event_injection": [],
+    "websocket_c2": [],
+    "delayed_activation": [],
+    "obfuscation": [],
+    "summary": {
+      "total_findings": 0,
+      "critical_findings": 0,
+      "high_findings": 0,
+      "verdict": "CLEAN"
+    }
+  },
+  "pii_classification": {
+    "classifications": [],
+    "overall_risk": "LOW",
+    "total_severity_score": 0,
+    "data_types_count": 0,
+    "recommendation": {
+      "action": "REVIEW PERIODICALLY",
+      "priority": "P3 - Low",
+      "rationale": "Extension has limited data access. Standard monitoring sufficient.",
+      "next_steps": [
+        "Review permissions periodically",
+        "Monitor for permission changes",
+        "Keep extension updated",
+        "Watch for unusual behavior"
+      ]
+    },
+    "destination": "https://aiadgenerator.app/welcome"
+  },
+  "threat_attribution": {
+    "available": true,
+    "extension_id": "pndmbpnfolikhfnfnkmjkkpcgkmaibec",
+    "extension_name": "__MSG_appName__",
+    "attribution_found": true,
+    "campaign_name": "LayerX Security - Identified Malicious Extensions",
+    "campaign_description": "Collection of malicious Chrome extensions identified through LayerX Security research. These extensions were flagged during security audits and threat research.",
+    "threat_actor": "Various / Unknown",
+    "confidence": "CONFIRMED",
+    "source_articles": [
+      {
+        "title": "LayerX Security - Malicious Browser Extensions Research",
+        "url": "https://www.layerxsecurity.com/",
+        "source": "LayerX Security",
+        "date": "2025-01"
+      }
+    ],
+    "osint_summary": "\n## OSINT Analysis - CONFIRMED MALICIOUS EXTENSION\n\n**Extension Identified:** __MSG_appName__ (ID: pndmbpnfolikhfnfnkmjkkpcgkmaibec)\n**Database Status:** CONFIRMED MALICIOUS\n**Severity:** HIGH\n\n**Campaign Attribution:** LayerX Security - Identified Malicious Extensions\n**Threat Actor:** Various / Unknown\n\n**Campaign Overview:**\nCollection of malicious Chrome extensions identified through LayerX Security research. These extensions were flagged during security audits and threat research.\n\n**Active Period:** 2024-2025\n\n**Impact:**\n- Total users affected: Unknown\n- This campaign: Unknown users\n- Known extensions in campaign: 1\n\n**Targets:**\n- General browser users\n- Enterprise users\n\n**Data Exfiltrated:**\n- Browser data\n- User credentials\n- Browsing history\n\n**C2 Infrastructure:**\n\n\n**TTPs (MITRE ATT&CK):**\n- Initial Access: Chrome Web Store\n- Persistence: Browser extension\n- Collection: Content script injection\n- Exfiltration: HTTP/HTTPS requests\n- C2: Various endpoints\n",
+    "chrome_store_url": "https://chromewebstore.google.com/detail/pndmbpnfolikhfnfnkmjkkpcgkmaibec",
+    "google_search_url": "https://www.google.com/search?q=pndmbpnfolikhfnfnkmjkkpcgkmaibec+malware+threat",
+    "search_performed": true,
+    "database_match": true,
+    "extension_status": "confirmed_malicious",
+    "severity": "HIGH",
+    "campaign_data": {
+      "campaign_name": "LayerX Security - Identified Malicious Extensions",
+      "threat_actor": "Various / Unknown",
+      "description": "Collection of malicious Chrome extensions identified through LayerX Security research. These extensions were flagged during security audits and threat research.",
+      "active_period": "2024-2025",
+      "impact": {
+        "total_users": "Unknown",
+        "campaign_users": "Unknown",
+        "extensions_count": 1
+      },
+      "c2_infrastructure": [],
+      "targets": [
+        "General browser users",
+        "Enterprise users"
+      ],
+      "data_exfiltrated": [
+        "Browser data",
+        "User credentials",
+        "Browsing history"
+      ],
+      "ttps": {
+        "initial_access": "Chrome Web Store",
+        "persistence": "Browser extension",
+        "collection": "Content script injection",
+        "exfiltration": "HTTP/HTTPS requests",
+        "c2": "Various endpoints"
+      },
+      "extensions": [
+        {
+          "id": "pndmbpnfolikhfnfnkmjkkpcgkmaibec",
+          "name": "Unknown (LayerX-identified)",
+          "version": "Unknown",
+          "users": "Unknown",
+          "date_discovered": "2025-01",
+          "status": "confirmed_malicious",
+          "severity": "HIGH",
+          "notes": "Identified via LayerX Security research - found on Bing page 11"
+        }
+      ],
+      "sources": [
+        {
+          "title": "LayerX Security - Malicious Browser Extensions Research",
+          "url": "https://www.layerxsecurity.com/",
+          "source": "LayerX Security",
+          "date": "2025-01"
+        }
+      ]
+    },
+    "extension_info": {
+      "id": "pndmbpnfolikhfnfnkmjkkpcgkmaibec",
+      "name": "Unknown (LayerX-identified)",
+      "version": "Unknown",
+      "users": "Unknown",
+      "date_discovered": "2025-01",
+      "status": "confirmed_malicious",
+      "severity": "HIGH",
+      "notes": "Identified via LayerX Security research - found on Bing page 11"
+    }
+  }
+}

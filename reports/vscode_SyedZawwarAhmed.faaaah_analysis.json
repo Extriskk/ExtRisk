@@ -1,0 +1,325 @@
+{
+  "extension_type": "vscode",
+  "name": "FAAAAH - Command Failure Sound",
+  "identifier": "SyedZawwarAhmed.faaaah",
+  "extension_id": "SyedZawwarAhmed.faaaah",
+  "version": "1.0.2",
+  "description": "Screams FAAAAH at you every time a terminal command fails.",
+  "publisher": "SyedZawwarAhmed",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "store_metadata": {
+    "available": true,
+    "store": "openvsx",
+    "identifier": "SyedZawwarAhmed.faaaah",
+    "name": "FAAAAH - Command Failure Sound",
+    "publisher": "Syed Zawwar Ahmed",
+    "publisher_id": "SyedZawwarAhmed",
+    "publisher_domain": "",
+    "publisher_verified": true,
+    "short_description": "Screams FAAAAH at you every time a terminal command fails.",
+    "version": "1.0.2",
+    "last_updated": "2026-02-26T10:36:14.956287Z",
+    "categories": [
+      "Other"
+    ],
+    "tags": [
+      "faaaah",
+      "fail",
+      "meme",
+      "sound",
+      "terminal"
+    ],
+    "install_count": 1276,
+    "rating_value": 0,
+    "rating_count": 0,
+    "flags": "",
+    "store_url": "https://open-vsx.org/extension/SyedZawwarAhmed/faaaah",
+    "risk_signals": {
+      "few_ratings": true
+    },
+    "_openvsx_download_url": "https://open-vsx.org/api/SyedZawwarAhmed/faaaah/1.0.2/file/SyedZawwarAhmed.faaaah-1.0.2.vsix"
+  },
+  "metadata_risk": {
+    "findings": [
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onStartupFinished': Runs every launch - immediate execution",
+        "event": "onStartupFinished"
+      },
+      {
+        "type": "few_ratings",
+        "severity": "low",
+        "detail": "Very few ratings (<5)"
+      }
+    ],
+    "risk_score": 1,
+    "activation_events": [
+      "onStartupFinished"
+    ],
+    "contributes": [
+      "commands",
+      "configuration"
+    ]
+  },
+  "package_json_deep": {
+    "findings": [
+      {
+        "name": "No repository link in package.json",
+        "severity": "low",
+        "description": "No repository URL - reduces transparency and auditability",
+        "category": "package_json_no_repository",
+        "file": "package.json",
+        "line": 0,
+        "evidence": "repository field missing or empty"
+      }
+    ]
+  },
+  "supply_chain": {
+    "findings": [],
+    "risk_score": 0,
+    "dependency_count": 0,
+    "dev_dependency_count": 3,
+    "has_node_modules": false,
+    "dependency_vulns": [],
+    "bundled_js_vulns": []
+  },
+  "code_analysis": {
+    "all_findings": [
+      {
+        "name": "Command execution via ShellExecution/tasks API",
+        "severity": "critical",
+        "description": "Creates shell command via Tasks API - executes commands without child_process",
+        "category": "command_injection",
+        "file": "out\\extension.js",
+        "line": 179,
+        "evidence": "ions.push(vscode.window.onDidEndTerminalShellExecution((e) => {         if (e.exitCode !== unde",
+        "path_type": "app"
+      },
+      {
+        "name": "child_process require (minification-safe)",
+        "severity": "high",
+        "description": "Imports child_process module - shell command execution capability",
+        "category": "command_injection",
+        "file": "out\\extension.js",
+        "line": 42,
+        "evidence": "require(\"os\")); const child_process_1 = require(\"child_process\"); let lastPlayedAt = 0; const DEBOUNCE_M",
+        "path_type": "app"
+      }
+    ],
+    "module_usage": {
+      "file_access": [
+        {
+          "module": "fs",
+          "file": "out\\extension.js",
+          "line": 39
+        },
+        {
+          "module": "path",
+          "file": "out\\extension.js",
+          "line": 40
+        }
+      ],
+      "os_info": [
+        {
+          "module": "os",
+          "file": "out\\extension.js",
+          "line": 41
+        }
+      ],
+      "process_execution": [
+        {
+          "module": "child_process",
+          "file": "out\\extension.js",
+          "line": 42
+        }
+      ]
+    },
+    "external_urls": [],
+    "file_entropies": {},
+    "files_scanned": 1,
+    "findings_by_category": {
+      "command_injection": [
+        {
+          "name": "Command execution via ShellExecution/tasks API",
+          "severity": "critical",
+          "description": "Creates shell command via Tasks API - executes commands without child_process",
+          "category": "command_injection",
+          "file": "out\\extension.js",
+          "line": 179,
+          "evidence": "ions.push(vscode.window.onDidEndTerminalShellExecution((e) => {         if (e.exitCode !== unde",
+          "path_type": "app"
+        },
+        {
+          "name": "child_process require (minification-safe)",
+          "severity": "high",
+          "description": "Imports child_process module - shell command execution capability",
+          "category": "command_injection",
+          "file": "out\\extension.js",
+          "line": 42,
+          "evidence": "require(\"os\")); const child_process_1 = require(\"child_process\"); let lastPlayedAt = 0; const DEBOUNCE_M",
+          "path_type": "app"
+        }
+      ]
+    },
+    "findings_by_severity": {
+      "critical": 1,
+      "high": 1
+    },
+    "suppressed_false_positives": 0
+  },
+  "malicious_patterns": [
+    {
+      "name": "Command execution via ShellExecution/tasks API",
+      "severity": "critical",
+      "description": "Creates shell command via Tasks API - executes commands without child_process",
+      "category": "command_injection",
+      "file": "out\\extension.js",
+      "line": 179,
+      "evidence": "ions.push(vscode.window.onDidEndTerminalShellExecution((e) => {         if (e.exitCode !== unde",
+      "path_type": "app"
+    },
+    {
+      "name": "child_process require (minification-safe)",
+      "severity": "high",
+      "description": "Imports child_process module - shell command execution capability",
+      "category": "command_injection",
+      "file": "out\\extension.js",
+      "line": 42,
+      "evidence": "require(\"os\")); const child_process_1 = require(\"child_process\"); let lastPlayedAt = 0; const DEBOUNCE_M",
+      "path_type": "app"
+    }
+  ],
+  "html_analysis": {
+    "findings": [],
+    "files_scanned": 0,
+    "iframe_urls": []
+  },
+  "permissions": {
+    "high_risk": [
+      {
+        "permission": "child_process",
+        "description": "Can execute system commands",
+        "evidence": [
+          {
+            "module": "child_process",
+            "file": "out\\extension.js",
+            "line": 42
+          }
+        ]
+      }
+    ],
+    "medium_risk": [
+      {
+        "permission": "filesystem",
+        "description": "Can read/write files on disk",
+        "evidence": [
+          {
+            "module": "fs",
+            "file": "out\\extension.js",
+            "line": 39
+          },
+          {
+            "module": "path",
+            "file": "out\\extension.js",
+            "line": 40
+          }
+        ]
+      }
+    ],
+    "low_risk": [
+      {
+        "permission": "os_info",
+        "description": "Can read OS information",
+        "evidence": [
+          {
+            "module": "os",
+            "file": "out\\extension.js",
+            "line": 41
+          }
+        ]
+      }
+    ],
+    "total": 3,
+    "all": [
+      "child_process",
+      "filesystem",
+      "os_info"
+    ]
+  },
+  "risk_score": 0,
+  "risk_level": "MINIMAL",
+  "risk_breakdown": {
+    "supply_chain": 0.0,
+    "metadata_publisher": 0.1,
+    "code_analysis": 0.7,
+    "behavioral_correlations": 0,
+    "infrastructure": 0,
+    "positive_signals": -1.3
+  },
+  "positive_signals": {
+    "signals": [
+      {
+        "signal": "no_network_access",
+        "description": "Extension has no network capabilities - data stays local",
+        "weight": 0.5
+      },
+      {
+        "signal": "no_obfuscation",
+        "description": "No code obfuscation or evasion techniques detected",
+        "weight": 0.3
+      },
+      {
+        "signal": "no_credential_access",
+        "description": "No access to credential files, SSH keys, or token stores",
+        "weight": 0.3
+      },
+      {
+        "signal": "scoped_activation",
+        "description": "Extension activates only on specific events, not wildcard",
+        "weight": 0.2
+      }
+    ],
+    "reduction": 1.3,
+    "count": 4
+  },
+  "risk_classification": {
+    "classification": "BENIGN",
+    "summary": "Low-risk extension with minimal sensitive capabilities.",
+    "suspicion_indicators": 0,
+    "positive_signal_count": 4
+  },
+  "module_usage": {
+    "file_access": [
+      {
+        "module": "fs",
+        "file": "out\\extension.js",
+        "line": 39
+      },
+      {
+        "module": "path",
+        "file": "out\\extension.js",
+        "line": 40
+      }
+    ],
+    "os_info": [
+      {
+        "module": "os",
+        "file": "out\\extension.js",
+        "line": 41
+      }
+    ],
+    "process_execution": [
+      {
+        "module": "child_process",
+        "file": "out\\extension.js",
+        "line": 42
+      }
+    ]
+  },
+  "external_urls": [],
+  "domain_intelligence": [],
+  "virustotal_results": []
+}

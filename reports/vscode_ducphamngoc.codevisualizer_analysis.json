@@ -1,0 +1,1182 @@
+{
+  "extension_type": "vscode",
+  "name": "CodeVisualizer",
+  "identifier": "ducphamngoc.codevisualizer",
+  "extension_id": "ducphamngoc.codevisualizer",
+  "version": "1.0.6",
+  "description": "Real-time interactive flowcharts for your code",
+  "publisher": "ducphamngoc",
+  "engines": {
+    "vscode": "^1.105.0"
+  },
+  "store_metadata": {
+    "available": true,
+    "store": "vscode",
+    "identifier": "DucPhamNgoc.codevisualizer",
+    "name": "CodeVisualizer",
+    "publisher": "Duc Pham Ngoc",
+    "publisher_id": "0f8853fc-7954-467e-9ef2-1e10b37f6159",
+    "publisher_domain": null,
+    "publisher_verified": false,
+    "short_description": "Real-time interactive flowcharts for your code",
+    "version": "1.0.6",
+    "last_updated": "2025-11-15T04:30:15.303Z",
+    "categories": [],
+    "tags": [],
+    "install_count": 4574,
+    "rating_value": 5.0,
+    "rating_count": 6,
+    "flags": "validated, public",
+    "store_url": "https://marketplace.visualstudio.com/items?itemName=DucPhamNgoc.codevisualizer",
+    "risk_signals": {
+      "unverified_publisher": true
+    }
+  },
+  "metadata_risk": {
+    "findings": [
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onStartupFinished': Activates immediately after VS Code starts",
+        "event": "onStartupFinished"
+      },
+      {
+        "type": "unverified_publisher",
+        "severity": "medium",
+        "detail": "Publisher domain is not verified"
+      }
+    ],
+    "risk_score": 2,
+    "activation_events": [
+      "onStartupFinished"
+    ],
+    "contributes": [
+      "viewsContainers",
+      "views",
+      "commands",
+      "menus",
+      "configuration"
+    ]
+  },
+  "package_json_deep": {
+    "findings": []
+  },
+  "supply_chain": {
+    "findings": [],
+    "risk_score": 0,
+    "dependency_count": 3,
+    "dev_dependency_count": 13,
+    "has_node_modules": false
+  },
+  "code_analysis": {
+    "all_findings": [
+      {
+        "name": "eval() usage",
+        "severity": "high",
+        "description": "Dynamic code execution via eval()",
+        "category": "code_execution",
+        "file": "dist\\extension.js",
+        "line": 1,
+        "evidence": "gs}) => { ${body} };`;ASM_CONSTS[start]=eval(func)}if(updateTableMap(tableBase,metada"
+      },
+      {
+        "name": "eval() usage",
+        "severity": "high",
+        "description": "Dynamic code execution via eval()",
+        "category": "code_execution",
+        "file": "dist\\extension.js",
+        "line": 1,
+        "evidence": "Args}) => ${body};`;moduleExports[name]=eval(func)}for(var name in moduleExports)if(n"
+      },
+      {
+        "name": "HTTP POST with sensitive data",
+        "severity": "medium",
+        "description": "Sends data via HTTP POST request",
+        "category": "network_exfil",
+        "file": "dist\\extension.js",
+        "line": 1,
+        "evidence": "nt:n},{role:\"user\",content:s}]},i=await fetch(\"https://api.openai.com/v1/chat/completions\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+      },
+      {
+        "name": "HTTP POST with sensitive data",
+        "severity": "medium",
+        "description": "Sends data via HTTP POST request",
+        "category": "network_exfil",
+        "file": "dist\\extension.js",
+        "line": 1,
+        "evidence": "fy(a).slice(0,2e3)}`);try{const e=await fetch(\"https://api.groq.com/openai/v1/chat/completions\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+      },
+      {
+        "name": "HTTP POST with sensitive data",
+        "severity": "medium",
+        "description": "Sends data via HTTP POST request",
+        "category": "network_exfil",
+        "file": "dist\\extension.js",
+        "line": 1,
+        "evidence": "tringify(l).slice(0,2e3)}`);try{c=await fetch(i,{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+      },
+      {
+        "name": "HTTP POST with sensitive data",
+        "severity": "medium",
+        "description": "Sends data via HTTP POST request",
+        "category": "network_exfil",
+        "file": "dist\\extension.js",
+        "line": 1,
+        "evidence": "tringify(_).slice(0,2e3)}`);try{f=await fetch(\"https://api.groq.com/openai/v1/chat/completions\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+      },
+      {
+        "name": "Keystroke monitoring (onDidChangeTextDocument)",
+        "severity": "medium",
+        "description": "Monitors text changes - potential keylogger if combined with network",
+        "category": "keylogging",
+        "file": "dist\\extension.js",
+        "line": 1,
+        "evidence": "(){this._eventListenersSetup||(i.window.onDidChangeActiveTextEditor(async e=>{await this.updateView(e)},null,this."
+      },
+      {
+        "name": "Keystroke monitoring (onDidChangeTextDocument)",
+        "severity": "medium",
+        "description": "Monitors text changes - potential keylogger if combined with network",
+        "category": "keylogging",
+        "file": "dist\\extension.js",
+        "line": 1,
+        "evidence": ")}},null,this._disposables),i.workspace.onDidChangeTextDocument(e=>{e.document===i.window.activeTextEdit"
+      },
+      {
+        "name": "Secret storage access",
+        "severity": "medium",
+        "description": "Accesses VS Code secret storage API",
+        "category": "credential_theft",
+        "file": "dist\\extension.js",
+        "line": 1,
+        "evidence": "f(\"ollama\"===n)return!0;const s=await e.secrets.get(u.secretKeyName(n));return Boolean(s)}s"
+      },
+      {
+        "name": "Secret storage access",
+        "severity": "medium",
+        "description": "Accesses VS Code secret storage API",
+        "category": "credential_theft",
+        "file": "dist\\extension.js",
+        "line": 1,
+        "evidence": "if different from default\"}),s&&await e.secrets.store(u.secretBaseUrlName(\"ollama\"),s);else{c"
+      },
+      {
+        "name": "Secret storage access",
+        "severity": "medium",
+        "description": "Accesses VS Code secret storage API",
+        "category": "credential_theft",
+        "file": "dist\\extension.js",
+        "line": 1,
+        "evidence": "key is required\"});if(!s)return;await e.secrets.store(u.secretKeyName(n),s)}await i.workspace"
+      },
+      {
+        "name": "Secret storage access",
+        "severity": "medium",
+        "description": "Accesses VS Code secret storage API",
+        "category": "credential_theft",
+        "file": "dist\\extension.js",
+        "line": 1,
+        "evidence": "els during onboarding\");const t=await e.secrets.get(u.secretKeyName(\"groq\")),n=t?await(0,d."
+      },
+      {
+        "name": "Secret storage access",
+        "severity": "medium",
+        "description": "Accesses VS Code secret storage API",
+        "category": "credential_theft",
+        "file": "dist\\extension.js",
+        "line": 1,
+        "evidence": "&(o=n)}if(\"ollama\"===n){const t=await e.secrets.get(u.secretBaseUrlName(\"ollama\"))||void 0,"
+      },
+      {
+        "name": "Secret storage access",
+        "severity": "medium",
+        "description": "Accesses VS Code secret storage API",
+        "category": "credential_theft",
+        "file": "dist\\extension.js",
+        "line": 1,
+        "evidence": "odels(n);if(\"groq\"===n){const t=await e.secrets.get(u.secretKeyName(\"groq\"));if(t){const e="
+      },
+      {
+        "name": "Secret storage access",
+        "severity": "medium",
+        "description": "Accesses VS Code secret storage API",
+        "category": "credential_theft",
+        "file": "dist\\extension.js",
+        "line": 1,
+        "evidence": "(s=e)}}if(\"ollama\"===n){const t=await e.secrets.get(u.secretBaseUrlName(\"ollama\"))||void 0,"
+      },
+      {
+        "name": "Secret storage access",
+        "severity": "medium",
+        "description": "Accesses VS Code secret storage API",
+        "category": "credential_theft",
+        "file": "dist\\extension.js",
+        "line": 1,
+        "evidence": "uage\",\"\"),u=\"ollama\"===s?void 0:await e.secrets.get(this.secretKeyName(s));let _;if(\"ollama"
+      },
+      {
+        "name": "Secret storage access",
+        "severity": "medium",
+        "description": "Accesses VS Code secret storage API",
+        "category": "credential_theft",
+        "file": "dist\\extension.js",
+        "line": 1,
+        "evidence": "e(s));let _;if(\"ollama\"===s&&(_=await e.secrets.get(this.secretBaseUrlName(\"ollama\"))||void"
+      },
+      {
+        "name": "Configuration modification",
+        "severity": "medium",
+        "description": "Modifies VS Code settings programmatically",
+        "category": "settings_manipulation",
+        "file": "dist\\extension.js",
+        "line": 1,
+        "evidence": "ets.store(u.secretKeyName(n),s)}await i.workspace.getConfiguration(\"codevisualizer.llm\").update(\"provider\",n,i.ConfigurationTarget.Glob"
+      },
+      {
+        "name": "Configuration modification",
+        "severity": "medium",
+        "description": "Modifies VS Code settings programmatically",
+        "category": "settings_manipulation",
+        "file": "dist\\extension.js",
+        "line": 1,
+        "evidence": "n,i.ConfigurationTarget.Global),await i.workspace.getConfiguration(\"codevisualizer.llm\").update(\"enabled\",!0,i.ConfigurationTarget.Glob"
+      },
+      {
+        "name": "Configuration modification",
+        "severity": "medium",
+        "description": "Modifies VS Code settings programmatically",
+        "category": "settings_manipulation",
+        "file": "dist\\extension.js",
+        "line": 1,
+        "evidence": "eFocusOut:!0});if(!e)return;a=e}await i.workspace.getConfiguration(\"codevisualizer.llm\").update(\"model\",a,i.ConfigurationTarget.Global)"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\extension.js",
+        "line": 1,
+        "evidence": "uleOptions){return initPromise||(Module=Object.assign({},Module,moduleOptions),initPromise=new P"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\extension.js",
+        "line": 1,
+        "evidence": "esolveInitPromise=>{var moduleOverrides=Object.assign({},Module),arguments_=[],thisProgram=\"./th"
+      },
+      {
+        "name": "Bulk file reading with variable path",
+        "severity": "medium",
+        "description": "Reads file content using variable path - bulk file harvesting indicator",
+        "category": "workspace_harvesting",
+        "file": "dist\\extension.js",
+        "line": 1,
+        "evidence": "URI(e)?new URL(e):nodePath.normalize(e),fs.readFileSync(e,t?void 0:\"utf8\")),readBinary=e=>{var t="
+      },
+      {
+        "name": "Bulk file reading with variable path",
+        "severity": "medium",
+        "description": "Reads file content using variable path - bulk file harvesting indicator",
+        "category": "workspace_harvesting",
+        "file": "dist\\extension.js",
+        "line": 1,
+        "evidence": "URI(e)?new URL(e):nodePath.normalize(e),fs.readFile(e,s?void 0:\"utf8\",(e,o)=>{e?n(e):t(s?o.bu"
+      },
+      {
+        "name": "Plaintext HTTP endpoint (not HTTPS)",
+        "severity": "high",
+        "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+        "category": "insecure_endpoint",
+        "file": "dist\\extension.js",
+        "line": 1,
+        "evidence": "const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');\\n"
+      },
+      {
+        "name": "DATA EXFILTRATION: File monitoring + base64 encoding + network",
+        "severity": "critical",
+        "description": "Extension monitors file changes, encodes content, and has network access - confirmed data exfiltration pattern (matches ChatMoss malware)",
+        "category": "behavioral_correlation",
+        "file": "dist\\extension.js",
+        "line": 0,
+        "evidence": "Keystroke monitoring (onDidChangeTextDocument) | Bulk file reading with variable path | HTTP POST with sensitive data",
+        "confidence": "HIGH",
+        "attack_type": "code_exfiltration"
+      },
+      {
+        "name": "CREDENTIAL LEAK: Auth token handling + plaintext HTTP",
+        "severity": "critical",
+        "description": "Extension handles auth tokens AND uses plaintext HTTP - credentials sent unencrypted",
+        "category": "behavioral_correlation",
+        "file": "dist\\extension.js",
+        "line": 0,
+        "evidence": "Secret storage access + Plaintext HTTP endpoint (not HTTPS)",
+        "confidence": "MEDIUM",
+        "attack_type": "credential_leak"
+      },
+      {
+        "name": "KEYLOGGING: Keystroke monitoring + network exfiltration",
+        "severity": "critical",
+        "description": "Extension monitors keystrokes AND sends network requests - data exfiltration",
+        "category": "behavioral_correlation",
+        "file": "dist\\extension.js",
+        "line": 0,
+        "evidence": "Keystroke monitoring (onDidChangeTextDocument) + HTTP POST with sensitive data",
+        "confidence": "HIGH",
+        "attack_type": "keylogging"
+      }
+    ],
+    "module_usage": {
+      "file_access": [
+        {
+          "module": "fs",
+          "file": "dist\\extension.js",
+          "line": 1
+        },
+        {
+          "module": "path",
+          "file": "dist\\extension.js",
+          "line": 1
+        }
+      ],
+      "crypto": [
+        {
+          "module": "crypto",
+          "file": "dist\\extension.js",
+          "line": 1
+        }
+      ]
+    },
+    "external_urls": [
+      {
+        "url": "https://api.groq.com/openai/v1/models",
+        "file": "dist\\extension.js",
+        "line": 1
+      },
+      {
+        "url": "https://api.openai.com/v1/chat/completions",
+        "file": "dist\\extension.js",
+        "line": 1
+      },
+      {
+        "url": "https://api.groq.com/openai/v1/chat/completions",
+        "file": "dist\\extension.js",
+        "line": 1
+      },
+      {
+        "url": "https://api.groq.com/openai/v1/chat/completions",
+        "file": "dist\\extension.js",
+        "line": 1
+      },
+      {
+        "url": "https://cdn.jsdelivr.net/npm/mermaid@11.8.0/dist/mermaid.min.js",
+        "file": "dist\\extension.js",
+        "line": 1
+      },
+      {
+        "url": "https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js",
+        "file": "dist\\extension.js",
+        "line": 1
+      },
+      {
+        "url": "https://cdn.jsdelivr.net/npm/mermaid@11.8.0/dist/mermaid.min.js",
+        "file": "dist\\extension.js",
+        "line": 1
+      },
+      {
+        "url": "https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js",
+        "file": "dist\\extension.js",
+        "line": 1
+      }
+    ],
+    "file_entropies": {},
+    "files_scanned": 1,
+    "findings_by_category": {
+      "code_execution": [
+        {
+          "name": "eval() usage",
+          "severity": "high",
+          "description": "Dynamic code execution via eval()",
+          "category": "code_execution",
+          "file": "dist\\extension.js",
+          "line": 1,
+          "evidence": "gs}) => { ${body} };`;ASM_CONSTS[start]=eval(func)}if(updateTableMap(tableBase,metada"
+        },
+        {
+          "name": "eval() usage",
+          "severity": "high",
+          "description": "Dynamic code execution via eval()",
+          "category": "code_execution",
+          "file": "dist\\extension.js",
+          "line": 1,
+          "evidence": "Args}) => ${body};`;moduleExports[name]=eval(func)}for(var name in moduleExports)if(n"
+        }
+      ],
+      "network_exfil": [
+        {
+          "name": "HTTP POST with sensitive data",
+          "severity": "medium",
+          "description": "Sends data via HTTP POST request",
+          "category": "network_exfil",
+          "file": "dist\\extension.js",
+          "line": 1,
+          "evidence": "nt:n},{role:\"user\",content:s}]},i=await fetch(\"https://api.openai.com/v1/chat/completions\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+        },
+        {
+          "name": "HTTP POST with sensitive data",
+          "severity": "medium",
+          "description": "Sends data via HTTP POST request",
+          "category": "network_exfil",
+          "file": "dist\\extension.js",
+          "line": 1,
+          "evidence": "fy(a).slice(0,2e3)}`);try{const e=await fetch(\"https://api.groq.com/openai/v1/chat/completions\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+        },
+        {
+          "name": "HTTP POST with sensitive data",
+          "severity": "medium",
+          "description": "Sends data via HTTP POST request",
+          "category": "network_exfil",
+          "file": "dist\\extension.js",
+          "line": 1,
+          "evidence": "tringify(l).slice(0,2e3)}`);try{c=await fetch(i,{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+        },
+        {
+          "name": "HTTP POST with sensitive data",
+          "severity": "medium",
+          "description": "Sends data via HTTP POST request",
+          "category": "network_exfil",
+          "file": "dist\\extension.js",
+          "line": 1,
+          "evidence": "tringify(_).slice(0,2e3)}`);try{f=await fetch(\"https://api.groq.com/openai/v1/chat/completions\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+        }
+      ],
+      "keylogging": [
+        {
+          "name": "Keystroke monitoring (onDidChangeTextDocument)",
+          "severity": "medium",
+          "description": "Monitors text changes - potential keylogger if combined with network",
+          "category": "keylogging",
+          "file": "dist\\extension.js",
+          "line": 1,
+          "evidence": "(){this._eventListenersSetup||(i.window.onDidChangeActiveTextEditor(async e=>{await this.updateView(e)},null,this."
+        },
+        {
+          "name": "Keystroke monitoring (onDidChangeTextDocument)",
+          "severity": "medium",
+          "description": "Monitors text changes - potential keylogger if combined with network",
+          "category": "keylogging",
+          "file": "dist\\extension.js",
+          "line": 1,
+          "evidence": ")}},null,this._disposables),i.workspace.onDidChangeTextDocument(e=>{e.document===i.window.activeTextEdit"
+        }
+      ],
+      "credential_theft": [
+        {
+          "name": "Secret storage access",
+          "severity": "medium",
+          "description": "Accesses VS Code secret storage API",
+          "category": "credential_theft",
+          "file": "dist\\extension.js",
+          "line": 1,
+          "evidence": "f(\"ollama\"===n)return!0;const s=await e.secrets.get(u.secretKeyName(n));return Boolean(s)}s"
+        },
+        {
+          "name": "Secret storage access",
+          "severity": "medium",
+          "description": "Accesses VS Code secret storage API",
+          "category": "credential_theft",
+          "file": "dist\\extension.js",
+          "line": 1,
+          "evidence": "if different from default\"}),s&&await e.secrets.store(u.secretBaseUrlName(\"ollama\"),s);else{c"
+        },
+        {
+          "name": "Secret storage access",
+          "severity": "medium",
+          "description": "Accesses VS Code secret storage API",
+          "category": "credential_theft",
+          "file": "dist\\extension.js",
+          "line": 1,
+          "evidence": "key is required\"});if(!s)return;await e.secrets.store(u.secretKeyName(n),s)}await i.workspace"
+        },
+        {
+          "name": "Secret storage access",
+          "severity": "medium",
+          "description": "Accesses VS Code secret storage API",
+          "category": "credential_theft",
+          "file": "dist\\extension.js",
+          "line": 1,
+          "evidence": "els during onboarding\");const t=await e.secrets.get(u.secretKeyName(\"groq\")),n=t?await(0,d."
+        },
+        {
+          "name": "Secret storage access",
+          "severity": "medium",
+          "description": "Accesses VS Code secret storage API",
+          "category": "credential_theft",
+          "file": "dist\\extension.js",
+          "line": 1,
+          "evidence": "&(o=n)}if(\"ollama\"===n){const t=await e.secrets.get(u.secretBaseUrlName(\"ollama\"))||void 0,"
+        },
+        {
+          "name": "Secret storage access",
+          "severity": "medium",
+          "description": "Accesses VS Code secret storage API",
+          "category": "credential_theft",
+          "file": "dist\\extension.js",
+          "line": 1,
+          "evidence": "odels(n);if(\"groq\"===n){const t=await e.secrets.get(u.secretKeyName(\"groq\"));if(t){const e="
+        },
+        {
+          "name": "Secret storage access",
+          "severity": "medium",
+          "description": "Accesses VS Code secret storage API",
+          "category": "credential_theft",
+          "file": "dist\\extension.js",
+          "line": 1,
+          "evidence": "(s=e)}}if(\"ollama\"===n){const t=await e.secrets.get(u.secretBaseUrlName(\"ollama\"))||void 0,"
+        },
+        {
+          "name": "Secret storage access",
+          "severity": "medium",
+          "description": "Accesses VS Code secret storage API",
+          "category": "credential_theft",
+          "file": "dist\\extension.js",
+          "line": 1,
+          "evidence": "uage\",\"\"),u=\"ollama\"===s?void 0:await e.secrets.get(this.secretKeyName(s));let _;if(\"ollama"
+        },
+        {
+          "name": "Secret storage access",
+          "severity": "medium",
+          "description": "Accesses VS Code secret storage API",
+          "category": "credential_theft",
+          "file": "dist\\extension.js",
+          "line": 1,
+          "evidence": "e(s));let _;if(\"ollama\"===s&&(_=await e.secrets.get(this.secretBaseUrlName(\"ollama\"))||void"
+        }
+      ],
+      "settings_manipulation": [
+        {
+          "name": "Configuration modification",
+          "severity": "medium",
+          "description": "Modifies VS Code settings programmatically",
+          "category": "settings_manipulation",
+          "file": "dist\\extension.js",
+          "line": 1,
+          "evidence": "ets.store(u.secretKeyName(n),s)}await i.workspace.getConfiguration(\"codevisualizer.llm\").update(\"provider\",n,i.ConfigurationTarget.Glob"
+        },
+        {
+          "name": "Configuration modification",
+          "severity": "medium",
+          "description": "Modifies VS Code settings programmatically",
+          "category": "settings_manipulation",
+          "file": "dist\\extension.js",
+          "line": 1,
+          "evidence": "n,i.ConfigurationTarget.Global),await i.workspace.getConfiguration(\"codevisualizer.llm\").update(\"enabled\",!0,i.ConfigurationTarget.Glob"
+        },
+        {
+          "name": "Configuration modification",
+          "severity": "medium",
+          "description": "Modifies VS Code settings programmatically",
+          "category": "settings_manipulation",
+          "file": "dist\\extension.js",
+          "line": 1,
+          "evidence": "eFocusOut:!0});if(!e)return;a=e}await i.workspace.getConfiguration(\"codevisualizer.llm\").update(\"model\",a,i.ConfigurationTarget.Global)"
+        }
+      ],
+      "prototype_pollution": [
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\extension.js",
+          "line": 1,
+          "evidence": "uleOptions){return initPromise||(Module=Object.assign({},Module,moduleOptions),initPromise=new P"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\extension.js",
+          "line": 1,
+          "evidence": "esolveInitPromise=>{var moduleOverrides=Object.assign({},Module),arguments_=[],thisProgram=\"./th"
+        }
+      ],
+      "workspace_harvesting": [
+        {
+          "name": "Bulk file reading with variable path",
+          "severity": "medium",
+          "description": "Reads file content using variable path - bulk file harvesting indicator",
+          "category": "workspace_harvesting",
+          "file": "dist\\extension.js",
+          "line": 1,
+          "evidence": "URI(e)?new URL(e):nodePath.normalize(e),fs.readFileSync(e,t?void 0:\"utf8\")),readBinary=e=>{var t="
+        },
+        {
+          "name": "Bulk file reading with variable path",
+          "severity": "medium",
+          "description": "Reads file content using variable path - bulk file harvesting indicator",
+          "category": "workspace_harvesting",
+          "file": "dist\\extension.js",
+          "line": 1,
+          "evidence": "URI(e)?new URL(e):nodePath.normalize(e),fs.readFile(e,s?void 0:\"utf8\",(e,o)=>{e?n(e):t(s?o.bu"
+        }
+      ],
+      "insecure_endpoint": [
+        {
+          "name": "Plaintext HTTP endpoint (not HTTPS)",
+          "severity": "high",
+          "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+          "category": "insecure_endpoint",
+          "file": "dist\\extension.js",
+          "line": 1,
+          "evidence": "const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');\\n"
+        }
+      ],
+      "behavioral_correlation": [
+        {
+          "name": "DATA EXFILTRATION: File monitoring + base64 encoding + network",
+          "severity": "critical",
+          "description": "Extension monitors file changes, encodes content, and has network access - confirmed data exfiltration pattern (matches ChatMoss malware)",
+          "category": "behavioral_correlation",
+          "file": "dist\\extension.js",
+          "line": 0,
+          "evidence": "Keystroke monitoring (onDidChangeTextDocument) | Bulk file reading with variable path | HTTP POST with sensitive data",
+          "confidence": "HIGH",
+          "attack_type": "code_exfiltration"
+        },
+        {
+          "name": "CREDENTIAL LEAK: Auth token handling + plaintext HTTP",
+          "severity": "critical",
+          "description": "Extension handles auth tokens AND uses plaintext HTTP - credentials sent unencrypted",
+          "category": "behavioral_correlation",
+          "file": "dist\\extension.js",
+          "line": 0,
+          "evidence": "Secret storage access + Plaintext HTTP endpoint (not HTTPS)",
+          "confidence": "MEDIUM",
+          "attack_type": "credential_leak"
+        },
+        {
+          "name": "KEYLOGGING: Keystroke monitoring + network exfiltration",
+          "severity": "critical",
+          "description": "Extension monitors keystrokes AND sends network requests - data exfiltration",
+          "category": "behavioral_correlation",
+          "file": "dist\\extension.js",
+          "line": 0,
+          "evidence": "Keystroke monitoring (onDidChangeTextDocument) + HTTP POST with sensitive data",
+          "confidence": "HIGH",
+          "attack_type": "keylogging"
+        }
+      ]
+    },
+    "findings_by_severity": {
+      "high": 3,
+      "medium": 22,
+      "critical": 3
+    },
+    "suppressed_false_positives": 2
+  },
+  "malicious_patterns": [
+    {
+      "name": "eval() usage",
+      "severity": "high",
+      "description": "Dynamic code execution via eval()",
+      "category": "code_execution",
+      "file": "dist\\extension.js",
+      "line": 1,
+      "evidence": "gs}) => { ${body} };`;ASM_CONSTS[start]=eval(func)}if(updateTableMap(tableBase,metada"
+    },
+    {
+      "name": "eval() usage",
+      "severity": "high",
+      "description": "Dynamic code execution via eval()",
+      "category": "code_execution",
+      "file": "dist\\extension.js",
+      "line": 1,
+      "evidence": "Args}) => ${body};`;moduleExports[name]=eval(func)}for(var name in moduleExports)if(n"
+    },
+    {
+      "name": "HTTP POST with sensitive data",
+      "severity": "medium",
+      "description": "Sends data via HTTP POST request",
+      "category": "network_exfil",
+      "file": "dist\\extension.js",
+      "line": 1,
+      "evidence": "nt:n},{role:\"user\",content:s}]},i=await fetch(\"https://api.openai.com/v1/chat/completions\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+    },
+    {
+      "name": "HTTP POST with sensitive data",
+      "severity": "medium",
+      "description": "Sends data via HTTP POST request",
+      "category": "network_exfil",
+      "file": "dist\\extension.js",
+      "line": 1,
+      "evidence": "fy(a).slice(0,2e3)}`);try{const e=await fetch(\"https://api.groq.com/openai/v1/chat/completions\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+    },
+    {
+      "name": "HTTP POST with sensitive data",
+      "severity": "medium",
+      "description": "Sends data via HTTP POST request",
+      "category": "network_exfil",
+      "file": "dist\\extension.js",
+      "line": 1,
+      "evidence": "tringify(l).slice(0,2e3)}`);try{c=await fetch(i,{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+    },
+    {
+      "name": "HTTP POST with sensitive data",
+      "severity": "medium",
+      "description": "Sends data via HTTP POST request",
+      "category": "network_exfil",
+      "file": "dist\\extension.js",
+      "line": 1,
+      "evidence": "tringify(_).slice(0,2e3)}`);try{f=await fetch(\"https://api.groq.com/openai/v1/chat/completions\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+    },
+    {
+      "name": "Keystroke monitoring (onDidChangeTextDocument)",
+      "severity": "medium",
+      "description": "Monitors text changes - potential keylogger if combined with network",
+      "category": "keylogging",
+      "file": "dist\\extension.js",
+      "line": 1,
+      "evidence": "(){this._eventListenersSetup||(i.window.onDidChangeActiveTextEditor(async e=>{await this.updateView(e)},null,this."
+    },
+    {
+      "name": "Keystroke monitoring (onDidChangeTextDocument)",
+      "severity": "medium",
+      "description": "Monitors text changes - potential keylogger if combined with network",
+      "category": "keylogging",
+      "file": "dist\\extension.js",
+      "line": 1,
+      "evidence": ")}},null,this._disposables),i.workspace.onDidChangeTextDocument(e=>{e.document===i.window.activeTextEdit"
+    },
+    {
+      "name": "Secret storage access",
+      "severity": "medium",
+      "description": "Accesses VS Code secret storage API",
+      "category": "credential_theft",
+      "file": "dist\\extension.js",
+      "line": 1,
+      "evidence": "f(\"ollama\"===n)return!0;const s=await e.secrets.get(u.secretKeyName(n));return Boolean(s)}s"
+    },
+    {
+      "name": "Secret storage access",
+      "severity": "medium",
+      "description": "Accesses VS Code secret storage API",
+      "category": "credential_theft",
+      "file": "dist\\extension.js",
+      "line": 1,
+      "evidence": "if different from default\"}),s&&await e.secrets.store(u.secretBaseUrlName(\"ollama\"),s);else{c"
+    },
+    {
+      "name": "Secret storage access",
+      "severity": "medium",
+      "description": "Accesses VS Code secret storage API",
+      "category": "credential_theft",
+      "file": "dist\\extension.js",
+      "line": 1,
+      "evidence": "key is required\"});if(!s)return;await e.secrets.store(u.secretKeyName(n),s)}await i.workspace"
+    },
+    {
+      "name": "Secret storage access",
+      "severity": "medium",
+      "description": "Accesses VS Code secret storage API",
+      "category": "credential_theft",
+      "file": "dist\\extension.js",
+      "line": 1,
+      "evidence": "els during onboarding\");const t=await e.secrets.get(u.secretKeyName(\"groq\")),n=t?await(0,d."
+    },
+    {
+      "name": "Secret storage access",
+      "severity": "medium",
+      "description": "Accesses VS Code secret storage API",
+      "category": "credential_theft",
+      "file": "dist\\extension.js",
+      "line": 1,
+      "evidence": "&(o=n)}if(\"ollama\"===n){const t=await e.secrets.get(u.secretBaseUrlName(\"ollama\"))||void 0,"
+    },
+    {
+      "name": "Secret storage access",
+      "severity": "medium",
+      "description": "Accesses VS Code secret storage API",
+      "category": "credential_theft",
+      "file": "dist\\extension.js",
+      "line": 1,
+      "evidence": "odels(n);if(\"groq\"===n){const t=await e.secrets.get(u.secretKeyName(\"groq\"));if(t){const e="
+    },
+    {
+      "name": "Secret storage access",
+      "severity": "medium",
+      "description": "Accesses VS Code secret storage API",
+      "category": "credential_theft",
+      "file": "dist\\extension.js",
+      "line": 1,
+      "evidence": "(s=e)}}if(\"ollama\"===n){const t=await e.secrets.get(u.secretBaseUrlName(\"ollama\"))||void 0,"
+    },
+    {
+      "name": "Secret storage access",
+      "severity": "medium",
+      "description": "Accesses VS Code secret storage API",
+      "category": "credential_theft",
+      "file": "dist\\extension.js",
+      "line": 1,
+      "evidence": "uage\",\"\"),u=\"ollama\"===s?void 0:await e.secrets.get(this.secretKeyName(s));let _;if(\"ollama"
+    },
+    {
+      "name": "Secret storage access",
+      "severity": "medium",
+      "description": "Accesses VS Code secret storage API",
+      "category": "credential_theft",
+      "file": "dist\\extension.js",
+      "line": 1,
+      "evidence": "e(s));let _;if(\"ollama\"===s&&(_=await e.secrets.get(this.secretBaseUrlName(\"ollama\"))||void"
+    },
+    {
+      "name": "Configuration modification",
+      "severity": "medium",
+      "description": "Modifies VS Code settings programmatically",
+      "category": "settings_manipulation",
+      "file": "dist\\extension.js",
+      "line": 1,
+      "evidence": "ets.store(u.secretKeyName(n),s)}await i.workspace.getConfiguration(\"codevisualizer.llm\").update(\"provider\",n,i.ConfigurationTarget.Glob"
+    },
+    {
+      "name": "Configuration modification",
+      "severity": "medium",
+      "description": "Modifies VS Code settings programmatically",
+      "category": "settings_manipulation",
+      "file": "dist\\extension.js",
+      "line": 1,
+      "evidence": "n,i.ConfigurationTarget.Global),await i.workspace.getConfiguration(\"codevisualizer.llm\").update(\"enabled\",!0,i.ConfigurationTarget.Glob"
+    },
+    {
+      "name": "Configuration modification",
+      "severity": "medium",
+      "description": "Modifies VS Code settings programmatically",
+      "category": "settings_manipulation",
+      "file": "dist\\extension.js",
+      "line": 1,
+      "evidence": "eFocusOut:!0});if(!e)return;a=e}await i.workspace.getConfiguration(\"codevisualizer.llm\").update(\"model\",a,i.ConfigurationTarget.Global)"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\extension.js",
+      "line": 1,
+      "evidence": "uleOptions){return initPromise||(Module=Object.assign({},Module,moduleOptions),initPromise=new P"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\extension.js",
+      "line": 1,
+      "evidence": "esolveInitPromise=>{var moduleOverrides=Object.assign({},Module),arguments_=[],thisProgram=\"./th"
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "severity": "medium",
+      "description": "Reads file content using variable path - bulk file harvesting indicator",
+      "category": "workspace_harvesting",
+      "file": "dist\\extension.js",
+      "line": 1,
+      "evidence": "URI(e)?new URL(e):nodePath.normalize(e),fs.readFileSync(e,t?void 0:\"utf8\")),readBinary=e=>{var t="
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "severity": "medium",
+      "description": "Reads file content using variable path - bulk file harvesting indicator",
+      "category": "workspace_harvesting",
+      "file": "dist\\extension.js",
+      "line": 1,
+      "evidence": "URI(e)?new URL(e):nodePath.normalize(e),fs.readFile(e,s?void 0:\"utf8\",(e,o)=>{e?n(e):t(s?o.bu"
+    },
+    {
+      "name": "Plaintext HTTP endpoint (not HTTPS)",
+      "severity": "high",
+      "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+      "category": "insecure_endpoint",
+      "file": "dist\\extension.js",
+      "line": 1,
+      "evidence": "const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');\\n"
+    },
+    {
+      "name": "DATA EXFILTRATION: File monitoring + base64 encoding + network",
+      "severity": "critical",
+      "description": "Extension monitors file changes, encodes content, and has network access - confirmed data exfiltration pattern (matches ChatMoss malware)",
+      "category": "behavioral_correlation",
+      "file": "dist\\extension.js",
+      "line": 0,
+      "evidence": "Keystroke monitoring (onDidChangeTextDocument) | Bulk file reading with variable path | HTTP POST with sensitive data",
+      "confidence": "HIGH",
+      "attack_type": "code_exfiltration"
+    },
+    {
+      "name": "CREDENTIAL LEAK: Auth token handling + plaintext HTTP",
+      "severity": "critical",
+      "description": "Extension handles auth tokens AND uses plaintext HTTP - credentials sent unencrypted",
+      "category": "behavioral_correlation",
+      "file": "dist\\extension.js",
+      "line": 0,
+      "evidence": "Secret storage access + Plaintext HTTP endpoint (not HTTPS)",
+      "confidence": "MEDIUM",
+      "attack_type": "credential_leak"
+    },
+    {
+      "name": "KEYLOGGING: Keystroke monitoring + network exfiltration",
+      "severity": "critical",
+      "description": "Extension monitors keystrokes AND sends network requests - data exfiltration",
+      "category": "behavioral_correlation",
+      "file": "dist\\extension.js",
+      "line": 0,
+      "evidence": "Keystroke monitoring (onDidChangeTextDocument) + HTTP POST with sensitive data",
+      "confidence": "HIGH",
+      "attack_type": "keylogging"
+    }
+  ],
+  "html_analysis": {
+    "findings": [],
+    "files_scanned": 0,
+    "iframe_urls": []
+  },
+  "permissions": {
+    "high_risk": [
+      {
+        "permission": "credential_access",
+        "description": "Accesses credential files/stores",
+        "finding_count": 9
+      },
+      {
+        "permission": "keystroke_monitoring",
+        "description": "Monitors text document changes (keylogger vector)",
+        "finding_count": 2
+      }
+    ],
+    "medium_risk": [
+      {
+        "permission": "filesystem",
+        "description": "Can read/write files on disk",
+        "evidence": [
+          {
+            "module": "fs",
+            "file": "dist\\extension.js",
+            "line": 1
+          },
+          {
+            "module": "path",
+            "file": "dist\\extension.js",
+            "line": 1
+          }
+        ]
+      }
+    ],
+    "low_risk": [],
+    "total": 3,
+    "all": [
+      "credential_access",
+      "keystroke_monitoring",
+      "filesystem"
+    ]
+  },
+  "risk_score": 3.8,
+  "risk_level": "LOW",
+  "risk_breakdown": {
+    "metadata_publisher": 0.4,
+    "supply_chain": 0.0,
+    "code_analysis": 1.4,
+    "behavioral_correlations": 2.0,
+    "infrastructure": 0
+  },
+  "module_usage": {
+    "file_access": [
+      {
+        "module": "fs",
+        "file": "dist\\extension.js",
+        "line": 1
+      },
+      {
+        "module": "path",
+        "file": "dist\\extension.js",
+        "line": 1
+      }
+    ],
+    "crypto": [
+      {
+        "module": "crypto",
+        "file": "dist\\extension.js",
+        "line": 1
+      }
+    ]
+  },
+  "external_urls": [
+    {
+      "url": "https://api.groq.com/openai/v1/models",
+      "file": "dist\\extension.js",
+      "line": 1
+    },
+    {
+      "url": "https://api.openai.com/v1/chat/completions",
+      "file": "dist\\extension.js",
+      "line": 1
+    },
+    {
+      "url": "https://api.groq.com/openai/v1/chat/completions",
+      "file": "dist\\extension.js",
+      "line": 1
+    },
+    {
+      "url": "https://api.groq.com/openai/v1/chat/completions",
+      "file": "dist\\extension.js",
+      "line": 1
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/mermaid@11.8.0/dist/mermaid.min.js",
+      "file": "dist\\extension.js",
+      "line": 1
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js",
+      "file": "dist\\extension.js",
+      "line": 1
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/mermaid@11.8.0/dist/mermaid.min.js",
+      "file": "dist\\extension.js",
+      "line": 1
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js",
+      "file": "dist\\extension.js",
+      "line": 1
+    }
+  ],
+  "domain_intelligence": [
+    {
+      "domain": "api.groq.com",
+      "url": "https://api.groq.com/openai/v1/models",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "api.openai.com",
+      "url": "https://api.openai.com/v1/chat/completions",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "cdn.jsdelivr.net",
+      "url": "https://cdn.jsdelivr.net/npm/mermaid@11.8.0/dist/mermaid.min.js",
+      "threat_level": "BENIGN",
+      "confidence": 95,
+      "classification": "Legitimate Infrastructure",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": true,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    }
+  ],
+  "virustotal_results": [
+    {
+      "available": true,
+      "domain": "api.openai.com",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 64,
+        "undetected": 29
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {
+        "alphaMountain.ai": "Business/Economy, Information Technology (alphaMountain.ai)",
+        "BitDefender": "computersandsoftware",
+        "Dr.Web": "chats",
+        "Sophos": "information technology",
+        "Forcepoint ThreatSeeker": "generative ai - text and code"
+      },
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2007-01-19",
+        "age_days": 6959,
+        "age_human": "19 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".com",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/api.openai.com"
+    },
+    {
+      "available": true,
+      "domain": "api.groq.com",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 62,
+        "undetected": 31
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2007-07-22",
+        "age_days": 6776,
+        "age_human": "18 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".com",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/api.groq.com"
+    }
+  ]
+}

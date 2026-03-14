@@ -1,0 +1,1262 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threat Intelligence Report - Checker Plus for Gmail™</title>
+    <style>
+        :root {
+            --color-critical: #ef4444;
+            --color-high: #f97316;
+            --color-medium: #eab308;
+            --color-low: #22c55e;
+            --color-info: #3b82f6;
+            --color-dark: #0f172a;
+            --color-gray: #94a3b8;
+            --color-light-bg: #1e293b;
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #475569;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+        }
+
+        .report-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--bg-secondary);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Header Section */
+        .report-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 40px 50px;
+            border-bottom: 4px solid #84cc16;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .report-title {
+            flex: 1;
+        }
+        
+        .report-title h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        
+        .report-title .subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+            font-weight: 400;
+        }
+        
+        .classification-badge {
+            background: #84cc16;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        .header-meta {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .meta-item {
+            text-align: center;
+        }
+        
+        .meta-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.7;
+            margin-bottom: 6px;
+        }
+        
+        .meta-value {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        /* Campaign Alert */
+        .campaign-alert {
+            background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
+            padding: 30px 50px;
+            border-left: 6px solid #dc2626;
+            color: white;
+        }
+        
+        .campaign-alert h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .campaign-alert p {
+            margin: 8px 0;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        
+        .campaign-alert .indicators {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .campaign-alert .indicators li {
+            margin: 6px 0;
+            font-size: 14px;
+        }
+        
+        .campaign-reference {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 13px;
+        }
+        
+        .campaign-reference a {
+            color: #fca5a5;
+            text-decoration: none;
+            border-bottom: 1px solid #fca5a5;
+        }
+        
+        /* Executive Summary */
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(234, 179, 8, 0.05) 100%);
+            border-left: 6px solid #eab308;
+            padding: 35px 50px;
+            margin: 0;
+        }
+
+        .executive-summary.critical {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.05) 100%);
+            border-left-color: #ef4444;
+        }
+
+        .executive-summary h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fcd34d;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .executive-summary.critical h2 {
+            color: #fca5a5;
+        }
+
+        .bluf {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.8;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+
+        .executive-summary.critical .bluf {
+            color: var(--text-primary);
+        }
+
+        .key-findings {
+            display: grid;
+            gap: 12px;
+        }
+
+        .finding-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+
+        .finding-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .finding-text {
+            flex: 1;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+        
+        /* Content Sections */
+        .content {
+            padding: 0;
+        }
+
+        .section {
+            padding: 40px 50px;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-card);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 20px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        
+        /* IOC Section */
+        .ioc-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .ioc-category {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .ioc-category-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ioc-list {
+            display: grid;
+            gap: 8px;
+        }
+
+        .ioc-item {
+            padding: 10px 14px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--color-critical);
+            border-radius: 4px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            color: #fca5a5;
+        }
+        
+        /* Domain Intelligence */
+        .domain-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .domain-card.threat-critical {
+            border-left: 4px solid var(--color-critical);
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .domain-card.threat-high {
+            border-left: 4px solid var(--color-high);
+            background: rgba(249, 115, 22, 0.1);
+        }
+
+        .domain-card.threat-medium {
+            border-left: 4px solid var(--color-medium);
+            background: rgba(234, 179, 8, 0.1);
+        }
+
+        .domain-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .domain-name {
+            font-family: 'Monaco', monospace;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .threat-badge {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .threat-badge.critical {
+            background: var(--color-critical);
+            color: white;
+        }
+        
+        .threat-badge.high {
+            background: var(--color-high);
+            color: white;
+        }
+        
+        .threat-badge.medium {
+            background: var(--color-medium);
+            color: white;
+        }
+        
+        .threat-badge.low {
+            background: var(--color-low);
+            color: white;
+        }
+        
+        .threat-badge.benign {
+            background: #10b981;
+            color: white;
+        }
+        
+        .domain-classification {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fca5a5;
+            margin-bottom: 10px;
+        }
+
+        .domain-indicators {
+            display: grid;
+            gap: 6px;
+        }
+
+        .indicator-tag {
+            padding: 6px 10px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 4px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            border-left: 3px solid #ef4444;
+        }
+        
+        /* Technical Details */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .detail-card {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .detail-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .detail-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Threat Analysis - ENHANCED TO SHOW POST DESTINATIONS */
+        .threat-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid #ef4444;
+            border-radius: 6px;
+            padding: 18px;
+            margin-bottom: 12px;
+        }
+
+        .threat-item.high {
+            border-left-color: #ef4444;
+        }
+
+        .threat-item.medium {
+            border-left-color: #eab308;
+        }
+
+        .threat-item.low {
+            border-left-color: #64748b;
+        }
+
+        .threat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .threat-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .threat-severity {
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .threat-severity.high {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+        }
+
+        .threat-severity.medium {
+            background: rgba(234, 179, 8, 0.2);
+            color: #fcd34d;
+        }
+
+        .threat-description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .threat-destination {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 6px;
+            padding: 12px;
+            margin: 10px 0;
+            font-family: 'Monaco', monospace;
+            font-size: 13px;
+        }
+
+        .threat-destination-label {
+            font-weight: 700;
+            color: #fca5a5;
+            margin-bottom: 6px;
+        }
+
+        .threat-destination-url {
+            color: #f87171;
+            word-break: break-all;
+        }
+
+        .threat-metadata {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 12px 0;
+            padding: 12px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+
+        .threat-meta-item {
+            font-size: 13px;
+        }
+
+        .threat-meta-label {
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .threat-meta-value {
+            color: var(--text-primary);
+            font-family: 'Monaco', monospace;
+        }
+
+        .threat-location {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-family: 'Monaco', monospace;
+        }
+
+        .vt-cross-ref {
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(234, 179, 8, 0.1);
+            border-left: 3px solid #eab308;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .vt-cross-ref-icon {
+            color: #fcd34d;
+            font-weight: 700;
+        }
+
+        /* Recommendations */
+        .recommendations {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.05) 100%);
+            border-left: 6px solid #10b981;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .recommendations.critical {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.05) 100%);
+            border-left-color: #ef4444;
+        }
+
+        .recommendations h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #34d399;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .recommendations.critical h3 {
+            color: #fca5a5;
+        }
+
+        .rec-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .rec-item {
+            padding: 12px 16px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-primary);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .recommendations.critical .rec-item {
+            color: var(--text-primary);
+        }
+
+        .rec-icon {
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        /* Footer */
+        .report-footer {
+            background: var(--bg-primary);
+            padding: 30px 50px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 13px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        /* No data states */
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            color: #34d399;
+            font-size: 15px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        
+        /* Enhanced Code Snippets - KOI Style */
+        .code-snippet-container {
+            margin: 15px 0;
+            background: #1e1e1e;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #333;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        
+        .code-snippet-header {
+            background: #2d2d2d;
+            padding: 10px 15px;
+            border-bottom: 1px solid #3a3a3a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .code-snippet-header-dots {
+            display: flex;
+            gap: 6px;
+        }
+        
+        .code-snippet-header-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+        
+        .code-snippet-filename {
+            color: #a0a0a0;
+            font-size: 13px;
+            margin-left: auto;
+            font-family: 'Monaco', monospace;
+        }
+        
+        .code-snippet-body {
+            padding: 20px;
+            overflow-x: auto;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        .code-snippet-body pre {
+            margin: 0;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #d4d4d4;
+        }
+        
+        .code-line {
+            display: block;
+        }
+        
+        .code-line-number {
+            display: inline-block;
+            min-width: 45px;
+            color: #858585;
+            text-align: right;
+            padding-right: 20px;
+            user-select: none;
+            border-right: 1px solid #3a3a3a;
+            margin-right: 15px;
+        }
+        
+        .code-line-content {
+            display: inline;
+        }
+        
+        .code-line-highlight {
+            background: rgba(255, 95, 86, 0.15);
+            display: block;
+            margin: 0 -20px;
+            padding: 0 20px;
+            border-left: 3px solid #ff5f56;
+        }
+        
+        /* Syntax highlighting */
+        .code-keyword { color: #569cd6; font-weight: 600; }
+        .code-function { color: #dcdcaa; }
+        .code-string { color: #ce9178; }
+        .code-comment { color: #6a9955; font-style: italic; }
+        .code-const { color: #4fc1ff; }
+        .code-variable { color: #9cdcfe; }
+        .code-operator { color: #d4d4d4; }
+        .code-punctuation { color: #808080; }
+        
+        /* Subsection */
+        .subsection {
+            padding: 20px 0;
+        }
+
+        /* Finding Cards */
+        .finding-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        /* Alert Styles */
+        .alert {
+            display: flex;
+            gap: 15px;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .alert-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .alert-critical {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+        }
+
+        .alert-high {
+            background: rgba(249, 115, 22, 0.15);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            color: #fdba74;
+        }
+
+        .alert-medium {
+            background: rgba(234, 179, 8, 0.15);
+            border: 1px solid rgba(234, 179, 8, 0.3);
+            color: #fcd34d;
+        }
+
+        .alert-low {
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #86efac;
+        }
+
+        /* Print Styles */
+        @media print {
+            body { background: #1e293b; color: white; }
+            .report-container { box-shadow: none; }
+            .section { page-break-inside: avoid; }
+            .code-snippet-container { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="report-container">
+        <!-- Header -->
+        <div class="report-header">
+            <div class="header-top">
+                <div class="report-title" style="display: flex; align-items: center; gap: 20px;">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGRDI5MTQxNjI0MjA2ODExODIyQTk5OTU5RUZENEE2MSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo3NkY3OEJBNDcwQzcxMUUzQTQxM0Y4NDRENUJFMEIzRCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo3NkY3OEJBMzcwQzcxMUUzQTQxM0Y4NDRENUJFMEIzRCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RkQyOTE0MTYyNDIwNjgxMTgyMkE5OTk1OUVGRDRBNjEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RkQyOTE0MTYyNDIwNjgxMTgyMkE5OTk1OUVGRDRBNjEiLz4gPC9yZGY6RGVzY3Jp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" alt="Extension Icon" style="width: 64px; height: 64px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+                    <div>
+                        <h1 style="font-size: 24px; margin-bottom: 4px;">Checker Plus for Gmail™</h1>
+                        <div class="subtitle" style="font-size: 12px; opacity: 0.7; margin-bottom: 2px;">oeopbcgkkoapgobdbedcemjljbihmemj</div>
+                        <div class="subtitle">Threat Intelligence Report • January 29, 2026 at 18:33 UTC</div>
+                    </div>
+                </div>
+                <div class="classification-badge">LOW RISK</div>
+            </div>
+
+            <div class="header-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Risk Score</div>
+                    <div class="meta-value" style="font-size: 24px; color: #84cc16;">2.0/10</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Threat Class</div>
+                    <div class="meta-value">Suspicious Behavior Detected</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Analysis Confidence</div>
+                    <div class="meta-value">60%</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Manifest Version</div>
+                    <div class="meta-value">MV3</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="executive-summary ">
+            <h2>📋 Executive Summary</h2>
+            <div class="bluf"><strong>BLUF:</strong> Analysis completed. Review findings below for security assessment. No immediately critical issues identified.</div>
+            <div class="key-findings">
+
+                <div class="finding-item">
+                    <div class="finding-icon">🚩</div>
+                    <div class="finding-text">2 dangerous permissions requested</div>
+                </div>
+
+                <div class="finding-item">
+                    <div class="finding-icon">⚠️</div>
+                    <div class="finding-text">101 critical security issues in code</div>
+                </div>
+
+                <div class="finding-item">
+                    <div class="finding-icon">🌐</div>
+                    <div class="finding-text">3 suspicious/malicious domains detected</div>
+                </div>
+
+            </div>
+        </div>
+<div class="content">
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🔍</div>
+                <div class="section-title">Indicators of Compromise (IOCs)</div>
+            </div>
+            <div class="ioc-grid">
+
+            <div class="ioc-category">
+                <div class="ioc-category-title">📌 Extension Identifier</div>
+                <div class="ioc-list">
+                    <div class="ioc-item">oeopbcgkkoapgobdbedcemjljbihmemj</div>
+                </div>
+            </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🔐</div>
+                <div class="section-title">Host Permissions & Website Access</div>
+            </div>
+            <div class="subsection">
+
+                <div class="finding-card">
+                    <h3>Permission Scope: MINIMAL</h3>
+                    <p style="color: #84cc16; font-weight: 700; font-size: 18px; margin: 10px 0;">Risk Level: LOW</p>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 15px 0;">
+                        <div>
+                            <p style="font-size: 12px; color: #64748b; margin: 0;">Host Permissions</p>
+                            <p style="font-size: 24px; font-weight: 700; margin: 5px 0;">1</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 12px; color: #64748b; margin: 0;">Content Scripts</p>
+                            <p style="font-size: 24px; font-weight: 700; margin: 5px 0;">2</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 12px; color: #64748b; margin: 0;">Sensitive Categories</p>
+                            <p style="font-size: 24px; font-weight: 700; margin: 5px 0;">1</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 12px; color: #64748b; margin: 0;">Sensitive Domains</p>
+                            <p style="font-size: 24px; font-weight: 700; margin: 5px 0;">1</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 25px;">Risk Factors</h3>
+                <div class="finding-card">
+<p style="margin: 8px 0; font-size: 13px;">⚠️ Accesses 1 email site(s): mail.google.com</p></div>
+                <h3 style="margin-top: 25px;">Sensitive Website Access</h3>
+                <p style="font-size: 13px; color: #64748b; margin: 10px 0;">Extension requests permission to access the following sensitive categories:</p>
+
+                <div class="finding-card" style="margin: 15px 0;">
+                    <h4 style="color: #84cc16; margin: 0 0 10px 0;">Email (1 domains)</h4>
+                    <div style="max-height: 150px; overflow-y: auto;">
+<code style="display: block; margin: 3px 0; padding: 6px; background: #f1f5f9; border-radius: 4px; font-size: 12px;">mail.google.com</code>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 25px;">Sample Host Permissions</h3>
+                <p style="font-size: 13px; color: #64748b; margin: 10px 0;">Showing 1 of 1 host permission(s) requested by this extension:</p>
+                <div class="finding-card">
+
+                <div style="border-left: 3px solid #f59e0b; padding: 10px; margin: 10px 0; background: #f8fafc;">
+                    <p style="margin: 0; font-family: 'Courier New', monospace; font-size: 13px; font-weight: 700;">https://mail.google.com/</p>
+                    <p style="margin: 5px 0 0 0; font-size: 12px; color: #64748b;">Access to mail.google.com (path: /)</p>
+                    <p style="margin: 5px 0 0 0; font-size: 11px;"><span style="color: #f59e0b; font-weight: 700;">Risk: MEDIUM</span> | Category: email</p>
+                </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🛡️</div>
+                <div class="section-title">VirusTotal Domain Reputation</div>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: #ecfdf5; border-radius: 8px; border: 1px solid #d1fae5;">
+                <div style="font-size: 15px; color: #065f46;">
+                    ✅ <strong>7</strong> domain(s) checked and found clean
+                </div>
+
+                <div style="font-size: 14px; color: #64748b; margin-top: 8px;">
+                    ℹ️ 1 domain(s) not found in VirusTotal database
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🔬</div>
+                <div class="section-title">Advanced Malware Detection</div>
+            </div>
+            <div class="subsection">
+                <div class="alert alert-medium">
+                    <div class="alert-icon">⚠️</div>
+                    <div>
+                        <strong>Detection Verdict:</strong> CLEAN<br>
+                        <strong>Total Findings:</strong> 1 (0 critical, 0 high)<br>
+                        <strong>Analysis:</strong> Advanced behavioral analysis completed
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 20px; color: var(--color-high);">⏰ Delayed Activation (Time Bomb)</h3>
+
+                <div class="finding-card" style="border-left: 4px solid var(--color-high);">
+                    <h4 style="margin: 0 0 8px 0; font-size: 14px;">DELAYED_ACTIVATION_POTENTIAL</h4>
+                    <p style="margin: 5px 0; font-size: 13px;"><strong>Impact:</strong> Static analysis only - dynamic verification required</p>
+                    <p style="margin: 5px 0; font-size: 12px;"><strong>Indicators:</strong> N/A</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🔐</div>
+                <div class="section-title">PII/Sensitive Data Classification</div>
+            </div>
+            <div class="subsection">
+                <div class="alert alert-critical">
+                    <div class="alert-icon">🚨</div>
+                    <div>
+                        <strong>Overall Risk:</strong> CRITICAL<br>
+                        <strong>Destination:</strong> <code>https://github.com/aceat64/MailCheckerMinus/issues/15</code><br>
+                        <strong>Data Types Detected:</strong> 4<br>
+                        <strong>Total Severity Score:</strong> 36/10
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 20px;">Classified Data Types</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 15px;">
+
+                    <div class="finding-card" style="border-left: 4px solid #dc2626;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <h4 style="margin: 0; font-size: 14px; font-weight: 600;">CREDENTIALS</h4>
+                            <span class="badge" style="background: #dc2626; color: white; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 600;">CRITICAL (10/10)</span>
+                        </div>
+                        <p style="margin: 8px 0; font-size: 13px; color: #64748b;"><strong>Risk:</strong> Account takeover, identity theft, unauthorized access</p>
+                        <p style="margin: 0; font-size: 12px; color: #94a3b8;"><strong>Impact:</strong> Attacker gains full access to user accounts and services</p>
+<p style="margin-top: 8px; font-size: 12px; color: #94a3b8;"><strong style="color: #cbd5e1;">Detected via:</strong> <code style="background: rgba(59, 130, 246, 0.2); color: #93c5fd; padding: 2px 8px; border-radius: 3px; font-size: 11px;">chrome.cookies</code></p>
+                    </div>
+
+                    <div class="finding-card" style="border-left: 4px solid #dc2626;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <h4 style="margin: 0; font-size: 14px; font-weight: 600;">FINANCIAL</h4>
+                            <span class="badge" style="background: #dc2626; color: white; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 600;">CRITICAL (10/10)</span>
+                        </div>
+                        <p style="margin: 8px 0; font-size: 13px; color: #64748b;"><strong>Risk:</strong> Financial fraud, unauthorized transactions, identity theft</p>
+                        <p style="margin: 0; font-size: 12px; color: #94a3b8;"><strong>Impact:</strong> Direct financial loss and potential identity fraud</p>
+<p style="margin-top: 8px; font-size: 12px; color: #94a3b8;"><strong style="color: #cbd5e1;">Detected via:</strong> <code style="background: rgba(59, 130, 246, 0.2); color: #93c5fd; padding: 2px 8px; border-radius: 3px; font-size: 11px;">chrome.cookies</code></p>
+                    </div>
+
+                    <div class="finding-card" style="border-left: 4px solid #ea580c;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <h4 style="margin: 0; font-size: 14px; font-weight: 600;">PERSONAL INFO</h4>
+                            <span class="badge" style="background: #ea580c; color: white; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 600;">HIGH (8/10)</span>
+                        </div>
+                        <p style="margin: 8px 0; font-size: 13px; color: #64748b;"><strong>Risk:</strong> Privacy violation, doxxing, targeted attacks</p>
+                        <p style="margin: 0; font-size: 12px; color: #94a3b8;"><strong>Impact:</strong> Exposure of personally identifiable information</p>
+<p style="margin-top: 8px; font-size: 12px; color: #94a3b8;"><strong style="color: #cbd5e1;">Detected via:</strong> <code style="background: rgba(59, 130, 246, 0.2); color: #93c5fd; padding: 2px 8px; border-radius: 3px; font-size: 11px;">chrome.cookies</code></p>
+                    </div>
+
+                    <div class="finding-card" style="border-left: 4px solid #ea580c;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <h4 style="margin: 0; font-size: 14px; font-weight: 600;">COOKIES SESSIONS</h4>
+                            <span class="badge" style="background: #ea580c; color: white; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 600;">HIGH (8/10)</span>
+                        </div>
+                        <p style="margin: 8px 0; font-size: 13px; color: #64748b;"><strong>Risk:</strong> Session hijacking, account takeover</p>
+                        <p style="margin: 0; font-size: 12px; color: #94a3b8;"><strong>Impact:</strong> Attacker can impersonate user without credentials</p>
+<p style="margin-top: 8px; font-size: 12px; color: #94a3b8;"><strong style="color: #cbd5e1;">Detected via:</strong> <code style="background: rgba(59, 130, 246, 0.2); color: #93c5fd; padding: 2px 8px; border-radius: 3px; font-size: 11px;">chrome.cookies</code></p>
+                    </div>
+
+                </div>
+
+                <div class="alert alert-critical" style="margin-top: 20px;">
+                    <div class="alert-icon">🛡️</div>
+                    <div>
+                        <h4 style="margin: 0 0 8px 0; font-size: 14px; font-weight: 600;">Recommendation</h4>
+                        <p style="margin: 0; font-size: 13px;"><strong>Action:</strong> BLOCK IMMEDIATELY</p>
+                        <p style="margin: 5px 0; font-size: 13px;"><strong>Priority:</strong> P0 - Critical</p>
+                        <p style="margin: 5px 0 10px 0; font-size: 13px;">Extension exfiltrates 4 type(s) of critical data including credentials, financial information, or session tokens. Immediate removal required.</p>
+                        <p style="margin: 0; font-size: 12px; font-weight: 600;">Next Steps:</p>
+                        <ul style="margin: 5px 0 0 20px; font-size: 12px;">
+<li style="margin: 3px 0;">Uninstall extension immediately</li><li style="margin: 3px 0;">Reset passwords for all accounts</li><li style="margin: 3px 0;">Check for unauthorized transactions</li><li style="margin: 3px 0;">Report to Chrome Web Store</li><li style="margin: 3px 0;">Run full malware scan</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🔍</div>
+                <div class="section-title">Threat Campaign Attribution (OSINT)</div>
+            </div>
+            <div class="subsection">
+
+                <div class="finding-card" style="border-left: 4px solid #64748b;">
+                    <h3 style="color: #64748b; margin: 0 0 10px 0;">Attribution Confidence: LOW</h3>
+                    <p style="font-size: 14px; margin: 0;">LOW - Mentions found but no clear malicious indicators</p>
+                </div>
+
+                <div class="finding-card" style="margin: 20px 0;">
+                    <p style="font-size: 13px; margin: 0;">
+                        ✓ No confirmed attribution to known threat campaigns based on OSINT research.<br><br>
+                        This does not mean the extension is safe - it may be a new campaign, unpublished threat, or benign software.
+                        Continue with technical analysis to determine actual risk.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🌐</div>
+                <div class="section-title">Domain Intelligence Analysis</div>
+            </div>
+
+            <div class="domain-card threat-critical">
+                <div class="domain-header">
+                    <div class="domain-name">🌐 www.google.ca</div>
+                    <div class="threat-badge critical">CRITICAL</div>
+                </div>
+                <div class="domain-classification">Typosquatting</div>
+                <div class="domain-indicators">
+<div class="indicator-tag">• Typosquatting attempt of google.com</div>
+                </div>
+            </div>
+
+            <div class="domain-card threat-critical">
+                <div class="domain-header">
+                    <div class="domain-name">🌐 mathiasbynens.github.io</div>
+                    <div class="threat-badge critical">CRITICAL</div>
+                </div>
+                <div class="domain-classification">Typosquatting</div>
+                <div class="domain-indicators">
+<div class="indicator-tag">• Typosquatting attempt of github.com</div>
+                </div>
+            </div>
+
+            <div class="domain-card threat-medium">
+                <div class="domain-header">
+                    <div class="domain-name">🌐 newplace.to.link.phone.numbers.to</div>
+                    <div class="threat-badge medium">MEDIUM</div>
+                </div>
+                <div class="domain-classification">None</div>
+                <div class="domain-indicators">
+<div class="indicator-tag">• Possible newly registered domain</div>
+                </div>
+            </div>
+
+            <div class="domain-card threat-medium">
+                <div class="domain-header">
+                    <div class="domain-name">🌐 newplace.to.link.hashtag.handles.to</div>
+                    <div class="threat-badge medium">MEDIUM</div>
+                </div>
+                <div class="domain-classification">None</div>
+                <div class="domain-indicators">
+<div class="indicator-tag">• Possible newly registered domain</div>
+                </div>
+            </div>
+
+            <div class="domain-card threat-medium">
+                <div class="domain-header">
+                    <div class="domain-name">🌐 newplace.to.link.mention.to</div>
+                    <div class="threat-badge medium">MEDIUM</div>
+                </div>
+                <div class="domain-classification">None</div>
+                <div class="domain-indicators">
+<div class="indicator-tag">• Possible newly registered domain</div>
+                </div>
+            </div>
+
+            <div class="domain-card threat-critical">
+                <div class="domain-header">
+                    <div class="domain-name">🌐 google.com`,</div>
+                    <div class="threat-badge critical">CRITICAL</div>
+                </div>
+                <div class="domain-classification">Typosquatting</div>
+                <div class="domain-indicators">
+<div class="indicator-tag">• Typosquatting attempt of google.com</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">⚙️</div>
+                <div class="section-title">Technical Details</div>
+            </div>
+            <div class="detail-grid">
+                <div class="detail-card">
+                    <div class="detail-label">Extension ID</div>
+                    <div class="detail-value" style="font-family: monospace; font-size: 13px;">oeopbcgkkoapgobdbedcemjljbihmemj</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Version</div>
+                    <div class="detail-value">34.0.7</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Manifest Version</div>
+                    <div class="detail-value">3</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Permissions</div>
+                    <div class="detail-value">18</div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 15px; color: var(--text-primary);">📋 Dangerous Permissions</h3>
+<div style="display: grid; gap: 12px;">
+                <div style="background: rgba(239, 68, 68, 0.1); border-left: 4px solid #dc2626; padding: 15px; border-radius: 6px;">
+                    <div style="font-weight: 700; font-size: 15px; color: #fca5a5; margin-bottom: 6px;">
+                        🚩 cookies
+                    </div>
+                    <div style="font-size: 14px; color: #f87171; margin-bottom: 4px;">
+                        Can access cookies from all sites
+                    </div>
+                    <div style="font-size: 13px; color: #fca5a5; font-weight: 600;">
+                        HIGH - Can steal session tokens
+                    </div>
+                </div>
+
+                <div style="background: rgba(239, 68, 68, 0.1); border-left: 4px solid #dc2626; padding: 15px; border-radius: 6px;">
+                    <div style="font-weight: 700; font-size: 15px; color: #fca5a5; margin-bottom: 6px;">
+                        🚩 webRequest
+                    </div>
+                    <div style="font-size: 14px; color: #f87171; margin-bottom: 4px;">
+                        Can intercept all network requests
+                    </div>
+                    <div style="font-size: 13px; color: #fca5a5; font-weight: 600;">
+                        HIGH - Can spy on all your web traffic
+                    </div>
+                </div>
+</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">⚠️</div>
+                <div class="section-title">Threat Analysis</div>
+            </div>
+
+            <div class="threat-item high">
+                <div class="threat-header">
+                    <div class="threat-name">🚨 Data Exfiltration via POST</div>
+                    <div class="threat-severity high">high</div>
+                </div>
+                <div class="threat-description">Sends data to external server (possible data theft)</div>
+
+                <div class="context-analysis" style="margin: 10px 0; padding: 12px 15px; background: rgba(59, 130, 246, 0.1); border-left: 3px solid #3b82f6; border-radius: 4px; font-size: 13px; color: #cbd5e1; line-height: 1.5;">
+                    <strong style="color: #60a5fa;">Context Analysis:</strong> Data exfiltration is occurring with credential-related keywords present. The extension appears to be stealing and transmitting user credentials.
+                </div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> Data exfiltration
+                </div>
+
+                <div style="margin: 10px 0; padding: 8px 12px; background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; border-radius: 4px;">
+                    <span style="color: #94a3b8; font-size: 12px;">Matched pattern:</span>
+                    <code style="color: #f87171; background: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 3px; font-size: 12px; margin-left: 8px;">fetch(href, {
+            method: 'POST'</code>
+                </div>
+
+                <div class="code-snippet-container" style="margin: 15px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+                    <div class="code-snippet-header" style="background: linear-gradient(135deg, #374151 0%, #1f2937 100%); padding: 10px 15px; display: flex; align-items: center; gap: 10px;">
+                        <div class="code-snippet-header-dots" style="display: flex; gap: 6px;">
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #ef4444;"></div>
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #f59e0b;"></div>
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #22c55e;"></div>
+                        </div>
+                        <div class="code-snippet-filename" style="color: #9ca3af; font-size: 13px; font-family: monospace;">js\account.js</div>
+                    </div>
+                    <div class="code-snippet-body" style="background: #0f172a; padding: 0; overflow-x: auto;">
+                        <pre style="margin: 0; padding: 15px; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><div style="display: flex; border-left: 3px solid transparent; padding: 2px 10px;"><span style="color: #4b5563; min-width: 35px; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151;">2418</span><span style="padding-left: 10px; color: #e2e8f0;">   2418 |         ], 2, null, null, null, gmailIK]));</span></div><div style="display: flex; border-left: 3px solid transparent; padding: 2px 10px;"><span style="color: #4b5563; min-width: 35px; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151;">2419</span><span style="padding-left: 10px; color: #e2e8f0;">       2419 |     </span></div><div style="display: flex; border-left: 3px solid transparent; padding: 2px 10px;"><span style="color: #4b5563; min-width: 35px; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151;">2420</span><span style="padding-left: 10px; color: #e2e8f0;">       2420 |         <span class=<span class="code-string">"code-keyword"</span>>const</span> href = <span class="code-string">`https:<span class="code-comment">//mail.google.com/mail/u/${that.id}/s/?v=or&amp;ik=${gmailIK}&amp;at=${gmailAT}&amp;subui=chrome&amp;hl=en&amp;ts=`</span> + Date.<span class=<span class="code-string">"code-function"</span>>now</span>();</span></span></div><div style="display: flex; background: rgba(239, 68, 68, 0.2); border-left: 3px solid #ef4444; padding: 2px 10px;"><span style="color: #ef4444; min-width: 35px; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151;">2421</span><span style="padding-left: 10px; color: #e2e8f0;"><span style="color: #ef4444; font-weight: bold;">&gt;&gt;</span>          <span class=<span class="code-string">"code-keyword"</span>>const</span> fetchResponse = <span class=<span class="code-string">"code-keyword"</span>>await</span> <span class=<span class="code-string">"code-function"</span>>fetch</span>(href, {</span></div><div style="display: flex; border-left: 3px solid transparent; padding: 2px 10px;"><span style="color: #4b5563; min-width: 35px; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151;">2422</span><span style="padding-left: 10px; color: #e2e8f0;">       2422 |             method: <span class="code-string">'POST'</span>,</span></div><div style="display: flex; border-left: 3px solid transparent; padding: 2px 10px;"><span style="color: #4b5563; min-width: 35px; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151;">2423</span><span style="padding-left: 10px; color: #e2e8f0;">       2423 |             credentials: <span class="code-string">'include'</span>,</span></div><div style="display: flex; border-left: 3px solid transparent; padding: 2px 10px;"><span style="color: #4b5563; min-width: 35px; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151;">2424</span><span style="padding-left: 10px; color: #e2e8f0;">       2424 |             body</span></div></pre>
+                    </div>
+                </div>
+
+                <div class="threat-location">📍 js\account.js : Line 2421</div>
+            </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🎯</div>
+                <div class="section-title">Security Recommendations</div>
+            </div>
+            <div class="recommendations ">
+                <h3>✅ Recommended Actions</h3>
+                <div class="rec-list">
+<div class="rec-item"><div class="rec-icon">▸</div><div>No immediately critical issues identified</div></div><div class="rec-item"><div class="rec-icon">▸</div><div>Standard security practices apply</div></div><div class="rec-item"><div class="rec-icon">▸</div><div>Implement version pinning for stability</div></div><div class="rec-item"><div class="rec-icon">▸</div><div>Periodic re-assessment recommended (quarterly)</div></div><div class="rec-item"><div class="rec-icon">▸</div><div>Monitor for significant updates</div></div>
+                </div>
+            </div>
+        </div>
+</div>
+        <div class="report-footer">
+            <div class="footer-logo">Chrome Extension Security Analyzer</div>
+            <div>Professional Threat Intelligence • Powered by VirusTotal & AST Analysis</div>
+        </div>
+    </div>
+</body>
+</html>

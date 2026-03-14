@@ -1,0 +1,1653 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threat Analysis Report - Koidex - IDE Extension Security</title>
+    <style>
+        :root {
+            --color-critical: #ef4444;
+            --color-high: #f97316;
+            --color-medium: #eab308;
+            --color-low: #22c55e;
+            --color-info: #3b82f6;
+            --color-dark: #0f172a;
+            --color-gray: #94a3b8;
+            --color-light-bg: #1e293b;
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #475569;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+        }
+
+        .report-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--bg-secondary);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Header Section */
+        .report-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 40px 50px;
+            border-bottom: 4px solid #dc2626;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .report-title {
+            flex: 1;
+        }
+        
+        .report-title h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        
+        .report-title .subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+            font-weight: 400;
+        }
+        
+        .classification-badge {
+            background: #dc2626;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        .header-meta {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .meta-item {
+            text-align: center;
+        }
+        
+        .meta-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.7;
+            margin-bottom: 6px;
+        }
+        
+        .meta-value {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        /* Campaign Alert */
+        .campaign-alert {
+            background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
+            padding: 30px 50px;
+            border-left: 6px solid #dc2626;
+            color: white;
+        }
+        
+        .campaign-alert h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .campaign-alert p {
+            margin: 8px 0;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        
+        .campaign-alert .indicators {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .campaign-alert .indicators li {
+            margin: 6px 0;
+            font-size: 14px;
+        }
+        
+        .campaign-reference {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 13px;
+        }
+        
+        .campaign-reference a {
+            color: #fca5a5;
+            text-decoration: none;
+            border-bottom: 1px solid #fca5a5;
+        }
+        
+        /* Executive Summary */
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(234, 179, 8, 0.05) 100%);
+            border-left: 6px solid #eab308;
+            padding: 35px 50px;
+            margin: 0;
+        }
+
+        .executive-summary.critical {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.05) 100%);
+            border-left-color: #ef4444;
+        }
+
+        .executive-summary h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fcd34d;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .executive-summary.critical h2 {
+            color: #fca5a5;
+        }
+
+        .bluf {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.8;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+
+        .executive-summary.critical .bluf {
+            color: var(--text-primary);
+        }
+
+        .key-findings {
+            display: grid;
+            gap: 12px;
+        }
+
+        .finding-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+        
+        /* Content Sections */
+        .content {
+            padding: 0;
+        }
+
+        .section {
+            padding: 24px 44px 28px;
+            border-top: 1px solid var(--border-subtle);
+            background: var(--bg-panel);
+        }
+
+        .section:first-of-type {
+            border-top: none;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .section-header-main {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 6px;
+            background: #020617;
+            color: var(--text-secondary);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .section-body {
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transform: translateY(-2px);
+            transition: max-height 260ms cubic-bezier(0.4, 0.0, 0.2, 1),
+                        opacity 200ms ease-out,
+                        transform 200ms ease-out;
+        }
+
+        .section.expanded .section-body {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-toggle {
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: #f9fafb;
+            padding: 4px 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
+        }
+
+        .section-toggle:hover {
+            background: #eef2ff;
+            border-color: #c4b5fd;
+            color: #4b5563;
+        }
+
+        .section-toggle-icon {
+            width: 10px;
+            height: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-toggle-icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 999px;
+            border: 1px solid currentColor;
+        }
+
+        .section-toggle-icon::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 4px;
+            height: 4px;
+            border: 1px solid currentColor;
+            border-top: none;
+            border-left: none;
+            transform: translate(-50%, -65%) rotate(45deg);
+            transition: transform 160ms ease;
+        }
+
+        .section.collapsed .section-toggle-icon::after {
+            transform: translate(-50%, -35%) rotate(-135deg);
+        }
+        
+        /* IOC Section */
+        .ioc-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .ioc-category {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .ioc-category-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ioc-list {
+            display: grid;
+            gap: 8px;
+        }
+
+        .ioc-item {
+            padding: 10px 14px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--color-critical);
+            border-radius: 4px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            color: #fca5a5;
+        }
+        
+        /* Domain Intelligence */
+        .domain-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .domain-card.threat-critical {
+            border-left: 4px solid var(--color-critical);
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .domain-card.threat-high {
+            border-left: 4px solid var(--color-high);
+            background: rgba(249, 115, 22, 0.1);
+        }
+
+        .domain-card.threat-medium {
+            border-left: 4px solid var(--color-medium);
+            background: rgba(234, 179, 8, 0.1);
+        }
+
+        .domain-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .domain-name {
+            font-family: 'Monaco', monospace;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .threat-badge {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .threat-badge.critical {
+            background: var(--color-critical);
+            color: white;
+        }
+        
+        .threat-badge.high {
+            background: var(--color-high);
+            color: white;
+        }
+        
+        .threat-badge.medium {
+            background: var(--color-medium);
+            color: white;
+        }
+        
+        .threat-badge.low {
+            background: var(--color-low);
+            color: white;
+        }
+        
+        .threat-badge.benign {
+            background: #10b981;
+            color: white;
+        }
+        
+        .domain-classification {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fca5a5;
+            margin-bottom: 10px;
+        }
+
+        .domain-indicators {
+            display: grid;
+            gap: 6px;
+        }
+
+        .indicator-tag {
+            padding: 6px 10px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 4px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            border-left: 3px solid #ef4444;
+        }
+        
+        /* Technical Details */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .detail-card {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .detail-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .detail-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Threat Analysis - ENHANCED TO SHOW POST DESTINATIONS */
+        .threat-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-left: 3px solid var(--severity-medium);
+            border-radius: 6px;
+            padding: 18px;
+            margin-bottom: 12px;
+        }
+
+        .threat-item.high {
+            border-left-color: var(--severity-high);
+        }
+
+        .threat-item.medium {
+            border-left-color: var(--severity-medium);
+        }
+
+        .threat-item.low {
+            border-left-color: var(--severity-low);
+        }
+
+        .threat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .threat-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .threat-severity {
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .threat-severity.high {
+            border-color: var(--severity-high);
+            color: var(--severity-high);
+        }
+
+        .threat-severity.medium {
+            border-color: var(--severity-medium);
+            color: var(--severity-medium);
+        }
+
+        .threat-description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .threat-destination {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            padding: 12px;
+            margin: 10px 0;
+            font-family: 'Monaco', monospace;
+            font-size: 13px;
+        }
+
+        .threat-destination-label {
+            font-weight: 700;
+            color: var(--severity-critical);
+            margin-bottom: 6px;
+        }
+
+        .threat-destination-url {
+            color: var(--text-primary);
+            word-break: break-all;
+        }
+
+        .threat-metadata {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 12px 0;
+            padding: 12px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+
+        .threat-meta-item {
+            font-size: 13px;
+        }
+
+        .threat-meta-label {
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .threat-meta-value {
+            color: var(--text-primary);
+            font-family: 'Monaco', monospace;
+        }
+
+        .threat-location {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-family: 'Monaco', monospace;
+        }
+
+        .vt-cross-ref {
+            margin-top: 10px;
+            padding: 10px;
+            background: var(--bg-panel);
+            border-left: 3px solid var(--severity-medium);
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .vt-cross-ref-icon {
+            color: var(--severity-medium);
+            font-weight: 700;
+        }
+
+        /* Recommendations */
+        .recommendations {
+            background: var(--bg-panel);
+            border-left: 3px solid var(--severity-medium);
+            padding: 24px;
+            border-radius: 8px;
+        }
+
+        .recommendations.critical {
+            border-left-color: var(--severity-critical);
+        }
+
+        .recommendations h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .rec-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .rec-item {
+            padding: 12px 16px;
+            background: var(--bg-card);
+            border-radius: 6px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+
+        .rec-icon {
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        /* Footer */
+        .report-footer {
+            background: var(--bg-main);
+            padding: 24px 44px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 13px;
+            border-top: 1px solid var(--border-strong);
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        /* No data states */
+        .no-data {
+            text-align: center;
+            padding: 32px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            background: var(--bg-panel);
+            border-radius: 8px;
+            border: 1px solid var(--border-subtle);
+        }
+        
+        /* Enhanced code snippets (report-style context) */
+        .code-snippet-container {
+            margin: 15px 0;
+            background: #0b1220;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid #1e293b;
+            box-shadow: none;
+        }
+        
+        .code-snippet-header {
+            background: #020617;
+            padding: 8px 14px;
+            border-bottom: 1px solid #1e293b;
+            display: flex;
+            align-items: center;
+        }
+        
+        .code-snippet-header-dots {
+            display: none;
+        }
+        
+        .code-snippet-header-dot {
+            display: none;
+        }
+        
+        .code-snippet-filename {
+            color: #a0a0a0;
+            font-size: 13px;
+            margin-left: auto;
+            font-family: 'Monaco', monospace;
+        }
+        
+        .code-snippet-body {
+            padding: 20px;
+            overflow-x: auto;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        .code-snippet-body pre {
+            margin: 0;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #d4d4d4;
+        }
+        
+        .code-line {
+            display: block;
+        }
+        
+        .code-line-number {
+            display: inline-block;
+            min-width: 45px;
+            color: #858585;
+            text-align: right;
+            padding-right: 20px;
+            user-select: none;
+            border-right: 1px solid #3a3a3a;
+            margin-right: 15px;
+        }
+        
+        .code-line-content {
+            display: inline;
+        }
+        
+        .code-line-highlight {
+            background: rgba(185, 28, 28, 0.08);
+            display: block;
+            margin: 0 -20px;
+            padding: 0 20px;
+            border-left: 3px solid #b91c1c;
+        }
+        
+        /* Syntax highlighting */
+        .code-keyword { color: #569cd6; font-weight: 600; }
+        .code-function { color: #dcdcaa; }
+        .code-string { color: #ce9178; }
+        .code-comment { color: #6a9955; font-style: italic; }
+        .code-const { color: #4fc1ff; }
+        .code-variable { color: #9cdcfe; }
+        .code-operator { color: #d4d4d4; }
+        .code-punctuation { color: #808080; }
+        
+        /* Subsection */
+        .subsection {
+            padding: 20px 0;
+        }
+
+        /* Finding Cards */
+        .finding-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        /* Alert Styles */
+        .alert {
+            display: flex;
+            gap: 15px;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 15px 0;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+        }
+        
+        .alert-icon {
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        
+        .alert-critical {
+            border-left: 3px solid var(--severity-critical);
+        }
+        
+        .alert-high {
+            border-left: 3px solid var(--severity-high);
+        }
+        
+        .alert-medium {
+            border-left: 3px solid var(--severity-medium);
+        }
+        
+        .alert-low {
+            border-left: 3px solid var(--severity-low);
+        }
+
+        /* Print Styles */
+        @media print {
+            body { background: #1e293b; color: white; }
+            .report-container { box-shadow: none; }
+            .section { page-break-inside: avoid; }
+            .code-snippet-container { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="report-container">
+        <!-- Header -->
+        <div class="report-header">
+            <div class="header-top">
+                <div class="report-title" style="display: flex; align-items: center; gap: 20px;">
+                    <div style="width: 64px; height: 64px; background: var(--bg-card); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;">EXT</div>
+                    <div>
+                        <h1 style="font-size: 24px; margin-bottom: 4px;">Koidex - IDE Extension Security</h1>
+                        <div class="subtitle" style="font-size: 12px; opacity: 0.7; margin-bottom: 2px;">extensiontotal.extensiontotal-vscode</div>
+                        <div class="subtitle">Threat Analysis Report • March 13, 2026 at 22:51 UTC</div>
+                        
+                    </div>
+                </div>
+                <div class="classification-badge">CRITICAL RISK</div>
+            </div>
+
+            <div class="header-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Risk Score</div>
+                    <div class="meta-value" style="font-size: 24px; color: #dc2626;">4.1/10</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Threat Class</div>
+                    <div class="meta-value">Potentially Suspicious</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Analysis Confidence</div>
+                    <div class="meta-value">65%</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Extension Type</div>
+                    <div class="meta-value">VSCode Extension</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="executive-summary critical">
+            <h2>Executive Summary</h2>
+            <div class="bluf"><strong>BLUF:</strong> 1 domain(s) flagged by limited security vendors (1 total detections). May indicate suspicious activity or false positives. Manual verification recommended.</div>
+            <div class="key-findings">
+
+                <div class="finding-item">
+                    <div class="finding-icon"></div>
+                    <div class="finding-text">VirusTotal: 1 malicious domain(s) detected</div>
+                </div>
+
+                <div class="finding-item">
+                    <div class="finding-icon"></div>
+                    <div class="finding-text">1 dangerous permissions requested</div>
+                </div>
+
+                <div class="finding-item">
+                    <div class="finding-icon"></div>
+                    <div class="finding-text">5 security-relevant pattern(s) in extension code</div>
+                </div>
+
+            </div>
+        </div>
+<div class="content">
+        <div class="section">
+            <div class="section-header">
+                <div class="section-header-main">
+                    <div class="section-icon">VO</div>
+                    <div class="section-title">VSCode Extension Overview</div>
+                </div>
+            </div>
+            <div class="detail-grid">
+                <div class="detail-card">
+                    <div class="detail-label">Publisher</div>
+                    <div class="detail-value">extensiontotal Verified</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Installs</div>
+                    <div class="detail-value">4,681</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Rating</div>
+                    <div class="detail-value">⭐ 4.2 (5)</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Risk Score</div>
+                    <div class="detail-value" style="color: #dc2626;">
+                        4.1/10
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 15px; padding: 12px 16px; background: var(--bg-card); border-radius: 8px; color: var(--text-secondary); font-size: 14px;">
+                Analyze suspicious VS-based IDE extensions, navigate the extension jungle, and detect harmful code, risky access, and other security vulnerabilities.
+            </div>
+
+            <div style="margin-top: 20px;">
+                <h3 style="font-size: 16px; color: var(--text-primary); margin-bottom: 12px;">Metadata Risk Signals</h3>
+                <div style="display: grid; gap: 8px;">
+
+                    <div style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--bg-card); border-left: 3px solid #eab308; border-radius: 6px;">
+                        <span style="background: #eab308; color: white; padding: 2px 8px; border-radius: 3px; font-size: 10px; font-weight: 700; text-transform: uppercase;">medium</span>
+                        <span style="color: var(--text-primary); font-size: 13px;">Activation event &#x27;onStartupFinished&#x27;: Runs every launch - immediate execution</span>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--bg-card); border-left: 3px solid #eab308; border-radius: 6px;">
+                        <span style="background: #eab308; color: white; padding: 2px 8px; border-radius: 3px; font-size: 10px; font-weight: 700; text-transform: uppercase;">medium</span>
+                        <span style="color: var(--text-primary); font-size: 13px;">Activation event &#x27;onCommand:Koidex.scan&#x27;: Runs when command triggered - user/shortcut driven</span>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--bg-card); border-left: 3px solid #eab308; border-radius: 6px;">
+                        <span style="background: #eab308; color: white; padding: 2px 8px; border-radius: 3px; font-size: 10px; font-weight: 700; text-transform: uppercase;">medium</span>
+                        <span style="color: var(--text-primary); font-size: 13px;">Contributes &#x27;viewsContainers&#x27;: Webview views - remote HTML/JS possible</span>
+                    </div>
+</div></div>
+            <div style="margin-top: 15px; padding: 12px 16px; background: var(--bg-card); border-radius: 8px;">
+                <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 6px;">Activation Events</div>
+                <div style="font-family: monospace; font-size: 13px; color: var(--text-primary);">
+                    onStartupFinished, onCommand:Koidex.scan
+                    
+                </div>
+            </div>
+</div>
+        <div class="section">
+            <div class="section-header">
+                <div class="section-header-main">
+                    <div class="section-icon">SC</div>
+                    <div class="section-title">Supply Chain Analysis</div>
+                </div>
+            </div>
+            <div class="detail-grid">
+                <div class="detail-card">
+                    <div class="detail-label">Dependencies</div>
+                    <div class="detail-value">0</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Dev Dependencies</div>
+                    <div class="detail-value">9</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Bundled node_modules</div>
+                    <div class="detail-value">No</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Supply Chain Risk</div>
+                    <div class="detail-value" style="color: #22c55e;">
+                        0/10
+                    </div>
+                </div>
+            </div>
+<div class="no-data" style="margin-top: 15px;">No supply chain issues detected</div></div>
+        <div class="section">
+            <div class="section-header">
+                <div class="section-header-main">
+                    <div class="section-icon">DC</div>
+                    <div class="section-title">Deep Code Analysis</div>
+                </div>
+            </div>
+            <div class="detail-grid">
+                <div class="detail-card">
+                    <div class="detail-label">Files Scanned</div>
+                    <div class="detail-value">9</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Critical (App Code)</div>
+                    <div class="detail-value" style="color: #ef4444;">0</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">High (App Code)</div>
+                    <div class="detail-value" style="color: #f97316;">5</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Code Risk</div>
+                    <div class="detail-value">1.5/2</div>
+                </div>
+            </div>
+            
+
+            <div style="margin-top: 20px;">
+                <h3 style="font-size: 16px; color: var(--text-primary); margin-bottom: 12px;">Sensitive Module Usage</h3>
+                <div style="display: grid; gap: 8px;">
+
+                    <div style="background: var(--bg-card); border-left: 3px solid #f97316; padding: 12px 16px; border-radius: 6px;">
+                        <div style="font-weight: 600; color: var(--text-primary); font-size: 14px; margin-bottom: 4px;">
+                            Network
+                        </div>
+                        <div style="font-family: monospace; font-size: 12px; color: #f97316; margin-bottom: 4px;">
+                            https
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-secondary);">
+                            Used in: out\utils.js
+                        </div>
+                    </div>
+</div></div>
+            <div style="margin-top: 20px;">
+                <h3 style="font-size: 16px; color: var(--text-primary); margin-bottom: 12px;">Finding Categories</h3>
+                <div style="display: grid; gap: 8px;">
+
+                    <div style="background: var(--bg-card); border-left: 3px solid #ef4444; padding: 12px 16px; border-radius: 6px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                            <span style="font-weight: 600; color: var(--text-primary); font-size: 14px;">Credential Theft</span>
+                            <span style="background: #ef4444; color: white; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 700;">3</span>
+                        </div>
+                        <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 4px;">
+                            Accesses VS Code secret storage API
+                        </div>
+                        <div style="font-family: monospace; font-size: 11px; color: var(--text-secondary);">
+                            AuthManager.js:38
+                        </div>
+                    </div>
+
+                    <div style="background: var(--bg-card); border-left: 3px solid #eab308; padding: 12px 16px; border-radius: 6px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                            <span style="font-weight: 600; color: var(--text-primary); font-size: 14px;">Webview Security</span>
+                            <span style="background: #eab308; color: white; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 700;">1</span>
+                        </div>
+                        <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 4px;">
+                            Webview with JavaScript enabled (XSS vector if loading external content)
+                        </div>
+                        <div style="font-family: monospace; font-size: 11px; color: var(--text-secondary);">
+                            WelcomeViewProvider.js:40
+                        </div>
+                    </div>
+
+                    <div style="background: var(--bg-card); border-left: 3px solid #3b82f6; padding: 12px 16px; border-radius: 6px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                            <span style="font-weight: 600; color: var(--text-primary); font-size: 14px;">Reconnaissance</span>
+                            <span style="background: #3b82f6; color: white; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 700;">1</span>
+                        </div>
+                        <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 4px;">
+                            Enumerates all installed extensions - reconnaissance for extension hijacking
+                        </div>
+                        <div style="font-family: monospace; font-size: 11px; color: var(--text-secondary);">
+                            scanExtensions.js:78
+                        </div>
+                    </div>
+</div></div></div>
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">📊</div>
+                <div class="section-title">Risk Score Breakdown</div>
+            </div>
+
+            <div style="display: flex; gap: 30px; align-items: flex-start; flex-wrap: wrap;">
+                <div style="flex: 0 0 200px; text-align: center;">
+                    <div style="font-size: 56px; font-weight: 800; color: #dc2626;">4.1</div>
+                    <div style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;">out of 10.0</div>
+                    <div style="margin-top: 12px; padding: 6px 16px; border-radius: 20px; display: inline-block;
+                                background: #dc2626; color: white;
+                                font-weight: 700; font-size: 13px; letter-spacing: 1px;">
+                        CRITICAL RISK
+                    </div>
+
+                </div>
+                <div style="flex: 1; min-width: 300px;">
+
+                    <div style="margin-bottom: 16px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                            <span style="font-size: 13px; font-weight: 600; color: var(--text-primary);">Permissions</span>
+                            <span style="font-size: 13px; color: var(--text-secondary);">0.0 / 2.5</span>
+                        </div>
+                        <div style="height: 10px; background: rgba(255,255,255,0.08); border-radius: 5px; overflow: hidden;">
+                            <div style="height: 100%; width: 0%; background: #f97316; border-radius: 5px;
+                                        transition: width 0.3s;"></div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 16px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                            <span style="font-size: 13px; font-weight: 600; color: var(--text-primary);">Code Analysis</span>
+                            <span style="font-size: 13px; color: var(--text-secondary);">1.5 / 2.5</span>
+                        </div>
+                        <div style="height: 10px; background: rgba(255,255,255,0.08); border-radius: 5px; overflow: hidden;">
+                            <div style="height: 100%; width: 60%; background: #eab308; border-radius: 5px;
+                                        transition: width 0.3s;"></div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 16px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                            <span style="font-size: 13px; font-weight: 600; color: var(--text-primary);">Behavioral Correlations</span>
+                            <span style="font-size: 13px; color: var(--text-secondary);">0.0 / 3.0</span>
+                        </div>
+                        <div style="height: 10px; background: rgba(255,255,255,0.08); border-radius: 5px; overflow: hidden;">
+                            <div style="height: 100%; width: 0%; background: #ef4444; border-radius: 5px;
+                                        transition: width 0.3s;"></div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 16px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                            <span style="font-size: 13px; font-weight: 600; color: var(--text-primary);">Infrastructure</span>
+                            <span style="font-size: 13px; color: var(--text-secondary);">0.0 / 2.0</span>
+                        </div>
+                        <div style="height: 10px; background: rgba(255,255,255,0.08); border-radius: 5px; overflow: hidden;">
+                            <div style="height: 100%; width: 0%; background: #8b5cf6; border-radius: 5px;
+                                        transition: width 0.3s;"></div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 8px; padding: 8px 14px; background: rgba(34, 197, 94, 0.1);
+                                border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 6px;
+                                font-size: 12px; color: #86efac;">
+                        Positive signals: -0.7 (verified publisher, user count, narrow scope)
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-header-main">
+                    <div class="section-icon">IO</div>
+                    <div class="section-title">Indicators of Compromise (IOCs)</div>
+                </div>
+            </div>
+            <div class="ioc-grid">
+
+            <div class="ioc-category">
+                <div class="ioc-category-title">Extension Identifier</div>
+                <div class="ioc-list">
+                    <div class="ioc-item">extensiontotal.extensiontotal-vscode</div>
+                </div>
+            </div>
+
+            <div class="ioc-category">
+                <div class="ioc-category-title">Domains Flagged by VirusTotal</div>
+                <div class="ioc-list">
+
+                    <div class="ioc-item" style="border-left: 3px solid #dc2626; padding-left: 10px; margin-bottom: 8px;">
+                        <strong style="color:#fff;">www.koi.ai</strong>
+                        <span style="background:#dc2626;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;margin-left:8px;">
+                            MALICIOUS
+                        </span>
+                        <br>
+                        <span style="font-size:12px;color:#9ca3af;">
+                            1 malicious vendor(s) &nbsp;|&nbsp; 0 negative community vote(s)
+                            &nbsp;|&nbsp; Source: VT &nbsp;|&nbsp; created 2017-12-16 (8 years)
+                        </span>
+                        <br><a href="https://www.virustotal.com/gui/domain/www.koi.ai" target="_blank" style="color:#60a5fa;font-size:12px;">View on VirusTotal &rarr;</a>
+                        
+                    </div>
+
+                </div>
+            </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-header-main">
+                    <div class="section-icon">VT</div>
+                    <div class="section-title">VirusTotal Domain Reputation</div>
+                </div>
+            </div>
+            <div style="font-size: 13px; color: #94a3b8; margin-top: 8px;">
+                Domains are extracted from extension source and manifest (external URLs); known benign domains (CDNs, docs, standards) are not scanned. Only flagged (malicious/suspicious) domains are listed in the IOC section above.
+            </div>
+<h3 style="color: #f59e0b; margin-bottom: 20px; font-size: 20px; font-weight: 700;">Domains Flagged (Low Detection Count - Verify Manually)</h3>
+            <div class="domain-card threat-critical">
+                <div class="domain-header">
+                    <div class="domain-name">www.koi.ai</div>
+                    <div class="threat-badge critical">MALICIOUS</div>
+                </div>
+                <div class="domain-classification">Flagged by 1 security vendor(s)</div>
+                
+                <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <div style="margin-bottom: 10px;">
+                        <strong>Detection Statistics:</strong>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; font-size: 14px;">
+                        <div>Malicious: <strong>1</strong></div>
+                        <div>Suspicious: <strong>0</strong></div>
+                        <div>Harmless: <strong>58</strong></div>
+                        <div>Undetected: <strong>35</strong></div>
+                    </div>
+                </div>
+                
+                <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <div style="margin-bottom: 10px;">
+                        <strong>Community Votes:</strong>
+                    </div>
+                    <div style="font-size: 14px;">
+                        Malicious votes: <strong>0</strong> | 
+                        Harmless votes: <strong>0</strong>
+                    </div>
+                </div>
+
+                <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <div style="margin-bottom: 10px; color: #f1f5f9;">
+                        <strong>Security Vendors Flagging This Domain:</strong>
+                    </div>
+                    <div style="display: grid; gap: 8px;">
+
+                        <div style="padding: 10px 12px; background: rgba(239, 68, 68, 0.15); border-left: 3px solid #ef4444; border-radius: 4px; font-size: 13px;">
+                            <strong style="color: #f87171;">SOCRadar</strong><span style="color: #94a3b8;">:</span> <span style="color: #fecaca;">malware</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div style="margin-top: 15px; font-size: 13px; color: #64748b;">
+                    <a href="https://www.virustotal.com/gui/domain/www.koi.ai" target="_blank" style="color: #3b82f6; text-decoration: none;">
+                        View full VirusTotal report &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: #ecfdf5; border-radius: 8px; border: 1px solid #d1fae5;">
+                <div style="font-size: 15px; color: #065f46;">
+                    <strong>1</strong> domain(s) checked and found clean
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🤖</div>
+                <div class="section-title">Ollama Security Assessment</div>
+            </div>
+            <div class="subsection">
+
+                <p style="font-size: 13px; color: var(--color-gray); margin: 0;">Ollama assessment was not run. Re-run the analyzer with the <code>--ollama</code> flag (and ensure Ollama is running) to include an LLM security assessment in this report.</p>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-header-main">
+                    <div class="section-icon">DI</div>
+                    <div class="section-title">Domain Intelligence Analysis</div>
+                </div>
+            </div>
+<div class="no-data">No suspicious domain patterns detected in static analysis</div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-header-main">
+                    <div class="section-icon">TD</div>
+                    <div class="section-title">Technical Details</div>
+                </div>
+            </div>
+            <div class="detail-grid">
+                <div class="detail-card">
+                    <div class="detail-label">Identifier</div>
+                    <div class="detail-value" style="font-family: monospace; font-size: 13px;">extensiontotal.extensiontotal-vscode</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Version</div>
+                    <div class="detail-value">2.0.0</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Publisher</div>
+                    <div class="detail-value">extensiontotal</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">API Usage</div>
+                    <div class="detail-value">2</div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 15px; color: var(--text-primary);">Dangerous Permissions</h3>
+<div style="display: grid; gap: 12px;">
+                <div style="background: rgba(239, 68, 68, 0.1); border-left: 4px solid #dc2626; padding: 15px; border-radius: 6px;">
+                    <div style="font-weight: 700; font-size: 15px; color: #fca5a5; margin-bottom: 6px;">
+                        credential_access
+                    </div>
+                    <div style="font-size: 14px; color: #f87171; margin-bottom: 4px;">
+                        Accesses credential files/stores
+                    </div>
+                    <div style="font-size: 13px; color: #fca5a5; font-weight: 600;">
+                        High-risk API usage (3 finding(s))
+                    </div>
+                </div>
+</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-header-main">
+                    <div class="section-icon">TA</div>
+                    <div class="section-title">Threat Analysis</div>
+                </div>
+            </div>
+
+            <div class="threat-item high">
+                <div class="threat-header">
+                    <div class="threat-name">Browser-based exfiltration via env.openExternal</div>
+                    <div class="threat-severity high">high</div>
+                </div>
+                <div class="threat-description">Opens URL in user browser - can exfiltrate data via URL parameters</div>
+
+                <div class="context-analysis" style="margin: 10px 0; padding: 12px 15px; background: rgba(59, 130, 246, 0.1); border-left: 3px solid #3b82f6; border-radius: 4px; font-size: 13px; color: #cbd5e1; line-height: 1.5;">
+                    <strong style="color: #60a5fa;">Context Analysis:</strong> Data is being sent to an external server. Review what data is being collected and whether the destination is a legitimate service or an untrusted endpoint.
+                </div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> browser_exfil
+                </div>
+
+                <div style="margin: 10px 0; padding: 12px 15px; background: #0f172a; border-radius: 8px; border: 1px solid #374151; overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <span style="color: #6b7280; font-size: 11px; font-family: monospace;">AuthManager.js:91</span>
+                    </div>
+                    <pre style="margin: 0; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><span style="color: #ef4444; min-width: 35px; display: inline-block; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151; margin-right: 12px;">91</span><span style="color: #e2e8f0;">e = vscode.env.uriScheme;         <span class=<span class="code-string">"code-keyword"</span>>await</span> vscode.env.<span class=<span class="code-string">"code-function"</span>>openExternal</span>(vscode.Uri.<span class=<span class="code-string">"code-function"</span>>parse</span>(`${KOIDEX_LOGIN_URL}/${</span></pre>
+                </div>
+
+                <div class="threat-location">📍 AuthManager.js : Line 91</div>
+            </div>
+
+            <div class="threat-item high">
+                <div class="threat-header">
+                    <div class="threat-name">Browser-based exfiltration via env.openExternal</div>
+                    <div class="threat-severity high">high</div>
+                </div>
+                <div class="threat-description">Opens URL in user browser - can exfiltrate data via URL parameters</div>
+
+                <div class="context-analysis" style="margin: 10px 0; padding: 12px 15px; background: rgba(59, 130, 246, 0.1); border-left: 3px solid #3b82f6; border-radius: 4px; font-size: 13px; color: #cbd5e1; line-height: 1.5;">
+                    <strong style="color: #60a5fa;">Context Analysis:</strong> Data is being sent to an external server. Review what data is being collected and whether the destination is a legitimate service or an untrusted endpoint.
+                </div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> browser_exfil
+                </div>
+
+                <div style="margin: 10px 0; padding: 12px 15px; background: #0f172a; border-radius: 8px; border: 1px solid #374151; overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <span style="color: #6b7280; font-size: 11px; font-family: monospace;">AuthManager.js:100</span>
+                    </div>
+                    <pre style="margin: 0; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><span style="color: #ef4444; min-width: 35px; display: inline-block; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151; margin-right: 12px;">100</span><span style="color: #e2e8f0;">ccessfully logged out.&quot;);         <span class=<span class="code-string">"code-keyword"</span>>await</span> vscode.env.<span class=<span class="code-string">"code-function"</span>>openExternal</span>(vscode.Uri.<span class=<span class="code-string">"code-function"</span>>parse</span>(KOIDEX_LOGOUT_URL));</span></pre>
+                </div>
+
+                <div class="threat-location">📍 AuthManager.js : Line 100</div>
+            </div>
+
+            <div class="threat-item high">
+                <div class="threat-header">
+                    <div class="threat-name">Browser-based exfiltration via env.openExternal</div>
+                    <div class="threat-severity high">high</div>
+                </div>
+                <div class="threat-description">Opens URL in user browser - can exfiltrate data via URL parameters</div>
+
+                <div class="context-analysis" style="margin: 10px 0; padding: 12px 15px; background: rgba(59, 130, 246, 0.1); border-left: 3px solid #3b82f6; border-radius: 4px; font-size: 13px; color: #cbd5e1; line-height: 1.5;">
+                    <strong style="color: #60a5fa;">Context Analysis:</strong> Data is being sent to an external server. Review what data is being collected and whether the destination is a legitimate service or an untrusted endpoint.
+                </div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> browser_exfil
+                </div>
+
+                <div style="margin: 10px 0; padding: 12px 15px; background: #0f172a; border-radius: 8px; border: 1px solid #374151; overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <span style="color: #6b7280; font-size: 11px; font-family: monospace;">extension.js:98</span>
+                    </div>
+                    <pre style="margin: 0; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><span style="color: #ef4444; min-width: 35px; display: inline-block; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151; margin-right: 12px;">98</span><span style="color: #e2e8f0;">{             <span class=<span class="code-string">"code-keyword"</span>>return</span>;         }         vscode.env.<span class=<span class="code-string">"code-function"</span>>openExternal</span>(vscode.Uri.<span class=<span class="code-string">"code-function"</span>>parse</span>(`https:<span class="code-comment">//dex.koi.securi</span></span></pre>
+                </div>
+
+                <div class="threat-location">📍 extension.js : Line 98</div>
+            </div>
+
+            <div class="threat-item high">
+                <div class="threat-header">
+                    <div class="threat-name">Browser-based exfiltration via env.openExternal</div>
+                    <div class="threat-severity high">high</div>
+                </div>
+                <div class="threat-description">Opens URL in user browser - can exfiltrate data via URL parameters</div>
+
+                <div class="context-analysis" style="margin: 10px 0; padding: 12px 15px; background: rgba(59, 130, 246, 0.1); border-left: 3px solid #3b82f6; border-radius: 4px; font-size: 13px; color: #cbd5e1; line-height: 1.5;">
+                    <strong style="color: #60a5fa;">Context Analysis:</strong> Data is being sent to an external server. Review what data is being collected and whether the destination is a legitimate service or an untrusted endpoint.
+                </div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> browser_exfil
+                </div>
+
+                <div style="margin: 10px 0; padding: 12px 15px; background: #0f172a; border-radius: 8px; border: 1px solid #374151; overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <span style="color: #6b7280; font-size: 11px; font-family: monospace;">scanExtensions.js:168</span>
+                    </div>
+                    <pre style="margin: 0; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><span style="color: #ef4444; min-width: 35px; display: inline-block; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151; margin-right: 12px;">168</span><span style="color: #e2e8f0;">ion === &quot;Contact Us&quot;) {                 vscode.env.<span class=<span class="code-string">"code-function"</span>>openExternal</span>(vscode.Uri.<span class=<span class="code-string">"code-function"</span>>parse</span>(&quot;https:<span class="code-comment">//www.koi.ai/cha</span></span></pre>
+                </div>
+
+                <div class="threat-location">📍 scanExtensions.js : Line 168</div>
+            </div>
+
+            <div class="threat-item high">
+                <div class="threat-header">
+                    <div class="threat-name">Browser-based exfiltration via env.openExternal</div>
+                    <div class="threat-severity high">high</div>
+                </div>
+                <div class="threat-description">Opens URL in user browser - can exfiltrate data via URL parameters</div>
+
+                <div class="context-analysis" style="margin: 10px 0; padding: 12px 15px; background: rgba(59, 130, 246, 0.1); border-left: 3px solid #3b82f6; border-radius: 4px; font-size: 13px; color: #cbd5e1; line-height: 1.5;">
+                    <strong style="color: #60a5fa;">Context Analysis:</strong> Data is being sent to an external server. Review what data is being collected and whether the destination is a legitimate service or an untrusted endpoint.
+                </div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> browser_exfil
+                </div>
+
+                <div style="margin: 10px 0; padding: 12px 15px; background: #0f172a; border-radius: 8px; border: 1px solid #374151; overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <span style="color: #6b7280; font-size: 11px; font-family: monospace;">scanExtensions.js:253</span>
+                    </div>
+                    <pre style="margin: 0; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><span style="color: #ef4444; min-width: 35px; display: inline-block; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151; margin-right: 12px;">253</span><span style="color: #e2e8f0;">on === &quot;View Report&quot;) {                 vscode.env.<span class=<span class="code-string">"code-function"</span>>openExternal</span>(vscode.Uri.<span class=<span class="code-string">"code-function"</span>>parse</span>(`https:<span class="code-comment">//dex.koi.securi</span></span></pre>
+                </div>
+
+                <div class="threat-location">📍 scanExtensions.js : Line 253</div>
+            </div>
+
+            <div class="threat-item medium">
+                <div class="threat-header">
+                    <div class="threat-name">Secret storage access</div>
+                    <div class="threat-severity medium">medium</div>
+                </div>
+                <div class="threat-description">Accesses VS Code secret storage API</div>
+
+                <div style="margin: 8px 0; padding: 10px 14px; background: rgba(34, 197, 94, 0.08); border-left: 3px solid #22c55e; border-radius: 4px; font-size: 12px; color: #a1a1aa; line-height: 1.5;">
+                    <strong style="color: #4ade80;">Why This Matters:</strong> Credential access patterns detect reading of tokens, keys, or passwords. In auth libraries, this is expected functionality.
+                </div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> credential_theft
+                </div>
+
+                <div style="margin: 10px 0; padding: 12px 15px; background: #0f172a; border-radius: 8px; border: 1px solid #374151; overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <span style="color: #6b7280; font-size: 11px; font-family: monospace;">AuthManager.js:38</span>
+                    </div>
+                    <pre style="margin: 0; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><span style="color: #ef4444; min-width: 35px; display: inline-block; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151; margin-right: 12px;">38</span><span style="color: #e2e8f0;"><span class=<span class="code-string">"code-keyword"</span>>this</span>.currentToken = <span class=<span class="code-string">"code-keyword"</span>>await</span> <span class=<span class="code-string">"code-keyword"</span>>this</span>.context.secrets.<span class=<span class="code-string">"code-function"</span>>get</span>(<span class=<span class="code-string">"code-keyword"</span>>this</span>.SECRET_NAME);     }     <span class=<span class="code-string">"code-keyword"</span>>async</span> setT</span></pre>
+                </div>
+
+                <div class="threat-location">📍 AuthManager.js : Line 38</div>
+            </div>
+
+            <div class="threat-item medium">
+                <div class="threat-header">
+                    <div class="threat-name">Secret storage access</div>
+                    <div class="threat-severity medium">medium</div>
+                </div>
+                <div class="threat-description">Accesses VS Code secret storage API</div>
+
+                <div style="margin: 8px 0; padding: 10px 14px; background: rgba(34, 197, 94, 0.08); border-left: 3px solid #22c55e; border-radius: 4px; font-size: 12px; color: #a1a1aa; line-height: 1.5;">
+                    <strong style="color: #4ade80;">Why This Matters:</strong> Credential access patterns detect reading of tokens, keys, or passwords. In auth libraries, this is expected functionality.
+                </div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> credential_theft
+                </div>
+
+                <div style="margin: 10px 0; padding: 12px 15px; background: #0f172a; border-radius: 8px; border: 1px solid #374151; overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <span style="color: #6b7280; font-size: 11px; font-family: monospace;">AuthManager.js:41</span>
+                    </div>
+                    <pre style="margin: 0; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><span style="color: #ef4444; min-width: 35px; display: inline-block; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151; margin-right: 12px;">41</span><span style="color: #e2e8f0;"><span class=<span class="code-string">"code-function"</span>>ken</span>(token) {         <span class=<span class="code-string">"code-keyword"</span>>await</span> <span class=<span class="code-string">"code-keyword"</span>>this</span>.context.secrets.<span class=<span class="code-string">"code-function"</span>>store</span>(<span class=<span class="code-string">"code-keyword"</span>>this</span>.SECRET_NAME, token);         <span class=<span class="code-string">"code-keyword"</span>>this</span>.</span></pre>
+                </div>
+
+                <div class="threat-location">📍 AuthManager.js : Line 41</div>
+            </div>
+
+            <div class="threat-item medium">
+                <div class="threat-header">
+                    <div class="threat-name">Secret storage access</div>
+                    <div class="threat-severity medium">medium</div>
+                </div>
+                <div class="threat-description">Accesses VS Code secret storage API</div>
+
+                <div style="margin: 8px 0; padding: 10px 14px; background: rgba(34, 197, 94, 0.08); border-left: 3px solid #22c55e; border-radius: 4px; font-size: 12px; color: #a1a1aa; line-height: 1.5;">
+                    <strong style="color: #4ade80;">Why This Matters:</strong> Credential access patterns detect reading of tokens, keys, or passwords. In auth libraries, this is expected functionality.
+                </div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> credential_theft
+                </div>
+
+                <div style="margin: 10px 0; padding: 12px 15px; background: #0f172a; border-radius: 8px; border: 1px solid #374151; overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <span style="color: #6b7280; font-size: 11px; font-family: monospace;">AuthManager.js:46</span>
+                    </div>
+                    <pre style="margin: 0; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><span style="color: #ef4444; min-width: 35px; display: inline-block; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151; margin-right: 12px;">46</span><span style="color: #e2e8f0;"><span class=<span class="code-string">"code-function"</span>>earToken</span>() {         <span class=<span class="code-string">"code-keyword"</span>>await</span> <span class=<span class="code-string">"code-keyword"</span>>this</span>.context.secrets.<span class=<span class="code-string">"code-function"</span>>delete</span>(<span class=<span class="code-string">"code-keyword"</span>>this</span>.SECRET_NAME);         <span class=<span class="code-string">"code-keyword"</span>>this</span>.current</span></pre>
+                </div>
+
+                <div class="threat-location">📍 AuthManager.js : Line 46</div>
+            </div>
+
+            <div class="threat-item medium">
+                <div class="threat-header">
+                    <div class="threat-name">Persistent state storage (globalState)</div>
+                    <div class="threat-severity medium">medium</div>
+                </div>
+                <div class="threat-description">Uses globalState for persistent cross-session storage - can persist C2 config</div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> persistence
+                </div>
+
+                <div style="margin: 10px 0; padding: 12px 15px; background: #0f172a; border-radius: 8px; border: 1px solid #374151; overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <span style="color: #6b7280; font-size: 11px; font-family: monospace;">ExtensionResultProvider.js:36</span>
+                    </div>
+                    <pre style="margin: 0; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><span style="color: #ef4444; min-width: 35px; display: inline-block; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151; margin-right: 12px;">36</span><span style="color: #e2e8f0;"><span class=<span class="code-string">"code-keyword"</span>>let</span> savedResults = JSON.<span class=<span class="code-string">"code-function"</span>>parse</span>(<span class=<span class="code-string">"code-keyword"</span>>this</span>.context.globalState.<span class=<span class="code-string">"code-function"</span>>get</span>(<span class="code-string">`koidex-scan-results`</span>, &quot;[]&quot;));         t</span></pre>
+                </div>
+
+                <div class="threat-location">📍 ExtensionResultProvider.js : Line 36</div>
+            </div>
+
+            <div class="threat-item medium">
+                <div class="threat-header">
+                    <div class="threat-name">Persistent state storage (globalState)</div>
+                    <div class="threat-severity medium">medium</div>
+                </div>
+                <div class="threat-description">Uses globalState for persistent cross-session storage - can persist C2 config</div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> persistence
+                </div>
+
+                <div style="margin: 10px 0; padding: 12px 15px; background: #0f172a; border-radius: 8px; border: 1px solid #374151; overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <span style="color: #6b7280; font-size: 11px; font-family: monospace;">ExtensionResultProvider.js:45</span>
+                    </div>
+                    <pre style="margin: 0; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><span style="color: #ef4444; min-width: 35px; display: inline-block; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151; margin-right: 12px;">45</span><span style="color: #e2e8f0;"><span class=<span class="code-string">"code-keyword"</span>>this</span>.results = {};             <span class=<span class="code-string">"code-keyword"</span>>this</span>.context.globalState.<span class=<span class="code-string">"code-function"</span>>update</span>(<span class="code-string">`koidex-scan-results`</span>, undefined);</span></pre>
+                </div>
+
+                <div class="threat-location">📍 ExtensionResultProvider.js : Line 45</div>
+            </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-header-main">
+                    <div class="section-icon">SR</div>
+                    <div class="section-title">Security Recommendations</div>
+                </div>
+            </div>
+            <div class="recommendations critical">
+                <h3>Recommended Actions</h3>
+                <div class="rec-list">
+<div class="rec-item"><div class="rec-icon">▸</div><div><strong>Priority 3:</strong> 1 domain(s) flagged by 1 vendor(s) (low detection count)</div></div><div class="rec-item"><div class="rec-icon">▸</div><div>Manual verification recommended - could be false positives</div></div><div class="rec-item"><div class="rec-icon">▸</div><div>Review flagged domains for legitimacy (e.g., Firebase, CDNs)</div></div><div class="rec-item"><div class="rec-icon">▸</div><div>Monitor for additional suspicious behaviors</div></div><div class="rec-item"><div class="rec-icon">▸</div><div>Re-assess if additional indicators emerge</div></div>
+                </div>
+            </div>
+        </div>
+</div>
+        <div class="report-footer">
+            <div class="footer-logo">Extension Security Analyzer</div>
+            <div>Professional Threat Analysis • Static & Threat Intel Correlation</div>
+        </div>
+    </div>
+    <script>
+    (function() {
+        function initialiseSections() {
+            var sections = document.querySelectorAll('.section');
+            sections.forEach(function(section) {
+                var header = section.querySelector('.section-header');
+                if (!header) return;
+
+                // If a body already exists (newer generators), respect it
+                var existingBody = section.querySelector('.section-body');
+                if (!existingBody) {
+                    var children = Array.prototype.slice.call(section.children);
+                    var bodyChildren = children.filter(function(child) { return !child.classList.contains('section-header'); });
+                    if (!bodyChildren.length) return;
+                    var body = document.createElement('div');
+                    body.className = 'section-body';
+                    bodyChildren.forEach(function(child) { body.appendChild(child); });
+                    section.appendChild(body);
+                    existingBody = body;
+                }
+
+                var toggle = header.querySelector('.section-toggle');
+                if (!toggle) {
+                    toggle = document.createElement('button');
+                    toggle.type = 'button';
+                    toggle.className = 'section-toggle';
+                    toggle.innerHTML = '<span class="section-toggle-label">Collapse</span><span class="section-toggle-icon" aria-hidden="true"></span>';
+                    header.appendChild(toggle);
+                }
+
+                function updateBody(collapsed) {
+                    if (!existingBody) return;
+                    if (collapsed) {
+                        existingBody.style.maxHeight = '0px';
+                    } else {
+                        existingBody.style.maxHeight = existingBody.scrollHeight + 'px';
+                    }
+                }
+
+                // Default: expanded for critical sections, collapsed for long detail sections
+                var collapsed = section.classList.contains('collapsed');
+                if (!section.classList.contains('expanded') && !collapsed) {
+                    section.classList.add('expanded');
+                }
+
+                updateBody(collapsed);
+
+                toggle.addEventListener('click', function(ev) {
+                    ev.stopPropagation();
+                    var isCollapsed = section.classList.toggle('collapsed');
+                    if (!section.classList.contains('expanded')) {
+                        section.classList.add('expanded');
+                    }
+                    var label = toggle.querySelector('.section-toggle-label');
+                    if (label) {
+                        label.textContent = isCollapsed ? 'Expand' : 'Collapse';
+                    }
+                    updateBody(isCollapsed);
+                });
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initialiseSections);
+        } else {
+            initialiseSections();
+        }
+    })();
+    </script>
+</body>
+</html>

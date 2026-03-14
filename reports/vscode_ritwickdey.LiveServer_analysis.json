@@ -1,0 +1,333 @@
+{
+  "extension_type": "vscode",
+  "name": "Live Server",
+  "identifier": "ritwickdey.LiveServer",
+  "extension_id": "ritwickdey.LiveServer",
+  "version": "5.7.9",
+  "description": "Launch a development local Server with live reload feature for static & dynamic pages",
+  "publisher": "ritwickdey",
+  "engines": {
+    "vscode": "^1.51.0"
+  },
+  "store_metadata": {
+    "available": true,
+    "store": "vscode",
+    "identifier": "ritwickdey.LiveServer",
+    "name": "Live Server",
+    "publisher": "Ritwick Dey",
+    "publisher_id": "17fd9a78-e430-4a78-add2-ade4a8830352",
+    "publisher_domain": null,
+    "publisher_verified": false,
+    "short_description": "Launch a development local Server with live reload feature for static & dynamic pages",
+    "version": "5.7.9",
+    "last_updated": "2025-01-10T21:04:34.707Z",
+    "categories": [],
+    "tags": [],
+    "install_count": 74493407,
+    "rating_value": 4.39,
+    "rating_count": 513,
+    "flags": "validated, public",
+    "store_url": "https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer",
+    "risk_signals": {
+      "unverified_publisher": true
+    }
+  },
+  "metadata_risk": {
+    "findings": [
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onStartupFinished': Runs every launch - immediate execution",
+        "event": "onStartupFinished"
+      },
+      {
+        "type": "known_vulnerable_extension",
+        "severity": "critical",
+        "detail": "ritwickdey.LiveServer is affected by CVE-2025-65717: Live Server vulnerability allows remote webpages to crawl and exfiltrate files from the developer's localhost dev server (no CORS protection on http://localhost:5500). Requires user to browse a malicious site while server runs.",
+        "identifier": "ritwickdey.LiveServer",
+        "cve": "CVE-2025-65717",
+        "reference": "https://www.ox.security/blog/cve-2025-65717-live-server-vscode-vulnerability/",
+        "risk_context": "localhost_exposure",
+        "mitigation_note": "Update extension; avoid browsing untrusted sites while running local servers."
+      }
+    ],
+    "risk_score": 8,
+    "activation_events": [
+      "onStartupFinished"
+    ],
+    "contributes": [
+      "commands",
+      "keybindings",
+      "menus",
+      "configuration"
+    ]
+  },
+  "package_json_deep": {
+    "findings": [
+      {
+        "name": "Publisher-domain mismatch: ritwickdey vs 127.0.0.1:80",
+        "severity": "medium",
+        "description": "Publisher \"ritwickdey\" does not match operational domain \"127.0.0.1:80\"",
+        "category": "publisher_mismatch",
+        "file": "package.json",
+        "line": 0,
+        "evidence": "publisher=ritwickdey, domain=127.0.0.1:80"
+      },
+      {
+        "name": "Publisher-domain mismatch: ritwickdey vs twitter.com",
+        "severity": "medium",
+        "description": "Publisher \"ritwickdey\" does not match operational domain \"twitter.com\"",
+        "category": "publisher_mismatch",
+        "file": "package.json",
+        "line": 0,
+        "evidence": "publisher=ritwickdey, domain=twitter.com"
+      }
+    ]
+  },
+  "supply_chain": {
+    "findings": [
+      {
+        "type": "bundled_node_modules",
+        "severity": "info",
+        "detail": "225 bundled packages (14.9 MB)",
+        "count": 225,
+        "size_mb": 14.9
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "high",
+        "package": "semver",
+        "version": "7.3.6",
+        "cve_id": "GHSA-c2qf-rxjj-qqgw",
+        "link": "https://github.com/advisories/GHSA-c2qf-rxjj-qqgw",
+        "detail": "semver@7.3.6 has known vulnerability GHSA-c2qf-rxjj-qqgw"
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "high",
+        "package": "es5-ext",
+        "version": "0.10.53",
+        "cve_id": "GHSA-4gmj-3p3h-gm8h",
+        "link": "https://github.com/advisories/GHSA-4gmj-3p3h-gm8h",
+        "detail": "es5-ext@0.10.53 has known vulnerability GHSA-4gmj-3p3h-gm8h"
+      }
+    ],
+    "risk_score": 1.0,
+    "dependency_count": 5,
+    "dev_dependency_count": 19,
+    "has_node_modules": true,
+    "dependency_vulns": [
+      {
+        "package": "semver",
+        "version": "7.3.6",
+        "vulns": [
+          {
+            "id": "GHSA-c2qf-rxjj-qqgw",
+            "link": "https://github.com/advisories/GHSA-c2qf-rxjj-qqgw"
+          }
+        ]
+      },
+      {
+        "package": "es5-ext",
+        "version": "0.10.53",
+        "vulns": [
+          {
+            "id": "GHSA-4gmj-3p3h-gm8h",
+            "link": "https://github.com/advisories/GHSA-4gmj-3p3h-gm8h"
+          }
+        ]
+      }
+    ],
+    "bundled_js_vulns": []
+  },
+  "code_analysis": {
+    "all_findings": [
+      {
+        "name": "Document fileName/path collection",
+        "severity": "low",
+        "description": "Collects file paths from open documents - local filesystem path collection",
+        "category": "workspace_activity_monitoring",
+        "file": "out\\src\\appModel.js",
+        "line": 47,
+        "evidence": "itor ? vscode_1.window.activeTextEditor.document.fileName : '');             const pathInfos = He",
+        "path_type": "app"
+      }
+    ],
+    "module_usage": {
+      "file_access": [
+        {
+          "module": "fs",
+          "file": "out\\src\\Helper.js",
+          "line": 27
+        },
+        {
+          "module": "path",
+          "file": "out\\src\\Helper.js",
+          "line": 28
+        }
+      ]
+    },
+    "external_urls": [
+      {
+        "url": "https://github.com/ritwickdey/vscode-live-server",
+        "file": "out\\src\\announcement\\index.js",
+        "line": 28
+      }
+    ],
+    "file_entropies": {},
+    "files_scanned": 10,
+    "findings_by_category": {
+      "workspace_activity_monitoring": [
+        {
+          "name": "Document fileName/path collection",
+          "severity": "low",
+          "description": "Collects file paths from open documents - local filesystem path collection",
+          "category": "workspace_activity_monitoring",
+          "file": "out\\src\\appModel.js",
+          "line": 47,
+          "evidence": "itor ? vscode_1.window.activeTextEditor.document.fileName : '');             const pathInfos = He",
+          "path_type": "app"
+        }
+      ]
+    },
+    "findings_by_severity": {
+      "low": 1
+    },
+    "suppressed_false_positives": 2
+  },
+  "malicious_patterns": [
+    {
+      "name": "Document fileName/path collection",
+      "severity": "low",
+      "description": "Collects file paths from open documents - local filesystem path collection",
+      "category": "workspace_activity_monitoring",
+      "file": "out\\src\\appModel.js",
+      "line": 47,
+      "evidence": "itor ? vscode_1.window.activeTextEditor.document.fileName : '');             const pathInfos = He",
+      "path_type": "app"
+    }
+  ],
+  "html_analysis": {
+    "findings": [],
+    "files_scanned": 0,
+    "iframe_urls": []
+  },
+  "permissions": {
+    "high_risk": [],
+    "medium_risk": [
+      {
+        "permission": "filesystem",
+        "description": "Can read/write files on disk",
+        "evidence": [
+          {
+            "module": "fs",
+            "file": "out\\src\\Helper.js",
+            "line": 27
+          },
+          {
+            "module": "path",
+            "file": "out\\src\\Helper.js",
+            "line": 28
+          }
+        ]
+      }
+    ],
+    "low_risk": [
+      {
+        "permission": "workspace_activity_tracking",
+        "description": "Tracks developer activity (file opens, saves, folder changes, paths)",
+        "finding_count": 1
+      }
+    ],
+    "total": 2,
+    "all": [
+      "filesystem",
+      "workspace_activity_tracking"
+    ]
+  },
+  "risk_score": 5.0,
+  "risk_level": "MEDIUM",
+  "risk_breakdown": {
+    "supply_chain": 5.0,
+    "metadata_publisher": 0.8,
+    "code_analysis": 0.0,
+    "behavioral_correlations": 0,
+    "infrastructure": 0,
+    "positive_signals": -1.5
+  },
+  "positive_signals": {
+    "signals": [
+      {
+        "signal": "no_network_access",
+        "description": "Extension has no network capabilities - data stays local",
+        "weight": 0.5
+      },
+      {
+        "signal": "no_obfuscation",
+        "description": "No code obfuscation or evasion techniques detected",
+        "weight": 0.3
+      },
+      {
+        "signal": "no_credential_access",
+        "description": "No access to credential files, SSH keys, or token stores",
+        "weight": 0.3
+      },
+      {
+        "signal": "scoped_activation",
+        "description": "Extension activates only on specific events, not wildcard",
+        "weight": 0.2
+      },
+      {
+        "signal": "no_exfiltration_pattern",
+        "description": "No compound attack patterns detected",
+        "weight": 0.2
+      }
+    ],
+    "reduction": 1.5,
+    "count": 5
+  },
+  "risk_classification": {
+    "classification": "STANDARD_RISK",
+    "summary": "Moderate capabilities detected. Extension uses some sensitive APIs but no strong indicators of malicious intent.",
+    "suspicion_indicators": 0,
+    "positive_signal_count": 5
+  },
+  "module_usage": {
+    "file_access": [
+      {
+        "module": "fs",
+        "file": "out\\src\\Helper.js",
+        "line": 27
+      },
+      {
+        "module": "path",
+        "file": "out\\src\\Helper.js",
+        "line": 28
+      }
+    ]
+  },
+  "external_urls": [
+    {
+      "url": "https://github.com/ritwickdey/vscode-live-server",
+      "file": "out\\src\\announcement\\index.js",
+      "line": 28
+    }
+  ],
+  "domain_intelligence": [
+    {
+      "domain": "github.com",
+      "url": "https://github.com/ritwickdey/vscode-live-server",
+      "threat_level": "BENIGN",
+      "confidence": 95,
+      "classification": "Legitimate Infrastructure",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": true,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    }
+  ],
+  "virustotal_results": []
+}

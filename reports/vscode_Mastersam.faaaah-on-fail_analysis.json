@@ -1,0 +1,312 @@
+{
+  "extension_type": "vscode",
+  "name": "FAAAAH on Fail",
+  "identifier": "Mastersam.faaaah-on-fail",
+  "extension_id": "Mastersam.faaaah-on-fail",
+  "version": "0.4.0",
+  "description": "Plays the iconic FAAAAH sound whenever a test fails. Because failure should be dramatic. \ud83c\udfba",
+  "publisher": "Mastersam",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "store_metadata": {
+    "available": true,
+    "store": "vscode",
+    "identifier": "Mastersam.faaaah-on-fail",
+    "name": "FAAAAH on Fail",
+    "publisher": "Mastersam",
+    "publisher_id": "33d177a4-b181-447d-b84c-8be0b873f8b1",
+    "publisher_domain": null,
+    "publisher_verified": false,
+    "short_description": "Plays the iconic FAAAAH sound whenever a test fails. Because failure should be dramatic. \ud83c\udfba",
+    "version": "0.4.0",
+    "last_updated": "2026-02-25T10:00:22.613Z",
+    "categories": [],
+    "tags": [],
+    "install_count": 1990,
+    "rating_value": 0,
+    "rating_count": 0,
+    "flags": "validated, public",
+    "store_url": "https://marketplace.visualstudio.com/items?itemName=Mastersam.faaaah-on-fail",
+    "risk_signals": {
+      "unverified_publisher": true,
+      "few_ratings": true
+    }
+  },
+  "metadata_risk": {
+    "findings": [
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onStartupFinished': Runs every launch - immediate execution",
+        "event": "onStartupFinished"
+      },
+      {
+        "type": "unverified_publisher",
+        "severity": "medium",
+        "detail": "Publisher domain is not verified"
+      },
+      {
+        "type": "few_ratings",
+        "severity": "low",
+        "detail": "Very few ratings (<5)"
+      }
+    ],
+    "risk_score": 2,
+    "activation_events": [
+      "onStartupFinished"
+    ],
+    "contributes": [
+      "commands",
+      "configuration"
+    ]
+  },
+  "package_json_deep": {
+    "findings": []
+  },
+  "supply_chain": {
+    "findings": [],
+    "risk_score": 0,
+    "dependency_count": 0,
+    "dev_dependency_count": 3,
+    "has_node_modules": false,
+    "dependency_vulns": [],
+    "bundled_js_vulns": []
+  },
+  "code_analysis": {
+    "all_findings": [
+      {
+        "name": "child_process require (minification-safe)",
+        "severity": "high",
+        "description": "Imports child_process module - shell command execution capability",
+        "category": "command_injection",
+        "file": "out\\sound-player.js",
+        "line": 38,
+        "evidence": "quire(\"path\")); const child_process_1 = require(\"child_process\"); const os = __importStar(require(\"os\"))",
+        "path_type": "app"
+      },
+      {
+        "name": "Command execution via ShellExecution/tasks API",
+        "severity": "critical",
+        "description": "Creates shell command via Tasks API - executes commands without child_process",
+        "category": "command_injection",
+        "file": "out\\test-failure-detector.js",
+        "line": 149,
+        "evidence": "bles.push(vscode.window.onDidEndTerminalShellExecution((e) => {                 if (e.exitCode",
+        "path_type": "app"
+      }
+    ],
+    "module_usage": {
+      "file_access": [
+        {
+          "module": "path",
+          "file": "out\\extension.js",
+          "line": 39
+        },
+        {
+          "module": "path",
+          "file": "out\\sound-player.js",
+          "line": 37
+        }
+      ],
+      "process_execution": [
+        {
+          "module": "child_process",
+          "file": "out\\sound-player.js",
+          "line": 38
+        }
+      ],
+      "os_info": [
+        {
+          "module": "os",
+          "file": "out\\sound-player.js",
+          "line": 39
+        }
+      ]
+    },
+    "external_urls": [],
+    "file_entropies": {},
+    "files_scanned": 3,
+    "findings_by_category": {
+      "command_injection": [
+        {
+          "name": "child_process require (minification-safe)",
+          "severity": "high",
+          "description": "Imports child_process module - shell command execution capability",
+          "category": "command_injection",
+          "file": "out\\sound-player.js",
+          "line": 38,
+          "evidence": "quire(\"path\")); const child_process_1 = require(\"child_process\"); const os = __importStar(require(\"os\"))",
+          "path_type": "app"
+        },
+        {
+          "name": "Command execution via ShellExecution/tasks API",
+          "severity": "critical",
+          "description": "Creates shell command via Tasks API - executes commands without child_process",
+          "category": "command_injection",
+          "file": "out\\test-failure-detector.js",
+          "line": 149,
+          "evidence": "bles.push(vscode.window.onDidEndTerminalShellExecution((e) => {                 if (e.exitCode",
+          "path_type": "app"
+        }
+      ]
+    },
+    "findings_by_severity": {
+      "high": 1,
+      "critical": 1
+    },
+    "suppressed_false_positives": 0
+  },
+  "malicious_patterns": [
+    {
+      "name": "child_process require (minification-safe)",
+      "severity": "high",
+      "description": "Imports child_process module - shell command execution capability",
+      "category": "command_injection",
+      "file": "out\\sound-player.js",
+      "line": 38,
+      "evidence": "quire(\"path\")); const child_process_1 = require(\"child_process\"); const os = __importStar(require(\"os\"))",
+      "path_type": "app"
+    },
+    {
+      "name": "Command execution via ShellExecution/tasks API",
+      "severity": "critical",
+      "description": "Creates shell command via Tasks API - executes commands without child_process",
+      "category": "command_injection",
+      "file": "out\\test-failure-detector.js",
+      "line": 149,
+      "evidence": "bles.push(vscode.window.onDidEndTerminalShellExecution((e) => {                 if (e.exitCode",
+      "path_type": "app"
+    }
+  ],
+  "html_analysis": {
+    "findings": [],
+    "files_scanned": 0,
+    "iframe_urls": []
+  },
+  "permissions": {
+    "high_risk": [
+      {
+        "permission": "child_process",
+        "description": "Can execute system commands",
+        "evidence": [
+          {
+            "module": "child_process",
+            "file": "out\\sound-player.js",
+            "line": 38
+          }
+        ]
+      }
+    ],
+    "medium_risk": [
+      {
+        "permission": "filesystem",
+        "description": "Can read/write files on disk",
+        "evidence": [
+          {
+            "module": "path",
+            "file": "out\\extension.js",
+            "line": 39
+          },
+          {
+            "module": "path",
+            "file": "out\\sound-player.js",
+            "line": 37
+          }
+        ]
+      }
+    ],
+    "low_risk": [
+      {
+        "permission": "os_info",
+        "description": "Can read OS information",
+        "evidence": [
+          {
+            "module": "os",
+            "file": "out\\sound-player.js",
+            "line": 39
+          }
+        ]
+      }
+    ],
+    "total": 3,
+    "all": [
+      "child_process",
+      "filesystem",
+      "os_info"
+    ]
+  },
+  "risk_score": 0,
+  "risk_level": "MINIMAL",
+  "risk_breakdown": {
+    "supply_chain": 0.0,
+    "metadata_publisher": 0.2,
+    "code_analysis": 0.7,
+    "behavioral_correlations": 0,
+    "infrastructure": 0,
+    "positive_signals": -1.3
+  },
+  "positive_signals": {
+    "signals": [
+      {
+        "signal": "no_network_access",
+        "description": "Extension has no network capabilities - data stays local",
+        "weight": 0.5
+      },
+      {
+        "signal": "no_obfuscation",
+        "description": "No code obfuscation or evasion techniques detected",
+        "weight": 0.3
+      },
+      {
+        "signal": "no_credential_access",
+        "description": "No access to credential files, SSH keys, or token stores",
+        "weight": 0.3
+      },
+      {
+        "signal": "scoped_activation",
+        "description": "Extension activates only on specific events, not wildcard",
+        "weight": 0.2
+      }
+    ],
+    "reduction": 1.3,
+    "count": 4
+  },
+  "risk_classification": {
+    "classification": "BENIGN",
+    "summary": "Low-risk extension with minimal sensitive capabilities.",
+    "suspicion_indicators": 0,
+    "positive_signal_count": 4
+  },
+  "module_usage": {
+    "file_access": [
+      {
+        "module": "path",
+        "file": "out\\extension.js",
+        "line": 39
+      },
+      {
+        "module": "path",
+        "file": "out\\sound-player.js",
+        "line": 37
+      }
+    ],
+    "process_execution": [
+      {
+        "module": "child_process",
+        "file": "out\\sound-player.js",
+        "line": 38
+      }
+    ],
+    "os_info": [
+      {
+        "module": "os",
+        "file": "out\\sound-player.js",
+        "line": 39
+      }
+    ]
+  },
+  "external_urls": [],
+  "domain_intelligence": [],
+  "virustotal_results": []
+}

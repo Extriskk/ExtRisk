@@ -1,0 +1,1448 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threat Intelligence Report - Google Meet Auto Admit</title>
+    <style>
+        :root {
+            --color-critical: #ef4444;
+            --color-high: #f97316;
+            --color-medium: #eab308;
+            --color-low: #22c55e;
+            --color-info: #3b82f6;
+            --color-dark: #0f172a;
+            --color-gray: #94a3b8;
+            --color-light-bg: #1e293b;
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #475569;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+        }
+
+        .report-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--bg-secondary);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Header Section */
+        .report-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 40px 50px;
+            border-bottom: 4px solid #dc2626;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .report-title {
+            flex: 1;
+        }
+        
+        .report-title h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        
+        .report-title .subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+            font-weight: 400;
+        }
+        
+        .classification-badge {
+            background: #dc2626;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        .header-meta {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .meta-item {
+            text-align: center;
+        }
+        
+        .meta-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.7;
+            margin-bottom: 6px;
+        }
+        
+        .meta-value {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        /* Campaign Alert */
+        .campaign-alert {
+            background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
+            padding: 30px 50px;
+            border-left: 6px solid #dc2626;
+            color: white;
+        }
+        
+        .campaign-alert h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .campaign-alert p {
+            margin: 8px 0;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        
+        .campaign-alert .indicators {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .campaign-alert .indicators li {
+            margin: 6px 0;
+            font-size: 14px;
+        }
+        
+        .campaign-reference {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 13px;
+        }
+        
+        .campaign-reference a {
+            color: #fca5a5;
+            text-decoration: none;
+            border-bottom: 1px solid #fca5a5;
+        }
+        
+        /* Executive Summary */
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(234, 179, 8, 0.05) 100%);
+            border-left: 6px solid #eab308;
+            padding: 35px 50px;
+            margin: 0;
+        }
+
+        .executive-summary.critical {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.05) 100%);
+            border-left-color: #ef4444;
+        }
+
+        .executive-summary h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fcd34d;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .executive-summary.critical h2 {
+            color: #fca5a5;
+        }
+
+        .bluf {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.8;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+
+        .executive-summary.critical .bluf {
+            color: var(--text-primary);
+        }
+
+        .key-findings {
+            display: grid;
+            gap: 12px;
+        }
+
+        .finding-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+
+        .finding-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .finding-text {
+            flex: 1;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+        
+        /* Content Sections */
+        .content {
+            padding: 0;
+        }
+
+        .section {
+            padding: 40px 50px;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-card);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 20px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        
+        /* IOC Section */
+        .ioc-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .ioc-category {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .ioc-category-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ioc-list {
+            display: grid;
+            gap: 8px;
+        }
+
+        .ioc-item {
+            padding: 10px 14px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--color-critical);
+            border-radius: 4px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            color: #fca5a5;
+        }
+        
+        /* Domain Intelligence */
+        .domain-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .domain-card.threat-critical {
+            border-left: 4px solid var(--color-critical);
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .domain-card.threat-high {
+            border-left: 4px solid var(--color-high);
+            background: rgba(249, 115, 22, 0.1);
+        }
+
+        .domain-card.threat-medium {
+            border-left: 4px solid var(--color-medium);
+            background: rgba(234, 179, 8, 0.1);
+        }
+
+        .domain-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .domain-name {
+            font-family: 'Monaco', monospace;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .threat-badge {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .threat-badge.critical {
+            background: var(--color-critical);
+            color: white;
+        }
+        
+        .threat-badge.high {
+            background: var(--color-high);
+            color: white;
+        }
+        
+        .threat-badge.medium {
+            background: var(--color-medium);
+            color: white;
+        }
+        
+        .threat-badge.low {
+            background: var(--color-low);
+            color: white;
+        }
+        
+        .threat-badge.benign {
+            background: #10b981;
+            color: white;
+        }
+        
+        .domain-classification {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fca5a5;
+            margin-bottom: 10px;
+        }
+
+        .domain-indicators {
+            display: grid;
+            gap: 6px;
+        }
+
+        .indicator-tag {
+            padding: 6px 10px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 4px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            border-left: 3px solid #ef4444;
+        }
+        
+        /* Technical Details */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .detail-card {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .detail-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .detail-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Threat Analysis - ENHANCED TO SHOW POST DESTINATIONS */
+        .threat-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid #ef4444;
+            border-radius: 6px;
+            padding: 18px;
+            margin-bottom: 12px;
+        }
+
+        .threat-item.high {
+            border-left-color: #ef4444;
+        }
+
+        .threat-item.medium {
+            border-left-color: #eab308;
+        }
+
+        .threat-item.low {
+            border-left-color: #64748b;
+        }
+
+        .threat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .threat-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .threat-severity {
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .threat-severity.high {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+        }
+
+        .threat-severity.medium {
+            background: rgba(234, 179, 8, 0.2);
+            color: #fcd34d;
+        }
+
+        .threat-description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .threat-destination {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 6px;
+            padding: 12px;
+            margin: 10px 0;
+            font-family: 'Monaco', monospace;
+            font-size: 13px;
+        }
+
+        .threat-destination-label {
+            font-weight: 700;
+            color: #fca5a5;
+            margin-bottom: 6px;
+        }
+
+        .threat-destination-url {
+            color: #f87171;
+            word-break: break-all;
+        }
+
+        .threat-metadata {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 12px 0;
+            padding: 12px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+
+        .threat-meta-item {
+            font-size: 13px;
+        }
+
+        .threat-meta-label {
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .threat-meta-value {
+            color: var(--text-primary);
+            font-family: 'Monaco', monospace;
+        }
+
+        .threat-location {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-family: 'Monaco', monospace;
+        }
+
+        .vt-cross-ref {
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(234, 179, 8, 0.1);
+            border-left: 3px solid #eab308;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .vt-cross-ref-icon {
+            color: #fcd34d;
+            font-weight: 700;
+        }
+
+        /* Recommendations */
+        .recommendations {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.05) 100%);
+            border-left: 6px solid #10b981;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .recommendations.critical {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.05) 100%);
+            border-left-color: #ef4444;
+        }
+
+        .recommendations h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #34d399;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .recommendations.critical h3 {
+            color: #fca5a5;
+        }
+
+        .rec-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .rec-item {
+            padding: 12px 16px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-primary);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .recommendations.critical .rec-item {
+            color: var(--text-primary);
+        }
+
+        .rec-icon {
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        /* Footer */
+        .report-footer {
+            background: var(--bg-primary);
+            padding: 30px 50px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 13px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        /* No data states */
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            color: #34d399;
+            font-size: 15px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        
+        /* Enhanced Code Snippets - KOI Style */
+        .code-snippet-container {
+            margin: 15px 0;
+            background: #1e1e1e;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #333;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        
+        .code-snippet-header {
+            background: #2d2d2d;
+            padding: 10px 15px;
+            border-bottom: 1px solid #3a3a3a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .code-snippet-header-dots {
+            display: flex;
+            gap: 6px;
+        }
+        
+        .code-snippet-header-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+        
+        .code-snippet-filename {
+            color: #a0a0a0;
+            font-size: 13px;
+            margin-left: auto;
+            font-family: 'Monaco', monospace;
+        }
+        
+        .code-snippet-body {
+            padding: 20px;
+            overflow-x: auto;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        .code-snippet-body pre {
+            margin: 0;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #d4d4d4;
+        }
+        
+        .code-line {
+            display: block;
+        }
+        
+        .code-line-number {
+            display: inline-block;
+            min-width: 45px;
+            color: #858585;
+            text-align: right;
+            padding-right: 20px;
+            user-select: none;
+            border-right: 1px solid #3a3a3a;
+            margin-right: 15px;
+        }
+        
+        .code-line-content {
+            display: inline;
+        }
+        
+        .code-line-highlight {
+            background: rgba(255, 95, 86, 0.15);
+            display: block;
+            margin: 0 -20px;
+            padding: 0 20px;
+            border-left: 3px solid #ff5f56;
+        }
+        
+        /* Syntax highlighting */
+        .code-keyword { color: #569cd6; font-weight: 600; }
+        .code-function { color: #dcdcaa; }
+        .code-string { color: #ce9178; }
+        .code-comment { color: #6a9955; font-style: italic; }
+        .code-const { color: #4fc1ff; }
+        .code-variable { color: #9cdcfe; }
+        .code-operator { color: #d4d4d4; }
+        .code-punctuation { color: #808080; }
+        
+        /* Subsection */
+        .subsection {
+            padding: 20px 0;
+        }
+
+        /* Finding Cards */
+        .finding-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        /* Alert Styles */
+        .alert {
+            display: flex;
+            gap: 15px;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .alert-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .alert-critical {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+        }
+
+        .alert-high {
+            background: rgba(249, 115, 22, 0.15);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            color: #fdba74;
+        }
+
+        .alert-medium {
+            background: rgba(234, 179, 8, 0.15);
+            border: 1px solid rgba(234, 179, 8, 0.3);
+            color: #fcd34d;
+        }
+
+        .alert-low {
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #86efac;
+        }
+
+        /* Print Styles */
+        @media print {
+            body { background: #1e293b; color: white; }
+            .report-container { box-shadow: none; }
+            .section { page-break-inside: avoid; }
+            .code-snippet-container { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="report-container">
+        <!-- Header -->
+        <div class="report-header">
+            <div class="header-top">
+                <div class="report-title" style="display: flex; align-items: center; gap: 20px;">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAACXBIWXMAAArEAAAKxAFmbYLUAAAGd2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDAgNzkuMTYwNDUxLCAyMDE3LzA1LzA2LTAxOjA4OjIxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIiB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgKE1hY2ludG9zaCkiIHhtcDpDcmVhdGVEYXRlPSIyMDIwLTA4LTE3VDExOjQ5OjI1KzA4OjAwIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDIwLTA4LTE3VDExOjQ5OjI1KzA4OjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMC0wOC0xN1QxMTo0OToyNSswODowMCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozYzgzZjg2Yy0xYmYzLTRkNWUtODc5NC0zNTkwZTUxMGNiNmIiIHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDpkMDU0MTQ4ZS01NjQ4LTVjNDktODRlYS1jNjM2ZmNlYjA1MDYiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo4Njg0YmY0Mi1kYzYwLTQzZTAtYjM5YS03YjdkZjhhNjQzM2MiIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciPiA8eG1wTU06SGlzdG9yeT4gPHJkZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjg2ODRiZjQyLWRjNjAtNDNlMC1iMzlhLTdiN2RmOGE2NDMzYyIgc3RFdnQ6d2hlbj0iMjAyMC0wOC0xN1QxMTo0OToyNSswODowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDozYzgzZjg2Yy0xYmYzLTRkNWUtODc5NC0zNTkwZTUxMGNiNmIiIHN0RXZ0OndoZW49IjIwMjAtMDgtMTdUMTE6NDk6MjUrMDg6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCBDQyAoTWFjaW50b3NoKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8L3JkZjpTZXE+IDwveG1wTU06SGlzdG9yeT4gPHBob3Rvc2hvcDpUZXh0TGF5ZXJzPiA8cmRmOkJhZz4gPHJkZjpsaSBwaG90b3Nob3A6TGF5ZXJOYW1lPSJBRE1JVCIgcGhvdG9zaG9wOkxheWVyVGV4dD0iQURNSVQiLz4gPC9yZGY6QmFnPiA8L3Bob3Rvc2hvcDpUZXh0TGF5ZXJzPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PnzSUN8AACZrSURBVHic7X13nFXVtf937XPObVOoMxQpUgQBFaQGERVbbBij0Vh4ahKN9eVnjD4/Qp6JL88kxvwsiRqN5amx5JkYCwkWVGyAgHQE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" alt="Extension Icon" style="width: 64px; height: 64px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+                    <div>
+                        <h1 style="font-size: 24px; margin-bottom: 4px;">Google Meet Auto Admit</h1>
+                        <div class="subtitle" style="font-size: 12px; opacity: 0.7; margin-bottom: 2px;">pabkjoplheapcclldpknfpcepheldbga</div>
+                        <div class="subtitle">Threat Intelligence Report • February 01, 2026 at 13:48 UTC</div>
+                    </div>
+                </div>
+                <div class="classification-badge">CRITICAL RISK</div>
+            </div>
+
+            <div class="header-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Risk Score</div>
+                    <div class="meta-value" style="font-size: 24px; color: #dc2626;">10.0/10</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Threat Class</div>
+                    <div class="meta-value">Suspicious Activity Detected</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Analysis Confidence</div>
+                    <div class="meta-value">72%</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Manifest Version</div>
+                    <div class="meta-value">MV3</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="executive-summary critical">
+            <h2>📋 Executive Summary</h2>
+            <div class="bluf"><strong>BLUF:</strong> 2 domain(s) flagged by security vendors (9 total detections). Potentially suspicious behavior detected. Manual review recommended.</div>
+            <div class="key-findings">
+
+                <div class="finding-item">
+                    <div class="finding-icon">🛡️</div>
+                    <div class="finding-text">VirusTotal: 2 malicious domain(s) detected</div>
+                </div>
+
+                <div class="finding-item">
+                    <div class="finding-icon">🚩</div>
+                    <div class="finding-text">1 dangerous permissions requested</div>
+                </div>
+
+                <div class="finding-item">
+                    <div class="finding-icon">⚠️</div>
+                    <div class="finding-text">8 critical security issues in code</div>
+                </div>
+
+            </div>
+        </div>
+<div class="content">
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🔍</div>
+                <div class="section-title">Indicators of Compromise (IOCs)</div>
+            </div>
+            <div class="ioc-grid">
+
+            <div class="ioc-category">
+                <div class="ioc-category-title">📌 Extension Identifier</div>
+                <div class="ioc-list">
+                    <div class="ioc-item">pabkjoplheapcclldpknfpcepheldbga</div>
+                </div>
+            </div>
+
+            <div class="ioc-category">
+                <div class="ioc-category-title">🌐 Malicious Domains (VirusTotal Confirmed)</div>
+                <div class="ioc-list">
+<div class="ioc-item">meetingtv.us</div><div class="ioc-item">zoomcorder.com</div>
+                </div>
+            </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🔐</div>
+                <div class="section-title">Host Permissions & Website Access</div>
+            </div>
+            <div class="subsection">
+
+                <div class="alert alert-critical">
+                    <div class="alert-icon">🚨</div>
+                    <div>
+                        <strong>CRITICAL:</strong> This extension has <code>&lt;all_urls&gt;</code> access - can read and modify data on ALL websites you visit!
+                    </div>
+                </div>
+
+                <div class="finding-card">
+                    <h3>Permission Scope: ALL_WEBSITES</h3>
+                    <p style="color: #ea580c; font-weight: 700; font-size: 18px; margin: 10px 0;">Risk Level: HIGH</p>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 15px 0;">
+                        <div>
+                            <p style="font-size: 12px; color: #64748b; margin: 0;">Host Permissions</p>
+                            <p style="font-size: 24px; font-weight: 700; margin: 5px 0;">1</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 12px; color: #64748b; margin: 0;">Content Scripts</p>
+                            <p style="font-size: 24px; font-weight: 700; margin: 5px 0;">1</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 12px; color: #64748b; margin: 0;">Sensitive Categories</p>
+                            <p style="font-size: 24px; font-weight: 700; margin: 5px 0;">0</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 12px; color: #64748b; margin: 0;">Sensitive Domains</p>
+                            <p style="font-size: 24px; font-weight: 700; margin: 5px 0;">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 25px;">Risk Factors</h3>
+                <div class="finding-card">
+<p style="margin: 8px 0; font-size: 13px;">⚠️ Has <all_urls> access - can read/modify ALL websites</p></div>
+                <h3 style="margin-top: 25px;">Sample Host Permissions</h3>
+                <p style="font-size: 13px; color: #64748b; margin: 10px 0;">Showing 1 of 1 host permission(s) requested by this extension:</p>
+                <div class="finding-card">
+
+                <div style="border-left: 3px solid #dc2626; padding: 10px; margin: 10px 0; background: #f8fafc;">
+                    <p style="margin: 0; font-family: 'Courier New', monospace; font-size: 13px; font-weight: 700;"><all_urls></p>
+                    <p style="margin: 5px 0 0 0; font-size: 12px; color: #64748b;">Full access to ALL websites on the internet</p>
+                    <p style="margin: 5px 0 0 0; font-size: 11px;"><span style="color: #dc2626; font-weight: 700;">Risk: CRITICAL</span> | Category: all_urls</p>
+                </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🛡️</div>
+                <div class="section-title">VirusTotal Domain Reputation</div>
+            </div>
+<h3 style="color: #ea580c; margin-bottom: 20px; font-size: 20px; font-weight: 700;">⚠️ Domains Flagged by Security Vendors</h3>
+            <div class="domain-card threat-critical">
+                <div class="domain-header">
+                    <div class="domain-name">🚨 meetingtv.us</div>
+                    <div class="threat-badge critical">MALICIOUS</div>
+                </div>
+                <div class="domain-classification">⚠️ Flagged by 8 security vendor(s)</div>
+                
+                <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <div style="margin-bottom: 10px;">
+                        <strong>Detection Statistics:</strong>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; font-size: 14px;">
+                        <div>🔴 Malicious: <strong>8</strong></div>
+                        <div>🟡 Suspicious: <strong>1</strong></div>
+                        <div>🟢 Harmless: <strong>55</strong></div>
+                        <div>⚪ Undetected: <strong>29</strong></div>
+                    </div>
+                </div>
+                
+                <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <div style="margin-bottom: 10px;">
+                        <strong>Community Votes:</strong>
+                    </div>
+                    <div style="font-size: 14px;">
+                        👎 Malicious: <strong>0</strong> | 
+                        👍 Harmless: <strong>0</strong>
+                    </div>
+                </div>
+
+                <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <div style="margin-bottom: 10px; color: #f1f5f9;">
+                        <strong>Security Vendors Flagging This Domain:</strong>
+                    </div>
+                    <div style="display: grid; gap: 8px;">
+
+                        <div style="padding: 10px 12px; background: rgba(239, 68, 68, 0.15); border-left: 3px solid #ef4444; border-radius: 4px; font-size: 13px;">
+                            <strong style="color: #f87171;">ArcSight Threat Intelligence</strong><span style="color: #94a3b8;">:</span> <span style="color: #fecaca;">malware</span>
+                        </div>
+
+                        <div style="padding: 10px 12px; background: rgba(239, 68, 68, 0.15); border-left: 3px solid #ef4444; border-radius: 4px; font-size: 13px;">
+                            <strong style="color: #f87171;">Certego</strong><span style="color: #94a3b8;">:</span> <span style="color: #fecaca;">phishing</span>
+                        </div>
+
+                        <div style="padding: 10px 12px; background: rgba(239, 68, 68, 0.15); border-left: 3px solid #ef4444; border-radius: 4px; font-size: 13px;">
+                            <strong style="color: #f87171;">CyRadar</strong><span style="color: #94a3b8;">:</span> <span style="color: #fecaca;">malicious</span>
+                        </div>
+
+                        <div style="padding: 10px 12px; background: rgba(239, 68, 68, 0.15); border-left: 3px solid #ef4444; border-radius: 4px; font-size: 13px;">
+                            <strong style="color: #f87171;">ESTsecurity</strong><span style="color: #94a3b8;">:</span> <span style="color: #fecaca;">malicious</span>
+                        </div>
+
+                        <div style="padding: 10px 12px; background: rgba(239, 68, 68, 0.15); border-left: 3px solid #ef4444; border-radius: 4px; font-size: 13px;">
+                            <strong style="color: #f87171;">Fortinet</strong><span style="color: #94a3b8;">:</span> <span style="color: #fecaca;">malware</span>
+                        </div>
+
+                        <div style="padding: 10px 12px; background: rgba(239, 68, 68, 0.15); border-left: 3px solid #ef4444; border-radius: 4px; font-size: 13px;">
+                            <strong style="color: #f87171;">Lionic</strong><span style="color: #94a3b8;">:</span> <span style="color: #fecaca;">malicious</span>
+                        </div>
+
+                        <div style="padding: 10px 12px; background: rgba(239, 68, 68, 0.15); border-left: 3px solid #ef4444; border-radius: 4px; font-size: 13px;">
+                            <strong style="color: #f87171;">Seclookup</strong><span style="color: #94a3b8;">:</span> <span style="color: #fecaca;">malicious</span>
+                        </div>
+
+                        <div style="padding: 10px 12px; background: rgba(239, 68, 68, 0.15); border-left: 3px solid #ef4444; border-radius: 4px; font-size: 13px;">
+                            <strong style="color: #f87171;">SOCRadar</strong><span style="color: #94a3b8;">:</span> <span style="color: #fecaca;">malicious</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div style="margin-top: 15px; font-size: 13px; color: #64748b;">
+                    <a href="https://www.virustotal.com/gui/domain/meetingtv.us" target="_blank" style="color: #3b82f6; text-decoration: none;">
+                        🔗 View full VirusTotal report →
+                    </a>
+                </div>
+            </div>
+
+            <div class="domain-card threat-critical">
+                <div class="domain-header">
+                    <div class="domain-name">🚨 zoomcorder.com</div>
+                    <div class="threat-badge critical">MALICIOUS</div>
+                </div>
+                <div class="domain-classification">⚠️ Flagged by 1 security vendor(s)</div>
+                
+                <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <div style="margin-bottom: 10px;">
+                        <strong>Detection Statistics:</strong>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; font-size: 14px;">
+                        <div>🔴 Malicious: <strong>1</strong></div>
+                        <div>🟡 Suspicious: <strong>0</strong></div>
+                        <div>🟢 Harmless: <strong>60</strong></div>
+                        <div>⚪ Undetected: <strong>32</strong></div>
+                    </div>
+                </div>
+                
+                <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <div style="margin-bottom: 10px;">
+                        <strong>Community Votes:</strong>
+                    </div>
+                    <div style="font-size: 14px;">
+                        👎 Malicious: <strong>0</strong> | 
+                        👍 Harmless: <strong>0</strong>
+                    </div>
+                </div>
+
+                <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <div style="margin-bottom: 10px; color: #f1f5f9;">
+                        <strong>Security Vendors Flagging This Domain:</strong>
+                    </div>
+                    <div style="display: grid; gap: 8px;">
+
+                        <div style="padding: 10px 12px; background: rgba(239, 68, 68, 0.15); border-left: 3px solid #ef4444; border-radius: 4px; font-size: 13px;">
+                            <strong style="color: #f87171;">Fortinet</strong><span style="color: #94a3b8;">:</span> <span style="color: #fecaca;">malware</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div style="margin-top: 15px; font-size: 13px; color: #64748b;">
+                    <a href="https://www.virustotal.com/gui/domain/zoomcorder.com" target="_blank" style="color: #3b82f6; text-decoration: none;">
+                        🔗 View full VirusTotal report →
+                    </a>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: #ecfdf5; border-radius: 8px; border: 1px solid #d1fae5;">
+                <div style="font-size: 15px; color: #065f46;">
+                    ✅ <strong>2</strong> domain(s) checked and found clean
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">&#x1F4E1;</div>
+                <div class="section-title">Dynamic Network Analysis</div>
+            </div>
+            <p style="color: #94a3b8; margin-bottom: 20px;">
+                Runtime network traffic captured via Playwright + Chrome DevTools Protocol.
+                The extension was loaded into a sandboxed Chromium instance and trigger pages
+                were browsed to provoke network activity.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 25px;">
+                <div style="background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 8px; padding: 15px; text-align: center;">
+                    <div style="font-size: 28px; font-weight: 700; color: #60a5fa;">461</div>
+                    <div style="font-size: 12px; color: #94a3b8; margin-top: 4px;">Total Requests</div>
+                </div>
+                <div style="background: rgba(34, 197, 94, 0.15); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 8px; padding: 15px; text-align: center;">
+                    <div style="font-size: 28px; font-weight: 700; color: #4ade80;">0</div>
+                    <div style="font-size: 12px; color: #94a3b8; margin-top: 4px;">Extension-Initiated</div>
+                </div>
+                <div style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 8px; padding: 15px; text-align: center;">
+                    <div style="font-size: 28px; font-weight: 700; color: #f87171;">0</div>
+                    <div style="font-size: 12px; color: #94a3b8; margin-top: 4px;">Suspicious</div>
+                </div>
+                <div style="background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 8px; padding: 15px; text-align: center;">
+                    <div style="font-size: 28px; font-weight: 700; color: #c084fc;">0</div>
+                    <div style="font-size: 12px; color: #94a3b8; margin-top: 4px;">WebSocket Conns</div>
+                </div>
+            </div>
+
+            <p style="color: #64748b; font-size: 12px; margin-top: 20px; text-align: right;">
+                Capture duration: 26.0s | Trigger pages: 6
+            </p>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🔬</div>
+                <div class="section-title">Advanced Malware Detection</div>
+            </div>
+            <div class="subsection">
+                <div class="alert alert-medium">
+                    <div class="alert-icon">⚠️</div>
+                    <div>
+                        <strong>Detection Verdict:</strong> CLEAN<br>
+                        <strong>Total Findings:</strong> 1 (0 critical, 0 high)<br>
+                        <strong>Analysis:</strong> Advanced behavioral analysis completed
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 20px; color: var(--color-high);">⏰ Delayed Activation (Time Bomb)</h3>
+
+                <div class="finding-card" style="border-left: 4px solid var(--color-high);">
+                    <h4 style="margin: 0 0 8px 0; font-size: 14px;">DELAYED_ACTIVATION_POTENTIAL</h4>
+                    <p style="margin: 5px 0; font-size: 13px;"><strong>Impact:</strong> Static analysis only - dynamic verification recommended</p>
+                    <p style="margin: 5px 0; font-size: 12px;"><strong>Indicators:</strong> N/A</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🔍</div>
+                <div class="section-title">Threat Campaign Attribution (OSINT)</div>
+            </div>
+            <div class="subsection">
+
+                <div class="finding-card" style="border-left: 4px solid #dc2626;">
+                    <h3 style="color: #dc2626; margin: 0 0 10px 0;">Attribution Confidence: CONFIRMED</h3>
+                    <p style="font-size: 14px; margin: 0;">CONFIRMED - Extension found in known malicious database</p>
+                </div>
+
+                <div class="alert alert-critical" style="margin: 20px 0;">
+                    <div class="alert-icon">🚨</div>
+                    <div>
+                        <strong style="font-size: 16px;">THREAT INTELLIGENCE ALERT</strong><br>
+                        <p style="margin: 10px 0 5px 0; font-size: 14px;"><strong>Finding:</strong> DarkSpectre / ZoomStealer</p>
+                        <p style="margin: 5px 0; font-size: 14px;"><strong>Threat Actor:</strong> DarkSpectre (Chinese state-sponsored APT)</p>
+                        <p style="margin: 10px 0 0 0; font-size: 13px; color: #94a3b8;">Corporate espionage campaign targeting video conferencing platforms. Part of DarkSpectre threat actor operations affecting 8.8 million users worldwide.</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 25px;">OSINT Research Findings</h3>
+
+                <div style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius: 12px; padding: 24px; margin: 15px 0; color: #fff;">
+
+                    <!-- Header with status badge -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+                        <h4 style="margin: 0; font-size: 18px; font-weight: 600; color: #fff;">
+                            <span style="color: #f87171;">⚠</span> Threat Intelligence Report
+                        </h4>
+                        <span style="background: #fef2f2; color: #991b1b; padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid #dc2626;">
+                            CONFIRMED MALICIOUS
+                        </span>
+                    </div>
+
+                    <!-- Extension Info Card -->
+                    <div style="background: rgba(255,255,255,0.08); border-radius: 8px; padding: 16px; margin-bottom: 16px;">
+                        <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Extension Identified</div>
+                        <div style="font-size: 15px; font-weight: 500; color: #f1f5f9;">Google Meet Auto Admit</div>
+                        <div style="font-size: 12px; color: #64748b; margin-top: 4px; font-family: 'Monaco', 'Consolas', monospace;">pabkjoplheapcclldpknfpcepheldbga</div>
+                    </div>
+
+                    <!-- Campaign Attribution -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 16px;">
+                        <div style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 14px; border-left: 3px solid #f87171;">
+                            <div style="font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Campaign</div>
+                            <div style="font-size: 14px; font-weight: 600; color: #fca5a5;">DarkSpectre / ZoomStealer</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 14px; border-left: 3px solid #fbbf24;">
+                            <div style="font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Threat Actor</div>
+                            <div style="font-size: 14px; font-weight: 600; color: #fcd34d;">DarkSpectre (Chinese state-sponsored APT)</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 14px; border-left: 3px solid #60a5fa;">
+                            <div style="font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Active Period</div>
+                            <div style="font-size: 14px; font-weight: 600; color: #93c5fd;">2018-2025</div>
+                        </div>
+                    </div>
+
+                    <!-- Impact Statistics -->
+                    <div style="background: rgba(239, 68, 68, 0.1); border-radius: 8px; padding: 16px; margin-bottom: 16px; border: 1px solid rgba(239, 68, 68, 0.2);">
+                        <div style="font-size: 11px; color: #fca5a5; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; font-weight: 600;">Impact Assessment</div>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: center;">
+                            <div>
+                                <div style="font-size: 22px; font-weight: 700; color: #f87171;">8,800,000</div>
+                                <div style="font-size: 10px; color: #94a3b8; margin-top: 2px;">Total Users Affected</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 22px; font-weight: 700; color: #fbbf24;">2,200,000</div>
+                                <div style="font-size: 10px; color: #94a3b8; margin-top: 2px;">This Campaign</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 22px; font-weight: 700; color: #60a5fa;">19</div>
+                                <div style="font-size: 10px; color: #94a3b8; margin-top: 2px;">Known Extensions</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Targets -->
+                    <div style="margin-bottom: 16px;">
+                        <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Targeted Platforms</div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 6px;"><span style="background: rgba(96, 165, 250, 0.2); color: #93c5fd; padding: 4px 10px; border-radius: 4px; font-size: 11px; margin: 2px;">Zoom</span> <span style="background: rgba(96, 165, 250, 0.2); color: #93c5fd; padding: 4px 10px; border-radius: 4px; font-size: 11px; margin: 2px;">Microsoft Teams</span> <span style="background: rgba(96, 165, 250, 0.2); color: #93c5fd; padding: 4px 10px; border-radius: 4px; font-size: 11px; margin: 2px;">Google Meet</span> <span style="background: rgba(96, 165, 250, 0.2); color: #93c5fd; padding: 4px 10px; border-radius: 4px; font-size: 11px; margin: 2px;">Webex</span> <span style="background: rgba(96, 165, 250, 0.2); color: #93c5fd; padding: 4px 10px; border-radius: 4px; font-size: 11px; margin: 2px;">GoToMeeting</span></div>
+                    </div>
+
+                    <!-- Data Exfiltrated -->
+                    <div style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 14px; margin-bottom: 16px;">
+                        <div style="font-size: 11px; color: #fca5a5; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: 600;">Data Exfiltrated</div>
+                        <ul style="margin: 0; padding-left: 18px; color: #e2e8f0; font-size: 13px; line-height: 1.8;">
+                            <li>Meeting URLs with embedded passwords</li>
+                            <li>Meeting IDs and topics</li>
+                            <li>Scheduled meeting times</li>
+                            <li>Registration status</li>
+                            <li>Participant information</li>
+                            <li>Chrome cookies</li>
+                        </ul>
+                    </div>
+
+                    <!-- C2 Infrastructure -->
+                    <div style="background: rgba(239, 68, 68, 0.08); border-radius: 8px; padding: 14px; margin-bottom: 16px; border: 1px solid rgba(239, 68, 68, 0.15);">
+                        <div style="font-size: 11px; color: #f87171; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: 600;">C2 Infrastructure (IOCs)</div>
+                        <div style="font-family: 'Monaco', 'Consolas', monospace; font-size: 12px; color: #fca5a5;">
+                            <div style="padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">• meetingtv.us</div>
+                            <div style="padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">• webinartv.us</div>
+                            <div style="padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">• us-central1-webinarstvus.cloudfunctions.net</div>
+                            <div style="padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">• zoomcorder.firebaseio.com</div>
+                        </div>
+                    </div>
+
+                    <!-- TTPs -->
+                    <div style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 14px;">
+                        <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: 600;">TTPs (MITRE ATT&CK)</div>
+                        <div style="display: grid; gap: 8px; font-size: 12px;">
+
+                            <div style="display: flex; gap: 10px; align-items: baseline;">
+                                <span style="color: #60a5fa; font-weight: 600; min-width: 100px;">Initial Access:</span>
+                                <span style="color: #cbd5e1;">Malicious browser extension</span>
+                            </div>
+
+                            <div style="display: flex; gap: 10px; align-items: baseline;">
+                                <span style="color: #a78bfa; font-weight: 600; min-width: 100px;">Persistence:</span>
+                                <span style="color: #cbd5e1;">Extension auto-update</span>
+                            </div>
+
+                            <div style="display: flex; gap: 10px; align-items: baseline;">
+                                <span style="color: #f472b6; font-weight: 600; min-width: 100px;">Collection:</span>
+                                <span style="color: #cbd5e1;">Content script injection on video conferencing sites</span>
+                            </div>
+
+                            <div style="display: flex; gap: 10px; align-items: baseline;">
+                                <span style="color: #fb923c; font-weight: 600; min-width: 100px;">Exfiltration:</span>
+                                <span style="color: #cbd5e1;">WebSocket connections to Firebase</span>
+                            </div>
+
+                            <div style="display: flex; gap: 10px; align-items: baseline;">
+                                <span style="color: #f87171; font-weight: 600; min-width: 100px;">C2:</span>
+                                <span style="color: #cbd5e1;">Google Cloud Functions endpoints</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <h3 style="margin-top: 25px;">Threat Intelligence Sources</h3>
+                <p style="font-size: 13px; color: #64748b; margin: 10px 0;">Research verified by the following security sources:</p>
+
+                <div style="padding: 12px; margin: 10px 0; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0;">
+                    <strong style="font-size: 14px;">
+                        <a href="https://thehackernews.com/2025/12/darkspectre-browser-extension-campaigns.html" target="_blank" style="color: #2563eb; text-decoration: none;">
+                            DarkSpectre Browser Extension Campaigns Exposed After Impacting 8.8 Million Users Worldwide
+                        </a>
+                    </strong>
+                    <p style="margin: 5px 0 0 0; font-size: 12px; color: #64748b;">Source: The Hacker News</p>
+                </div>
+
+                <div style="padding: 12px; margin: 10px 0; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0;">
+                    <strong style="font-size: 14px;">
+                        <a href="https://www.koi.ai/blog/darkspectre-unmasking-the-threat-actor-behind-7-8-million-infected-browsers" target="_blank" style="color: #2563eb; text-decoration: none;">
+                            DarkSpectre: Unmasking the Threat Actor Behind 8.8 Million Infected Browsers
+                        </a>
+                    </strong>
+                    <p style="margin: 5px 0 0 0; font-size: 12px; color: #64748b;">Source: Koi Security</p>
+                </div>
+
+                <div style="padding: 12px; margin: 10px 0; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0;">
+                    <strong style="font-size: 14px;">
+                        <a href="https://www.bleepingcomputer.com/news/security/zoom-stealer-browser-extensions-harvest-corporate-meeting-intelligence/" target="_blank" style="color: #2563eb; text-decoration: none;">
+                            Zoom Stealer browser extensions harvest corporate meeting intelligence
+                        </a>
+                    </strong>
+                    <p style="margin: 5px 0 0 0; font-size: 12px; color: #64748b;">Source: BleepingComputer</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">📊</div>
+                <div class="section-title">IOC Database Cross-Reference</div>
+            </div>
+            <div class="subsection">
+                <div class="alert alert-critical">
+                    <div class="alert-icon">🚨</div>
+                    <div>
+                        <strong>WARNING:</strong> This extension has been previously flagged in our IOC database<br>
+                        <strong>First Analyzed:</strong> 2026-02-01T08:18:42.208628+00:00<br>
+                        <strong>Risk Score:</strong> 7.5/10
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 20px;">Previous Findings</h3>
+                <div class="finding-card">
+                    <p style="margin: 5px 0; font-size: 13px;"><strong>Malicious Domains:</strong> 2</p>
+                    <div style="margin: 10px 0;">
+<code style="display: block; margin: 3px 0; padding: 6px; background: rgba(239, 68, 68, 0.1); border-radius: 4px; font-size: 12px;">meetingtv.us</code><code style="display: block; margin: 3px 0; padding: 6px; background: rgba(239, 68, 68, 0.1); border-radius: 4px; font-size: 12px;">zoomcorder.com</code>
+                    </div>
+                    <p style="margin: 10px 0 5px 0; font-size: 13px;"><strong>Dangerous Permissions:</strong></p>
+                    <ul style="margin: 0 0 0 20px; font-size: 12px;">
+<li><all_urls></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🌐</div>
+                <div class="section-title">Domain Intelligence Analysis</div>
+            </div>
+<div class="no-data">✅ No suspicious domain patterns detected in static analysis</div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">⚙️</div>
+                <div class="section-title">Technical Details</div>
+            </div>
+            <div class="detail-grid">
+                <div class="detail-card">
+                    <div class="detail-label">Extension ID</div>
+                    <div class="detail-value" style="font-family: monospace; font-size: 13px;">pabkjoplheapcclldpknfpcepheldbga</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Version</div>
+                    <div class="detail-value">12.0</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Manifest Version</div>
+                    <div class="detail-value">3</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Permissions</div>
+                    <div class="detail-value">2</div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 15px; color: var(--text-primary);">📋 Dangerous Permissions</h3>
+<div style="display: grid; gap: 12px;">
+                <div style="background: rgba(239, 68, 68, 0.1); border-left: 4px solid #dc2626; padding: 15px; border-radius: 6px;">
+                    <div style="font-weight: 700; font-size: 15px; color: #fca5a5; margin-bottom: 6px;">
+                        🚩 <all_urls>
+                    </div>
+                    <div style="font-size: 14px; color: #f87171; margin-bottom: 4px;">
+                        Access to ALL websites you visit
+                    </div>
+                    <div style="font-size: 13px; color: #fca5a5; font-weight: 600;">
+                        CRITICAL - Can read/modify all web pages
+                    </div>
+                </div>
+</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">⚠️</div>
+                <div class="section-title">Threat Analysis</div>
+            </div>
+
+            <div class="threat-item high">
+                <div class="threat-header">
+                    <div class="threat-name">🚨 Bulk Text Extraction (innerText)</div>
+                    <div class="threat-severity high">high</div>
+                </div>
+                <div class="threat-description">Extracts all visible page text - can capture sensitive information displayed on any website</div>
+
+                <div class="context-analysis" style="margin: 10px 0; padding: 12px 15px; background: rgba(59, 130, 246, 0.1); border-left: 3px solid #3b82f6; border-radius: 4px; font-size: 13px; color: #cbd5e1; line-height: 1.5;">
+                    <strong style="color: #60a5fa;">Context Analysis:</strong> This pattern is associated with 'Page content theft' behavior. Review the code context to assess the actual risk.
+                </div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> Page content theft
+                </div>
+
+                <div style="margin: 10px 0; padding: 8px 12px; background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; border-radius: 4px;">
+                    <span style="color: #94a3b8; font-size: 12px;">Matched pattern:</span>
+                    <code style="color: #f87171; background: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 3px; font-size: 12px; margin-left: 8px;">document.body.innerText</code>
+                </div>
+
+                <div class="code-snippet-container" style="margin: 15px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+                    <div class="code-snippet-header" style="background: linear-gradient(135deg, #374151 0%, #1f2937 100%); padding: 10px 15px; display: flex; align-items: center; gap: 10px;">
+                        <div class="code-snippet-header-dots" style="display: flex; gap: 6px;">
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #ef4444;"></div>
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #f59e0b;"></div>
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #22c55e;"></div>
+                        </div>
+                        <div class="code-snippet-filename" style="color: #9ca3af; font-size: 13px; font-family: monospace;">content.js</div>
+                    </div>
+                    <div class="code-snippet-body" style="background: #0f172a; padding: 0; overflow-x: auto;">
+                        <pre style="margin: 0; padding: 15px; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><div style="display: flex; background: rgba(239, 68, 68, 0.2); border-left: 3px solid #ef4444; padding: 2px 10px;"><span style="color: #ef4444; min-width: 35px; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151;">1</span><span style="padding-left: 10px; color: #e2e8f0;"><span style="color: #ef4444; font-weight: bold;">&gt;&gt;</span>  <span class=<span class="code-string">"code-keyword"</span>>let</span> admitButtonText=<span class="code-string">"admit"</span>;chrome.storage.sync.<span class=<span class="code-string">"code-function"</span>>get</span>(<span class="code-string">"buttonText"</span>,<span class=<span class="code-string">"code-keyword"</span>>function</span>(data){<span class=<span class="code-string">"code-keyword"</span>>if</span>(data.buttonText){admitButtonText=data.buttonText.<span class=<span class="code-string">"code-function"</span>>toLowerCase</span>()}});<span class=<span class="code-string">"code-keyword"</span>>let</span> hadError=false;<span class=<span class="code-string">"code-keyword"</span>>function</span> <span class=<span class="code-string">"code-function"</span>>clickAdmit</span>(){<span class=<span class="code-string">"code-keyword"</span>>try</span>{<span class=<span class="code-string">"code-keyword"</span>>let</span> possibleAdmitButtons=document.<span class=<span class="code-string">"code-function"</span>>querySelectorAll</span>(<span class="code-string">"button span"</span>);<span class=<span class="code-string">"code-function"</span>>for</span>(<span class=<span class="code-string">"code-keyword"</span>>let</span> possibleAdmitButton of possibleAdmitButtons){<span class=<span class="code-string">"code-keyword"</span>>let</span> possibleButtonText=possibleAdmitButton.textContent.<span class=<span class="code-string">"code-function"</span>>trim</span>().<span class=<span class="code-string">"code-function"</span>>toLowerCase</span>();<span class=<span class="code-string">"code-keyword"</span>>if</span>(possibleButtonText===admitButtonText){possibleAdmitButton.<span class=<span class="code-string">"code-function"</span>>click</span>();break}}}<span class=<span class="code-string">"code-keyword"</span>>catch</span>(err){<span class=<span class="code-string">"code-keyword"</span>>if</span>(!hadError){console.<span class=<span class="code-string">"code-function"</span>>log</span>(<span class="code-string">"Google Meet Auto Admit Error: "</span>);console.<span class=<span class="code-string">"code-function"</span>>log</span>(err.message);hadError=true}}}<span class=<span class="code-string">"code-keyword"</span>>function</span> <span class=<span class="code-string">"code-function"</span>>clickAdmitIfSwitchedOn</span>(){chrome.storage.sync.<span class=<span class="code-string">"code-function"</span>>get</span>(<span class="code-string">"isWorking"</span>,<span class=<span class="code-string">"code-keyword"</span>>function</span>(data){<span class=<span class="code-string">"code-keyword"</span>>if</span>(data.isWorking!==false){<span class=<span class="code-string">"code-function"</span>>clickAdmit</span>()}})}<span class=<span class="code-string">"code-keyword"</span>>var</span> url=window.location.href;<span class=<span class="code-string">"code-function"</span>>setInterval</span>(clickAdmitIfSwitchedOn,500);<span class=<span class="code-string">"code-keyword"</span>>function</span> <span class=<span class="code-string">"code-function"</span>>showResults</span>(){console.<span class=<span class="code-string">"code-function"</span>>log</span>(<span class="code-string">"showres"</span>);<span class=<span class="code-string">"code-keyword"</span>>if</span>(url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"rainfocus"</span>)){webinarText.style.height=<span class="code-string">"65px"</span>}<span class=<span class="code-string">"code-keyword"</span>>else</span> <span class=<span class="code-string">"code-keyword"</span>>if</span>(url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"meet.google.com"</span>)){document.body.style.overflow=<span class="code-string">"visible"</span>;document.documentElement.style.overflowY=<span class="code-string">"visible"</span>;forLink.href=<span class="code-string">""</span>;scrollLink.href=<span class="code-string">""</span>;webinaraLink.href=<span class="code-string">""</span>;scrollDown.href=<span class="code-string">""</span>;forLink.<span class=<span class="code-string">"code-function"</span>>addEventListener</span>(<span class="code-string">"click"</span>,<span class=<span class="code-string">"code-keyword"</span>>function</span>(e){e.<span class=<span class="code-string">"code-function"</span>>preventDefault</span>();document.<span class=<span class="code-string">"code-function"</span>>querySelector</span>(<span class="code-string">"#webinarFooterHeader"</span>).<span class=<span class="code-string">"code-function"</span>>scrollIntoView</span>({behavior:<span class="code-string">"smooth"</span>})});scrollLink.<span class=<span class="code-string">"code-function"</span>>addEventListener</span>(<span class="code-string">"click"</span>,<span class=<span class="code-string">"code-keyword"</span>>function</span>(e){e.<span class=<span class="code-string">"code-function"</span>>preventDefault</span>();document.<span class=<span class="code-string">"code-function"</span>>querySelector</span>(<span class="code-string">"#webinarFooterHeader"</span>).<span class=<span class="code-string">"code-function"</span>>scrollIntoView</span>({behavior:<span class="code-string">"smooth"</span>})});webinaraLink.<span class=<span class="code-string">"code-function"</span>>addEventListener</span>(<span class="code-string">"click"</span>,<span class=<span class="code-string">"code-keyword"</span>>function</span>(e){e.<span class=<span class="code-string">"code-function"</span>>preventDefault</span>();document.<span class=<span class="code-string">"code-function"</span>>querySelector</span>(<span class="code-string">"#webinarFooterHeader"</span>).<span class=<span class="code-string">"code-function"</span>>scrollIntoView</span>({behavior:<span class="code-string">"smooth"</span>})});scrollDown.<span class=<span class="code-string">"code-function"</span>>addEventListener</span>(<span class="code-string">"click"</span>,<span class=<span class="code-string">"code-keyword"</span>>function</span>(e){e.<span class=<span class="code-string">"code-function"</span>>preventDefault</span>();document.<span class=<span class="code-string">"code-function"</span>>querySelector</span>(<span class="code-string">"#webinarFooterHeader"</span>).<span class=<span class="code-string">"code-function"</span>>scrollIntoView</span>({behavior:<span class="code-string">"smooth"</span>})});<span class=<span class="code-string">"code-keyword"</span>>if</span>(!url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"landing"</span>)&amp;&amp;!url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"about"</span>)&amp;&amp;!url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"intl"</span>)&amp;&amp;!url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"_meet"</span>)&amp;&amp;!url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"about"</span>)){document.body.style.marginTop=<span class="code-string">"0px"</span>;webinarData.style.visibility=<span class="code-string">"hidden"</span>;webinarFooter.style.visibility=<span class="code-string">"hidden"</span>;<span class=<span class="code-string">"code-keyword"</span>>const</span> intervalId=<span class=<span class="code-string">"code-function"</span>>setInterval</span>(<span class=<span class="code-string">"code-keyword"</span>>function</span>(){<span class=<span class="code-string">"code-keyword"</span>>let</span> ppl=document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"ppl"</span>);<span class=<span class="code-string">"code-keyword"</span>>let</span> topMargin=window.<span class=<span class="code-string">"code-function"</span>>getComputedStyle</span>(document.body).marginTop;<span class=<span class="code-string">"code-keyword"</span>>const</span> h1Element=Array.<span class=<span class="code-string">"code-function"</span>>from</span>(document.<span class=<span class="code-string">"code-function"</span>>getElementsByTagName</span>(<span class="code-string">"h1"</span>)).<span class=<span class="code-string">"code-function"</span>>find</span>(el=&gt;el.innerText.<span class=<span class="code-string">"code-function"</span>>trim</span>()===<span class="code-string">"You left the meeting"</span>);<span class=<span class="code-string">"code-keyword"</span>>if</span>(h1Element){document.body.style.marginTop=topMargin+60+<span class="code-string">"px"</span>;webinarText.style.display=<span class="code-string">"visible"</span>;webinarFooter.style.display=<span class="code-string">"visible"</span>;webinarText.style.visibility=<span class="code-string">"visible"</span>;webinarFooter.style.visibility=<span class="code-string">"visible"</span>;webinarFooter.style.lineHeight=<span class="code-string">"60px"</span>;webinarData.style.display=<span class="code-string">"visible"</span>;webinarData.style.visibility=<span class="code-string">"visible"</span>;document.body.style.marginTop=topMargin+60+<span class="code-string">"px"</span>;forLink.onclick=<span class=<span class="code-string">"code-function"</span>>scrollToBottom</span>();scrollLink.onclick=<span class=<span class="code-string">"code-function"</span>>scrollToBottom</span>();ppl.style.lineHeight=<span class="code-string">"16px"</span>;ppl.style.fontSize=<span class="code-string">"18px"</span>;webinarFooter.style.marginTop=<span class="code-string">"940px"</span>;webinarData.style.position=<span class="code-string">"fixed"</span>;webinarData.style.top=<span class="code-string">"10px"</span>;webinarData.style.marginTop=<span class="code-string">"0px"</span>;webinarData.style.height=<span class="code-string">"55px"</span>;document.body.style.overflow=<span class="code-string">"visible"</span>;document.documentElement.style.overflowY=<span class="code-string">"visible"</span>;document.body.style.marginTop=topMargin+60+<span class="code-string">"px"</span>;<span class=<span class="code-string">"code-function"</span>>clearInterval</span>(intervalId);<span class=<span class="code-string">"code-function"</span>>hasFixedElementAtTop</span>()}<span class=<span class="code-string">"code-keyword"</span>>else</span>{}},2e3)}}<span class=<span class="code-string">"code-keyword"</span>>else</span> <span class=<span class="code-string">"code-keyword"</span>>if</span>(url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"app.zoom.us"</span>)&amp;&amp;url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"/wc/"</span>)&amp;&amp;!url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"home"</span>)){webinarData.style.visibility=<span class="code-string">"hidden"</span>;webinarFooter.style.visibility=<span class="code-string">"hidden"</span>;document.body.style.marginTop=<span class="code-string">"0px"</span>;<span class=<span class="code-string">"code-keyword"</span>>const</span> intervalId=<span class=<span class="code-string">"code-function"</span>>setInterval</span>(<span class=<span class="code-string">"code-keyword"</span>>function</span>(){<span class=<span class="code-string">"code-keyword"</span>>if</span>(window.location.href.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"app.zoom.us/wc/home"</span>)){<span class=<span class="code-string">"code-keyword"</span>>let</span> topMargin=window.<span class=<span class="code-string">"code-function"</span>>getComputedStyle</span>(document.body).marginTop;webinarText.style.display=<span class="code-string">"visible"</span>;webinarFooter.style.display=<span class="code-string">"visible"</span>;webinarText.style.visibility=<span class="code-string">"visible"</span>;webinarFooter.style.visibility=<span class="code-string">"visible"</span>;webinarData.style.display=<span class="code-string">"visible"</span>;webinarData.style.visibility=<span class="code-string">"visible"</span>;document.body.style.marginTop=60+<span class="code-string">"px"</span>;document.body.style.overflow=<span class="code-string">"visible"</span>;document.documentElement.style.overflowY=<span class="code-string">"visible"</span>;webinarData.style.visibility=<span class="code-string">"visible"</span>;webinarFooter.style.visibility=<span class="code-string">"visible"</span>;webinarFooter.style.display=<span class="code-string">"visible"</span>;webinarData.style.display=<span class="code-string">"visible"</span>;webinarData.style.marginTop=<span class="code-string">"-60px"</span>}<span class=<span class="code-string">"code-keyword"</span>>if</span>(window.location.href.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"app.zoom.us"</span>)&amp;&amp;window.location.href.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"start"</span>)||window.location.href.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"app.zoom.us"</span>)&amp;&amp;window.location.href.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"join"</span>)){webinarData.style.visibility=<span class="code-string">"hidden"</span>;webinarFooter.style.visibility=<span class="code-string">"hidden"</span>;document.body.style.overflow=<span class="code-string">"hidden"</span>;document.body.style.marginTop=<span class="code-string">"0px"</span>}},2e3)}<span class=<span class="code-string">"code-keyword"</span>>else</span> <span class=<span class="code-string">"code-keyword"</span>>if</span>(url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"zoom.us"</span>)){<span class=<span class="code-string">"code-keyword"</span>>const</span> intervalId=<span class=<span class="code-string">"code-function"</span>>setInterval</span>(<span class=<span class="code-string">"code-keyword"</span>>function</span>(){{<span class=<span class="code-string">"code-keyword"</span>>if</span>(window.location.href.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"app.zoom.us/wc/home"</span>)){document.body.style.marginTop=60+<span class="code-string">"px"</span>;document.body.style.overflow=<span class="code-string">"visible"</span>;document.documentElement.style.overflowY=<span class="code-string">"visible"</span>;webinarData.style.visibility=<span class="code-string">"visible"</span>;webinarFooter.style.visibility=<span class="code-string">"visible"</span>;webinarFooter.style.display=<span class="code-string">"visible"</span>;webinarData.style.display=<span class="code-string">"visible"</span>}<span class=<span class="code-string">"code-keyword"</span>>else</span>{}<span class=<span class="code-string">"code-keyword"</span>>if</span>(window.location.href.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"app.zoom.us"</span>)&amp;&amp;window.location.href.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"start"</span>)||window.location.href.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"app.zoom.us"</span>)&amp;&amp;window.location.href.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"join"</span>)){webinarData.style.visibility=<span class="code-string">"hidden"</span>;webinarFooter.style.visibility=<span class="code-string">"hidden"</span>;document.body.style.overflow=<span class="code-string">"hidden"</span>;document.body.style.marginTop=<span class="code-string">"0px"</span>}}},2e3)}<span class=<span class="code-string">"code-keyword"</span>>else</span> <span class=<span class="code-string">"code-keyword"</span>>if</span>(url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"app.zoom.us/wc/home"</span>)){document.body.style.overflow=<span class="code-string">"visible"</span>;document.documentElement.style.overflowY=<span class="code-string">"visible"</span>;document.body.style.marginTop=topMargin+60+<span class="code-string">"px"</span>}<span class=<span class="code-string">"code-keyword"</span>>else</span> <span class=<span class="code-string">"code-keyword"</span>>if</span>(url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"teams.live.com"</span>)){document.body.style.overflow=<span class="code-string">"visible"</span>;document.documentElement.style.overflowY=<span class="code-string">"visible"</span>}<span class=<span class="code-string">"code-keyword"</span>>else</span>{headerLength=<span class=<span class="code-string">"code-function"</span>>hasFixedElementAtTop</span>()}}<span class=<span class="code-string">"code-keyword"</span>>function</span> <span class=<span class="code-string">"code-function"</span>>main</span>(){{<span class=<span class="code-string">"code-keyword"</span>>var</span> url=window.location.href;<span class=<span class="code-string">"code-keyword"</span>>let</span> forLink;<span class=<span class="code-string">"code-keyword"</span>>let</span> scrollLink;<span class=<span class="code-string">"code-keyword"</span>>let</span> webinaraLink;<span class=<span class="code-string">"code-keyword"</span>>let</span> scrollDown;<span class=<span class="code-string">"code-keyword"</span>>let</span> webinarData;<span class=<span class="code-string">"code-keyword"</span>>let</span> webinarFooter;<span class=<span class="code-string">"code-keyword"</span>>let</span> webinarText;<span class=<span class="code-string">"code-keyword"</span>>let</span> providers=[<span class="code-string">"zoom.us"</span>,<span class="code-string">"gotowebinar.com"</span>,<span class="code-string">"webex.com"</span>,<span class="code-string">"meet.google.com"</span>,<span class="code-string">"teams.microsoft.com"</span>,<span class="code-string">"webinarninja.com"</span>,<span class="code-string">"clickmeeting.com"</span>,<span class="code-string">"livestorm.co"</span>,<span class="code-string">"app.sequel.io"</span>,<span class="code-string">"coro.wistia.com"</span>,<span class="code-string">"easywebinar.com"</span>,<span class="code-string">"on24.com"</span>,<span class="code-string">"sessions.us"</span>,<span class="code-string">"webinarjam.com"</span>,<span class="code-string">"ringcentral.com"</span>,<span class="code-string">"kaltura.com"</span>,<span class="code-string">"demio.com"</span>,<span class="code-string">"rainfocus.com"</span>,<span class="code-string">"gotowebinar.com"</span>,<span class="code-string">"stova.io"</span>,<span class="code-string">"cvent.com"</span>,<span class="code-string">"goldcast.io"</span>,<span class="code-string">"wsw.com"</span>,<span class="code-string">"airmeet.com"</span>,<span class="code-string">"companywebcast.com"</span>,<span class="code-string">"workcast.com"</span>,<span class="code-string">"goto.com"</span>,<span class="code-string">"workspace.google.com"</span>,<span class="code-string">"teams.live.com"</span>];<span class=<span class="code-string">"code-keyword"</span>>let</span> provider;<span class=<span class="code-string">"code-keyword"</span>>let</span> providerCon=false;<span class=<span class="code-string">"code-function"</span>>for</span>(<span class=<span class="code-string">"code-keyword"</span>>let</span> i=0;i&lt;providers.length;i++){provider=providers[i];<span class=<span class="code-string">"code-keyword"</span>>if</span>(url.<span class=<span class="code-string">"code-function"</span>>includes</span>(provider)){providerCon=provider}}<span class=<span class="code-string">"code-keyword"</span>>if</span>(providerCon){console.<span class=<span class="code-string">"code-function"</span>>log</span>(<span class="code-string">"procon"</span>);<span class=<span class="code-string">"code-keyword"</span>>let</span> baseUrl=url.<span class=<span class="code-string">"code-function"</span>>split</span>(<span class="code-string">"?"</span>)[0];<span class=<span class="code-string">"code-keyword"</span>>let</span> provider=providers.<span class=<span class="code-string">"code-function"</span>>find</span>(p=&gt;baseUrl.<span class=<span class="code-string">"code-function"</span>>includes</span>(p));<span class=<span class="code-string">"code-keyword"</span>>if</span>(!provider){<span class=<span class="code-string">"code-keyword"</span>>return</span>}webinarData=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"div"</span>);webinarData.id=<span class="code-string">"webinarDataHeader"</span>;webinarData.style.marginBottom=<span class="code-string">"20px"</span>;webinarData.style.backgroundColor=<span class="code-string">"#f7f7f7"</span>;webinarData.style.border=<span class="code-string">"1px solid #e0e0e0"</span>;webinarData.style.borderRadius=<span class="code-string">"5px"</span>;webinarData.style.textAlign=<span class="code-string">"left"</span>;webinarData.style.color=<span class="code-string">"#333"</span>;webinarData.style.position=<span class="code-string">"fixed"</span>;webinarData.style.zIndex=400;webinarData.style.width=<span class="code-string">"100%"</span>;webinarData.style.marginBottom=<span class="code-string">"0px"</span>;webinarData.style.justifyContent=<span class="code-string">"left"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> webinarImage=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"img"</span>);webinarImage.src=chrome.runtime.<span class=<span class="code-string">"code-function"</span>>getURL</span>(<span class="code-string">"images/down.png"</span>);webinarImage.style.width=<span class="code-string">"20px"</span>;webinarImage.style.height=<span class="code-string">"20px"</span>;webinarImage.style.marginRight=<span class="code-string">"10px"</span>;webinarText=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"span"</span>);webinarText.style.verticalAlign=<span class="code-string">"middle"</span>;webinarText.style.display=<span class="code-string">"inline-block"</span>;webinarText.style.lineHeight=<span class="code-string">"60px"</span>;webinarText.style.height=<span class="code-string">"60px"</span>;webinarText.style.width=<span class="code-string">"100%"</span>;webinarText.style.color=<span class="code-string">"black"</span>;scrollLink=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"a"</span>);scrollLink.innerHTML=<span class="code-string">" personalized recommendations  "</span>;scrollLink.style.marginTop=<span class="code-string">"0px"</span>;scrollLink.style.marginBottom=<span class="code-string">"0px"</span>;scrollLink.style.marginLeft=<span class="code-string">"37px"</span>;scrollLink.style.fontSize=<span class="code-string">"20px"</span>;scrollLink.style.fontWeight=<span class="code-string">"normal"</span>;scrollLink.style.textDecoration=<span class="code-string">"none"</span>;scrollLink.href=<span class="code-string">"#webinarFooterHeader"</span>;scrollLink.style.color=<span class="code-string">"black"</span>;scrollDown=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"a"</span>);scrollDown.innerHTML=<span class="code-string">"(or scroll to the bottom) "</span>;scrollDown.style.marginTop=<span class="code-string">"0px"</span>;scrollDown.style.marginBottom=<span class="code-string">"0px"</span>;scrollDown.style.fontSize=<span class="code-string">"20px"</span>;scrollDown.style.fontWeight=<span class="code-string">"normal"</span>;scrollDown.style.textDecoration=<span class="code-string">"none"</span>;scrollDown.href=<span class="code-string">"#webinarFooterHeader"</span>;scrollDown.style.marginLeft=<span class="code-string">"-5px"</span>;scrollDown.style.color=<span class="code-string">"black"</span>;forLink=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"a"</span>);forLink.innerHTML=<span class="code-string">"For "</span>;forLink.style.marginTop=<span class="code-string">"0px"</span>;forLink.style.marginBottom=<span class="code-string">"0px"</span>;forLink.style.fontSize=<span class="code-string">"20px"</span>;forLink.style.fontWeight=<span class="code-string">"normal"</span>;forLink.style.textDecoration=<span class="code-string">"none"</span>;forLink.href=<span class="code-string">"#webinarFooterHeader"</span>;forLink.style.color=<span class="code-string">"black"</span>;webinaraLink=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"a"</span>);webinaraLink.href=<span class="code-string">"#webinarFooterHeader"</span>;webinaraLink.style.width=<span class="code-string">"100%"</span>;webinaraLink.style.marginLeft=<span class="code-string">"20px"</span>;webinaraLink.<span class=<span class="code-string">"code-function"</span>>append</span>(webinarText);<span class=<span class="code-string">"code-keyword"</span>>let</span> closeButton=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"span"</span>);closeButton.innerHTML=<span class="code-string">"x"</span>;closeButton.style.position=<span class="code-string">"absolute"</span>;closeButton.style.top=<span class="code-string">"5px"</span>;closeButton.style.right=<span class="code-string">"15px"</span>;closeButton.style.cursor=<span class="code-string">"pointer"</span>;closeButton.style.fontSize=<span class="code-string">"20px"</span>;closeButton.style.color=<span class="code-string">"#666"</span>;closeButton.onclick=<span class=<span class="code-string">"code-keyword"</span>>function</span>(){webinarData.style.display=<span class="code-string">"none"</span>};<span class=<span class="code-string">"code-keyword"</span>>let</span> topMargin=window.<span class=<span class="code-string">"code-function"</span>>getComputedStyle</span>(document.body).marginTop;topMargin=<span class=<span class="code-string">"code-function"</span>>parseInt</span>(topMargin.<span class=<span class="code-string">"code-function"</span>>replace</span>(<span class="code-string">"px"</span>,<span class="code-string">""</span>))+60;document.body.style.marginTop=topMargin+60+<span class="code-string">"px"</span>;webinarData.style.marginTop=<span class="code-string">"-"</span>+(topMargin+60)+<span class="code-string">"px"</span>;webinarData.<span class=<span class="code-string">"code-function"</span>>append</span>(closeButton);<span class=<span class="code-string">"code-keyword"</span>>var</span> clickButton=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"a"</span>);clickButton.href=<span class="code-string">"#webinarFooterHeader"</span>;clickButton.innerHTML=<span class="code-string">"Click Here"</span>;clickButton.style.display=<span class="code-string">"inline-block"</span>;clickButton.style.padding=<span class="code-string">"10px"</span>;clickButton.style.textAlign=<span class="code-string">"center"</span>;clickButton.style.textDecoration=<span class="code-string">"none"</span>;clickButton.style.marginRight=<span class="code-string">"10px"</span>;clickButton.style.fontSize=<span class="code-string">"18px"</span>;clickButton.style.borderRadius=<span class="code-string">"5px"</span>;clickButton.style.fontWeight=<span class="code-string">"normal"</span>;clickButton.style.cursor=<span class="code-string">"pointer"</span>;clickButton.style.transition=<span class="code-string">"background-color 0.3s"</span>;clickButton.style.lineHeight=<span class="code-string">"60%"</span>;clickButton.style.color=<span class="code-string">"black"</span>;clickButton.style.color=<span class="code-string">"white"</span>;clickButton.style.backgroundColor=<span class="code-string">"#1976d2"</span>;<span class=<span class="code-string">"code-keyword"</span>>let</span> table=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"table"</span>);table.style=<span class="code-string">"justify-content:space-between;align-items:center;width:100%;cellpadding:0;cellspacing:0"</span>;<span class=<span class="code-string">"code-keyword"</span>>let</span> tr=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"tr"</span>);<span class=<span class="code-string">"code-keyword"</span>>let</span> td1=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"td"</span>);td1.style=<span class="code-string">"text-align:left;fontSize:25px;font-weight:normal"</span>;td1.innerHTML=<span class="code-string">"You might also like:"</span>;<span class=<span class="code-string">"code-keyword"</span>>let</span> td2=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"td"</span>);td2.style=<span class="code-string">"text-align:center; font-size: 13px;font-family: Arial, sans-serif;font-weight:normal"</span>;td2.innerHTML=<span class="code-string">"Sponsored"</span>;tr.<span class=<span class="code-string">"code-function"</span>>appendChild</span>(td1);tr.<span class=<span class="code-string">"code-function"</span>>appendChild</span>(td2);table.<span class=<span class="code-string">"code-function"</span>>appendChild</span>(tr);<span class=<span class="code-string">"code-keyword"</span>>let</span> image8=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"img"</span>);image8.src=chrome.runtime.<span class=<span class="code-string">"code-function"</span>>getURL</span>(<span class="code-string">"images/8.gif"</span>);image8.style.height=<span class="code-string">"34px"</span>;image8.style.marginBottom=<span class="code-string">"16px"</span>;image8.style.marginLeft=<span class="code-string">"-5px"</span>;image8.style.marginRight=<span class="code-string">"-2px"</span>;image8.style.position=<span class="code-string">"fixed"</span>;image8.style.top=<span class="code-string">"10px"</span>;forLink.style.display=<span class="code-string">"inline"</span>;image8.style.display=<span class="code-string">"inline"</span>;scrollLink.style.display=<span class="code-string">"inline"</span>;clickButton.style.display=<span class="code-string">"inline"</span>;scrollDown.style.display=<span class="code-string">"inline"</span>;webinaraLink.style.display=<span class="code-string">"inline"</span>;webinarText.<span class=<span class="code-string">"code-function"</span>>append</span>(forLink);webinarText.<span class=<span class="code-string">"code-function"</span>>append</span>(image8);webinarText.<span class=<span class="code-string">"code-function"</span>>append</span>(scrollLink);webinarText.<span class=<span class="code-string">"code-function"</span>>append</span>(clickButton);webinarText.<span class=<span class="code-string">"code-function"</span>>append</span>(scrollDown);webinarFooter=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"div"</span>);<span class=<span class="code-string">"code-keyword"</span>>var</span> headerLength;webinarData.<span class=<span class="code-string">"code-function"</span>>append</span>(webinaraLink);<span class=<span class="code-string">"code-keyword"</span>>var</span> firstHeaderNode=document.body.firstChild;window.<span class=<span class="code-string">"code-function"</span>>scrollTo</span>(0,0);document.body.<span class=<span class="code-string">"code-function"</span>>insertBefore</span>(webinarData,firstHeaderNode);webinarFooter.id=<span class="code-string">"webinarFooterHeader"</span>;webinarFooter.style.marginTop=<span class="code-string">"20px"</span>;webinarFooter.style.marginBottom=<span class="code-string">"20px"</span>;webinarFooter.style.padding=<span class="code-string">"20px"</span>;webinarFooter.style.backgroundColor=<span class="code-string">"#f7f7f7"</span>;webinarFooter.style.border=<span class="code-string">"1px solid #e0e0e0"</span>;webinarFooter.style.borderRadius=<span class="code-string">"5px"</span>;webinarFooter.style.textAlign=<span class="code-string">"left"</span>;webinarFooter.style.fontSize=<span class="code-string">"20px"</span>;webinarFooter.style.fontWeight=<span class="code-string">"bold"</span>;webinarFooter.style.color=<span class="code-string">"#333"</span>;webinarFooter.style.zIndex=400;webinarFooter.style.width=<span class="code-string">"100%"</span>;webinarFooter.style.justifyContent=<span class="code-string">"left"</span>;webinarFooter.style.scrollMarginTop=<span class="code-string">"60px"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> footerNode=document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"footer_container"</span>);<span class=<span class="code-string">"code-keyword"</span>>var</span> miniLayouts=document.<span class=<span class="code-string">"code-function"</span>>getElementsByClassName</span>(<span class="code-string">"mini-layout"</span>);<span class=<span class="code-string">"code-keyword"</span>>var</span> miniLayout=miniLayouts[miniLayouts.length-1];<span class=<span class="code-string">"code-keyword"</span>>var</span> appNode=document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"app"</span>);document.body.<span class=<span class="code-string">"code-function"</span>>appendChild</span>(webinarFooter);<span class=<span class="code-string">"code-keyword"</span>>try</span>{document.body.<span class=<span class="code-string">"code-function"</span>>insertBefore</span>(webinarFooter,footerNode)}<span class=<span class="code-string">"code-keyword"</span>>catch</span>(e){}<span class=<span class="code-string">"code-keyword"</span>>let</span> ppl=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"div"</span>);ppl.id=<span class="code-string">"ppl"</span>;ppl.style.fontWeight=<span class="code-string">"normal"</span>;urllocation=window.location.href;{document.body.style.marginTop=<span class="code-string">"0px"</span>;webinarData.style.visibility=<span class="code-string">"hidden"</span>;webinarFooter.style.visibility=<span class="code-string">"hidden"</span>}<span class=<span class="code-string">"code-keyword"</span>>let</span> pplresp=<span class=<span class="code-string">"code-function"</span>>fetchData</span>(urllocation);<span class=<span class="code-string">"code-keyword"</span>>function</span> <span class=<span class="code-string">"code-function"</span>>fetchData</span>(url){url=<span class=<span class="code-string">"code-function"</span>>encodeURIComponent</span>(url);<span class=<span class="code-string">"code-function"</span>>fetch</span>(<span class="code-string">"https:<span class="code-comment">//us-central1-webinarstvus.cloudfunctions.net/webinarJSON?url="</span>+url).<span class=<span class="code-string">"code-function"</span>>then</span>(response=&gt;{<span class=<span class="code-string">"code-keyword"</span>>return</span> response}).<span class=<span class="code-string">"code-function"</span>>then</span>(data=&gt;{<span class=<span class="code-string">"code-keyword"</span>>let</span> ppl=document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"ppl"</span>);data=data.<span class=<span class="code-string">"code-function"</span>>text</span>();data.<span class=<span class="code-string">"code-function"</span>>then</span>(data=&gt;{ppl.innerHTML=data;<span class=<span class="code-string">"code-keyword"</span>>if</span>(data!==<span class="code-string">""</span>){{document.body.style.overflow=<span class="code-string">"visible"</span>;document.documentElement.style.overflowY=<span class="code-string">"visible"</span>;document.body.style.marginTop=topMargin+60+<span class="code-string">"px"</span>;webinarData.style.visibility=<span class="code-string">"visible"</span>;webinarFooter.style.visibility=<span class="code-string">"visible"</span>}<span class=<span class="code-string">"code-function"</span>>showResults</span>()}})}).<span class=<span class="code-string">"code-keyword"</span>>catch</span>(error=&gt;{})}webinarFooter.<span class=<span class="code-string">"code-function"</span>>appendChild</span>(table);webinarFooter.<span class=<span class="code-string">"code-function"</span>>appendChild</span>(ppl);<span class=<span class="code-string">"code-keyword"</span>>let</span> legal=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"div"</span>);legal.style=<span class="code-string">"text-align:center;font-size: 10px; color: #666666; font-family: Arial, sans-serif;"</span>;legal.innerHTML=<span class="code-string">"MeetingTV is not affiliated with <span class="</span>code-keyword<span class="code-string">">this</span> site"</span>;<span class=<span class="code-string">"code-keyword"</span>>if</span>(provider===<span class="code-string">"zoom.us"</span>){legal.innerHTML=<span class="code-string">"MeetingTV is not affiliated with zoom video communications."</span>}<span class=<span class="code-string">"code-keyword"</span>>let</span> followThrough=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"span"</span>);followThrough.style=<span class="code-string">"font-size: 18px; font-family: Arial, sans-serif;font-weight: normal;"</span>;followThrough.innerHTML=<span class="code-string">"Browse more webinars at "</span>;followThrougha=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"a"</span>);followThrougha.innerHTML=<span class="code-string">"MeetingTV.us"</span>;followThrougha.color=<span class="code-string">"#0000EE;"</span>;followThrougha.href=<span class="code-string">"https://meetingtv.us/catalog"</span>;followThrougha.style=<span class="code-string">"font-size: 18px; font-family: Arial, sans-serif;"</span>;webinarFooter.<span class=<span class="code-string">"code-function"</span>>appendChild</span>(followThrough);webinarFooter.<span class=<span class="code-string">"code-function"</span>>appendChild</span>(followThrougha);webinarFooter.<span class=<span class="code-string">"code-function"</span>>appendChild</span>(legal)}}}<span class=<span class="code-string">"code-function"</span>>main</span>();<span class=<span class="code-string">"code-keyword"</span>>var</span> url=window.location.href;<span class=<span class="code-string">"code-keyword"</span>>var</span> addWeb=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"div"</span>);addWeb.innerHTML=<span class="code-string">"hey there"</span>;<span class=<span class="code-string">"code-keyword"</span>>function</span> <span class=<span class="code-string">"code-function"</span>>extractContent</span>(s){<span class=<span class="code-string">"code-keyword"</span>>var</span> span=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"span"</span>);span.innerHTML=s;<span class=<span class="code-string">"code-keyword"</span>>return</span> span.textContent||span.innerText}<span class=<span class="code-string">"code-keyword"</span>>var</span> meetingInfo={};<span class=<span class="code-string">"code-keyword"</span>>if</span>(document.<span class=<span class="code-string">"code-function"</span>>getElementsByClassName</span>(<span class="code-string">"controls"</span>)[0]){<span class=<span class="code-string">"code-keyword"</span>>if</span>(document.<span class=<span class="code-string">"code-function"</span>>getElementsByClassName</span>(<span class="code-string">"controls"</span>)[0].innerHTML.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"&lt;span"</span>)){<span class=<span class="code-string">"code-keyword"</span>>var</span> offset=1}<span class=<span class="code-string">"code-keyword"</span>>else</span>{<span class=<span class="code-string">"code-keyword"</span>>var</span> offset=0}}<span class=<span class="code-string">"code-keyword"</span>>if</span>(url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"towebinar"</span>)&amp;&amp;url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"registrationConfirmation"</span>)){<span class=<span class="code-string">"code-function"</span>>setTimeout</span>(()=&gt;{<span class=<span class="code-string">"code-function"</span>>toweb</span>(document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"registrationConfirmation"</span>));<span class=<span class="code-string">"code-function"</span>>likeCopy</span>(document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"header"</span>))},2500)}console.<span class=<span class="code-string">"code-function"</span>>log</span>(<span class="code-string">"urlisa"</span>,url);<span class=<span class="code-string">"code-keyword"</span>>if</span>(url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"towebinar"</span>)&amp;&amp;(url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"/#register/"</span>)||url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"/#rt/"</span>))){console.<span class=<span class="code-string">"code-function"</span>>log</span>(<span class="code-string">"toweb"</span>);<span class=<span class="code-string">"code-function"</span>>setTimeout</span>(()=&gt;{<span class=<span class="code-string">"code-function"</span>>toweb</span>(document.<span class=<span class="code-string">"code-function"</span>>getElementsByClassName</span>(<span class="code-string">"sectionFooter"</span>)[0])},2500)}<span class=<span class="code-string">"code-keyword"</span>>function</span> <span class=<span class="code-string">"code-function"</span>>likeCopy</span>(zf){<span class=<span class="code-string">"code-keyword"</span>>var</span> urlEnding=<span class="code-string">"meeting="</span>+<span class=<span class="code-string">"code-function"</span>>encodeURIComponent</span>(url);<span class=<span class="code-string">"code-keyword"</span>>var</span> urlBase=<span class="code-string">"https://zoomcorder.com/record/raw"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> urlLink=urlBase+<span class="code-string">"?"</span>+urlEnding;<span class=<span class="code-string">"code-keyword"</span>>var</span> recdia=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"h11"</span>);recdia.id=<span class="code-string">"recdial"</span>;recdia.innerHTML=<span class="code-string">"Would you like a copy?"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> recdialink=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"a"</span>);recdialink.href=urlLink;recdia.target=<span class="code-string">"_blank"</span>;<span class=<span class="code-string">"code-keyword"</span>>if</span>(document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"recdial"</span>)==null){recdialink.target=<span class="code-string">"_blank"</span>;recdialink.<span class=<span class="code-string">"code-function"</span>>append</span>(recdia)}<span class=<span class="code-string">"code-keyword"</span>>var</span> shead=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"div"</span>);shead.id=<span class="code-string">"headertext"</span>;shead.className=<span class="code-string">"headerText"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> upicon=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"img"</span>);upicon.src=chrome.runtime.<span class=<span class="code-string">"code-function"</span>>getURL</span>(<span class="code-string">"images/recimage.png"</span>);upicon.id=<span class="code-string">"upicon"</span>;<span class=<span class="code-string">"code-keyword"</span>>if</span>(zf){console.<span class=<span class="code-string">"code-function"</span>>log</span>(<span class="code-string">"goto"</span>,zf);<span class=<span class="code-string">"code-keyword"</span>>if</span>(zf){<span class=<span class="code-string">"code-keyword"</span>>if</span>(document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"headertext"</span>)==null){upicon.style.verticalAlign=<span class="code-string">"middle"</span>;upicon.style.marginRight=<span class="code-string">"8px"</span>;shead.style.textAlign=<span class="code-string">"center"</span>;shead.<span class=<span class="code-string">"code-function"</span>>prepend</span>(recdialink);shead.<span class=<span class="code-string">"code-function"</span>>prepend</span>(upicon);zf.<span class=<span class="code-string">"code-function"</span>>prepend</span>(headerSpan)}}}}<span class=<span class="code-string">"code-keyword"</span>>function</span> <span class=<span class="code-string">"code-function"</span>>toweb</span>(zf){console.<span class=<span class="code-string">"code-function"</span>>log</span>(<span class="code-string">"gotow"</span>,zf);<span class=<span class="code-string">"code-keyword"</span>>var</span> urlEnding=<span class="code-string">"meeting="</span>+<span class=<span class="code-string">"code-function"</span>>encodeURIComponent</span>(url);<span class=<span class="code-string">"code-keyword"</span>>var</span> urlBase=<span class="code-string">"https://zoomcorder.com/record/raw"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> urlLink=urlBase+<span class="code-string">"?"</span>+urlEnding;<span class=<span class="code-string">"code-keyword"</span>>var</span> recdia=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"h11"</span>);recdia.id=<span class="code-string">"recdia"</span>;recdia.innerHTML=<span class="code-string">"Record it"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> recdialink=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"a"</span>);recdialink.href=urlLink;recdia.target=<span class="code-string">"_blank"</span>;<span class=<span class="code-string">"code-keyword"</span>>if</span>(document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"recdia"</span>)==null){recdialink.target=<span class="code-string">"_blank"</span>;recdialink.<span class=<span class="code-string">"code-function"</span>>append</span>(recdia)}<span class=<span class="code-string">"code-keyword"</span>>var</span> rectext=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"h11"</span>);rectext.id=<span class="code-string">"rectext"</span>;rectext.innerHTML=<span class="code-string">"get a copy sent to you afterwards using"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> withoutAttending=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"h11"</span>);withoutAttending.id=<span class="code-string">"withoutattending"</span>;withoutAttending.innerHTML=<span class="code-string">" without attending"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> reczoom=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"h11"</span>);reczoom.id=<span class="code-string">"reczoom"</span>;reczoom.innerHTML=<span class="code-string">"Zoomcorder"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> reczoomlink=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"a"</span>);<span class=<span class="code-string">"code-keyword"</span>>if</span>(document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"reczoom"</span>)==null){reczoomlink.<span class=<span class="code-string">"code-function"</span>>append</span>(reczoom);reczoomlink.href=urlLink;reczoomlink.target=<span class="code-string">"_blank"</span>}<span class=<span class="code-string">"code-keyword"</span>>var</span> shead=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"span"</span>);shead.id=<span class="code-string">"shead"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> upicon=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"img"</span>);upicon.src=chrome.runtime.<span class=<span class="code-string">"code-function"</span>>getURL</span>(<span class="code-string">"images/recimage.png"</span>);upicon.id=<span class="code-string">"upicon"</span>;<span class=<span class="code-string">"code-keyword"</span>>if</span>(zf){<span class=<span class="code-string">"code-keyword"</span>>if</span>(zf){<span class=<span class="code-string">"code-keyword"</span>>if</span>(document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"reczoom"</span>)==null){zf.<span class=<span class="code-string">"code-function"</span>>prepend</span>(headerSpan);withoutAttending.style.display=<span class="code-string">"inline-block"</span>;withoutAttending.style.marginLeft=<span class="code-string">"5px"</span>;upicon.style.verticalAlign=<span class="code-string">"middle"</span>;shead.<span class=<span class="code-string">"code-function"</span>>prepend</span>(withoutAttending);shead.<span class=<span class="code-string">"code-function"</span>>prepend</span>(rectext);shead.<span class=<span class="code-string">"code-function"</span>>prepend</span>(reczoomlink);shead.<span class=<span class="code-string">"code-function"</span>>prepend</span>(recdialink);shead.<span class=<span class="code-string">"code-function"</span>>prepend</span>(upicon)}}}}<span class=<span class="code-string">"code-keyword"</span>>if</span>(url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"tomeet"</span>)){<span class=<span class="code-string">"code-keyword"</span>>var</span> urlBase=<span class="code-string">"https://zoomcorder.com/record/raw"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> urlLink=urlBase+<span class="code-string">"?"</span>+urlEnding;<span class=<span class="code-string">"code-keyword"</span>>var</span> recdia=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"h3"</span>);recdia.id=<span class="code-string">"recdia"</span>;recdia.innerHTML=<span class="code-string">"Record it"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> recdialink=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"a"</span>);recdialink.href=urlLink;recdia.target=<span class="code-string">"_blank"</span>;<span class=<span class="code-string">"code-keyword"</span>>if</span>(document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"recdia"</span>)==null){recdialink.target=<span class="code-string">"_blank"</span>;recdialink.<span class=<span class="code-string">"code-function"</span>>append</span>(recdia)}<span class=<span class="code-string">"code-keyword"</span>>var</span> rectext=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"h3"</span>);rectext.id=<span class="code-string">"rectext"</span>;rectext.innerHTML=<span class="code-string">"get a copy sent to you afterwards using"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> withoutAttending=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"h3"</span>);withoutAttending.id=<span class="code-string">"withoutattending"</span>;withoutAttending.innerHTML=<span class="code-string">" without attending"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> reczoom=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"h3"</span>);reczoom.id=<span class="code-string">"reczoom"</span>;reczoom.innerHTML=<span class="code-string">"Zoomcorder"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> reczoomlink=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"a"</span>);<span class=<span class="code-string">"code-keyword"</span>>if</span>(document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"reczoom"</span>)==null){reczoomlink.<span class=<span class="code-string">"code-function"</span>>append</span>(reczoom);reczoomlink.href=urlLink;reczoomlink.target=<span class="code-string">"_blank"</span>}<span class=<span class="code-string">"code-keyword"</span>>var</span> shead=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"span"</span>);shead.id=<span class="code-string">"shead"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> upicon=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"img"</span>);upicon.src=chrome.runtime.<span class=<span class="code-string">"code-function"</span>>getURL</span>(<span class="code-string">"images/recimage.png"</span>);upicon.id=<span class="code-string">"upicon"</span>;<span class=<span class="code-string">"code-keyword"</span>>if</span>(document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"g2mm-modules"</span>)){<span class=<span class="code-string">"code-keyword"</span>>var</span> zf=document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"g2mm-modules"</span>);<span class=<span class="code-string">"code-keyword"</span>>if</span>(zf){<span class=<span class="code-string">"code-keyword"</span>>if</span>(document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"reczoom"</span>)==null){zf.<span class=<span class="code-string">"code-function"</span>>prepend</span>(headerSpan);<span class=<span class="code-string">"code-keyword"</span>>if</span>(document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"shead"</span>)==null){withoutAttending.style.display=<span class="code-string">"inline-block"</span>;withoutAttending.style.marginLeft=<span class="code-string">"5px"</span>;upicon.style.verticalAlign=<span class="code-string">"middle"</span>;shead.style.fontSize=<span class="code-string">"11px"</span>;shead.<span class=<span class="code-string">"code-function"</span>>prepend</span>(withoutAttending);shead.<span class=<span class="code-string">"code-function"</span>>prepend</span>(reczoomlink);shead.<span class=<span class="code-string">"code-function"</span>>prepend</span>(rectext);shead.<span class=<span class="code-string">"code-function"</span>>prepend</span>(recdialink);shead.<span class=<span class="code-string">"code-function"</span>>prepend</span>(upicon)}}}}}<span class=<span class="code-string">"code-keyword"</span>>var</span> theText=document.body.innerText;<span class=<span class="code-string">"code-keyword"</span>>if</span>(url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"zoom"</span>)&amp;&amp;url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"reg"</span>)){console.<span class=<span class="code-string">"code-function"</span>>log</span>(<span class="code-string">"zoomj"</span>);<span class=<span class="code-string">"code-keyword"</span>>var</span> array=[];<span class=<span class="code-string">"code-keyword"</span>>var</span> elements=document.body.<span class=<span class="code-string">"code-function"</span>>getElementsByTagName</span>(<span class="code-string">"*"</span>);<span class=<span class="code-string">"code-function"</span>>for</span>(<span class=<span class="code-string">"code-keyword"</span>>var</span> i=0;i&lt;elements.length;i++){<span class=<span class="code-string">"code-keyword"</span>>var</span> current=elements[i];<span class=<span class="code-string">"code-keyword"</span>>if</span>(current.children.length===0&amp;&amp;current.textContent.<span class=<span class="code-string">"code-function"</span>>replace</span>(/ |\n/g,<span class="code-string">""</span>)!==<span class="code-string">""</span>){array.<span class=<span class="code-string">"code-function"</span>>push</span>(current.textContent)}}<span class=<span class="code-string">"code-keyword"</span>>var</span> mData=document.body.<span class=<span class="code-string">"code-function"</span>>querySelectorAll</span>(<span class="code-string">"div.form-group.horizontal &gt; div.controls"</span>);<span class=<span class="code-string">"code-keyword"</span>>var</span> meetTime=<span class="code-string">""</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> meetDescription=<span class="code-string">""</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> meetTopic=<span class="code-string">""</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> controlLabels=document.<span class=<span class="code-string">"code-function"</span>>getElementsByClassName</span>(<span class="code-string">"control-label"</span>);<span class=<span class="code-string">"code-keyword"</span>>var</span> desc=0;<span class=<span class="code-string">"code-function"</span>>for</span>(<span class=<span class="code-string">"code-keyword"</span>>var</span> i=0;i&lt;controlLabels.length;i++){<span class=<span class="code-string">"code-keyword"</span>>if</span>(controlLabels[i].innerHTML==<span class="code-string">"Description"</span>){desc=1;break}}<span class=<span class="code-string">"code-keyword"</span>>if</span>(mData[0]){meetTopic=mData[0]}<span class=<span class="code-string">"code-keyword"</span>>if</span>(mData[1]&amp;&amp;desc==1){meetDescription=mData[1].innerHTML}meetTime=meetTime.innerText;<span class=<span class="code-string">"code-keyword"</span>>if</span>(mData[1+desc]){meetTime=mData[1+desc].innerText;meetTime=meetTime.<span class=<span class="code-string">"code-function"</span>>replace</span>(<span class="code-string">" Add to calendar"</span>,<span class="code-string">""</span>);<span class=<span class="code-string">"code-keyword"</span>>var</span> meetTimes=meetTime.<span class=<span class="code-string">"code-function"</span>>split</span>(<span class="code-string">"\n"</span>);meetTimes=meetTimes.<span class=<span class="code-string">"code-function"</span>>filter</span>(e=&gt;e!=<span class="code-string">""</span>);<span class=<span class="code-string">"code-keyword"</span>>if</span>(meetTimes.length&gt;1){meetTimes=meetTimes.<span class=<span class="code-string">"code-function"</span>>filter</span>(e=&gt;e!==<span class="code-string">"Time"</span>).<span class=<span class="code-string">"code-function"</span>>filter</span>(e=&gt;e!==<span class="code-string">""</span>);<span class=<span class="code-string">"code-keyword"</span>>var</span> timestamp=document.body.<span class=<span class="code-string">"code-function"</span>>querySelectorAll</span>(<span class="code-string">"span.controls"</span>)[0].innerText.<span class=<span class="code-string">"code-function"</span>>split</span>(<span class="code-string">"Time shows "</span>)[1];meetTime=meetTimes[0]+<span class="code-string">" "</span>+timestamp}<span class=<span class="code-string">"code-keyword"</span>>else</span>{meetTime=meetTimes[0]}}console.<span class=<span class="code-string">"code-function"</span>>log</span>(<span class="code-string">"meetdesc"</span>,meetDescription);<span class=<span class="code-string">"code-keyword"</span>>var</span> show={topic:meetTopic.innerText,description:meetDescription,time:meetTime,url:url,timestamp:Date.<span class=<span class="code-string">"code-function"</span>>now</span>()};<span class=<span class="code-string">"code-keyword"</span>>if</span>(meetTimes){<span class=<span class="code-string">"code-keyword"</span>>if</span>(meetTimes&gt;1){show.times=meetTimes}}<span class=<span class="code-string">"code-keyword"</span>>if</span>(document.body.<span class=<span class="code-string">"code-function"</span>>querySelectorAll</span>(<span class="code-string">"img.img-responsive"</span>)[0]){show.graphic=document.body.<span class=<span class="code-string">"code-function"</span>>querySelectorAll</span>(<span class="code-string">"img.img-responsive"</span>)[0].currentSrc;show.graphicalt=document.body.<span class=<span class="code-string">"code-function"</span>>querySelectorAll</span>(<span class="code-string">"img.img-responsive"</span>)[0].alt}<span class=<span class="code-string">"code-keyword"</span>>if</span>(document.body.<span class=<span class="code-string">"code-function"</span>>querySelectorAll</span>(<span class="code-string">"img.custom_image"</span>)[0]){show.customImage=document.body.<span class=<span class="code-string">"code-function"</span>>querySelectorAll</span>(<span class="code-string">"img.custom_image"</span>)[0].currentSrc;show.customImageAlt=document.body.<span class=<span class="code-string">"code-function"</span>>querySelectorAll</span>(<span class="code-string">"img.custom_image"</span>)[0].alt}<span class=<span class="code-string">"code-keyword"</span>>var</span> speakers=document.body.<span class=<span class="code-string">"code-function"</span>>querySelectorAll</span>(<span class="code-string">"div.form-group &gt; div.controls.col-md-6.static &gt; div"</span>);<span class=<span class="code-string">"code-keyword"</span>>var</span> mySpeakers=[];<span class=<span class="code-string">"code-keyword"</span>>var</span> mySpeaker={};<span class=<span class="code-string">"code-keyword"</span>>var</span> i=0;speakers.<span class=<span class="code-string">"code-function"</span>>forEach</span>(<span class=<span class="code-string">"code-keyword"</span>>function</span>(speaker){<span class=<span class="code-string">"code-keyword"</span>>if</span>(i==0){mySpeaker.name=speaker.innerText;i=i+1}<span class=<span class="code-string">"code-keyword"</span>>else</span> <span class=<span class="code-string">"code-keyword"</span>>if</span>(i==1){mySpeaker.title=speaker.innerText;i=i+1}<span class=<span class="code-string">"code-keyword"</span>>else</span> <span class=<span class="code-string">"code-keyword"</span>>if</span>(i==2){mySpeaker.description=speaker.innerText;i=0;mySpeakers.<span class=<span class="code-string">"code-function"</span>>push</span>(mySpeaker);mySpeaker={}}});show.speakers=mySpeakers;<span class=<span class="code-string">"code-keyword"</span>>var</span> speakerImages=document.body.<span class=<span class="code-string">"code-function"</span>>querySelectorAll</span>(<span class="code-string">"div.form-group &gt; label &gt; img"</span>);i=0;speakerImages.<span class=<span class="code-string">"code-function"</span>>forEach</span>(<span class=<span class="code-string">"code-keyword"</span>>function</span>(speakerImage){show.speakers[i].imagealt=speakerImage.alt;show.speakers[i].imagesrc=speakerImage.src;i=i+1});<span class=<span class="code-string">"code-keyword"</span>>if</span>(url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"/register"</span>)&amp;&amp;url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"/success"</span>)){show.page=<span class="code-string">"success"</span>}<span class=<span class="code-string">"code-keyword"</span>>else</span>{show.page=<span class="code-string">"register"</span>}<span class=<span class="code-string">"code-keyword"</span>>var</span> ihref=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"a"</span>);ihref.id=<span class="code-string">"recordButton"</span>;ihref.innerHTML=<span class="code-string">"Record <span class="</span>code-keyword<span class="code-string">">this</span> webinar and download to watch anytime."</span>;ihref.target=<span class="code-string">"_blank"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> iHolder=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"div"</span>);iHolder.id=<span class="code-string">"iholder"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> iRecordIcon=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"img"</span>);<span class=<span class="code-string">"code-keyword"</span>>var</span> iconLink=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"a"</span>);iconLink.target=<span class="code-string">"_blank"</span>;iRecordIcon.src=chrome.runtime.<span class=<span class="code-string">"code-function"</span>>getURL</span>(<span class="code-string">"images/record.png"</span>);iRecordIcon.id=<span class="code-string">"recordImage"</span>;<span class=<span class="code-string">"code-keyword"</span>>if</span>(document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"recordImage"</span>)==null){iconLink.<span class=<span class="code-string">"code-function"</span>>appendChild</span>(iRecordIcon)}<span class=<span class="code-string">"code-keyword"</span>>var</span> meetingInfo={};console.<span class=<span class="code-string">"code-function"</span>>log</span>(<span class="code-string">"off"</span>,offset);console.<span class=<span class="code-string">"code-function"</span>>log</span>(<span class="code-string">"pp"</span>,document.<span class=<span class="code-string">"code-function"</span>>getElementsByClassName</span>(<span class="code-string">"controls"</span>)[0+offset]);meetingInfo.meeting=url;meetingInfo.meeting=meetingInfo.meeting.<span class=<span class="code-string">"code-function"</span>>split</span>(<span class="code-string">"/success"</span>)[0];meetingInfo.meeting=meetingInfo.meeting.<span class=<span class="code-string">"code-function"</span>>replace</span>(/(\r\n|\n|\r)/gm,<span class="code-string">""</span>);<span class=<span class="code-string">"code-keyword"</span>>var</span> urlEnding=<span class="code-string">""</span>;<span class=<span class="code-string">"code-function"</span>>for</span>(<span class=<span class="code-string">"code-keyword"</span>>var</span> key in meetingInfo){<span class=<span class="code-string">"code-keyword"</span>>if</span>(urlEnding!=<span class="code-string">""</span>){urlEnding+=<span class="code-string">"&amp;"</span>}urlEnding+=key+<span class="code-string">"="</span>+<span class=<span class="code-string">"code-function"</span>>encodeURIComponent</span>(meetingInfo[key])}<span class=<span class="code-string">"code-keyword"</span>>var</span> urlBase=<span class="code-string">"https://zoomcorder.com/record/raw"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> urlLink=urlBase+<span class="code-string">"?"</span>+urlEnding;iconLink.href=urlLink;ihref.href=urlLink;<span class=<span class="code-string">"code-keyword"</span>>var</span> recdia=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"h3"</span>);recdia.id=<span class="code-string">"recdia"</span>;console.<span class=<span class="code-string">"code-function"</span>>log</span>(<span class="code-string">"recdia"</span>);recdia.innerHTML=<span class="code-string">"Record it"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> recdialink=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"a"</span>);recdialink.href=urlLink;recdia.target=<span class="code-string">"_blank"</span>;<span class=<span class="code-string">"code-keyword"</span>>if</span>(document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"recdia"</span>)==null){recdialink.target=<span class="code-string">"_blank"</span>;recdialink.<span class=<span class="code-string">"code-function"</span>>append</span>(recdia)}<span class=<span class="code-string">"code-keyword"</span>>var</span> rectext=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"h3"</span>);rectext.id=<span class="code-string">"rectext"</span>;rectext.innerHTML=<span class="code-string">"get a copy sent to you afterwards using"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> withoutAttending=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"h3"</span>);withoutAttending.id=<span class="code-string">"withoutattending"</span>;withoutAttending.innerHTML=<span class="code-string">" without attending"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> reczoom=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"h3"</span>);reczoom.id=<span class="code-string">"reczoom"</span>;reczoom.innerHTML=<span class="code-string">"Zoomcorder"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> reczoomlink=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"a"</span>);<span class=<span class="code-string">"code-keyword"</span>>if</span>(document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"reczoom"</span>)==null){reczoomlink.<span class=<span class="code-string">"code-function"</span>>append</span>(reczoom);reczoomlink.href=urlLink;reczoomlink.target=<span class="code-string">"_blank"</span>}<span class=<span class="code-string">"code-keyword"</span>>var</span> shead=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"span"</span>);shead.id=<span class="code-string">"shead"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> upicon=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"img"</span>);upicon.src=chrome.runtime.<span class=<span class="code-string">"code-function"</span>>getURL</span>(<span class="code-string">"images/recimage.png"</span>);upicon.id=<span class="code-string">"upicon"</span>;<span class=<span class="code-string">"code-keyword"</span>>if</span>(document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"zoom-ui-frame"</span>)){<span class=<span class="code-string">"code-keyword"</span>>var</span> zf=document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"zoom-ui-frame"</span>).children[1].children[0].children[0];<span class=<span class="code-string">"code-keyword"</span>>if</span>(zf){<span class=<span class="code-string">"code-keyword"</span>>if</span>(document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"reczoom"</span>)==null){withoutAttending.style.display=<span class="code-string">"inline-block"</span>;withoutAttending.style.marginLeft=<span class="code-string">"5px"</span>;upicon.style.verticalAlign=<span class="code-string">"sub"</span>;shead.<span class=<span class="code-string">"code-function"</span>>prepend</span>(withoutAttending);shead.<span class=<span class="code-string">"code-function"</span>>prepend</span>(reczoomlink);shead.<span class=<span class="code-string">"code-function"</span>>prepend</span>(rectext);shead.<span class=<span class="code-string">"code-function"</span>>prepend</span>(recdialink);shead.<span class=<span class="code-string">"code-function"</span>>prepend</span>(upicon)}}}}<span class=<span class="code-string">"code-keyword"</span>>if</span>(url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"zoom"</span>)){<span class=<span class="code-string">"code-keyword"</span>>if</span>(!theText.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"Webinar is over, you cannot register now."</span>)&amp;&amp;!theText.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"Meeting is over, you cannot register now."</span>)&amp;&amp;!theText.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"Your meeting has been launched"</span>)){<span class=<span class="code-string">"code-keyword"</span>>var</span> warn=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"h2"</span>);warn.id=<span class="code-string">"warnText"</span>;warn.innerHTML=<span class="code-string">"NEW: "</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> warnmsg=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"h2"</span>);warnmsg.id=<span class="code-string">"warnMsg"</span>;warnmsg.innerHTML="Don't Miss This <span class="code-string">";<span class="</span>code-keyword<span class="code-string">">var</span> warnunder=document.<span class="</span>code-function<span class="code-string">">createElement</span>("</span>h2<span class="code-string">");warnunder.id="</span>warnunder<span class="code-string">";warnunder.innerHTML="</span>One Time Event!<span class="code-string">";<span class="</span>code-keyword<span class="code-string">">var</span> headerSpan=document.<span class="</span>code-function<span class="code-string">">createElement</span>("</span>span<span class="code-string">");headerSpan.id="</span>headerSpan<span class="code-string">";<span class="</span>code-keyword<span class="code-string">">if</span>(document.<span class="</span>code-function<span class="code-string">">getElementById</span>("</span>warnunder<span class="code-string">")==null){}<span class="</span>code-keyword<span class="code-string">">var</span> controlLabels=document.<span class="</span>code-function<span class="code-string">">getElementsByClassName</span>("</span>control-label<span class="code-string">");<span class="</span>code-keyword<span class="code-string">">var</span> desc=0;<span class="</span>code-keyword<span class="code-string">">if</span>(controlLabels){<span class="</span>code-function<span class="code-string">">for</span>(<span class="</span>code-keyword<span class="code-string">">var</span> i=0;i&lt;controlLabels.length;i++){<span class="</span>code-keyword<span class="code-string">">if</span>(controlLabels[i].innerHTML=="</span>Description<span class="code-string">"){desc=1;break}}}<span class="</span>code-keyword<span class="code-string">">var</span> docRow=document.<span class="</span>code-function<span class="code-string">">getElementsByClassName</span>("</span>register-form<span class="code-string">");<span class="</span>code-keyword<span class="code-string">">if</span>(!docRow[0]){docRow=document.<span class="</span>code-function<span class="code-string">">getElementsByClassName</span>("</span>register-content<span class="code-string">")}<span class="</span>code-keyword<span class="code-string">">var</span> docRowFirst;<span class="</span>code-keyword<span class="code-string">">if</span>(docRow&amp;&amp;shead){<span class="</span>code-keyword<span class="code-string">">if</span>(document.<span class="</span>code-function<span class="code-string">">getElementById</span>("</span>reczoom<span class="code-string">")==null){docRowFirst=docRow[0];shead.<span class="</span>code-function<span class="code-string">">prepend</span>(reczoomlink);shead.<span class="</span>code-function<span class="code-string">">prepend</span>(recdialink);shead.<span class="</span>code-function<span class="code-string">">prepend</span>(upicon);docRowFirst.<span class="</span>code-function<span class="code-string">">prepend</span>(headerSpan)}}<span class="</span>code-keyword<span class="code-string">">var</span> ibutton=document.<span class="</span>code-function<span class="code-string">">createElement</span>("</span>button<span class="code-string">");ibutton.id="</span>recordingButton<span class="code-string">";ibutton.innerHTML="</span>Record <span class=<span class="code-string">"code-keyword"</span>>this</span> webinar and download to watch anytime.<span class="code-string">";ibutton.href=urlLink;<span class="</span>code-keyword<span class="code-string">">var</span> myForm=document.<span class="</span>code-function<span class="code-string">">createElement</span>("</span>form<span class="code-string">");<span class="</span>code-keyword<span class="code-string">">var</span> myInput=document.<span class="</span>code-function<span class="code-string">">createElement</span>("</span>input<span class="code-string">");myForm.action=urlBase+"</span>?<span class="code-string">"+urlEnding;myForm.id="</span>recordForm<span class="code-string">";myInput.type="</span>submit<span class="code-string">";myInput.id="</span>recordingInput<span class="code-string">";myInput.target="</span>_blank<span class="code-string">";myInput.value="</span>Record <span class=<span class="code-string">"code-keyword"</span>>this</span> webinar and download to watch anytime.<span class="code-string">";<span class="</span>code-keyword<span class="code-string">">var</span> myCheckBox=document.<span class="</span>code-function<span class="code-string">">createElement</span>("</span>input<span class="code-string">");myCheckBox.type="</span>checkbox<span class="code-string">";myCheckBox.id="</span>mycheckbox<span class="code-string">";<span class="</span>code-keyword<span class="code-string">">var</span> myCheckBoxText=document.<span class="</span>code-function<span class="code-string">">createElement</span>("</span>span<span class="code-string">");myCheckBoxText.id="</span>mycheckboxtext<span class="code-string">";<span class="</span>code-keyword<span class="code-string">">var</span> recordUrl=urlBase+"</span>?<span class="code-string">"+urlEnding;myCheckBoxText.innerHTML="</span>** If you can<span class="code-string">'t attend, &lt;a target='</span>_blank<span class="code-string">' id='</span>checkboxtexta'&gt;record&lt;/a&gt; it and have it sent to you<span class="code-string">";myCheckBox.onchange=<span class="</span>code-keyword<span class="code-string">">function</span>(){window.<span class="</span>code-function<span class="code-string">">open</span>(urlBase+"</span>?<span class="code-string">"+urlEnding,"</span>_blank<span class="code-string">")};<span class="</span>code-keyword<span class="code-string">">var</span> docRow=document.<span class="</span>code-function<span class="code-string">">getElementsByClassName</span>("</span>zm-row<span class="code-string">")[0];<span class="</span>code-keyword<span class="code-string">">var</span> formGroup=document.<span class="</span>code-function<span class="code-string">">createElement</span>("</span>a<span class="code-string">");formGroup.href=urlLink;<span class="</span>code-keyword<span class="code-string">">var</span> formGroup2=document.<span class="</span>code-function<span class="code-string">">createElement</span>("</span>a<span class="code-string">");formGroup2.href=urlLink;formGroup2.style.zIndex="</span>222<span class="code-string">";formGroup2.className+="</span>form-group<span class="code-string">";formGroup2.className+="</span> horizontal<span class="code-string">";formGroup2.className+="</span> myformgroup<span class="code-string">";formGroup.className+="</span>form-group<span class="code-string">";formGroup.className+="</span> horizontal<span class="code-string">";formGroup.className+="</span> myformgroup<span class="code-string">";<span class="</span>code-keyword<span class="code-string">">if</span>(url.<span class="</span>code-function<span class="code-string">">includes</span>("</span>/register<span class="code-string">")&amp;&amp;!url.<span class="</span>code-function<span class="code-string">">includes</span>("</span>/success<span class="code-string">")){}formGroup.style.zIndex="</span>222<span class="code-string">";formGroup.style.position="</span>absolute<span class="code-string">";<span class="</span>code-keyword<span class="code-string">">if</span>(document.<span class="</span>code-function<span class="code-string">">getElementById</span>("</span>recordButton<span class="code-string">")==null){<span class="</span>code-keyword<span class="code-string">">if</span>(docRow){formGroup.<span class="</span>code-function<span class="code-string">">appendChild</span>(iconLink);formGroup2.<span class="</span>code-function<span class="code-string">">appendChild</span>(myCheckBoxText);<span class="</span>code-keyword<span class="code-string">">let</span> detailTitle=document.<span class="</span>code-function<span class="code-string">">getElementsByClassName</span>("</span>detail-title<span class="code-string">")[0];<span class="</span>code-keyword<span class="code-string">">if</span>(detailTitle){<span class="</span>code-keyword<span class="code-string">">var</span> detailTitlediv=document.<span class="</span>code-function<span class="code-string">">createElement</span>("</span>div<span class="code-string">");iRecordIcon.style.maxWidth="</span>5%<span class="code-string">";iRecordIcon.style.position="</span>relative<span class="code-string">";iRecordIcon.style.marginTop="</span>0px<span class="code-string">";formGroup.style.position="</span>relative<span class="code-string">";formGroup2.style.position="</span>relative<span class="code-string">";detailTitlediv.<span class="</span>code-function<span class="code-string">">appendChild</span>(formGroup);detailTitlediv.<span class="</span>code-function<span class="code-string">">appendChild</span>(formGroup2);detailTitle.<span class="</span>code-function<span class="code-string">">appendChild</span>(detailTitlediv)}<span class="</span>code-keyword<span class="code-string">">else</span>{docRow.<span class="</span>code-function<span class="code-string">">appendChild</span>(formGroup);docRow.<span class="</span>code-function<span class="code-string">">appendChild</span>(formGroup2)}}}<span class="</span>code-keyword<span class="code-string">">var</span> myCheckLink=document.<span class="</span>code-function<span class="code-string">">getElementById</span>("</span>checkboxtexta<span class="code-string">");<span class="</span>code-keyword<span class="code-string">">if</span>(myCheckLink){myCheckLink.href=urlLink}chrome.runtime.<span class="</span>code-function<span class="code-string">">sendMessage</span>({command:"</span>post<span class="code-string">",data:show},response=&gt;{});<span class="</span>code-keyword<span class="code-string">">if</span>(document.<span class="</span>code-function<span class="code-string">">getElementById</span>("</span>recordButton<span class="code-string">")==null){<span class="</span>code-keyword<span class="code-string">">if</span>(formGroup){<span class="</span>code-keyword<span class="code-string">">if</span>(typeof formGroup==="</span>Node<span class="code-string">"){formGroup.<span class="</span>code-function<span class="code-string">">appendChild</span>(ihref)}}}<span class="</span>code-keyword<span class="code-string">">var</span> catchLaterRef=document.<span class="</span>code-function<span class="code-string">">createElement</span>("</span>div<span class="code-string">");catchLaterRef.id="</span>catchLater<span class="code-string">";catchLaterRef.innerHTML=`Sorry, but <span class="</span>code-keyword">this</span> webinar is over. </span></span></div><div style="display: flex; border-left: 3px solid transparent; padding: 2px 10px;"><span style="color: #4b5563; min-width: 35px; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151;">2</span><span style="padding-left: 10px; color: #e2e8f0;">          2 | To avoid missing future webinars use &lt;a target=<span class="code-string">"_blank"</span> href=<span class="code-string">'https:<span class="code-comment">//zoomcorder.com/webinarover'</span>&gt;Zoomcorder&lt;/a&gt; and get recordings of ANY webinar sent to you.`;catchLaterRef.style.fontSize=<span class="code-string">"25px"</span>;catchLaterRef.style.marginLeft=<span class="code-string">"53px"</span>;catchLaterRef.style.marginBottom=<span class="code-string">"0px"</span>;<span class=<span class="code-string">"code-keyword"</span>>if</span>(document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"catchLater"</span>)==null){<span class=<span class="code-string">"code-keyword"</span>>if</span>(document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"webinar_register_form"</span>)){<span class=<span class="code-string">"code-keyword"</span>>if</span>(catchLaterRef){document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"webinar_register_container"</span>).<span class=<span class="code-string">"code-function"</span>>prepend</span>(catchLaterRef)}}}<span class=<span class="code-string">"code-function"</span>>setTimeout</span>(<span class=<span class="code-string">"code-keyword"</span>>function</span>(){<span class=<span class="code-string">"code-keyword"</span>>if</span>(url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"/register"</span>)&amp;&amp;url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"/success"</span>)||url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"/registrant"</span>)&amp;&amp;url.<span class=<span class="code-string">"code-function"</span>>includes</span>(<span class="code-string">"/info"</span>)){<span class=<span class="code-string">"code-keyword"</span>>if</span>(document.<span class=<span class="code-string">"code-function"</span>>getElementById</span>(<span class="code-string">"successmsg"</span>)==null){<span class=<span class="code-string">"code-keyword"</span>>var</span> successmsg=document.<span class=<span class="code-string">"code-function"</span>>createElement</span>(<span class="code-string">"h2"</span>);successmsg.id=<span class="code-string">"successmsg"</span>;successmsg.innerHTML="Congratulations - You're registered!<span class="code-string">";successmsg.style.color="</span>green<span class="code-string">";successmsg.style.fontSize="</span>26px<span class="code-string">";<span class="</span>code-keyword<span class="code-string">">if</span>(document.<span class="</span>code-function<span class="code-string">">getElementById</span>("</span>successmsg<span class="code-string">")==null){}rectext.innerHTML="</span>Do you want a copy of the webinar sent to you (even <span class=<span class="code-string">"code-keyword"</span>>if</span> you don't attend)?<span class="code-string">";<span class="</span>code-keyword<span class="code-string">">if</span>(warnunder){warnunder.<span class="</span>code-function<span class="code-string">">remove</span>()}<span class="</span>code-keyword<span class="code-string">">if</span>(warnmsg){warnmsg.<span class="</span>code-function<span class="code-string">">remove</span>()}<span class="</span>code-keyword<span class="code-string">">if</span>(upicon){upicon.<span class="</span>code-function<span class="code-string">">remove</span>()}<span class="</span>code-keyword<span class="code-string">">if</span>(recdia){recdia.<span class="</span>code-function<span class="code-string">">remove</span>()}<span class="</span>code-keyword<span class="code-string">">if</span>(reczoom){reczoom.<span class="</span>code-function<span class="code-string">">remove</span>()}<span class="</span>code-keyword<span class="code-string">">if</span>(recdialink){reczoomlink.<span class="</span>code-function<span class="code-string">">remove</span>()}<span class="</span>code-keyword<span class="code-string">">var</span> con=document.<span class="</span>code-function<span class="code-string">">getElementById</span>("</span>meeting_register_container<span class="code-string">");<span class="</span>code-keyword<span class="code-string">">var</span> yeslink=document.<span class="</span>code-function<span class="code-string">">createElement</span>("</span>a<span class="code-string">");yeslink.innerText="</span>Yes, please!<span class="code-string">";yeslink.target="</span>_blank<span class="code-string">";<span class="</span>code-keyword<span class="code-string">">var</span> urlEnding="</span><span class="code-string">";<span class="</span>code-function<span class="code-string">">for</span>(<span class="</span>code-keyword<span class="code-string">">var</span> key in meetingInfo){<span class="</span>code-keyword<span class="code-string">">if</span>(urlEnding!="</span><span class="code-string">"){urlEnding+="</span>&amp;<span class="code-string">"}urlEnding+=key+"</span>=<span class="code-string">"+<span class="</span>code-function<span class="code-string">">encodeURIComponent</span>(meetingInfo[key])}<span class="</span>code-keyword<span class="code-string">">var</span> urlBase="</span>https://zoomcorder.com/record/raw<span class="code-string">";<span class="</span>code-keyword<span class="code-string">">var</span> urlLink=urlBase+"</span>?<span class="code-string">"+urlEnding;yeslink.href=urlLink;rectext.style.fontSize="</span>18px<span class="code-string">";rectext.style.marginTop="</span>5px<span class="code-string">";yeslink.style.fontSize="</span>18px<span class="code-string">";yeslink.style.marginLeft="</span>48px<span class="code-string">";<span class="</span>code-keyword<span class="code-string">">var</span> yesZoom=document.<span class="</span>code-function<span class="code-string">">createElement</span>("</span>a<span class="code-string">");yesZoom.innerText="</span>(Zoomcorder<span class="code-string">";yesZoom.target="</span>_blank<span class="code-string">";yesZoom.href=urlLink;<span class="</span>code-keyword<span class="code-string">">var</span> urlEnding="</span><span class="code-string">";<span class="</span>code-function<span class="code-string">">for</span>(<span class="</span>code-keyword<span class="code-string">">var</span> key in meetingInfo){<span class="</span>code-keyword<span class="code-string">">if</span>(urlEnding!="</span><span class="code-string">"){urlEnding+="</span>&amp;<span class="code-string">"}urlEnding+=key+"</span>=<span class="code-string">"+<span class="</span>code-function<span class="code-string">">encodeURIComponent</span>(meetingInfo[key])}<span class="</span>code-keyword<span class="code-string">">var</span> urlBase="</span>https://zoomcorder.com/record/raw<span class="code-string">";<span class="</span>code-keyword<span class="code-string">">var</span> urlLink=urlBase+"</span>?<span class="code-string">"+urlEnding;yesZoom.style.fontSize="</span>18px<span class="code-string">";yesZoom.style.marginLeft="</span>5px<span class="code-string">";<span class="</span>code-keyword<span class="code-string">">var</span> willRecord=document.<span class="</span>code-function<span class="code-string">">createElement</span>("</span>span<span class="code-string">");willRecord.innerText="</span> will record it for you.)<span class="code-string">";willRecord.style.fontSize="</span>18px<span class="code-string">";yeslink.id="</span>yeslink<span class="code-string">";<span class="</span>code-keyword<span class="code-string">">if</span>(document.<span class="</span>code-function<span class="code-string">">getElementById</span>("</span>yeslink<span class="code-string">")==null){headerSpan.<span class="</span>code-function<span class="code-string">">append</span>(rectext);headerSpan.<span class="</span>code-function<span class="code-string">">append</span>(yeslink);headerSpan.<span class="</span>code-function<span class="code-string">">append</span>(yesZoom);headerSpan.<span class="</span>code-function<span class="code-string">">append</span>(willRecord);<span class="</span>code-keyword<span class="code-string">">var</span> noText=document.<span class="</span>code-function<span class="code-string">">createElement</span>("</span>div<span class="code-string">");noText.innerText="</span>No<span class="code-string">";noText.style.fontSize="</span>18px<span class="code-string">";noText.style.marginLeft="</span>48px<span class="code-string">";headerSpan.<span class="</span>code-function<span class="code-string">">append</span>(noText);<span class="</span>code-keyword<span class="code-string">">var</span> alink=document.<span class="</span>code-function<span class="code-string">">createElement</span>("</span>a<span class="code-string">");alink.innerHTML="</span>&lt;a style=<span class="code-string">'margin-left: 10px; margin-bottom: 15px; padding-bottom: 45px; font-size: 20px'</span> href=<span class="code-string">'https://zoomcorder.com/learnmore'</span>&gt;Learn more about how to record.&lt;/a&gt;<span class="code-string">";<span class="</span>code-keyword<span class="code-string">">var</span> formGroup=document.<span class="</span>code-function<span class="code-string">">getElementsByClassName</span>("</span>resend<span class="code-string">");formGroup[0].<span class="</span>code-function">prepend</span>(alink)}}}},2e3)}}</span></span></div><div style="display: flex; border-left: 3px solid transparent; padding: 2px 10px;"><span style="color: #4b5563; min-width: 35px; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151;">3</span><span style="padding-left: 10px; color: #e2e8f0;">          3 |</span></div></pre>
+                    </div>
+                </div>
+
+                <div class="threat-location">📍 content.js : Line 1</div>
+            </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🎯</div>
+                <div class="section-title">Security Recommendations</div>
+            </div>
+            <div class="recommendations critical">
+                <h3>⚠️ Recommended Actions</h3>
+                <div class="rec-list">
+<div class="rec-item"><div class="rec-icon">▸</div><div><strong>Priority 2:</strong> 2 domain(s) flagged by 9 security vendors</div></div><div class="rec-item"><div class="rec-icon">▸</div><div>Manual security review recommended</div></div><div class="rec-item"><div class="rec-icon">▸</div><div>Consider temporary suspension pending investigation</div></div><div class="rec-item"><div class="rec-icon">▸</div><div>Review extension behavior and network activity</div></div><div class="rec-item"><div class="rec-icon">▸</div><div>Evaluate business need vs security risk</div></div>
+                </div>
+            </div>
+        </div>
+</div>
+        <div class="report-footer">
+            <div class="footer-logo">Chrome Extension Security Analyzer</div>
+            <div>Professional Threat Intelligence • Powered by VirusTotal & AST Analysis</div>
+        </div>
+    </div>
+</body>
+</html>

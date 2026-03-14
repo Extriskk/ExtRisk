@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Assessment - ZED: Zoom Easy Downloader</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background: #f9fafb;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 30px 40px;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .header .subtitle {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+        
+        .verdict {
+            background: #22c55e;
+            color: white;
+            padding: 25px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .verdict-left {
+            flex: 1;
+        }
+        
+        .verdict-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .verdict-subtitle {
+            font-size: 14px;
+            opacity: 0.95;
+        }
+        
+        .risk-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .risk-score {
+            font-size: 42px;
+            font-weight: bold;
+            line-height: 1;
+        }
+        
+        .risk-label {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+            opacity: 0.95;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .summary {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+        
+        .summary h2 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #92400e;
+        }
+        
+        .summary ul {
+            margin-left: 20px;
+        }
+        
+        .summary li {
+            margin-bottom: 8px;
+            color: #78350f;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 20px;
+            background: #3b82f6;
+            margin-right: 10px;
+        }
+        
+        .info-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        
+        .info-row {
+            display: flex;
+            padding: 8px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            min-width: 180px;
+            color: #475569;
+        }
+        
+        .info-value {
+            color: #1e293b;
+            font-family: monospace;
+            font-size: 13px;
+            word-break: break-all;
+        }
+        
+        .threat-list {
+            list-style: none;
+        }
+        
+        .threat-item {
+            background: white;
+            border: 1px solid #e5e7eb;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border-left: 4px solid #ef4444;
+        }
+        
+        .threat-item.medium {
+            border-left-color: #f59e0b;
+        }
+        
+        .threat-item.low {
+            border-left-color: #6b7280;
+        }
+        
+        .threat-name {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 5px;
+        }
+        
+        .threat-desc {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+        
+        .threat-location {
+            font-size: 13px;
+            color: #9ca3af;
+            font-family: monospace;
+        }
+        
+        .domain-list {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            padding: 20px;
+            border-radius: 6px;
+        }
+        
+        .domain-item {
+            padding: 10px;
+            background: white;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 14px;
+            border-left: 3px solid #dc2626;
+        }
+        
+        .recommendations {
+            background: #ecfdf5;
+            border-left: 4px solid #10b981;
+            padding: 20px;
+            border-radius: 4px;
+        }
+        
+        .recommendations h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #065f46;
+        }
+        
+        .recommendations ul {
+            margin-left: 20px;
+        }
+        
+        .recommendations li {
+            margin-bottom: 8px;
+            color: #047857;
+        }
+        
+        .footer {
+            background: #f8fafc;
+            padding: 20px 40px;
+            text-align: center;
+            color: #64748b;
+            font-size: 12px;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .no-findings {
+            text-align: center;
+            padding: 30px;
+            color: #10b981;
+            font-weight: 500;
+        }
+        
+        @media print {
+            body { padding: 0; }
+            .container { box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🛡️ Chrome Extension Security Assessment</h1>
+            <div class="subtitle">
+                Analysis Date: January 25, 2026 | Extension: ZED: Zoom Easy Downloader
+            </div>
+        </div>
+        
+        <!-- Verdict Banner -->
+        <div class="verdict">
+            <div class="verdict-left">
+                <div class="verdict-title">Security Verdict: MINIMAL RISK</div>
+                <div class="verdict-subtitle">
+                    ✓ Low risk detected - Monitor for updates
+                </div>
+            </div>
+            <div class="risk-badge">
+                <div class="risk-score">1.2</div>
+                <div class="risk-label">Risk Score</div>
+            </div>
+        </div>
+        
+        <!-- Content -->
+        <div class="content">
+
+            <div class="summary">
+                <h2>⚠️ Executive Summary</h2>
+                <ul>
+<li><strong>Connects to 2 external domain(s)</strong> - potential data leakage risk</li><li><strong>2 obfuscated files</strong> detected - code intentionally hidden</li>
+                </ul>
+            </div>
+
+            <!-- Extension Information -->
+            <div class="section">
+                <h2 class="section-title">Extension Details</h2>
+                <div class="info-box">
+                    <div class="info-row">
+                        <div class="info-label">Extension ID:</div>
+                        <div class="info-value">pdadlkbckhinonakkfkdaadceojbekep</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Name:</div>
+                        <div class="info-value">ZED: Zoom Easy Downloader</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Version:</div>
+                        <div class="info-value">21.16</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Manifest Version:</div>
+                        <div class="info-value">3</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Key Security Threats</h2>
+<div class="no-findings">✅ No malicious code patterns detected</div></div>
+            <div class="section">
+                <h2 class="section-title">Suspicious Network Connections</h2>
+
+                <div class="domain-list">
+                    <p style="margin-bottom: 15px; color: #991b1b; font-weight: 500;">
+                        ⚠️ This extension connects to 2 external domain(s):
+                    </p>
+<div class="domain-item">🌐 meetingtv.us</div><div class="domain-item">🌐 us-central1-webinarstvus.cloudfunctions.net</div></div></div>
+            <div class="section">
+                <h2 class="section-title">Dangerous Permissions</h2>
+<div class="no-findings">✅ No high-risk permissions detected</div></div>
+            <div class="section">
+                <h2 class="section-title">Recommended Actions</h2>
+                <div class="recommendations">
+                    <h3>🎯 Security Team Actions:</h3>
+                    <ul>
+
+                        <li>Extension appears safe for deployment with monitoring</li>
+                        <li>Add to approved extension list with version pinning</li>
+                        <li>Set up periodic re-assessment for version updates</li>
+                        <li>Monitor for any behavioral changes in future versions</li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p><strong>Chrome Extension Security Analyzer</strong> | Automated Analysis Report</p>
+            <p style="margin-top: 5px;">This report is for security assessment purposes only</p>
+        </div>
+    </div>
+</body>
+</html>

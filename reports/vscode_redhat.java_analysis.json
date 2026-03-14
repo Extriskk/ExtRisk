@@ -1,0 +1,1472 @@
+{
+  "extension_type": "vscode",
+  "name": "Language Support for Java(TM) by Red Hat",
+  "identifier": "redhat.java",
+  "extension_id": "redhat.java",
+  "version": "1.53.2026022008",
+  "description": "Java Linting, Intellisense, formatting, refactoring, Maven/Gradle support and more...",
+  "publisher": "redhat",
+  "engines": {
+    "vscode": "^1.77.0"
+  },
+  "store_metadata": {
+    "available": true,
+    "store": "vscode",
+    "identifier": "redhat.java",
+    "name": "Language Support for Java(TM) by Red Hat",
+    "publisher": "Red Hat",
+    "publisher_id": "eed56242-9699-4317-8bc7-e9f4b9bdd3ff",
+    "publisher_domain": "https://redhat.com",
+    "publisher_verified": true,
+    "short_description": "Java Linting, Intellisense, formatting, refactoring, Maven/Gradle support and more...",
+    "version": "1.53.2026022008",
+    "last_updated": "2026-02-20T08:36:06.407Z",
+    "categories": [],
+    "tags": [],
+    "install_count": 51669136,
+    "rating_value": 3.29,
+    "rating_count": 179,
+    "flags": "validated, public",
+    "store_url": "https://marketplace.visualstudio.com/items?itemName=redhat.java",
+    "risk_signals": {}
+  },
+  "metadata_risk": {
+    "findings": [
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:pom.xml': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:pom.xml"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:*/pom.xml': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:*/pom.xml"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:build.gradle': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:build.gradle"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:*/build.gradle': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:*/build.gradle"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:settings.gradle': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:settings.gradle"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:*/settings.gradle': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:*/settings.gradle"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:build.gradle.kts': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:build.gradle.kts"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:*/build.gradle.kts': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:*/build.gradle.kts"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:settings.gradle.kts': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:settings.gradle.kts"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:*/settings.gradle.kts': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:*/settings.gradle.kts"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:.classpath': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:.classpath"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:*/.classpath': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:*/.classpath"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:_java.templateVariables': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:_java.templateVariables"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:_java.metadataFilesGeneration': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:_java.metadataFilesGeneration"
+      },
+      {
+        "type": "sensitive_contribution",
+        "severity": "medium",
+        "detail": "Contributes 'customEditors': Webview-based editors - XSS/phishing surface",
+        "contribution": "customEditors"
+      }
+    ],
+    "risk_score": 10,
+    "activation_events": [
+      "workspaceContains:pom.xml",
+      "workspaceContains:*/pom.xml",
+      "workspaceContains:build.gradle",
+      "workspaceContains:*/build.gradle",
+      "workspaceContains:settings.gradle",
+      "workspaceContains:*/settings.gradle",
+      "workspaceContains:build.gradle.kts",
+      "workspaceContains:*/build.gradle.kts",
+      "workspaceContains:settings.gradle.kts",
+      "workspaceContains:*/settings.gradle.kts",
+      "workspaceContains:.classpath",
+      "workspaceContains:*/.classpath",
+      "onCommand:_java.templateVariables",
+      "onCommand:_java.metadataFilesGeneration"
+    ],
+    "contributes": [
+      "customEditors",
+      "javaBuildFilePatterns",
+      "javaBuildTools",
+      "javaShortcuts",
+      "semanticTokenTypes",
+      "semanticTokenModifiers",
+      "semanticTokenScopes",
+      "languages",
+      "grammars",
+      "jsonValidation",
+      "configuration",
+      "configurationDefaults",
+      "commands",
+      "keybindings",
+      "menus"
+    ]
+  },
+  "package_json_deep": {
+    "findings": []
+  },
+  "supply_chain": {
+    "findings": [
+      {
+        "type": "dependency_vulnerability",
+        "severity": "high",
+        "package": "tar",
+        "version": "7.5.7",
+        "cve_id": "GHSA-83g3-92jg-28cx",
+        "link": "https://github.com/advisories/GHSA-83g3-92jg-28cx",
+        "detail": "tar@7.5.7 has known vulnerability GHSA-83g3-92jg-28cx \u2014 Arbitrary File Read/Write via Hardlink Target Escape Through Symlink Chain in node-tar Extraction (fix: >=7.5.8)"
+      }
+    ],
+    "risk_score": 0.5,
+    "dependency_count": 19,
+    "dev_dependency_count": 29,
+    "has_node_modules": false,
+    "dependency_vulns": [
+      {
+        "package": "tar",
+        "version": "7.5.7",
+        "dep_type": "dev",
+        "vulns": [
+          {
+            "id": "GHSA-83g3-92jg-28cx",
+            "link": "https://github.com/advisories/GHSA-83g3-92jg-28cx",
+            "summary": "Arbitrary File Read/Write via Hardlink Target Escape Through Symlink Chain in node-tar Extraction",
+            "severity": "high",
+            "cwe_ids": [
+              "CWE-22"
+            ],
+            "fix_version": "7.5.8",
+            "aliases": [
+              "CVE-2026-26960"
+            ],
+            "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N"
+          }
+        ]
+      }
+    ],
+    "bundled_js_vulns": []
+  },
+  "code_analysis": {
+    "all_findings": [
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "dist\\changeSignature.js",
+        "line": 1480,
+        "evidence": "onst t=document.createElement(\"style\");t.innerHTML=\".control { cursor: text !important; }\",",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\changeSignature.js",
+        "line": 470,
+        "evidence": "open\",void 0),M([function(e,t,n){return Object.assign({},n,{get:function(){return v.trackVolatil",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\changeSignature.js",
+        "line": 1480,
+        "evidence": "efinition=new L(this.type,Object.assign(Object.assign({},e),{name:this.name}))}tagFor(e){return",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\changeSignature.js",
+        "line": 1480,
+        "evidence": "((t,n)=>e.createElement(l,Object.assign(Object.assign({},t),{__forwardedRef:n}),null==t?void 0:t",
+        "path_type": "app"
+      },
+      {
+        "name": "new Function() constructor",
+        "severity": "high",
+        "description": "Dynamic code execution via Function constructor",
+        "category": "code_execution",
+        "file": "dist\\changeSignature.js",
+        "line": 2,
+        "evidence": "This)return globalThis;try{return this||new Function(\"return this\")()}catch(e){if(\"object\"==t",
+        "path_type": "app"
+      },
+      {
+        "name": "new Function() constructor",
+        "severity": "high",
+        "description": "Dynamic code execution via Function constructor",
+        "category": "code_execution",
+        "file": "dist\\changeSignature.js",
+        "line": 2,
+        "evidence": "=typeof window)return window;try{return new Function(\"return this\")()}catch(e){return{}}}();v",
+        "path_type": "app"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "dist\\changeSignature.js",
+        "line": 2,
+        "evidence": "onst i=document.createElement(\"style\");i.innerHTML=t[r],i.className=n,e.append(i)}super.add",
+        "path_type": "app"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "dist\\changeSignature.js",
+        "line": 2,
+        "evidence": "){e=document.createElement(\"template\"),e.innerHTML=m.createHTML(t);const n=e.content.firstE",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\changeSignature.js",
+        "line": 2,
+        "evidence": "===t.shadowOptions?void 0:Object.assign(Object.assign({},D),t.shadowOptions),this.elementOptions",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\changeSignature.js",
+        "line": 2,
+        "evidence": "id 0===t.elementOptions?N:Object.assign(Object.assign({},N),t.elementOptions),this.styles=void 0",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\changeSignature.js",
+        "line": 2,
+        "evidence": ".freeze({createContainer:e=>new ge(null,Object.assign({},G.default,e)),findResponsibleContainer(",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\changeSignature.js",
+        "line": 2,
+        "evidence": "iner:(e,t)=>e?e.$$container$$||new ge(e,Object.assign({},G.default,t,{parentLocator:J.findParent",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\changeSignature.js",
+        "line": 2,
+        "evidence": "indParentContainer})):Z||(Z=new ge(null,Object.assign({},G.default,t,{parentLocator:()=>null})))",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\changeSignature.js",
+        "line": 2,
+        "evidence": "(e,t)}createChild(e){return new ge(null,Object.assign({},this.config,e,{parentLocator:()=>this})",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\changeSignature.js",
+        "line": 2,
+        "evidence": "inition=n,this.definition=Object.assign(Object.assign({},this.elementDefinition),this.overrideDe",
+        "path_type": "app"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "dist\\changeSignature.js",
+        "line": 2,
+        "evidence": "svg\"!==e.namespaceURI||\"innerHTML\"in e)e.innerHTML=t;else{for((fe=fe||document.createElemen",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\changeSignature.js",
+        "line": 2,
+        "evidence": "}),\"abcdefghijklmnopqrst\"===Object.keys(Object.assign({},r)).join(\"\")}catch(e){return!1}}()?Obje",
+        "path_type": "app"
+      },
+      {
+        "name": "constructor.prototype access",
+        "severity": "medium",
+        "description": "Accessing constructor.prototype (potential prototype pollution)",
+        "category": "prototype_pollution",
+        "file": "dist\\changeSignature.js",
+        "line": 2,
+        "evidence": "ue\",n=Object.getOwnPropertyDescriptor(e.constructor.prototype,t),r=\"\"+e[t];if(!e.hasOwnProperty(t)&&v",
+        "path_type": "app"
+      },
+      {
+        "name": "Function() constructor without new keyword",
+        "severity": "high",
+        "description": "Function() called without new - code execution bypass",
+        "category": "code_execution",
+        "file": "dist\\changeSignature.js",
+        "line": 2,
+        "evidence": "elf&&self.Object===Object&&self,o=r||i||Function(\"return this\")();e.exports=o},1420(e,t,n)",
+        "path_type": "app"
+      },
+      {
+        "name": "command: URI string usage",
+        "severity": "high",
+        "description": "Uses VS Code command: URI scheme - can trigger arbitrary commands when combined with trusted content or webviews/notebooks",
+        "category": "command_uri",
+        "file": "dist\\dashboard.js",
+        "line": 2,
+        "evidence": "dren:[(0,r.jsx)(\"a\",Object.assign({href:\"command:java.dashboard.refresh\",className:\"toolbarItem\",tabIndex:-1},{c",
+        "path_type": "app"
+      },
+      {
+        "name": "command: URI string usage",
+        "severity": "high",
+        "description": "Uses VS Code command: URI scheme - can trigger arbitrary commands when combined with trusted content or webviews/notebooks",
+        "category": "command_uri",
+        "file": "dist\\dashboard.js",
+        "line": 2,
+        "evidence": "})})),(0,r.jsx)(\"a\",Object.assign({href:\"command:java.dashboard.dumpState\",className:\"toolbarItem\",tabIndex:-1},{c",
+        "path_type": "app"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "dist\\dashboard.js",
+        "line": 2,
+        "evidence": "svg\"!==e.namespaceURI||\"innerHTML\"in e)e.innerHTML=t;else{for((he=he||document.createElemen",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\dashboard.js",
+        "line": 2,
+        "evidence": "}),\"abcdefghijklmnopqrst\"===Object.keys(Object.assign({},r)).join(\"\")}catch(e){return!1}}()?Obje",
+        "path_type": "app"
+      },
+      {
+        "name": "constructor.prototype access",
+        "severity": "medium",
+        "description": "Accessing constructor.prototype (potential prototype pollution)",
+        "category": "prototype_pollution",
+        "file": "dist\\dashboard.js",
+        "line": 2,
+        "evidence": "ue\",n=Object.getOwnPropertyDescriptor(e.constructor.prototype,t),r=\"\"+e[t];if(!e.hasOwnProperty(t)&&v",
+        "path_type": "app"
+      },
+      {
+        "name": "Bulk file reading with variable path",
+        "severity": "medium",
+        "description": "Reads file content using variable path - bulk file harvesting indicator",
+        "category": "workspace_harvesting",
+        "file": "scripts\\release.mjs",
+        "line": 18,
+        "evidence": "json');         const json = JSON.parse(fs.readFileSync(packageJsonPath).toString());         const stableVersi",
+        "path_type": "app"
+      },
+      {
+        "name": "Bulk file reading with variable path",
+        "severity": "medium",
+        "description": "Reads file content using variable path - bulk file harvesting indicator",
+        "category": "workspace_harvesting",
+        "file": "scripts\\repo.mjs",
+        "line": 16,
+        "evidence": "ckage-lock.json');         const data = fs.readFileSync(packageLockPath, { encoding: \"utf-8\" });          if (N",
+        "path_type": "app"
+      },
+      {
+        "name": "Bulk file reading with variable path",
+        "severity": "medium",
+        "description": "Reads file content using variable path - bulk file harvesting indicator",
+        "category": "workspace_harvesting",
+        "file": "scripts\\repo.mjs",
+        "line": 34,
+        "evidence": "ckage-lock.json');         const data = fs.readFileSync(packageLockPath, { encoding: \"utf-8\" });         const",
+        "path_type": "app"
+      },
+      {
+        "name": "File reading via createReadStream",
+        "severity": "medium",
+        "description": "Reads files via stream - bypasses readFile/readFileSync detection",
+        "category": "workspace_harvesting",
+        "file": "scripts\\utils.mjs",
+        "line": 53,
+        "evidence": "Promise((resolve, reject) => {         fs.createReadStream(tarGzPath)             .pipe(zlib.create",
+        "path_type": "app"
+      }
+    ],
+    "module_usage": {
+      "network": [
+        {
+          "module": "url",
+          "file": "scripts\\index.mjs",
+          "line": 9
+        },
+        {
+          "module": "https",
+          "file": "scripts\\jre.mjs",
+          "line": 6
+        },
+        {
+          "module": "https",
+          "file": "scripts\\utils.mjs",
+          "line": 3
+        },
+        {
+          "module": "url",
+          "file": "scripts\\utils.mjs",
+          "line": 7
+        }
+      ],
+      "file_access": [
+        {
+          "module": "path",
+          "file": "scripts\\jre.mjs",
+          "line": 5
+        },
+        {
+          "module": "path",
+          "file": "scripts\\lombok.mjs",
+          "line": 4
+        },
+        {
+          "module": "path",
+          "file": "scripts\\server.mjs",
+          "line": 6
+        },
+        {
+          "module": "path",
+          "file": "scripts\\test.mjs",
+          "line": 5
+        },
+        {
+          "module": "fs",
+          "file": "scripts\\utils.mjs",
+          "line": 4
+        },
+        {
+          "module": "stream",
+          "file": "scripts\\utils.mjs",
+          "line": 5
+        },
+        {
+          "module": "path",
+          "file": "scripts\\utils.mjs",
+          "line": 8
+        }
+      ],
+      "process_execution": [
+        {
+          "module": "child_process",
+          "file": "scripts\\server.mjs",
+          "line": 7
+        }
+      ]
+    },
+    "external_urls": [
+      {
+        "url": "https://reactjs.org/docs/error-decoder.html?invariant=",
+        "file": "dist\\changeSignature.js",
+        "line": 2
+      },
+      {
+        "url": "https://reactjs.org/docs/error-decoder.html?invariant=",
+        "file": "dist\\changeSignature.js",
+        "line": 2
+      },
+      {
+        "url": "https://reactjs.org/docs/error-decoder.html?invariant=",
+        "file": "dist\\dashboard.js",
+        "line": 2
+      },
+      {
+        "url": "https://reactjs.org/docs/error-decoder.html?invariant=",
+        "file": "dist\\dashboard.js",
+        "line": 2
+      },
+      {
+        "url": "https://.+/registry.npmjs.org/`,\n    ",
+        "file": "scripts\\repo.mjs",
+        "line": 7
+      },
+      {
+        "url": "https://registry.npmjs.org/`);\n\n        if (data !== newData) {\n            fs.writeFileSync(packageLockPath, newData, {\n                encoding: ",
+        "file": "scripts\\repo.mjs",
+        "line": 35
+      },
+      {
+        "url": "https://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz",
+        "file": "scripts\\server.mjs",
+        "line": 15
+      }
+    ],
+    "file_entropies": {},
+    "files_scanned": 15,
+    "findings_by_category": {
+      "webview_risk": [
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "dist\\changeSignature.js",
+          "line": 1480,
+          "evidence": "onst t=document.createElement(\"style\");t.innerHTML=\".control { cursor: text !important; }\",",
+          "path_type": "app"
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "dist\\changeSignature.js",
+          "line": 2,
+          "evidence": "onst i=document.createElement(\"style\");i.innerHTML=t[r],i.className=n,e.append(i)}super.add",
+          "path_type": "app"
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "dist\\changeSignature.js",
+          "line": 2,
+          "evidence": "){e=document.createElement(\"template\"),e.innerHTML=m.createHTML(t);const n=e.content.firstE",
+          "path_type": "app"
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "dist\\changeSignature.js",
+          "line": 2,
+          "evidence": "svg\"!==e.namespaceURI||\"innerHTML\"in e)e.innerHTML=t;else{for((fe=fe||document.createElemen",
+          "path_type": "app"
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "dist\\dashboard.js",
+          "line": 2,
+          "evidence": "svg\"!==e.namespaceURI||\"innerHTML\"in e)e.innerHTML=t;else{for((he=he||document.createElemen",
+          "path_type": "app"
+        }
+      ],
+      "prototype_pollution": [
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\changeSignature.js",
+          "line": 470,
+          "evidence": "open\",void 0),M([function(e,t,n){return Object.assign({},n,{get:function(){return v.trackVolatil",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\changeSignature.js",
+          "line": 1480,
+          "evidence": "efinition=new L(this.type,Object.assign(Object.assign({},e),{name:this.name}))}tagFor(e){return",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\changeSignature.js",
+          "line": 1480,
+          "evidence": "((t,n)=>e.createElement(l,Object.assign(Object.assign({},t),{__forwardedRef:n}),null==t?void 0:t",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\changeSignature.js",
+          "line": 2,
+          "evidence": "===t.shadowOptions?void 0:Object.assign(Object.assign({},D),t.shadowOptions),this.elementOptions",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\changeSignature.js",
+          "line": 2,
+          "evidence": "id 0===t.elementOptions?N:Object.assign(Object.assign({},N),t.elementOptions),this.styles=void 0",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\changeSignature.js",
+          "line": 2,
+          "evidence": ".freeze({createContainer:e=>new ge(null,Object.assign({},G.default,e)),findResponsibleContainer(",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\changeSignature.js",
+          "line": 2,
+          "evidence": "iner:(e,t)=>e?e.$$container$$||new ge(e,Object.assign({},G.default,t,{parentLocator:J.findParent",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\changeSignature.js",
+          "line": 2,
+          "evidence": "indParentContainer})):Z||(Z=new ge(null,Object.assign({},G.default,t,{parentLocator:()=>null})))",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\changeSignature.js",
+          "line": 2,
+          "evidence": "(e,t)}createChild(e){return new ge(null,Object.assign({},this.config,e,{parentLocator:()=>this})",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\changeSignature.js",
+          "line": 2,
+          "evidence": "inition=n,this.definition=Object.assign(Object.assign({},this.elementDefinition),this.overrideDe",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\changeSignature.js",
+          "line": 2,
+          "evidence": "}),\"abcdefghijklmnopqrst\"===Object.keys(Object.assign({},r)).join(\"\")}catch(e){return!1}}()?Obje",
+          "path_type": "app"
+        },
+        {
+          "name": "constructor.prototype access",
+          "severity": "medium",
+          "description": "Accessing constructor.prototype (potential prototype pollution)",
+          "category": "prototype_pollution",
+          "file": "dist\\changeSignature.js",
+          "line": 2,
+          "evidence": "ue\",n=Object.getOwnPropertyDescriptor(e.constructor.prototype,t),r=\"\"+e[t];if(!e.hasOwnProperty(t)&&v",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\dashboard.js",
+          "line": 2,
+          "evidence": "}),\"abcdefghijklmnopqrst\"===Object.keys(Object.assign({},r)).join(\"\")}catch(e){return!1}}()?Obje",
+          "path_type": "app"
+        },
+        {
+          "name": "constructor.prototype access",
+          "severity": "medium",
+          "description": "Accessing constructor.prototype (potential prototype pollution)",
+          "category": "prototype_pollution",
+          "file": "dist\\dashboard.js",
+          "line": 2,
+          "evidence": "ue\",n=Object.getOwnPropertyDescriptor(e.constructor.prototype,t),r=\"\"+e[t];if(!e.hasOwnProperty(t)&&v",
+          "path_type": "app"
+        }
+      ],
+      "code_execution": [
+        {
+          "name": "new Function() constructor",
+          "severity": "high",
+          "description": "Dynamic code execution via Function constructor",
+          "category": "code_execution",
+          "file": "dist\\changeSignature.js",
+          "line": 2,
+          "evidence": "This)return globalThis;try{return this||new Function(\"return this\")()}catch(e){if(\"object\"==t",
+          "path_type": "app"
+        },
+        {
+          "name": "new Function() constructor",
+          "severity": "high",
+          "description": "Dynamic code execution via Function constructor",
+          "category": "code_execution",
+          "file": "dist\\changeSignature.js",
+          "line": 2,
+          "evidence": "=typeof window)return window;try{return new Function(\"return this\")()}catch(e){return{}}}();v",
+          "path_type": "app"
+        },
+        {
+          "name": "Function() constructor without new keyword",
+          "severity": "high",
+          "description": "Function() called without new - code execution bypass",
+          "category": "code_execution",
+          "file": "dist\\changeSignature.js",
+          "line": 2,
+          "evidence": "elf&&self.Object===Object&&self,o=r||i||Function(\"return this\")();e.exports=o},1420(e,t,n)",
+          "path_type": "app"
+        }
+      ],
+      "command_uri": [
+        {
+          "name": "command: URI string usage",
+          "severity": "high",
+          "description": "Uses VS Code command: URI scheme - can trigger arbitrary commands when combined with trusted content or webviews/notebooks",
+          "category": "command_uri",
+          "file": "dist\\dashboard.js",
+          "line": 2,
+          "evidence": "dren:[(0,r.jsx)(\"a\",Object.assign({href:\"command:java.dashboard.refresh\",className:\"toolbarItem\",tabIndex:-1},{c",
+          "path_type": "app"
+        },
+        {
+          "name": "command: URI string usage",
+          "severity": "high",
+          "description": "Uses VS Code command: URI scheme - can trigger arbitrary commands when combined with trusted content or webviews/notebooks",
+          "category": "command_uri",
+          "file": "dist\\dashboard.js",
+          "line": 2,
+          "evidence": "})})),(0,r.jsx)(\"a\",Object.assign({href:\"command:java.dashboard.dumpState\",className:\"toolbarItem\",tabIndex:-1},{c",
+          "path_type": "app"
+        }
+      ],
+      "workspace_harvesting": [
+        {
+          "name": "Bulk file reading with variable path",
+          "severity": "medium",
+          "description": "Reads file content using variable path - bulk file harvesting indicator",
+          "category": "workspace_harvesting",
+          "file": "scripts\\release.mjs",
+          "line": 18,
+          "evidence": "json');         const json = JSON.parse(fs.readFileSync(packageJsonPath).toString());         const stableVersi",
+          "path_type": "app"
+        },
+        {
+          "name": "Bulk file reading with variable path",
+          "severity": "medium",
+          "description": "Reads file content using variable path - bulk file harvesting indicator",
+          "category": "workspace_harvesting",
+          "file": "scripts\\repo.mjs",
+          "line": 16,
+          "evidence": "ckage-lock.json');         const data = fs.readFileSync(packageLockPath, { encoding: \"utf-8\" });          if (N",
+          "path_type": "app"
+        },
+        {
+          "name": "Bulk file reading with variable path",
+          "severity": "medium",
+          "description": "Reads file content using variable path - bulk file harvesting indicator",
+          "category": "workspace_harvesting",
+          "file": "scripts\\repo.mjs",
+          "line": 34,
+          "evidence": "ckage-lock.json');         const data = fs.readFileSync(packageLockPath, { encoding: \"utf-8\" });         const",
+          "path_type": "app"
+        },
+        {
+          "name": "File reading via createReadStream",
+          "severity": "medium",
+          "description": "Reads files via stream - bypasses readFile/readFileSync detection",
+          "category": "workspace_harvesting",
+          "file": "scripts\\utils.mjs",
+          "line": 53,
+          "evidence": "Promise((resolve, reject) => {         fs.createReadStream(tarGzPath)             .pipe(zlib.create",
+          "path_type": "app"
+        }
+      ]
+    },
+    "findings_by_severity": {
+      "high": 10,
+      "medium": 18
+    },
+    "suppressed_false_positives": 0
+  },
+  "malicious_patterns": [
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "dist\\changeSignature.js",
+      "line": 1480,
+      "evidence": "onst t=document.createElement(\"style\");t.innerHTML=\".control { cursor: text !important; }\",",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\changeSignature.js",
+      "line": 470,
+      "evidence": "open\",void 0),M([function(e,t,n){return Object.assign({},n,{get:function(){return v.trackVolatil",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\changeSignature.js",
+      "line": 1480,
+      "evidence": "efinition=new L(this.type,Object.assign(Object.assign({},e),{name:this.name}))}tagFor(e){return",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\changeSignature.js",
+      "line": 1480,
+      "evidence": "((t,n)=>e.createElement(l,Object.assign(Object.assign({},t),{__forwardedRef:n}),null==t?void 0:t",
+      "path_type": "app"
+    },
+    {
+      "name": "new Function() constructor",
+      "severity": "high",
+      "description": "Dynamic code execution via Function constructor",
+      "category": "code_execution",
+      "file": "dist\\changeSignature.js",
+      "line": 2,
+      "evidence": "This)return globalThis;try{return this||new Function(\"return this\")()}catch(e){if(\"object\"==t",
+      "path_type": "app"
+    },
+    {
+      "name": "new Function() constructor",
+      "severity": "high",
+      "description": "Dynamic code execution via Function constructor",
+      "category": "code_execution",
+      "file": "dist\\changeSignature.js",
+      "line": 2,
+      "evidence": "=typeof window)return window;try{return new Function(\"return this\")()}catch(e){return{}}}();v",
+      "path_type": "app"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "dist\\changeSignature.js",
+      "line": 2,
+      "evidence": "onst i=document.createElement(\"style\");i.innerHTML=t[r],i.className=n,e.append(i)}super.add",
+      "path_type": "app"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "dist\\changeSignature.js",
+      "line": 2,
+      "evidence": "){e=document.createElement(\"template\"),e.innerHTML=m.createHTML(t);const n=e.content.firstE",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\changeSignature.js",
+      "line": 2,
+      "evidence": "===t.shadowOptions?void 0:Object.assign(Object.assign({},D),t.shadowOptions),this.elementOptions",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\changeSignature.js",
+      "line": 2,
+      "evidence": "id 0===t.elementOptions?N:Object.assign(Object.assign({},N),t.elementOptions),this.styles=void 0",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\changeSignature.js",
+      "line": 2,
+      "evidence": ".freeze({createContainer:e=>new ge(null,Object.assign({},G.default,e)),findResponsibleContainer(",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\changeSignature.js",
+      "line": 2,
+      "evidence": "iner:(e,t)=>e?e.$$container$$||new ge(e,Object.assign({},G.default,t,{parentLocator:J.findParent",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\changeSignature.js",
+      "line": 2,
+      "evidence": "indParentContainer})):Z||(Z=new ge(null,Object.assign({},G.default,t,{parentLocator:()=>null})))",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\changeSignature.js",
+      "line": 2,
+      "evidence": "(e,t)}createChild(e){return new ge(null,Object.assign({},this.config,e,{parentLocator:()=>this})",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\changeSignature.js",
+      "line": 2,
+      "evidence": "inition=n,this.definition=Object.assign(Object.assign({},this.elementDefinition),this.overrideDe",
+      "path_type": "app"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "dist\\changeSignature.js",
+      "line": 2,
+      "evidence": "svg\"!==e.namespaceURI||\"innerHTML\"in e)e.innerHTML=t;else{for((fe=fe||document.createElemen",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\changeSignature.js",
+      "line": 2,
+      "evidence": "}),\"abcdefghijklmnopqrst\"===Object.keys(Object.assign({},r)).join(\"\")}catch(e){return!1}}()?Obje",
+      "path_type": "app"
+    },
+    {
+      "name": "constructor.prototype access",
+      "severity": "medium",
+      "description": "Accessing constructor.prototype (potential prototype pollution)",
+      "category": "prototype_pollution",
+      "file": "dist\\changeSignature.js",
+      "line": 2,
+      "evidence": "ue\",n=Object.getOwnPropertyDescriptor(e.constructor.prototype,t),r=\"\"+e[t];if(!e.hasOwnProperty(t)&&v",
+      "path_type": "app"
+    },
+    {
+      "name": "Function() constructor without new keyword",
+      "severity": "high",
+      "description": "Function() called without new - code execution bypass",
+      "category": "code_execution",
+      "file": "dist\\changeSignature.js",
+      "line": 2,
+      "evidence": "elf&&self.Object===Object&&self,o=r||i||Function(\"return this\")();e.exports=o},1420(e,t,n)",
+      "path_type": "app"
+    },
+    {
+      "name": "command: URI string usage",
+      "severity": "high",
+      "description": "Uses VS Code command: URI scheme - can trigger arbitrary commands when combined with trusted content or webviews/notebooks",
+      "category": "command_uri",
+      "file": "dist\\dashboard.js",
+      "line": 2,
+      "evidence": "dren:[(0,r.jsx)(\"a\",Object.assign({href:\"command:java.dashboard.refresh\",className:\"toolbarItem\",tabIndex:-1},{c",
+      "path_type": "app"
+    },
+    {
+      "name": "command: URI string usage",
+      "severity": "high",
+      "description": "Uses VS Code command: URI scheme - can trigger arbitrary commands when combined with trusted content or webviews/notebooks",
+      "category": "command_uri",
+      "file": "dist\\dashboard.js",
+      "line": 2,
+      "evidence": "})})),(0,r.jsx)(\"a\",Object.assign({href:\"command:java.dashboard.dumpState\",className:\"toolbarItem\",tabIndex:-1},{c",
+      "path_type": "app"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "dist\\dashboard.js",
+      "line": 2,
+      "evidence": "svg\"!==e.namespaceURI||\"innerHTML\"in e)e.innerHTML=t;else{for((he=he||document.createElemen",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\dashboard.js",
+      "line": 2,
+      "evidence": "}),\"abcdefghijklmnopqrst\"===Object.keys(Object.assign({},r)).join(\"\")}catch(e){return!1}}()?Obje",
+      "path_type": "app"
+    },
+    {
+      "name": "constructor.prototype access",
+      "severity": "medium",
+      "description": "Accessing constructor.prototype (potential prototype pollution)",
+      "category": "prototype_pollution",
+      "file": "dist\\dashboard.js",
+      "line": 2,
+      "evidence": "ue\",n=Object.getOwnPropertyDescriptor(e.constructor.prototype,t),r=\"\"+e[t];if(!e.hasOwnProperty(t)&&v",
+      "path_type": "app"
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "severity": "medium",
+      "description": "Reads file content using variable path - bulk file harvesting indicator",
+      "category": "workspace_harvesting",
+      "file": "scripts\\release.mjs",
+      "line": 18,
+      "evidence": "json');         const json = JSON.parse(fs.readFileSync(packageJsonPath).toString());         const stableVersi",
+      "path_type": "app"
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "severity": "medium",
+      "description": "Reads file content using variable path - bulk file harvesting indicator",
+      "category": "workspace_harvesting",
+      "file": "scripts\\repo.mjs",
+      "line": 16,
+      "evidence": "ckage-lock.json');         const data = fs.readFileSync(packageLockPath, { encoding: \"utf-8\" });          if (N",
+      "path_type": "app"
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "severity": "medium",
+      "description": "Reads file content using variable path - bulk file harvesting indicator",
+      "category": "workspace_harvesting",
+      "file": "scripts\\repo.mjs",
+      "line": 34,
+      "evidence": "ckage-lock.json');         const data = fs.readFileSync(packageLockPath, { encoding: \"utf-8\" });         const",
+      "path_type": "app"
+    },
+    {
+      "name": "File reading via createReadStream",
+      "severity": "medium",
+      "description": "Reads files via stream - bypasses readFile/readFileSync detection",
+      "category": "workspace_harvesting",
+      "file": "scripts\\utils.mjs",
+      "line": 53,
+      "evidence": "Promise((resolve, reject) => {         fs.createReadStream(tarGzPath)             .pipe(zlib.create",
+      "path_type": "app"
+    }
+  ],
+  "html_analysis": {
+    "findings": [],
+    "files_scanned": 0,
+    "iframe_urls": []
+  },
+  "permissions": {
+    "high_risk": [
+      {
+        "permission": "child_process",
+        "description": "Can execute system commands",
+        "evidence": [
+          {
+            "module": "child_process",
+            "file": "scripts\\server.mjs",
+            "line": 7
+          }
+        ]
+      }
+    ],
+    "medium_risk": [
+      {
+        "permission": "filesystem",
+        "description": "Can read/write files on disk",
+        "evidence": [
+          {
+            "module": "path",
+            "file": "scripts\\jre.mjs",
+            "line": 5
+          },
+          {
+            "module": "path",
+            "file": "scripts\\lombok.mjs",
+            "line": 4
+          },
+          {
+            "module": "path",
+            "file": "scripts\\server.mjs",
+            "line": 6
+          },
+          {
+            "module": "path",
+            "file": "scripts\\test.mjs",
+            "line": 5
+          },
+          {
+            "module": "fs",
+            "file": "scripts\\utils.mjs",
+            "line": 4
+          },
+          {
+            "module": "stream",
+            "file": "scripts\\utils.mjs",
+            "line": 5
+          },
+          {
+            "module": "path",
+            "file": "scripts\\utils.mjs",
+            "line": 8
+          }
+        ]
+      },
+      {
+        "permission": "network",
+        "description": "Can make network requests",
+        "evidence": [
+          {
+            "module": "url",
+            "file": "scripts\\index.mjs",
+            "line": 9
+          },
+          {
+            "module": "https",
+            "file": "scripts\\jre.mjs",
+            "line": 6
+          },
+          {
+            "module": "https",
+            "file": "scripts\\utils.mjs",
+            "line": 3
+          },
+          {
+            "module": "url",
+            "file": "scripts\\utils.mjs",
+            "line": 7
+          }
+        ]
+      }
+    ],
+    "low_risk": [],
+    "total": 3,
+    "all": [
+      "child_process",
+      "filesystem",
+      "network"
+    ]
+  },
+  "risk_score": 7.3,
+  "risk_level": "HIGH",
+  "risk_breakdown": {
+    "supply_chain": 5.0,
+    "metadata_publisher": 1.0,
+    "code_analysis": 2.0,
+    "behavioral_correlations": 0,
+    "infrastructure": 0,
+    "positive_signals": -0.7
+  },
+  "positive_signals": {
+    "signals": [
+      {
+        "signal": "no_credential_access",
+        "description": "No access to credential files, SSH keys, or token stores",
+        "weight": 0.3
+      },
+      {
+        "signal": "scoped_activation",
+        "description": "Extension activates only on specific events, not wildcard",
+        "weight": 0.2
+      },
+      {
+        "signal": "no_exfiltration_pattern",
+        "description": "No compound attack patterns detected",
+        "weight": 0.2
+      }
+    ],
+    "reduction": 0.7,
+    "count": 3
+  },
+  "risk_classification": {
+    "classification": "HIGH_CAPABILITY_SUSPICIOUS",
+    "summary": "High-risk capabilities detected with some suspicious signals. Extension may be legitimate but warrants careful review of flagged behaviors.",
+    "suspicion_indicators": 1,
+    "positive_signal_count": 3
+  },
+  "module_usage": {
+    "network": [
+      {
+        "module": "url",
+        "file": "scripts\\index.mjs",
+        "line": 9
+      },
+      {
+        "module": "https",
+        "file": "scripts\\jre.mjs",
+        "line": 6
+      },
+      {
+        "module": "https",
+        "file": "scripts\\utils.mjs",
+        "line": 3
+      },
+      {
+        "module": "url",
+        "file": "scripts\\utils.mjs",
+        "line": 7
+      }
+    ],
+    "file_access": [
+      {
+        "module": "path",
+        "file": "scripts\\jre.mjs",
+        "line": 5
+      },
+      {
+        "module": "path",
+        "file": "scripts\\lombok.mjs",
+        "line": 4
+      },
+      {
+        "module": "path",
+        "file": "scripts\\server.mjs",
+        "line": 6
+      },
+      {
+        "module": "path",
+        "file": "scripts\\test.mjs",
+        "line": 5
+      },
+      {
+        "module": "fs",
+        "file": "scripts\\utils.mjs",
+        "line": 4
+      },
+      {
+        "module": "stream",
+        "file": "scripts\\utils.mjs",
+        "line": 5
+      },
+      {
+        "module": "path",
+        "file": "scripts\\utils.mjs",
+        "line": 8
+      }
+    ],
+    "process_execution": [
+      {
+        "module": "child_process",
+        "file": "scripts\\server.mjs",
+        "line": 7
+      }
+    ]
+  },
+  "external_urls": [
+    {
+      "url": "https://reactjs.org/docs/error-decoder.html?invariant=",
+      "file": "dist\\changeSignature.js",
+      "line": 2
+    },
+    {
+      "url": "https://reactjs.org/docs/error-decoder.html?invariant=",
+      "file": "dist\\changeSignature.js",
+      "line": 2
+    },
+    {
+      "url": "https://reactjs.org/docs/error-decoder.html?invariant=",
+      "file": "dist\\dashboard.js",
+      "line": 2
+    },
+    {
+      "url": "https://reactjs.org/docs/error-decoder.html?invariant=",
+      "file": "dist\\dashboard.js",
+      "line": 2
+    },
+    {
+      "url": "https://.+/registry.npmjs.org/`,\n    ",
+      "file": "scripts\\repo.mjs",
+      "line": 7
+    },
+    {
+      "url": "https://registry.npmjs.org/`);\n\n        if (data !== newData) {\n            fs.writeFileSync(packageLockPath, newData, {\n                encoding: ",
+      "file": "scripts\\repo.mjs",
+      "line": 35
+    },
+    {
+      "url": "https://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz",
+      "file": "scripts\\server.mjs",
+      "line": 15
+    }
+  ],
+  "domain_intelligence": [
+    {
+      "domain": "reactjs.org",
+      "url": "https://reactjs.org/docs/error-decoder.html?invariant=",
+      "threat_level": "BENIGN",
+      "confidence": 95,
+      "classification": "Legitimate Infrastructure",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": true,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": ".+",
+      "url": "https://.+/registry.npmjs.org/`,\n    ",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "registry.npmjs.org",
+      "url": "https://registry.npmjs.org/`);\n\n        if (data !== newData) {\n            fs.writeFileSync(packageLockPath, newData, {\n                encoding: ",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "download.eclipse.org",
+      "url": "https://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    }
+  ],
+  "virustotal_results": []
+}

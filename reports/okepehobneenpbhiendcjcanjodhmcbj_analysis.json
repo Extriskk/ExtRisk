@@ -1,0 +1,466 @@
+{
+  "extension_id": "okepehobneenpbhiendcjcanjodhmcbj",
+  "name": "nbnhhsh - 能不能好好说话",
+  "version": "1.1",
+  "manifest_version": 2,
+  "permissions": {
+    "total": 1,
+    "high_risk": [
+      "<all_urls>"
+    ],
+    "medium_risk": [],
+    "low_risk": [],
+    "all": [
+      "<all_urls>"
+    ],
+    "details": {
+      "<all_urls>": {
+        "score": 9,
+        "description": "Access to ALL websites you visit",
+        "risk": "CRITICAL - Can read/modify all web pages"
+      }
+    }
+  },
+  "malicious_patterns": [],
+  "external_scripts": [
+    {
+      "url": "https://lab.magiconch.com/api/nbnhhsh/guess",
+      "file": "js\\background.js",
+      "line": 1
+    },
+    {
+      "url": "https://jquery.com/",
+      "file": "js\\vendor.js",
+      "line": 4
+    },
+    {
+      "url": "https://sizzlejs.com/",
+      "file": "js\\vendor.js",
+      "line": 7
+    },
+    {
+      "url": "https://jquery.org/license",
+      "file": "js\\vendor.js",
+      "line": 11
+    },
+    {
+      "url": "https://sizzlejs.com/",
+      "file": "js\\vendor.js",
+      "line": 17
+    },
+    {
+      "url": "https://js.foundation/",
+      "file": "js\\vendor.js",
+      "line": 21
+    }
+  ],
+  "obfuscation_indicators": {
+    "js\\background.js": {
+      "is_obfuscated": true,
+      "entropy": 5.180552804141891,
+      "hex_escapes": 0,
+      "unicode_escapes": 0,
+      "long_variables": 0,
+      "single_letter_ratio": 0.582901554404145
+    },
+    "js\\content_script.js": {
+      "is_obfuscated": true,
+      "entropy": 4.968352231012727,
+      "hex_escapes": 0,
+      "unicode_escapes": 0,
+      "long_variables": 0,
+      "single_letter_ratio": 0.5628140703517588
+    },
+    "js\\options.js": {
+      "is_obfuscated": true,
+      "entropy": 5.161776023511059,
+      "hex_escapes": 0,
+      "unicode_escapes": 0,
+      "long_variables": 0,
+      "single_letter_ratio": 0.5629820051413882
+    },
+    "js\\popup.js": {
+      "is_obfuscated": true,
+      "entropy": 5.321078588574459,
+      "hex_escapes": 2,
+      "unicode_escapes": 0,
+      "long_variables": 0,
+      "single_letter_ratio": 0.49731182795698925
+    },
+    "js\\vendor.js": {
+      "is_obfuscated": true,
+      "entropy": 5.2928813652551066,
+      "hex_escapes": 12,
+      "unicode_escapes": 3,
+      "long_variables": 0,
+      "single_letter_ratio": 0.529062937062937
+    }
+  },
+  "settings_overrides": {
+    "has_overrides": false,
+    "search_hijacking": null,
+    "homepage_hijacking": null,
+    "startup_hijacking": null,
+    "newtab_hijacking": null,
+    "severity": "NONE"
+  },
+  "campaign_attribution": null,
+  "domain_analysis": [],
+  "virustotal_results": [
+    {
+      "available": true,
+      "domain": "lab.magiconch.com",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 62,
+        "undetected": 30
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2016-04-11",
+        "age_days": 3577,
+        "age_human": "9 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".com",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/lab.magiconch.com"
+    },
+    {
+      "available": true,
+      "domain": "sizzlejs.com",
+      "known": true,
+      "threat_level": "SUSPICIOUS",
+      "reputation": -42,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 64,
+        "undetected": 28
+      },
+      "votes": {
+        "malicious": 2,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2008-12-03",
+        "age_days": 6263,
+        "age_human": "17 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".com",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/sizzlejs.com"
+    },
+    {
+      "available": true,
+      "domain": "jquery.org",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 64,
+        "undetected": 28
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2006-09-02",
+        "age_days": 7086,
+        "age_human": "19 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".org",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/jquery.org"
+    },
+    {
+      "available": true,
+      "domain": "js.foundation",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 63,
+        "undetected": 29
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2015-12-18",
+        "age_days": 3692,
+        "age_human": "10 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".foundation",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/js.foundation"
+    }
+  ],
+  "ast_results": {
+    "files_analyzed": 5,
+    "network_calls": [],
+    "data_exfiltration": [],
+    "chrome_api_abuse": [
+      {
+        "api": "chrome.runtime.sendMessage",
+        "type": "Message Passing",
+        "severity": "medium",
+        "description": "Sends messages to background script",
+        "line": 1
+      },
+      {
+        "api": "chrome.tabs.sendMessage",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 1
+      },
+      {
+        "api": "chrome.tabs",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 1
+      },
+      {
+        "api": "chrome.tabs.query",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 1
+      },
+      {
+        "api": "chrome.tabs",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 1
+      }
+    ],
+    "obfuscation": [],
+    "suspicious_patterns": []
+  },
+  "risk_score": 2.0,
+  "risk_level": "LOW",
+  "store_metadata": {
+    "available": true,
+    "extension_id": "okepehobneenpbhiendcjcanjodhmcbj",
+    "store_url": "https://chrome.google.com/webstore/detail/okepehobneenpbhiendcjcanjodhmcbj",
+    "has_privacy_policy": true,
+    "privacy_policy_url": "https://myaccount.google.com/privacypolicy?hl=en-US",
+    "has_chrome_warning": false,
+    "risk_signals": {
+      "abandoned": false,
+      "new_extension": false,
+      "low_adoption": true,
+      "policy_violation": false,
+      "unverified_author": true,
+      "no_privacy_policy": false
+    }
+  },
+  "domain_intelligence": [
+    {
+      "domain": "lab.magiconch.com",
+      "url": "https://lab.magiconch.com/api/nbnhhsh/guess",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "jquery.com",
+      "url": "https://jquery.com/",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "sizzlejs.com",
+      "url": "https://sizzlejs.com/",
+      "threat_level": "HIGH",
+      "confidence": 80,
+      "classification": "DGA (Domain Generation Algorithm)",
+      "risk_score": 7,
+      "indicators": [
+        {
+          "type": "DGA",
+          "description": "DGA characteristics detected: Unusually high consonant ratio (0.75), Domain is not pronounceable (unlikely to be human-generated), No recognizable dictionary words",
+          "severity": "HIGH",
+          "details": {
+            "is_dga": true,
+            "reasons": [
+              "Unusually high consonant ratio (0.75)",
+              "Domain is not pronounceable (unlikely to be human-generated)",
+              "No recognizable dictionary words"
+            ],
+            "score": 5,
+            "entropy": 2.5
+          }
+        }
+      ],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": true,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "jquery.org",
+      "url": "https://jquery.org/license",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "js.foundation",
+      "url": "https://js.foundation/",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    }
+  ],
+  "advanced_detection": {
+    "csp_manipulation": [],
+    "dom_event_injection": [],
+    "websocket_c2": [],
+    "delayed_activation": [],
+    "obfuscation": [],
+    "summary": {
+      "total_findings": 0,
+      "critical_findings": 0,
+      "high_findings": 0,
+      "verdict": "CLEAN"
+    }
+  },
+  "pii_classification": {
+    "classifications": [],
+    "overall_risk": "LOW",
+    "total_severity_score": 0,
+    "data_types_count": 0,
+    "recommendation": {
+      "action": "REVIEW PERIODICALLY",
+      "priority": "P3 - Low",
+      "rationale": "Extension has limited data access. Standard monitoring sufficient.",
+      "next_steps": [
+        "Review permissions periodically",
+        "Monitor for permission changes",
+        "Keep extension updated",
+        "Watch for unusual behavior"
+      ]
+    },
+    "destination": "https://lab.magiconch.com/api/nbnhhsh/guess"
+  },
+  "threat_attribution": {
+    "available": true,
+    "extension_id": "okepehobneenpbhiendcjcanjodhmcbj",
+    "extension_name": "nbnhhsh - 能不能好好说话",
+    "search_queries": [
+      {
+        "query": "\"okepehobneenpbhiendcjcanjodhmcbj\" malware threat",
+        "search_url": "https://www.google.com/search?q=%22okepehobneenpbhiendcjcanjodhmcbj%22%20malware%20threat"
+      },
+      {
+        "query": "\"okepehobneenpbhiendcjcanjodhmcbj\" security research",
+        "search_url": "https://www.google.com/search?q=%22okepehobneenpbhiendcjcanjodhmcbj%22%20security%20research"
+      },
+      {
+        "query": "\"okepehobneenpbhiendcjcanjodhmcbj\" campaign malicious",
+        "search_url": "https://www.google.com/search?q=%22okepehobneenpbhiendcjcanjodhmcbj%22%20campaign%20malicious"
+      },
+      {
+        "query": "\"nbnhhsh - 能不能好好说话\" chrome extension malware",
+        "search_url": "https://www.google.com/search?q=%22nbnhhsh%20-%20%E8%83%BD%E4%B8%8D%E8%83%BD%E5%A5%BD%E5%A5%BD%E8%AF%B4%E8%AF%9D%22%20chrome%20extension%20malware"
+      },
+      {
+        "query": "\"nbnhhsh - 能不能好好说话\" threat report security",
+        "search_url": "https://www.google.com/search?q=%22nbnhhsh%20-%20%E8%83%BD%E4%B8%8D%E8%83%BD%E5%A5%BD%E5%A5%BD%E8%AF%B4%E8%AF%9D%22%20threat%20report%20security"
+      }
+    ],
+    "virustotal_comments": "https://www.virustotal.com/gui/file/okepehobneenpbhiendcjcanjodhmcbj/comments",
+    "manual_review_required": true,
+    "recommendation": "Search results should be manually reviewed for threat intelligence"
+  }
+}

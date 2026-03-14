@@ -1,0 +1,1811 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threat Analysis Report - Ad Speedup - Skip Video Ads 16X Faster</title>
+    <style>
+        :root {
+            --color-critical: #ef4444;
+            --color-high: #f97316;
+            --color-medium: #eab308;
+            --color-low: #22c55e;
+            --color-info: #3b82f6;
+            --color-dark: #0f172a;
+            --color-gray: #94a3b8;
+            --color-light-bg: #1e293b;
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #475569;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+        }
+
+        .report-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--bg-secondary);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Header Section */
+        .report-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 40px 50px;
+            border-bottom: 4px solid #ea580c;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .report-title {
+            flex: 1;
+        }
+        
+        .report-title h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        
+        .report-title .subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+            font-weight: 400;
+        }
+        
+        .classification-badge {
+            background: #ea580c;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        .header-meta {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .meta-item {
+            text-align: center;
+        }
+        
+        .meta-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.7;
+            margin-bottom: 6px;
+        }
+        
+        .meta-value {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        /* Campaign Alert */
+        .campaign-alert {
+            background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
+            padding: 30px 50px;
+            border-left: 6px solid #dc2626;
+            color: white;
+        }
+        
+        .campaign-alert h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .campaign-alert p {
+            margin: 8px 0;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        
+        .campaign-alert .indicators {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .campaign-alert .indicators li {
+            margin: 6px 0;
+            font-size: 14px;
+        }
+        
+        .campaign-reference {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 13px;
+        }
+        
+        .campaign-reference a {
+            color: #fca5a5;
+            text-decoration: none;
+            border-bottom: 1px solid #fca5a5;
+        }
+        
+        /* Executive Summary */
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(234, 179, 8, 0.05) 100%);
+            border-left: 6px solid #eab308;
+            padding: 35px 50px;
+            margin: 0;
+        }
+
+        .executive-summary.critical {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.05) 100%);
+            border-left-color: #ef4444;
+        }
+
+        .executive-summary h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fcd34d;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .executive-summary.critical h2 {
+            color: #fca5a5;
+        }
+
+        .bluf {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.8;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+
+        .executive-summary.critical .bluf {
+            color: var(--text-primary);
+        }
+
+        .key-findings {
+            display: grid;
+            gap: 12px;
+        }
+
+        .finding-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+
+        .finding-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .finding-text {
+            flex: 1;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+        
+        /* Content Sections */
+        .content {
+            padding: 0;
+        }
+
+        .section {
+            padding: 40px 50px;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-card);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 20px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        
+        /* IOC Section */
+        .ioc-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .ioc-category {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .ioc-category-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ioc-list {
+            display: grid;
+            gap: 8px;
+        }
+
+        .ioc-item {
+            padding: 10px 14px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--color-critical);
+            border-radius: 4px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            color: #fca5a5;
+        }
+        
+        /* Domain Intelligence */
+        .domain-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .domain-card.threat-critical {
+            border-left: 4px solid var(--color-critical);
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .domain-card.threat-high {
+            border-left: 4px solid var(--color-high);
+            background: rgba(249, 115, 22, 0.1);
+        }
+
+        .domain-card.threat-medium {
+            border-left: 4px solid var(--color-medium);
+            background: rgba(234, 179, 8, 0.1);
+        }
+
+        .domain-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .domain-name {
+            font-family: 'Monaco', monospace;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .threat-badge {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .threat-badge.critical {
+            background: var(--color-critical);
+            color: white;
+        }
+        
+        .threat-badge.high {
+            background: var(--color-high);
+            color: white;
+        }
+        
+        .threat-badge.medium {
+            background: var(--color-medium);
+            color: white;
+        }
+        
+        .threat-badge.low {
+            background: var(--color-low);
+            color: white;
+        }
+        
+        .threat-badge.benign {
+            background: #10b981;
+            color: white;
+        }
+        
+        .domain-classification {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fca5a5;
+            margin-bottom: 10px;
+        }
+
+        .domain-indicators {
+            display: grid;
+            gap: 6px;
+        }
+
+        .indicator-tag {
+            padding: 6px 10px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 4px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            border-left: 3px solid #ef4444;
+        }
+        
+        /* Technical Details */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .detail-card {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .detail-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .detail-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Threat Analysis - ENHANCED TO SHOW POST DESTINATIONS */
+        .threat-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid #ef4444;
+            border-radius: 6px;
+            padding: 18px;
+            margin-bottom: 12px;
+        }
+
+        .threat-item.high {
+            border-left-color: #ef4444;
+        }
+
+        .threat-item.medium {
+            border-left-color: #eab308;
+        }
+
+        .threat-item.low {
+            border-left-color: #64748b;
+        }
+
+        .threat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .threat-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .threat-severity {
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .threat-severity.high {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+        }
+
+        .threat-severity.medium {
+            background: rgba(234, 179, 8, 0.2);
+            color: #fcd34d;
+        }
+
+        .threat-description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .threat-destination {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 6px;
+            padding: 12px;
+            margin: 10px 0;
+            font-family: 'Monaco', monospace;
+            font-size: 13px;
+        }
+
+        .threat-destination-label {
+            font-weight: 700;
+            color: #fca5a5;
+            margin-bottom: 6px;
+        }
+
+        .threat-destination-url {
+            color: #f87171;
+            word-break: break-all;
+        }
+
+        .threat-metadata {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 12px 0;
+            padding: 12px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+
+        .threat-meta-item {
+            font-size: 13px;
+        }
+
+        .threat-meta-label {
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .threat-meta-value {
+            color: var(--text-primary);
+            font-family: 'Monaco', monospace;
+        }
+
+        .threat-location {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-family: 'Monaco', monospace;
+        }
+
+        .vt-cross-ref {
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(234, 179, 8, 0.1);
+            border-left: 3px solid #eab308;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .vt-cross-ref-icon {
+            color: #fcd34d;
+            font-weight: 700;
+        }
+
+        /* Recommendations */
+        .recommendations {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.05) 100%);
+            border-left: 6px solid #10b981;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .recommendations.critical {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.05) 100%);
+            border-left-color: #ef4444;
+        }
+
+        .recommendations h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #34d399;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .recommendations.critical h3 {
+            color: #fca5a5;
+        }
+
+        .rec-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .rec-item {
+            padding: 12px 16px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-primary);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .recommendations.critical .rec-item {
+            color: var(--text-primary);
+        }
+
+        .rec-icon {
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        /* Footer */
+        .report-footer {
+            background: var(--bg-primary);
+            padding: 30px 50px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 13px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        /* No data states */
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            color: #34d399;
+            font-size: 15px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        
+        /* Enhanced Code Snippets - KOI Style */
+        .code-snippet-container {
+            margin: 15px 0;
+            background: #1e1e1e;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #333;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        
+        .code-snippet-header {
+            background: #2d2d2d;
+            padding: 10px 15px;
+            border-bottom: 1px solid #3a3a3a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .code-snippet-header-dots {
+            display: flex;
+            gap: 6px;
+        }
+        
+        .code-snippet-header-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+        
+        .code-snippet-filename {
+            color: #a0a0a0;
+            font-size: 13px;
+            margin-left: auto;
+            font-family: 'Monaco', monospace;
+        }
+        
+        .code-snippet-body {
+            padding: 20px;
+            overflow-x: auto;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        .code-snippet-body pre {
+            margin: 0;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #d4d4d4;
+        }
+        
+        .code-line {
+            display: block;
+        }
+        
+        .code-line-number {
+            display: inline-block;
+            min-width: 45px;
+            color: #858585;
+            text-align: right;
+            padding-right: 20px;
+            user-select: none;
+            border-right: 1px solid #3a3a3a;
+            margin-right: 15px;
+        }
+        
+        .code-line-content {
+            display: inline;
+        }
+        
+        .code-line-highlight {
+            background: rgba(255, 95, 86, 0.15);
+            display: block;
+            margin: 0 -20px;
+            padding: 0 20px;
+            border-left: 3px solid #ff5f56;
+        }
+        
+        /* Syntax highlighting */
+        .code-keyword { color: #569cd6; font-weight: 600; }
+        .code-function { color: #dcdcaa; }
+        .code-string { color: #ce9178; }
+        .code-comment { color: #6a9955; font-style: italic; }
+        .code-const { color: #4fc1ff; }
+        .code-variable { color: #9cdcfe; }
+        .code-operator { color: #d4d4d4; }
+        .code-punctuation { color: #808080; }
+        
+        /* Subsection */
+        .subsection {
+            padding: 20px 0;
+        }
+
+        /* Finding Cards */
+        .finding-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        /* Alert Styles */
+        .alert {
+            display: flex;
+            gap: 15px;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .alert-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .alert-critical {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+        }
+
+        .alert-high {
+            background: rgba(249, 115, 22, 0.15);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            color: #fdba74;
+        }
+
+        .alert-medium {
+            background: rgba(234, 179, 8, 0.15);
+            border: 1px solid rgba(234, 179, 8, 0.3);
+            color: #fcd34d;
+        }
+
+        .alert-low {
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #86efac;
+        }
+
+        /* Print Styles */
+        @media print {
+            body { background: #1e293b; color: white; }
+            .report-container { box-shadow: none; }
+            .section { page-break-inside: avoid; }
+            .code-snippet-container { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="report-container">
+        <!-- Header -->
+        <div class="report-header">
+            <div class="header-top">
+                <div class="report-title" style="display: flex; align-items: center; gap: 20px;">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAAAAJcEhZcwAADsQAAA7EAZUrDhsAAARtaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49J++7vycgaWQ9J1c1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCc/Pgo8eDp4bXBtZXRhIHhtbG5zOng9J2Fkb2JlOm5zOm1ldGEvJz4KPHJkZjpSREYgeG1sbnM6cmRmPSdodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjJz4KCiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0nJwogIHhtbG5zOkF0dHJpYj0naHR0cDovL25zLmF0dHJpYnV0aW9uLmNvbS9hZHMvMS4wLyc+CiAgPEF0dHJpYjpBZHM+CiAgIDxyZGY6U2VxPgogICAgPHJkZjpsaSByZGY6cGFyc2VUeXBlPSdSZXNvdXJjZSc+CiAgICAgPEF0dHJpYjpDcmVhdGVkPjIwMjQtMDEtMTI8L0F0dHJpYjpDcmVhdGVkPgogICAgIDxBdHRyaWI6RXh0SWQ+NjJiNmZmMjUtODE4Zi00NTYzLTkwNDAtZTA1MWY2N2JmOGRjPC9BdHRyaWI6RXh0SWQ+CiAgICAgPEF0dHJpYjpGYklkPjUyNTI2NTkxNDE3OTU4MDwvQXR0cmliOkZiSWQ+CiAgICAgPEF0dHJpYjpUb3VjaFR5cGU+MjwvQXR0cmliOlRvdWNoVHlwZT4KICAgIDwvcmRmOmxpPgogICA8L3JkZjpTZXE+CiAgPC9BdHRyaWI6QWRzPgogPC9yZGY6RGVzY3JpcHRpb24+CgogPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9JycKICB4bWxuczpkYz0naHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8nPgogIDxkYzp0aXRsZT4KICAgPHJkZjpBbHQ+CiAgICA8cmRmOmxpIHhtbDpsYW5nPSd4LWRlZmF1bHQnPkFkIHNwZWVkdXAgbG9nbyAtIDE8L3JkZjpsaT4KICAgPC9yZGY6QWx0PgogIDwvZGM6dGl0bGU+CiA8L3JkZjpE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" alt="Extension Icon" style="width: 64px; height: 64px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+                    <div>
+                        <h1 style="font-size: 24px; margin-bottom: 4px;">Ad Speedup - Skip Video Ads 16X Faster</h1>
+                        <div class="subtitle" style="font-size: 12px; opacity: 0.7; margin-bottom: 2px;">pcjlckhhhmlefmobnnoolakplfppdchi</div>
+                        <div class="subtitle">Threat Analysis Report • February 19, 2026 at 15:35 UTC</div>
+                        
+                    </div>
+                </div>
+                <div class="classification-badge">HIGH RISK</div>
+            </div>
+
+            <div class="header-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Risk Score</div>
+                    <div class="meta-value" style="font-size: 24px; color: #ea580c;">7.0/10</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Threat Class</div>
+                    <div class="meta-value">High Risk (Credential Stealer)</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Analysis Confidence</div>
+                    <div class="meta-value">75%</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Manifest Version</div>
+                    <div class="meta-value">MV3</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="executive-summary critical">
+            <h2>📋 Executive Summary</h2>
+            <div class="bluf"><strong>BLUF:</strong> HIGH RISK: Critical threat pattern detected (CREDENTIAL_STEALER). Extension exhibits capabilities consistent with malware. Manual security review and monitoring recommended.</div>
+            <div class="key-findings">
+
+                <div class="finding-item">
+                    <div class="finding-icon">🛡️</div>
+                    <div class="finding-text">VirusTotal: 1 malicious domain(s) detected</div>
+                </div>
+
+                <div class="finding-item">
+                    <div class="finding-icon">🔗</div>
+                    <div class="finding-text">1 critical attack chain(s) detected: Credential Harvester</div>
+                </div>
+
+                <div class="finding-item">
+                    <div class="finding-icon">⚠️</div>
+                    <div class="finding-text">3 critical security issues in code</div>
+                </div>
+
+            </div>
+        </div>
+<div class="content">
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">📋</div>
+                <div class="section-title">Scan Coverage</div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+                <div style="font-size: 28px; font-weight: 700; color: #22c55e;">100%</div>
+                <div style="color: var(--text-secondary); font-size: 14px;">
+                    2 of 2 JS files fully scanned.
+                    All files parsed successfully.
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">📊</div>
+                <div class="section-title">Risk Score Breakdown</div>
+            </div>
+
+            <div style="display: flex; gap: 30px; align-items: flex-start; flex-wrap: wrap;">
+                <div style="flex: 0 0 200px; text-align: center;">
+                    <div style="font-size: 56px; font-weight: 800; color: #ea580c;">7.0</div>
+                    <div style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;">out of 10.0</div>
+                    <div style="margin-top: 12px; padding: 6px 16px; border-radius: 20px; display: inline-block;
+                                background: #ea580c; color: white;
+                                font-weight: 700; font-size: 13px; letter-spacing: 1px;">
+                        HIGH RISK
+                    </div>
+
+                    <div style="margin-top: 10px; padding: 6px 12px; border-radius: 16px; display: inline-block;
+                                border: 1px solid #f97316; color: #f97316;
+                                font-size: 11px; font-weight: 600; letter-spacing: 0.5px;">
+                        HIGH RISK SUSPICIOUS
+                    </div>
+
+                    <div style="margin-top: 6px; font-size: 12px; color: var(--text-secondary);">
+                        Primary: CREDENTIAL STEALER
+                    </div>
+
+                </div>
+                <div style="flex: 1; min-width: 300px;">
+
+                    <div style="margin-bottom: 16px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                            <span style="font-size: 13px; font-weight: 600; color: var(--text-primary);">Permissions</span>
+                            <span style="font-size: 13px; color: var(--text-secondary);">0.0 / 2.5</span>
+                        </div>
+                        <div style="height: 10px; background: rgba(255,255,255,0.08); border-radius: 5px; overflow: hidden;">
+                            <div style="height: 100%; width: 0%; background: #f97316; border-radius: 5px;
+                                        transition: width 0.3s;"></div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 16px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                            <span style="font-size: 13px; font-weight: 600; color: var(--text-primary);">Code Analysis</span>
+                            <span style="font-size: 13px; color: var(--text-secondary);">0.8 / 2.5</span>
+                        </div>
+                        <div style="height: 10px; background: rgba(255,255,255,0.08); border-radius: 5px; overflow: hidden;">
+                            <div style="height: 100%; width: 30%; background: #eab308; border-radius: 5px;
+                                        transition: width 0.3s;"></div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 16px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                            <span style="font-size: 13px; font-weight: 600; color: var(--text-primary);">Behavioral Correlations</span>
+                            <span style="font-size: 13px; color: var(--text-secondary);">2.4 / 3.0</span>
+                        </div>
+                        <div style="height: 10px; background: rgba(255,255,255,0.08); border-radius: 5px; overflow: hidden;">
+                            <div style="height: 100%; width: 80%; background: #ef4444; border-radius: 5px;
+                                        transition: width 0.3s;"></div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 16px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                            <span style="font-size: 13px; font-weight: 600; color: var(--text-primary);">Infrastructure</span>
+                            <span style="font-size: 13px; color: var(--text-secondary);">1.0 / 2.0</span>
+                        </div>
+                        <div style="height: 10px; background: rgba(255,255,255,0.08); border-radius: 5px; overflow: hidden;">
+                            <div style="height: 100%; width: 50%; background: #8b5cf6; border-radius: 5px;
+                                        transition: width 0.3s;"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">📋</div>
+                <div class="section-title">Listing details</div>
+            </div>
+            <div class="detail-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px;">
+                <div class="detail-card" style="background: var(--bg-card); padding: 14px 18px; border-radius: 8px;">
+                    <div class="detail-label" style="font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">Developer</div>
+                    <div class="detail-value" style="font-size: 14px; font-weight: 600; color: var(--text-primary);">Unknown</div>
+                </div>
+                <div class="detail-card" style="background: var(--bg-card); padding: 14px 18px; border-radius: 8px;">
+                    <div class="detail-label" style="font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">First-party</div>
+                    <div class="detail-value" style="font-size: 14px; font-weight: 600; color: var(--text-secondary);">No</div>
+                </div>
+                <div class="detail-card" style="background: var(--bg-card); padding: 14px 18px; border-radius: 8px;">
+                    <div class="detail-label" style="font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">Flags</div>
+                    <div class="detail-value" style="font-size: 13px; color: var(--text-primary);">—</div>
+                </div>
+                <div class="detail-card" style="background: var(--bg-card); padding: 14px 18px; border-radius: 8px;">
+                    <div class="detail-label" style="font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">Users</div>
+                    <div class="detail-value" style="font-size: 14px; color: var(--text-primary);">200,000 users</div>
+                </div>
+                <div class="detail-card" style="background: var(--bg-card); padding: 14px 18px; border-radius: 8px;">
+                    <div class="detail-label" style="font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">Rating</div>
+                    <div class="detail-value" style="font-size: 14px; color: var(--text-primary);">N/A</div>
+                </div>
+                <div class="detail-card" style="background: var(--bg-card); padding: 14px 18px; border-radius: 8px;">
+                    <div class="detail-label" style="font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">Version</div>
+                    <div class="detail-value" style="font-size: 14px; color: var(--text-primary);">1.2.9</div>
+                </div>
+                <div class="detail-card" style="background: var(--bg-card); padding: 14px 18px; border-radius: 8px;">
+                    <div class="detail-label" style="font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">Last updated</div>
+                    <div class="detail-value" style="font-size: 14px; color: var(--text-primary);">March 13, 2025</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🔗</div>
+                <div class="section-title">Behavioral Threat Analysis</div>
+            </div>
+
+            <div style="margin-bottom: 20px; padding: 16px; background: rgba(239, 68, 68, 0.08);
+                        border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 8px;">
+                <div style="font-size: 14px; color: var(--text-primary); margin-bottom: 8px;">
+                    <strong>3 compound threat pattern(s)</strong> detected by correlating findings across permissions, code patterns, and infrastructure.
+                </div>
+                <div style="display: flex; gap: 16px; font-size: 12px; color: var(--text-secondary);">
+                    <span>🔴 Critical: <strong style="color: #ef4444;">1</strong></span>
+                    <span>🟠 High: <strong style="color: #f97316;">2</strong></span>
+                    <span>🟡 Medium: <strong style="color: #eab308;">0</strong></span>
+                </div>
+            </div>
+
+            <div style="display: grid; gap: 16px;">
+
+                <div style="background: var(--bg-card); border: 1px solid var(--border-color);
+                            border-left: 4px solid #ef4444; border-radius: 8px; padding: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 20px;">🔑</span>
+                            <div>
+                                <div style="font-size: 16px; font-weight: 700; color: var(--text-primary);">Credential Harvester</div>
+                                <div style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;">Credential Theft</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 8px; align-items: center;">
+                            <span style="padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 700;
+                                        background: #ef4444; color: white; text-transform: uppercase;">critical</span>
+                            <span style="padding: 3px 10px; border-radius: 12px; font-size: 11px;
+                                        border: 1px solid var(--border-color); color: var(--text-secondary);">
+                                high confidence
+                            </span>
+                        </div>
+                    </div>
+                    <div style="font-size: 14px; color: var(--text-primary); margin-bottom: 12px; line-height: 1.6;">Extension monitors user input (passwords, keystrokes, form data) and has network capabilities to exfiltrate captured credentials.</div>
+                    <div style="padding: 10px 14px; background: rgba(0,0,0,0.2); border-radius: 6px;
+                                font-size: 12px; font-family: 'Monaco', 'Courier New', monospace; color: #94a3b8;">
+                        <strong style="color: var(--text-primary);">Evidence:</strong> Token theft, Input monitoring + network exfiltration capability
+                    </div>
+
+                    <div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px;">
+
+                        <span style="padding: 2px 8px; border-radius: 10px; font-size: 11px;
+                                    background: rgba(255,255,255,0.06); border: 1px solid var(--border-color);
+                                    color: var(--text-secondary);">credential_capture</span>
+
+                        <span style="padding: 2px 8px; border-radius: 10px; font-size: 11px;
+                                    background: rgba(255,255,255,0.06); border: 1px solid var(--border-color);
+                                    color: var(--text-secondary);">network_exfil</span>
+                    </div>
+                </div>
+
+                <div style="background: var(--bg-card); border: 1px solid var(--border-color);
+                            border-left: 4px solid #f97316; border-radius: 8px; padding: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 20px;">💉</span>
+                            <div>
+                                <div style="font-size: 16px; font-weight: 700; color: var(--text-primary);">Remote Code Execution Risk</div>
+                                <div style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;">Remote Code Exec</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 8px; align-items: center;">
+                            <span style="padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 700;
+                                        background: #f97316; color: white; text-transform: uppercase;">high</span>
+                            <span style="padding: 3px 10px; border-radius: 12px; font-size: 11px;
+                                        border: 1px solid var(--border-color); color: var(--text-secondary);">
+                                medium confidence
+                            </span>
+                        </div>
+                    </div>
+                    <div style="font-size: 14px; color: var(--text-primary); margin-bottom: 12px; line-height: 1.6;">Extension uses dynamic code execution with network access on all URLs. Remote code can be fetched and executed on any page.</div>
+                    <div style="padding: 10px 14px; background: rgba(0,0,0,0.2); border-radius: 6px;
+                                font-size: 12px; font-family: 'Monaco', 'Courier New', monospace; color: #94a3b8;">
+                        <strong style="color: var(--text-primary);">Evidence:</strong> Dynamic code execution + network + &lt;all_urls&gt;
+                    </div>
+
+                    <div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px;">
+
+                        <span style="padding: 2px 8px; border-radius: 10px; font-size: 11px;
+                                    background: rgba(255,255,255,0.06); border: 1px solid var(--border-color);
+                                    color: var(--text-secondary);">code_execution</span>
+
+                        <span style="padding: 2px 8px; border-radius: 10px; font-size: 11px;
+                                    background: rgba(255,255,255,0.06); border: 1px solid var(--border-color);
+                                    color: var(--text-secondary);">network</span>
+
+                        <span style="padding: 2px 8px; border-radius: 10px; font-size: 11px;
+                                    background: rgba(255,255,255,0.06); border: 1px solid var(--border-color);
+                                    color: var(--text-secondary);">all_urls</span>
+                    </div>
+                </div>
+
+                <div style="background: var(--bg-card); border: 1px solid var(--border-color);
+                            border-left: 4px solid #f97316; border-radius: 8px; padding: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 20px;">🖐️</span>
+                            <div>
+                                <div style="font-size: 16px; font-weight: 700; color: var(--text-primary);">Device Fingerprint Collector</div>
+                                <div style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;">Fingerprinting</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 8px; align-items: center;">
+                            <span style="padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 700;
+                                        background: #f97316; color: white; text-transform: uppercase;">high</span>
+                            <span style="padding: 3px 10px; border-radius: 12px; font-size: 11px;
+                                        border: 1px solid var(--border-color); color: var(--text-secondary);">
+                                medium confidence
+                            </span>
+                        </div>
+                    </div>
+                    <div style="font-size: 14px; color: var(--text-primary); margin-bottom: 12px; line-height: 1.6;">Extension collects device fingerprint data (canvas, WebGL, audio, fonts, IP) and has network exfiltration capability. Device fingerprinting enables cross-site user tracking.</div>
+                    <div style="padding: 10px 14px; background: rgba(0,0,0,0.2); border-radius: 6px;
+                                font-size: 12px; font-family: 'Monaco', 'Courier New', monospace; color: #94a3b8;">
+                        <strong style="color: var(--text-primary);">Evidence:</strong> Device fingerprinting + network exfiltration
+                    </div>
+
+                    <div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px;">
+
+                        <span style="padding: 2px 8px; border-radius: 10px; font-size: 11px;
+                                    background: rgba(255,255,255,0.06); border: 1px solid var(--border-color);
+                                    color: var(--text-secondary);">fingerprinting</span>
+
+                        <span style="padding: 2px 8px; border-radius: 10px; font-size: 11px;
+                                    background: rgba(255,255,255,0.06); border: 1px solid var(--border-color);
+                                    color: var(--text-secondary);">network_exfil</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">⛓️</div>
+                <div class="section-title">Attack Narrative</div>
+                <span style="margin-left: auto; padding: 4px 12px; border-radius: 12px; font-size: 11px;
+                            font-weight: 700; background: #f97316; color: white; text-transform: uppercase;">
+                    medium confidence
+                </span>
+            </div>
+
+            <div style="padding: 14px 18px; margin-bottom: 20px; background: rgba(239, 68, 68, 0.08);
+                        border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 8px;
+                        font-size: 13px; color: #fca5a5; line-height: 1.6;">
+                PARTIAL ATTACK CAPABILITY: Multiple components of a data theft pipeline detected. Manual review recommended to assess actual risk.
+            </div>
+            <div style="display: flex; align-items: stretch; gap: 0; flex-wrap: wrap;">
+
+                <div style="flex: 1; min-width: 180px; padding: 16px; background: var(--bg-card);
+                            border-top: 3px solid #f97316; border-radius: 8px;">
+                    <div style="font-size: 20px; margin-bottom: 6px;">📥</div>
+                    <div style="font-size: 12px; font-weight: 700; color: #f97316; letter-spacing: 1px; margin-bottom: 6px;">
+                        COLLECT
+                    </div>
+                    <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">Harvests data via: Input monitoring, Token theft</div>
+                    
+                </div>
+
+                <div style="display: flex; align-items: center; padding: 0 4px; color: var(--text-secondary); font-size: 22px;">→</div>
+
+                <div style="flex: 1; min-width: 180px; padding: 16px; background: var(--bg-card);
+                            border-top: 3px solid #ef4444; border-radius: 8px;">
+                    <div style="font-size: 20px; margin-bottom: 6px;">📤</div>
+                    <div style="font-size: 12px; font-weight: 700; color: #ef4444; letter-spacing: 1px; margin-bottom: 6px;">
+                        EXFILTRATE
+                    </div>
+                    <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">Sends data externally via: Network request</div>
+                    
+                </div>
+            </div>
+
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🔍</div>
+                <div class="section-title">Indicators of Compromise (IOCs)</div>
+            </div>
+            <div class="ioc-grid">
+
+            <div class="ioc-category">
+                <div class="ioc-category-title">📌 Extension Identifier</div>
+                <div class="ioc-list">
+                    <div class="ioc-item">pcjlckhhhmlefmobnnoolakplfppdchi</div>
+                </div>
+            </div>
+
+            <div class="ioc-category">
+                <div class="ioc-category-title">🔐 File Hash IOCs (SHA-256)</div>
+                <div class="ioc-list">
+
+                    <div class="ioc-item">
+                        <strong>manifest.json</strong>
+                        <span style="background:#374151;color:#9ca3af;padding:2px 8px;border-radius:4px;font-size:11px;margin-left:8px;">
+                            NOT IN VT
+                        </span>
+                        <br><code style="font-size:11px;word-break:break-all;">03ba40012c8075c2f9087dc3deb6e8907519a7c8e0cd5bcec1966e969193361f</code>
+                    </div>
+
+                    <div class="ioc-item">
+                        <strong>background/background.js</strong>
+                        <span style="background:#374151;color:#9ca3af;padding:2px 8px;border-radius:4px;font-size:11px;margin-left:8px;">
+                            CLEAN
+                        </span>
+                        <br><code style="font-size:11px;word-break:break-all;">72e4ae8341671420e820be6063d234ea3963185768bfe7a8f5783b29ed6e520f</code>
+                    </div>
+
+                    <div class="ioc-item">
+                        <strong>content_script/content-script.js</strong>
+                        <span style="background:#374151;color:#9ca3af;padding:2px 8px;border-radius:4px;font-size:11px;margin-left:8px;">
+                            CLEAN
+                        </span>
+                        <br><code style="font-size:11px;word-break:break-all;">29d7e6431342d9733dac69e3077618defd877268024a0a0e5bfa9b881bc86805</code>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="ioc-category">
+                <div class="ioc-category-title">🌐 Top Domains (sorted by threat score)</div>
+                <div class="ioc-list">
+
+                    <div class="ioc-item" style="border-left: 3px solid #dc2626; padding-left: 10px; margin-bottom: 8px;">
+                        <strong style="color:#fff;">www.youtube.com</strong>
+                        <span style="background:#dc2626;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;margin-left:8px;">
+                            MALICIOUS
+                        </span>
+                        <br>
+                        <span style="font-size:12px;color:#9ca3af;">
+                            🛡️ 1 malicious vendor(s) &nbsp;|&nbsp; 👥 7 negative community vote(s)
+                            &nbsp;|&nbsp; Source: Code, VT
+                        </span>
+                        <br><a href="https://www.virustotal.com/gui/domain/www.youtube.com" target="_blank" style="color:#60a5fa;font-size:12px;">View on VirusTotal ↗</a>
+                    </div>
+
+                    <div class="ioc-item" style="border-left: 3px solid #4b5563; padding-left: 10px; margin-bottom: 8px;">
+                        <strong style="color:#e5e7eb;">cdn.socket.io</strong>
+                        <span style="background:#374151;color:#9ca3af;padding:2px 8px;border-radius:4px;font-size:11px;margin-left:8px;">
+                            CLEAN
+                        </span>
+                        <br>
+                        <span style="font-size:12px;color:#9ca3af;">
+                            🛡️ 0 malicious vendor(s) &nbsp;|&nbsp; 👥 0 negative community vote(s)
+                            &nbsp;|&nbsp; Source: Code, VT
+                        </span>
+                        <br><a href="https://www.virustotal.com/gui/domain/cdn.socket.io" target="_blank" style="color:#60a5fa;font-size:12px;">View on VirusTotal ↗</a>
+                    </div>
+
+                    <div class="ioc-item" style="border-left: 3px solid #4b5563; padding-left: 10px; margin-bottom: 8px;">
+                        <strong style="color:#e5e7eb;">prod-backend.adspeedup.com</strong>
+                        <span style="background:#374151;color:#9ca3af;padding:2px 8px;border-radius:4px;font-size:11px;margin-left:8px;">
+                            CLEAN
+                        </span>
+                        <br>
+                        <span style="font-size:12px;color:#9ca3af;">
+                            🛡️ 0 malicious vendor(s) &nbsp;|&nbsp; 👥 0 negative community vote(s)
+                            &nbsp;|&nbsp; Source: Code, VT
+                        </span>
+                        <br><a href="https://www.virustotal.com/gui/domain/prod-backend.adspeedup.com" target="_blank" style="color:#60a5fa;font-size:12px;">View on VirusTotal ↗</a>
+                    </div>
+
+                    <div class="ioc-item" style="border-left: 3px solid #4b5563; padding-left: 10px; margin-bottom: 8px;">
+                        <strong style="color:#e5e7eb;">link.adspeedup.com</strong>
+                        <span style="background:#374151;color:#9ca3af;padding:2px 8px;border-radius:4px;font-size:11px;margin-left:8px;">
+                            CLEAN
+                        </span>
+                        <br>
+                        <span style="font-size:12px;color:#9ca3af;">
+                            🛡️ 0 malicious vendor(s) &nbsp;|&nbsp; 👥 0 negative community vote(s)
+                            &nbsp;|&nbsp; Source: Code, VT
+                        </span>
+                        <br><a href="https://www.virustotal.com/gui/domain/link.adspeedup.com" target="_blank" style="color:#60a5fa;font-size:12px;">View on VirusTotal ↗</a>
+                    </div>
+
+                    <div class="ioc-item" style="border-left: 3px solid #4b5563; padding-left: 10px; margin-bottom: 8px;">
+                        <strong style="color:#e5e7eb;">chat.openai.com</strong>
+                        <span style="background:#374151;color:#9ca3af;padding:2px 8px;border-radius:4px;font-size:11px;margin-left:8px;">
+                            CLEAN
+                        </span>
+                        <br>
+                        <span style="font-size:12px;color:#9ca3af;">
+                            🛡️ 0 malicious vendor(s) &nbsp;|&nbsp; 👥 0 negative community vote(s)
+                            &nbsp;|&nbsp; Source: Code, VT
+                        </span>
+                        <br><a href="https://www.virustotal.com/gui/domain/chat.openai.com" target="_blank" style="color:#60a5fa;font-size:12px;">View on VirusTotal ↗</a>
+                    </div>
+
+                </div>
+            </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🔐</div>
+                <div class="section-title">Host Permissions & Website Access</div>
+            </div>
+            <div class="subsection">
+
+                <div class="alert alert-critical">
+                    <div class="alert-icon">🚨</div>
+                    <div>
+                        <strong>CRITICAL:</strong> This extension has <code>&lt;all_urls&gt;</code> access - can read and modify data on ALL websites you visit!
+                    </div>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.03); border: 1px solid #475569; border-radius: 8px; padding: 20px; margin-bottom: 15px;">
+                    <h3 style="color: #e2e8f0; margin: 0 0 10px 0;">Permission Scope: ALL_WEBSITES</h3>
+                    <p style="color: #ea580c; font-weight: 700; font-size: 18px; margin: 10px 0;">Risk Level: HIGH</p>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 15px 0;">
+                        <div>
+                            <p style="font-size: 12px; color: #94a3b8; margin: 0;">Host Permissions</p>
+                            <p style="font-size: 24px; font-weight: 700; color: #e2e8f0; margin: 5px 0;">1</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 12px; color: #94a3b8; margin: 0;">Content Scripts</p>
+                            <p style="font-size: 24px; font-weight: 700; color: #e2e8f0; margin: 5px 0;">1</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 12px; color: #94a3b8; margin: 0;">Sensitive Categories</p>
+                            <p style="font-size: 24px; font-weight: 700; color: #e2e8f0; margin: 5px 0;">0</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 12px; color: #94a3b8; margin: 0;">Sensitive Domains</p>
+                            <p style="font-size: 24px; font-weight: 700; color: #e2e8f0; margin: 5px 0;">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 25px; color: #e2e8f0;">Risk Factors</h3>
+                <div style="background: rgba(255,255,255,0.03); border: 1px solid #475569; border-radius: 8px; padding: 15px; margin-bottom: 15px;">
+<p style="margin: 8px 0; font-size: 13px; color: #fbbf24;">[!] Has <all_urls> access - can read/modify ALL websites</p></div>
+                <h3 style="margin-top: 25px; color: #e2e8f0;">Sample Host Permissions</h3>
+                <p style="font-size: 13px; color: #94a3b8; margin: 10px 0;">Showing 1 of 1 host permission(s) requested by this extension:</p>
+                <div style="background: rgba(255,255,255,0.03); border: 1px solid #475569; border-radius: 8px; padding: 15px;">
+
+                <div style="border-left: 3px solid #dc2626; padding: 10px; margin: 10px 0; background: rgba(255,255,255,0.03); border-radius: 0 6px 6px 0;">
+                    <p style="margin: 0; font-family: 'Courier New', monospace; font-size: 13px; font-weight: 700; color: #e2e8f0;">*://*/*</p>
+                    <p style="margin: 5px 0 0 0; font-size: 12px; color: #94a3b8;">Access to * (all pages)</p>
+                    <p style="margin: 5px 0 0 0; font-size: 11px;"><span style="color: #dc2626; font-weight: 700;">Risk: CRITICAL</span> <span style="color: #64748b;">| Category: all_urls</span></p>
+                </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🛡️</div>
+                <div class="section-title">VirusTotal Domain Reputation</div>
+            </div>
+<h3 style="color: #f59e0b; margin-bottom: 20px; font-size: 20px; font-weight: 700;">⚠️ Domains Flagged (Low Detection Count - Verify Manually)</h3>
+            <div class="domain-card threat-critical">
+                <div class="domain-header">
+                    <div class="domain-name">🚨 www.youtube.com</div>
+                    <div class="threat-badge critical">MALICIOUS</div>
+                </div>
+                <div class="domain-classification">⚠️ Flagged by 1 security vendor(s)</div>
+                
+                <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <div style="margin-bottom: 10px;">
+                        <strong>Detection Statistics:</strong>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; font-size: 14px;">
+                        <div>🔴 Malicious: <strong>1</strong></div>
+                        <div>🟡 Suspicious: <strong>0</strong></div>
+                        <div>🟢 Harmless: <strong>63</strong></div>
+                        <div>⚪ Undetected: <strong>29</strong></div>
+                    </div>
+                </div>
+                
+                <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <div style="margin-bottom: 10px;">
+                        <strong>Community Votes:</strong>
+                    </div>
+                    <div style="font-size: 14px;">
+                        👎 Malicious: <strong>7</strong> | 
+                        👍 Harmless: <strong>45</strong>
+                    </div>
+                </div>
+
+                <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <div style="margin-bottom: 10px; color: #f1f5f9;">
+                        <strong>Security Vendors Flagging This Domain:</strong>
+                    </div>
+                    <div style="display: grid; gap: 8px;">
+
+                        <div style="padding: 10px 12px; background: rgba(239, 68, 68, 0.15); border-left: 3px solid #ef4444; border-radius: 4px; font-size: 13px;">
+                            <strong style="color: #f87171;">desenmascara.me</strong><span style="color: #94a3b8;">:</span> <span style="color: #fecaca;">malicious</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div style="margin-top: 15px; font-size: 13px; color: #64748b;">
+                    <a href="https://www.virustotal.com/gui/domain/www.youtube.com" target="_blank" style="color: #3b82f6; text-decoration: none;">
+                        🔗 View full VirusTotal report →
+                    </a>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: #ecfdf5; border-radius: 8px; border: 1px solid #d1fae5;">
+                <div style="font-size: 15px; color: #065f46;">
+                    ✅ <strong>4</strong> domain(s) checked and found clean
+                </div>
+
+                <div style="font-size: 14px; color: #64748b; margin-top: 8px;">
+                    ℹ️ 1 domain(s) not found in VirusTotal database
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🔐</div>
+                <div class="section-title">PII/Sensitive Data Classification</div>
+            </div>
+            <div class="subsection">
+                <div class="alert alert-high">
+                    <div class="alert-icon">⚠️</div>
+                    <div>
+                        <strong>Overall Risk:</strong> HIGH<br>
+                        <strong>Destination:</strong> <code>https://github.com/uuidjs/uuid#getrandomvalues-not-supported</code><br>
+                        <strong>Data Types Detected:</strong> 1<br>
+                        <strong>Total Severity Score:</strong> 7/10
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 20px;">Classified Data Types</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 15px;">
+
+                    <div class="finding-card" style="border-left: 4px solid #ea580c;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <h4 style="margin: 0; font-size: 14px; font-weight: 600;">BROWSING HISTORY</h4>
+                            <span class="badge" style="background: #ea580c; color: white; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 600;">HIGH (7/10)</span>
+                        </div>
+                        <p style="margin: 8px 0; font-size: 13px; color: #64748b;"><strong>Risk:</strong> User profiling, privacy violation, surveillance</p>
+                        <p style="margin: 0; font-size: 12px; color: #94a3b8;"><strong>Impact:</strong> Complete browsing behavior exposed for profiling and tracking</p>
+<p style="margin-top: 8px; font-size: 12px; color: #94a3b8;"><strong style="color: #cbd5e1;">Detected via:</strong> <code style="background: rgba(59, 130, 246, 0.2); color: #93c5fd; padding: 2px 8px; border-radius: 3px; font-size: 11px;">chrome.tabs</code></p>
+                    </div>
+
+                </div>
+
+                <div class="alert alert-high" style="margin-top: 20px;">
+                    <div class="alert-icon">🛡️</div>
+                    <div>
+                        <h4 style="margin: 0 0 8px 0; font-size: 14px; font-weight: 600;">Recommendation</h4>
+                        <p style="margin: 0; font-size: 13px;"><strong>Action:</strong> QUARANTINE AND INVESTIGATE</p>
+                        <p style="margin: 5px 0; font-size: 13px;"><strong>Priority:</strong> P1 - High</p>
+                        <p style="margin: 5px 0 10px 0; font-size: 13px;">Extension accesses 1 type(s) of sensitive personal data. Requires immediate investigation and likely removal.</p>
+                        <p style="margin: 0; font-size: 12px; font-weight: 600;">Next Steps:</p>
+                        <ul style="margin: 5px 0 0 20px; font-size: 12px;">
+<li style="margin: 3px 0;">Disable extension immediately</li><li style="margin: 3px 0;">Review extension permissions</li><li style="margin: 3px 0;">Check network logs for data exfiltration</li><li style="margin: 3px 0;">Consider reporting to security team</li><li style="margin: 3px 0;">Evaluate business need vs risk</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🔍</div>
+                <div class="section-title">Threat Campaign Attribution (OSINT)</div>
+            </div>
+            <div class="subsection">
+
+                <div class="finding-card" style="border-left: 4px solid #64748b;">
+                    <h3 style="color: #64748b; margin: 0 0 10px 0;">Attribution Confidence: NONE</h3>
+                    <p style="font-size: 14px; margin: 0;">No confirmed attribution to known campaigns</p>
+                </div>
+
+                <div class="finding-card" style="margin: 20px 0;">
+                    <p style="font-size: 13px; margin: 0;">
+                        ✓ No confirmed attribution to known threat campaigns based on OSINT research.<br><br>
+                        This does not mean the extension is safe - it may be a new campaign, unpublished threat, or benign software.
+                        Continue with technical analysis to determine actual risk.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🌐</div>
+                <div class="section-title">Domain Intelligence Analysis</div>
+            </div>
+
+            <div class="domain-card threat-medium">
+                <div class="domain-header">
+                    <div class="domain-name">🌐 orangemonkey.site</div>
+                    <div class="threat-badge medium">MEDIUM</div>
+                </div>
+                <div class="domain-classification">None</div>
+                <div class="domain-indicators">
+<div class="indicator-tag">• High-risk TLD: .site</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">⚙️</div>
+                <div class="section-title">Technical Details</div>
+            </div>
+            <div class="detail-grid">
+                <div class="detail-card">
+                    <div class="detail-label">Extension ID</div>
+                    <div class="detail-value" style="font-family: monospace; font-size: 13px;">pcjlckhhhmlefmobnnoolakplfppdchi</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Version</div>
+                    <div class="detail-value">1.2.9</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Manifest Version</div>
+                    <div class="detail-value">3</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Permissions</div>
+                    <div class="detail-value">5</div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 15px; color: var(--text-primary);">📋 Dangerous Permissions</h3>
+<div class="no-data">✅ No high-risk permissions detected</div>
+                <h3 style="margin-top: 25px; color: #f1f5f9; display: flex; align-items: center; gap: 8px;">
+                    <span style="font-size: 20px;">⚠️</span> Dangerous Permission Combinations Detected
+                </h3>
+                <p style="font-size: 13px; color: #94a3b8; margin: 8px 0 15px 0;">
+                    These permission combinations indicate potential malicious capabilities:
+                </p>
+                <div style="display: grid; gap: 12px;">
+
+                    <div style="background: rgba(234, 88, 12, 0.15); border-left: 4px solid #ea580c; padding: 15px; border-radius: 6px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <span style="font-weight: 700; font-size: 15px; color: #fdba74;">
+                                🔗 URL Harvesting Pattern
+                            </span>
+                            <span style="background: #ea580c; color: white; padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: 700;">
+                                HIGH
+                            </span>
+                        </div>
+                        <div style="font-size: 12px; color: #94a3b8; margin-bottom: 6px;">
+                            <strong>Permissions:</strong> <code style="background: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 3px; color: #fdba74;">tabs + storage</code>
+                        </div>
+                        <div style="font-size: 14px; color: #e2e8f0;">
+                            Can harvest visited URLs via tabs API and store them for later exfiltration
+                        </div>
+                    </div>
+
+                    <div style="background: rgba(239, 68, 68, 0.15); border-left: 4px solid #dc2626; padding: 15px; border-radius: 6px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <span style="font-weight: 700; font-size: 15px; color: #fca5a5;">
+                                🔗 Screen Capture Capability
+                            </span>
+                            <span style="background: #dc2626; color: white; padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: 700;">
+                                CRITICAL
+                            </span>
+                        </div>
+                        <div style="font-size: 12px; color: #94a3b8; margin-bottom: 6px;">
+                            <strong>Permissions:</strong> <code style="background: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 3px; color: #fca5a5;">tabs + &lt;all_urls&gt;</code>
+                        </div>
+                        <div style="font-size: 14px; color: #e2e8f0;">
+                            Can capture screenshots of any website via captureVisibleTab API
+                        </div>
+                    </div>
+</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">⚠️</div>
+                <div class="section-title">Threat Analysis</div>
+            </div>
+
+            <div class="threat-item high">
+                <div class="threat-header">
+                    <div class="threat-name">🚨 Dynamic Code Execution (eval)</div>
+                    <div class="threat-severity high">high</div>
+                </div>
+                <div class="threat-description">Executes code from strings (severe security risk)</div>
+
+                <div class="context-analysis" style="margin: 10px 0; padding: 12px 15px; background: rgba(59, 130, 246, 0.1); border-left: 3px solid #3b82f6; border-radius: 4px; font-size: 13px; color: #cbd5e1; line-height: 1.5;">
+                    <strong style="color: #60a5fa;">Context Analysis:</strong> Dynamic code execution combined with network requests. This is a remote code execution pattern - the extension fetches code from a server and executes it, allowing attackers to change behavior without updating the extension.
+                </div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> Code injection
+                </div>
+
+                <div style="margin: 10px 0; padding: 8px 12px; background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; border-radius: 4px;">
+                    <span style="color: #94a3b8; font-size: 12px;">Matched pattern:</span>
+                    <code style="color: #f87171; background: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 3px; font-size: 12px; margin-left: 8px;">eval(</code>
+                </div>
+
+                <div class="code-snippet-container" style="margin: 15px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+                    <div class="code-snippet-header" style="background: linear-gradient(135deg, #374151 0%, #1f2937 100%); padding: 10px 15px; display: flex; align-items: center; gap: 10px;">
+                        <div class="code-snippet-header-dots" style="display: flex; gap: 6px;">
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #ef4444;"></div>
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #f59e0b;"></div>
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #22c55e;"></div>
+                        </div>
+                        <div class="code-snippet-filename" style="color: #9ca3af; font-size: 13px; font-family: monospace;">background.js</div>
+                    </div>
+                    <div class="code-snippet-body" style="background: #0f172a; padding: 0; overflow-x: auto;">
+                        <pre style="margin: 0; padding: 15px; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><div style="display: flex; background: rgba(239, 68, 68, 0.2); border-left: 3px solid #ef4444; padding: 2px 10px;"><span style="color: #ef4444; min-width: 35px; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151;">1</span><span style="padding-left: 10px; color: #e2e8f0;"><span style="color: #ef4444; font-weight: bold;">&gt;&gt;</span>  (()=&gt;{<span class="code-string">"use strict"</span>;<span class=<span class="code-string">"code-keyword"</span>>const</span> e={randomUUID:<span class="code-string">"undefined"</span>!=typeof crypto&amp;&amp;crypto.randomUUID&amp;&amp;crypto.randomUUID.<span class=<span class="code-string">"code-function"</span>>bind</span>(crypto)};<span class=<span class="code-string">"code-keyword"</span>>let</span> t;<span class=<span class="code-string">"code-keyword"</span>>const</span> n=<span class=<span class="code-string">"code-keyword"</span>>new</span> <span class=<span class="code-string">"code-function"</span>>Uint8Array</span>(16);<span class=<span class="code-string">"code-keyword"</span>>function</span> <span class=<span class="code-string">"code-function"</span>>s</span>(){<span class=<span class="code-string">"code-keyword"</span>>if</span>(!t&amp;&amp;(t=<span class="code-string">"undefined"</span>!=typeof crypto&amp;&amp;crypto.getRandomValues&amp;&amp;crypto.getRan...</span></div></pre>
+                    </div>
+                </div>
+
+                <div class="threat-location">📍 background.js : Line 1</div>
+            </div>
+
+            <div class="threat-item high">
+                <div class="threat-header">
+                    <div class="threat-name">🚨 Offscreen Document Creation (MV3)</div>
+                    <div class="threat-severity high">high</div>
+                </div>
+                <div class="threat-description">Creates offscreen document - MV3 technique to run invisible capture scripts</div>
+
+                <div class="context-analysis" style="margin: 10px 0; padding: 12px 15px; background: rgba(59, 130, 246, 0.1); border-left: 3px solid #3b82f6; border-radius: 4px; font-size: 13px; color: #cbd5e1; line-height: 1.5;">
+                    <strong style="color: #60a5fa;">Context Analysis:</strong> This pattern is associated with 'Offscreen execution' behavior. Review the code context to assess the actual risk.
+                </div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> Offscreen execution
+                </div>
+
+                <div style="margin: 10px 0; padding: 8px 12px; background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; border-radius: 4px;">
+                    <span style="color: #94a3b8; font-size: 12px;">Matched pattern:</span>
+                    <code style="color: #f87171; background: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 3px; font-size: 12px; margin-left: 8px;">chrome.offscreen.createDocument</code>
+                </div>
+
+                <div class="code-snippet-container" style="margin: 15px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+                    <div class="code-snippet-header" style="background: linear-gradient(135deg, #374151 0%, #1f2937 100%); padding: 10px 15px; display: flex; align-items: center; gap: 10px;">
+                        <div class="code-snippet-header-dots" style="display: flex; gap: 6px;">
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #ef4444;"></div>
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #f59e0b;"></div>
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #22c55e;"></div>
+                        </div>
+                        <div class="code-snippet-filename" style="color: #9ca3af; font-size: 13px; font-family: monospace;">background.js</div>
+                    </div>
+                    <div class="code-snippet-body" style="background: #0f172a; padding: 0; overflow-x: auto;">
+                        <pre style="margin: 0; padding: 15px; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><div style="display: flex; background: rgba(239, 68, 68, 0.2); border-left: 3px solid #ef4444; padding: 2px 10px;"><span style="color: #ef4444; min-width: 35px; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151;">1</span><span style="padding-left: 10px; color: #e2e8f0;"><span style="color: #ef4444; font-weight: bold;">&gt;&gt;</span>  (()=&gt;{<span class="code-string">"use strict"</span>;<span class=<span class="code-string">"code-keyword"</span>>const</span> e={randomUUID:<span class="code-string">"undefined"</span>!=typeof crypto&amp;&amp;crypto.randomUUID&amp;&amp;crypto.randomUUID.<span class=<span class="code-string">"code-function"</span>>bind</span>(crypto)};<span class=<span class="code-string">"code-keyword"</span>>let</span> t;<span class=<span class="code-string">"code-keyword"</span>>const</span> n=<span class=<span class="code-string">"code-keyword"</span>>new</span> <span class=<span class="code-string">"code-function"</span>>Uint8Array</span>(16);<span class=<span class="code-string">"code-keyword"</span>>function</span> <span class=<span class="code-string">"code-function"</span>>s</span>(){<span class=<span class="code-string">"code-keyword"</span>>if</span>(!t&amp;&amp;(t=<span class="code-string">"undefined"</span>!=typeof crypto&amp;&amp;crypto.getRandomValues&amp;&amp;crypto.getRan...</span></div></pre>
+                    </div>
+                </div>
+
+                <div class="threat-location">📍 background.js : Line 1</div>
+            </div>
+
+            <div class="threat-item high">
+                <div class="threat-header">
+                    <div class="threat-name">🚨 OAuth Token Extraction</div>
+                    <div class="threat-severity high">high</div>
+                </div>
+                <div class="threat-description">References OAuth tokens - may be stealing or exfiltrating authentication tokens</div>
+
+                <div class="context-analysis" style="margin: 10px 0; padding: 12px 15px; background: rgba(59, 130, 246, 0.1); border-left: 3px solid #3b82f6; border-radius: 4px; font-size: 13px; color: #cbd5e1; line-height: 1.5;">
+                    <strong style="color: #60a5fa;">Context Analysis:</strong> This pattern is associated with 'Token theft' behavior. Review the code context to assess the actual risk.
+                </div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> Token theft
+                </div>
+
+                <div style="margin: 10px 0; padding: 8px 12px; background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; border-radius: 4px;">
+                    <span style="color: #94a3b8; font-size: 12px;">Matched pattern:</span>
+                    <code style="color: #f87171; background: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 3px; font-size: 12px; margin-left: 8px;">ACCESS_TOKEN</code>
+                </div>
+
+                <div class="code-snippet-container" style="margin: 15px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+                    <div class="code-snippet-header" style="background: linear-gradient(135deg, #374151 0%, #1f2937 100%); padding: 10px 15px; display: flex; align-items: center; gap: 10px;">
+                        <div class="code-snippet-header-dots" style="display: flex; gap: 6px;">
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #ef4444;"></div>
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #f59e0b;"></div>
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #22c55e;"></div>
+                        </div>
+                        <div class="code-snippet-filename" style="color: #9ca3af; font-size: 13px; font-family: monospace;">background.js</div>
+                    </div>
+                    <div class="code-snippet-body" style="background: #0f172a; padding: 0; overflow-x: auto;">
+                        <pre style="margin: 0; padding: 15px; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><div style="display: flex; background: rgba(239, 68, 68, 0.2); border-left: 3px solid #ef4444; padding: 2px 10px;"><span style="color: #ef4444; min-width: 35px; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151;">1</span><span style="padding-left: 10px; color: #e2e8f0;"><span style="color: #ef4444; font-weight: bold;">&gt;&gt;</span>  (()=&gt;{<span class="code-string">"use strict"</span>;<span class=<span class="code-string">"code-keyword"</span>>const</span> e={randomUUID:<span class="code-string">"undefined"</span>!=typeof crypto&amp;&amp;crypto.randomUUID&amp;&amp;crypto.randomUUID.<span class=<span class="code-string">"code-function"</span>>bind</span>(crypto)};<span class=<span class="code-string">"code-keyword"</span>>let</span> t;<span class=<span class="code-string">"code-keyword"</span>>const</span> n=<span class=<span class="code-string">"code-keyword"</span>>new</span> <span class=<span class="code-string">"code-function"</span>>Uint8Array</span>(16);<span class=<span class="code-string">"code-keyword"</span>>function</span> <span class=<span class="code-string">"code-function"</span>>s</span>(){<span class=<span class="code-string">"code-keyword"</span>>if</span>(!t&amp;&amp;(t=<span class="code-string">"undefined"</span>!=typeof crypto&amp;&amp;crypto.getRandomValues&amp;&amp;crypto.getRan...</span></div></pre>
+                    </div>
+                </div>
+
+                <div class="threat-location">📍 background.js : Line 1</div>
+            </div>
+
+            <div class="threat-item medium">
+                <div class="threat-header">
+                    <div class="threat-name">⚠️ Persistent Machine ID Generation <span style="background:#334155;color:#94a3b8;padding:2px 6px;border-radius:10px;font-size:11px;margin-left:6px;">4x</span></div>
+                    <div class="threat-severity medium">medium</div>
+                </div>
+                <div class="threat-description">Generates or stores persistent device identifier - may track user across sessions</div>
+
+                <div class="context-analysis" style="margin: 10px 0; padding: 12px 15px; background: rgba(59, 130, 246, 0.1); border-left: 3px solid #3b82f6; border-radius: 4px; font-size: 13px; color: #cbd5e1; line-height: 1.5;">
+                    <strong style="color: #60a5fa;">Context Analysis:</strong> This pattern is associated with 'Device fingerprinting' behavior. Review the code context to assess the actual risk.
+                </div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> Device fingerprinting
+                </div>
+
+                <div style="margin: 10px 0; padding: 8px 12px; background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; border-radius: 4px;">
+                    <span style="color: #94a3b8; font-size: 12px;">Matched pattern:</span>
+                    <code style="color: #f87171; background: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 3px; font-size: 12px; margin-left: 8px;">deviceId</code>
+                </div>
+
+                <div class="code-snippet-container" style="margin: 15px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+                    <div class="code-snippet-header" style="background: linear-gradient(135deg, #374151 0%, #1f2937 100%); padding: 10px 15px; display: flex; align-items: center; gap: 10px;">
+                        <div class="code-snippet-header-dots" style="display: flex; gap: 6px;">
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #ef4444;"></div>
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #f59e0b;"></div>
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #22c55e;"></div>
+                        </div>
+                        <div class="code-snippet-filename" style="color: #9ca3af; font-size: 13px; font-family: monospace;">background.js</div>
+                    </div>
+                    <div class="code-snippet-body" style="background: #0f172a; padding: 0; overflow-x: auto;">
+                        <pre style="margin: 0; padding: 15px; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><div style="display: flex; background: rgba(239, 68, 68, 0.2); border-left: 3px solid #ef4444; padding: 2px 10px;"><span style="color: #ef4444; min-width: 35px; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151;">1</span><span style="padding-left: 10px; color: #e2e8f0;"><span style="color: #ef4444; font-weight: bold;">&gt;&gt;</span>  (()=&gt;{<span class="code-string">"use strict"</span>;<span class=<span class="code-string">"code-keyword"</span>>const</span> e={randomUUID:<span class="code-string">"undefined"</span>!=typeof crypto&amp;&amp;crypto.randomUUID&amp;&amp;crypto.randomUUID.<span class=<span class="code-string">"code-function"</span>>bind</span>(crypto)};<span class=<span class="code-string">"code-keyword"</span>>let</span> t;<span class=<span class="code-string">"code-keyword"</span>>const</span> n=<span class=<span class="code-string">"code-keyword"</span>>new</span> <span class=<span class="code-string">"code-function"</span>>Uint8Array</span>(16);<span class=<span class="code-string">"code-keyword"</span>>function</span> <span class=<span class="code-string">"code-function"</span>>s</span>(){<span class=<span class="code-string">"code-keyword"</span>>if</span>(!t&amp;&amp;(t=<span class="code-string">"undefined"</span>!=typeof crypto&amp;&amp;crypto.getRandomValues&amp;&amp;crypto.getRan...</span></div></pre>
+                    </div>
+                </div>
+
+                <div class="threat-location">📍 background.js : Line 1</div>
+            </div>
+
+            <div class="threat-item medium">
+                <div class="threat-header">
+                    <div class="threat-name">⚠️ Persistent Machine ID Generation <span style="background:#334155;color:#94a3b8;padding:2px 6px;border-radius:10px;font-size:11px;margin-left:6px;">4x</span></div>
+                    <div class="threat-severity medium">medium</div>
+                </div>
+                <div class="threat-description">Generates or stores persistent device identifier - may track user across sessions</div>
+
+                <div class="context-analysis" style="margin: 10px 0; padding: 12px 15px; background: rgba(59, 130, 246, 0.1); border-left: 3px solid #3b82f6; border-radius: 4px; font-size: 13px; color: #cbd5e1; line-height: 1.5;">
+                    <strong style="color: #60a5fa;">Context Analysis:</strong> This pattern is associated with 'Device fingerprinting' behavior. Review the code context to assess the actual risk.
+                </div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> Device fingerprinting
+                </div>
+
+                <div style="margin: 10px 0; padding: 8px 12px; background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; border-radius: 4px;">
+                    <span style="color: #94a3b8; font-size: 12px;">Matched pattern:</span>
+                    <code style="color: #f87171; background: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 3px; font-size: 12px; margin-left: 8px;">deviceId</code>
+                </div>
+
+                <div class="code-snippet-container" style="margin: 15px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+                    <div class="code-snippet-header" style="background: linear-gradient(135deg, #374151 0%, #1f2937 100%); padding: 10px 15px; display: flex; align-items: center; gap: 10px;">
+                        <div class="code-snippet-header-dots" style="display: flex; gap: 6px;">
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #ef4444;"></div>
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #f59e0b;"></div>
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #22c55e;"></div>
+                        </div>
+                        <div class="code-snippet-filename" style="color: #9ca3af; font-size: 13px; font-family: monospace;">content-script.js</div>
+                    </div>
+                    <div class="code-snippet-body" style="background: #0f172a; padding: 0; overflow-x: auto;">
+                        <pre style="margin: 0; padding: 15px; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><div style="display: flex; border-left: 3px solid transparent; padding: 2px 10px;"><span style="color: #4b5563; min-width: 35px; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151;">1</span><span style="padding-left: 10px; color: #e2e8f0;">   1 | /*! For license information please see content-script.js.LICENSE.txt */</span></div><div style="display: flex; background: rgba(239, 68, 68, 0.2); border-left: 3px solid #ef4444; padding: 2px 10px;"><span style="color: #ef4444; min-width: 35px; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151;">2</span><span style="padding-left: 10px; color: #e2e8f0;"><span style="color: #ef4444; font-weight: bold;">&gt;&gt;</span>  (()=&gt;{<span class="code-string">"use strict"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> e,t,n,a,s={943:(e,t,n)=&gt;{n.<span class=<span class="code-string">"code-function"</span>>d</span>(t,{A:()=&gt;a});<span class=<span class="code-string">"code-keyword"</span>>const</span> a={randomUUID:<span class="code-string">"undefined"</span>!=typeof crypto&amp;&amp;crypto.randomUUID&amp;&amp;crypto.randomUUID.<span class=<span class="code-string">"code-function"</span>>bind</span>(crypto)}},407:(e,t,n)=&gt;{<span class=<span class="code-string">"code-keyword"</span>>let</span> a;n.<span class=<span class="code-string">"code-function"</span>>d</span>(t,{A:()=&gt;o});<span class=<span class="code-string">"code-keyword"</span>>const</span> s=<span class=<span class="code-string">"code-keyword"</span>>new</span> <span class=<span class="code-string">"code-function"</span>>Uint8Array</span>(16);<span class=<span class="code-string">"code-keyword"</span>>function</span> o...</span></div></pre>
+                    </div>
+                </div>
+
+                <div class="threat-location">📍 content-script.js : Line 2</div>
+            </div>
+
+            <div class="threat-item medium">
+                <div class="threat-header">
+                    <div class="threat-name">⚠️ Input Field Event Listener</div>
+                    <div class="threat-severity medium">medium</div>
+                </div>
+                <div class="threat-description">Monitors input field changes - review if targeting sensitive fields</div>
+
+                <div class="context-analysis" style="margin: 10px 0; padding: 12px 15px; background: rgba(59, 130, 246, 0.1); border-left: 3px solid #3b82f6; border-radius: 4px; font-size: 13px; color: #cbd5e1; line-height: 1.5;">
+                    <strong style="color: #60a5fa;">Context Analysis:</strong> Input monitoring can capture everything the user types, including passwords, personal messages, and financial information.
+                </div>
+
+                <div style="font-size: 13px; color: #64748b; margin: 8px 0;">
+                    <strong>Technique:</strong> Input monitoring
+                </div>
+
+                <div style="margin: 10px 0; padding: 8px 12px; background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; border-radius: 4px;">
+                    <span style="color: #94a3b8; font-size: 12px;">Matched pattern:</span>
+                    <code style="color: #f87171; background: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 3px; font-size: 12px; margin-left: 8px;">addEventListener(&quot;change&quot;</code>
+                </div>
+
+                <div class="code-snippet-container" style="margin: 15px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+                    <div class="code-snippet-header" style="background: linear-gradient(135deg, #374151 0%, #1f2937 100%); padding: 10px 15px; display: flex; align-items: center; gap: 10px;">
+                        <div class="code-snippet-header-dots" style="display: flex; gap: 6px;">
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #ef4444;"></div>
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #f59e0b;"></div>
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #22c55e;"></div>
+                        </div>
+                        <div class="code-snippet-filename" style="color: #9ca3af; font-size: 13px; font-family: monospace;">content-script.js</div>
+                    </div>
+                    <div class="code-snippet-body" style="background: #0f172a; padding: 0; overflow-x: auto;">
+                        <pre style="margin: 0; padding: 15px; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 13px; line-height: 1.6;"><div style="display: flex; border-left: 3px solid transparent; padding: 2px 10px;"><span style="color: #4b5563; min-width: 35px; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151;">1</span><span style="padding-left: 10px; color: #e2e8f0;">   1 | /*! For license information please see content-script.js.LICENSE.txt */</span></div><div style="display: flex; background: rgba(239, 68, 68, 0.2); border-left: 3px solid #ef4444; padding: 2px 10px;"><span style="color: #ef4444; min-width: 35px; text-align: right; padding-right: 15px; user-select: none; border-right: 1px solid #374151;">2</span><span style="padding-left: 10px; color: #e2e8f0;"><span style="color: #ef4444; font-weight: bold;">&gt;&gt;</span>  (()=&gt;{<span class="code-string">"use strict"</span>;<span class=<span class="code-string">"code-keyword"</span>>var</span> e,t,n,a,s={943:(e,t,n)=&gt;{n.<span class=<span class="code-string">"code-function"</span>>d</span>(t,{A:()=&gt;a});<span class=<span class="code-string">"code-keyword"</span>>const</span> a={randomUUID:<span class="code-string">"undefined"</span>!=typeof crypto&amp;&amp;crypto.randomUUID&amp;&amp;crypto.randomUUID.<span class=<span class="code-string">"code-function"</span>>bind</span>(crypto)}},407:(e,t,n)=&gt;{<span class=<span class="code-string">"code-keyword"</span>>let</span> a;n.<span class=<span class="code-string">"code-function"</span>>d</span>(t,{A:()=&gt;o});<span class=<span class="code-string">"code-keyword"</span>>const</span> s=<span class=<span class="code-string">"code-keyword"</span>>new</span> <span class=<span class="code-string">"code-function"</span>>Uint8Array</span>(16);<span class=<span class="code-string">"code-keyword"</span>>function</span> o...</span></div></pre>
+                    </div>
+                </div>
+
+                <div class="threat-location">📍 content-script.js : Line 2</div>
+            </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🎯</div>
+                <div class="section-title">Security Recommendations</div>
+            </div>
+            <div class="recommendations critical">
+                <h3>⚠️ Recommended Actions</h3>
+                <div class="rec-list">
+<div class="rec-item"><div class="rec-icon">▸</div><div><strong>Priority 3:</strong> 1 domain(s) flagged by 1 vendor(s) (low detection count)</div></div><div class="rec-item"><div class="rec-icon">▸</div><div>Manual verification recommended - could be false positives</div></div><div class="rec-item"><div class="rec-icon">▸</div><div>Review flagged domains for legitimacy (e.g., Firebase, CDNs)</div></div><div class="rec-item"><div class="rec-icon">▸</div><div>Monitor for additional suspicious behaviors</div></div><div class="rec-item"><div class="rec-icon">▸</div><div>Re-assess if additional indicators emerge</div></div>
+                </div>
+            </div>
+        </div>
+</div>
+        <div class="report-footer">
+            <div class="footer-logo">Extension Security Analyzer</div>
+            <div>Professional Threat Analysis • Powered by VirusTotal & Static Analysis</div>
+        </div>
+    </div>
+</body>
+</html>

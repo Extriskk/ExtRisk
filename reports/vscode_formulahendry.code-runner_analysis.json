@@ -1,0 +1,1025 @@
+{
+  "extension_type": "vscode",
+  "name": "Code Runner",
+  "identifier": "formulahendry.code-runner",
+  "extension_id": "formulahendry.code-runner",
+  "version": "0.12.2",
+  "description": "Run C, C++, Java, JS, PHP, Python, Perl, Ruby, Go, Lua, Groovy, PowerShell, CMD, BASH, F#, C#, VBScript, TypeScript, CoffeeScript, Scala, Swift, Julia, Crystal, OCaml, R, AppleScript, Elixir, VB.NET, Clojure, Haxe, Obj-C, Rust, Racket, Scheme, AutoHotkey, AutoIt, Kotlin, Dart, Pascal, Haskell, Nim, D, Lisp, Kit, V, SCSS, Sass, CUDA, Less, Fortran, Ring, Standard ML, Zig, Mojo, Erlang, SPWN, Pkl, Gleam",
+  "publisher": "formulahendry",
+  "engines": {
+    "vscode": "^1.56.0"
+  },
+  "store_metadata": {
+    "available": true,
+    "store": "vscode",
+    "identifier": "formulahendry.code-runner",
+    "name": "Code Runner",
+    "publisher": "Jun Han",
+    "publisher_id": "38bbe3f0-5204-4170-845e-c2f966d979b8",
+    "publisher_domain": null,
+    "publisher_verified": false,
+    "short_description": "Run C, C++, Java, JS, PHP, Python, Perl, Ruby, Go, Lua, Groovy, PowerShell, CMD, BASH, F#, C#, VBScript, TypeScript, CoffeeScript, Scala, Swift, Julia, Crystal, OCaml, R, AppleScript, Elixir, VB.NET, Clojure, Haxe, Obj-C, Rust, Racket, Scheme, AutoHotkey, AutoIt, Kotlin, Dart, Pascal, Haskell, Nim, ",
+    "version": "0.12.2",
+    "last_updated": "2024-04-05T09:29:47.39Z",
+    "categories": [],
+    "tags": [],
+    "install_count": 39107075,
+    "rating_value": 4.41,
+    "rating_count": 285,
+    "flags": "validated, public",
+    "store_url": "https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner",
+    "risk_signals": {
+      "unverified_publisher": true
+    }
+  },
+  "metadata_risk": {
+    "findings": [
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:code-runner.run': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:code-runner.run"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:code-runner.runCustomCommand': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:code-runner.runCustomCommand"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:code-runner.runByLanguage': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:code-runner.runByLanguage"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onStartupFinished': Runs every launch - immediate execution",
+        "event": "onStartupFinished"
+      },
+      {
+        "type": "known_vulnerable_extension",
+        "severity": "critical",
+        "detail": "formulahendry.code-runner is affected by CVE-2025-65715: Code Runner vulnerability: executor commands from settings.json are passed directly into child_process.spawn(..., { shell: true }) allowing arbitrary code execution when settings are manipulated.",
+        "identifier": "formulahendry.code-runner",
+        "cve": "CVE-2025-65715",
+        "reference": "https://www.ox.security/blog/cve-2025-65715-code-runner-vscode-rce/",
+        "risk_context": null,
+        "mitigation_note": null
+      }
+    ],
+    "risk_score": 8,
+    "activation_events": [
+      "onCommand:code-runner.run",
+      "onCommand:code-runner.runCustomCommand",
+      "onCommand:code-runner.runByLanguage",
+      "onStartupFinished"
+    ],
+    "contributes": [
+      "commands",
+      "keybindings",
+      "menus",
+      "configuration",
+      "languages",
+      "grammars"
+    ]
+  },
+  "package_json_deep": {
+    "findings": [
+      {
+        "name": "Publisher-domain mismatch: formulahendry vs www.patreon.com",
+        "severity": "medium",
+        "description": "Publisher \"formulahendry\" does not match operational domain \"www.patreon.com\"",
+        "category": "publisher_mismatch",
+        "file": "package.json",
+        "line": 0,
+        "evidence": "publisher=formulahendry, domain=www.patreon.com"
+      }
+    ]
+  },
+  "supply_chain": {
+    "findings": [
+      {
+        "type": "bundled_node_modules",
+        "severity": "info",
+        "detail": "9 bundled packages (0.8 MB)",
+        "count": 9,
+        "size_mb": 0.8
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "medium",
+        "package": "micromatch",
+        "version": "4.0.2",
+        "cve_id": "GHSA-952p-6rrq-rcjv",
+        "link": "https://github.com/advisories/GHSA-952p-6rrq-rcjv",
+        "detail": "micromatch@4.0.2 has known vulnerability GHSA-952p-6rrq-rcjv \u2014 Regular Expression Denial of Service (ReDoS) in micromatch (fix: >=4.0.8)"
+      }
+    ],
+    "risk_score": 0,
+    "dependency_count": 3,
+    "dev_dependency_count": 7,
+    "has_node_modules": true,
+    "dependency_vulns": [
+      {
+        "package": "micromatch",
+        "version": "4.0.2",
+        "dep_type": "runtime",
+        "vulns": [
+          {
+            "id": "GHSA-952p-6rrq-rcjv",
+            "link": "https://github.com/advisories/GHSA-952p-6rrq-rcjv",
+            "summary": "Regular Expression Denial of Service (ReDoS) in micromatch",
+            "severity": "medium",
+            "cwe_ids": [
+              "CWE-1333"
+            ],
+            "fix_version": "4.0.8",
+            "aliases": [
+              "CVE-2024-4067"
+            ],
+            "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+          }
+        ]
+      }
+    ],
+    "bundled_js_vulns": []
+  },
+  "code_analysis": {
+    "all_findings": [
+      {
+        "name": "child_process.exec with shell=true",
+        "severity": "high",
+        "description": "Process spawning with shell=true allows shell metacharacter injection",
+        "category": "command_injection",
+        "file": "out\\src\\codeManager.js",
+        "line": 433,
+        "evidence": "new Date();             this._process = spawn(command, [], { cwd: this._cwd, shell: true });             this._process.stdout.on",
+        "path_type": "app"
+      },
+      {
+        "name": "exec/spawn with user input",
+        "severity": "critical",
+        "description": "Process execution with user-controlled input",
+        "category": "command_injection",
+        "file": "out\\src\\codeManager.js",
+        "line": 433,
+        "evidence": "new Date();             this._process = spawn(command, [], { cwd: this._cwd, shell: true });",
+        "path_type": "app"
+      },
+      {
+        "name": "Variable-built command passed to exec",
+        "severity": "high",
+        "description": "Command built into variable then passed to shell execution - review command construction for injection",
+        "category": "command_injection",
+        "file": "out\\src\\codeManager.js",
+        "line": 427,
+        "evidence": "ire(\"child_process\").spawn;             const command = yield this.getFinalCommandToRunCodeFile(executor, appendFile);             if (showExecutionMessage) {                 this._outputChannel.appen",
+        "path_type": "app"
+      },
+      {
+        "name": "Terminal creation",
+        "severity": "medium",
+        "description": "Creates integrated terminal (can execute arbitrary commands)",
+        "category": "terminal_hijack",
+        "file": "out\\src\\codeManager.js",
+        "line": 398,
+        "evidence": "ull) {                 this._terminal = vscode.window.createTerminal(\"Code\");                 isNewTerminal =",
+        "path_type": "app"
+      },
+      {
+        "name": "Terminal sendText (command execution)",
+        "severity": "high",
+        "description": "Sends commands to terminal with dynamic content",
+        "category": "terminal_hijack",
+        "file": "out\\src\\codeManager.js",
+        "line": 411,
+        "evidence": "is._cwd);                 this._terminal.sendText(`cd \"${cwd}\"`);             }             this.",
+        "path_type": "app"
+      },
+      {
+        "name": "Terminal sendText (command execution)",
+        "severity": "high",
+        "description": "Sends commands to terminal with dynamic content",
+        "category": "terminal_hijack",
+        "file": "out\\src\\codeManager.js",
+        "line": 413,
+        "evidence": "}             this._terminal.sendText(command);         });     }     executeCommandI",
+        "path_type": "app"
+      },
+      {
+        "name": "Document content reading",
+        "severity": "low",
+        "description": "Reads open document content (common but trackable)",
+        "category": "data_access",
+        "file": "out\\src\\codeManager.js",
+        "line": 179,
+        "evidence": "gnoreSelection) ?                 this._document.getText() : this._document.getText(selection);",
+        "path_type": "app"
+      },
+      {
+        "name": "Document content reading",
+        "severity": "low",
+        "description": "Reads open document content (common but trackable)",
+        "category": "data_access",
+        "file": "out\\src\\codeManager.js",
+        "line": 179,
+        "evidence": "this._document.getText() : this._document.getText(selection);             if (this._langua",
+        "path_type": "app"
+      },
+      {
+        "name": "Workspace file access",
+        "severity": "low",
+        "description": "Accesses workspace files",
+        "category": "data_access",
+        "file": "out\\src\\codeManager.js",
+        "line": 39,
+        "evidence": "this._document = yield vscode.workspace.openTextDocument(fileUri);             }             els",
+        "path_type": "app"
+      },
+      {
+        "name": "Workspace folder enumeration",
+        "severity": "low",
+        "description": "Accesses workspace root folder path",
+        "category": "workspace_harvesting",
+        "file": "out\\src\\codeManager.js",
+        "line": 143,
+        "evidence": "getWorkspaceFolder() {         if (vscode.workspace.workspaceFolders) {             if (this._document) {",
+        "path_type": "app"
+      },
+      {
+        "name": "Workspace folder enumeration",
+        "severity": "low",
+        "description": "Accesses workspace root folder path",
+        "category": "workspace_harvesting",
+        "file": "out\\src\\codeManager.js",
+        "line": 150,
+        "evidence": "}             }             return vscode.workspace.workspaceFolders[0].uri.fsPath;         }         else {",
+        "path_type": "app"
+      },
+      {
+        "name": "Active editor fileName access",
+        "severity": "low",
+        "description": "Accesses the filename/path of the active document",
+        "category": "document_monitoring",
+        "file": "out\\src\\codeManager.js",
+        "line": 107,
+        "evidence": "}         if (fileUri.fsPath === editor.document.uri.fsPath) {             return false;",
+        "path_type": "app"
+      },
+      {
+        "name": "Document fileName/path collection",
+        "severity": "low",
+        "description": "Collects file paths from open documents - local filesystem path collection",
+        "category": "workspace_activity_monitoring",
+        "file": "out\\src\\codeManager.js",
+        "line": 52,
+        "evidence": "st fileExtension = path_1.extname(this._document.fileName);             const executor = this.get",
+        "path_type": "app"
+      },
+      {
+        "name": "Document fileName/path collection",
+        "severity": "low",
+        "description": "Collects file paths from open documents - local filesystem path collection",
+        "category": "workspace_activity_monitoring",
+        "file": "out\\src\\codeManager.js",
+        "line": 75,
+        "evidence": "st fileExtension = path_1.extname(this._document.fileName);             this.getCodeFileAndExecut",
+        "path_type": "app"
+      },
+      {
+        "name": "Document fileName/path collection",
+        "severity": "low",
+        "description": "Collects file paths from open documents - local filesystem path collection",
+        "category": "workspace_activity_monitoring",
+        "file": "out\\src\\codeManager.js",
+        "line": 129,
+        "evidence": "this._cwd = path_1.dirname(this._document.fileName);         }         else {",
+        "path_type": "app"
+      },
+      {
+        "name": "Document fileName/path collection",
+        "severity": "low",
+        "description": "Collects file paths from open documents - local filesystem path collection",
+        "category": "workspace_activity_monitoring",
+        "file": "out\\src\\codeManager.js",
+        "line": 165,
+        "evidence": "lse;             this._codeFile = this._document.fileName;             if (this._config.get(\"save",
+        "path_type": "app"
+      },
+      {
+        "name": "Document fileName/path collection",
+        "severity": "low",
+        "description": "Collects file paths from open documents - local filesystem path collection",
+        "category": "workspace_activity_monitoring",
+        "file": "out\\src\\codeManager.js",
+        "line": 187,
+        "evidence": "tled ? this._cwd : path_1.dirname(this._document.fileName);             this.createRandomFile(tex",
+        "path_type": "app"
+      },
+      {
+        "name": "Document fileName/path collection",
+        "severity": "low",
+        "description": "Collects file paths from open documents - local filesystem path collection",
+        "category": "workspace_activity_monitoring",
+        "file": "out\\src\\codeManager.js",
+        "line": 228,
+        "evidence": "st fileBasename = path_1.basename(this._document.fileName);                 for (const glob of Ob",
+        "path_type": "app"
+      },
+      {
+        "name": "child_process require (minification-safe)",
+        "severity": "high",
+        "description": "Imports child_process module - shell command execution capability",
+        "category": "command_injection",
+        "file": "out\\src\\codeManager.js",
+        "line": 426,
+        "evidence": "erveFocus\"));             const spawn = require(\"child_process\").spawn;             const command = yiel",
+        "path_type": "app"
+      },
+      {
+        "name": "Extension access (hijacking)",
+        "severity": "medium",
+        "description": "Accesses other installed extensions (potential extension hijacking)",
+        "category": "extension_hijack",
+        "file": "out\\src\\utility.js",
+        "line": 19,
+        "evidence": "try {                 const extension = vscode.extensions.getExtension(\"ms-python.python\");                 if",
+        "path_type": "app"
+      },
+      {
+        "name": "Shell execution with user-controlled input (same file)",
+        "severity": "medium",
+        "description": "User input source (QuickPick/InputBox) and shell command execution exist in the same file - user input may reach shell commands. Review whether input is properly sanitized.",
+        "category": "behavioral_correlation",
+        "file": "out\\src\\codeManager.js",
+        "line": 0,
+        "evidence": "User input + shell execution co-located in: out\\src\\codeManager.js",
+        "confidence": "MEDIUM",
+        "attack_type": "user_input_shell_injection"
+      },
+      {
+        "name": "Local tool integration: workspace monitoring + command execution (no network)",
+        "severity": "low",
+        "description": "Extension monitors workspace activity and executes commands but has NO network access. Consistent with local CLI tool integration. High capability but justified pattern.",
+        "category": "behavioral_correlation",
+        "file": "out\\src\\codeManager.js",
+        "line": 0,
+        "evidence": "Document fileName/path collection + child_process.exec with shell=true + no network",
+        "confidence": "HIGH",
+        "attack_type": "local_tool_integration"
+      }
+    ],
+    "module_usage": {
+      "file_access": [
+        {
+          "module": "fs",
+          "file": "out\\src\\codeManager.js",
+          "line": 12
+        },
+        {
+          "module": "path",
+          "file": "out\\src\\codeManager.js",
+          "line": 15
+        }
+      ],
+      "os_info": [
+        {
+          "module": "os",
+          "file": "out\\src\\codeManager.js",
+          "line": 14
+        }
+      ],
+      "process_execution": [
+        {
+          "module": "child_process",
+          "file": "out\\src\\codeManager.js",
+          "line": 426
+        }
+      ]
+    },
+    "external_urls": [],
+    "file_entropies": {},
+    "files_scanned": 5,
+    "findings_by_category": {
+      "command_injection": [
+        {
+          "name": "child_process.exec with shell=true",
+          "severity": "high",
+          "description": "Process spawning with shell=true allows shell metacharacter injection",
+          "category": "command_injection",
+          "file": "out\\src\\codeManager.js",
+          "line": 433,
+          "evidence": "new Date();             this._process = spawn(command, [], { cwd: this._cwd, shell: true });             this._process.stdout.on",
+          "path_type": "app"
+        },
+        {
+          "name": "exec/spawn with user input",
+          "severity": "critical",
+          "description": "Process execution with user-controlled input",
+          "category": "command_injection",
+          "file": "out\\src\\codeManager.js",
+          "line": 433,
+          "evidence": "new Date();             this._process = spawn(command, [], { cwd: this._cwd, shell: true });",
+          "path_type": "app"
+        },
+        {
+          "name": "Variable-built command passed to exec",
+          "severity": "high",
+          "description": "Command built into variable then passed to shell execution - review command construction for injection",
+          "category": "command_injection",
+          "file": "out\\src\\codeManager.js",
+          "line": 427,
+          "evidence": "ire(\"child_process\").spawn;             const command = yield this.getFinalCommandToRunCodeFile(executor, appendFile);             if (showExecutionMessage) {                 this._outputChannel.appen",
+          "path_type": "app"
+        },
+        {
+          "name": "child_process require (minification-safe)",
+          "severity": "high",
+          "description": "Imports child_process module - shell command execution capability",
+          "category": "command_injection",
+          "file": "out\\src\\codeManager.js",
+          "line": 426,
+          "evidence": "erveFocus\"));             const spawn = require(\"child_process\").spawn;             const command = yiel",
+          "path_type": "app"
+        }
+      ],
+      "terminal_hijack": [
+        {
+          "name": "Terminal creation",
+          "severity": "medium",
+          "description": "Creates integrated terminal (can execute arbitrary commands)",
+          "category": "terminal_hijack",
+          "file": "out\\src\\codeManager.js",
+          "line": 398,
+          "evidence": "ull) {                 this._terminal = vscode.window.createTerminal(\"Code\");                 isNewTerminal =",
+          "path_type": "app"
+        },
+        {
+          "name": "Terminal sendText (command execution)",
+          "severity": "high",
+          "description": "Sends commands to terminal with dynamic content",
+          "category": "terminal_hijack",
+          "file": "out\\src\\codeManager.js",
+          "line": 411,
+          "evidence": "is._cwd);                 this._terminal.sendText(`cd \"${cwd}\"`);             }             this.",
+          "path_type": "app"
+        },
+        {
+          "name": "Terminal sendText (command execution)",
+          "severity": "high",
+          "description": "Sends commands to terminal with dynamic content",
+          "category": "terminal_hijack",
+          "file": "out\\src\\codeManager.js",
+          "line": 413,
+          "evidence": "}             this._terminal.sendText(command);         });     }     executeCommandI",
+          "path_type": "app"
+        }
+      ],
+      "data_access": [
+        {
+          "name": "Document content reading",
+          "severity": "low",
+          "description": "Reads open document content (common but trackable)",
+          "category": "data_access",
+          "file": "out\\src\\codeManager.js",
+          "line": 179,
+          "evidence": "gnoreSelection) ?                 this._document.getText() : this._document.getText(selection);",
+          "path_type": "app"
+        },
+        {
+          "name": "Document content reading",
+          "severity": "low",
+          "description": "Reads open document content (common but trackable)",
+          "category": "data_access",
+          "file": "out\\src\\codeManager.js",
+          "line": 179,
+          "evidence": "this._document.getText() : this._document.getText(selection);             if (this._langua",
+          "path_type": "app"
+        },
+        {
+          "name": "Workspace file access",
+          "severity": "low",
+          "description": "Accesses workspace files",
+          "category": "data_access",
+          "file": "out\\src\\codeManager.js",
+          "line": 39,
+          "evidence": "this._document = yield vscode.workspace.openTextDocument(fileUri);             }             els",
+          "path_type": "app"
+        }
+      ],
+      "workspace_harvesting": [
+        {
+          "name": "Workspace folder enumeration",
+          "severity": "low",
+          "description": "Accesses workspace root folder path",
+          "category": "workspace_harvesting",
+          "file": "out\\src\\codeManager.js",
+          "line": 143,
+          "evidence": "getWorkspaceFolder() {         if (vscode.workspace.workspaceFolders) {             if (this._document) {",
+          "path_type": "app"
+        },
+        {
+          "name": "Workspace folder enumeration",
+          "severity": "low",
+          "description": "Accesses workspace root folder path",
+          "category": "workspace_harvesting",
+          "file": "out\\src\\codeManager.js",
+          "line": 150,
+          "evidence": "}             }             return vscode.workspace.workspaceFolders[0].uri.fsPath;         }         else {",
+          "path_type": "app"
+        }
+      ],
+      "document_monitoring": [
+        {
+          "name": "Active editor fileName access",
+          "severity": "low",
+          "description": "Accesses the filename/path of the active document",
+          "category": "document_monitoring",
+          "file": "out\\src\\codeManager.js",
+          "line": 107,
+          "evidence": "}         if (fileUri.fsPath === editor.document.uri.fsPath) {             return false;",
+          "path_type": "app"
+        }
+      ],
+      "workspace_activity_monitoring": [
+        {
+          "name": "Document fileName/path collection",
+          "severity": "low",
+          "description": "Collects file paths from open documents - local filesystem path collection",
+          "category": "workspace_activity_monitoring",
+          "file": "out\\src\\codeManager.js",
+          "line": 52,
+          "evidence": "st fileExtension = path_1.extname(this._document.fileName);             const executor = this.get",
+          "path_type": "app"
+        },
+        {
+          "name": "Document fileName/path collection",
+          "severity": "low",
+          "description": "Collects file paths from open documents - local filesystem path collection",
+          "category": "workspace_activity_monitoring",
+          "file": "out\\src\\codeManager.js",
+          "line": 75,
+          "evidence": "st fileExtension = path_1.extname(this._document.fileName);             this.getCodeFileAndExecut",
+          "path_type": "app"
+        },
+        {
+          "name": "Document fileName/path collection",
+          "severity": "low",
+          "description": "Collects file paths from open documents - local filesystem path collection",
+          "category": "workspace_activity_monitoring",
+          "file": "out\\src\\codeManager.js",
+          "line": 129,
+          "evidence": "this._cwd = path_1.dirname(this._document.fileName);         }         else {",
+          "path_type": "app"
+        },
+        {
+          "name": "Document fileName/path collection",
+          "severity": "low",
+          "description": "Collects file paths from open documents - local filesystem path collection",
+          "category": "workspace_activity_monitoring",
+          "file": "out\\src\\codeManager.js",
+          "line": 165,
+          "evidence": "lse;             this._codeFile = this._document.fileName;             if (this._config.get(\"save",
+          "path_type": "app"
+        },
+        {
+          "name": "Document fileName/path collection",
+          "severity": "low",
+          "description": "Collects file paths from open documents - local filesystem path collection",
+          "category": "workspace_activity_monitoring",
+          "file": "out\\src\\codeManager.js",
+          "line": 187,
+          "evidence": "tled ? this._cwd : path_1.dirname(this._document.fileName);             this.createRandomFile(tex",
+          "path_type": "app"
+        },
+        {
+          "name": "Document fileName/path collection",
+          "severity": "low",
+          "description": "Collects file paths from open documents - local filesystem path collection",
+          "category": "workspace_activity_monitoring",
+          "file": "out\\src\\codeManager.js",
+          "line": 228,
+          "evidence": "st fileBasename = path_1.basename(this._document.fileName);                 for (const glob of Ob",
+          "path_type": "app"
+        }
+      ],
+      "extension_hijack": [
+        {
+          "name": "Extension access (hijacking)",
+          "severity": "medium",
+          "description": "Accesses other installed extensions (potential extension hijacking)",
+          "category": "extension_hijack",
+          "file": "out\\src\\utility.js",
+          "line": 19,
+          "evidence": "try {                 const extension = vscode.extensions.getExtension(\"ms-python.python\");                 if",
+          "path_type": "app"
+        }
+      ],
+      "behavioral_correlation": [
+        {
+          "name": "Shell execution with user-controlled input (same file)",
+          "severity": "medium",
+          "description": "User input source (QuickPick/InputBox) and shell command execution exist in the same file - user input may reach shell commands. Review whether input is properly sanitized.",
+          "category": "behavioral_correlation",
+          "file": "out\\src\\codeManager.js",
+          "line": 0,
+          "evidence": "User input + shell execution co-located in: out\\src\\codeManager.js",
+          "confidence": "MEDIUM",
+          "attack_type": "user_input_shell_injection"
+        },
+        {
+          "name": "Local tool integration: workspace monitoring + command execution (no network)",
+          "severity": "low",
+          "description": "Extension monitors workspace activity and executes commands but has NO network access. Consistent with local CLI tool integration. High capability but justified pattern.",
+          "category": "behavioral_correlation",
+          "file": "out\\src\\codeManager.js",
+          "line": 0,
+          "evidence": "Document fileName/path collection + child_process.exec with shell=true + no network",
+          "confidence": "HIGH",
+          "attack_type": "local_tool_integration"
+        }
+      ]
+    },
+    "findings_by_severity": {
+      "high": 5,
+      "critical": 1,
+      "medium": 3,
+      "low": 13
+    },
+    "suppressed_false_positives": 0
+  },
+  "malicious_patterns": [
+    {
+      "name": "child_process.exec with shell=true",
+      "severity": "high",
+      "description": "Process spawning with shell=true allows shell metacharacter injection",
+      "category": "command_injection",
+      "file": "out\\src\\codeManager.js",
+      "line": 433,
+      "evidence": "new Date();             this._process = spawn(command, [], { cwd: this._cwd, shell: true });             this._process.stdout.on",
+      "path_type": "app"
+    },
+    {
+      "name": "exec/spawn with user input",
+      "severity": "critical",
+      "description": "Process execution with user-controlled input",
+      "category": "command_injection",
+      "file": "out\\src\\codeManager.js",
+      "line": 433,
+      "evidence": "new Date();             this._process = spawn(command, [], { cwd: this._cwd, shell: true });",
+      "path_type": "app"
+    },
+    {
+      "name": "Variable-built command passed to exec",
+      "severity": "high",
+      "description": "Command built into variable then passed to shell execution - review command construction for injection",
+      "category": "command_injection",
+      "file": "out\\src\\codeManager.js",
+      "line": 427,
+      "evidence": "ire(\"child_process\").spawn;             const command = yield this.getFinalCommandToRunCodeFile(executor, appendFile);             if (showExecutionMessage) {                 this._outputChannel.appen",
+      "path_type": "app"
+    },
+    {
+      "name": "Terminal creation",
+      "severity": "medium",
+      "description": "Creates integrated terminal (can execute arbitrary commands)",
+      "category": "terminal_hijack",
+      "file": "out\\src\\codeManager.js",
+      "line": 398,
+      "evidence": "ull) {                 this._terminal = vscode.window.createTerminal(\"Code\");                 isNewTerminal =",
+      "path_type": "app"
+    },
+    {
+      "name": "Terminal sendText (command execution)",
+      "severity": "high",
+      "description": "Sends commands to terminal with dynamic content",
+      "category": "terminal_hijack",
+      "file": "out\\src\\codeManager.js",
+      "line": 411,
+      "evidence": "is._cwd);                 this._terminal.sendText(`cd \"${cwd}\"`);             }             this.",
+      "path_type": "app"
+    },
+    {
+      "name": "Terminal sendText (command execution)",
+      "severity": "high",
+      "description": "Sends commands to terminal with dynamic content",
+      "category": "terminal_hijack",
+      "file": "out\\src\\codeManager.js",
+      "line": 413,
+      "evidence": "}             this._terminal.sendText(command);         });     }     executeCommandI",
+      "path_type": "app"
+    },
+    {
+      "name": "Document content reading",
+      "severity": "low",
+      "description": "Reads open document content (common but trackable)",
+      "category": "data_access",
+      "file": "out\\src\\codeManager.js",
+      "line": 179,
+      "evidence": "gnoreSelection) ?                 this._document.getText() : this._document.getText(selection);",
+      "path_type": "app"
+    },
+    {
+      "name": "Document content reading",
+      "severity": "low",
+      "description": "Reads open document content (common but trackable)",
+      "category": "data_access",
+      "file": "out\\src\\codeManager.js",
+      "line": 179,
+      "evidence": "this._document.getText() : this._document.getText(selection);             if (this._langua",
+      "path_type": "app"
+    },
+    {
+      "name": "Workspace file access",
+      "severity": "low",
+      "description": "Accesses workspace files",
+      "category": "data_access",
+      "file": "out\\src\\codeManager.js",
+      "line": 39,
+      "evidence": "this._document = yield vscode.workspace.openTextDocument(fileUri);             }             els",
+      "path_type": "app"
+    },
+    {
+      "name": "Workspace folder enumeration",
+      "severity": "low",
+      "description": "Accesses workspace root folder path",
+      "category": "workspace_harvesting",
+      "file": "out\\src\\codeManager.js",
+      "line": 143,
+      "evidence": "getWorkspaceFolder() {         if (vscode.workspace.workspaceFolders) {             if (this._document) {",
+      "path_type": "app"
+    },
+    {
+      "name": "Workspace folder enumeration",
+      "severity": "low",
+      "description": "Accesses workspace root folder path",
+      "category": "workspace_harvesting",
+      "file": "out\\src\\codeManager.js",
+      "line": 150,
+      "evidence": "}             }             return vscode.workspace.workspaceFolders[0].uri.fsPath;         }         else {",
+      "path_type": "app"
+    },
+    {
+      "name": "Active editor fileName access",
+      "severity": "low",
+      "description": "Accesses the filename/path of the active document",
+      "category": "document_monitoring",
+      "file": "out\\src\\codeManager.js",
+      "line": 107,
+      "evidence": "}         if (fileUri.fsPath === editor.document.uri.fsPath) {             return false;",
+      "path_type": "app"
+    },
+    {
+      "name": "Document fileName/path collection",
+      "severity": "low",
+      "description": "Collects file paths from open documents - local filesystem path collection",
+      "category": "workspace_activity_monitoring",
+      "file": "out\\src\\codeManager.js",
+      "line": 52,
+      "evidence": "st fileExtension = path_1.extname(this._document.fileName);             const executor = this.get",
+      "path_type": "app"
+    },
+    {
+      "name": "Document fileName/path collection",
+      "severity": "low",
+      "description": "Collects file paths from open documents - local filesystem path collection",
+      "category": "workspace_activity_monitoring",
+      "file": "out\\src\\codeManager.js",
+      "line": 75,
+      "evidence": "st fileExtension = path_1.extname(this._document.fileName);             this.getCodeFileAndExecut",
+      "path_type": "app"
+    },
+    {
+      "name": "Document fileName/path collection",
+      "severity": "low",
+      "description": "Collects file paths from open documents - local filesystem path collection",
+      "category": "workspace_activity_monitoring",
+      "file": "out\\src\\codeManager.js",
+      "line": 129,
+      "evidence": "this._cwd = path_1.dirname(this._document.fileName);         }         else {",
+      "path_type": "app"
+    },
+    {
+      "name": "Document fileName/path collection",
+      "severity": "low",
+      "description": "Collects file paths from open documents - local filesystem path collection",
+      "category": "workspace_activity_monitoring",
+      "file": "out\\src\\codeManager.js",
+      "line": 165,
+      "evidence": "lse;             this._codeFile = this._document.fileName;             if (this._config.get(\"save",
+      "path_type": "app"
+    },
+    {
+      "name": "Document fileName/path collection",
+      "severity": "low",
+      "description": "Collects file paths from open documents - local filesystem path collection",
+      "category": "workspace_activity_monitoring",
+      "file": "out\\src\\codeManager.js",
+      "line": 187,
+      "evidence": "tled ? this._cwd : path_1.dirname(this._document.fileName);             this.createRandomFile(tex",
+      "path_type": "app"
+    },
+    {
+      "name": "Document fileName/path collection",
+      "severity": "low",
+      "description": "Collects file paths from open documents - local filesystem path collection",
+      "category": "workspace_activity_monitoring",
+      "file": "out\\src\\codeManager.js",
+      "line": 228,
+      "evidence": "st fileBasename = path_1.basename(this._document.fileName);                 for (const glob of Ob",
+      "path_type": "app"
+    },
+    {
+      "name": "child_process require (minification-safe)",
+      "severity": "high",
+      "description": "Imports child_process module - shell command execution capability",
+      "category": "command_injection",
+      "file": "out\\src\\codeManager.js",
+      "line": 426,
+      "evidence": "erveFocus\"));             const spawn = require(\"child_process\").spawn;             const command = yiel",
+      "path_type": "app"
+    },
+    {
+      "name": "Extension access (hijacking)",
+      "severity": "medium",
+      "description": "Accesses other installed extensions (potential extension hijacking)",
+      "category": "extension_hijack",
+      "file": "out\\src\\utility.js",
+      "line": 19,
+      "evidence": "try {                 const extension = vscode.extensions.getExtension(\"ms-python.python\");                 if",
+      "path_type": "app"
+    },
+    {
+      "name": "Shell execution with user-controlled input (same file)",
+      "severity": "medium",
+      "description": "User input source (QuickPick/InputBox) and shell command execution exist in the same file - user input may reach shell commands. Review whether input is properly sanitized.",
+      "category": "behavioral_correlation",
+      "file": "out\\src\\codeManager.js",
+      "line": 0,
+      "evidence": "User input + shell execution co-located in: out\\src\\codeManager.js",
+      "confidence": "MEDIUM",
+      "attack_type": "user_input_shell_injection"
+    },
+    {
+      "name": "Local tool integration: workspace monitoring + command execution (no network)",
+      "severity": "low",
+      "description": "Extension monitors workspace activity and executes commands but has NO network access. Consistent with local CLI tool integration. High capability but justified pattern.",
+      "category": "behavioral_correlation",
+      "file": "out\\src\\codeManager.js",
+      "line": 0,
+      "evidence": "Document fileName/path collection + child_process.exec with shell=true + no network",
+      "confidence": "HIGH",
+      "attack_type": "local_tool_integration"
+    }
+  ],
+  "html_analysis": {
+    "findings": [],
+    "files_scanned": 0,
+    "iframe_urls": []
+  },
+  "permissions": {
+    "high_risk": [
+      {
+        "permission": "child_process",
+        "description": "Can execute system commands",
+        "evidence": [
+          {
+            "module": "child_process",
+            "file": "out\\src\\codeManager.js",
+            "line": 426
+          }
+        ]
+      },
+      {
+        "permission": "terminal_control",
+        "description": "Creates/controls integrated terminals",
+        "finding_count": 3
+      }
+    ],
+    "medium_risk": [
+      {
+        "permission": "filesystem",
+        "description": "Can read/write files on disk",
+        "evidence": [
+          {
+            "module": "fs",
+            "file": "out\\src\\codeManager.js",
+            "line": 12
+          },
+          {
+            "module": "path",
+            "file": "out\\src\\codeManager.js",
+            "line": 15
+          }
+        ]
+      },
+      {
+        "permission": "real_time_document_monitoring",
+        "description": "Monitors text document changes in real time",
+        "finding_count": 1
+      }
+    ],
+    "low_risk": [
+      {
+        "permission": "os_info",
+        "description": "Can read OS information",
+        "evidence": [
+          {
+            "module": "os",
+            "file": "out\\src\\codeManager.js",
+            "line": 14
+          }
+        ]
+      },
+      {
+        "permission": "workspace_activity_tracking",
+        "description": "Tracks developer activity (file opens, saves, folder changes, paths)",
+        "finding_count": 6
+      }
+    ],
+    "total": 6,
+    "all": [
+      "child_process",
+      "terminal_control",
+      "filesystem",
+      "real_time_document_monitoring",
+      "os_info",
+      "workspace_activity_tracking"
+    ]
+  },
+  "risk_score": 6.5,
+  "risk_level": "HIGH",
+  "risk_breakdown": {
+    "supply_chain": 5.0,
+    "metadata_publisher": 0.8,
+    "code_analysis": 1.8,
+    "behavioral_correlations": 0.3,
+    "infrastructure": 0,
+    "positive_signals": -1.3
+  },
+  "positive_signals": {
+    "signals": [
+      {
+        "signal": "no_network_access",
+        "description": "Extension has no network capabilities - data stays local",
+        "weight": 0.5
+      },
+      {
+        "signal": "no_obfuscation",
+        "description": "No code obfuscation or evasion techniques detected",
+        "weight": 0.3
+      },
+      {
+        "signal": "no_credential_access",
+        "description": "No access to credential files, SSH keys, or token stores",
+        "weight": 0.3
+      },
+      {
+        "signal": "scoped_activation",
+        "description": "Extension activates only on specific events, not wildcard",
+        "weight": 0.2
+      }
+    ],
+    "reduction": 1.3,
+    "count": 4
+  },
+  "risk_classification": {
+    "classification": "HIGH_CAPABILITY_JUSTIFIED",
+    "summary": "High-risk capabilities detected but strong positive signals indicate legitimate purpose. No obfuscation, no credential theft, behavior matches expected extension functionality. Capability is justified but users should be aware of the access granted.",
+    "suspicion_indicators": 0,
+    "positive_signal_count": 4
+  },
+  "module_usage": {
+    "file_access": [
+      {
+        "module": "fs",
+        "file": "out\\src\\codeManager.js",
+        "line": 12
+      },
+      {
+        "module": "path",
+        "file": "out\\src\\codeManager.js",
+        "line": 15
+      }
+    ],
+    "os_info": [
+      {
+        "module": "os",
+        "file": "out\\src\\codeManager.js",
+        "line": 14
+      }
+    ],
+    "process_execution": [
+      {
+        "module": "child_process",
+        "file": "out\\src\\codeManager.js",
+        "line": 426
+      }
+    ]
+  },
+  "external_urls": [],
+  "domain_intelligence": [],
+  "virustotal_results": []
+}

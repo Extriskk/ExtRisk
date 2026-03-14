@@ -1,0 +1,1903 @@
+{
+  "extension_id": "pdadlkbckhinonakkfkdaadceojbekep",
+  "name": "ZED: Zoom Easy Downloader",
+  "version": "21.16",
+  "manifest_version": 3,
+  "permissions": {
+    "total": 40,
+    "high_risk": [],
+    "medium_risk": [],
+    "low_risk": [
+      "https://www.x.com/*",
+      "http://www.x.com/*",
+      "https://www.twitter.com/*",
+      "http://www.twitter.com/*",
+      "https://www.t.co/*",
+      "http://www.t.co/*",
+      "https://www.pscp.tv/*",
+      "http://www.pscp.tv/*",
+      "https://www.tweetdeck.com/*",
+      "http://www.tweetdeck.com/*",
+      "https://www.twitteroauth.com/*",
+      "http://www.twitteroauth.com/*",
+      "https://www.twitter.jp/*",
+      "http://www.twitter.jp/*",
+      "https://www.vine.co/*",
+      "http://www.vine.co/*",
+      "https://www.x.jp/*",
+      "http://www.x.jp/*",
+      "https://www.twimg.com/*",
+      "http://www.twimg.com/*",
+      "https://www.periscope.tv/*",
+      "http://www.periscope.tv/*",
+      "https://*.zoom.us/*",
+      "http://*.zoom.us/*",
+      "https://*.zoom.com/*",
+      "http://*.zoom.com/*",
+      "https://meet.google.com/*",
+      "http://meet.google.com/*",
+      "https://teams.microsoft.com/*",
+      "http://teams.microsoft.com/*",
+      "https://www.webex.com/*",
+      "http://www.webex.com/*",
+      "https://www.goto.com/*",
+      "http://www.goto.com/*",
+      "https://*.gotowebinar.com/*",
+      "http://*.gotowebinar.com/*",
+      "https://www.gotomeeting.com/*",
+      "http://www.gotomeeting.com/*",
+      "https://www.twitpic.com/*",
+      "http://www.twitpic.com/*"
+    ],
+    "all": [
+      "https://www.x.com/*",
+      "http://www.x.com/*",
+      "https://www.twitter.com/*",
+      "http://www.twitter.com/*",
+      "https://www.t.co/*",
+      "http://www.t.co/*",
+      "https://www.pscp.tv/*",
+      "http://www.pscp.tv/*",
+      "https://www.tweetdeck.com/*",
+      "http://www.tweetdeck.com/*",
+      "https://www.twitteroauth.com/*",
+      "http://www.twitteroauth.com/*",
+      "https://www.twitter.jp/*",
+      "http://www.twitter.jp/*",
+      "https://www.vine.co/*",
+      "http://www.vine.co/*",
+      "https://www.x.jp/*",
+      "http://www.x.jp/*",
+      "https://www.twimg.com/*",
+      "http://www.twimg.com/*",
+      "https://www.periscope.tv/*",
+      "http://www.periscope.tv/*",
+      "https://*.zoom.us/*",
+      "http://*.zoom.us/*",
+      "https://*.zoom.com/*",
+      "http://*.zoom.com/*",
+      "https://meet.google.com/*",
+      "http://meet.google.com/*",
+      "https://teams.microsoft.com/*",
+      "http://teams.microsoft.com/*",
+      "https://www.webex.com/*",
+      "http://www.webex.com/*",
+      "https://www.goto.com/*",
+      "http://www.goto.com/*",
+      "https://*.gotowebinar.com/*",
+      "http://*.gotowebinar.com/*",
+      "https://www.gotomeeting.com/*",
+      "http://www.gotomeeting.com/*",
+      "https://www.twitpic.com/*",
+      "http://www.twitpic.com/*"
+    ],
+    "details": {
+      "https://www.x.com/*": {
+        "score": 3,
+        "description": "Access to https://www.x.com/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "http://www.x.com/*": {
+        "score": 3,
+        "description": "Access to http://www.x.com/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "https://www.twitter.com/*": {
+        "score": 3,
+        "description": "Access to https://www.twitter.com/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "http://www.twitter.com/*": {
+        "score": 3,
+        "description": "Access to http://www.twitter.com/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "https://www.t.co/*": {
+        "score": 3,
+        "description": "Access to https://www.t.co/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "http://www.t.co/*": {
+        "score": 3,
+        "description": "Access to http://www.t.co/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "https://www.pscp.tv/*": {
+        "score": 3,
+        "description": "Access to https://www.pscp.tv/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "http://www.pscp.tv/*": {
+        "score": 3,
+        "description": "Access to http://www.pscp.tv/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "https://www.tweetdeck.com/*": {
+        "score": 3,
+        "description": "Access to https://www.tweetdeck.com/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "http://www.tweetdeck.com/*": {
+        "score": 3,
+        "description": "Access to http://www.tweetdeck.com/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "https://www.twitteroauth.com/*": {
+        "score": 3,
+        "description": "Access to https://www.twitteroauth.com/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "http://www.twitteroauth.com/*": {
+        "score": 3,
+        "description": "Access to http://www.twitteroauth.com/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "https://www.twitter.jp/*": {
+        "score": 3,
+        "description": "Access to https://www.twitter.jp/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "http://www.twitter.jp/*": {
+        "score": 3,
+        "description": "Access to http://www.twitter.jp/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "https://www.vine.co/*": {
+        "score": 3,
+        "description": "Access to https://www.vine.co/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "http://www.vine.co/*": {
+        "score": 3,
+        "description": "Access to http://www.vine.co/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "https://www.x.jp/*": {
+        "score": 3,
+        "description": "Access to https://www.x.jp/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "http://www.x.jp/*": {
+        "score": 3,
+        "description": "Access to http://www.x.jp/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "https://www.twimg.com/*": {
+        "score": 3,
+        "description": "Access to https://www.twimg.com/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "http://www.twimg.com/*": {
+        "score": 3,
+        "description": "Access to http://www.twimg.com/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "https://www.periscope.tv/*": {
+        "score": 3,
+        "description": "Access to https://www.periscope.tv/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "http://www.periscope.tv/*": {
+        "score": 3,
+        "description": "Access to http://www.periscope.tv/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "https://*.zoom.us/*": {
+        "score": 3,
+        "description": "Access to https://*.zoom.us/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "http://*.zoom.us/*": {
+        "score": 3,
+        "description": "Access to http://*.zoom.us/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "https://*.zoom.com/*": {
+        "score": 3,
+        "description": "Access to https://*.zoom.com/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "http://*.zoom.com/*": {
+        "score": 3,
+        "description": "Access to http://*.zoom.com/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "https://meet.google.com/*": {
+        "score": 3,
+        "description": "Access to https://meet.google.com/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "http://meet.google.com/*": {
+        "score": 3,
+        "description": "Access to http://meet.google.com/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "https://teams.microsoft.com/*": {
+        "score": 3,
+        "description": "Access to https://teams.microsoft.com/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "http://teams.microsoft.com/*": {
+        "score": 3,
+        "description": "Access to http://teams.microsoft.com/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "https://www.webex.com/*": {
+        "score": 3,
+        "description": "Access to https://www.webex.com/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "http://www.webex.com/*": {
+        "score": 3,
+        "description": "Access to http://www.webex.com/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "https://www.goto.com/*": {
+        "score": 3,
+        "description": "Access to https://www.goto.com/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "http://www.goto.com/*": {
+        "score": 3,
+        "description": "Access to http://www.goto.com/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "https://*.gotowebinar.com/*": {
+        "score": 3,
+        "description": "Access to https://*.gotowebinar.com/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "http://*.gotowebinar.com/*": {
+        "score": 3,
+        "description": "Access to http://*.gotowebinar.com/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "https://www.gotomeeting.com/*": {
+        "score": 3,
+        "description": "Access to https://www.gotomeeting.com/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "http://www.gotomeeting.com/*": {
+        "score": 3,
+        "description": "Access to http://www.gotomeeting.com/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "https://www.twitpic.com/*": {
+        "score": 3,
+        "description": "Access to https://www.twitpic.com/*",
+        "risk": "MEDIUM - Limited site access"
+      },
+      "http://www.twitpic.com/*": {
+        "score": 3,
+        "description": "Access to http://www.twitpic.com/*",
+        "risk": "MEDIUM - Limited site access"
+      }
+    }
+  },
+  "malicious_patterns": [],
+  "external_scripts": [
+    {
+      "url": "https://meetingtv.us/zeduninstall",
+      "file": "background.js",
+      "line": 1
+    },
+    {
+      "url": "https://us-central1-webinarstvus.cloudfunctions.net/webinarJSON?url=",
+      "file": "main.js",
+      "line": 1
+    },
+    {
+      "url": "https://us-central1-webinarstvus.cloudfunctions.net/webinarJSON/show?url=",
+      "file": "main.js",
+      "line": 1
+    }
+  ],
+  "obfuscation_indicators": {
+    "background.js": {
+      "is_obfuscated": true,
+      "entropy": 4.9559753083848115,
+      "hex_escapes": 0,
+      "unicode_escapes": 0,
+      "long_variables": 0,
+      "single_letter_ratio": 0.0
+    },
+    "main.js": {
+      "is_obfuscated": true,
+      "entropy": 5.242017007757107,
+      "hex_escapes": 0,
+      "unicode_escapes": 0,
+      "long_variables": 0,
+      "single_letter_ratio": 0.026373626373626374
+    }
+  },
+  "settings_overrides": {
+    "has_overrides": false,
+    "search_hijacking": null,
+    "homepage_hijacking": null,
+    "startup_hijacking": null,
+    "newtab_hijacking": null,
+    "severity": "NONE"
+  },
+  "campaign_attribution": null,
+  "domain_analysis": [],
+  "virustotal_results": [
+    {
+      "available": true,
+      "domain": "us-central1-webinarstvus.cloudfunctions.net",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 62,
+        "undetected": 30
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2015-12-03",
+        "age_days": 3706,
+        "age_human": "10 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".net",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/us-central1-webinarstvus.cloudfunctions.net"
+    },
+    {
+      "available": true,
+      "domain": "meetingtv.us",
+      "known": true,
+      "threat_level": "MALICIOUS",
+      "reputation": 0,
+      "stats": {
+        "malicious": 8,
+        "suspicious": 1,
+        "harmless": 56,
+        "undetected": 27
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [
+        {
+          "vendor": "ArcSight Threat Intelligence",
+          "result": "malware"
+        },
+        {
+          "vendor": "Certego",
+          "result": "phishing"
+        },
+        {
+          "vendor": "CyRadar",
+          "result": "malicious"
+        },
+        {
+          "vendor": "ESTsecurity",
+          "result": "malicious"
+        },
+        {
+          "vendor": "Fortinet",
+          "result": "malware"
+        },
+        {
+          "vendor": "Lionic",
+          "result": "malicious"
+        },
+        {
+          "vendor": "Seclookup",
+          "result": "malicious"
+        },
+        {
+          "vendor": "SOCRadar",
+          "result": "malicious"
+        }
+      ],
+      "suspicious_vendors": [
+        {
+          "vendor": "alphaMountain.ai",
+          "result": "not recommended"
+        }
+      ],
+      "domain_age": {
+        "creation_date": "2024-07-29",
+        "age_days": 546,
+        "age_human": "1 year",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".us",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/meetingtv.us"
+    }
+  ],
+  "ast_results": {
+    "files_analyzed": 2,
+    "network_calls": [
+      {
+        "type": "fetch",
+        "url": "Unknown",
+        "method": "GET",
+        "body_source": null,
+        "line": 1,
+        "evidence": "const language=window.navigator.userLanguage||window.navigator.language;let link_text=language===\"it\"?\"👋 Hey, CLICCA QUI Con il TASTO DESTRO e poi Salva link come...\":\"👋 Hey, RIGHT-CLICK here, then click Save link as...\";var url=window.location.href;chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){if(request.action===\"fetchData\"){window.fetchDataObj=request;fetchData(url,request).then(data=>{sendResponse()});sendResponse()}return true});function fetchData(url,settings={}){url=encodeURIComponent(url);var jsonUrl=\"https://us-central1-webinarstvus.cloudfunctions.net/webinarJSON?url=\"+url;var zmGlobalMrktId=window.zmGlobalMrktId;if(settings.zmGlobalMrktId){var jsonUrl=\"https://us-central1-webinarstvus.cloudfunctions.net/webinarJSON/show?url=\"+url;zmGlobalMrktId=settings.zmGlobalMrktId}if(zmGlobalMrktId){jsonUrl+=\"&zmGlobalMrktId=\"+zmGlobalMrktId}return fetch(jsonUrl).then(response=>{return response}).catch(error=>{console.error(\"Error fetching data:\",error);return\"\"}).then(data=>{let ppl=document.getElementById(\"ppl\");data=data.text();data.then(data=>{});return data}).catch(error=>{return\"\"})}if(window.location.href.includes(\"events.zoom.us/\")){const targetNode=document.body;const config={childList:true,subtree:true};const callback=function(mutationsList,observer){for(const mutation of mutationsList){if(mutation.type===\"childList\"){mutation.addedNodes.forEach(node=>{if(node.tagName===\"VIDEO\"||node.tagName===\"AUDIO\"){mainFunction(\"events.zoom.us/\")}})}}};const observer=new MutationObserver(callback);observer.observe(targetNode,config);if(document.getElementsByTagName(\"video\")[0]||document.getElementsByTagName(\"audio\")[0]){mainFunction(\"events.zoom.us/\")}}function mainFunction(urlpart=\"/rec\"){if(url.includes(urlpart)&&chrome.runtime.getManifest().name.startsWith(\"ZED\")){let counter=6;function create_link(){let div=document.createElement(\"div\");div.innerHTML=`<div id=\"zoom-downloader-container\" style=\"position:fixed;z-index:99999999999999999999;right:0px;bottom:0px;width:100%;padding:5px 20px 5px 20px;border:1px solid #2D8CFF;font-size:20px;background-color:#2D8CFF;font-weight:bold;text-align:center;\"><span id=\"zoom-downloader-close\" style=\"font-size:12px;cursor:pointer;position:absolute;top:0px;right:0px;color:white;\">❌</span><a style=\"color:white !important\" id=\"zoom-downloader\" download=\"proposed_file_name\".mp4></a></div>`;document.body.appendChild(div)}function get_uri(){let my_link=document.getElementById(\"zoom-downloader\");if(document.getElementsByTagName(\"video\")[0]||document.getElementsByTagName(\"audio\")[0]){let videosElements=document.getElementsByTagName(\"video\");let linkLocation=videosElements[0]||document.getElementsByTagName(\"audio\")[0];let multipleVideos=videosElements.length>1;if(multipleVideos){for(let i=0;i<videosElements.length;i++){if(videosElements[i].parentElement){if(videosElements[i].parentElement.parentElement){if(videosElements[i].parentElement.parentElement.className){if(videosElements[i].parentElement.parentElement.className===\"player-view\"){linkLocation=videosElements[i]}}}}}}let zoom_link=linkLocation.src;zoom_link=new URL(zoom_link);my_link.href=zoom_link;my_link.innerHTML=link_text;document.body.style.height=\"1500px\"}let url=document.getElementById(\"zoom-downloader\").href}function count(){if(counter>0){var language=navigator.language||navigator.userLanguage;let loading_text=language===\"it\"?\"⏳ Download disponibile in \"+counter+\" secondi\":\"⏳ Download available in \"+counter+\" seconds\";document.getElementById(\"zoom-downloader\").innerText=loading_text;counter--;setTimeout(function(){count()},1e3)}else{get_uri();document.addEventListener(\"contextmenu\",bringBackDefault,true);function bringBackDefault(event){event.returnValue=true;event.stopPropagation&&event.stopPropagation()}}}create_link();document.getElementById(\"zoom-downloader-close\").addEventListener(\"click\",function(event){document.getElementById(\"zoom-downloader-container\").style.display=\"none\"},false);count()}}mainFunction();\n"
+      },
+      {
+        "type": "fetch",
+        "url": "<variable: url>",
+        "method": "GET",
+        "body_source": null,
+        "line": 1,
+        "evidence": "const language=window.navigator.userLanguage||window.navigator.language;let link_text=language===\"it\"?\"👋 Hey, CLICCA QUI Con il TASTO DESTRO e poi Salva link come...\":\"👋 Hey, RIGHT-CLICK here, then click Save link as...\";var url=window.location.href;chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){if(request.action===\"fetchData\"){window.fetchDataObj=request;fetchData(url,request).then(data=>{sendResponse()});sendResponse()}return true});function fetchData(url,settings={}){url=encodeURIComponent(url);var jsonUrl=\"https://us-central1-webinarstvus.cloudfunctions.net/webinarJSON?url=\"+url;var zmGlobalMrktId=window.zmGlobalMrktId;if(settings.zmGlobalMrktId){var jsonUrl=\"https://us-central1-webinarstvus.cloudfunctions.net/webinarJSON/show?url=\"+url;zmGlobalMrktId=settings.zmGlobalMrktId}if(zmGlobalMrktId){jsonUrl+=\"&zmGlobalMrktId=\"+zmGlobalMrktId}return fetch(jsonUrl).then(response=>{return response}).catch(error=>{console.error(\"Error fetching data:\",error);return\"\"}).then(data=>{let ppl=document.getElementById(\"ppl\");data=data.text();data.then(data=>{});return data}).catch(error=>{return\"\"})}if(window.location.href.includes(\"events.zoom.us/\")){const targetNode=document.body;const config={childList:true,subtree:true};const callback=function(mutationsList,observer){for(const mutation of mutationsList){if(mutation.type===\"childList\"){mutation.addedNodes.forEach(node=>{if(node.tagName===\"VIDEO\"||node.tagName===\"AUDIO\"){mainFunction(\"events.zoom.us/\")}})}}};const observer=new MutationObserver(callback);observer.observe(targetNode,config);if(document.getElementsByTagName(\"video\")[0]||document.getElementsByTagName(\"audio\")[0]){mainFunction(\"events.zoom.us/\")}}function mainFunction(urlpart=\"/rec\"){if(url.includes(urlpart)&&chrome.runtime.getManifest().name.startsWith(\"ZED\")){let counter=6;function create_link(){let div=document.createElement(\"div\");div.innerHTML=`<div id=\"zoom-downloader-container\" style=\"position:fixed;z-index:99999999999999999999;right:0px;bottom:0px;width:100%;padding:5px 20px 5px 20px;border:1px solid #2D8CFF;font-size:20px;background-color:#2D8CFF;font-weight:bold;text-align:center;\"><span id=\"zoom-downloader-close\" style=\"font-size:12px;cursor:pointer;position:absolute;top:0px;right:0px;color:white;\">❌</span><a style=\"color:white !important\" id=\"zoom-downloader\" download=\"proposed_file_name\".mp4></a></div>`;document.body.appendChild(div)}function get_uri(){let my_link=document.getElementById(\"zoom-downloader\");if(document.getElementsByTagName(\"video\")[0]||document.getElementsByTagName(\"audio\")[0]){let videosElements=document.getElementsByTagName(\"video\");let linkLocation=videosElements[0]||document.getElementsByTagName(\"audio\")[0];let multipleVideos=videosElements.length>1;if(multipleVideos){for(let i=0;i<videosElements.length;i++){if(videosElements[i].parentElement){if(videosElements[i].parentElement.parentElement){if(videosElements[i].parentElement.parentElement.className){if(videosElements[i].parentElement.parentElement.className===\"player-view\"){linkLocation=videosElements[i]}}}}}}let zoom_link=linkLocation.src;zoom_link=new URL(zoom_link);my_link.href=zoom_link;my_link.innerHTML=link_text;document.body.style.height=\"1500px\"}let url=document.getElementById(\"zoom-downloader\").href}function count(){if(counter>0){var language=navigator.language||navigator.userLanguage;let loading_text=language===\"it\"?\"⏳ Download disponibile in \"+counter+\" secondi\":\"⏳ Download available in \"+counter+\" seconds\";document.getElementById(\"zoom-downloader\").innerText=loading_text;counter--;setTimeout(function(){count()},1e3)}else{get_uri();document.addEventListener(\"contextmenu\",bringBackDefault,true);function bringBackDefault(event){event.returnValue=true;event.stopPropagation&&event.stopPropagation()}}}create_link();document.getElementById(\"zoom-downloader-close\").addEventListener(\"click\",function(event){document.getElementById(\"zoom-downloader-container\").style.display=\"none\"},false);count()}}mainFunction();\n"
+      },
+      {
+        "type": "fetch",
+        "url": "Unknown",
+        "method": "GET",
+        "body_source": null,
+        "line": 1,
+        "evidence": "const language=window.navigator.userLanguage||window.navigator.language;let link_text=language===\"it\"?\"👋 Hey, CLICCA QUI Con il TASTO DESTRO e poi Salva link come...\":\"👋 Hey, RIGHT-CLICK here, then click Save link as...\";var url=window.location.href;chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){if(request.action===\"fetchData\"){window.fetchDataObj=request;fetchData(url,request).then(data=>{sendResponse()});sendResponse()}return true});function fetchData(url,settings={}){url=encodeURIComponent(url);var jsonUrl=\"https://us-central1-webinarstvus.cloudfunctions.net/webinarJSON?url=\"+url;var zmGlobalMrktId=window.zmGlobalMrktId;if(settings.zmGlobalMrktId){var jsonUrl=\"https://us-central1-webinarstvus.cloudfunctions.net/webinarJSON/show?url=\"+url;zmGlobalMrktId=settings.zmGlobalMrktId}if(zmGlobalMrktId){jsonUrl+=\"&zmGlobalMrktId=\"+zmGlobalMrktId}return fetch(jsonUrl).then(response=>{return response}).catch(error=>{console.error(\"Error fetching data:\",error);return\"\"}).then(data=>{let ppl=document.getElementById(\"ppl\");data=data.text();data.then(data=>{});return data}).catch(error=>{return\"\"})}if(window.location.href.includes(\"events.zoom.us/\")){const targetNode=document.body;const config={childList:true,subtree:true};const callback=function(mutationsList,observer){for(const mutation of mutationsList){if(mutation.type===\"childList\"){mutation.addedNodes.forEach(node=>{if(node.tagName===\"VIDEO\"||node.tagName===\"AUDIO\"){mainFunction(\"events.zoom.us/\")}})}}};const observer=new MutationObserver(callback);observer.observe(targetNode,config);if(document.getElementsByTagName(\"video\")[0]||document.getElementsByTagName(\"audio\")[0]){mainFunction(\"events.zoom.us/\")}}function mainFunction(urlpart=\"/rec\"){if(url.includes(urlpart)&&chrome.runtime.getManifest().name.startsWith(\"ZED\")){let counter=6;function create_link(){let div=document.createElement(\"div\");div.innerHTML=`<div id=\"zoom-downloader-container\" style=\"position:fixed;z-index:99999999999999999999;right:0px;bottom:0px;width:100%;padding:5px 20px 5px 20px;border:1px solid #2D8CFF;font-size:20px;background-color:#2D8CFF;font-weight:bold;text-align:center;\"><span id=\"zoom-downloader-close\" style=\"font-size:12px;cursor:pointer;position:absolute;top:0px;right:0px;color:white;\">❌</span><a style=\"color:white !important\" id=\"zoom-downloader\" download=\"proposed_file_name\".mp4></a></div>`;document.body.appendChild(div)}function get_uri(){let my_link=document.getElementById(\"zoom-downloader\");if(document.getElementsByTagName(\"video\")[0]||document.getElementsByTagName(\"audio\")[0]){let videosElements=document.getElementsByTagName(\"video\");let linkLocation=videosElements[0]||document.getElementsByTagName(\"audio\")[0];let multipleVideos=videosElements.length>1;if(multipleVideos){for(let i=0;i<videosElements.length;i++){if(videosElements[i].parentElement){if(videosElements[i].parentElement.parentElement){if(videosElements[i].parentElement.parentElement.className){if(videosElements[i].parentElement.parentElement.className===\"player-view\"){linkLocation=videosElements[i]}}}}}}let zoom_link=linkLocation.src;zoom_link=new URL(zoom_link);my_link.href=zoom_link;my_link.innerHTML=link_text;document.body.style.height=\"1500px\"}let url=document.getElementById(\"zoom-downloader\").href}function count(){if(counter>0){var language=navigator.language||navigator.userLanguage;let loading_text=language===\"it\"?\"⏳ Download disponibile in \"+counter+\" secondi\":\"⏳ Download available in \"+counter+\" seconds\";document.getElementById(\"zoom-downloader\").innerText=loading_text;counter--;setTimeout(function(){count()},1e3)}else{get_uri();document.addEventListener(\"contextmenu\",bringBackDefault,true);function bringBackDefault(event){event.returnValue=true;event.stopPropagation&&event.stopPropagation()}}}create_link();document.getElementById(\"zoom-downloader-close\").addEventListener(\"click\",function(event){document.getElementById(\"zoom-downloader-container\").style.display=\"none\"},false);count()}}mainFunction();\n"
+      },
+      {
+        "type": "fetch",
+        "url": "Unknown",
+        "method": "GET",
+        "body_source": null,
+        "line": 1,
+        "evidence": "const language=window.navigator.userLanguage||window.navigator.language;let link_text=language===\"it\"?\"👋 Hey, CLICCA QUI Con il TASTO DESTRO e poi Salva link come...\":\"👋 Hey, RIGHT-CLICK here, then click Save link as...\";var url=window.location.href;chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){if(request.action===\"fetchData\"){window.fetchDataObj=request;fetchData(url,request).then(data=>{sendResponse()});sendResponse()}return true});function fetchData(url,settings={}){url=encodeURIComponent(url);var jsonUrl=\"https://us-central1-webinarstvus.cloudfunctions.net/webinarJSON?url=\"+url;var zmGlobalMrktId=window.zmGlobalMrktId;if(settings.zmGlobalMrktId){var jsonUrl=\"https://us-central1-webinarstvus.cloudfunctions.net/webinarJSON/show?url=\"+url;zmGlobalMrktId=settings.zmGlobalMrktId}if(zmGlobalMrktId){jsonUrl+=\"&zmGlobalMrktId=\"+zmGlobalMrktId}return fetch(jsonUrl).then(response=>{return response}).catch(error=>{console.error(\"Error fetching data:\",error);return\"\"}).then(data=>{let ppl=document.getElementById(\"ppl\");data=data.text();data.then(data=>{});return data}).catch(error=>{return\"\"})}if(window.location.href.includes(\"events.zoom.us/\")){const targetNode=document.body;const config={childList:true,subtree:true};const callback=function(mutationsList,observer){for(const mutation of mutationsList){if(mutation.type===\"childList\"){mutation.addedNodes.forEach(node=>{if(node.tagName===\"VIDEO\"||node.tagName===\"AUDIO\"){mainFunction(\"events.zoom.us/\")}})}}};const observer=new MutationObserver(callback);observer.observe(targetNode,config);if(document.getElementsByTagName(\"video\")[0]||document.getElementsByTagName(\"audio\")[0]){mainFunction(\"events.zoom.us/\")}}function mainFunction(urlpart=\"/rec\"){if(url.includes(urlpart)&&chrome.runtime.getManifest().name.startsWith(\"ZED\")){let counter=6;function create_link(){let div=document.createElement(\"div\");div.innerHTML=`<div id=\"zoom-downloader-container\" style=\"position:fixed;z-index:99999999999999999999;right:0px;bottom:0px;width:100%;padding:5px 20px 5px 20px;border:1px solid #2D8CFF;font-size:20px;background-color:#2D8CFF;font-weight:bold;text-align:center;\"><span id=\"zoom-downloader-close\" style=\"font-size:12px;cursor:pointer;position:absolute;top:0px;right:0px;color:white;\">❌</span><a style=\"color:white !important\" id=\"zoom-downloader\" download=\"proposed_file_name\".mp4></a></div>`;document.body.appendChild(div)}function get_uri(){let my_link=document.getElementById(\"zoom-downloader\");if(document.getElementsByTagName(\"video\")[0]||document.getElementsByTagName(\"audio\")[0]){let videosElements=document.getElementsByTagName(\"video\");let linkLocation=videosElements[0]||document.getElementsByTagName(\"audio\")[0];let multipleVideos=videosElements.length>1;if(multipleVideos){for(let i=0;i<videosElements.length;i++){if(videosElements[i].parentElement){if(videosElements[i].parentElement.parentElement){if(videosElements[i].parentElement.parentElement.className){if(videosElements[i].parentElement.parentElement.className===\"player-view\"){linkLocation=videosElements[i]}}}}}}let zoom_link=linkLocation.src;zoom_link=new URL(zoom_link);my_link.href=zoom_link;my_link.innerHTML=link_text;document.body.style.height=\"1500px\"}let url=document.getElementById(\"zoom-downloader\").href}function count(){if(counter>0){var language=navigator.language||navigator.userLanguage;let loading_text=language===\"it\"?\"⏳ Download disponibile in \"+counter+\" secondi\":\"⏳ Download available in \"+counter+\" seconds\";document.getElementById(\"zoom-downloader\").innerText=loading_text;counter--;setTimeout(function(){count()},1e3)}else{get_uri();document.addEventListener(\"contextmenu\",bringBackDefault,true);function bringBackDefault(event){event.returnValue=true;event.stopPropagation&&event.stopPropagation()}}}create_link();document.getElementById(\"zoom-downloader-close\").addEventListener(\"click\",function(event){document.getElementById(\"zoom-downloader-container\").style.display=\"none\"},false);count()}}mainFunction();\n"
+      },
+      {
+        "type": "fetch",
+        "url": "Unknown",
+        "method": "GET",
+        "body_source": null,
+        "line": 1,
+        "evidence": "const language=window.navigator.userLanguage||window.navigator.language;let link_text=language===\"it\"?\"👋 Hey, CLICCA QUI Con il TASTO DESTRO e poi Salva link come...\":\"👋 Hey, RIGHT-CLICK here, then click Save link as...\";var url=window.location.href;chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){if(request.action===\"fetchData\"){window.fetchDataObj=request;fetchData(url,request).then(data=>{sendResponse()});sendResponse()}return true});function fetchData(url,settings={}){url=encodeURIComponent(url);var jsonUrl=\"https://us-central1-webinarstvus.cloudfunctions.net/webinarJSON?url=\"+url;var zmGlobalMrktId=window.zmGlobalMrktId;if(settings.zmGlobalMrktId){var jsonUrl=\"https://us-central1-webinarstvus.cloudfunctions.net/webinarJSON/show?url=\"+url;zmGlobalMrktId=settings.zmGlobalMrktId}if(zmGlobalMrktId){jsonUrl+=\"&zmGlobalMrktId=\"+zmGlobalMrktId}return fetch(jsonUrl).then(response=>{return response}).catch(error=>{console.error(\"Error fetching data:\",error);return\"\"}).then(data=>{let ppl=document.getElementById(\"ppl\");data=data.text();data.then(data=>{});return data}).catch(error=>{return\"\"})}if(window.location.href.includes(\"events.zoom.us/\")){const targetNode=document.body;const config={childList:true,subtree:true};const callback=function(mutationsList,observer){for(const mutation of mutationsList){if(mutation.type===\"childList\"){mutation.addedNodes.forEach(node=>{if(node.tagName===\"VIDEO\"||node.tagName===\"AUDIO\"){mainFunction(\"events.zoom.us/\")}})}}};const observer=new MutationObserver(callback);observer.observe(targetNode,config);if(document.getElementsByTagName(\"video\")[0]||document.getElementsByTagName(\"audio\")[0]){mainFunction(\"events.zoom.us/\")}}function mainFunction(urlpart=\"/rec\"){if(url.includes(urlpart)&&chrome.runtime.getManifest().name.startsWith(\"ZED\")){let counter=6;function create_link(){let div=document.createElement(\"div\");div.innerHTML=`<div id=\"zoom-downloader-container\" style=\"position:fixed;z-index:99999999999999999999;right:0px;bottom:0px;width:100%;padding:5px 20px 5px 20px;border:1px solid #2D8CFF;font-size:20px;background-color:#2D8CFF;font-weight:bold;text-align:center;\"><span id=\"zoom-downloader-close\" style=\"font-size:12px;cursor:pointer;position:absolute;top:0px;right:0px;color:white;\">❌</span><a style=\"color:white !important\" id=\"zoom-downloader\" download=\"proposed_file_name\".mp4></a></div>`;document.body.appendChild(div)}function get_uri(){let my_link=document.getElementById(\"zoom-downloader\");if(document.getElementsByTagName(\"video\")[0]||document.getElementsByTagName(\"audio\")[0]){let videosElements=document.getElementsByTagName(\"video\");let linkLocation=videosElements[0]||document.getElementsByTagName(\"audio\")[0];let multipleVideos=videosElements.length>1;if(multipleVideos){for(let i=0;i<videosElements.length;i++){if(videosElements[i].parentElement){if(videosElements[i].parentElement.parentElement){if(videosElements[i].parentElement.parentElement.className){if(videosElements[i].parentElement.parentElement.className===\"player-view\"){linkLocation=videosElements[i]}}}}}}let zoom_link=linkLocation.src;zoom_link=new URL(zoom_link);my_link.href=zoom_link;my_link.innerHTML=link_text;document.body.style.height=\"1500px\"}let url=document.getElementById(\"zoom-downloader\").href}function count(){if(counter>0){var language=navigator.language||navigator.userLanguage;let loading_text=language===\"it\"?\"⏳ Download disponibile in \"+counter+\" secondi\":\"⏳ Download available in \"+counter+\" seconds\";document.getElementById(\"zoom-downloader\").innerText=loading_text;counter--;setTimeout(function(){count()},1e3)}else{get_uri();document.addEventListener(\"contextmenu\",bringBackDefault,true);function bringBackDefault(event){event.returnValue=true;event.stopPropagation&&event.stopPropagation()}}}create_link();document.getElementById(\"zoom-downloader-close\").addEventListener(\"click\",function(event){document.getElementById(\"zoom-downloader-container\").style.display=\"none\"},false);count()}}mainFunction();\n"
+      },
+      {
+        "type": "fetch",
+        "url": "Unknown",
+        "method": "GET",
+        "body_source": null,
+        "line": 1,
+        "evidence": "const language=window.navigator.userLanguage||window.navigator.language;let link_text=language===\"it\"?\"👋 Hey, CLICCA QUI Con il TASTO DESTRO e poi Salva link come...\":\"👋 Hey, RIGHT-CLICK here, then click Save link as...\";var url=window.location.href;chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){if(request.action===\"fetchData\"){window.fetchDataObj=request;fetchData(url,request).then(data=>{sendResponse()});sendResponse()}return true});function fetchData(url,settings={}){url=encodeURIComponent(url);var jsonUrl=\"https://us-central1-webinarstvus.cloudfunctions.net/webinarJSON?url=\"+url;var zmGlobalMrktId=window.zmGlobalMrktId;if(settings.zmGlobalMrktId){var jsonUrl=\"https://us-central1-webinarstvus.cloudfunctions.net/webinarJSON/show?url=\"+url;zmGlobalMrktId=settings.zmGlobalMrktId}if(zmGlobalMrktId){jsonUrl+=\"&zmGlobalMrktId=\"+zmGlobalMrktId}return fetch(jsonUrl).then(response=>{return response}).catch(error=>{console.error(\"Error fetching data:\",error);return\"\"}).then(data=>{let ppl=document.getElementById(\"ppl\");data=data.text();data.then(data=>{});return data}).catch(error=>{return\"\"})}if(window.location.href.includes(\"events.zoom.us/\")){const targetNode=document.body;const config={childList:true,subtree:true};const callback=function(mutationsList,observer){for(const mutation of mutationsList){if(mutation.type===\"childList\"){mutation.addedNodes.forEach(node=>{if(node.tagName===\"VIDEO\"||node.tagName===\"AUDIO\"){mainFunction(\"events.zoom.us/\")}})}}};const observer=new MutationObserver(callback);observer.observe(targetNode,config);if(document.getElementsByTagName(\"video\")[0]||document.getElementsByTagName(\"audio\")[0]){mainFunction(\"events.zoom.us/\")}}function mainFunction(urlpart=\"/rec\"){if(url.includes(urlpart)&&chrome.runtime.getManifest().name.startsWith(\"ZED\")){let counter=6;function create_link(){let div=document.createElement(\"div\");div.innerHTML=`<div id=\"zoom-downloader-container\" style=\"position:fixed;z-index:99999999999999999999;right:0px;bottom:0px;width:100%;padding:5px 20px 5px 20px;border:1px solid #2D8CFF;font-size:20px;background-color:#2D8CFF;font-weight:bold;text-align:center;\"><span id=\"zoom-downloader-close\" style=\"font-size:12px;cursor:pointer;position:absolute;top:0px;right:0px;color:white;\">❌</span><a style=\"color:white !important\" id=\"zoom-downloader\" download=\"proposed_file_name\".mp4></a></div>`;document.body.appendChild(div)}function get_uri(){let my_link=document.getElementById(\"zoom-downloader\");if(document.getElementsByTagName(\"video\")[0]||document.getElementsByTagName(\"audio\")[0]){let videosElements=document.getElementsByTagName(\"video\");let linkLocation=videosElements[0]||document.getElementsByTagName(\"audio\")[0];let multipleVideos=videosElements.length>1;if(multipleVideos){for(let i=0;i<videosElements.length;i++){if(videosElements[i].parentElement){if(videosElements[i].parentElement.parentElement){if(videosElements[i].parentElement.parentElement.className){if(videosElements[i].parentElement.parentElement.className===\"player-view\"){linkLocation=videosElements[i]}}}}}}let zoom_link=linkLocation.src;zoom_link=new URL(zoom_link);my_link.href=zoom_link;my_link.innerHTML=link_text;document.body.style.height=\"1500px\"}let url=document.getElementById(\"zoom-downloader\").href}function count(){if(counter>0){var language=navigator.language||navigator.userLanguage;let loading_text=language===\"it\"?\"⏳ Download disponibile in \"+counter+\" secondi\":\"⏳ Download available in \"+counter+\" seconds\";document.getElementById(\"zoom-downloader\").innerText=loading_text;counter--;setTimeout(function(){count()},1e3)}else{get_uri();document.addEventListener(\"contextmenu\",bringBackDefault,true);function bringBackDefault(event){event.returnValue=true;event.stopPropagation&&event.stopPropagation()}}}create_link();document.getElementById(\"zoom-downloader-close\").addEventListener(\"click\",function(event){document.getElementById(\"zoom-downloader-container\").style.display=\"none\"},false);count()}}mainFunction();\n"
+      },
+      {
+        "type": "fetch",
+        "url": "<variable: jsonUrl>",
+        "method": "GET",
+        "body_source": null,
+        "line": 1,
+        "evidence": "const language=window.navigator.userLanguage||window.navigator.language;let link_text=language===\"it\"?\"👋 Hey, CLICCA QUI Con il TASTO DESTRO e poi Salva link come...\":\"👋 Hey, RIGHT-CLICK here, then click Save link as...\";var url=window.location.href;chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){if(request.action===\"fetchData\"){window.fetchDataObj=request;fetchData(url,request).then(data=>{sendResponse()});sendResponse()}return true});function fetchData(url,settings={}){url=encodeURIComponent(url);var jsonUrl=\"https://us-central1-webinarstvus.cloudfunctions.net/webinarJSON?url=\"+url;var zmGlobalMrktId=window.zmGlobalMrktId;if(settings.zmGlobalMrktId){var jsonUrl=\"https://us-central1-webinarstvus.cloudfunctions.net/webinarJSON/show?url=\"+url;zmGlobalMrktId=settings.zmGlobalMrktId}if(zmGlobalMrktId){jsonUrl+=\"&zmGlobalMrktId=\"+zmGlobalMrktId}return fetch(jsonUrl).then(response=>{return response}).catch(error=>{console.error(\"Error fetching data:\",error);return\"\"}).then(data=>{let ppl=document.getElementById(\"ppl\");data=data.text();data.then(data=>{});return data}).catch(error=>{return\"\"})}if(window.location.href.includes(\"events.zoom.us/\")){const targetNode=document.body;const config={childList:true,subtree:true};const callback=function(mutationsList,observer){for(const mutation of mutationsList){if(mutation.type===\"childList\"){mutation.addedNodes.forEach(node=>{if(node.tagName===\"VIDEO\"||node.tagName===\"AUDIO\"){mainFunction(\"events.zoom.us/\")}})}}};const observer=new MutationObserver(callback);observer.observe(targetNode,config);if(document.getElementsByTagName(\"video\")[0]||document.getElementsByTagName(\"audio\")[0]){mainFunction(\"events.zoom.us/\")}}function mainFunction(urlpart=\"/rec\"){if(url.includes(urlpart)&&chrome.runtime.getManifest().name.startsWith(\"ZED\")){let counter=6;function create_link(){let div=document.createElement(\"div\");div.innerHTML=`<div id=\"zoom-downloader-container\" style=\"position:fixed;z-index:99999999999999999999;right:0px;bottom:0px;width:100%;padding:5px 20px 5px 20px;border:1px solid #2D8CFF;font-size:20px;background-color:#2D8CFF;font-weight:bold;text-align:center;\"><span id=\"zoom-downloader-close\" style=\"font-size:12px;cursor:pointer;position:absolute;top:0px;right:0px;color:white;\">❌</span><a style=\"color:white !important\" id=\"zoom-downloader\" download=\"proposed_file_name\".mp4></a></div>`;document.body.appendChild(div)}function get_uri(){let my_link=document.getElementById(\"zoom-downloader\");if(document.getElementsByTagName(\"video\")[0]||document.getElementsByTagName(\"audio\")[0]){let videosElements=document.getElementsByTagName(\"video\");let linkLocation=videosElements[0]||document.getElementsByTagName(\"audio\")[0];let multipleVideos=videosElements.length>1;if(multipleVideos){for(let i=0;i<videosElements.length;i++){if(videosElements[i].parentElement){if(videosElements[i].parentElement.parentElement){if(videosElements[i].parentElement.parentElement.className){if(videosElements[i].parentElement.parentElement.className===\"player-view\"){linkLocation=videosElements[i]}}}}}}let zoom_link=linkLocation.src;zoom_link=new URL(zoom_link);my_link.href=zoom_link;my_link.innerHTML=link_text;document.body.style.height=\"1500px\"}let url=document.getElementById(\"zoom-downloader\").href}function count(){if(counter>0){var language=navigator.language||navigator.userLanguage;let loading_text=language===\"it\"?\"⏳ Download disponibile in \"+counter+\" secondi\":\"⏳ Download available in \"+counter+\" seconds\";document.getElementById(\"zoom-downloader\").innerText=loading_text;counter--;setTimeout(function(){count()},1e3)}else{get_uri();document.addEventListener(\"contextmenu\",bringBackDefault,true);function bringBackDefault(event){event.returnValue=true;event.stopPropagation&&event.stopPropagation()}}}create_link();document.getElementById(\"zoom-downloader-close\").addEventListener(\"click\",function(event){document.getElementById(\"zoom-downloader-container\").style.display=\"none\"},false);count()}}mainFunction();\n"
+      }
+    ],
+    "data_exfiltration": [],
+    "chrome_api_abuse": [
+      {
+        "api": "chrome.tabs.sendMessage",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 1
+      },
+      {
+        "api": "chrome.tabs",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 1
+      },
+      {
+        "api": "chrome.tabs.query",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 1
+      },
+      {
+        "api": "chrome.tabs",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 1
+      },
+      {
+        "api": "chrome.tabs.query",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 1
+      },
+      {
+        "api": "chrome.tabs",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 1
+      }
+    ],
+    "obfuscation": [],
+    "suspicious_patterns": []
+  },
+  "risk_score": 3.0,
+  "risk_level": "LOW",
+  "store_metadata": {
+    "available": true,
+    "extension_id": "pdadlkbckhinonakkfkdaadceojbekep",
+    "store_url": "https://chrome.google.com/webstore/detail/pdadlkbckhinonakkfkdaadceojbekep",
+    "has_privacy_policy": true,
+    "privacy_policy_url": "https://zoomcorder.com/extension/privacy.html",
+    "has_chrome_warning": false,
+    "risk_signals": {
+      "abandoned": false,
+      "new_extension": false,
+      "low_adoption": true,
+      "policy_violation": false,
+      "unverified_author": true,
+      "no_privacy_policy": false
+    }
+  },
+  "host_permissions": {
+    "host_permissions": [
+      {
+        "pattern": "https://www.x.com/*",
+        "scheme": "https",
+        "host": "www.x.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.x.com (all pages)",
+        "category": "social_media"
+      },
+      {
+        "pattern": "http://www.x.com/*",
+        "scheme": "http",
+        "host": "www.x.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.x.com (all pages)",
+        "category": "social_media"
+      },
+      {
+        "pattern": "https://www.twitter.com/*",
+        "scheme": "https",
+        "host": "www.twitter.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.twitter.com (all pages)",
+        "category": "social_media"
+      },
+      {
+        "pattern": "http://www.twitter.com/*",
+        "scheme": "http",
+        "host": "www.twitter.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.twitter.com (all pages)",
+        "category": "social_media"
+      },
+      {
+        "pattern": "https://www.t.co/*",
+        "scheme": "https",
+        "host": "www.t.co",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.t.co (all pages)",
+        "category": "other"
+      },
+      {
+        "pattern": "http://www.t.co/*",
+        "scheme": "http",
+        "host": "www.t.co",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.t.co (all pages)",
+        "category": "other"
+      },
+      {
+        "pattern": "https://www.pscp.tv/*",
+        "scheme": "https",
+        "host": "www.pscp.tv",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.pscp.tv (all pages)",
+        "category": "other"
+      },
+      {
+        "pattern": "http://www.pscp.tv/*",
+        "scheme": "http",
+        "host": "www.pscp.tv",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.pscp.tv (all pages)",
+        "category": "other"
+      },
+      {
+        "pattern": "https://www.tweetdeck.com/*",
+        "scheme": "https",
+        "host": "www.tweetdeck.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.tweetdeck.com (all pages)",
+        "category": "other"
+      },
+      {
+        "pattern": "http://www.tweetdeck.com/*",
+        "scheme": "http",
+        "host": "www.tweetdeck.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.tweetdeck.com (all pages)",
+        "category": "other"
+      },
+      {
+        "pattern": "https://www.twitteroauth.com/*",
+        "scheme": "https",
+        "host": "www.twitteroauth.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.twitteroauth.com (all pages)",
+        "category": "social_media"
+      },
+      {
+        "pattern": "http://www.twitteroauth.com/*",
+        "scheme": "http",
+        "host": "www.twitteroauth.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.twitteroauth.com (all pages)",
+        "category": "social_media"
+      },
+      {
+        "pattern": "https://www.twitter.jp/*",
+        "scheme": "https",
+        "host": "www.twitter.jp",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.twitter.jp (all pages)",
+        "category": "social_media"
+      },
+      {
+        "pattern": "http://www.twitter.jp/*",
+        "scheme": "http",
+        "host": "www.twitter.jp",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.twitter.jp (all pages)",
+        "category": "social_media"
+      },
+      {
+        "pattern": "https://www.vine.co/*",
+        "scheme": "https",
+        "host": "www.vine.co",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.vine.co (all pages)",
+        "category": "other"
+      },
+      {
+        "pattern": "http://www.vine.co/*",
+        "scheme": "http",
+        "host": "www.vine.co",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.vine.co (all pages)",
+        "category": "other"
+      },
+      {
+        "pattern": "https://www.x.jp/*",
+        "scheme": "https",
+        "host": "www.x.jp",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.x.jp (all pages)",
+        "category": "other"
+      },
+      {
+        "pattern": "http://www.x.jp/*",
+        "scheme": "http",
+        "host": "www.x.jp",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.x.jp (all pages)",
+        "category": "other"
+      },
+      {
+        "pattern": "https://www.twimg.com/*",
+        "scheme": "https",
+        "host": "www.twimg.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.twimg.com (all pages)",
+        "category": "other"
+      },
+      {
+        "pattern": "http://www.twimg.com/*",
+        "scheme": "http",
+        "host": "www.twimg.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.twimg.com (all pages)",
+        "category": "other"
+      },
+      {
+        "pattern": "https://www.periscope.tv/*",
+        "scheme": "https",
+        "host": "www.periscope.tv",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.periscope.tv (all pages)",
+        "category": "other"
+      },
+      {
+        "pattern": "http://www.periscope.tv/*",
+        "scheme": "http",
+        "host": "www.periscope.tv",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.periscope.tv (all pages)",
+        "category": "other"
+      },
+      {
+        "pattern": "https://*.zoom.us/*",
+        "scheme": "https",
+        "host": "zoom.us",
+        "path": "/*",
+        "wildcard_subdomain": true,
+        "wildcard_path": true,
+        "risk_level": "HIGH",
+        "description": "Access to all subdomains of zoom.us (all pages)",
+        "category": "video_conferencing"
+      },
+      {
+        "pattern": "http://*.zoom.us/*",
+        "scheme": "http",
+        "host": "zoom.us",
+        "path": "/*",
+        "wildcard_subdomain": true,
+        "wildcard_path": true,
+        "risk_level": "HIGH",
+        "description": "Access to all subdomains of zoom.us (all pages)",
+        "category": "video_conferencing"
+      },
+      {
+        "pattern": "https://*.zoom.com/*",
+        "scheme": "https",
+        "host": "zoom.com",
+        "path": "/*",
+        "wildcard_subdomain": true,
+        "wildcard_path": true,
+        "risk_level": "HIGH",
+        "description": "Access to all subdomains of zoom.com (all pages)",
+        "category": "video_conferencing"
+      },
+      {
+        "pattern": "http://*.zoom.com/*",
+        "scheme": "http",
+        "host": "zoom.com",
+        "path": "/*",
+        "wildcard_subdomain": true,
+        "wildcard_path": true,
+        "risk_level": "HIGH",
+        "description": "Access to all subdomains of zoom.com (all pages)",
+        "category": "video_conferencing"
+      },
+      {
+        "pattern": "https://meet.google.com/*",
+        "scheme": "https",
+        "host": "meet.google.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to meet.google.com (all pages)",
+        "category": "video_conferencing"
+      },
+      {
+        "pattern": "http://meet.google.com/*",
+        "scheme": "http",
+        "host": "meet.google.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to meet.google.com (all pages)",
+        "category": "video_conferencing"
+      },
+      {
+        "pattern": "https://teams.microsoft.com/*",
+        "scheme": "https",
+        "host": "teams.microsoft.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to teams.microsoft.com (all pages)",
+        "category": "video_conferencing"
+      },
+      {
+        "pattern": "http://teams.microsoft.com/*",
+        "scheme": "http",
+        "host": "teams.microsoft.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to teams.microsoft.com (all pages)",
+        "category": "video_conferencing"
+      },
+      {
+        "pattern": "https://www.webex.com/*",
+        "scheme": "https",
+        "host": "www.webex.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.webex.com (all pages)",
+        "category": "social_media"
+      },
+      {
+        "pattern": "http://www.webex.com/*",
+        "scheme": "http",
+        "host": "www.webex.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.webex.com (all pages)",
+        "category": "social_media"
+      },
+      {
+        "pattern": "https://www.goto.com/*",
+        "scheme": "https",
+        "host": "www.goto.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.goto.com (all pages)",
+        "category": "video_conferencing"
+      },
+      {
+        "pattern": "http://www.goto.com/*",
+        "scheme": "http",
+        "host": "www.goto.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.goto.com (all pages)",
+        "category": "video_conferencing"
+      },
+      {
+        "pattern": "https://*.gotowebinar.com/*",
+        "scheme": "https",
+        "host": "gotowebinar.com",
+        "path": "/*",
+        "wildcard_subdomain": true,
+        "wildcard_path": true,
+        "risk_level": "HIGH",
+        "description": "Access to all subdomains of gotowebinar.com (all pages)",
+        "category": "video_conferencing"
+      },
+      {
+        "pattern": "http://*.gotowebinar.com/*",
+        "scheme": "http",
+        "host": "gotowebinar.com",
+        "path": "/*",
+        "wildcard_subdomain": true,
+        "wildcard_path": true,
+        "risk_level": "HIGH",
+        "description": "Access to all subdomains of gotowebinar.com (all pages)",
+        "category": "video_conferencing"
+      },
+      {
+        "pattern": "https://www.gotomeeting.com/*",
+        "scheme": "https",
+        "host": "www.gotomeeting.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.gotomeeting.com (all pages)",
+        "category": "video_conferencing"
+      },
+      {
+        "pattern": "http://www.gotomeeting.com/*",
+        "scheme": "http",
+        "host": "www.gotomeeting.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.gotomeeting.com (all pages)",
+        "category": "video_conferencing"
+      },
+      {
+        "pattern": "https://www.twitpic.com/*",
+        "scheme": "https",
+        "host": "www.twitpic.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.twitpic.com (all pages)",
+        "category": "other"
+      },
+      {
+        "pattern": "http://www.twitpic.com/*",
+        "scheme": "http",
+        "host": "www.twitpic.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.twitpic.com (all pages)",
+        "category": "other"
+      }
+    ],
+    "content_scripts": [
+      {
+        "pattern": "https://www.x.com/*",
+        "scheme": "https",
+        "host": "www.x.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.x.com (all pages)",
+        "category": "social_media",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "http://www.x.com/*",
+        "scheme": "http",
+        "host": "www.x.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.x.com (all pages)",
+        "category": "social_media",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "https://www.twitter.com/*",
+        "scheme": "https",
+        "host": "www.twitter.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.twitter.com (all pages)",
+        "category": "social_media",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "http://www.twitter.com/*",
+        "scheme": "http",
+        "host": "www.twitter.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.twitter.com (all pages)",
+        "category": "social_media",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "https://www.t.co/*",
+        "scheme": "https",
+        "host": "www.t.co",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.t.co (all pages)",
+        "category": "other",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "http://www.t.co/*",
+        "scheme": "http",
+        "host": "www.t.co",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.t.co (all pages)",
+        "category": "other",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "https://www.pscp.tv/*",
+        "scheme": "https",
+        "host": "www.pscp.tv",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.pscp.tv (all pages)",
+        "category": "other",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "http://www.pscp.tv/*",
+        "scheme": "http",
+        "host": "www.pscp.tv",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.pscp.tv (all pages)",
+        "category": "other",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "https://www.tweetdeck.com/*",
+        "scheme": "https",
+        "host": "www.tweetdeck.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.tweetdeck.com (all pages)",
+        "category": "other",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "http://www.tweetdeck.com/*",
+        "scheme": "http",
+        "host": "www.tweetdeck.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.tweetdeck.com (all pages)",
+        "category": "other",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "https://www.twitteroauth.com/*",
+        "scheme": "https",
+        "host": "www.twitteroauth.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.twitteroauth.com (all pages)",
+        "category": "social_media",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "http://www.twitteroauth.com/*",
+        "scheme": "http",
+        "host": "www.twitteroauth.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.twitteroauth.com (all pages)",
+        "category": "social_media",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "https://www.twitter.jp/*",
+        "scheme": "https",
+        "host": "www.twitter.jp",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.twitter.jp (all pages)",
+        "category": "social_media",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "http://www.twitter.jp/*",
+        "scheme": "http",
+        "host": "www.twitter.jp",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.twitter.jp (all pages)",
+        "category": "social_media",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "https://www.vine.co/*",
+        "scheme": "https",
+        "host": "www.vine.co",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.vine.co (all pages)",
+        "category": "other",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "http://www.vine.co/*",
+        "scheme": "http",
+        "host": "www.vine.co",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.vine.co (all pages)",
+        "category": "other",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "https://www.x.jp/*",
+        "scheme": "https",
+        "host": "www.x.jp",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.x.jp (all pages)",
+        "category": "other",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "http://www.x.jp/*",
+        "scheme": "http",
+        "host": "www.x.jp",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.x.jp (all pages)",
+        "category": "other",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "https://www.twimg.com/*",
+        "scheme": "https",
+        "host": "www.twimg.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.twimg.com (all pages)",
+        "category": "other",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "http://www.twimg.com/*",
+        "scheme": "http",
+        "host": "www.twimg.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.twimg.com (all pages)",
+        "category": "other",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "https://www.periscope.tv/*",
+        "scheme": "https",
+        "host": "www.periscope.tv",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.periscope.tv (all pages)",
+        "category": "other",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "http://www.periscope.tv/*",
+        "scheme": "http",
+        "host": "www.periscope.tv",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.periscope.tv (all pages)",
+        "category": "other",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "https://*.zoom.us/*",
+        "scheme": "https",
+        "host": "zoom.us",
+        "path": "/*",
+        "wildcard_subdomain": true,
+        "wildcard_path": true,
+        "risk_level": "HIGH",
+        "description": "Access to all subdomains of zoom.us (all pages)",
+        "category": "video_conferencing",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "http://*.zoom.us/*",
+        "scheme": "http",
+        "host": "zoom.us",
+        "path": "/*",
+        "wildcard_subdomain": true,
+        "wildcard_path": true,
+        "risk_level": "HIGH",
+        "description": "Access to all subdomains of zoom.us (all pages)",
+        "category": "video_conferencing",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "https://*.zoom.com/*",
+        "scheme": "https",
+        "host": "zoom.com",
+        "path": "/*",
+        "wildcard_subdomain": true,
+        "wildcard_path": true,
+        "risk_level": "HIGH",
+        "description": "Access to all subdomains of zoom.com (all pages)",
+        "category": "video_conferencing",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "http://*.zoom.com/*",
+        "scheme": "http",
+        "host": "zoom.com",
+        "path": "/*",
+        "wildcard_subdomain": true,
+        "wildcard_path": true,
+        "risk_level": "HIGH",
+        "description": "Access to all subdomains of zoom.com (all pages)",
+        "category": "video_conferencing",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "https://meet.google.com/*",
+        "scheme": "https",
+        "host": "meet.google.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to meet.google.com (all pages)",
+        "category": "video_conferencing",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "http://meet.google.com/*",
+        "scheme": "http",
+        "host": "meet.google.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to meet.google.com (all pages)",
+        "category": "video_conferencing",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "https://teams.microsoft.com/*",
+        "scheme": "https",
+        "host": "teams.microsoft.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to teams.microsoft.com (all pages)",
+        "category": "video_conferencing",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "http://teams.microsoft.com/*",
+        "scheme": "http",
+        "host": "teams.microsoft.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to teams.microsoft.com (all pages)",
+        "category": "video_conferencing",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "https://www.webex.com/*",
+        "scheme": "https",
+        "host": "www.webex.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.webex.com (all pages)",
+        "category": "social_media",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "http://www.webex.com/*",
+        "scheme": "http",
+        "host": "www.webex.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.webex.com (all pages)",
+        "category": "social_media",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "https://www.goto.com/*",
+        "scheme": "https",
+        "host": "www.goto.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.goto.com (all pages)",
+        "category": "video_conferencing",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "http://www.goto.com/*",
+        "scheme": "http",
+        "host": "www.goto.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.goto.com (all pages)",
+        "category": "video_conferencing",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "https://*.gotowebinar.com/*",
+        "scheme": "https",
+        "host": "gotowebinar.com",
+        "path": "/*",
+        "wildcard_subdomain": true,
+        "wildcard_path": true,
+        "risk_level": "HIGH",
+        "description": "Access to all subdomains of gotowebinar.com (all pages)",
+        "category": "video_conferencing",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "http://*.gotowebinar.com/*",
+        "scheme": "http",
+        "host": "gotowebinar.com",
+        "path": "/*",
+        "wildcard_subdomain": true,
+        "wildcard_path": true,
+        "risk_level": "HIGH",
+        "description": "Access to all subdomains of gotowebinar.com (all pages)",
+        "category": "video_conferencing",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "https://www.gotomeeting.com/*",
+        "scheme": "https",
+        "host": "www.gotomeeting.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.gotomeeting.com (all pages)",
+        "category": "video_conferencing",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "http://www.gotomeeting.com/*",
+        "scheme": "http",
+        "host": "www.gotomeeting.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to www.gotomeeting.com (all pages)",
+        "category": "video_conferencing",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "https://www.twitpic.com/*",
+        "scheme": "https",
+        "host": "www.twitpic.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.twitpic.com (all pages)",
+        "category": "other",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      },
+      {
+        "pattern": "http://www.twitpic.com/*",
+        "scheme": "http",
+        "host": "www.twitpic.com",
+        "path": "/*",
+        "wildcard_subdomain": false,
+        "wildcard_path": true,
+        "risk_level": "LOW",
+        "description": "Access to www.twitpic.com (all pages)",
+        "category": "other",
+        "injected_js": [
+          "main.js"
+        ],
+        "injected_css": [
+          "styles.css"
+        ],
+        "run_at": "document_idle"
+      }
+    ],
+    "web_accessible_resources": [
+      {
+        "pattern": "<all_urls>",
+        "scheme": "all",
+        "host": "all",
+        "path": "all",
+        "wildcard_subdomain": true,
+        "wildcard_path": true,
+        "risk_level": "CRITICAL",
+        "description": "Full access to ALL websites on the internet",
+        "category": "all_urls",
+        "accessible_resources": [
+          "/images/record.png",
+          "/images/recimage.png",
+          "/images/howto.jpg",
+          "images/down.png",
+          "images/8.gif"
+        ]
+      }
+    ],
+    "all_urls_access": true,
+    "sensitive_access": {
+      "social_media": [
+        "www.twitter.jp",
+        "www.twitter.com",
+        "www.x.com",
+        "www.webex.com",
+        "www.twitteroauth.com"
+      ],
+      "video_conferencing": [
+        "meet.google.com",
+        "zoom.com",
+        "teams.microsoft.com",
+        "zoom.us",
+        "www.gotomeeting.com",
+        "www.goto.com",
+        "www.webex.com",
+        "gotowebinar.com"
+      ]
+    },
+    "risk_assessment": {
+      "overall_risk": "CRITICAL",
+      "risk_factors": [
+        "Has <all_urls> access - can read/modify ALL websites",
+        "Accesses 5 social media site(s): www.twitter.jp, www.twitter.com, www.x.com",
+        "Accesses 8 video conferencing site(s): meet.google.com, zoom.com, teams.microsoft.com",
+        "Requests access to 40 different domains (very broad)"
+      ],
+      "risk_score": 41
+    },
+    "permission_scope": "ALL_WEBSITES",
+    "statistics": {
+      "total_host_permissions": 40,
+      "total_content_scripts": 40,
+      "total_sensitive_categories": 2,
+      "total_sensitive_domains": 13,
+      "has_all_urls": true
+    }
+  },
+  "domain_intelligence": [
+    {
+      "domain": "meetingtv.us",
+      "url": "https://meetingtv.us/zeduninstall",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "us-central1-webinarstvus.cloudfunctions.net",
+      "url": "https://us-central1-webinarstvus.cloudfunctions.net/webinarJSON?url=",
+      "threat_level": "BENIGN",
+      "confidence": 95,
+      "classification": "Legitimate Infrastructure",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": true,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    }
+  ],
+  "advanced_detection": {
+    "csp_manipulation": [],
+    "dom_event_injection": [],
+    "websocket_c2": [],
+    "delayed_activation": [],
+    "obfuscation": [],
+    "summary": {
+      "total_findings": 0,
+      "critical_findings": 0,
+      "high_findings": 0,
+      "verdict": "CLEAN"
+    }
+  },
+  "pii_classification": {
+    "classifications": [],
+    "overall_risk": "LOW",
+    "total_severity_score": 0,
+    "data_types_count": 0,
+    "recommendation": {
+      "action": "REVIEW PERIODICALLY",
+      "priority": "P3 - Low",
+      "rationale": "Extension has limited data access. Standard monitoring sufficient.",
+      "next_steps": [
+        "Review permissions periodically",
+        "Monitor for permission changes",
+        "Keep extension updated",
+        "Watch for unusual behavior"
+      ]
+    },
+    "destination": "https://meetingtv.us/zeduninstall"
+  },
+  "threat_attribution": {
+    "available": true,
+    "extension_id": "pdadlkbckhinonakkfkdaadceojbekep",
+    "extension_name": "ZED: Zoom Easy Downloader",
+    "attribution_found": true,
+    "campaign_name": "DarkSpectre / ZoomStealer",
+    "campaign_description": "Corporate espionage campaign targeting video conferencing platforms. Part of DarkSpectre threat actor operations affecting 8.8 million users worldwide.",
+    "threat_actor": "DarkSpectre (Chinese state-sponsored APT)",
+    "confidence": "CONFIRMED",
+    "source_articles": [
+      {
+        "title": "DarkSpectre Browser Extension Campaigns Exposed After Impacting 8.8 Million Users Worldwide",
+        "url": "https://thehackernews.com/2025/12/darkspectre-browser-extension-campaigns.html",
+        "source": "The Hacker News",
+        "date": "2024-12"
+      },
+      {
+        "title": "DarkSpectre: Unmasking the Threat Actor Behind 8.8 Million Infected Browsers",
+        "url": "https://www.koi.ai/blog/darkspectre-unmasking-the-threat-actor-behind-7-8-million-infected-browsers",
+        "source": "Koi Security",
+        "date": "2024-12"
+      },
+      {
+        "title": "Zoom Stealer browser extensions harvest corporate meeting intelligence",
+        "url": "https://www.bleepingcomputer.com/news/security/zoom-stealer-browser-extensions-harvest-corporate-meeting-intelligence/",
+        "source": "BleepingComputer",
+        "date": "2024-12"
+      }
+    ],
+    "osint_summary": "\n## OSINT Analysis - CONFIRMED MALICIOUS EXTENSION\n\n**Extension Identified:** ZED: Zoom Easy Downloader (ID: pdadlkbckhinonakkfkdaadceojbekep)\n**Database Status:** CONFIRMED MALICIOUS\n**Severity:** CRITICAL\n\n**Campaign Attribution:** DarkSpectre / ZoomStealer\n**Threat Actor:** DarkSpectre (Chinese state-sponsored APT)\n\n**Campaign Overview:**\nCorporate espionage campaign targeting video conferencing platforms. Part of DarkSpectre threat actor operations affecting 8.8 million users worldwide.\n\n**Active Period:** 2018-2025\n\n**Impact:**\n- Total users affected: 8,800,000\n- This campaign: 2,200,000 users\n- Known extensions in campaign: 18\n\n**Targets:**\n- Zoom\n- Microsoft Teams\n- Google Meet\n- Webex\n- GoToMeeting\n\n**Data Exfiltrated:**\n- Meeting URLs with embedded passwords\n- Meeting IDs and topics\n- Scheduled meeting times\n- Registration status\n- Participant information\n- Chrome cookies\n- Browser history\n\n**C2 Infrastructure:**\n- meetingtv.us\n- webinartv.us\n- us-central1-webinarstvus.cloudfunctions.net\n- zoomcorder.firebaseio.com\n\n**TTPs (MITRE ATT&CK):**\n- Initial Access: Malicious browser extension\n- Persistence: Extension auto-update\n- Collection: Content script injection on video conferencing sites\n- Exfiltration: WebSocket connections to Firebase\n- C2: Google Cloud Functions endpoints\n",
+    "chrome_store_url": "https://chromewebstore.google.com/detail/pdadlkbckhinonakkfkdaadceojbekep",
+    "google_search_url": "https://www.google.com/search?q=pdadlkbckhinonakkfkdaadceojbekep+malware+threat",
+    "search_performed": true,
+    "database_match": true,
+    "extension_status": "confirmed_malicious",
+    "severity": "CRITICAL"
+  }
+}

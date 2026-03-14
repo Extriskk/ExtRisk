@@ -1,0 +1,1937 @@
+{
+  "extension_type": "vscode",
+  "name": "GitHub Copilot Chat",
+  "identifier": "GitHub.copilot-chat",
+  "extension_id": "GitHub.copilot-chat",
+  "version": "0.38.2026022002",
+  "description": "AI chat features powered by Copilot",
+  "publisher": "GitHub",
+  "engines": {
+    "vscode": "^1.110.0",
+    "npm": ">=9.0.0",
+    "node": ">=22.14.0"
+  },
+  "store_metadata": {
+    "available": true,
+    "store": "vscode",
+    "identifier": "GitHub.copilot-chat",
+    "name": "GitHub Copilot Chat",
+    "publisher": "GitHub",
+    "publisher_id": "7c1c19cd-78eb-4dfb-8999-99caf7679002",
+    "publisher_domain": "https://github.com",
+    "publisher_verified": true,
+    "short_description": "AI chat features powered by Copilot",
+    "version": "0.38.2026022002",
+    "last_updated": "2026-02-20T16:33:55.733Z",
+    "categories": [],
+    "tags": [],
+    "install_count": 62242419,
+    "rating_value": 3.58,
+    "rating_count": 226,
+    "flags": "validated, public, trial",
+    "store_url": "https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat",
+    "risk_signals": {}
+  },
+  "metadata_risk": {
+    "findings": [
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onStartupFinished': Runs every launch - immediate execution",
+        "event": "onStartupFinished"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onUri': Activates on custom URI scheme (can be triggered externally)",
+        "event": "onUri"
+      },
+      {
+        "type": "sensitive_contribution",
+        "severity": "medium",
+        "detail": "Contributes 'terminal': Can create and control integrated terminals (command execution risk)",
+        "contribution": "terminal"
+      },
+      {
+        "type": "sensitive_contribution",
+        "severity": "medium",
+        "detail": "Contributes 'debuggers': Can inspect running processes and variables (run arbitrary programs)",
+        "contribution": "debuggers"
+      },
+      {
+        "type": "sensitive_contribution",
+        "severity": "medium",
+        "detail": "Contributes 'viewsContainers': Webview views - remote HTML/JS possible",
+        "contribution": "viewsContainers"
+      },
+      {
+        "type": "sensitive_contribution",
+        "severity": "medium",
+        "detail": "Contributes 'walkthroughs': Can present guided flows to users",
+        "contribution": "walkthroughs"
+      }
+    ],
+    "risk_score": 6,
+    "activation_events": [
+      "onStartupFinished",
+      "onLanguageModelChat:copilot",
+      "onUri",
+      "onFileSystem:ccreq",
+      "onFileSystem:ccsettings",
+      "onCustomAgentProvider"
+    ],
+    "contributes": [
+      "languageModelTools",
+      "languageModelToolSets",
+      "chatParticipants",
+      "languageModelChatProviders",
+      "interactiveSession",
+      "mcpServerDefinitionProviders",
+      "viewsWelcome",
+      "chatViewsWelcome",
+      "commands",
+      "configuration",
+      "submenus",
+      "menus",
+      "icons",
+      "iconFonts",
+      "terminalQuickFixes",
+      "languages",
+      "notebooks",
+      "views",
+      "viewsContainers",
+      "configurationDefaults",
+      "keybindings",
+      "walkthroughs",
+      "jsonValidation",
+      "typescriptServerPlugins",
+      "chatSessions",
+      "debuggers",
+      "chatAgents",
+      "chatPromptFiles",
+      "terminal"
+    ]
+  },
+  "package_json_deep": {
+    "findings": [
+      {
+        "name": "Publisher-domain mismatch: github vs www.youtube.com",
+        "severity": "medium",
+        "description": "Publisher \"github\" does not match operational domain \"www.youtube.com\"",
+        "category": "publisher_mismatch",
+        "file": "package.json",
+        "line": 0,
+        "evidence": "publisher=github, domain=www.youtube.com"
+      },
+      {
+        "name": "Publisher-domain mismatch: github vs vscodewalkthroughs.z1.web.core.windows.net",
+        "severity": "medium",
+        "description": "Publisher \"github\" does not match operational domain \"vscodewalkthroughs.z1.web.core.windows.net\"",
+        "category": "publisher_mismatch",
+        "file": "package.json",
+        "line": 0,
+        "evidence": "publisher=github, domain=vscodewalkthroughs.z1.web.core.windows.net"
+      },
+      {
+        "name": "Publisher-domain mismatch: github vs twitter.com",
+        "severity": "medium",
+        "description": "Publisher \"github\" does not match operational domain \"twitter.com\"",
+        "category": "publisher_mismatch",
+        "file": "package.json",
+        "line": 0,
+        "evidence": "publisher=github, domain=twitter.com"
+      }
+    ]
+  },
+  "supply_chain": {
+    "findings": [
+      {
+        "type": "bundled_node_modules",
+        "severity": "info",
+        "detail": "2 bundled packages (21.9 MB)",
+        "count": 2,
+        "size_mb": 21.9
+      }
+    ],
+    "risk_score": 0,
+    "dependency_count": 0,
+    "dev_dependency_count": 0,
+    "has_node_modules": true,
+    "dependency_vulns": [],
+    "bundled_js_vulns": []
+  },
+  "code_analysis": {
+    "all_findings": [
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "dist\\copilotCLIShim.js",
+        "line": 1,
+        "evidence": "else typeof navigator==\"object\"&&!ke?(L=navigator.userAgent,G=L.indexOf(\"Windows\")>=0,H=L.indexOf(\"",
+        "path_type": "app"
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "dist\\copilotCLIShim.js",
+        "line": 1,
+        "evidence": "=L?.indexOf(\"Mobi\")>=0,re=!0,F=B()||R,z=navigator.language.toLowerCase(),ne=z):console.error(\"Unab",
+        "path_type": "app"
+      },
+      {
+        "name": "Shell option via truthy coercion (shell: !0 or shell: 1)",
+        "severity": "high",
+        "description": "shell:true passed as truthy coercion (!0, 1) to evade literal detection",
+        "category": "evasion_technique",
+        "file": "dist\\copilotCLIShim.js",
+        "line": 3,
+        "evidence": "V.spawnSync)(\"copilot --version\",{env:X,shell:!0,encoding:\"utf8\"});if(e.error||e.status!",
+        "path_type": "app"
+      },
+      {
+        "name": "child_process require (minification-safe)",
+        "severity": "high",
+        "description": "Imports child_process module - shell command execution capability",
+        "category": "command_injection",
+        "file": "dist\\copilotCLIShim.js",
+        "line": 1,
+        "evidence": "t\",{value:e,enumerable:!0}):n,e));var V=require(\"child_process\"),ue=Le(require(\"readline\"));function B()",
+        "path_type": "app"
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "dist\\copilotDebugCommand.js",
+        "line": 1,
+        "evidence": "else typeof navigator==\"object\"&&!Me?(y=navigator.userAgent,U=y.indexOf(\"Windows\")>=0,H=y.indexOf(\"",
+        "path_type": "app"
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "dist\\copilotDebugCommand.js",
+        "line": 1,
+        "evidence": "=y?.indexOf(\"Mobi\")>=0,ne=!0,j=Y()||k,T=navigator.language.toLowerCase(),te=T):console.error(\"Unab",
+        "path_type": "app"
+      },
+      {
+        "name": "node: prefix module import",
+        "severity": "medium",
+        "description": "Node.js module imported with node: prefix - may evade standard import detection",
+        "category": "evasion_technique",
+        "file": "dist\\copilotDebugCommand.js",
+        "line": 1,
+        "evidence": ":!0}):n,e));var me=require(\"crypto\"),xe=require(\"node:net\"),Ce=require(\"os\"),K=Le(require(\"readlin",
+        "path_type": "app"
+      },
+      {
+        "name": "child_process require (minification-safe)",
+        "severity": "high",
+        "description": "Imports child_process module - shell command execution capability",
+        "category": "command_injection",
+        "file": "dist\\copilotDebugCommand.js",
+        "line": 1,
+        "evidence": "sep,yt=b?p.delimiter:m.delimiter;var fe=require(\"child_process\"),de=(e,t)=>{let n,i=!1,o=[t];if(e){let[r",
+        "path_type": "app"
+      },
+      {
+        "name": "new Function() constructor",
+        "severity": "high",
+        "description": "Dynamic code execution via Function constructor",
+        "category": "code_execution",
+        "file": "dist\\suggestionsPanelWebview.js",
+        "line": 1,
+        "evidence": "eof window<\"u\")return window;try{return new Function(\"return this\")()}catch{return{}}}();nt.t",
+        "path_type": "app"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "dist\\suggestionsPanelWebview.js",
+        "line": 1,
+        "evidence": "){c=document.createElement(\"template\"),c.innerHTML=g.createHTML(d);let k=c.content.firstEle",
+        "path_type": "app"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "dist\\suggestionsPanelWebview.js",
+        "line": 1,
+        "evidence": "{let i=document.createElement(\"style\");i.innerHTML=e[o],i.className=n,t.append(i)}super.add",
+        "path_type": "app"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "dist\\suggestionsPanelWebview.js",
+        "line": 214,
+        "evidence": "t,\"template\",null);try{u.documentElement.innerHTML=tr?jt:T}catch{}}let L=u.body||u.document",
+        "path_type": "app"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "dist\\suggestionsPanelWebview.js",
+        "line": 215,
+        "evidence": "();break}});function Cs(r){As(r),ce&&(ce.innerHTML=r.solutions.map((t,e)=>{let n=t.citation",
+        "path_type": "app"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "dist\\suggestionsPanelWebview.js",
+        "line": 222,
+        "evidence": "er\");if(!(!t||!e))if(r.percentage>=100)e.innerHTML=`${r.solutions.length} Suggestions`;else",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\suggestionsPanelWebview.js",
+        "line": 1,
+        "evidence": "adowOptions===null?void 0:Object.assign(Object.assign({},Hn),e.shadowOptions),this.elementOption",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\suggestionsPanelWebview.js",
+        "line": 1,
+        "evidence": "lementOptions===void 0?Un:Object.assign(Object.assign({},Un),e.elementOptions),this.styles=e.sty",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\suggestionsPanelWebview.js",
+        "line": 41,
+        "evidence": "({createContainer(r){return new Gt(null,Object.assign({},xr.default,r))},findResponsibleContaine",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\suggestionsPanelWebview.js",
+        "line": 41,
+        "evidence": "r,t){return r?r.$$container$$||new Gt(r,Object.assign({},xr.default,t,{parentLocator:w.findParen",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\suggestionsPanelWebview.js",
+        "line": 41,
+        "evidence": "dParentContainer})):Qn||(Qn=new Gt(null,Object.assign({},xr.default,t,{parentLocator:()=>null}))",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\suggestionsPanelWebview.js",
+        "line": 41,
+        "evidence": "t(t,e)}createChild(t){return new r(null,Object.assign({},this.config,t,{parentLocator:()=>this})",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\suggestionsPanelWebview.js",
+        "line": 41,
+        "evidence": "inition=n,this.definition=Object.assign(Object.assign({},this.elementDefinition),this.overrideDe",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\suggestionsPanelWebview.js",
+        "line": 85,
+        "evidence": "efinition=new J(this.type,Object.assign(Object.assign({},t),{name:this.name}))}tagFor(t){return",
+        "path_type": "app"
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "dist\\tfidfWorker.js",
+        "line": 41,
+        "evidence": "lse typeof navigator==\"object\"&&!Fu?(Ye=navigator.userAgent,qn=Ye.indexOf(\"Windows\")>=0,Kn=Ye.index",
+        "path_type": "app"
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "dist\\tfidfWorker.js",
+        "line": 41,
+        "evidence": "indexOf(\"Mobi\")>=0,ci=!0,jn=li()||Qt,Vn=navigator.language.toLowerCase(),ho=Vn):console.error(\"Una",
+        "path_type": "app"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "dist\\tfidfWorker.js",
+        "line": 6,
+        "evidence": "===i.__html||p.__html===t.innerHTML)||(t.innerHTML=p.__html),e.__k=[];else if(i&&(t.innerHT",
+        "path_type": "app"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "dist\\tfidfWorker.js",
+        "line": 6,
+        "evidence": "nerHTML=p.__html),e.__k=[];else if(i&&(t.innerHTML=\"\"),pe(t,J(f)?f:[f],e,n,o,v===\"foreignOb",
+        "path_type": "app"
+      },
+      {
+        "name": "Localhost HTTP access from extension code",
+        "severity": "medium",
+        "description": "Accesses localhost HTTP services from extension code - review for port scan or local file exfiltration behavior",
+        "category": "localhost_access",
+        "file": "dist\\tfidfWorker.js",
+        "line": 7,
+        "evidence": "e(e,t){let r=e,i=t,s=new URL(r.url||\"/\",\"http://localhost\"),o=`/${this.serverToken}`;switch(s.pat",
+        "path_type": "app"
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "dist\\tfidfWorker.js",
+        "line": 4,
+        "evidence": "lse typeof navigator==\"object\"&&!F1?(st=navigator.userAgent,En=st.indexOf(\"Windows\")>=0,In=st.index",
+        "path_type": "app"
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "dist\\tfidfWorker.js",
+        "line": 4,
+        "evidence": "}\"]},\"_\"))||v.LANGUAGE_DEFAULT,pr=yn,Bi=navigator.language):console.error(\"Unable to resolve platf",
+        "path_type": "app"
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "dist\\tfidfWorker.js",
+        "line": 18,
+        "evidence": "isWindows=()=>{if(typeof navigator<\"u\"&&navigator.platform){let n=navigator.platform.toLowerCase()",
+        "path_type": "app"
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "dist\\tfidfWorker.js",
+        "line": 18,
+        "evidence": "avigator<\"u\"&&navigator.platform){let n=navigator.platform.toLowerCase();return n===\"win32\"||n===\"",
+        "path_type": "app"
+      },
+      {
+        "name": "eval() usage",
+        "severity": "high",
+        "description": "Dynamic code execution via eval()",
+        "category": "code_execution",
+        "file": "dist\\worker2.js",
+        "line": 1,
+        "evidence": "gs}) => { ${body} };`;ASM_CONSTS[start]=eval(func)}if(\"__start_em_asm\"in moduleExport",
+        "path_type": "app"
+      },
+      {
+        "name": "eval() usage",
+        "severity": "high",
+        "description": "Dynamic code execution via eval()",
+        "category": "code_execution",
+        "file": "dist\\worker2.js",
+        "line": 1,
+        "evidence": "Args}) => ${body};`;moduleExports[name]=eval(func)}for(var name in moduleExports)if(n",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\worker2.js",
+        "line": 1,
+        "evidence": "uleOptions){return initPromise||(Module=Object.assign({},Module,moduleOptions),initPromise=new P",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "dist\\worker2.js",
+        "line": 1,
+        "evidence": "esolveInitPromise=>{var moduleOverrides=Object.assign({},Module),arguments_=[],thisProgram=\"./th",
+        "path_type": "app"
+      },
+      {
+        "name": "Bulk file reading with variable path",
+        "severity": "medium",
+        "description": "Reads file content using variable path - bulk file harvesting indicator",
+        "category": "workspace_harvesting",
+        "file": "dist\\worker2.js",
+        "line": 1,
+        "evidence": "?new URL(e):nodePath.normalize(e);var t=fs.readFileSync(e);return t},readAsync=(e,t=!0)=>(e=isFil",
+        "path_type": "app"
+      },
+      {
+        "name": "Bulk file reading with variable path",
+        "severity": "medium",
+        "description": "Reads file content using variable path - bulk file harvesting indicator",
+        "category": "workspace_harvesting",
+        "file": "dist\\worker2.js",
+        "line": 1,
+        "evidence": "dePath.normalize(e),new Promise((r,n)=>{fs.readFile(e,t?void 0:\"utf8\",(s,o)=>{s?n(s):r(t?o.bu",
+        "path_type": "app"
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "dist\\worker2.js",
+        "line": 10,
+        "evidence": "lse typeof navigator==\"object\"&&!_r?(ee=navigator.userAgent,Pe=ee.indexOf(\"Windows\")>=0,Fe=ee.index",
+        "path_type": "app"
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "dist\\worker2.js",
+        "line": 10,
+        "evidence": "indexOf(\"Mobi\")>=0,ot=!0,Ne=We()||fe,Re=navigator.language.toLowerCase(),st=Re):console.error(\"Una",
+        "path_type": "app"
+      }
+    ],
+    "module_usage": {
+      "process_execution": [
+        {
+          "module": "child_process",
+          "file": "dist\\copilotCLIShim.js",
+          "line": 1
+        },
+        {
+          "module": "child_process",
+          "file": "dist\\copilotDebugCommand.js",
+          "line": 1
+        }
+      ],
+      "crypto": [
+        {
+          "module": "crypto",
+          "file": "dist\\copilotDebugCommand.js",
+          "line": 1
+        }
+      ],
+      "os_info": [
+        {
+          "module": "os",
+          "file": "dist\\copilotDebugCommand.js",
+          "line": 1
+        }
+      ],
+      "file_access": [
+        {
+          "module": "stream",
+          "file": "dist\\copilotDebugCommand.js",
+          "line": 1
+        },
+        {
+          "module": "fs",
+          "file": "dist\\tfidfWorker.js",
+          "line": 16
+        },
+        {
+          "module": "fs",
+          "file": "dist\\tfidfWorker.js",
+          "line": 18
+        },
+        {
+          "module": "fs",
+          "file": "dist\\tfidfWorker.js",
+          "line": 18
+        },
+        {
+          "module": "path",
+          "file": "dist\\tfidfWorker.js",
+          "line": 18
+        },
+        {
+          "module": "fs",
+          "file": "dist\\tfidfWorker.js",
+          "line": 45
+        },
+        {
+          "module": "fs",
+          "file": "dist\\tfidfWorker.js",
+          "line": 47
+        },
+        {
+          "module": "path",
+          "file": "dist\\tfidfWorker.js",
+          "line": 47
+        },
+        {
+          "module": "fs",
+          "file": "dist\\tikTokenizerWorker.js",
+          "line": 1
+        },
+        {
+          "module": "fs",
+          "file": "dist\\tikTokenizerWorker.js",
+          "line": 3
+        },
+        {
+          "module": "fs",
+          "file": "dist\\tikTokenizerWorker.js",
+          "line": 3
+        },
+        {
+          "module": "path",
+          "file": "dist\\tikTokenizerWorker.js",
+          "line": 3
+        },
+        {
+          "module": "fs",
+          "file": "dist\\tikTokenizerWorker.js",
+          "line": 7
+        },
+        {
+          "module": "fs",
+          "file": "dist\\worker2.js",
+          "line": 1
+        },
+        {
+          "module": "path",
+          "file": "dist\\worker2.js",
+          "line": 1
+        },
+        {
+          "module": "fs",
+          "file": "dist\\worker2.js",
+          "line": 2
+        }
+      ],
+      "network": [
+        {
+          "module": "http",
+          "file": "dist\\tfidfWorker.js",
+          "line": 16
+        }
+      ]
+    },
+    "external_urls": [
+      {
+        "url": "https://openaipublic.blob.core.windows.net/encodings/o200k_base.tiktoken",
+        "file": "dist\\tfidfWorker.js",
+        "line": 18
+      },
+      {
+        "url": "https://openaipublic.blob.core.windows.net/encodings/cl100k_base.tiktoken",
+        "file": "dist\\tfidfWorker.js",
+        "line": 18
+      },
+      {
+        "url": "https://openaipublic.blob.core.windows.net/encodings/p50k_base.tiktoken",
+        "file": "dist\\tfidfWorker.js",
+        "line": 18
+      },
+      {
+        "url": "https://openaipublic.blob.core.windows.net/encodings/p50k_base.tiktoken",
+        "file": "dist\\tfidfWorker.js",
+        "line": 18
+      },
+      {
+        "url": "https://openaipublic.blob.core.windows.net/encodings/r50k_base.tiktoken",
+        "file": "dist\\tfidfWorker.js",
+        "line": 18
+      },
+      {
+        "url": "https://raw.githubusercontent.com/microsoft/Tokenizer/main/model/gpt2.tiktoken",
+        "file": "dist\\tfidfWorker.js",
+        "line": 18
+      },
+      {
+        "url": "https://openaipublic.blob.core.windows.net/encodings/o200k_base.tiktoken",
+        "file": "dist\\tikTokenizerWorker.js",
+        "line": 3
+      },
+      {
+        "url": "https://openaipublic.blob.core.windows.net/encodings/cl100k_base.tiktoken",
+        "file": "dist\\tikTokenizerWorker.js",
+        "line": 3
+      },
+      {
+        "url": "https://openaipublic.blob.core.windows.net/encodings/p50k_base.tiktoken",
+        "file": "dist\\tikTokenizerWorker.js",
+        "line": 3
+      },
+      {
+        "url": "https://openaipublic.blob.core.windows.net/encodings/p50k_base.tiktoken",
+        "file": "dist\\tikTokenizerWorker.js",
+        "line": 3
+      },
+      {
+        "url": "https://openaipublic.blob.core.windows.net/encodings/r50k_base.tiktoken",
+        "file": "dist\\tikTokenizerWorker.js",
+        "line": 3
+      },
+      {
+        "url": "https://raw.githubusercontent.com/microsoft/Tokenizer/main/model/gpt2.tiktoken",
+        "file": "dist\\tikTokenizerWorker.js",
+        "line": 3
+      }
+    ],
+    "file_entropies": {
+      "dist\\tfidfWorker.js": 5.62
+    },
+    "files_scanned": 9,
+    "findings_by_category": {
+      "telemetry_abuse": [
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "dist\\copilotCLIShim.js",
+          "line": 1,
+          "evidence": "else typeof navigator==\"object\"&&!ke?(L=navigator.userAgent,G=L.indexOf(\"Windows\")>=0,H=L.indexOf(\"",
+          "path_type": "app"
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "dist\\copilotCLIShim.js",
+          "line": 1,
+          "evidence": "=L?.indexOf(\"Mobi\")>=0,re=!0,F=B()||R,z=navigator.language.toLowerCase(),ne=z):console.error(\"Unab",
+          "path_type": "app"
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "dist\\copilotDebugCommand.js",
+          "line": 1,
+          "evidence": "else typeof navigator==\"object\"&&!Me?(y=navigator.userAgent,U=y.indexOf(\"Windows\")>=0,H=y.indexOf(\"",
+          "path_type": "app"
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "dist\\copilotDebugCommand.js",
+          "line": 1,
+          "evidence": "=y?.indexOf(\"Mobi\")>=0,ne=!0,j=Y()||k,T=navigator.language.toLowerCase(),te=T):console.error(\"Unab",
+          "path_type": "app"
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "dist\\tfidfWorker.js",
+          "line": 41,
+          "evidence": "lse typeof navigator==\"object\"&&!Fu?(Ye=navigator.userAgent,qn=Ye.indexOf(\"Windows\")>=0,Kn=Ye.index",
+          "path_type": "app"
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "dist\\tfidfWorker.js",
+          "line": 41,
+          "evidence": "indexOf(\"Mobi\")>=0,ci=!0,jn=li()||Qt,Vn=navigator.language.toLowerCase(),ho=Vn):console.error(\"Una",
+          "path_type": "app"
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "dist\\tfidfWorker.js",
+          "line": 4,
+          "evidence": "lse typeof navigator==\"object\"&&!F1?(st=navigator.userAgent,En=st.indexOf(\"Windows\")>=0,In=st.index",
+          "path_type": "app"
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "dist\\tfidfWorker.js",
+          "line": 4,
+          "evidence": "}\"]},\"_\"))||v.LANGUAGE_DEFAULT,pr=yn,Bi=navigator.language):console.error(\"Unable to resolve platf",
+          "path_type": "app"
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "dist\\tfidfWorker.js",
+          "line": 18,
+          "evidence": "isWindows=()=>{if(typeof navigator<\"u\"&&navigator.platform){let n=navigator.platform.toLowerCase()",
+          "path_type": "app"
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "dist\\tfidfWorker.js",
+          "line": 18,
+          "evidence": "avigator<\"u\"&&navigator.platform){let n=navigator.platform.toLowerCase();return n===\"win32\"||n===\"",
+          "path_type": "app"
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "dist\\worker2.js",
+          "line": 10,
+          "evidence": "lse typeof navigator==\"object\"&&!_r?(ee=navigator.userAgent,Pe=ee.indexOf(\"Windows\")>=0,Fe=ee.index",
+          "path_type": "app"
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "dist\\worker2.js",
+          "line": 10,
+          "evidence": "indexOf(\"Mobi\")>=0,ot=!0,Ne=We()||fe,Re=navigator.language.toLowerCase(),st=Re):console.error(\"Una",
+          "path_type": "app"
+        }
+      ],
+      "evasion_technique": [
+        {
+          "name": "Shell option via truthy coercion (shell: !0 or shell: 1)",
+          "severity": "high",
+          "description": "shell:true passed as truthy coercion (!0, 1) to evade literal detection",
+          "category": "evasion_technique",
+          "file": "dist\\copilotCLIShim.js",
+          "line": 3,
+          "evidence": "V.spawnSync)(\"copilot --version\",{env:X,shell:!0,encoding:\"utf8\"});if(e.error||e.status!",
+          "path_type": "app"
+        },
+        {
+          "name": "node: prefix module import",
+          "severity": "medium",
+          "description": "Node.js module imported with node: prefix - may evade standard import detection",
+          "category": "evasion_technique",
+          "file": "dist\\copilotDebugCommand.js",
+          "line": 1,
+          "evidence": ":!0}):n,e));var me=require(\"crypto\"),xe=require(\"node:net\"),Ce=require(\"os\"),K=Le(require(\"readlin",
+          "path_type": "app"
+        }
+      ],
+      "command_injection": [
+        {
+          "name": "child_process require (minification-safe)",
+          "severity": "high",
+          "description": "Imports child_process module - shell command execution capability",
+          "category": "command_injection",
+          "file": "dist\\copilotCLIShim.js",
+          "line": 1,
+          "evidence": "t\",{value:e,enumerable:!0}):n,e));var V=require(\"child_process\"),ue=Le(require(\"readline\"));function B()",
+          "path_type": "app"
+        },
+        {
+          "name": "child_process require (minification-safe)",
+          "severity": "high",
+          "description": "Imports child_process module - shell command execution capability",
+          "category": "command_injection",
+          "file": "dist\\copilotDebugCommand.js",
+          "line": 1,
+          "evidence": "sep,yt=b?p.delimiter:m.delimiter;var fe=require(\"child_process\"),de=(e,t)=>{let n,i=!1,o=[t];if(e){let[r",
+          "path_type": "app"
+        }
+      ],
+      "code_execution": [
+        {
+          "name": "new Function() constructor",
+          "severity": "high",
+          "description": "Dynamic code execution via Function constructor",
+          "category": "code_execution",
+          "file": "dist\\suggestionsPanelWebview.js",
+          "line": 1,
+          "evidence": "eof window<\"u\")return window;try{return new Function(\"return this\")()}catch{return{}}}();nt.t",
+          "path_type": "app"
+        },
+        {
+          "name": "eval() usage",
+          "severity": "high",
+          "description": "Dynamic code execution via eval()",
+          "category": "code_execution",
+          "file": "dist\\worker2.js",
+          "line": 1,
+          "evidence": "gs}) => { ${body} };`;ASM_CONSTS[start]=eval(func)}if(\"__start_em_asm\"in moduleExport",
+          "path_type": "app"
+        },
+        {
+          "name": "eval() usage",
+          "severity": "high",
+          "description": "Dynamic code execution via eval()",
+          "category": "code_execution",
+          "file": "dist\\worker2.js",
+          "line": 1,
+          "evidence": "Args}) => ${body};`;moduleExports[name]=eval(func)}for(var name in moduleExports)if(n",
+          "path_type": "app"
+        }
+      ],
+      "webview_risk": [
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "dist\\suggestionsPanelWebview.js",
+          "line": 1,
+          "evidence": "){c=document.createElement(\"template\"),c.innerHTML=g.createHTML(d);let k=c.content.firstEle",
+          "path_type": "app"
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "dist\\suggestionsPanelWebview.js",
+          "line": 1,
+          "evidence": "{let i=document.createElement(\"style\");i.innerHTML=e[o],i.className=n,t.append(i)}super.add",
+          "path_type": "app"
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "dist\\suggestionsPanelWebview.js",
+          "line": 214,
+          "evidence": "t,\"template\",null);try{u.documentElement.innerHTML=tr?jt:T}catch{}}let L=u.body||u.document",
+          "path_type": "app"
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "dist\\suggestionsPanelWebview.js",
+          "line": 215,
+          "evidence": "();break}});function Cs(r){As(r),ce&&(ce.innerHTML=r.solutions.map((t,e)=>{let n=t.citation",
+          "path_type": "app"
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "dist\\suggestionsPanelWebview.js",
+          "line": 222,
+          "evidence": "er\");if(!(!t||!e))if(r.percentage>=100)e.innerHTML=`${r.solutions.length} Suggestions`;else",
+          "path_type": "app"
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "dist\\tfidfWorker.js",
+          "line": 6,
+          "evidence": "===i.__html||p.__html===t.innerHTML)||(t.innerHTML=p.__html),e.__k=[];else if(i&&(t.innerHT",
+          "path_type": "app"
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "dist\\tfidfWorker.js",
+          "line": 6,
+          "evidence": "nerHTML=p.__html),e.__k=[];else if(i&&(t.innerHTML=\"\"),pe(t,J(f)?f:[f],e,n,o,v===\"foreignOb",
+          "path_type": "app"
+        }
+      ],
+      "prototype_pollution": [
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\suggestionsPanelWebview.js",
+          "line": 1,
+          "evidence": "adowOptions===null?void 0:Object.assign(Object.assign({},Hn),e.shadowOptions),this.elementOption",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\suggestionsPanelWebview.js",
+          "line": 1,
+          "evidence": "lementOptions===void 0?Un:Object.assign(Object.assign({},Un),e.elementOptions),this.styles=e.sty",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\suggestionsPanelWebview.js",
+          "line": 41,
+          "evidence": "({createContainer(r){return new Gt(null,Object.assign({},xr.default,r))},findResponsibleContaine",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\suggestionsPanelWebview.js",
+          "line": 41,
+          "evidence": "r,t){return r?r.$$container$$||new Gt(r,Object.assign({},xr.default,t,{parentLocator:w.findParen",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\suggestionsPanelWebview.js",
+          "line": 41,
+          "evidence": "dParentContainer})):Qn||(Qn=new Gt(null,Object.assign({},xr.default,t,{parentLocator:()=>null}))",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\suggestionsPanelWebview.js",
+          "line": 41,
+          "evidence": "t(t,e)}createChild(t){return new r(null,Object.assign({},this.config,t,{parentLocator:()=>this})",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\suggestionsPanelWebview.js",
+          "line": 41,
+          "evidence": "inition=n,this.definition=Object.assign(Object.assign({},this.elementDefinition),this.overrideDe",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\suggestionsPanelWebview.js",
+          "line": 85,
+          "evidence": "efinition=new J(this.type,Object.assign(Object.assign({},t),{name:this.name}))}tagFor(t){return",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\worker2.js",
+          "line": 1,
+          "evidence": "uleOptions){return initPromise||(Module=Object.assign({},Module,moduleOptions),initPromise=new P",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "dist\\worker2.js",
+          "line": 1,
+          "evidence": "esolveInitPromise=>{var moduleOverrides=Object.assign({},Module),arguments_=[],thisProgram=\"./th",
+          "path_type": "app"
+        }
+      ],
+      "localhost_access": [
+        {
+          "name": "Localhost HTTP access from extension code",
+          "severity": "medium",
+          "description": "Accesses localhost HTTP services from extension code - review for port scan or local file exfiltration behavior",
+          "category": "localhost_access",
+          "file": "dist\\tfidfWorker.js",
+          "line": 7,
+          "evidence": "e(e,t){let r=e,i=t,s=new URL(r.url||\"/\",\"http://localhost\"),o=`/${this.serverToken}`;switch(s.pat",
+          "path_type": "app"
+        }
+      ],
+      "workspace_harvesting": [
+        {
+          "name": "Bulk file reading with variable path",
+          "severity": "medium",
+          "description": "Reads file content using variable path - bulk file harvesting indicator",
+          "category": "workspace_harvesting",
+          "file": "dist\\worker2.js",
+          "line": 1,
+          "evidence": "?new URL(e):nodePath.normalize(e);var t=fs.readFileSync(e);return t},readAsync=(e,t=!0)=>(e=isFil",
+          "path_type": "app"
+        },
+        {
+          "name": "Bulk file reading with variable path",
+          "severity": "medium",
+          "description": "Reads file content using variable path - bulk file harvesting indicator",
+          "category": "workspace_harvesting",
+          "file": "dist\\worker2.js",
+          "line": 1,
+          "evidence": "dePath.normalize(e),new Promise((r,n)=>{fs.readFile(e,t?void 0:\"utf8\",(s,o)=>{s?n(s):r(t?o.bu",
+          "path_type": "app"
+        }
+      ]
+    },
+    "findings_by_severity": {
+      "low": 12,
+      "high": 13,
+      "medium": 14
+    },
+    "suppressed_false_positives": 0
+  },
+  "malicious_patterns": [
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "dist\\copilotCLIShim.js",
+      "line": 1,
+      "evidence": "else typeof navigator==\"object\"&&!ke?(L=navigator.userAgent,G=L.indexOf(\"Windows\")>=0,H=L.indexOf(\"",
+      "path_type": "app"
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "dist\\copilotCLIShim.js",
+      "line": 1,
+      "evidence": "=L?.indexOf(\"Mobi\")>=0,re=!0,F=B()||R,z=navigator.language.toLowerCase(),ne=z):console.error(\"Unab",
+      "path_type": "app"
+    },
+    {
+      "name": "Shell option via truthy coercion (shell: !0 or shell: 1)",
+      "severity": "high",
+      "description": "shell:true passed as truthy coercion (!0, 1) to evade literal detection",
+      "category": "evasion_technique",
+      "file": "dist\\copilotCLIShim.js",
+      "line": 3,
+      "evidence": "V.spawnSync)(\"copilot --version\",{env:X,shell:!0,encoding:\"utf8\"});if(e.error||e.status!",
+      "path_type": "app"
+    },
+    {
+      "name": "child_process require (minification-safe)",
+      "severity": "high",
+      "description": "Imports child_process module - shell command execution capability",
+      "category": "command_injection",
+      "file": "dist\\copilotCLIShim.js",
+      "line": 1,
+      "evidence": "t\",{value:e,enumerable:!0}):n,e));var V=require(\"child_process\"),ue=Le(require(\"readline\"));function B()",
+      "path_type": "app"
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "dist\\copilotDebugCommand.js",
+      "line": 1,
+      "evidence": "else typeof navigator==\"object\"&&!Me?(y=navigator.userAgent,U=y.indexOf(\"Windows\")>=0,H=y.indexOf(\"",
+      "path_type": "app"
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "dist\\copilotDebugCommand.js",
+      "line": 1,
+      "evidence": "=y?.indexOf(\"Mobi\")>=0,ne=!0,j=Y()||k,T=navigator.language.toLowerCase(),te=T):console.error(\"Unab",
+      "path_type": "app"
+    },
+    {
+      "name": "node: prefix module import",
+      "severity": "medium",
+      "description": "Node.js module imported with node: prefix - may evade standard import detection",
+      "category": "evasion_technique",
+      "file": "dist\\copilotDebugCommand.js",
+      "line": 1,
+      "evidence": ":!0}):n,e));var me=require(\"crypto\"),xe=require(\"node:net\"),Ce=require(\"os\"),K=Le(require(\"readlin",
+      "path_type": "app"
+    },
+    {
+      "name": "child_process require (minification-safe)",
+      "severity": "high",
+      "description": "Imports child_process module - shell command execution capability",
+      "category": "command_injection",
+      "file": "dist\\copilotDebugCommand.js",
+      "line": 1,
+      "evidence": "sep,yt=b?p.delimiter:m.delimiter;var fe=require(\"child_process\"),de=(e,t)=>{let n,i=!1,o=[t];if(e){let[r",
+      "path_type": "app"
+    },
+    {
+      "name": "new Function() constructor",
+      "severity": "high",
+      "description": "Dynamic code execution via Function constructor",
+      "category": "code_execution",
+      "file": "dist\\suggestionsPanelWebview.js",
+      "line": 1,
+      "evidence": "eof window<\"u\")return window;try{return new Function(\"return this\")()}catch{return{}}}();nt.t",
+      "path_type": "app"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "dist\\suggestionsPanelWebview.js",
+      "line": 1,
+      "evidence": "){c=document.createElement(\"template\"),c.innerHTML=g.createHTML(d);let k=c.content.firstEle",
+      "path_type": "app"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "dist\\suggestionsPanelWebview.js",
+      "line": 1,
+      "evidence": "{let i=document.createElement(\"style\");i.innerHTML=e[o],i.className=n,t.append(i)}super.add",
+      "path_type": "app"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "dist\\suggestionsPanelWebview.js",
+      "line": 214,
+      "evidence": "t,\"template\",null);try{u.documentElement.innerHTML=tr?jt:T}catch{}}let L=u.body||u.document",
+      "path_type": "app"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "dist\\suggestionsPanelWebview.js",
+      "line": 215,
+      "evidence": "();break}});function Cs(r){As(r),ce&&(ce.innerHTML=r.solutions.map((t,e)=>{let n=t.citation",
+      "path_type": "app"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "dist\\suggestionsPanelWebview.js",
+      "line": 222,
+      "evidence": "er\");if(!(!t||!e))if(r.percentage>=100)e.innerHTML=`${r.solutions.length} Suggestions`;else",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\suggestionsPanelWebview.js",
+      "line": 1,
+      "evidence": "adowOptions===null?void 0:Object.assign(Object.assign({},Hn),e.shadowOptions),this.elementOption",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\suggestionsPanelWebview.js",
+      "line": 1,
+      "evidence": "lementOptions===void 0?Un:Object.assign(Object.assign({},Un),e.elementOptions),this.styles=e.sty",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\suggestionsPanelWebview.js",
+      "line": 41,
+      "evidence": "({createContainer(r){return new Gt(null,Object.assign({},xr.default,r))},findResponsibleContaine",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\suggestionsPanelWebview.js",
+      "line": 41,
+      "evidence": "r,t){return r?r.$$container$$||new Gt(r,Object.assign({},xr.default,t,{parentLocator:w.findParen",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\suggestionsPanelWebview.js",
+      "line": 41,
+      "evidence": "dParentContainer})):Qn||(Qn=new Gt(null,Object.assign({},xr.default,t,{parentLocator:()=>null}))",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\suggestionsPanelWebview.js",
+      "line": 41,
+      "evidence": "t(t,e)}createChild(t){return new r(null,Object.assign({},this.config,t,{parentLocator:()=>this})",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\suggestionsPanelWebview.js",
+      "line": 41,
+      "evidence": "inition=n,this.definition=Object.assign(Object.assign({},this.elementDefinition),this.overrideDe",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\suggestionsPanelWebview.js",
+      "line": 85,
+      "evidence": "efinition=new J(this.type,Object.assign(Object.assign({},t),{name:this.name}))}tagFor(t){return",
+      "path_type": "app"
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "dist\\tfidfWorker.js",
+      "line": 41,
+      "evidence": "lse typeof navigator==\"object\"&&!Fu?(Ye=navigator.userAgent,qn=Ye.indexOf(\"Windows\")>=0,Kn=Ye.index",
+      "path_type": "app"
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "dist\\tfidfWorker.js",
+      "line": 41,
+      "evidence": "indexOf(\"Mobi\")>=0,ci=!0,jn=li()||Qt,Vn=navigator.language.toLowerCase(),ho=Vn):console.error(\"Una",
+      "path_type": "app"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "dist\\tfidfWorker.js",
+      "line": 6,
+      "evidence": "===i.__html||p.__html===t.innerHTML)||(t.innerHTML=p.__html),e.__k=[];else if(i&&(t.innerHT",
+      "path_type": "app"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "dist\\tfidfWorker.js",
+      "line": 6,
+      "evidence": "nerHTML=p.__html),e.__k=[];else if(i&&(t.innerHTML=\"\"),pe(t,J(f)?f:[f],e,n,o,v===\"foreignOb",
+      "path_type": "app"
+    },
+    {
+      "name": "Localhost HTTP access from extension code",
+      "severity": "medium",
+      "description": "Accesses localhost HTTP services from extension code - review for port scan or local file exfiltration behavior",
+      "category": "localhost_access",
+      "file": "dist\\tfidfWorker.js",
+      "line": 7,
+      "evidence": "e(e,t){let r=e,i=t,s=new URL(r.url||\"/\",\"http://localhost\"),o=`/${this.serverToken}`;switch(s.pat",
+      "path_type": "app"
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "dist\\tfidfWorker.js",
+      "line": 4,
+      "evidence": "lse typeof navigator==\"object\"&&!F1?(st=navigator.userAgent,En=st.indexOf(\"Windows\")>=0,In=st.index",
+      "path_type": "app"
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "dist\\tfidfWorker.js",
+      "line": 4,
+      "evidence": "}\"]},\"_\"))||v.LANGUAGE_DEFAULT,pr=yn,Bi=navigator.language):console.error(\"Unable to resolve platf",
+      "path_type": "app"
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "dist\\tfidfWorker.js",
+      "line": 18,
+      "evidence": "isWindows=()=>{if(typeof navigator<\"u\"&&navigator.platform){let n=navigator.platform.toLowerCase()",
+      "path_type": "app"
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "dist\\tfidfWorker.js",
+      "line": 18,
+      "evidence": "avigator<\"u\"&&navigator.platform){let n=navigator.platform.toLowerCase();return n===\"win32\"||n===\"",
+      "path_type": "app"
+    },
+    {
+      "name": "eval() usage",
+      "severity": "high",
+      "description": "Dynamic code execution via eval()",
+      "category": "code_execution",
+      "file": "dist\\worker2.js",
+      "line": 1,
+      "evidence": "gs}) => { ${body} };`;ASM_CONSTS[start]=eval(func)}if(\"__start_em_asm\"in moduleExport",
+      "path_type": "app"
+    },
+    {
+      "name": "eval() usage",
+      "severity": "high",
+      "description": "Dynamic code execution via eval()",
+      "category": "code_execution",
+      "file": "dist\\worker2.js",
+      "line": 1,
+      "evidence": "Args}) => ${body};`;moduleExports[name]=eval(func)}for(var name in moduleExports)if(n",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\worker2.js",
+      "line": 1,
+      "evidence": "uleOptions){return initPromise||(Module=Object.assign({},Module,moduleOptions),initPromise=new P",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "dist\\worker2.js",
+      "line": 1,
+      "evidence": "esolveInitPromise=>{var moduleOverrides=Object.assign({},Module),arguments_=[],thisProgram=\"./th",
+      "path_type": "app"
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "severity": "medium",
+      "description": "Reads file content using variable path - bulk file harvesting indicator",
+      "category": "workspace_harvesting",
+      "file": "dist\\worker2.js",
+      "line": 1,
+      "evidence": "?new URL(e):nodePath.normalize(e);var t=fs.readFileSync(e);return t},readAsync=(e,t=!0)=>(e=isFil",
+      "path_type": "app"
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "severity": "medium",
+      "description": "Reads file content using variable path - bulk file harvesting indicator",
+      "category": "workspace_harvesting",
+      "file": "dist\\worker2.js",
+      "line": 1,
+      "evidence": "dePath.normalize(e),new Promise((r,n)=>{fs.readFile(e,t?void 0:\"utf8\",(s,o)=>{s?n(s):r(t?o.bu",
+      "path_type": "app"
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "dist\\worker2.js",
+      "line": 10,
+      "evidence": "lse typeof navigator==\"object\"&&!_r?(ee=navigator.userAgent,Pe=ee.indexOf(\"Windows\")>=0,Fe=ee.index",
+      "path_type": "app"
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "dist\\worker2.js",
+      "line": 10,
+      "evidence": "indexOf(\"Mobi\")>=0,ot=!0,Ne=We()||fe,Re=navigator.language.toLowerCase(),st=Re):console.error(\"Una",
+      "path_type": "app"
+    }
+  ],
+  "html_analysis": {
+    "findings": [],
+    "files_scanned": 0,
+    "iframe_urls": []
+  },
+  "permissions": {
+    "high_risk": [
+      {
+        "permission": "child_process",
+        "description": "Can execute system commands",
+        "evidence": [
+          {
+            "module": "child_process",
+            "file": "dist\\copilotCLIShim.js",
+            "line": 1
+          },
+          {
+            "module": "child_process",
+            "file": "dist\\copilotDebugCommand.js",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "permission": "debugger",
+        "description": "Contributes a debugger (can inspect process state)"
+      }
+    ],
+    "medium_risk": [
+      {
+        "permission": "filesystem",
+        "description": "Can read/write files on disk",
+        "evidence": [
+          {
+            "module": "stream",
+            "file": "dist\\copilotDebugCommand.js",
+            "line": 1
+          },
+          {
+            "module": "fs",
+            "file": "dist\\tfidfWorker.js",
+            "line": 16
+          },
+          {
+            "module": "fs",
+            "file": "dist\\tfidfWorker.js",
+            "line": 18
+          },
+          {
+            "module": "fs",
+            "file": "dist\\tfidfWorker.js",
+            "line": 18
+          },
+          {
+            "module": "path",
+            "file": "dist\\tfidfWorker.js",
+            "line": 18
+          },
+          {
+            "module": "fs",
+            "file": "dist\\tfidfWorker.js",
+            "line": 45
+          },
+          {
+            "module": "fs",
+            "file": "dist\\tfidfWorker.js",
+            "line": 47
+          },
+          {
+            "module": "path",
+            "file": "dist\\tfidfWorker.js",
+            "line": 47
+          },
+          {
+            "module": "fs",
+            "file": "dist\\tikTokenizerWorker.js",
+            "line": 1
+          },
+          {
+            "module": "fs",
+            "file": "dist\\tikTokenizerWorker.js",
+            "line": 3
+          },
+          {
+            "module": "fs",
+            "file": "dist\\tikTokenizerWorker.js",
+            "line": 3
+          },
+          {
+            "module": "path",
+            "file": "dist\\tikTokenizerWorker.js",
+            "line": 3
+          },
+          {
+            "module": "fs",
+            "file": "dist\\tikTokenizerWorker.js",
+            "line": 7
+          },
+          {
+            "module": "fs",
+            "file": "dist\\worker2.js",
+            "line": 1
+          },
+          {
+            "module": "path",
+            "file": "dist\\worker2.js",
+            "line": 1
+          },
+          {
+            "module": "fs",
+            "file": "dist\\worker2.js",
+            "line": 2
+          }
+        ]
+      },
+      {
+        "permission": "network",
+        "description": "Can make network requests",
+        "evidence": [
+          {
+            "module": "http",
+            "file": "dist\\tfidfWorker.js",
+            "line": 16
+          }
+        ]
+      }
+    ],
+    "low_risk": [
+      {
+        "permission": "os_info",
+        "description": "Can read OS information",
+        "evidence": [
+          {
+            "module": "os",
+            "file": "dist\\copilotDebugCommand.js",
+            "line": 1
+          }
+        ]
+      }
+    ],
+    "total": 5,
+    "all": [
+      "child_process",
+      "debugger",
+      "filesystem",
+      "network",
+      "os_info"
+    ]
+  },
+  "risk_score": 2.1,
+  "risk_level": "LOW",
+  "risk_breakdown": {
+    "supply_chain": 0.0,
+    "metadata_publisher": 0.6,
+    "code_analysis": 2.0,
+    "behavioral_correlations": 0,
+    "infrastructure": 0,
+    "positive_signals": -0.5
+  },
+  "positive_signals": {
+    "signals": [
+      {
+        "signal": "no_credential_access",
+        "description": "No access to credential files, SSH keys, or token stores",
+        "weight": 0.3
+      },
+      {
+        "signal": "scoped_activation",
+        "description": "Extension activates only on specific events, not wildcard",
+        "weight": 0.2
+      }
+    ],
+    "reduction": 0.5,
+    "count": 2
+  },
+  "risk_classification": {
+    "classification": "BENIGN",
+    "summary": "Low-risk extension with minimal sensitive capabilities.",
+    "suspicion_indicators": 2,
+    "positive_signal_count": 2
+  },
+  "module_usage": {
+    "process_execution": [
+      {
+        "module": "child_process",
+        "file": "dist\\copilotCLIShim.js",
+        "line": 1
+      },
+      {
+        "module": "child_process",
+        "file": "dist\\copilotDebugCommand.js",
+        "line": 1
+      }
+    ],
+    "crypto": [
+      {
+        "module": "crypto",
+        "file": "dist\\copilotDebugCommand.js",
+        "line": 1
+      }
+    ],
+    "os_info": [
+      {
+        "module": "os",
+        "file": "dist\\copilotDebugCommand.js",
+        "line": 1
+      }
+    ],
+    "file_access": [
+      {
+        "module": "stream",
+        "file": "dist\\copilotDebugCommand.js",
+        "line": 1
+      },
+      {
+        "module": "fs",
+        "file": "dist\\tfidfWorker.js",
+        "line": 16
+      },
+      {
+        "module": "fs",
+        "file": "dist\\tfidfWorker.js",
+        "line": 18
+      },
+      {
+        "module": "fs",
+        "file": "dist\\tfidfWorker.js",
+        "line": 18
+      },
+      {
+        "module": "path",
+        "file": "dist\\tfidfWorker.js",
+        "line": 18
+      },
+      {
+        "module": "fs",
+        "file": "dist\\tfidfWorker.js",
+        "line": 45
+      },
+      {
+        "module": "fs",
+        "file": "dist\\tfidfWorker.js",
+        "line": 47
+      },
+      {
+        "module": "path",
+        "file": "dist\\tfidfWorker.js",
+        "line": 47
+      },
+      {
+        "module": "fs",
+        "file": "dist\\tikTokenizerWorker.js",
+        "line": 1
+      },
+      {
+        "module": "fs",
+        "file": "dist\\tikTokenizerWorker.js",
+        "line": 3
+      },
+      {
+        "module": "fs",
+        "file": "dist\\tikTokenizerWorker.js",
+        "line": 3
+      },
+      {
+        "module": "path",
+        "file": "dist\\tikTokenizerWorker.js",
+        "line": 3
+      },
+      {
+        "module": "fs",
+        "file": "dist\\tikTokenizerWorker.js",
+        "line": 7
+      },
+      {
+        "module": "fs",
+        "file": "dist\\worker2.js",
+        "line": 1
+      },
+      {
+        "module": "path",
+        "file": "dist\\worker2.js",
+        "line": 1
+      },
+      {
+        "module": "fs",
+        "file": "dist\\worker2.js",
+        "line": 2
+      }
+    ],
+    "network": [
+      {
+        "module": "http",
+        "file": "dist\\tfidfWorker.js",
+        "line": 16
+      }
+    ]
+  },
+  "external_urls": [
+    {
+      "url": "https://openaipublic.blob.core.windows.net/encodings/o200k_base.tiktoken",
+      "file": "dist\\tfidfWorker.js",
+      "line": 18
+    },
+    {
+      "url": "https://openaipublic.blob.core.windows.net/encodings/cl100k_base.tiktoken",
+      "file": "dist\\tfidfWorker.js",
+      "line": 18
+    },
+    {
+      "url": "https://openaipublic.blob.core.windows.net/encodings/p50k_base.tiktoken",
+      "file": "dist\\tfidfWorker.js",
+      "line": 18
+    },
+    {
+      "url": "https://openaipublic.blob.core.windows.net/encodings/p50k_base.tiktoken",
+      "file": "dist\\tfidfWorker.js",
+      "line": 18
+    },
+    {
+      "url": "https://openaipublic.blob.core.windows.net/encodings/r50k_base.tiktoken",
+      "file": "dist\\tfidfWorker.js",
+      "line": 18
+    },
+    {
+      "url": "https://raw.githubusercontent.com/microsoft/Tokenizer/main/model/gpt2.tiktoken",
+      "file": "dist\\tfidfWorker.js",
+      "line": 18
+    },
+    {
+      "url": "https://openaipublic.blob.core.windows.net/encodings/o200k_base.tiktoken",
+      "file": "dist\\tikTokenizerWorker.js",
+      "line": 3
+    },
+    {
+      "url": "https://openaipublic.blob.core.windows.net/encodings/cl100k_base.tiktoken",
+      "file": "dist\\tikTokenizerWorker.js",
+      "line": 3
+    },
+    {
+      "url": "https://openaipublic.blob.core.windows.net/encodings/p50k_base.tiktoken",
+      "file": "dist\\tikTokenizerWorker.js",
+      "line": 3
+    },
+    {
+      "url": "https://openaipublic.blob.core.windows.net/encodings/p50k_base.tiktoken",
+      "file": "dist\\tikTokenizerWorker.js",
+      "line": 3
+    },
+    {
+      "url": "https://openaipublic.blob.core.windows.net/encodings/r50k_base.tiktoken",
+      "file": "dist\\tikTokenizerWorker.js",
+      "line": 3
+    },
+    {
+      "url": "https://raw.githubusercontent.com/microsoft/Tokenizer/main/model/gpt2.tiktoken",
+      "file": "dist\\tikTokenizerWorker.js",
+      "line": 3
+    }
+  ],
+  "domain_intelligence": [
+    {
+      "domain": "openaipublic.blob.core.windows.net",
+      "url": "https://openaipublic.blob.core.windows.net/encodings/o200k_base.tiktoken",
+      "threat_level": "BENIGN",
+      "confidence": 95,
+      "classification": "Legitimate Infrastructure",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": true,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "raw.githubusercontent.com",
+      "url": "https://raw.githubusercontent.com/microsoft/Tokenizer/main/model/gpt2.tiktoken",
+      "threat_level": "BENIGN",
+      "confidence": 95,
+      "classification": "Legitimate Infrastructure",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": true,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    }
+  ],
+  "virustotal_results": []
+}

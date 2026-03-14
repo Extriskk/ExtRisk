@@ -1,0 +1,244 @@
+{
+  "extension_type": "vscode",
+  "name": "Test Extension (axios vulnerable)",
+  "identifier": "test-publisher.test-ext-axios",
+  "extension_id": "test-publisher.test-ext-axios",
+  "version": "0.1.0",
+  "description": "Fixture extension with axios@1.5.0 for analyzer testing",
+  "publisher": "test-publisher",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "store_metadata": {
+    "available": true,
+    "name": "Test Extension (axios vulnerable)",
+    "publisher": "test-publisher",
+    "version": "0.1.0"
+  },
+  "metadata_risk": {
+    "findings": [],
+    "risk_score": 0,
+    "activation_events": [],
+    "contributes": []
+  },
+  "package_json_deep": {
+    "findings": []
+  },
+  "supply_chain": {
+    "findings": [
+      {
+        "type": "bundled_node_modules",
+        "severity": "info",
+        "detail": "23 bundled packages (2.3 MB)",
+        "count": 23,
+        "size_mb": 2.3
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "high",
+        "package": "axios",
+        "version": "1.5.0",
+        "cve_id": "GHSA-43fc-jf86-j433",
+        "link": "https://github.com/advisories/GHSA-43fc-jf86-j433",
+        "detail": "axios@1.5.0 has known vulnerability GHSA-43fc-jf86-j433"
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "high",
+        "package": "axios",
+        "version": "1.5.0",
+        "cve_id": "GHSA-4hjh-wcwx-xvwj",
+        "link": "https://github.com/advisories/GHSA-4hjh-wcwx-xvwj",
+        "detail": "axios@1.5.0 has known vulnerability GHSA-4hjh-wcwx-xvwj"
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "high",
+        "package": "axios",
+        "version": "1.5.0",
+        "cve_id": "GHSA-8hc4-vh64-cxmj",
+        "link": "https://github.com/advisories/GHSA-8hc4-vh64-cxmj",
+        "detail": "axios@1.5.0 has known vulnerability GHSA-8hc4-vh64-cxmj"
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "high",
+        "package": "axios",
+        "version": "1.5.0",
+        "cve_id": "GHSA-jr5f-v2jv-69x6",
+        "link": "https://github.com/advisories/GHSA-jr5f-v2jv-69x6",
+        "detail": "axios@1.5.0 has known vulnerability GHSA-jr5f-v2jv-69x6"
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "high",
+        "package": "axios",
+        "version": "1.5.0",
+        "cve_id": "GHSA-wf5p-g6vw-rhxx",
+        "link": "https://github.com/advisories/GHSA-wf5p-g6vw-rhxx",
+        "detail": "axios@1.5.0 has known vulnerability GHSA-wf5p-g6vw-rhxx"
+      }
+    ],
+    "risk_score": 2.0,
+    "dependency_count": 1,
+    "dev_dependency_count": 0,
+    "has_node_modules": true,
+    "dependency_vulns": [
+      {
+        "package": "axios",
+        "version": "1.5.0",
+        "vulns": [
+          {
+            "id": "GHSA-43fc-jf86-j433",
+            "link": "https://github.com/advisories/GHSA-43fc-jf86-j433"
+          },
+          {
+            "id": "GHSA-4hjh-wcwx-xvwj",
+            "link": "https://github.com/advisories/GHSA-4hjh-wcwx-xvwj"
+          },
+          {
+            "id": "GHSA-8hc4-vh64-cxmj",
+            "link": "https://github.com/advisories/GHSA-8hc4-vh64-cxmj"
+          },
+          {
+            "id": "GHSA-jr5f-v2jv-69x6",
+            "link": "https://github.com/advisories/GHSA-jr5f-v2jv-69x6"
+          },
+          {
+            "id": "GHSA-wf5p-g6vw-rhxx",
+            "link": "https://github.com/advisories/GHSA-wf5p-g6vw-rhxx"
+          }
+        ]
+      }
+    ]
+  },
+  "code_analysis": {
+    "all_findings": [
+      {
+        "name": "HTTP client library import",
+        "severity": "low",
+        "description": "HTTP client library imported - enables outbound network communication",
+        "category": "insecure_endpoint",
+        "file": "extension.js",
+        "line": 1,
+        "evidence": "const axios = require('axios'); module.exports = { activate() {} };",
+        "path_type": "app"
+      }
+    ],
+    "module_usage": {
+      "network": [
+        {
+          "module": "axios",
+          "file": "extension.js",
+          "line": 1
+        }
+      ]
+    },
+    "external_urls": [],
+    "file_entropies": {},
+    "files_scanned": 1,
+    "findings_by_category": {
+      "insecure_endpoint": [
+        {
+          "name": "HTTP client library import",
+          "severity": "low",
+          "description": "HTTP client library imported - enables outbound network communication",
+          "category": "insecure_endpoint",
+          "file": "extension.js",
+          "line": 1,
+          "evidence": "const axios = require('axios'); module.exports = { activate() {} };",
+          "path_type": "app"
+        }
+      ]
+    },
+    "findings_by_severity": {
+      "low": 1
+    },
+    "suppressed_false_positives": 0
+  },
+  "malicious_patterns": [
+    {
+      "name": "HTTP client library import",
+      "severity": "low",
+      "description": "HTTP client library imported - enables outbound network communication",
+      "category": "insecure_endpoint",
+      "file": "extension.js",
+      "line": 1,
+      "evidence": "const axios = require('axios'); module.exports = { activate() {} };",
+      "path_type": "app"
+    }
+  ],
+  "html_analysis": {
+    "findings": [],
+    "files_scanned": 0,
+    "iframe_urls": []
+  },
+  "permissions": {
+    "high_risk": [],
+    "medium_risk": [
+      {
+        "permission": "network",
+        "description": "Can make network requests",
+        "evidence": [
+          {
+            "module": "axios",
+            "file": "extension.js",
+            "line": 1
+          }
+        ]
+      }
+    ],
+    "low_risk": [],
+    "total": 1,
+    "all": [
+      "network"
+    ]
+  },
+  "risk_score": 0.7,
+  "risk_level": "MEDIUM",
+  "risk_breakdown": {
+    "metadata_publisher": 0.0,
+    "supply_chain": 1.5,
+    "code_analysis": 0.0,
+    "behavioral_correlations": 0,
+    "infrastructure": 0,
+    "positive_signals": -0.8
+  },
+  "positive_signals": {
+    "signals": [
+      {
+        "signal": "no_obfuscation",
+        "description": "No code obfuscation or evasion techniques detected",
+        "weight": 0.3
+      },
+      {
+        "signal": "no_credential_access",
+        "description": "No access to credential files, SSH keys, or token stores",
+        "weight": 0.3
+      },
+      {
+        "signal": "no_exfiltration_pattern",
+        "description": "No compound attack patterns detected",
+        "weight": 0.2
+      }
+    ],
+    "reduction": 0.8,
+    "count": 3
+  },
+  "risk_classification": {
+    "classification": "STANDARD_RISK",
+    "summary": "Moderate capabilities detected. Extension uses some sensitive APIs but no strong indicators of malicious intent.",
+    "suspicion_indicators": 0,
+    "positive_signal_count": 3
+  },
+  "module_usage": {
+    "network": [
+      {
+        "module": "axios",
+        "file": "extension.js",
+        "line": 1
+      }
+    ]
+  },
+  "external_urls": []
+}

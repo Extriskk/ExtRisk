@@ -1,0 +1,513 @@
+{
+  "extension_type": "vscode",
+  "name": "Makefile Tools",
+  "identifier": "ms-vscode.makefile-tools",
+  "extension_id": "ms-vscode.makefile-tools",
+  "version": "0.13.23",
+  "description": "Provide makefile support in VS Code: C/C++ IntelliSense, build, debug/run.",
+  "publisher": "ms-vscode",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "store_metadata": {
+    "available": true,
+    "store": "vscode",
+    "identifier": "ms-vscode.makefile-tools",
+    "name": "Makefile Tools",
+    "publisher": "Microsoft",
+    "publisher_id": "5f5636e7-69ed-4afe-b5d6-8d231fb3d3ee",
+    "publisher_domain": "https://microsoft.com",
+    "publisher_verified": true,
+    "short_description": "Provide makefile support in VS Code: C/C++ IntelliSense, build, debug/run.",
+    "version": "0.13.23",
+    "last_updated": "2026-02-20T04:42:03.33Z",
+    "categories": [],
+    "tags": [],
+    "install_count": 9173959,
+    "rating_value": 2.53,
+    "rating_count": 40,
+    "flags": "validated, public, preview",
+    "store_url": "https://marketplace.visualstudio.com/items?itemName=ms-vscode.makefile-tools",
+    "risk_signals": {}
+  },
+  "metadata_risk": {
+    "findings": [
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.setBuildConfiguration': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.setBuildConfiguration"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.getConfiguration': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.getConfiguration"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.setBuildTarget': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.setBuildTarget"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.getBuildTarget': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.getBuildTarget"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.buildTarget': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.buildTarget"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.buildCleanTarget': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.buildCleanTarget"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.buildAll': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.buildAll"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.buildCleanAll': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.buildCleanAll"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.setLaunchConfiguration': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.setLaunchConfiguration"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.launchDebug': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.launchDebug"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.launchRun': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.launchRun"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.launchTargetPath': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.launchTargetPath"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.getLaunchTargetPath': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.getLaunchTargetPath"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.launchTargetFileName': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.launchTargetFileName"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.getLaunchTargetFileName': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.getLaunchTargetFileName"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.getLaunchTargetDirectory': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.getLaunchTargetDirectory"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.getLaunchTargetArgs': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.getLaunchTargetArgs"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.getLaunchTargetArgsConcat': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.getLaunchTargetArgsConcat"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.makeBaseDirectory': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.makeBaseDirectory"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.configure': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.configure"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.cleanConfigure': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.cleanConfigure"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.preConfigure': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.preConfigure"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.postConfigure': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.postConfigure"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.outline.setBuildConfiguration': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.outline.setBuildConfiguration"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.outline.setBuildTarget': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.outline.setBuildTarget"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.outline.buildTarget': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.outline.buildTarget"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.outline.buildCleanTarget': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.outline.buildCleanTarget"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.outline.setLaunchConfiguration': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.outline.setLaunchConfiguration"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.outline.launchDebug': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.outline.launchDebug"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.outline.launchRun': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.outline.launchRun"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.outline.configure': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.outline.configure"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.outline.cleanConfigure': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.outline.cleanConfigure"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.outline.preConfigure': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.outline.preConfigure"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.outline.postConfigure': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.outline.postConfigure"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:makefile.resetState': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:makefile.resetState"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:**/makefile': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:**/makefile"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:**/Makefile': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:**/Makefile"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:**/GNUmakefile': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:**/GNUmakefile"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:**/*.Makefile': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:**/*.Makefile"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:**/Makefile.*': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:**/Makefile.*"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:**/*.makefile': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:**/*.makefile"
+      },
+      {
+        "type": "sensitive_contribution",
+        "severity": "medium",
+        "detail": "Contributes 'viewsContainers': Webview views - remote HTML/JS possible",
+        "contribution": "viewsContainers"
+      }
+    ],
+    "risk_score": 10,
+    "activation_events": [
+      "onCommand:makefile.setBuildConfiguration",
+      "onCommand:makefile.getConfiguration",
+      "onCommand:makefile.setBuildTarget",
+      "onCommand:makefile.getBuildTarget",
+      "onCommand:makefile.buildTarget",
+      "onCommand:makefile.buildCleanTarget",
+      "onCommand:makefile.buildAll",
+      "onCommand:makefile.buildCleanAll",
+      "onCommand:makefile.setLaunchConfiguration",
+      "onCommand:makefile.launchDebug",
+      "onCommand:makefile.launchRun",
+      "onCommand:makefile.launchTargetPath",
+      "onCommand:makefile.getLaunchTargetPath",
+      "onCommand:makefile.launchTargetFileName",
+      "onCommand:makefile.getLaunchTargetFileName",
+      "onCommand:makefile.getLaunchTargetDirectory",
+      "onCommand:makefile.getLaunchTargetArgs",
+      "onCommand:makefile.getLaunchTargetArgsConcat",
+      "onCommand:makefile.makeBaseDirectory",
+      "onCommand:makefile.configure",
+      "onCommand:makefile.cleanConfigure",
+      "onCommand:makefile.preConfigure",
+      "onCommand:makefile.postConfigure",
+      "onCommand:makefile.outline.setBuildConfiguration",
+      "onCommand:makefile.outline.setBuildTarget",
+      "onCommand:makefile.outline.buildTarget",
+      "onCommand:makefile.outline.buildCleanTarget",
+      "onCommand:makefile.outline.setLaunchConfiguration",
+      "onCommand:makefile.outline.launchDebug",
+      "onCommand:makefile.outline.launchRun",
+      "onCommand:makefile.outline.configure",
+      "onCommand:makefile.outline.cleanConfigure",
+      "onCommand:makefile.outline.preConfigure",
+      "onCommand:makefile.outline.postConfigure",
+      "onCommand:makefile.resetState",
+      "workspaceContains:**/makefile",
+      "workspaceContains:**/Makefile",
+      "workspaceContains:**/GNUmakefile",
+      "workspaceContains:**/*.Makefile",
+      "workspaceContains:**/Makefile.*",
+      "workspaceContains:**/*.makefile"
+    ],
+    "contributes": [
+      "languages",
+      "commands",
+      "problemMatchers",
+      "configuration",
+      "viewsContainers",
+      "views",
+      "menus"
+    ]
+  },
+  "package_json_deep": {
+    "findings": []
+  },
+  "supply_chain": {
+    "findings": [
+      {
+        "type": "dependency_vulnerability",
+        "severity": "high",
+        "package": "parse-git-config",
+        "version": "3.0.0",
+        "cve_id": "GHSA-8g77-54rh-46hx",
+        "link": "https://github.com/advisories/GHSA-8g77-54rh-46hx",
+        "detail": "parse-git-config@3.0.0 has known vulnerability GHSA-8g77-54rh-46hx \u2014 Prototype Pollution Vulnerability in parse-git-config"
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "low",
+        "package": "webpack",
+        "version": "5.94.0",
+        "cve_id": "GHSA-38r7-794h-5758",
+        "link": "https://github.com/advisories/GHSA-38r7-794h-5758",
+        "detail": "webpack@5.94.0 has known vulnerability GHSA-38r7-794h-5758 \u2014 webpack buildHttp HttpUriPlugin allowedUris bypass via HTTP redirects \u2192 SSRF + cache persistence (fix: >=5.104.0)"
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "low",
+        "package": "webpack",
+        "version": "5.94.0",
+        "cve_id": "GHSA-8fgc-7cc6-rx7x",
+        "link": "https://github.com/advisories/GHSA-8fgc-7cc6-rx7x",
+        "detail": "webpack@5.94.0 has known vulnerability GHSA-8fgc-7cc6-rx7x \u2014 webpack buildHttp: allowedUris allow-list bypass via URL userinfo (@) leading to build-time SSRF behavior (fix: >=5.104.1)"
+      }
+    ],
+    "risk_score": 0.5,
+    "dependency_count": 6,
+    "dev_dependency_count": 33,
+    "has_node_modules": false,
+    "dependency_vulns": [
+      {
+        "package": "parse-git-config",
+        "version": "3.0.0",
+        "dep_type": "dev",
+        "vulns": [
+          {
+            "id": "GHSA-8g77-54rh-46hx",
+            "link": "https://github.com/advisories/GHSA-8g77-54rh-46hx",
+            "summary": "Prototype Pollution Vulnerability in parse-git-config",
+            "severity": "high",
+            "cwe_ids": [
+              "CWE-1321",
+              "CWE-200"
+            ],
+            "aliases": [
+              "CVE-2025-25975"
+            ],
+            "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+          }
+        ]
+      },
+      {
+        "package": "webpack",
+        "version": "5.94.0",
+        "dep_type": "dev",
+        "vulns": [
+          {
+            "id": "GHSA-38r7-794h-5758",
+            "link": "https://github.com/advisories/GHSA-38r7-794h-5758",
+            "summary": "webpack buildHttp HttpUriPlugin allowedUris bypass via HTTP redirects \u2192 SSRF + cache persistence",
+            "severity": "low",
+            "cwe_ids": [
+              "CWE-918"
+            ],
+            "fix_version": "5.104.0",
+            "aliases": [
+              "CVE-2025-68157"
+            ],
+            "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:L/I:L/A:N"
+          },
+          {
+            "id": "GHSA-8fgc-7cc6-rx7x",
+            "link": "https://github.com/advisories/GHSA-8fgc-7cc6-rx7x",
+            "summary": "webpack buildHttp: allowedUris allow-list bypass via URL userinfo (@) leading to build-time SSRF behavior",
+            "severity": "low",
+            "cwe_ids": [
+              "CWE-918"
+            ],
+            "fix_version": "5.104.1",
+            "aliases": [
+              "CVE-2025-68458"
+            ],
+            "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:L/I:L/A:N"
+          }
+        ]
+      }
+    ],
+    "bundled_js_vulns": []
+  },
+  "code_analysis": {
+    "all_findings": [],
+    "module_usage": {},
+    "external_urls": [],
+    "file_entropies": {},
+    "files_scanned": 1,
+    "findings_by_category": {},
+    "findings_by_severity": {},
+    "suppressed_false_positives": 0
+  },
+  "malicious_patterns": [],
+  "html_analysis": {
+    "findings": [],
+    "files_scanned": 0,
+    "iframe_urls": []
+  },
+  "permissions": {
+    "high_risk": [],
+    "medium_risk": [],
+    "low_risk": [],
+    "total": 0,
+    "all": []
+  },
+  "risk_score": 5.0,
+  "risk_level": "MEDIUM",
+  "risk_breakdown": {
+    "supply_chain": 5.0,
+    "metadata_publisher": 1.0,
+    "code_analysis": 0,
+    "behavioral_correlations": 0,
+    "infrastructure": 0,
+    "positive_signals": -1.5
+  },
+  "positive_signals": {
+    "signals": [
+      {
+        "signal": "no_network_access",
+        "description": "Extension has no network capabilities - data stays local",
+        "weight": 0.5
+      },
+      {
+        "signal": "no_obfuscation",
+        "description": "No code obfuscation or evasion techniques detected",
+        "weight": 0.3
+      },
+      {
+        "signal": "no_credential_access",
+        "description": "No access to credential files, SSH keys, or token stores",
+        "weight": 0.3
+      },
+      {
+        "signal": "scoped_activation",
+        "description": "Extension activates only on specific events, not wildcard",
+        "weight": 0.2
+      },
+      {
+        "signal": "no_exfiltration_pattern",
+        "description": "No compound attack patterns detected",
+        "weight": 0.2
+      }
+    ],
+    "reduction": 1.5,
+    "count": 5
+  },
+  "risk_classification": {
+    "classification": "STANDARD_RISK",
+    "summary": "Moderate capabilities detected. Extension uses some sensitive APIs but no strong indicators of malicious intent.",
+    "suspicion_indicators": 0,
+    "positive_signal_count": 5
+  },
+  "module_usage": {},
+  "external_urls": [],
+  "domain_intelligence": [],
+  "virustotal_results": []
+}

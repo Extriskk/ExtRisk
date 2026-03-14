@@ -1,0 +1,1963 @@
+{
+  "extension_type": "vscode",
+  "name": "Claude Code Cheaper & CoSave - Cut 95% Claude Cost",
+  "identifier": "clacla100.cosave100",
+  "extension_id": "clacla100.cosave100",
+  "version": "0.0.78",
+  "description": "Claude Code & CoSave Cut AI Costs by 95% Through Model Optimization",
+  "publisher": "clacla100",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "store_metadata": {
+    "available": true,
+    "store": "vscode",
+    "identifier": "clacla100.cosave100",
+    "name": "Claude Code Cheaper & CoSave - Cut 95% Claude Cost",
+    "publisher": "clacla100",
+    "publisher_id": "4fc6bc16-66ba-4e07-a595-23b86b9b8126",
+    "publisher_domain": "https://www.cosave.top",
+    "publisher_verified": false,
+    "short_description": "Claude Code & CoSave Cut AI Costs by 95% Through Model Optimization",
+    "version": "0.0.78",
+    "last_updated": "2026-02-10T00:12:54.323Z",
+    "categories": [],
+    "tags": [],
+    "install_count": 0,
+    "rating_value": 0,
+    "rating_count": 0,
+    "flags": "validated, public",
+    "store_url": "https://marketplace.visualstudio.com/items?itemName=clacla100.cosave100",
+    "risk_signals": {
+      "low_adoption": true,
+      "unverified_publisher": true,
+      "few_ratings": true
+    }
+  },
+  "metadata_risk": {
+    "findings": [
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onStartupFinished': Activates immediately after VS Code starts",
+        "event": "onStartupFinished"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onUri': Activates on custom URI scheme (can be triggered externally)",
+        "event": "onUri"
+      },
+      {
+        "type": "unverified_publisher",
+        "severity": "medium",
+        "detail": "Publisher domain is not verified"
+      },
+      {
+        "type": "low_adoption",
+        "severity": "medium",
+        "detail": "Low install count (<500)"
+      },
+      {
+        "type": "few_ratings",
+        "severity": "low",
+        "detail": "Very few ratings (<5)"
+      }
+    ],
+    "risk_score": 4,
+    "activation_events": [
+      "onStartupFinished",
+      "onUri"
+    ],
+    "contributes": [
+      "configuration",
+      "viewsContainers",
+      "views",
+      "commands"
+    ]
+  },
+  "package_json_deep": {
+    "findings": []
+  },
+  "supply_chain": {
+    "findings": [],
+    "risk_score": 0,
+    "dependency_count": 0,
+    "dev_dependency_count": 5,
+    "has_node_modules": false
+  },
+  "code_analysis": {
+    "all_findings": [
+      {
+        "name": "HTTP POST with sensitive data",
+        "severity": "medium",
+        "description": "Sends data via HTTP POST request",
+        "category": "network_exfil",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "\"string\"==typeof e?e:e?.content,a=await fetch(\"/api/action\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+      },
+      {
+        "name": "HTTP POST with sensitive data",
+        "severity": "medium",
+        "description": "Sends data via HTTP POST request",
+        "category": "network_exfil",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "if(\"saveState\"===t.type){const e=await fetch(\"/api/action\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+      },
+      {
+        "name": "HTTP POST with sensitive data",
+        "severity": "medium",
+        "description": "Sends data via HTTP POST request",
+        "category": "network_exfil",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "setupMultiTask\"===t.type){const e=await fetch(\"/api/action\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+      },
+      {
+        "name": "HTTP POST with sensitive data",
+        "severity": "medium",
+        "description": "Sends data via HTTP POST request",
+        "category": "network_exfil",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "enerateAITasks\"===t.type){const e=await fetch(\"/api/action\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+      },
+      {
+        "name": "HTTP POST with sensitive data",
+        "severity": "medium",
+        "description": "Sends data via HTTP POST request",
+        "category": "network_exfil",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "asks:n.tasks,error:n.error})}else await fetch(\"/api/action\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "svg\"!==e.namespaceURI||\"innerHTML\"in e)e.innerHTML=t;else{for((it=it||document.createElemen"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "dEventListener(\"error\",e=>{document.body.innerHTML=`\\n    <div style=\"padding: 20px; color:"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": ".jsx(Yu,{})})}))}catch(Xu){document.body.innerHTML=`\\n    <div style=\"padding: 20px; color:"
+      },
+      {
+        "name": "constructor.prototype access",
+        "severity": "medium",
+        "description": "Accessing constructor.prototype (potential prototype pollution)",
+        "category": "prototype_pollution",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "ue\",n=Object.getOwnPropertyDescriptor(e.constructor.prototype,t),a=\"\"+e[t];if(!e.hasOwnProperty(t)&&v"
+      },
+      {
+        "name": "Plaintext HTTP endpoint (not HTTPS)",
+        "severity": "high",
+        "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+        "category": "insecure_endpoint",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "=e.replace(fe,ge);he[t]=new me(t,1,!1,e,\"http://www.w3.org/1999/xlink\",!1,!1)}),[\"xml:base\",\"xml:l"
+      },
+      {
+        "name": "Plaintext HTTP endpoint (not HTTPS)",
+        "severity": "high",
+        "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+        "category": "insecure_endpoint",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "=e.replace(fe,ge);he[t]=new me(t,1,!1,e,\"http://www.w3.org/XML/1998/namespace\",!1,!1)}),[\"tabIndex"
+      },
+      {
+        "name": "Plaintext HTTP endpoint (not HTTPS)",
+        "severity": "high",
+        "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+        "category": "insecure_endpoint",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "ef=new me(\"xlinkHref\",1,!1,\"xlink:href\",\"http://www.w3.org/1999/xlink\",!0,!1),[\"src\",\"href\",\"actio"
+      },
+      {
+        "name": "Plaintext HTTP endpoint (not HTTPS)",
+        "severity": "high",
+        "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+        "category": "insecure_endpoint",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "unction rt(e){switch(e){case\"svg\":return\"http://www.w3.org/2000/svg\";case\"math\":return\"http://www."
+      },
+      {
+        "name": "Plaintext HTTP endpoint (not HTTPS)",
+        "severity": "high",
+        "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+        "category": "insecure_endpoint",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "//www.w3.org/2000/svg\";case\"math\":return\"http://www.w3.org/1998/Math/MathML\";default:return\"http:/"
+      },
+      {
+        "name": "Plaintext HTTP endpoint (not HTTPS)",
+        "severity": "high",
+        "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+        "category": "insecure_endpoint",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": ".w3.org/1998/Math/MathML\";default:return\"http://www.w3.org/1999/xhtml\"}}function ot(e,t){return nu"
+      },
+      {
+        "name": "Plaintext HTTP endpoint (not HTTPS)",
+        "severity": "high",
+        "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+        "category": "insecure_endpoint",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "html\"}}function ot(e,t){return null==e||\"http://www.w3.org/1999/xhtml\"===e?rt(t):\"http://www.w3.or"
+      },
+      {
+        "name": "Plaintext HTTP endpoint (not HTTPS)",
+        "severity": "high",
+        "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+        "category": "insecure_endpoint",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "http://www.w3.org/1999/xhtml\"===e?rt(t):\"http://www.w3.org/2000/svg\"===e&&\"foreignObject\"===t?\"htt"
+      },
+      {
+        "name": "Plaintext HTTP endpoint (not HTTPS)",
+        "severity": "high",
+        "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+        "category": "insecure_endpoint",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": ".org/2000/svg\"===e&&\"foreignObject\"===t?\"http://www.w3.org/1999/xhtml\":e}var it,lt,ct=(lt=function"
+      },
+      {
+        "name": "Plaintext HTTP endpoint (not HTTPS)",
+        "severity": "high",
+        "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+        "category": "insecure_endpoint",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "ml\":e}var it,lt,ct=(lt=function(e,t){if(\"http://www.w3.org/2000/svg\"!==e.namespaceURI||\"innerHTML\""
+      },
+      {
+        "name": "Plaintext HTTP endpoint (not HTTPS)",
+        "severity": "high",
+        "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+        "category": "insecure_endpoint",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "else{o=9===s.nodeType?s:s.ownerDocument,\"http://www.w3.org/1999/xhtml\"===e&&(e=rt(n)),\"http://www."
+      },
+      {
+        "name": "Plaintext HTTP endpoint (not HTTPS)",
+        "severity": "high",
+        "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+        "category": "insecure_endpoint",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "//www.w3.org/1999/xhtml\"===e&&(e=rt(n)),\"http://www.w3.org/1999/xhtml\"===e?\"script\"===n?((e=o.crea"
+      },
+      {
+        "name": "Plaintext HTTP endpoint (not HTTPS)",
+        "severity": "high",
+        "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+        "category": "insecure_endpoint",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "\",viewBox:\"0 0 12 12\",fill:\"none\",xmlns:\"http://www.w3.org/2000/svg\",style:{transform:o?\"rotate(18"
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "urn void(this.currentLang=\"en\");const t=navigator.language.split(\"-\")[0];if(e.includes(t)&&\"en\"!=="
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "t)&&\"en\"!==t)this.currentLang=t;else{if(navigator.languages&&navigator.languages.length>0)for(let"
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "rentLang=t;else{if(navigator.languages&&navigator.languages.length>0)for(let t=0;t<navigator.langu"
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "igator.languages.length>0)for(let t=0;t<navigator.languages.length;t++){const n=navigator.language"
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "navigator.languages.length;t++){const n=navigator.languages[t].split(\"-\")[0];if(e.includes(n)&&\"en"
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "en\"!==n)return void(this.currentLang=n)}navigator.language.startsWith(\"zh-\")?this.currentLang=\"zh\""
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "dist\\web\\index.js",
+        "line": 1,
+        "evidence": "ate?.(),\"undefined\"!=typeof navigator&&!navigator.userAgent.toLowerCase().includes(\"electron\")}catc"
+      },
+      {
+        "name": "Device fingerprinting + exfiltration: hardware/environment profiling + network",
+        "severity": "high",
+        "description": "Extension collects device hardware information (CPU, memory, network interfaces) and/or environment variables combined with network access - potential device fingerprinting and environment reconnaissance exfiltration.",
+        "category": "behavioral_correlation",
+        "file": "dist\\web\\index.js",
+        "line": 0,
+        "evidence": "User/device fingerprinting + HTTP POST with sensitive data",
+        "confidence": "HIGH",
+        "attack_type": "fingerprint_exfil"
+      }
+    ],
+    "module_usage": {
+      "network": [
+        {
+          "module": "http",
+          "file": "dist\\extension.js",
+          "line": 95
+        },
+        {
+          "module": "https",
+          "file": "dist\\extension.js",
+          "line": 1600
+        },
+        {
+          "module": "http",
+          "file": "dist\\extension.js",
+          "line": 1600
+        },
+        {
+          "module": "http",
+          "file": "dist\\extension.web.js",
+          "line": 95
+        },
+        {
+          "module": "https",
+          "file": "dist\\extension.web.js",
+          "line": 1600
+        },
+        {
+          "module": "http",
+          "file": "dist\\extension.web.js",
+          "line": 1600
+        }
+      ],
+      "os_info": [
+        {
+          "module": "os",
+          "file": "dist\\extension.js",
+          "line": 95
+        },
+        {
+          "module": "os",
+          "file": "dist\\extension.web.js",
+          "line": 95
+        }
+      ],
+      "file_access": [
+        {
+          "module": "fs",
+          "file": "dist\\extension.js",
+          "line": 95
+        },
+        {
+          "module": "path",
+          "file": "dist\\extension.js",
+          "line": 95
+        },
+        {
+          "module": "fs",
+          "file": "dist\\extension.web.js",
+          "line": 95
+        },
+        {
+          "module": "path",
+          "file": "dist\\extension.web.js",
+          "line": 95
+        }
+      ],
+      "process_execution": [
+        {
+          "module": "child_process",
+          "file": "dist\\extension.js",
+          "line": 212
+        },
+        {
+          "module": "child_process",
+          "file": "dist\\extension.js",
+          "line": 1555
+        },
+        {
+          "module": "child_process",
+          "file": "dist\\extension.web.js",
+          "line": 212
+        },
+        {
+          "module": "child_process",
+          "file": "dist\\extension.web.js",
+          "line": 1555
+        }
+      ],
+      "crypto": [
+        {
+          "module": "crypto",
+          "file": "dist\\extension.js",
+          "line": 1598
+        },
+        {
+          "module": "crypto",
+          "file": "dist\\extension.web.js",
+          "line": 1598
+        }
+      ]
+    },
+    "external_urls": [
+      {
+        "url": "https://openrouter.ai/api/v1",
+        "file": "dist\\extension.js",
+        "line": 1997
+      },
+      {
+        "url": "https://api.openai.com/v1",
+        "file": "dist\\extension.js",
+        "line": 1997
+      },
+      {
+        "url": "https://github.com/codesleep",
+        "file": "dist\\extension.js",
+        "line": 2313
+      },
+      {
+        "url": "https://openrouter.ai/api/v1",
+        "file": "dist\\extension.web.js",
+        "line": 1997
+      },
+      {
+        "url": "https://api.openai.com/v1",
+        "file": "dist\\extension.web.js",
+        "line": 1997
+      },
+      {
+        "url": "https://github.com/codesleep",
+        "file": "dist\\extension.web.js",
+        "line": 2313
+      },
+      {
+        "url": "https://reactjs.org/docs/error-decoder.html?invariant=",
+        "file": "dist\\web\\index.js",
+        "line": 1
+      },
+      {
+        "url": "https://ai.devokai.com/api/v1",
+        "file": "dist\\web\\index.js",
+        "line": 1
+      },
+      {
+        "url": "https://api.anthropic.com/v1",
+        "file": "dist\\web\\index.js",
+        "line": 1
+      },
+      {
+        "url": "https://api.openai.com/v1",
+        "file": "dist\\web\\index.js",
+        "line": 1
+      },
+      {
+        "url": "https://generativelanguage.googleapis.com/v1beta",
+        "file": "dist\\web\\index.js",
+        "line": 1
+      },
+      {
+        "url": "https://openrouter.ai/api/v1",
+        "file": "dist\\web\\index.js",
+        "line": 1
+      },
+      {
+        "url": "https://api.x.ai/v1",
+        "file": "dist\\web\\index.js",
+        "line": 1
+      },
+      {
+        "url": "https://api.deepseek.com",
+        "file": "dist\\web\\index.js",
+        "line": 1
+      },
+      {
+        "url": "https://api.groq.com/openai/v1",
+        "file": "dist\\web\\index.js",
+        "line": 1
+      },
+      {
+        "url": "https://api.mistral.ai/v1",
+        "file": "dist\\web\\index.js",
+        "line": 1
+      },
+      {
+        "url": "https://discord.gg/x3r7a6vj",
+        "file": "dist\\web\\index.js",
+        "line": 1
+      },
+      {
+        "url": "https://cdn.xfeixie.com/b1/daxiang.jpg",
+        "file": "dist\\web\\index.js",
+        "line": 1
+      }
+    ],
+    "file_entropies": {
+      "dist\\web\\index.js": 5.87
+    },
+    "files_scanned": 3,
+    "findings_by_category": {
+      "network_exfil": [
+        {
+          "name": "HTTP POST with sensitive data",
+          "severity": "medium",
+          "description": "Sends data via HTTP POST request",
+          "category": "network_exfil",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "\"string\"==typeof e?e:e?.content,a=await fetch(\"/api/action\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+        },
+        {
+          "name": "HTTP POST with sensitive data",
+          "severity": "medium",
+          "description": "Sends data via HTTP POST request",
+          "category": "network_exfil",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "if(\"saveState\"===t.type){const e=await fetch(\"/api/action\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+        },
+        {
+          "name": "HTTP POST with sensitive data",
+          "severity": "medium",
+          "description": "Sends data via HTTP POST request",
+          "category": "network_exfil",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "setupMultiTask\"===t.type){const e=await fetch(\"/api/action\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+        },
+        {
+          "name": "HTTP POST with sensitive data",
+          "severity": "medium",
+          "description": "Sends data via HTTP POST request",
+          "category": "network_exfil",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "enerateAITasks\"===t.type){const e=await fetch(\"/api/action\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+        },
+        {
+          "name": "HTTP POST with sensitive data",
+          "severity": "medium",
+          "description": "Sends data via HTTP POST request",
+          "category": "network_exfil",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "asks:n.tasks,error:n.error})}else await fetch(\"/api/action\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+        }
+      ],
+      "webview_risk": [
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "svg\"!==e.namespaceURI||\"innerHTML\"in e)e.innerHTML=t;else{for((it=it||document.createElemen"
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "dEventListener(\"error\",e=>{document.body.innerHTML=`\\n    <div style=\"padding: 20px; color:"
+        },
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": ".jsx(Yu,{})})}))}catch(Xu){document.body.innerHTML=`\\n    <div style=\"padding: 20px; color:"
+        }
+      ],
+      "prototype_pollution": [
+        {
+          "name": "constructor.prototype access",
+          "severity": "medium",
+          "description": "Accessing constructor.prototype (potential prototype pollution)",
+          "category": "prototype_pollution",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "ue\",n=Object.getOwnPropertyDescriptor(e.constructor.prototype,t),a=\"\"+e[t];if(!e.hasOwnProperty(t)&&v"
+        }
+      ],
+      "insecure_endpoint": [
+        {
+          "name": "Plaintext HTTP endpoint (not HTTPS)",
+          "severity": "high",
+          "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+          "category": "insecure_endpoint",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "=e.replace(fe,ge);he[t]=new me(t,1,!1,e,\"http://www.w3.org/1999/xlink\",!1,!1)}),[\"xml:base\",\"xml:l"
+        },
+        {
+          "name": "Plaintext HTTP endpoint (not HTTPS)",
+          "severity": "high",
+          "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+          "category": "insecure_endpoint",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "=e.replace(fe,ge);he[t]=new me(t,1,!1,e,\"http://www.w3.org/XML/1998/namespace\",!1,!1)}),[\"tabIndex"
+        },
+        {
+          "name": "Plaintext HTTP endpoint (not HTTPS)",
+          "severity": "high",
+          "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+          "category": "insecure_endpoint",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "ef=new me(\"xlinkHref\",1,!1,\"xlink:href\",\"http://www.w3.org/1999/xlink\",!0,!1),[\"src\",\"href\",\"actio"
+        },
+        {
+          "name": "Plaintext HTTP endpoint (not HTTPS)",
+          "severity": "high",
+          "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+          "category": "insecure_endpoint",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "unction rt(e){switch(e){case\"svg\":return\"http://www.w3.org/2000/svg\";case\"math\":return\"http://www."
+        },
+        {
+          "name": "Plaintext HTTP endpoint (not HTTPS)",
+          "severity": "high",
+          "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+          "category": "insecure_endpoint",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "//www.w3.org/2000/svg\";case\"math\":return\"http://www.w3.org/1998/Math/MathML\";default:return\"http:/"
+        },
+        {
+          "name": "Plaintext HTTP endpoint (not HTTPS)",
+          "severity": "high",
+          "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+          "category": "insecure_endpoint",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": ".w3.org/1998/Math/MathML\";default:return\"http://www.w3.org/1999/xhtml\"}}function ot(e,t){return nu"
+        },
+        {
+          "name": "Plaintext HTTP endpoint (not HTTPS)",
+          "severity": "high",
+          "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+          "category": "insecure_endpoint",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "html\"}}function ot(e,t){return null==e||\"http://www.w3.org/1999/xhtml\"===e?rt(t):\"http://www.w3.or"
+        },
+        {
+          "name": "Plaintext HTTP endpoint (not HTTPS)",
+          "severity": "high",
+          "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+          "category": "insecure_endpoint",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "http://www.w3.org/1999/xhtml\"===e?rt(t):\"http://www.w3.org/2000/svg\"===e&&\"foreignObject\"===t?\"htt"
+        },
+        {
+          "name": "Plaintext HTTP endpoint (not HTTPS)",
+          "severity": "high",
+          "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+          "category": "insecure_endpoint",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": ".org/2000/svg\"===e&&\"foreignObject\"===t?\"http://www.w3.org/1999/xhtml\":e}var it,lt,ct=(lt=function"
+        },
+        {
+          "name": "Plaintext HTTP endpoint (not HTTPS)",
+          "severity": "high",
+          "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+          "category": "insecure_endpoint",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "ml\":e}var it,lt,ct=(lt=function(e,t){if(\"http://www.w3.org/2000/svg\"!==e.namespaceURI||\"innerHTML\""
+        },
+        {
+          "name": "Plaintext HTTP endpoint (not HTTPS)",
+          "severity": "high",
+          "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+          "category": "insecure_endpoint",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "else{o=9===s.nodeType?s:s.ownerDocument,\"http://www.w3.org/1999/xhtml\"===e&&(e=rt(n)),\"http://www."
+        },
+        {
+          "name": "Plaintext HTTP endpoint (not HTTPS)",
+          "severity": "high",
+          "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+          "category": "insecure_endpoint",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "//www.w3.org/1999/xhtml\"===e&&(e=rt(n)),\"http://www.w3.org/1999/xhtml\"===e?\"script\"===n?((e=o.crea"
+        },
+        {
+          "name": "Plaintext HTTP endpoint (not HTTPS)",
+          "severity": "high",
+          "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+          "category": "insecure_endpoint",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "\",viewBox:\"0 0 12 12\",fill:\"none\",xmlns:\"http://www.w3.org/2000/svg\",style:{transform:o?\"rotate(18"
+        }
+      ],
+      "telemetry_abuse": [
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "urn void(this.currentLang=\"en\");const t=navigator.language.split(\"-\")[0];if(e.includes(t)&&\"en\"!=="
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "t)&&\"en\"!==t)this.currentLang=t;else{if(navigator.languages&&navigator.languages.length>0)for(let"
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "rentLang=t;else{if(navigator.languages&&navigator.languages.length>0)for(let t=0;t<navigator.langu"
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "igator.languages.length>0)for(let t=0;t<navigator.languages.length;t++){const n=navigator.language"
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "navigator.languages.length;t++){const n=navigator.languages[t].split(\"-\")[0];if(e.includes(n)&&\"en"
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "en\"!==n)return void(this.currentLang=n)}navigator.language.startsWith(\"zh-\")?this.currentLang=\"zh\""
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "dist\\web\\index.js",
+          "line": 1,
+          "evidence": "ate?.(),\"undefined\"!=typeof navigator&&!navigator.userAgent.toLowerCase().includes(\"electron\")}catc"
+        }
+      ],
+      "behavioral_correlation": [
+        {
+          "name": "Device fingerprinting + exfiltration: hardware/environment profiling + network",
+          "severity": "high",
+          "description": "Extension collects device hardware information (CPU, memory, network interfaces) and/or environment variables combined with network access - potential device fingerprinting and environment reconnaissance exfiltration.",
+          "category": "behavioral_correlation",
+          "file": "dist\\web\\index.js",
+          "line": 0,
+          "evidence": "User/device fingerprinting + HTTP POST with sensitive data",
+          "confidence": "HIGH",
+          "attack_type": "fingerprint_exfil"
+        }
+      ]
+    },
+    "findings_by_severity": {
+      "medium": 6,
+      "high": 17,
+      "low": 7
+    },
+    "suppressed_false_positives": 0
+  },
+  "malicious_patterns": [
+    {
+      "name": "HTTP POST with sensitive data",
+      "severity": "medium",
+      "description": "Sends data via HTTP POST request",
+      "category": "network_exfil",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "\"string\"==typeof e?e:e?.content,a=await fetch(\"/api/action\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+    },
+    {
+      "name": "HTTP POST with sensitive data",
+      "severity": "medium",
+      "description": "Sends data via HTTP POST request",
+      "category": "network_exfil",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "if(\"saveState\"===t.type){const e=await fetch(\"/api/action\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+    },
+    {
+      "name": "HTTP POST with sensitive data",
+      "severity": "medium",
+      "description": "Sends data via HTTP POST request",
+      "category": "network_exfil",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "setupMultiTask\"===t.type){const e=await fetch(\"/api/action\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+    },
+    {
+      "name": "HTTP POST with sensitive data",
+      "severity": "medium",
+      "description": "Sends data via HTTP POST request",
+      "category": "network_exfil",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "enerateAITasks\"===t.type){const e=await fetch(\"/api/action\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+    },
+    {
+      "name": "HTTP POST with sensitive data",
+      "severity": "medium",
+      "description": "Sends data via HTTP POST request",
+      "category": "network_exfil",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "asks:n.tasks,error:n.error})}else await fetch(\"/api/action\",{method:\"POST\",headers:{\"Content-Type\":\"application/j"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "svg\"!==e.namespaceURI||\"innerHTML\"in e)e.innerHTML=t;else{for((it=it||document.createElemen"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "dEventListener(\"error\",e=>{document.body.innerHTML=`\\n    <div style=\"padding: 20px; color:"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": ".jsx(Yu,{})})}))}catch(Xu){document.body.innerHTML=`\\n    <div style=\"padding: 20px; color:"
+    },
+    {
+      "name": "constructor.prototype access",
+      "severity": "medium",
+      "description": "Accessing constructor.prototype (potential prototype pollution)",
+      "category": "prototype_pollution",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "ue\",n=Object.getOwnPropertyDescriptor(e.constructor.prototype,t),a=\"\"+e[t];if(!e.hasOwnProperty(t)&&v"
+    },
+    {
+      "name": "Plaintext HTTP endpoint (not HTTPS)",
+      "severity": "high",
+      "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+      "category": "insecure_endpoint",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "=e.replace(fe,ge);he[t]=new me(t,1,!1,e,\"http://www.w3.org/1999/xlink\",!1,!1)}),[\"xml:base\",\"xml:l"
+    },
+    {
+      "name": "Plaintext HTTP endpoint (not HTTPS)",
+      "severity": "high",
+      "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+      "category": "insecure_endpoint",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "=e.replace(fe,ge);he[t]=new me(t,1,!1,e,\"http://www.w3.org/XML/1998/namespace\",!1,!1)}),[\"tabIndex"
+    },
+    {
+      "name": "Plaintext HTTP endpoint (not HTTPS)",
+      "severity": "high",
+      "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+      "category": "insecure_endpoint",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "ef=new me(\"xlinkHref\",1,!1,\"xlink:href\",\"http://www.w3.org/1999/xlink\",!0,!1),[\"src\",\"href\",\"actio"
+    },
+    {
+      "name": "Plaintext HTTP endpoint (not HTTPS)",
+      "severity": "high",
+      "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+      "category": "insecure_endpoint",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "unction rt(e){switch(e){case\"svg\":return\"http://www.w3.org/2000/svg\";case\"math\":return\"http://www."
+    },
+    {
+      "name": "Plaintext HTTP endpoint (not HTTPS)",
+      "severity": "high",
+      "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+      "category": "insecure_endpoint",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "//www.w3.org/2000/svg\";case\"math\":return\"http://www.w3.org/1998/Math/MathML\";default:return\"http:/"
+    },
+    {
+      "name": "Plaintext HTTP endpoint (not HTTPS)",
+      "severity": "high",
+      "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+      "category": "insecure_endpoint",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": ".w3.org/1998/Math/MathML\";default:return\"http://www.w3.org/1999/xhtml\"}}function ot(e,t){return nu"
+    },
+    {
+      "name": "Plaintext HTTP endpoint (not HTTPS)",
+      "severity": "high",
+      "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+      "category": "insecure_endpoint",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "html\"}}function ot(e,t){return null==e||\"http://www.w3.org/1999/xhtml\"===e?rt(t):\"http://www.w3.or"
+    },
+    {
+      "name": "Plaintext HTTP endpoint (not HTTPS)",
+      "severity": "high",
+      "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+      "category": "insecure_endpoint",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "http://www.w3.org/1999/xhtml\"===e?rt(t):\"http://www.w3.org/2000/svg\"===e&&\"foreignObject\"===t?\"htt"
+    },
+    {
+      "name": "Plaintext HTTP endpoint (not HTTPS)",
+      "severity": "high",
+      "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+      "category": "insecure_endpoint",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": ".org/2000/svg\"===e&&\"foreignObject\"===t?\"http://www.w3.org/1999/xhtml\":e}var it,lt,ct=(lt=function"
+    },
+    {
+      "name": "Plaintext HTTP endpoint (not HTTPS)",
+      "severity": "high",
+      "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+      "category": "insecure_endpoint",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "ml\":e}var it,lt,ct=(lt=function(e,t){if(\"http://www.w3.org/2000/svg\"!==e.namespaceURI||\"innerHTML\""
+    },
+    {
+      "name": "Plaintext HTTP endpoint (not HTTPS)",
+      "severity": "high",
+      "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+      "category": "insecure_endpoint",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "else{o=9===s.nodeType?s:s.ownerDocument,\"http://www.w3.org/1999/xhtml\"===e&&(e=rt(n)),\"http://www."
+    },
+    {
+      "name": "Plaintext HTTP endpoint (not HTTPS)",
+      "severity": "high",
+      "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+      "category": "insecure_endpoint",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "//www.w3.org/1999/xhtml\"===e&&(e=rt(n)),\"http://www.w3.org/1999/xhtml\"===e?\"script\"===n?((e=o.crea"
+    },
+    {
+      "name": "Plaintext HTTP endpoint (not HTTPS)",
+      "severity": "high",
+      "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+      "category": "insecure_endpoint",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "\",viewBox:\"0 0 12 12\",fill:\"none\",xmlns:\"http://www.w3.org/2000/svg\",style:{transform:o?\"rotate(18"
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "urn void(this.currentLang=\"en\");const t=navigator.language.split(\"-\")[0];if(e.includes(t)&&\"en\"!=="
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "t)&&\"en\"!==t)this.currentLang=t;else{if(navigator.languages&&navigator.languages.length>0)for(let"
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "rentLang=t;else{if(navigator.languages&&navigator.languages.length>0)for(let t=0;t<navigator.langu"
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "igator.languages.length>0)for(let t=0;t<navigator.languages.length;t++){const n=navigator.language"
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "navigator.languages.length;t++){const n=navigator.languages[t].split(\"-\")[0];if(e.includes(n)&&\"en"
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "en\"!==n)return void(this.currentLang=n)}navigator.language.startsWith(\"zh-\")?this.currentLang=\"zh\""
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "dist\\web\\index.js",
+      "line": 1,
+      "evidence": "ate?.(),\"undefined\"!=typeof navigator&&!navigator.userAgent.toLowerCase().includes(\"electron\")}catc"
+    },
+    {
+      "name": "Device fingerprinting + exfiltration: hardware/environment profiling + network",
+      "severity": "high",
+      "description": "Extension collects device hardware information (CPU, memory, network interfaces) and/or environment variables combined with network access - potential device fingerprinting and environment reconnaissance exfiltration.",
+      "category": "behavioral_correlation",
+      "file": "dist\\web\\index.js",
+      "line": 0,
+      "evidence": "User/device fingerprinting + HTTP POST with sensitive data",
+      "confidence": "HIGH",
+      "attack_type": "fingerprint_exfil"
+    }
+  ],
+  "html_analysis": {
+    "findings": [],
+    "files_scanned": 2,
+    "iframe_urls": []
+  },
+  "permissions": {
+    "high_risk": [
+      {
+        "permission": "child_process",
+        "description": "Can execute system commands",
+        "evidence": [
+          {
+            "module": "child_process",
+            "file": "dist\\extension.js",
+            "line": 212
+          },
+          {
+            "module": "child_process",
+            "file": "dist\\extension.js",
+            "line": 1555
+          },
+          {
+            "module": "child_process",
+            "file": "dist\\extension.web.js",
+            "line": 212
+          },
+          {
+            "module": "child_process",
+            "file": "dist\\extension.web.js",
+            "line": 1555
+          }
+        ]
+      }
+    ],
+    "medium_risk": [
+      {
+        "permission": "filesystem",
+        "description": "Can read/write files on disk",
+        "evidence": [
+          {
+            "module": "fs",
+            "file": "dist\\extension.js",
+            "line": 95
+          },
+          {
+            "module": "path",
+            "file": "dist\\extension.js",
+            "line": 95
+          },
+          {
+            "module": "fs",
+            "file": "dist\\extension.web.js",
+            "line": 95
+          },
+          {
+            "module": "path",
+            "file": "dist\\extension.web.js",
+            "line": 95
+          }
+        ]
+      },
+      {
+        "permission": "network",
+        "description": "Can make network requests",
+        "evidence": [
+          {
+            "module": "http",
+            "file": "dist\\extension.js",
+            "line": 95
+          },
+          {
+            "module": "https",
+            "file": "dist\\extension.js",
+            "line": 1600
+          },
+          {
+            "module": "http",
+            "file": "dist\\extension.js",
+            "line": 1600
+          },
+          {
+            "module": "http",
+            "file": "dist\\extension.web.js",
+            "line": 95
+          },
+          {
+            "module": "https",
+            "file": "dist\\extension.web.js",
+            "line": 1600
+          },
+          {
+            "module": "http",
+            "file": "dist\\extension.web.js",
+            "line": 1600
+          }
+        ]
+      }
+    ],
+    "low_risk": [
+      {
+        "permission": "os_info",
+        "description": "Can read OS information",
+        "evidence": [
+          {
+            "module": "os",
+            "file": "dist\\extension.js",
+            "line": 95
+          },
+          {
+            "module": "os",
+            "file": "dist\\extension.web.js",
+            "line": 95
+          }
+        ]
+      }
+    ],
+    "total": 4,
+    "all": [
+      "child_process",
+      "filesystem",
+      "network",
+      "os_info"
+    ]
+  },
+  "risk_score": 4.8,
+  "risk_level": "MEDIUM",
+  "risk_breakdown": {
+    "metadata_publisher": 0.8,
+    "supply_chain": 0.0,
+    "code_analysis": 4.0,
+    "behavioral_correlations": 0.8,
+    "infrastructure": 0,
+    "positive_signals": -0.8
+  },
+  "positive_signals": {
+    "signals": [
+      {
+        "signal": "no_obfuscation",
+        "description": "No code obfuscation or evasion techniques detected",
+        "weight": 0.3
+      },
+      {
+        "signal": "no_credential_access",
+        "description": "No access to credential files, SSH keys, or token stores",
+        "weight": 0.3
+      },
+      {
+        "signal": "scoped_activation",
+        "description": "Extension activates only on specific events, not wildcard",
+        "weight": 0.2
+      }
+    ],
+    "reduction": 0.8,
+    "count": 3
+  },
+  "risk_classification": {
+    "classification": "STANDARD_RISK",
+    "summary": "Moderate capabilities detected. Extension uses some sensitive APIs but no strong indicators of malicious intent.",
+    "suspicion_indicators": 1,
+    "positive_signal_count": 3
+  },
+  "module_usage": {
+    "network": [
+      {
+        "module": "http",
+        "file": "dist\\extension.js",
+        "line": 95
+      },
+      {
+        "module": "https",
+        "file": "dist\\extension.js",
+        "line": 1600
+      },
+      {
+        "module": "http",
+        "file": "dist\\extension.js",
+        "line": 1600
+      },
+      {
+        "module": "http",
+        "file": "dist\\extension.web.js",
+        "line": 95
+      },
+      {
+        "module": "https",
+        "file": "dist\\extension.web.js",
+        "line": 1600
+      },
+      {
+        "module": "http",
+        "file": "dist\\extension.web.js",
+        "line": 1600
+      }
+    ],
+    "os_info": [
+      {
+        "module": "os",
+        "file": "dist\\extension.js",
+        "line": 95
+      },
+      {
+        "module": "os",
+        "file": "dist\\extension.web.js",
+        "line": 95
+      }
+    ],
+    "file_access": [
+      {
+        "module": "fs",
+        "file": "dist\\extension.js",
+        "line": 95
+      },
+      {
+        "module": "path",
+        "file": "dist\\extension.js",
+        "line": 95
+      },
+      {
+        "module": "fs",
+        "file": "dist\\extension.web.js",
+        "line": 95
+      },
+      {
+        "module": "path",
+        "file": "dist\\extension.web.js",
+        "line": 95
+      }
+    ],
+    "process_execution": [
+      {
+        "module": "child_process",
+        "file": "dist\\extension.js",
+        "line": 212
+      },
+      {
+        "module": "child_process",
+        "file": "dist\\extension.js",
+        "line": 1555
+      },
+      {
+        "module": "child_process",
+        "file": "dist\\extension.web.js",
+        "line": 212
+      },
+      {
+        "module": "child_process",
+        "file": "dist\\extension.web.js",
+        "line": 1555
+      }
+    ],
+    "crypto": [
+      {
+        "module": "crypto",
+        "file": "dist\\extension.js",
+        "line": 1598
+      },
+      {
+        "module": "crypto",
+        "file": "dist\\extension.web.js",
+        "line": 1598
+      }
+    ]
+  },
+  "external_urls": [
+    {
+      "url": "https://openrouter.ai/api/v1",
+      "file": "dist\\extension.js",
+      "line": 1997
+    },
+    {
+      "url": "https://api.openai.com/v1",
+      "file": "dist\\extension.js",
+      "line": 1997
+    },
+    {
+      "url": "https://github.com/codesleep",
+      "file": "dist\\extension.js",
+      "line": 2313
+    },
+    {
+      "url": "https://openrouter.ai/api/v1",
+      "file": "dist\\extension.web.js",
+      "line": 1997
+    },
+    {
+      "url": "https://api.openai.com/v1",
+      "file": "dist\\extension.web.js",
+      "line": 1997
+    },
+    {
+      "url": "https://github.com/codesleep",
+      "file": "dist\\extension.web.js",
+      "line": 2313
+    },
+    {
+      "url": "https://reactjs.org/docs/error-decoder.html?invariant=",
+      "file": "dist\\web\\index.js",
+      "line": 1
+    },
+    {
+      "url": "https://ai.devokai.com/api/v1",
+      "file": "dist\\web\\index.js",
+      "line": 1
+    },
+    {
+      "url": "https://api.anthropic.com/v1",
+      "file": "dist\\web\\index.js",
+      "line": 1
+    },
+    {
+      "url": "https://api.openai.com/v1",
+      "file": "dist\\web\\index.js",
+      "line": 1
+    },
+    {
+      "url": "https://generativelanguage.googleapis.com/v1beta",
+      "file": "dist\\web\\index.js",
+      "line": 1
+    },
+    {
+      "url": "https://openrouter.ai/api/v1",
+      "file": "dist\\web\\index.js",
+      "line": 1
+    },
+    {
+      "url": "https://api.x.ai/v1",
+      "file": "dist\\web\\index.js",
+      "line": 1
+    },
+    {
+      "url": "https://api.deepseek.com",
+      "file": "dist\\web\\index.js",
+      "line": 1
+    },
+    {
+      "url": "https://api.groq.com/openai/v1",
+      "file": "dist\\web\\index.js",
+      "line": 1
+    },
+    {
+      "url": "https://api.mistral.ai/v1",
+      "file": "dist\\web\\index.js",
+      "line": 1
+    },
+    {
+      "url": "https://discord.gg/x3r7a6vj",
+      "file": "dist\\web\\index.js",
+      "line": 1
+    },
+    {
+      "url": "https://cdn.xfeixie.com/b1/daxiang.jpg",
+      "file": "dist\\web\\index.js",
+      "line": 1
+    }
+  ],
+  "domain_intelligence": [
+    {
+      "domain": "openrouter.ai",
+      "url": "https://openrouter.ai/api/v1",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "api.openai.com",
+      "url": "https://api.openai.com/v1",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "github.com",
+      "url": "https://github.com/codesleep",
+      "threat_level": "BENIGN",
+      "confidence": 95,
+      "classification": "Legitimate Infrastructure",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": true,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "reactjs.org",
+      "url": "https://reactjs.org/docs/error-decoder.html?invariant=",
+      "threat_level": "BENIGN",
+      "confidence": 95,
+      "classification": "Legitimate Infrastructure",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": true,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "ai.devokai.com",
+      "url": "https://ai.devokai.com/api/v1",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "api.anthropic.com",
+      "url": "https://api.anthropic.com/v1",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "generativelanguage.googleapis.com",
+      "url": "https://generativelanguage.googleapis.com/v1beta",
+      "threat_level": "BENIGN",
+      "confidence": 95,
+      "classification": "Legitimate Infrastructure",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": true,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "api.x.ai",
+      "url": "https://api.x.ai/v1",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "api.deepseek.com",
+      "url": "https://api.deepseek.com",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "api.groq.com",
+      "url": "https://api.groq.com/openai/v1",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "api.mistral.ai",
+      "url": "https://api.mistral.ai/v1",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "discord.gg",
+      "url": "https://discord.gg/x3r7a6vj",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "cdn.xfeixie.com",
+      "url": "https://cdn.xfeixie.com/b1/daxiang.jpg",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    }
+  ],
+  "virustotal_results": [
+    {
+      "available": true,
+      "domain": "openrouter.ai",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 63,
+        "undetected": 30
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {
+        "alphaMountain.ai": "Business/Economy (alphaMountain.ai)",
+        "BitDefender": "computersandsoftware",
+        "Sophos": "information technology",
+        "Forcepoint ThreatSeeker": "other ai ml applications"
+      },
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2023-04-17",
+        "age_days": 1029,
+        "age_human": "2 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".ai",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/openrouter.ai"
+    },
+    {
+      "available": true,
+      "domain": "ai.devokai.com",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 0,
+        "undetected": 93
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2024-09-28",
+        "age_days": 499,
+        "age_human": "1 year",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".com",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/ai.devokai.com"
+    },
+    {
+      "available": true,
+      "domain": "api.mistral.ai",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 62,
+        "undetected": 31
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2019-05-15",
+        "age_days": 2462,
+        "age_human": "6 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".ai",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/api.mistral.ai"
+    },
+    {
+      "available": true,
+      "domain": "reactjs.org",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 63,
+        "undetected": 30
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2013-05-29",
+        "age_days": 4640,
+        "age_human": "12 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".org",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/reactjs.org"
+    },
+    {
+      "available": true,
+      "domain": "api.deepseek.com",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 62,
+        "undetected": 31
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2000-08-13",
+        "age_days": 9312,
+        "age_human": "25 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".com",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/api.deepseek.com"
+    },
+    {
+      "available": true,
+      "domain": "api.groq.com",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 62,
+        "undetected": 31
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2007-07-22",
+        "age_days": 6778,
+        "age_human": "18 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".com",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/api.groq.com"
+    },
+    {
+      "available": true,
+      "domain": "cdn.xfeixie.com",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 0,
+        "undetected": 93
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2023-08-25",
+        "age_days": 899,
+        "age_human": "2 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".com",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/cdn.xfeixie.com"
+    },
+    {
+      "available": true,
+      "domain": "api.anthropic.com",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 62,
+        "undetected": 31
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2001-10-02",
+        "age_days": 8896,
+        "age_human": "24 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".com",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/api.anthropic.com"
+    }
+  ]
+}

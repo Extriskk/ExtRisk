@@ -1,0 +1,2316 @@
+{
+  "generated": "2026-02-15T09:27:26.661909",
+  "extensions_reviewed": 10,
+  "results": [
+    {
+      "extension_id": "becfinhbfclcgokjlobojlnldbfillpf",
+      "name": "Chat with all AI models (Gemini, Claude, DeepSeek…) & AI Agents | AITOPIA",
+      "risk_score": 9.8,
+      "risk_level": "CRITICAL",
+      "has_source": true,
+      "is_threat_attributed": false,
+      "total_findings": 24,
+      "total_findings_raw": 105,
+      "true_positives": 4,
+      "false_positives": 5,
+      "needs_review": 15,
+      "fp_rate": 20.8,
+      "findings": [
+        {
+          "finding_name": "Input Value Direct Access",
+          "severity": "low",
+          "file": "assets\\83c6672847a35da18c7c6cd5f39ddc2c.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Sensitive input field access -- verify if data is exfiltrated",
+          "category": "pattern",
+          "_count": 8
+        },
+        {
+          "finding_name": "User Interaction Gating",
+          "severity": "medium",
+          "file": "assets\\83c6672847a35da18c7c6cd5f39ddc2c.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 3
+        },
+        {
+          "finding_name": "Base64 Decode (Obfuscation)",
+          "severity": "medium",
+          "file": "assets\\f1cb0a108b35713614332c7c219352b8.js",
+          "line": 70,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Keyboard Event Listener",
+          "severity": "medium",
+          "file": "assets\\f1cb0a108b35713614332c7c219352b8.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 7
+        },
+        {
+          "finding_name": "localStorage Access",
+          "severity": "low",
+          "file": "assets\\f1cb0a108b35713614332c7c219352b8.js",
+          "line": 40,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "localStorage access is a standard API used by most extensions",
+          "category": "pattern",
+          "_count": 12
+        },
+        {
+          "finding_name": "Input Field Event Listener",
+          "severity": "medium",
+          "file": "assets\\f1cb0a108b35713614332c7c219352b8.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 4
+        },
+        {
+          "finding_name": "Credit Card Field Targeting",
+          "severity": "critical",
+          "file": "assets\\f1cb0a108b35713614332c7c219352b8.js",
+          "line": 87,
+          "verdict": "TRUE_POSITIVE",
+          "reason": "Actual credit card input field targeting detected",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Form Data Harvesting",
+          "severity": "medium",
+          "file": "assets\\f1cb0a108b35713614332c7c219352b8.js",
+          "line": 36,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Key Event Data Push",
+          "severity": "high",
+          "file": "assets\\f1cb0a108b35713614332c7c219352b8.js",
+          "line": 74,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Unhandled high-severity pattern -- manual review needed",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Prototype Reference (Informational)",
+          "severity": "low",
+          "file": "assets\\f1cb0a108b35713614332c7c219352b8.js",
+          "line": 87,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Prototype reference is standard JS -- common in polyfills and libraries",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "MutationObserver on Document Body",
+          "severity": "high",
+          "file": "assets\\f1cb0a108b35713614332c7c219352b8.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Unhandled high-severity pattern -- manual review needed",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Bulk HTML Extraction (innerHTML)",
+          "severity": "high",
+          "file": "assets\\f1cb0a108b35713614332c7c219352b8.js",
+          "line": 62,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Unhandled high-severity pattern -- manual review needed",
+          "category": "pattern",
+          "_count": 2
+        },
+        {
+          "finding_name": "Input Value Direct Access",
+          "severity": "low",
+          "file": "assets\\f1cb0a108b35713614332c7c219352b8.js",
+          "line": 35,
+          "verdict": "TRUE_POSITIVE",
+          "reason": "Sensitive input field access + network send detected",
+          "category": "pattern",
+          "_count": 29
+        },
+        {
+          "finding_name": "URL Change Detection",
+          "severity": "low",
+          "file": "assets\\f1cb0a108b35713614332c7c219352b8.js",
+          "line": 36,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 4
+        },
+        {
+          "finding_name": "Login Page URL Matching",
+          "severity": "medium",
+          "file": "assets\\f1cb0a108b35713614332c7c219352b8.js",
+          "line": 36,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Financial Page URL Matching",
+          "severity": "high",
+          "file": "assets\\f1cb0a108b35713614332c7c219352b8.js",
+          "line": 36,
+          "verdict": "TRUE_POSITIVE",
+          "reason": "Actual credit card input field targeting detected",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "VM/Sandbox Detection",
+          "severity": "high",
+          "file": "assets\\f1cb0a108b35713614332c7c219352b8.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Unhandled high-severity pattern -- manual review needed",
+          "category": "pattern",
+          "_count": 2
+        },
+        {
+          "finding_name": "Unicode Escape Obfuscation",
+          "severity": "medium",
+          "file": "assets\\f1cb0a108b35713614332c7c219352b8.js",
+          "line": 35,
+          "verdict": "TRUE_POSITIVE",
+          "reason": "Unicode escapes near eval/Function -- likely code obfuscation",
+          "category": "pattern",
+          "_count": 4
+        },
+        {
+          "finding_name": "Domain: fonts.googleapis.com",
+          "severity": "info",
+          "file": "assets\\2d3fc6d508b51daaadb9f3ec2369e006.js",
+          "line": 1,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Known benign domain (documentation/CDN/standard)",
+          "category": "domain",
+          "_count": 1
+        },
+        {
+          "finding_name": "Domain: a.gapier.com",
+          "severity": "info",
+          "file": "assets\\2d3fc6d508b51daaadb9f3ec2369e006.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Domain in code -- verify if it is a real C2/exfil endpoint",
+          "category": "domain",
+          "_count": 1
+        },
+        {
+          "finding_name": "Domain: www.w3.org",
+          "severity": "info",
+          "file": "assets\\83c6672847a35da18c7c6cd5f39ddc2c.js",
+          "line": 1,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Known benign domain (documentation/CDN/standard)",
+          "category": "domain",
+          "_count": 17
+        },
+        {
+          "finding_name": "Domain: chatgpt.com",
+          "severity": "info",
+          "file": "assets\\f1cb0a108b35713614332c7c219352b8.js",
+          "line": 35,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Domain in code -- verify if it is a real C2/exfil endpoint",
+          "category": "domain",
+          "_count": 1
+        },
+        {
+          "finding_name": "VT Domain: example.com",
+          "severity": "medium",
+          "file": "",
+          "line": 0,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Only 1 vendor(s) flagged -- below noise threshold (need >= 3)",
+          "category": "virustotal",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Evasion-Wrapped Malicious Payload",
+          "severity": "critical",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        }
+      ]
+    },
+    {
+      "extension_id": "feflcgofneboehfdeebcfglbodaceghj",
+      "name": "Urban AdBlocker",
+      "risk_score": 9.0,
+      "risk_level": "CRITICAL",
+      "has_source": true,
+      "is_threat_attributed": true,
+      "total_findings": 28,
+      "total_findings_raw": 65,
+      "true_positives": 2,
+      "false_positives": 18,
+      "needs_review": 8,
+      "fp_rate": 64.3,
+      "findings": [
+        {
+          "finding_name": "Fetch POST Request (Review Destination)",
+          "severity": "low",
+          "file": "service_worker\\index.js",
+          "line": 18445,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Fetch POST is common; only malicious if destination is suspicious",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "localStorage Access",
+          "severity": "low",
+          "file": "service_worker\\index.js",
+          "line": 2383,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "localStorage access is a standard API used by most extensions",
+          "category": "pattern",
+          "_count": 3
+        },
+        {
+          "finding_name": "Remote Script Injection via executeScript",
+          "severity": "high",
+          "file": "service_worker\\index.js",
+          "line": 15051,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "executeScript is used by ad blockers legitimately but also by malware for injection",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Tab URL Access (Informational)",
+          "severity": "low",
+          "file": "service_worker\\index.js",
+          "line": 5727,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Tab URL access is standard for ad blockers and navigation-aware extensions",
+          "category": "pattern",
+          "_count": 6
+        },
+        {
+          "finding_name": "Credit Card Field Targeting",
+          "severity": "critical",
+          "file": "service_worker\\index.js",
+          "line": 14445,
+          "verdict": "TRUE_POSITIVE",
+          "reason": "Actual credit card input field targeting detected",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Keystroke Buffer Array",
+          "severity": "high",
+          "file": "service_worker\\index.js",
+          "line": 16408,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Library code (reflect-metadata/lodash) -- \"keys\" array is metadata keys, not keystrokes",
+          "category": "pattern",
+          "_count": 4
+        },
+        {
+          "finding_name": "Chrome Alarms Heartbeat",
+          "severity": "medium",
+          "file": "service_worker\\index.js",
+          "line": 6780,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Alarms/timers are used by ad blockers for filter updates but also by C2 beacons",
+          "category": "pattern",
+          "_count": 2
+        },
+        {
+          "finding_name": "Prototype Reference (Informational)",
+          "severity": "low",
+          "file": "service_worker\\index.js",
+          "line": 11146,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Prototype reference is standard JS -- common in polyfills and libraries",
+          "category": "pattern",
+          "_count": 8
+        },
+        {
+          "finding_name": "Input Value Direct Access",
+          "severity": "low",
+          "file": "service_worker\\index.js",
+          "line": 772,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Generic .value access -- standard form/UI handling",
+          "category": "pattern",
+          "_count": 5
+        },
+        {
+          "finding_name": "Input Value Direct Access",
+          "severity": "low",
+          "file": "service_worker\\index.js",
+          "line": 22229,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Sensitive input field access -- verify if data is exfiltrated",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "IndexedDB Data Harvesting",
+          "severity": "high",
+          "file": "service_worker\\index.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Unhandled high-severity pattern -- manual review needed",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Chrome Storage Sync Abuse",
+          "severity": "critical",
+          "file": "service_worker\\index.js",
+          "line": 1,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Stores analytics/settings data, not credentials",
+          "category": "pattern",
+          "_count": 3
+        },
+        {
+          "finding_name": "Dynamic Function Creation",
+          "severity": "high",
+          "file": "content\\index.js",
+          "line": 8812,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Webpack globalThis polyfill: new Function(\"return this\")()",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "VirusTotal file hash match: background/service_worker/index.js",
+          "severity": "critical",
+          "file": "background/service_worker/index.js",
+          "line": 0,
+          "verdict": "TRUE_POSITIVE",
+          "reason": "VirusTotal file hash detection -- definitive if vendor count >= 3",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Domain: github.com",
+          "severity": "info",
+          "file": "service_worker\\index.js",
+          "line": 480,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Known benign domain (documentation/CDN/standard)",
+          "category": "domain",
+          "_count": 9
+        },
+        {
+          "finding_name": "Domain: www.movable-type.co.uk",
+          "severity": "info",
+          "file": "service_worker\\index.js",
+          "line": 3174,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Known benign domain (documentation/CDN/standard)",
+          "category": "domain",
+          "_count": 2
+        },
+        {
+          "finding_name": "Domain: docs.python.org",
+          "severity": "info",
+          "file": "service_worker\\index.js",
+          "line": 4703,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Known benign domain (documentation/CDN/standard)",
+          "category": "domain",
+          "_count": 2
+        },
+        {
+          "finding_name": "Domain: blueimp.net",
+          "severity": "info",
+          "file": "service_worker\\index.js",
+          "line": 6898,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Known benign domain (documentation/CDN/standard)",
+          "category": "domain",
+          "_count": 2
+        },
+        {
+          "finding_name": "Domain: opensource.org",
+          "severity": "info",
+          "file": "service_worker\\index.js",
+          "line": 6901,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Known benign domain (documentation/CDN/standard)",
+          "category": "domain",
+          "_count": 2
+        },
+        {
+          "finding_name": "Domain: pajhome.org.uk",
+          "severity": "info",
+          "file": "service_worker\\index.js",
+          "line": 6909,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Known benign domain (documentation/CDN/standard)",
+          "category": "domain",
+          "_count": 2
+        },
+        {
+          "finding_name": "Domain: www.w3.org",
+          "severity": "info",
+          "file": "service_worker\\index.js",
+          "line": 12709,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Known benign domain (documentation/CDN/standard)",
+          "category": "domain",
+          "_count": 1
+        },
+        {
+          "finding_name": "VT Domain: vil.com",
+          "severity": "medium",
+          "file": "",
+          "line": 0,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Only 1 vendor(s) flagged -- below noise threshold (need >= 3)",
+          "category": "virustotal",
+          "_count": 1
+        },
+        {
+          "finding_name": "VT File Hash: background/service_worker/index.js",
+          "severity": "critical",
+          "file": "background/service_worker/index.js",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "File hash flagged by only 1 vendor -- low confidence",
+          "category": "virustotal",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Credential Harvester",
+          "severity": "critical",
+          "file": "",
+          "line": 0,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Correlation built on FP findings: keystroke buffer (FP), chrome storage sync (FP)",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Remote Code Execution Risk",
+          "severity": "high",
+          "file": "",
+          "line": 0,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Correlation built on FP findings: dynamic function (FP)",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Silent Web Tracker",
+          "severity": "high",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Staged Payload Loader",
+          "severity": "critical",
+          "file": "",
+          "line": 0,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Correlation built on FP findings: dynamic function (FP)",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Evasion-Wrapped Malicious Payload",
+          "severity": "critical",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        }
+      ]
+    },
+    {
+      "extension_id": "majdfhpaihoncoakbjgbdhglocklcgno",
+      "name": "Free VPN for Chrome - VPN Proxy VeePN",
+      "risk_score": 8.5,
+      "risk_level": "CRITICAL",
+      "has_source": true,
+      "is_threat_attributed": true,
+      "total_findings": 37,
+      "total_findings_raw": 541,
+      "true_positives": 2,
+      "false_positives": 7,
+      "needs_review": 28,
+      "fp_rate": 18.9,
+      "findings": [
+        {
+          "finding_name": "Fetch POST Request (Review Destination)",
+          "severity": "low",
+          "file": "assets\\background.ts-Ceq_j6Wh.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Fetch POST is common; only malicious if destination is suspicious",
+          "category": "pattern",
+          "_count": 17
+        },
+        {
+          "finding_name": "localStorage Access",
+          "severity": "low",
+          "file": "js\\onelink-smart-script-latest.js",
+          "line": 327,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "localStorage access is a standard API used by most extensions",
+          "category": "pattern",
+          "_count": 6
+        },
+        {
+          "finding_name": "Canvas to Data URL (Screenshot Export)",
+          "severity": "medium",
+          "file": "js\\onelink-smart-script-latest.js",
+          "line": 2192,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Dynamic Code Execution (eval)",
+          "severity": "high",
+          "file": "assets\\popup.html-L3fm1Z2r.js",
+          "line": 6,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Unhandled high-severity pattern -- manual review needed",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Background Worker",
+          "severity": "low",
+          "file": "assets\\popup.html-L3fm1Z2r.js",
+          "line": 5,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Input Field Event Listener",
+          "severity": "medium",
+          "file": "assets\\popup.html-L3fm1Z2r.js",
+          "line": 6,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Credit Card Field Targeting",
+          "severity": "critical",
+          "file": "assets\\popup.html-L3fm1Z2r.js",
+          "line": 1,
+          "verdict": "TRUE_POSITIVE",
+          "reason": "Actual credit card input field targeting detected",
+          "category": "pattern",
+          "_count": 27
+        },
+        {
+          "finding_name": "Prototype Reference (Informational)",
+          "severity": "low",
+          "file": "assets\\popup.html-L3fm1Z2r.js",
+          "line": 6,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Prototype reference is standard JS -- common in polyfills and libraries",
+          "category": "pattern",
+          "_count": 405
+        },
+        {
+          "finding_name": "Form Data Object Creation",
+          "severity": "medium",
+          "file": "assets\\popup.html-L3fm1Z2r.js",
+          "line": 5,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 4
+        },
+        {
+          "finding_name": "Input Value Direct Access",
+          "severity": "low",
+          "file": "assets\\popup.html-L3fm1Z2r.js",
+          "line": 6,
+          "verdict": "TRUE_POSITIVE",
+          "reason": "Sensitive input field access + network send detected",
+          "category": "pattern",
+          "_count": 17
+        },
+        {
+          "finding_name": "URL Change Detection",
+          "severity": "low",
+          "file": "assets\\popup.html-L3fm1Z2r.js",
+          "line": 2,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Font Fingerprinting",
+          "severity": "medium",
+          "file": "assets\\popup.html-L3fm1Z2r.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "User Interaction Gating",
+          "severity": "medium",
+          "file": "assets\\popup.html-L3fm1Z2r.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 14
+        },
+        {
+          "finding_name": "DevTools Detection",
+          "severity": "high",
+          "file": "assets\\index-DA4uJ5Kf.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "DevTools detection -- anti-analysis if paired with behavior change, else benign",
+          "category": "pattern",
+          "_count": 10
+        },
+        {
+          "finding_name": "Headless Browser Detection",
+          "severity": "high",
+          "file": "assets\\ua-parser-D6QF1h5N.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Headless browser detection (phantom/selenium/puppeteer) -- anti-analysis behavior",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "CSRF Token Extraction",
+          "severity": "high",
+          "file": "assets\\index-8t2gACqy.js",
+          "line": 1,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "CSRF token reference without exfiltration context -- standard form handling",
+          "category": "pattern",
+          "_count": 2
+        },
+        {
+          "finding_name": "OAuth Token Extraction",
+          "severity": "high",
+          "file": "assets\\index-8t2gACqy.js",
+          "line": 1,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "CSRF token reference without exfiltration context -- standard form handling",
+          "category": "pattern",
+          "_count": 2
+        },
+        {
+          "finding_name": "Base64 Decode (Obfuscation)",
+          "severity": "medium",
+          "file": "assets\\index-DkxrTVBi.js",
+          "line": 3,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 2
+        },
+        {
+          "finding_name": "Input Value Direct Access",
+          "severity": "low",
+          "file": "assets\\index-DkxrTVBi.js",
+          "line": 1,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Generic .value access -- standard form/UI handling",
+          "category": "pattern",
+          "_count": 7
+        },
+        {
+          "finding_name": "Prototype Assignment",
+          "severity": "high",
+          "file": "assets\\webcomponents-bundle-Cazg7WE4.js",
+          "line": 1,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Prototype reference is standard JS -- common in polyfills and libraries",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "MutationObserver on Document Body",
+          "severity": "high",
+          "file": "assets\\webcomponents-bundle-Cazg7WE4.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Unhandled high-severity pattern -- manual review needed",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Deep DOM Traversal",
+          "severity": "medium",
+          "file": "assets\\webcomponents-bundle-Cazg7WE4.js",
+          "line": 10,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Document TreeWalker",
+          "severity": "medium",
+          "file": "assets\\webcomponents-bundle-Cazg7WE4.js",
+          "line": 3,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 3
+        },
+        {
+          "finding_name": "Random ID Generation for Tracking",
+          "severity": "low",
+          "file": "assets\\client-Da0e5-BC.js",
+          "line": 8,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 2
+        },
+        {
+          "finding_name": "Form Data Harvesting",
+          "severity": "medium",
+          "file": "assets\\client-Da0e5-BC.js",
+          "line": 8,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "OTP/2FA Input Targeting",
+          "severity": "critical",
+          "file": "assets\\client-Da0e5-BC.js",
+          "line": 8,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Unhandled high-severity pattern -- manual review needed",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Form Submit Interception",
+          "severity": "high",
+          "file": "assets\\client-Da0e5-BC.js",
+          "line": 9,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Unhandled high-severity pattern -- manual review needed",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "innerHTML Script Injection",
+          "severity": "critical",
+          "file": "assets\\client-Da0e5-BC.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Unhandled high-severity pattern -- manual review needed",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "VT Domain: vpnalert.com",
+          "severity": "medium",
+          "file": "",
+          "line": 0,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Only 1 vendor(s) flagged -- below noise threshold (need >= 3)",
+          "category": "virustotal",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Session Theft Chain",
+          "severity": "critical",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Credential Harvester",
+          "severity": "critical",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Data Exfiltration Pipeline (Obfuscated)",
+          "severity": "critical",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Remote Code Execution Risk",
+          "severity": "high",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Device Fingerprint Collector",
+          "severity": "high",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Silent Web Tracker",
+          "severity": "high",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Extension Manipulation Chain",
+          "severity": "critical",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Evasion-Wrapped Malicious Payload",
+          "severity": "critical",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        }
+      ]
+    },
+    {
+      "extension_id": "fpeabamapgecnidibdmjoepaiehokgda",
+      "name": "Chrome MCP Server - AI Browser Control",
+      "risk_score": 10.0,
+      "risk_level": "CRITICAL",
+      "has_source": true,
+      "is_threat_attributed": true,
+      "total_findings": 31,
+      "total_findings_raw": 656,
+      "true_positives": 1,
+      "false_positives": 8,
+      "needs_review": 22,
+      "fp_rate": 25.8,
+      "findings": [
+        {
+          "finding_name": "Random ID Generation for Tracking",
+          "severity": "low",
+          "file": "content-scripts\\content.js",
+          "line": 266,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "XMLHttpRequest (Informational)",
+          "severity": "low",
+          "file": "background.js",
+          "line": 1103,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 12
+        },
+        {
+          "finding_name": "Dynamic Code Execution (eval)",
+          "severity": "high",
+          "file": "background.js",
+          "line": 3378,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Unhandled high-severity pattern -- manual review needed",
+          "category": "pattern",
+          "_count": 2
+        },
+        {
+          "finding_name": "Dynamic Function Creation",
+          "severity": "high",
+          "file": "background.js",
+          "line": 13713,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Webpack globalThis polyfill: new Function(\"return this\")()",
+          "category": "pattern",
+          "_count": 4
+        },
+        {
+          "finding_name": "WebAssembly (Potential Crypto Mining)",
+          "severity": "medium",
+          "file": "background.js",
+          "line": 1184,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "WebAssembly without crypto-mining indicators -- likely legitimate computation",
+          "category": "pattern",
+          "_count": 66
+        },
+        {
+          "finding_name": "Background Worker",
+          "severity": "low",
+          "file": "background.js",
+          "line": 1270,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 5
+        },
+        {
+          "finding_name": "Offscreen Document Creation (MV3)",
+          "severity": "high",
+          "file": "background.js",
+          "line": 267,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Unhandled high-severity pattern -- manual review needed",
+          "category": "pattern",
+          "_count": 2
+        },
+        {
+          "finding_name": "Prototype Reference (Informational)",
+          "severity": "low",
+          "file": "background.js",
+          "line": 348,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Prototype reference is standard JS -- common in polyfills and libraries",
+          "category": "pattern",
+          "_count": 10
+        },
+        {
+          "finding_name": "CSRF Token Extraction",
+          "severity": "high",
+          "file": "background.js",
+          "line": 14203,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "CSRF token reference without exfiltration context -- standard form handling",
+          "category": "pattern",
+          "_count": 484
+        },
+        {
+          "finding_name": "Input Value Direct Access",
+          "severity": "low",
+          "file": "background.js",
+          "line": 3430,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Generic .value access -- standard form/UI handling",
+          "category": "pattern",
+          "_count": 25
+        },
+        {
+          "finding_name": "OAuth Token Extraction",
+          "severity": "high",
+          "file": "background.js",
+          "line": 14203,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "CSRF token reference without exfiltration context -- standard form handling",
+          "category": "pattern",
+          "_count": 2
+        },
+        {
+          "finding_name": "Deep DOM Traversal",
+          "severity": "medium",
+          "file": "inject-scripts\\screenshot-helper.js",
+          "line": 23,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 4
+        },
+        {
+          "finding_name": "User Interaction Gating",
+          "severity": "medium",
+          "file": "inject-scripts\\screenshot-helper.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 2
+        },
+        {
+          "finding_name": "CSS Attribute Selector Injection",
+          "severity": "critical",
+          "file": "inject-scripts\\form-submit-helper.js",
+          "line": 182,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Unhandled high-severity pattern -- manual review needed",
+          "category": "pattern",
+          "_count": 4
+        },
+        {
+          "finding_name": "Form Submit Interception",
+          "severity": "high",
+          "file": "inject-scripts\\form-submit-helper.js",
+          "line": 235,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Unhandled high-severity pattern -- manual review needed",
+          "category": "pattern",
+          "_count": 3
+        },
+        {
+          "finding_name": "Form Data Harvesting",
+          "severity": "medium",
+          "file": "inject-scripts\\web-fetcher-helper.js",
+          "line": 2382,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Bulk Text Extraction (innerText)",
+          "severity": "high",
+          "file": "inject-scripts\\web-fetcher-helper.js",
+          "line": 2773,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Unhandled high-severity pattern -- manual review needed",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Keystroke Buffer Array",
+          "severity": "high",
+          "file": "chunks\\popup-CK5NaYGf.js",
+          "line": 1843,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Library code (reflect-metadata/lodash) -- \"keys\" array is metadata keys, not keystrokes",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Keystroke Buffer Array",
+          "severity": "high",
+          "file": "chunks\\popup-CK5NaYGf.js",
+          "line": 3243,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Array named \"keys\" without clear keyboard or library context",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "DevTools Detection",
+          "severity": "high",
+          "file": "chunks\\popup-CK5NaYGf.js",
+          "line": 6613,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "DevTools detection -- anti-analysis if paired with behavior change, else benign",
+          "category": "pattern",
+          "_count": 4
+        },
+        {
+          "finding_name": "Input Value Direct Access",
+          "severity": "low",
+          "file": "chunks\\popup-CK5NaYGf.js",
+          "line": 8816,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Sensitive input field access -- verify if data is exfiltrated",
+          "category": "pattern",
+          "_count": 4
+        },
+        {
+          "finding_name": "IndexedDB with Network Sink",
+          "severity": "critical",
+          "file": "chunks\\offscreen-DumnViHv.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Unhandled high-severity pattern -- manual review needed",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "WebAssembly (Potential Crypto Mining)",
+          "severity": "medium",
+          "file": "libs\\ort.min.js",
+          "line": 6,
+          "verdict": "TRUE_POSITIVE",
+          "reason": "WebAssembly with crypto-mining indicators",
+          "category": "pattern",
+          "_count": 4
+        },
+        {
+          "finding_name": "Unicode Escape Obfuscation",
+          "severity": "medium",
+          "file": "chunks\\semantic-similarity-engine-FZCLe_wt.js",
+          "line": 18829,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Unicode escape sequences -- verify if obfuscation or i18n",
+          "category": "pattern",
+          "_count": 6
+        },
+        {
+          "finding_name": "VT Domain: schema.org",
+          "severity": "medium",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Suspicious (0 flags) -- not definitive",
+          "category": "virustotal",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Credential Harvester",
+          "severity": "critical",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Data Exfiltration Pipeline (Obfuscated)",
+          "severity": "critical",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Remote Code Execution Risk",
+          "severity": "high",
+          "file": "",
+          "line": 0,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Correlation built on FP findings: dynamic function (FP)",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Device Fingerprint Collector",
+          "severity": "high",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Silent Web Tracker",
+          "severity": "high",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Evasion-Wrapped Malicious Payload",
+          "severity": "critical",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        }
+      ]
+    },
+    {
+      "extension_id": "malicious_test_extension",
+      "name": "Quick Tab Saver",
+      "risk_score": 7.0,
+      "risk_level": "HIGH",
+      "has_source": false,
+      "is_threat_attributed": false,
+      "total_findings": 7,
+      "total_findings_raw": 11,
+      "true_positives": 0,
+      "false_positives": 0,
+      "needs_review": 7,
+      "fp_rate": 0.0,
+      "findings": [
+        {
+          "finding_name": "Data Exfiltration via POST",
+          "severity": "high",
+          "file": "content.js",
+          "line": 12,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "No source available for verification",
+          "category": "pattern",
+          "_count": 3
+        },
+        {
+          "finding_name": "Fetch POST Request (Review Destination)",
+          "severity": "low",
+          "file": "content.js",
+          "line": 12,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "No source available for verification",
+          "category": "pattern",
+          "_count": 3
+        },
+        {
+          "finding_name": "Cookie Theft",
+          "severity": "high",
+          "file": "content.js",
+          "line": 10,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "No source available for verification",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "WebSocket Connection",
+          "severity": "medium",
+          "file": "background.js",
+          "line": 8,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "No source available for verification",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "WebSocket Data Send",
+          "severity": "high",
+          "file": "background.js",
+          "line": 10,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "No source available for verification",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Session Theft Chain",
+          "severity": "critical",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Credential Harvester",
+          "severity": "high",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        }
+      ]
+    },
+    {
+      "extension_id": "nnnkddnnlpamobajfibfdgfnbcnkgngh",
+      "name": "Infinity New Tab (Pro)",
+      "risk_score": 10.0,
+      "risk_level": "CRITICAL",
+      "has_source": true,
+      "is_threat_attributed": true,
+      "total_findings": 49,
+      "total_findings_raw": 851,
+      "true_positives": 2,
+      "false_positives": 8,
+      "needs_review": 39,
+      "fp_rate": 16.3,
+      "findings": [
+        {
+          "finding_name": "Dynamic Function Creation",
+          "severity": "high",
+          "file": "serviceworker.js",
+          "line": 1,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Webpack globalThis polyfill: new Function(\"return this\")()",
+          "category": "pattern",
+          "_count": 17
+        },
+        {
+          "finding_name": "localStorage Access",
+          "severity": "low",
+          "file": "serviceworker.js",
+          "line": 1,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "localStorage access is a standard API used by most extensions",
+          "category": "pattern",
+          "_count": 207
+        },
+        {
+          "finding_name": "Offscreen Document Creation (MV3)",
+          "severity": "high",
+          "file": "serviceworker.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Unhandled high-severity pattern -- manual review needed",
+          "category": "pattern",
+          "_count": 9
+        },
+        {
+          "finding_name": "Prototype Reference (Informational)",
+          "severity": "low",
+          "file": "serviceworker.js",
+          "line": 8,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Prototype reference is standard JS -- common in polyfills and libraries",
+          "category": "pattern",
+          "_count": 166
+        },
+        {
+          "finding_name": "CSRF Token Extraction",
+          "severity": "high",
+          "file": "serviceworker.js",
+          "line": 8,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "CSRF token read + network send in context -- potential token theft",
+          "category": "pattern",
+          "_count": 66
+        },
+        {
+          "finding_name": "Document TreeWalker",
+          "severity": "medium",
+          "file": "serviceworker.js",
+          "line": 8,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 12
+        },
+        {
+          "finding_name": "Input Value Direct Access",
+          "severity": "low",
+          "file": "serviceworker.js",
+          "line": 8,
+          "verdict": "TRUE_POSITIVE",
+          "reason": "Sensitive input field access + network send detected",
+          "category": "pattern",
+          "_count": 14
+        },
+        {
+          "finding_name": "Service Worker Fetch Interception",
+          "severity": "high",
+          "file": "serviceworker.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Unhandled high-severity pattern -- manual review needed",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "IndexedDB Data Harvesting",
+          "severity": "high",
+          "file": "serviceworker.js",
+          "line": 1,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "idb library wrapper (standard Promise-based IndexedDB), not data harvesting",
+          "category": "pattern",
+          "_count": 2
+        },
+        {
+          "finding_name": "Notification Button Handler",
+          "severity": "medium",
+          "file": "serviceworker.js",
+          "line": 8,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 2
+        },
+        {
+          "finding_name": "User Interaction Gating",
+          "severity": "medium",
+          "file": "serviceworker.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 17
+        },
+        {
+          "finding_name": "Unicode Escape Obfuscation",
+          "severity": "medium",
+          "file": "serviceworker.js",
+          "line": 8,
+          "verdict": "TRUE_POSITIVE",
+          "reason": "Unicode escapes near eval/Function -- likely code obfuscation",
+          "category": "pattern",
+          "_count": 82
+        },
+        {
+          "finding_name": "Remote Script Injection (createElement)",
+          "severity": "high",
+          "file": "background.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "executeScript is used by ad blockers legitimately but also by malware for injection",
+          "category": "pattern",
+          "_count": 23
+        },
+        {
+          "finding_name": "Base64 Decode (Obfuscation)",
+          "severity": "medium",
+          "file": "popup\\popup.js",
+          "line": 67,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 18
+        },
+        {
+          "finding_name": "Dynamic Function Creation",
+          "severity": "low",
+          "file": "popup\\popup.js",
+          "line": 313,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 9
+        },
+        {
+          "finding_name": "Input Field Event Listener",
+          "severity": "medium",
+          "file": "popup\\popup.js",
+          "line": 67,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 14
+        },
+        {
+          "finding_name": "Canvas toBlob Export",
+          "severity": "medium",
+          "file": "popup\\popup.js",
+          "line": 67,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 12
+        },
+        {
+          "finding_name": "Hex Encoded String",
+          "severity": "low",
+          "file": "popup\\popup.js",
+          "line": 81,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 10
+        },
+        {
+          "finding_name": "DevTools Detection",
+          "severity": "low",
+          "file": "popup\\popup.js",
+          "line": 67,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "DevTools detection -- anti-analysis if paired with behavior change, else benign",
+          "category": "pattern",
+          "_count": 13
+        },
+        {
+          "finding_name": "CSRF Token Extraction",
+          "severity": "low",
+          "file": "popup\\popup.js",
+          "line": 310,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "CSRF token reference without exfiltration context -- standard form handling",
+          "category": "pattern",
+          "_count": 3
+        },
+        {
+          "finding_name": "Input Value Direct Access",
+          "severity": "low",
+          "file": "popup\\popup.js",
+          "line": 1862,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Generic .value access -- standard form/UI handling",
+          "category": "pattern",
+          "_count": 4
+        },
+        {
+          "finding_name": "Autofill Attribute Manipulation",
+          "severity": "medium",
+          "file": "popup\\popup.js",
+          "line": 1066,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 20
+        },
+        {
+          "finding_name": "Headless Browser Detection",
+          "severity": "low",
+          "file": "popup\\popup.js",
+          "line": 67,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Automation detection keyword without clear anti-analysis context",
+          "category": "pattern",
+          "_count": 22
+        },
+        {
+          "finding_name": "Runtime Permission Request",
+          "severity": "medium",
+          "file": "popup\\popup.js",
+          "line": 81,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 7
+        },
+        {
+          "finding_name": "Comment-Based Code Hiding",
+          "severity": "low",
+          "file": "popup\\popup.js",
+          "line": 311,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Comment pattern in minified code -- artifact of minification, not code hiding",
+          "category": "pattern",
+          "_count": 5
+        },
+        {
+          "finding_name": "CharCode Decoding",
+          "severity": "medium",
+          "file": "chatai\\assets\\js\\58411b26.js",
+          "line": 2,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 2
+        },
+        {
+          "finding_name": "Bulk Text Extraction (innerText)",
+          "severity": "high",
+          "file": "chatai\\assets\\js\\58411b26.js",
+          "line": 2,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Unhandled high-severity pattern -- manual review needed",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Input Value Direct Access",
+          "severity": "low",
+          "file": "30.js",
+          "line": 15,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Sensitive input field access -- verify if data is exfiltrated",
+          "category": "pattern",
+          "_count": 4
+        },
+        {
+          "finding_name": "History Access",
+          "severity": "medium",
+          "file": "32.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Canvas to Data URL (Screenshot Export)",
+          "severity": "medium",
+          "file": "chatai\\assets\\js\\1ca0cff5.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 3
+        },
+        {
+          "finding_name": "Canvas Fingerprinting",
+          "severity": "high",
+          "file": "chatai\\assets\\js\\1ca0cff5.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Unhandled high-severity pattern -- manual review needed",
+          "category": "pattern",
+          "_count": 5
+        },
+        {
+          "finding_name": "Bookmark Access",
+          "severity": "low",
+          "file": "29.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 9
+        },
+        {
+          "finding_name": "Headless Browser Detection",
+          "severity": "low",
+          "file": "vendor\\vue.min.js",
+          "line": 6,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Headless browser detection (phantom/selenium/puppeteer) -- anti-analysis behavior",
+          "category": "pattern",
+          "_count": 28
+        },
+        {
+          "finding_name": "Keyboard Event Listener",
+          "severity": "medium",
+          "file": "chatai\\assets\\js\\8c5da7cc.js",
+          "line": 2,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 11
+        },
+        {
+          "finding_name": "Background Worker",
+          "severity": "low",
+          "file": "chatai\\assets\\js\\8c5da7cc.js",
+          "line": 2,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 3
+        },
+        {
+          "finding_name": "OAuth Token Extraction",
+          "severity": "high",
+          "file": "24.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "CSRF token read + network send in context -- potential token theft",
+          "category": "pattern",
+          "_count": 12
+        },
+        {
+          "finding_name": "Email Field Targeting",
+          "severity": "low",
+          "file": "26.js",
+          "line": 370,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 4
+        },
+        {
+          "finding_name": "Session Storage Bulk Read",
+          "severity": "medium",
+          "file": "newtab\\newtab.js",
+          "line": 20,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 2
+        },
+        {
+          "finding_name": "Obfuscated URL Assembly",
+          "severity": "low",
+          "file": "14.js",
+          "line": 1,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Form Submit Interception",
+          "severity": "low",
+          "file": "14.js",
+          "line": 5854,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "VT Domain: uninstall.infinitynewtab.com",
+          "severity": "high",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "3 vendors flagged -- moderate signal, verify manually",
+          "category": "virustotal",
+          "_count": 1
+        },
+        {
+          "finding_name": "VT Domain: infinityicon.infinitynewtab.com",
+          "severity": "high",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "4 vendors flagged -- moderate signal, verify manually",
+          "category": "virustotal",
+          "_count": 1
+        },
+        {
+          "finding_name": "VT Domain: image.baidu.com",
+          "severity": "medium",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Suspicious (0 flags) -- not definitive",
+          "category": "virustotal",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Credential Harvester",
+          "severity": "critical",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Surveillance Agent",
+          "severity": "critical",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Data Exfiltration Pipeline (Obfuscated)",
+          "severity": "critical",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Device Fingerprint Collector",
+          "severity": "high",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Extension Manipulation Chain",
+          "severity": "critical",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Evasion-Wrapped Malicious Payload",
+          "severity": "critical",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        }
+      ]
+    },
+    {
+      "extension_id": "jcbiifklmgnkppebelchllpdbnibihel",
+      "name": "Free VPN",
+      "risk_score": 7.5,
+      "risk_level": "HIGH",
+      "has_source": true,
+      "is_threat_attributed": false,
+      "total_findings": 8,
+      "total_findings_raw": 10,
+      "true_positives": 1,
+      "false_positives": 0,
+      "needs_review": 7,
+      "fp_rate": 0.0,
+      "findings": [
+        {
+          "finding_name": "Base64 Decode (Obfuscation)",
+          "severity": "medium",
+          "file": "scripts\\service.js",
+          "line": 44,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Persistent Machine ID Generation",
+          "severity": "medium",
+          "file": "scripts\\service.js",
+          "line": 16,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 3
+        },
+        {
+          "finding_name": "Random ID Generation for Tracking",
+          "severity": "low",
+          "file": "scripts\\service.js",
+          "line": 20,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Embedded RSA Public Key",
+          "severity": "high",
+          "file": "scripts\\service.js",
+          "line": 27,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Unhandled high-severity pattern -- manual review needed",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "RSA-OAEP Key Import",
+          "severity": "high",
+          "file": "scripts\\service.js",
+          "line": 49,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Unhandled high-severity pattern -- manual review needed",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "VT Domain: www.freevpn.one",
+          "severity": "high",
+          "file": "",
+          "line": 0,
+          "verdict": "TRUE_POSITIVE",
+          "reason": "5 vendors flagged -- strong consensus",
+          "category": "virustotal",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Device Fingerprint Collector",
+          "severity": "high",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Evasion-Wrapped Malicious Payload",
+          "severity": "critical",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        }
+      ]
+    },
+    {
+      "extension_id": "iofmialeiddolmdlkbheakaefefkjokp",
+      "name": "Palette Creator",
+      "risk_score": 7.0,
+      "risk_level": "HIGH",
+      "has_source": true,
+      "is_threat_attributed": false,
+      "total_findings": 14,
+      "total_findings_raw": 25,
+      "true_positives": 1,
+      "false_positives": 2,
+      "needs_review": 11,
+      "fp_rate": 14.3,
+      "findings": [
+        {
+          "finding_name": "Random ID Generation for Tracking",
+          "severity": "low",
+          "file": "js\\main.js",
+          "line": 37,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 3
+        },
+        {
+          "finding_name": "Form Data Harvesting",
+          "severity": "medium",
+          "file": "js\\main.js",
+          "line": 37,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "DevTools Detection",
+          "severity": "low",
+          "file": "js\\main.js",
+          "line": 37,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "DevTools detection -- anti-analysis if paired with behavior change, else benign",
+          "category": "pattern",
+          "_count": 5
+        },
+        {
+          "finding_name": "Prototype Reference (Informational)",
+          "severity": "low",
+          "file": "js\\main.js",
+          "line": 10,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Prototype reference is standard JS -- common in polyfills and libraries",
+          "category": "pattern",
+          "_count": 3
+        },
+        {
+          "finding_name": "CSRF Token Extraction",
+          "severity": "low",
+          "file": "js\\main.js",
+          "line": 51,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "CSRF token read + network send in context -- potential token theft",
+          "category": "pattern",
+          "_count": 2
+        },
+        {
+          "finding_name": "Form Data Object Creation",
+          "severity": "medium",
+          "file": "js\\main.js",
+          "line": 51,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Input Value Direct Access",
+          "severity": "low",
+          "file": "js\\main.js",
+          "line": 37,
+          "verdict": "TRUE_POSITIVE",
+          "reason": "Sensitive input field access + network send detected",
+          "category": "pattern",
+          "_count": 3
+        },
+        {
+          "finding_name": "innerHTML Script Injection",
+          "severity": "low",
+          "file": "js\\main.js",
+          "line": 37,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "User Interaction Gating",
+          "severity": "medium",
+          "file": "js\\main.js",
+          "line": 37,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Comment-Based Code Hiding",
+          "severity": "low",
+          "file": "js\\main.js",
+          "line": 38,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Comment pattern in minified code -- artifact of minification, not code hiding",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Credential Harvester",
+          "severity": "high",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Data Exfiltration Pipeline (Obfuscated)",
+          "severity": "critical",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Device Fingerprint Collector",
+          "severity": "high",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Evasion-Wrapped Malicious Payload",
+          "severity": "critical",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        }
+      ]
+    },
+    {
+      "extension_id": "lgakkahjfibfgmacigibnhcgepajgfdb",
+      "name": "Music Downloader - VKsaver",
+      "risk_score": 7.0,
+      "risk_level": "HIGH",
+      "has_source": true,
+      "is_threat_attributed": false,
+      "total_findings": 12,
+      "total_findings_raw": 133,
+      "true_positives": 2,
+      "false_positives": 3,
+      "needs_review": 7,
+      "fp_rate": 25.0,
+      "findings": [
+        {
+          "finding_name": "Data Exfiltration via POST",
+          "severity": "high",
+          "file": "scripts\\content-script.js",
+          "line": 1,
+          "verdict": "TRUE_POSITIVE",
+          "reason": "Data exfiltration with sensitive data source (cookies/credentials/session)",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Encrypted Blob with IV",
+          "severity": "high",
+          "file": "scripts\\hls.js",
+          "line": 221,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Unhandled high-severity pattern -- manual review needed",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Input Field Event Listener",
+          "severity": "medium",
+          "file": "scripts\\hls.js",
+          "line": 97,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Key Event Data Push",
+          "severity": "high",
+          "file": "scripts\\hls.js",
+          "line": 241,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Unhandled high-severity pattern -- manual review needed",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Prototype Reference (Informational)",
+          "severity": "low",
+          "file": "scripts\\hls.js",
+          "line": 5,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Prototype reference is standard JS -- common in polyfills and libraries",
+          "category": "pattern",
+          "_count": 16
+        },
+        {
+          "finding_name": "Comment-Based Code Hiding",
+          "severity": "high",
+          "file": "scripts\\hls.js",
+          "line": 5,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Comment pattern in minified code -- artifact of minification, not code hiding",
+          "category": "pattern",
+          "_count": 100
+        },
+        {
+          "finding_name": "Comment-Based Code Hiding",
+          "severity": "high",
+          "file": "scripts\\hls.js",
+          "line": 133,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Comment near eval/Function -- verify if comments hide executable code",
+          "category": "pattern",
+          "_count": 6
+        },
+        {
+          "finding_name": "Input Value Direct Access",
+          "severity": "low",
+          "file": "scripts\\libs\\jquery.js",
+          "line": 2,
+          "verdict": "TRUE_POSITIVE",
+          "reason": "Sensitive input field access + network send detected",
+          "category": "pattern",
+          "_count": 3
+        },
+        {
+          "finding_name": "User Interaction Gating",
+          "severity": "medium",
+          "file": "scripts\\libs\\jquery.js",
+          "line": 2,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "VT Domain: vk.ru",
+          "severity": "medium",
+          "file": "",
+          "line": 0,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Only 1 vendor(s) flagged -- below noise threshold (need >= 3)",
+          "category": "virustotal",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Credential Harvester",
+          "severity": "critical",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Evasion-Wrapped Malicious Payload",
+          "severity": "critical",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        }
+      ]
+    },
+    {
+      "extension_id": "mflibpdjoodmoppignjhciadahapkoch",
+      "name": "VK Music - audio saver",
+      "risk_score": 0.4,
+      "risk_level": "MINIMAL",
+      "has_source": true,
+      "is_threat_attributed": false,
+      "total_findings": 5,
+      "total_findings_raw": 7,
+      "true_positives": 0,
+      "false_positives": 1,
+      "needs_review": 4,
+      "fp_rate": 20.0,
+      "findings": [
+        {
+          "finding_name": "XMLHttpRequest (Informational)",
+          "severity": "low",
+          "file": "context.js",
+          "line": 169,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 1
+        },
+        {
+          "finding_name": "Random ID Generation for Tracking",
+          "severity": "low",
+          "file": "context.js",
+          "line": 86,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 2
+        },
+        {
+          "finding_name": "CharCode Decoding",
+          "severity": "medium",
+          "file": "context.js",
+          "line": 9,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Pattern not covered by automated FP checks",
+          "category": "pattern",
+          "_count": 2
+        },
+        {
+          "finding_name": "VT Domain: vk.ru",
+          "severity": "medium",
+          "file": "",
+          "line": 0,
+          "verdict": "FALSE_POSITIVE",
+          "reason": "Only 1 vendor(s) flagged -- below noise threshold (need >= 3)",
+          "category": "virustotal",
+          "_count": 1
+        },
+        {
+          "finding_name": "Behavioral: Device Fingerprint Collector",
+          "severity": "high",
+          "file": "",
+          "line": 0,
+          "verdict": "NEEDS_REVIEW",
+          "reason": "Correlation evidence not directly tied to known FP or TP patterns",
+          "category": "behavioral",
+          "_count": 1
+        }
+      ]
+    }
+  ]
+}

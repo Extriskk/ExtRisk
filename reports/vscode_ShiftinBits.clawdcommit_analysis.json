@@ -1,0 +1,153 @@
+{
+  "extension_type": "vscode",
+  "name": "ClawdCommit",
+  "identifier": "ShiftinBits.clawdcommit",
+  "extension_id": "ShiftinBits.clawdcommit",
+  "version": "0.1.1",
+  "description": "Generate git commit messages with Claude Code CLI",
+  "publisher": "ShiftinBits",
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "store_metadata": {
+    "available": true,
+    "store": "vscode",
+    "identifier": "ShiftinBits.clawdcommit",
+    "name": "ClawdCommit",
+    "publisher": "ShiftinBits Inc",
+    "publisher_id": "39bb9951-36c4-4aea-8ddb-e39a8c6c59aa",
+    "publisher_domain": "https://shiftinbits.com",
+    "publisher_verified": false,
+    "short_description": "Generate git commit messages with Claude Code CLI",
+    "version": "0.1.1",
+    "last_updated": "2026-02-08T22:38:37.54Z",
+    "categories": [],
+    "tags": [],
+    "install_count": 0,
+    "rating_value": 5.0,
+    "rating_count": 1,
+    "flags": "validated, public",
+    "store_url": "https://marketplace.visualstudio.com/items?itemName=ShiftinBits.clawdcommit",
+    "risk_signals": {
+      "low_adoption": true,
+      "unverified_publisher": true,
+      "few_ratings": true
+    }
+  },
+  "metadata_risk": {
+    "findings": [
+      {
+        "type": "unverified_publisher",
+        "severity": "medium",
+        "detail": "Publisher domain is not verified"
+      },
+      {
+        "type": "low_adoption",
+        "severity": "medium",
+        "detail": "Low install count (<500)"
+      },
+      {
+        "type": "few_ratings",
+        "severity": "low",
+        "detail": "Very few ratings (<5)"
+      }
+    ],
+    "risk_score": 2,
+    "activation_events": [],
+    "contributes": [
+      "commands",
+      "menus"
+    ]
+  },
+  "package_json_deep": {
+    "findings": []
+  },
+  "supply_chain": {
+    "findings": [],
+    "risk_score": 0,
+    "dependency_count": 0,
+    "dev_dependency_count": 6,
+    "has_node_modules": false
+  },
+  "code_analysis": {
+    "all_findings": [],
+    "module_usage": {
+      "process_execution": [
+        {
+          "module": "child_process",
+          "file": "dist\\extension.js",
+          "line": 1
+        },
+        {
+          "module": "child_process",
+          "file": "dist\\extension.js",
+          "line": 1
+        }
+      ]
+    },
+    "external_urls": [],
+    "file_entropies": {},
+    "files_scanned": 1,
+    "findings_by_category": {},
+    "findings_by_severity": {},
+    "suppressed_false_positives": 0
+  },
+  "malicious_patterns": [],
+  "html_analysis": {
+    "findings": [],
+    "files_scanned": 0,
+    "iframe_urls": []
+  },
+  "permissions": {
+    "high_risk": [
+      {
+        "permission": "child_process",
+        "description": "Can execute system commands",
+        "evidence": [
+          {
+            "module": "child_process",
+            "file": "dist\\extension.js",
+            "line": 1
+          },
+          {
+            "module": "child_process",
+            "file": "dist\\extension.js",
+            "line": 1
+          }
+        ]
+      }
+    ],
+    "medium_risk": [],
+    "low_risk": [],
+    "total": 1,
+    "all": [
+      "child_process"
+    ]
+  },
+  "risk_score": 0.4,
+  "risk_level": "MINIMAL",
+  "risk_breakdown": {
+    "metadata_publisher": 0.4,
+    "supply_chain": 0.0,
+    "code_analysis": 0,
+    "behavioral_correlations": 0,
+    "infrastructure": 0
+  },
+  "module_usage": {
+    "process_execution": [
+      {
+        "module": "child_process",
+        "file": "dist\\extension.js",
+        "line": 1
+      },
+      {
+        "module": "child_process",
+        "file": "dist\\extension.js",
+        "line": 1
+      }
+    ]
+  },
+  "external_urls": [],
+  "domain_intelligence": [],
+  "virustotal_results": []
+}

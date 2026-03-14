@@ -1,0 +1,217 @@
+{
+  "extension_type": "vscode",
+  "name": "GCPrompts - GitHub Copilot Tracker",
+  "identifier": "ahsansaeed.gcprompts",
+  "extension_id": "ahsansaeed.gcprompts",
+  "version": "1.1.1",
+  "description": "Track your GitHub Copilot usage with seamless GitHub authentication. Monitor prompts, responses, and activity across your development workflow.",
+  "publisher": "ahsansaeed",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "store_metadata": {
+    "available": true,
+    "store": "vscode",
+    "identifier": "ahsansaeed.gcprompts",
+    "name": "GCPrompts - GitHub Copilot Tracker",
+    "publisher": "Ahsan Saeed",
+    "publisher_id": "567afe4f-4f6c-43ae-9b39-5457573860bb",
+    "publisher_domain": null,
+    "publisher_verified": false,
+    "short_description": "Track your GitHub Copilot usage with seamless GitHub authentication. Monitor prompts, responses, and activity across your development workflow.",
+    "version": "1.1.1",
+    "last_updated": "2026-02-19T11:05:04.913Z",
+    "categories": [],
+    "tags": [],
+    "install_count": 0,
+    "rating_value": 0,
+    "rating_count": 0,
+    "flags": "validated, public",
+    "store_url": "https://marketplace.visualstudio.com/items?itemName=ahsansaeed.gcprompts",
+    "risk_signals": {
+      "low_adoption": true,
+      "unverified_publisher": true,
+      "few_ratings": true
+    }
+  },
+  "metadata_risk": {
+    "findings": [
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onStartupFinished': Runs every launch - immediate execution",
+        "event": "onStartupFinished"
+      },
+      {
+        "type": "unverified_publisher",
+        "severity": "medium",
+        "detail": "Publisher domain is not verified"
+      },
+      {
+        "type": "low_adoption",
+        "severity": "medium",
+        "detail": "Low install count (<500)"
+      },
+      {
+        "type": "few_ratings",
+        "severity": "low",
+        "detail": "Very few ratings (<5)"
+      }
+    ],
+    "risk_score": 3,
+    "activation_events": [
+      "onStartupFinished"
+    ],
+    "contributes": [
+      "commands"
+    ]
+  },
+  "package_json_deep": {
+    "findings": []
+  },
+  "supply_chain": {
+    "findings": [],
+    "risk_score": 0,
+    "dependency_count": 0,
+    "dev_dependency_count": 4,
+    "has_node_modules": false,
+    "dependency_vulns": [],
+    "bundled_js_vulns": []
+  },
+  "code_analysis": {
+    "all_findings": [
+      {
+        "name": "OAuth token theft via authentication.getSession",
+        "severity": "critical",
+        "description": "Requests OAuth token via VSCode authentication API - can steal GitHub/Microsoft tokens",
+        "category": "auth_token_theft",
+        "file": "dist\\extension.js",
+        "line": 52,
+        "evidence": "try {         const session = await vscode.authentication.getSession('github', ['user:email'], {",
+        "path_type": "app"
+      }
+    ],
+    "module_usage": {
+      "os_info": [
+        {
+          "module": "os",
+          "file": "dist\\extension.js",
+          "line": 39
+        }
+      ]
+    },
+    "external_urls": [],
+    "file_entropies": {},
+    "files_scanned": 1,
+    "findings_by_category": {
+      "auth_token_theft": [
+        {
+          "name": "OAuth token theft via authentication.getSession",
+          "severity": "critical",
+          "description": "Requests OAuth token via VSCode authentication API - can steal GitHub/Microsoft tokens",
+          "category": "auth_token_theft",
+          "file": "dist\\extension.js",
+          "line": 52,
+          "evidence": "try {         const session = await vscode.authentication.getSession('github', ['user:email'], {",
+          "path_type": "app"
+        }
+      ]
+    },
+    "findings_by_severity": {
+      "critical": 1
+    },
+    "suppressed_false_positives": 0
+  },
+  "malicious_patterns": [
+    {
+      "name": "OAuth token theft via authentication.getSession",
+      "severity": "critical",
+      "description": "Requests OAuth token via VSCode authentication API - can steal GitHub/Microsoft tokens",
+      "category": "auth_token_theft",
+      "file": "dist\\extension.js",
+      "line": 52,
+      "evidence": "try {         const session = await vscode.authentication.getSession('github', ['user:email'], {",
+      "path_type": "app"
+    }
+  ],
+  "html_analysis": {
+    "findings": [],
+    "files_scanned": 0,
+    "iframe_urls": []
+  },
+  "permissions": {
+    "high_risk": [],
+    "medium_risk": [],
+    "low_risk": [
+      {
+        "permission": "os_info",
+        "description": "Can read OS information",
+        "evidence": [
+          {
+            "module": "os",
+            "file": "dist\\extension.js",
+            "line": 39
+          }
+        ]
+      }
+    ],
+    "total": 1,
+    "all": [
+      "os_info"
+    ]
+  },
+  "risk_score": 0,
+  "risk_level": "MINIMAL",
+  "risk_breakdown": {
+    "supply_chain": 0.0,
+    "metadata_publisher": 0.3,
+    "code_analysis": 0.5,
+    "behavioral_correlations": 0,
+    "infrastructure": 0,
+    "positive_signals": -1.2
+  },
+  "positive_signals": {
+    "signals": [
+      {
+        "signal": "no_network_access",
+        "description": "Extension has no network capabilities - data stays local",
+        "weight": 0.5
+      },
+      {
+        "signal": "no_obfuscation",
+        "description": "No code obfuscation or evasion techniques detected",
+        "weight": 0.3
+      },
+      {
+        "signal": "scoped_activation",
+        "description": "Extension activates only on specific events, not wildcard",
+        "weight": 0.2
+      },
+      {
+        "signal": "no_exfiltration_pattern",
+        "description": "No compound attack patterns detected",
+        "weight": 0.2
+      }
+    ],
+    "reduction": 1.2,
+    "count": 4
+  },
+  "risk_classification": {
+    "classification": "BENIGN",
+    "summary": "Low-risk extension with minimal sensitive capabilities.",
+    "suspicion_indicators": 2,
+    "positive_signal_count": 4
+  },
+  "module_usage": {
+    "os_info": [
+      {
+        "module": "os",
+        "file": "dist\\extension.js",
+        "line": 39
+      }
+    ]
+  },
+  "external_urls": [],
+  "domain_intelligence": [],
+  "virustotal_results": []
+}

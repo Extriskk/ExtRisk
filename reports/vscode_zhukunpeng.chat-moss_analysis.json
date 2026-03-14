@@ -1,0 +1,2313 @@
+{
+  "extension_type": "vscode",
+  "name": "ChatGPT - ChatMoss\uff08CodeMoss\uff09",
+  "identifier": "zhukunpeng.chat-moss",
+  "extension_id": "zhukunpeng.chat-moss",
+  "version": "8.0.0",
+  "description": "\u4e00\u4e2aChatGPT\u7684\u63d2\u4ef6_\u652f\u6301o1,claude4,\u4e2d\u6587\u7248_\u514d\u7ffb\u5899",
+  "publisher": "zhukunpeng",
+  "engines": {
+    "vscode": "^1.27.0"
+  },
+  "store_metadata": {
+    "available": true,
+    "store": "vscode",
+    "identifier": "zhukunpeng.chat-moss",
+    "name": "ChatGPT - ChatMoss\uff08CodeMoss\uff09",
+    "publisher": "zhukunpeng",
+    "publisher_id": "2a52c23d-a806-4d71-b229-9ef1b0ea9b2d",
+    "publisher_domain": null,
+    "publisher_verified": false,
+    "short_description": "\u4e00\u4e2aChatGPT\u7684\u63d2\u4ef6_\u652f\u6301o1,claude4,\u4e2d\u6587\u7248_\u514d\u7ffb\u5899",
+    "version": "8.0.0",
+    "last_updated": "2025-05-29T15:47:10.343Z",
+    "categories": [],
+    "tags": [],
+    "install_count": 151755,
+    "rating_value": 3.95,
+    "rating_count": 43,
+    "flags": "validated, public, unpublished, locked",
+    "store_url": "https://marketplace.visualstudio.com/items?itemName=zhukunpeng.chat-moss",
+    "risk_signals": {
+      "unverified_publisher": true
+    }
+  },
+  "metadata_risk": {
+    "findings": [
+      {
+        "type": "risky_activation",
+        "severity": "high",
+        "detail": "Activation event '*': Activates on EVERYTHING - runs at all times",
+        "event": "*"
+      },
+      {
+        "type": "unverified_publisher",
+        "severity": "medium",
+        "detail": "Publisher domain is not verified"
+      }
+    ],
+    "risk_score": 7,
+    "activation_events": [
+      "*"
+    ],
+    "contributes": [
+      "configuration",
+      "commands",
+      "keybindings",
+      "menus",
+      "views",
+      "viewsContainers"
+    ]
+  },
+  "package_json_deep": {
+    "findings": [
+      {
+        "name": "Suspicious URL in package.json config: CodeMoss.serverUrl",
+        "severity": "critical",
+        "description": "Suspicious TLD (.cn) in config default \"CodeMoss.serverUrl\" - untrusted remote endpoint",
+        "category": "package_json_suspicious_url",
+        "file": "package.json",
+        "line": 0,
+        "evidence": "CodeMoss.serverUrl default = http://codemoss.aihao123.cn"
+      },
+      {
+        "name": "Publisher-domain mismatch: zhukunpeng vs codemoss.aihao123.cn",
+        "severity": "medium",
+        "description": "Publisher \"zhukunpeng\" does not match operational domain \"codemoss.aihao123.cn\"",
+        "category": "publisher_mismatch",
+        "file": "package.json",
+        "line": 0,
+        "evidence": "publisher=zhukunpeng, domain=codemoss.aihao123.cn"
+      },
+      {
+        "name": "Publisher-domain mismatch: zhukunpeng vs chatmoss.feishu.cn",
+        "severity": "medium",
+        "description": "Publisher \"zhukunpeng\" does not match operational domain \"chatmoss.feishu.cn\"",
+        "category": "publisher_mismatch",
+        "file": "package.json",
+        "line": 0,
+        "evidence": "publisher=zhukunpeng, domain=chatmoss.feishu.cn"
+      },
+      {
+        "name": "Wildcard activation with network dependency",
+        "severity": "critical",
+        "description": "Extension activates on EVERYTHING and bundles network client - always-on remote communication capable",
+        "category": "package_json_suspicious_url",
+        "file": "package.json",
+        "line": 0,
+        "evidence": "activationEvents=[\"*\"], network deps: {'axios'}"
+      }
+    ]
+  },
+  "supply_chain": {
+    "findings": [
+      {
+        "type": "bundled_node_modules",
+        "severity": "info",
+        "detail": "10 bundled packages (1.2 MB)",
+        "count": 10,
+        "size_mb": 1.2
+      }
+    ],
+    "risk_score": 0,
+    "dependency_count": 10,
+    "dev_dependency_count": 11,
+    "has_node_modules": true
+  },
+  "code_analysis": {
+    "all_findings": [
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "media\\result\\main.js",
+        "line": 7,
+        "evidence": "// document.getElementById('app1').innerHTML = `111${JSON.stringify(message)}`     Char"
+      },
+      {
+        "name": "Document content reading",
+        "severity": "low",
+        "description": "Reads open document content (common but trackable)",
+        "category": "data_access",
+        "file": "out\\extension.js",
+        "line": 39,
+        "evidence": "\u4ef6\u7684\u5185\u5bb9             // const fileContent = editor.document.getText();             // \u83b7\u53d6\u5f53\u524d\u6587\u4ef6\u7684 URI"
+      },
+      {
+        "name": "Document content reading",
+        "severity": "low",
+        "description": "Reads open document content (common but trackable)",
+        "category": "data_access",
+        "file": "out\\extension.js",
+        "line": 82,
+        "evidence": "\u4ef6\u7684\u5185\u5bb9             // const fileContent = editor.document.getText();             // \u83b7\u53d6\u5f53\u524d\u6587\u4ef6\u7684 URI"
+      },
+      {
+        "name": "Document content reading",
+        "severity": "low",
+        "description": "Reads open document content (common but trackable)",
+        "category": "data_access",
+        "file": "out\\extension.js",
+        "line": 129,
+        "evidence": "\u6237\u9009\u62e9\u7684\u6587\u672c\u533a\u57df                 selectedText = editor.document.getText(selection); // \u83b7\u53d6\u9009\u62e9\u533a\u57df\u7684\u6587\u672c\u5185\u5bb9"
+      },
+      {
+        "name": "Document content reading",
+        "severity": "low",
+        "description": "Reads open document content (common but trackable)",
+        "category": "data_access",
+        "file": "out\\extension.js",
+        "line": 191,
+        "evidence": "\u83b7\u53d6\u7528\u6237\u9009\u62e9\u7684\u6587\u672c\u533a\u57df             selectedText = editor.document.getText(selection); // \u83b7\u53d6\u9009\u62e9\u533a\u57df\u7684\u6587\u672c\u5185\u5bb9             s"
+      },
+      {
+        "name": "Workspace file access",
+        "severity": "low",
+        "description": "Accesses workspace files",
+        "category": "data_access",
+        "file": "out\\extension.js",
+        "line": 42,
+        "evidence": ";             const fileContent = yield vscode.workspace.fs.readFile(fileUri);             // \u5c06\u4e8c\u8fdb\u5236\u6570\u636e\u8f6c\u6362\u4e3a Base"
+      },
+      {
+        "name": "Workspace file access",
+        "severity": "low",
+        "description": "Accesses workspace files",
+        "category": "data_access",
+        "file": "out\\extension.js",
+        "line": 85,
+        "evidence": ";             const fileContent = yield vscode.workspace.fs.readFile(fileUri);             // \u5c06\u4e8c\u8fdb\u5236\u6570\u636e\u8f6c\u6362\u4e3a Base"
+      },
+      {
+        "name": "Real-time document change listener",
+        "severity": "medium",
+        "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+        "category": "document_monitoring",
+        "file": "out\\extension.js",
+        "line": 30,
+        "evidence": "ontext.subscriptions.push(vscode.window.onDidChangeActiveTextEditor((editor) => __awaiter(this, void 0, void"
+      },
+      {
+        "name": "Real-time document change listener",
+        "severity": "medium",
+        "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+        "category": "document_monitoring",
+        "file": "out\\extension.js",
+        "line": 74,
+        "evidence": ";     let disposable = vscode.workspace.onDidChangeTextDocument((editor) => __awaiter(this, void 0, void"
+      },
+      {
+        "name": "Bulk file reading with variable path",
+        "severity": "medium",
+        "description": "Reads file content using variable path - bulk file harvesting indicator",
+        "category": "workspace_harvesting",
+        "file": "out\\extension.js",
+        "line": 42,
+        "evidence": "st fileContent = yield vscode.workspace.fs.readFile(fileUri);             // \u5c06\u4e8c\u8fdb\u5236\u6570\u636e\u8f6c\u6362\u4e3a Base64 \u5b57\u7b26\u4e32"
+      },
+      {
+        "name": "Bulk file reading with variable path",
+        "severity": "medium",
+        "description": "Reads file content using variable path - bulk file harvesting indicator",
+        "category": "workspace_harvesting",
+        "file": "out\\extension.js",
+        "line": 85,
+        "evidence": "st fileContent = yield vscode.workspace.fs.readFile(fileUri);             // \u5c06\u4e8c\u8fdb\u5236\u6570\u636e\u8f6c\u6362\u4e3a Base64 \u5b57\u7b26\u4e32"
+      },
+      {
+        "name": "File content to base64 conversion",
+        "severity": "high",
+        "description": "Converts file content to base64 - data exfiltration preparation (ChatMoss pattern)",
+        "category": "workspace_harvesting",
+        "file": "out\\extension.js",
+        "line": 44,
+        "evidence": "64 \u5b57\u7b26\u4e32             const base64String = Buffer.from(fileContent).toString('base64');             // \u663e\u793a\u4fe1\u606f             // vs"
+      },
+      {
+        "name": "File content to base64 conversion",
+        "severity": "high",
+        "description": "Converts file content to base64 - data exfiltration preparation (ChatMoss pattern)",
+        "category": "workspace_harvesting",
+        "file": "out\\extension.js",
+        "line": 87,
+        "evidence": "64 \u5b57\u7b26\u4e32             const base64String = Buffer.from(fileContent).toString('base64');             // \u663e\u793a\u4fe1\u606f             // vs"
+      },
+      {
+        "name": "VSCode filesystem bulk read",
+        "severity": "medium",
+        "description": "Reads files via VSCode workspace filesystem API",
+        "category": "workspace_harvesting",
+        "file": "out\\extension.js",
+        "line": 42,
+        "evidence": ";             const fileContent = yield vscode.workspace.fs.readFile(fileUri);             // \u5c06\u4e8c\u8fdb\u5236\u6570\u636e\u8f6c\u6362\u4e3a Base"
+      },
+      {
+        "name": "VSCode filesystem bulk read",
+        "severity": "medium",
+        "description": "Reads files via VSCode workspace filesystem API",
+        "category": "workspace_harvesting",
+        "file": "out\\extension.js",
+        "line": 85,
+        "evidence": ";             const fileContent = yield vscode.workspace.fs.readFile(fileUri);             // \u5c06\u4e8c\u8fdb\u5236\u6570\u636e\u8f6c\u6362\u4e3a Base"
+      },
+      {
+        "name": "Base64 encoding of content variable",
+        "severity": "high",
+        "description": "Base64 encodes content/file data - exfiltration preparation",
+        "category": "base64_exfil",
+        "file": "out\\extension.js",
+        "line": 44,
+        "evidence": "64 \u5b57\u7b26\u4e32             const base64String = Buffer.from(fileContent).toString('base64');             // \u663e\u793a\u4fe1"
+      },
+      {
+        "name": "Base64 encoding of content variable",
+        "severity": "high",
+        "description": "Base64 encodes content/file data - exfiltration preparation",
+        "category": "base64_exfil",
+        "file": "out\\extension.js",
+        "line": 87,
+        "evidence": "64 \u5b57\u7b26\u4e32             const base64String = Buffer.from(fileContent).toString('base64');             // \u663e\u793a\u4fe1"
+      },
+      {
+        "name": "Active editor fileName access",
+        "severity": "low",
+        "description": "Accesses the filename/path of the active document",
+        "category": "document_monitoring",
+        "file": "out\\extension.js",
+        "line": 35,
+        "evidence": "\u524d\u6587\u4ef6\u7684\u540d\u79f0             const fileFullPath = editor.document.fileName; // \u5b8c\u6574\u8def\u5f84             handleMessage_1.lo"
+      },
+      {
+        "name": "Active editor fileName access",
+        "severity": "low",
+        "description": "Accesses the filename/path of the active document",
+        "category": "document_monitoring",
+        "file": "out\\extension.js",
+        "line": 41,
+        "evidence": "\u83b7\u53d6\u5f53\u524d\u6587\u4ef6\u7684 URI             const fileUri = editor.document.uri;             const fileContent = yield"
+      },
+      {
+        "name": "Active editor fileName access",
+        "severity": "low",
+        "description": "Accesses the filename/path of the active document",
+        "category": "document_monitoring",
+        "file": "out\\extension.js",
+        "line": 78,
+        "evidence": "\u524d\u6587\u4ef6\u7684\u540d\u79f0             const fileFullPath = editor.document.fileName; // \u5b8c\u6574\u8def\u5f84             handleMessage_1.lo"
+      },
+      {
+        "name": "Active editor fileName access",
+        "severity": "low",
+        "description": "Accesses the filename/path of the active document",
+        "category": "document_monitoring",
+        "file": "out\\extension.js",
+        "line": 84,
+        "evidence": "\u83b7\u53d6\u5f53\u524d\u6587\u4ef6\u7684 URI             const fileUri = editor.document.uri;             const fileContent = yield"
+      },
+      {
+        "name": "File content read on editor change event",
+        "severity": "medium",
+        "description": "Registers handler for editor/document change events",
+        "category": "document_monitoring",
+        "file": "out\\extension.js",
+        "line": 30,
+        "evidence": "ontext.subscriptions.push(vscode.window.onDidChangeActiveTextEditor((editor) => __awaiter(this, void 0, void 0, functio"
+      },
+      {
+        "name": "File content read on editor change event",
+        "severity": "medium",
+        "description": "Registers handler for editor/document change events",
+        "category": "document_monitoring",
+        "file": "out\\extension.js",
+        "line": 74,
+        "evidence": ";     let disposable = vscode.workspace.onDidChangeTextDocument((editor) => __awaiter(this, void 0, void 0, functio"
+      },
+      {
+        "name": "Plaintext HTTP endpoint (not HTTPS)",
+        "severity": "high",
+        "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+        "category": "insecure_endpoint",
+        "file": "out\\command\\zflogin.js",
+        "line": 16,
+        "evidence": "uire(\"../service/zfServe\"); let zfUlr = \"http://www.zhufengpeixun.com/\"; var ButtonType; (function (ButtonTyp"
+      },
+      {
+        "name": "Axios with Authorization header",
+        "severity": "high",
+        "description": "Axios sends data with authorization headers - authenticated remote communication",
+        "category": "insecure_endpoint",
+        "file": "out\\command\\zflogin.js",
+        "line": 34,
+        "evidence": "}         const { data } = yield (0, axios_1.default)({             method: \"get\",             url: `https://api.github.com/user`,             headers: {                 accept: \"application/json\",   "
+      },
+      {
+        "name": "HTTP client library import",
+        "severity": "low",
+        "description": "HTTP client library imported - enables outbound network communication",
+        "category": "insecure_endpoint",
+        "file": "out\\command\\zflogin.js",
+        "line": 13,
+        "evidence": "floginCommand = void 0; const axios_1 = require(\"axios\"); const vscode = require(\"vscode\"); con"
+      },
+      {
+        "name": "HTTP client library import",
+        "severity": "low",
+        "description": "HTTP client library imported - enables outbound network communication",
+        "category": "insecure_endpoint",
+        "file": "out\\service\\index.js",
+        "line": 13,
+        "evidence": "ts.isValidate = void 0; const axios_1 = require(\"axios\"); const dayjs = require(\"dayjs\"); const"
+      },
+      {
+        "name": "IP-based connection",
+        "severity": "high",
+        "description": "Connects to raw IP address (C2 indicator)",
+        "category": "network_exfil",
+        "file": "out\\service\\zfServe.js",
+        "line": 8,
+        "evidence": "zhufengpeixun.com/\"; // const baseURL = \"http://127.0.0.1:7001/\"; exports.instance = axios_1.defa"
+      },
+      {
+        "name": "Plaintext HTTP endpoint (not HTTPS)",
+        "severity": "high",
+        "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+        "category": "insecure_endpoint",
+        "file": "out\\service\\zfServe.js",
+        "line": 6,
+        "evidence": "= require(\"vscode\"); // const baseURL = \"http://daily.zhufengpeixun.com\"; const baseURL = \"http://study.zhufeng"
+      },
+      {
+        "name": "Plaintext HTTP endpoint (not HTTPS)",
+        "severity": "high",
+        "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+        "category": "insecure_endpoint",
+        "file": "out\\service\\zfServe.js",
+        "line": 7,
+        "evidence": "ily.zhufengpeixun.com\"; const baseURL = \"http://study.zhufengpeixun.com/\"; // const baseURL = \"http://127.0.0.1"
+      },
+      {
+        "name": "HTTP client library import",
+        "severity": "low",
+        "description": "HTTP client library imported - enables outbound network communication",
+        "category": "insecure_endpoint",
+        "file": "out\\service\\zfServe.js",
+        "line": 4,
+        "evidence": "orts.instance = void 0; const axios_1 = require(\"axios\"); const vscode_1 = require(\"vscode\"); /"
+      },
+      {
+        "name": "URL from extension configuration",
+        "severity": "medium",
+        "description": "URL constructed from extension configuration - configurable remote endpoint",
+        "category": "insecure_endpoint",
+        "file": "out\\tips\\Commands.js",
+        "line": 29,
+        "evidence": "ur CodeMoss Server\",             value: configuration.get(\"serverUrl\", \"\"),         })             .then((url) => {             if (url) {                 console.debug(\"Set CodeMoss Server URL: \", ur"
+      },
+      {
+        "name": "Axios with Authorization header",
+        "severity": "high",
+        "description": "Axios sends data with authorization headers - authenticated remote communication",
+        "category": "insecure_endpoint",
+        "file": "out\\tips\\TabbyClient.js",
+        "line": 90,
+        "evidence": "const response = yield axios_1.default.post(`${this.tabbyServerUrl}/luomacode-api/code/gen/v1/completions`, request, {                     headers: {                         Authorization: configurati"
+      },
+      {
+        "name": "HTTP client library import",
+        "severity": "low",
+        "description": "HTTP client library imported - enables outbound network communication",
+        "category": "insecure_endpoint",
+        "file": "out\\tips\\TabbyClient.js",
+        "line": 14,
+        "evidence": "_1 = require(\"vscode\"); const axios_1 = require(\"axios\"); const utils_1 = require(\"./utils\"); c"
+      },
+      {
+        "name": "Document content reading",
+        "severity": "low",
+        "description": "Reads open document content (common but trackable)",
+        "category": "data_access",
+        "file": "out\\tips\\TabbyCompletionProvider.js",
+        "line": 168,
+        "evidence": "\u4e00\u4e2a\u65b0\u7684\u4f4d\u7f6e\uff0c\u5b83\u4f4d\u4e8e\u6587\u6863\u7684\u672b\u5c3e         // const text = document.getText(range);         return {             pre"
+      },
+      {
+        "name": "Document content reading",
+        "severity": "low",
+        "description": "Reads open document content (common but trackable)",
+        "category": "data_access",
+        "file": "out\\tips\\TabbyCompletionProvider.js",
+        "line": 170,
+        "evidence": ");         return {             prefix: document.getText(new vscode_1.Range(firstLine, 0, positio"
+      },
+      {
+        "name": "Document content reading",
+        "severity": "low",
+        "description": "Reads open document content (common but trackable)",
+        "category": "data_access",
+        "file": "out\\tips\\TabbyCompletionProvider.js",
+        "line": 171,
+        "evidence": "sition.character)),             suffix: document.getText(new vscode_1.Range(position, new vscode_"
+      },
+      {
+        "name": "Document content reading",
+        "severity": "low",
+        "description": "Reads open document content (common but trackable)",
+        "category": "data_access",
+        "file": "out\\tips\\TabbyCompletionProvider.js",
+        "line": 193,
+        "evidence": "ent, position) {         const suffix = document.getText(new vscode_1.Range(position.line, positi"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "out\\tips\\TabbyCompletionProvider.js",
+        "line": 49,
+        "evidence": "postBody = Object.assign(Object.assign({}, postBody), { select_kind: \"line\" });"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "out\\tips\\TabbyCompletionProvider.js",
+        "line": 52,
+        "evidence": "postBody = Object.assign(Object.assign({}, postBody), { select_kind: \"line\" });"
+      },
+      {
+        "name": "Webview with scripts enabled",
+        "severity": "medium",
+        "description": "Webview with JavaScript enabled (XSS vector if loading external content)",
+        "category": "webview_risk",
+        "file": "out\\utils\\createWebviewPanel.js",
+        "line": 45,
+        "evidence": "\u5728\u7f16\u8f91\u5668\u7684\u54ea\u4e2a\u90e8\u4f4d             {                 enableScripts: true,                 retainContextWhenHidde"
+      },
+      {
+        "name": "Document content reading",
+        "severity": "low",
+        "description": "Reads open document content (common but trackable)",
+        "category": "data_access",
+        "file": "out\\utils\\handleMessage.js",
+        "line": 27,
+        "evidence": "\u83b7\u53d6\u9009\u4e2d\u7684\u6587\u672c         // const selectedText = editor.document.getText(selection);         // \u4f7f\u7528 editor.edit()"
+      },
+      {
+        "name": "Recursive directory reading",
+        "severity": "medium",
+        "description": "Reads directory contents - suspicious when combined with file reading and network",
+        "category": "workspace_harvesting",
+        "file": "out\\utils\\handleMessage.js",
+        "line": 145,
+        "evidence": "}             const items = fs.readdirSync(dir);             for (const item of ite"
+      },
+      {
+        "name": "Bulk file reading with variable path",
+        "severity": "medium",
+        "description": "Reads file content using variable path - bulk file harvesting indicator",
+        "category": "workspace_harvesting",
+        "file": "out\\utils\\handleMessage.js",
+        "line": 135,
+        "evidence": "Path)) {             gitignoreContent = fs.readFileSync(gitignorePath, 'utf-8');         }         // \u89e3\u6790 .git"
+      },
+      {
+        "name": "Bulk file reading with variable path",
+        "severity": "medium",
+        "description": "Reads file content using variable path - bulk file harvesting indicator",
+        "category": "workspace_harvesting",
+        "file": "out\\utils\\handleMessage.js",
+        "line": 171,
+        "evidence": "s[i];             const content = yield fs.readFileSync(urlPath, 'utf8'); // \u8bfb\u53d6\u6587\u4ef6\u5185\u5bb9             data.pu"
+      },
+      {
+        "name": "Workspace folder enumeration",
+        "severity": "low",
+        "description": "Accesses workspace root folder path",
+        "category": "workspace_harvesting",
+        "file": "out\\utils\\handleMessage.js",
+        "line": 125,
+        "evidence": "* () {         const workspaceFolders = vscode.workspace.workspaceFolders;         if (!workspaceFolders) {"
+      },
+      {
+        "name": "Document content reading",
+        "severity": "low",
+        "description": "Reads open document content (common but trackable)",
+        "category": "data_access",
+        "file": "out\\webview\\chatMoss0ptimize.js",
+        "line": 24,
+        "evidence": "\u83b7\u53d6\u7528\u6237\u9009\u62e9\u7684\u6587\u672c\u533a\u57df             selectedText = editor.document.getText(selection); // \u83b7\u53d6\u9009\u62e9\u533a\u57df\u7684\u6587\u672c\u5185\u5bb9             s"
+      },
+      {
+        "name": "Document content reading",
+        "severity": "low",
+        "description": "Reads open document content (common but trackable)",
+        "category": "data_access",
+        "file": "out\\webview\\chatMossBugCcan.js",
+        "line": 24,
+        "evidence": "\u83b7\u53d6\u7528\u6237\u9009\u62e9\u7684\u6587\u672c\u533a\u57df             selectedText = editor.document.getText(selection); // \u83b7\u53d6\u9009\u62e9\u533a\u57df\u7684\u6587\u672c\u5185\u5bb9             s"
+      },
+      {
+        "name": "Document content reading",
+        "severity": "low",
+        "description": "Reads open document content (common but trackable)",
+        "category": "data_access",
+        "file": "out\\webview\\chatMossExplain.js",
+        "line": 24,
+        "evidence": "\u83b7\u53d6\u7528\u6237\u9009\u62e9\u7684\u6587\u672c\u533a\u57df             selectedText = editor.document.getText(selection); // \u83b7\u53d6\u9009\u62e9\u533a\u57df\u7684\u6587\u672c\u5185\u5bb9             s"
+      },
+      {
+        "name": "Webview with scripts enabled",
+        "severity": "medium",
+        "description": "Webview with JavaScript enabled (XSS vector if loading external content)",
+        "category": "webview_risk",
+        "file": "out\\webview\\openWebview.js",
+        "line": 14,
+        "evidence": "o, // \u663e\u793a\u5728\u7f16\u8f91\u5668\u7684\u54ea\u4e2a\u90e8\u4f4d         {             enableScripts: true,             retainContextWhenHidden: t"
+      },
+      {
+        "name": "Webview with scripts enabled",
+        "severity": "medium",
+        "description": "Webview with JavaScript enabled (XSS vector if loading external content)",
+        "category": "webview_risk",
+        "file": "out\\webview\\proSidebarProvider.js",
+        "line": 36,
+        "evidence": "scripts in the webview                 enableScripts: true,                 localResourceRoots: [t"
+      },
+      {
+        "name": "Webview with scripts enabled",
+        "severity": "medium",
+        "description": "Webview with JavaScript enabled (XSS vector if loading external content)",
+        "category": "webview_risk",
+        "file": "out\\webview\\SidebarProvider.js",
+        "line": 39,
+        "evidence": "scripts in the webview                 enableScripts: true,                 localResourceRoots: [t"
+      },
+      {
+        "name": "Potential data exfiltration: file monitoring + base64 encoding + network",
+        "severity": "critical",
+        "description": "Extension monitors file changes, encodes content, and has network access - potential data exfiltration capability. Review what data is sent and where.",
+        "category": "behavioral_correlation",
+        "file": "out\\extension.js",
+        "line": 0,
+        "evidence": "Real-time document change listener | Base64 encoding of content variable | IP-based connection",
+        "confidence": "HIGH",
+        "attack_type": "code_exfiltration"
+      },
+      {
+        "name": "Potential continuous monitoring: wildcard activation + document events + network",
+        "severity": "critical",
+        "description": "Extension activates on everything, monitors document changes, and has network access - review whether data collection is proportionate to functionality",
+        "category": "behavioral_correlation",
+        "file": "out\\extension.js",
+        "line": 0,
+        "evidence": "activationEvents=[\"*\"] + Real-time document change listener + IP-based connection",
+        "confidence": "HIGH",
+        "attack_type": "continuous_surveillance"
+      },
+      {
+        "name": "Credential exposure risk: auth token handling + plaintext HTTP",
+        "severity": "critical",
+        "description": "Extension handles auth tokens AND uses plaintext HTTP - credentials may be sent unencrypted",
+        "category": "behavioral_correlation",
+        "file": "out\\command\\zflogin.js",
+        "line": 0,
+        "evidence": "Axios with Authorization header + Plaintext HTTP endpoint (not HTTPS)",
+        "confidence": "MEDIUM",
+        "attack_type": "credential_leak"
+      },
+      {
+        "name": "Iframe loading plaintext HTTP URL",
+        "severity": "high",
+        "description": "Iframe loads plaintext HTTP URL - insecure C2 channel",
+        "category": "hidden_iframe",
+        "file": "media\\main.html",
+        "line": 31,
+        "evidence": "</head>  <body class=\"dark:bg-black\">   <iframe src=\"http://chatmoss-shuju.aihao123.cn/\" frameborder=\"0\"></iframe>   <div id=\"app\">     <style>"
+      },
+      {
+        "name": "Iframe loading external domain",
+        "severity": "medium",
+        "description": "Iframe loads external URL - potential data exfiltration channel",
+        "category": "hidden_iframe",
+        "file": "media\\main.html",
+        "line": 31,
+        "evidence": "</head>  <body class=\"dark:bg-black\">   <iframe src=\"http://chatmoss-shuju.aihao123.cn/\" frameborder=\"0\"></iframe>   <div id=\"app\">     <style>"
+      },
+      {
+        "name": "CSS-hidden iframe detected",
+        "severity": "critical",
+        "description": "CSS rule hides iframe elements + iframe tag present - covert C2/tracking (ChatMoss pattern)",
+        "category": "hidden_iframe",
+        "file": "media\\main.html",
+        "line": 13,
+        "evidence": "iframe {\n      width: 0px;\n      height: 0px;\n    }"
+      },
+      {
+        "name": "Iframe loading plaintext HTTP URL",
+        "severity": "high",
+        "description": "Iframe loads plaintext HTTP URL - insecure C2 channel",
+        "category": "hidden_iframe",
+        "file": "media\\main.html",
+        "line": 31,
+        "evidence": "</head>  <body class=\"dark:bg-black\">   <iframe src=\"http://chatmoss-shuju.aihao123.cn/\" frameborder=\"0\"></iframe>   <div id=\"app\">     <style>"
+      },
+      {
+        "name": "Iframe loading external domain",
+        "severity": "medium",
+        "description": "Iframe loads external URL - potential data exfiltration channel",
+        "category": "hidden_iframe",
+        "file": "media\\main.html",
+        "line": 31,
+        "evidence": "</head>  <body class=\"dark:bg-black\">   <iframe src=\"http://chatmoss-shuju.aihao123.cn/\" frameborder=\"0\"></iframe>   <div id=\"app\">     <style>"
+      },
+      {
+        "name": "CSS-hidden iframe detected",
+        "severity": "critical",
+        "description": "CSS rule hides iframe elements + iframe tag present - covert C2/tracking (ChatMoss pattern)",
+        "category": "hidden_iframe",
+        "file": "media\\main.html",
+        "line": 13,
+        "evidence": "iframe {\n      width: 0px;\n      height: 0px;\n    }"
+      }
+    ],
+    "module_usage": {
+      "network": [
+        {
+          "module": "axios",
+          "file": "out\\command\\zflogin.js",
+          "line": 13
+        },
+        {
+          "module": "axios",
+          "file": "out\\service\\index.js",
+          "line": 13
+        },
+        {
+          "module": "axios",
+          "file": "out\\service\\zfServe.js",
+          "line": 4
+        },
+        {
+          "module": "axios",
+          "file": "out\\tips\\TabbyClient.js",
+          "line": 14
+        }
+      ],
+      "file_access": [
+        {
+          "module": "fs",
+          "file": "out\\utils\\createWebviewPanel.js",
+          "line": 14
+        },
+        {
+          "module": "fs",
+          "file": "out\\utils\\handleMessage.js",
+          "line": 14
+        },
+        {
+          "module": "fs",
+          "file": "out\\webview\\openWebview.js",
+          "line": 6
+        },
+        {
+          "module": "fs",
+          "file": "out\\webview\\proSidebarProvider.js",
+          "line": 13
+        },
+        {
+          "module": "fs",
+          "file": "out\\webview\\SidebarProvider.js",
+          "line": 13
+        }
+      ]
+    },
+    "external_urls": [
+      {
+        "url": "https://www.yuque.com/settings/profile",
+        "file": "out\\command\\login.js",
+        "line": 14
+      },
+      {
+        "url": "https://www.yuque.com/api/v2",
+        "file": "out\\command\\login.js",
+        "line": 15
+      },
+      {
+        "url": "http://www.zhufengpeixun.com/",
+        "file": "out\\command\\zflogin.js",
+        "line": 16
+      },
+      {
+        "url": "https://www.yuque.com/yuque/developer/doc#684fb2c5",
+        "file": "out\\service\\index.js",
+        "line": 26
+      },
+      {
+        "url": "http://daily.zhufengpeixun.com",
+        "file": "out\\service\\zfServe.js",
+        "line": 6
+      },
+      {
+        "url": "http://study.zhufengpeixun.com/",
+        "file": "out\\service\\zfServe.js",
+        "line": 7
+      }
+    ],
+    "file_entropies": {},
+    "files_scanned": 28,
+    "findings_by_category": {
+      "webview_risk": [
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "media\\result\\main.js",
+          "line": 7,
+          "evidence": "// document.getElementById('app1').innerHTML = `111${JSON.stringify(message)}`     Char"
+        },
+        {
+          "name": "Webview with scripts enabled",
+          "severity": "medium",
+          "description": "Webview with JavaScript enabled (XSS vector if loading external content)",
+          "category": "webview_risk",
+          "file": "out\\utils\\createWebviewPanel.js",
+          "line": 45,
+          "evidence": "\u5728\u7f16\u8f91\u5668\u7684\u54ea\u4e2a\u90e8\u4f4d             {                 enableScripts: true,                 retainContextWhenHidde"
+        },
+        {
+          "name": "Webview with scripts enabled",
+          "severity": "medium",
+          "description": "Webview with JavaScript enabled (XSS vector if loading external content)",
+          "category": "webview_risk",
+          "file": "out\\webview\\openWebview.js",
+          "line": 14,
+          "evidence": "o, // \u663e\u793a\u5728\u7f16\u8f91\u5668\u7684\u54ea\u4e2a\u90e8\u4f4d         {             enableScripts: true,             retainContextWhenHidden: t"
+        },
+        {
+          "name": "Webview with scripts enabled",
+          "severity": "medium",
+          "description": "Webview with JavaScript enabled (XSS vector if loading external content)",
+          "category": "webview_risk",
+          "file": "out\\webview\\proSidebarProvider.js",
+          "line": 36,
+          "evidence": "scripts in the webview                 enableScripts: true,                 localResourceRoots: [t"
+        },
+        {
+          "name": "Webview with scripts enabled",
+          "severity": "medium",
+          "description": "Webview with JavaScript enabled (XSS vector if loading external content)",
+          "category": "webview_risk",
+          "file": "out\\webview\\SidebarProvider.js",
+          "line": 39,
+          "evidence": "scripts in the webview                 enableScripts: true,                 localResourceRoots: [t"
+        }
+      ],
+      "data_access": [
+        {
+          "name": "Document content reading",
+          "severity": "low",
+          "description": "Reads open document content (common but trackable)",
+          "category": "data_access",
+          "file": "out\\extension.js",
+          "line": 39,
+          "evidence": "\u4ef6\u7684\u5185\u5bb9             // const fileContent = editor.document.getText();             // \u83b7\u53d6\u5f53\u524d\u6587\u4ef6\u7684 URI"
+        },
+        {
+          "name": "Document content reading",
+          "severity": "low",
+          "description": "Reads open document content (common but trackable)",
+          "category": "data_access",
+          "file": "out\\extension.js",
+          "line": 82,
+          "evidence": "\u4ef6\u7684\u5185\u5bb9             // const fileContent = editor.document.getText();             // \u83b7\u53d6\u5f53\u524d\u6587\u4ef6\u7684 URI"
+        },
+        {
+          "name": "Document content reading",
+          "severity": "low",
+          "description": "Reads open document content (common but trackable)",
+          "category": "data_access",
+          "file": "out\\extension.js",
+          "line": 129,
+          "evidence": "\u6237\u9009\u62e9\u7684\u6587\u672c\u533a\u57df                 selectedText = editor.document.getText(selection); // \u83b7\u53d6\u9009\u62e9\u533a\u57df\u7684\u6587\u672c\u5185\u5bb9"
+        },
+        {
+          "name": "Document content reading",
+          "severity": "low",
+          "description": "Reads open document content (common but trackable)",
+          "category": "data_access",
+          "file": "out\\extension.js",
+          "line": 191,
+          "evidence": "\u83b7\u53d6\u7528\u6237\u9009\u62e9\u7684\u6587\u672c\u533a\u57df             selectedText = editor.document.getText(selection); // \u83b7\u53d6\u9009\u62e9\u533a\u57df\u7684\u6587\u672c\u5185\u5bb9             s"
+        },
+        {
+          "name": "Workspace file access",
+          "severity": "low",
+          "description": "Accesses workspace files",
+          "category": "data_access",
+          "file": "out\\extension.js",
+          "line": 42,
+          "evidence": ";             const fileContent = yield vscode.workspace.fs.readFile(fileUri);             // \u5c06\u4e8c\u8fdb\u5236\u6570\u636e\u8f6c\u6362\u4e3a Base"
+        },
+        {
+          "name": "Workspace file access",
+          "severity": "low",
+          "description": "Accesses workspace files",
+          "category": "data_access",
+          "file": "out\\extension.js",
+          "line": 85,
+          "evidence": ";             const fileContent = yield vscode.workspace.fs.readFile(fileUri);             // \u5c06\u4e8c\u8fdb\u5236\u6570\u636e\u8f6c\u6362\u4e3a Base"
+        },
+        {
+          "name": "Document content reading",
+          "severity": "low",
+          "description": "Reads open document content (common but trackable)",
+          "category": "data_access",
+          "file": "out\\tips\\TabbyCompletionProvider.js",
+          "line": 168,
+          "evidence": "\u4e00\u4e2a\u65b0\u7684\u4f4d\u7f6e\uff0c\u5b83\u4f4d\u4e8e\u6587\u6863\u7684\u672b\u5c3e         // const text = document.getText(range);         return {             pre"
+        },
+        {
+          "name": "Document content reading",
+          "severity": "low",
+          "description": "Reads open document content (common but trackable)",
+          "category": "data_access",
+          "file": "out\\tips\\TabbyCompletionProvider.js",
+          "line": 170,
+          "evidence": ");         return {             prefix: document.getText(new vscode_1.Range(firstLine, 0, positio"
+        },
+        {
+          "name": "Document content reading",
+          "severity": "low",
+          "description": "Reads open document content (common but trackable)",
+          "category": "data_access",
+          "file": "out\\tips\\TabbyCompletionProvider.js",
+          "line": 171,
+          "evidence": "sition.character)),             suffix: document.getText(new vscode_1.Range(position, new vscode_"
+        },
+        {
+          "name": "Document content reading",
+          "severity": "low",
+          "description": "Reads open document content (common but trackable)",
+          "category": "data_access",
+          "file": "out\\tips\\TabbyCompletionProvider.js",
+          "line": 193,
+          "evidence": "ent, position) {         const suffix = document.getText(new vscode_1.Range(position.line, positi"
+        },
+        {
+          "name": "Document content reading",
+          "severity": "low",
+          "description": "Reads open document content (common but trackable)",
+          "category": "data_access",
+          "file": "out\\utils\\handleMessage.js",
+          "line": 27,
+          "evidence": "\u83b7\u53d6\u9009\u4e2d\u7684\u6587\u672c         // const selectedText = editor.document.getText(selection);         // \u4f7f\u7528 editor.edit()"
+        },
+        {
+          "name": "Document content reading",
+          "severity": "low",
+          "description": "Reads open document content (common but trackable)",
+          "category": "data_access",
+          "file": "out\\webview\\chatMoss0ptimize.js",
+          "line": 24,
+          "evidence": "\u83b7\u53d6\u7528\u6237\u9009\u62e9\u7684\u6587\u672c\u533a\u57df             selectedText = editor.document.getText(selection); // \u83b7\u53d6\u9009\u62e9\u533a\u57df\u7684\u6587\u672c\u5185\u5bb9             s"
+        },
+        {
+          "name": "Document content reading",
+          "severity": "low",
+          "description": "Reads open document content (common but trackable)",
+          "category": "data_access",
+          "file": "out\\webview\\chatMossBugCcan.js",
+          "line": 24,
+          "evidence": "\u83b7\u53d6\u7528\u6237\u9009\u62e9\u7684\u6587\u672c\u533a\u57df             selectedText = editor.document.getText(selection); // \u83b7\u53d6\u9009\u62e9\u533a\u57df\u7684\u6587\u672c\u5185\u5bb9             s"
+        },
+        {
+          "name": "Document content reading",
+          "severity": "low",
+          "description": "Reads open document content (common but trackable)",
+          "category": "data_access",
+          "file": "out\\webview\\chatMossExplain.js",
+          "line": 24,
+          "evidence": "\u83b7\u53d6\u7528\u6237\u9009\u62e9\u7684\u6587\u672c\u533a\u57df             selectedText = editor.document.getText(selection); // \u83b7\u53d6\u9009\u62e9\u533a\u57df\u7684\u6587\u672c\u5185\u5bb9             s"
+        }
+      ],
+      "document_monitoring": [
+        {
+          "name": "Real-time document change listener",
+          "severity": "medium",
+          "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+          "category": "document_monitoring",
+          "file": "out\\extension.js",
+          "line": 30,
+          "evidence": "ontext.subscriptions.push(vscode.window.onDidChangeActiveTextEditor((editor) => __awaiter(this, void 0, void"
+        },
+        {
+          "name": "Real-time document change listener",
+          "severity": "medium",
+          "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+          "category": "document_monitoring",
+          "file": "out\\extension.js",
+          "line": 74,
+          "evidence": ";     let disposable = vscode.workspace.onDidChangeTextDocument((editor) => __awaiter(this, void 0, void"
+        },
+        {
+          "name": "Active editor fileName access",
+          "severity": "low",
+          "description": "Accesses the filename/path of the active document",
+          "category": "document_monitoring",
+          "file": "out\\extension.js",
+          "line": 35,
+          "evidence": "\u524d\u6587\u4ef6\u7684\u540d\u79f0             const fileFullPath = editor.document.fileName; // \u5b8c\u6574\u8def\u5f84             handleMessage_1.lo"
+        },
+        {
+          "name": "Active editor fileName access",
+          "severity": "low",
+          "description": "Accesses the filename/path of the active document",
+          "category": "document_monitoring",
+          "file": "out\\extension.js",
+          "line": 41,
+          "evidence": "\u83b7\u53d6\u5f53\u524d\u6587\u4ef6\u7684 URI             const fileUri = editor.document.uri;             const fileContent = yield"
+        },
+        {
+          "name": "Active editor fileName access",
+          "severity": "low",
+          "description": "Accesses the filename/path of the active document",
+          "category": "document_monitoring",
+          "file": "out\\extension.js",
+          "line": 78,
+          "evidence": "\u524d\u6587\u4ef6\u7684\u540d\u79f0             const fileFullPath = editor.document.fileName; // \u5b8c\u6574\u8def\u5f84             handleMessage_1.lo"
+        },
+        {
+          "name": "Active editor fileName access",
+          "severity": "low",
+          "description": "Accesses the filename/path of the active document",
+          "category": "document_monitoring",
+          "file": "out\\extension.js",
+          "line": 84,
+          "evidence": "\u83b7\u53d6\u5f53\u524d\u6587\u4ef6\u7684 URI             const fileUri = editor.document.uri;             const fileContent = yield"
+        },
+        {
+          "name": "File content read on editor change event",
+          "severity": "medium",
+          "description": "Registers handler for editor/document change events",
+          "category": "document_monitoring",
+          "file": "out\\extension.js",
+          "line": 30,
+          "evidence": "ontext.subscriptions.push(vscode.window.onDidChangeActiveTextEditor((editor) => __awaiter(this, void 0, void 0, functio"
+        },
+        {
+          "name": "File content read on editor change event",
+          "severity": "medium",
+          "description": "Registers handler for editor/document change events",
+          "category": "document_monitoring",
+          "file": "out\\extension.js",
+          "line": 74,
+          "evidence": ";     let disposable = vscode.workspace.onDidChangeTextDocument((editor) => __awaiter(this, void 0, void 0, functio"
+        }
+      ],
+      "workspace_harvesting": [
+        {
+          "name": "Bulk file reading with variable path",
+          "severity": "medium",
+          "description": "Reads file content using variable path - bulk file harvesting indicator",
+          "category": "workspace_harvesting",
+          "file": "out\\extension.js",
+          "line": 42,
+          "evidence": "st fileContent = yield vscode.workspace.fs.readFile(fileUri);             // \u5c06\u4e8c\u8fdb\u5236\u6570\u636e\u8f6c\u6362\u4e3a Base64 \u5b57\u7b26\u4e32"
+        },
+        {
+          "name": "Bulk file reading with variable path",
+          "severity": "medium",
+          "description": "Reads file content using variable path - bulk file harvesting indicator",
+          "category": "workspace_harvesting",
+          "file": "out\\extension.js",
+          "line": 85,
+          "evidence": "st fileContent = yield vscode.workspace.fs.readFile(fileUri);             // \u5c06\u4e8c\u8fdb\u5236\u6570\u636e\u8f6c\u6362\u4e3a Base64 \u5b57\u7b26\u4e32"
+        },
+        {
+          "name": "File content to base64 conversion",
+          "severity": "high",
+          "description": "Converts file content to base64 - data exfiltration preparation (ChatMoss pattern)",
+          "category": "workspace_harvesting",
+          "file": "out\\extension.js",
+          "line": 44,
+          "evidence": "64 \u5b57\u7b26\u4e32             const base64String = Buffer.from(fileContent).toString('base64');             // \u663e\u793a\u4fe1\u606f             // vs"
+        },
+        {
+          "name": "File content to base64 conversion",
+          "severity": "high",
+          "description": "Converts file content to base64 - data exfiltration preparation (ChatMoss pattern)",
+          "category": "workspace_harvesting",
+          "file": "out\\extension.js",
+          "line": 87,
+          "evidence": "64 \u5b57\u7b26\u4e32             const base64String = Buffer.from(fileContent).toString('base64');             // \u663e\u793a\u4fe1\u606f             // vs"
+        },
+        {
+          "name": "VSCode filesystem bulk read",
+          "severity": "medium",
+          "description": "Reads files via VSCode workspace filesystem API",
+          "category": "workspace_harvesting",
+          "file": "out\\extension.js",
+          "line": 42,
+          "evidence": ";             const fileContent = yield vscode.workspace.fs.readFile(fileUri);             // \u5c06\u4e8c\u8fdb\u5236\u6570\u636e\u8f6c\u6362\u4e3a Base"
+        },
+        {
+          "name": "VSCode filesystem bulk read",
+          "severity": "medium",
+          "description": "Reads files via VSCode workspace filesystem API",
+          "category": "workspace_harvesting",
+          "file": "out\\extension.js",
+          "line": 85,
+          "evidence": ";             const fileContent = yield vscode.workspace.fs.readFile(fileUri);             // \u5c06\u4e8c\u8fdb\u5236\u6570\u636e\u8f6c\u6362\u4e3a Base"
+        },
+        {
+          "name": "Recursive directory reading",
+          "severity": "medium",
+          "description": "Reads directory contents - suspicious when combined with file reading and network",
+          "category": "workspace_harvesting",
+          "file": "out\\utils\\handleMessage.js",
+          "line": 145,
+          "evidence": "}             const items = fs.readdirSync(dir);             for (const item of ite"
+        },
+        {
+          "name": "Bulk file reading with variable path",
+          "severity": "medium",
+          "description": "Reads file content using variable path - bulk file harvesting indicator",
+          "category": "workspace_harvesting",
+          "file": "out\\utils\\handleMessage.js",
+          "line": 135,
+          "evidence": "Path)) {             gitignoreContent = fs.readFileSync(gitignorePath, 'utf-8');         }         // \u89e3\u6790 .git"
+        },
+        {
+          "name": "Bulk file reading with variable path",
+          "severity": "medium",
+          "description": "Reads file content using variable path - bulk file harvesting indicator",
+          "category": "workspace_harvesting",
+          "file": "out\\utils\\handleMessage.js",
+          "line": 171,
+          "evidence": "s[i];             const content = yield fs.readFileSync(urlPath, 'utf8'); // \u8bfb\u53d6\u6587\u4ef6\u5185\u5bb9             data.pu"
+        },
+        {
+          "name": "Workspace folder enumeration",
+          "severity": "low",
+          "description": "Accesses workspace root folder path",
+          "category": "workspace_harvesting",
+          "file": "out\\utils\\handleMessage.js",
+          "line": 125,
+          "evidence": "* () {         const workspaceFolders = vscode.workspace.workspaceFolders;         if (!workspaceFolders) {"
+        }
+      ],
+      "base64_exfil": [
+        {
+          "name": "Base64 encoding of content variable",
+          "severity": "high",
+          "description": "Base64 encodes content/file data - exfiltration preparation",
+          "category": "base64_exfil",
+          "file": "out\\extension.js",
+          "line": 44,
+          "evidence": "64 \u5b57\u7b26\u4e32             const base64String = Buffer.from(fileContent).toString('base64');             // \u663e\u793a\u4fe1"
+        },
+        {
+          "name": "Base64 encoding of content variable",
+          "severity": "high",
+          "description": "Base64 encodes content/file data - exfiltration preparation",
+          "category": "base64_exfil",
+          "file": "out\\extension.js",
+          "line": 87,
+          "evidence": "64 \u5b57\u7b26\u4e32             const base64String = Buffer.from(fileContent).toString('base64');             // \u663e\u793a\u4fe1"
+        }
+      ],
+      "insecure_endpoint": [
+        {
+          "name": "Plaintext HTTP endpoint (not HTTPS)",
+          "severity": "high",
+          "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+          "category": "insecure_endpoint",
+          "file": "out\\command\\zflogin.js",
+          "line": 16,
+          "evidence": "uire(\"../service/zfServe\"); let zfUlr = \"http://www.zhufengpeixun.com/\"; var ButtonType; (function (ButtonTyp"
+        },
+        {
+          "name": "Axios with Authorization header",
+          "severity": "high",
+          "description": "Axios sends data with authorization headers - authenticated remote communication",
+          "category": "insecure_endpoint",
+          "file": "out\\command\\zflogin.js",
+          "line": 34,
+          "evidence": "}         const { data } = yield (0, axios_1.default)({             method: \"get\",             url: `https://api.github.com/user`,             headers: {                 accept: \"application/json\",   "
+        },
+        {
+          "name": "HTTP client library import",
+          "severity": "low",
+          "description": "HTTP client library imported - enables outbound network communication",
+          "category": "insecure_endpoint",
+          "file": "out\\command\\zflogin.js",
+          "line": 13,
+          "evidence": "floginCommand = void 0; const axios_1 = require(\"axios\"); const vscode = require(\"vscode\"); con"
+        },
+        {
+          "name": "HTTP client library import",
+          "severity": "low",
+          "description": "HTTP client library imported - enables outbound network communication",
+          "category": "insecure_endpoint",
+          "file": "out\\service\\index.js",
+          "line": 13,
+          "evidence": "ts.isValidate = void 0; const axios_1 = require(\"axios\"); const dayjs = require(\"dayjs\"); const"
+        },
+        {
+          "name": "Plaintext HTTP endpoint (not HTTPS)",
+          "severity": "high",
+          "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+          "category": "insecure_endpoint",
+          "file": "out\\service\\zfServe.js",
+          "line": 6,
+          "evidence": "= require(\"vscode\"); // const baseURL = \"http://daily.zhufengpeixun.com\"; const baseURL = \"http://study.zhufeng"
+        },
+        {
+          "name": "Plaintext HTTP endpoint (not HTTPS)",
+          "severity": "high",
+          "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+          "category": "insecure_endpoint",
+          "file": "out\\service\\zfServe.js",
+          "line": 7,
+          "evidence": "ily.zhufengpeixun.com\"; const baseURL = \"http://study.zhufengpeixun.com/\"; // const baseURL = \"http://127.0.0.1"
+        },
+        {
+          "name": "HTTP client library import",
+          "severity": "low",
+          "description": "HTTP client library imported - enables outbound network communication",
+          "category": "insecure_endpoint",
+          "file": "out\\service\\zfServe.js",
+          "line": 4,
+          "evidence": "orts.instance = void 0; const axios_1 = require(\"axios\"); const vscode_1 = require(\"vscode\"); /"
+        },
+        {
+          "name": "URL from extension configuration",
+          "severity": "medium",
+          "description": "URL constructed from extension configuration - configurable remote endpoint",
+          "category": "insecure_endpoint",
+          "file": "out\\tips\\Commands.js",
+          "line": 29,
+          "evidence": "ur CodeMoss Server\",             value: configuration.get(\"serverUrl\", \"\"),         })             .then((url) => {             if (url) {                 console.debug(\"Set CodeMoss Server URL: \", ur"
+        },
+        {
+          "name": "Axios with Authorization header",
+          "severity": "high",
+          "description": "Axios sends data with authorization headers - authenticated remote communication",
+          "category": "insecure_endpoint",
+          "file": "out\\tips\\TabbyClient.js",
+          "line": 90,
+          "evidence": "const response = yield axios_1.default.post(`${this.tabbyServerUrl}/luomacode-api/code/gen/v1/completions`, request, {                     headers: {                         Authorization: configurati"
+        },
+        {
+          "name": "HTTP client library import",
+          "severity": "low",
+          "description": "HTTP client library imported - enables outbound network communication",
+          "category": "insecure_endpoint",
+          "file": "out\\tips\\TabbyClient.js",
+          "line": 14,
+          "evidence": "_1 = require(\"vscode\"); const axios_1 = require(\"axios\"); const utils_1 = require(\"./utils\"); c"
+        }
+      ],
+      "network_exfil": [
+        {
+          "name": "IP-based connection",
+          "severity": "high",
+          "description": "Connects to raw IP address (C2 indicator)",
+          "category": "network_exfil",
+          "file": "out\\service\\zfServe.js",
+          "line": 8,
+          "evidence": "zhufengpeixun.com/\"; // const baseURL = \"http://127.0.0.1:7001/\"; exports.instance = axios_1.defa"
+        }
+      ],
+      "prototype_pollution": [
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "out\\tips\\TabbyCompletionProvider.js",
+          "line": 49,
+          "evidence": "postBody = Object.assign(Object.assign({}, postBody), { select_kind: \"line\" });"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "out\\tips\\TabbyCompletionProvider.js",
+          "line": 52,
+          "evidence": "postBody = Object.assign(Object.assign({}, postBody), { select_kind: \"line\" });"
+        }
+      ],
+      "behavioral_correlation": [
+        {
+          "name": "Potential data exfiltration: file monitoring + base64 encoding + network",
+          "severity": "critical",
+          "description": "Extension monitors file changes, encodes content, and has network access - potential data exfiltration capability. Review what data is sent and where.",
+          "category": "behavioral_correlation",
+          "file": "out\\extension.js",
+          "line": 0,
+          "evidence": "Real-time document change listener | Base64 encoding of content variable | IP-based connection",
+          "confidence": "HIGH",
+          "attack_type": "code_exfiltration"
+        },
+        {
+          "name": "Potential continuous monitoring: wildcard activation + document events + network",
+          "severity": "critical",
+          "description": "Extension activates on everything, monitors document changes, and has network access - review whether data collection is proportionate to functionality",
+          "category": "behavioral_correlation",
+          "file": "out\\extension.js",
+          "line": 0,
+          "evidence": "activationEvents=[\"*\"] + Real-time document change listener + IP-based connection",
+          "confidence": "HIGH",
+          "attack_type": "continuous_surveillance"
+        },
+        {
+          "name": "Credential exposure risk: auth token handling + plaintext HTTP",
+          "severity": "critical",
+          "description": "Extension handles auth tokens AND uses plaintext HTTP - credentials may be sent unencrypted",
+          "category": "behavioral_correlation",
+          "file": "out\\command\\zflogin.js",
+          "line": 0,
+          "evidence": "Axios with Authorization header + Plaintext HTTP endpoint (not HTTPS)",
+          "confidence": "MEDIUM",
+          "attack_type": "credential_leak"
+        }
+      ],
+      "hidden_iframe": [
+        {
+          "name": "Iframe loading plaintext HTTP URL",
+          "severity": "high",
+          "description": "Iframe loads plaintext HTTP URL - insecure C2 channel",
+          "category": "hidden_iframe",
+          "file": "media\\main.html",
+          "line": 31,
+          "evidence": "</head>  <body class=\"dark:bg-black\">   <iframe src=\"http://chatmoss-shuju.aihao123.cn/\" frameborder=\"0\"></iframe>   <div id=\"app\">     <style>"
+        },
+        {
+          "name": "Iframe loading external domain",
+          "severity": "medium",
+          "description": "Iframe loads external URL - potential data exfiltration channel",
+          "category": "hidden_iframe",
+          "file": "media\\main.html",
+          "line": 31,
+          "evidence": "</head>  <body class=\"dark:bg-black\">   <iframe src=\"http://chatmoss-shuju.aihao123.cn/\" frameborder=\"0\"></iframe>   <div id=\"app\">     <style>"
+        },
+        {
+          "name": "CSS-hidden iframe detected",
+          "severity": "critical",
+          "description": "CSS rule hides iframe elements + iframe tag present - covert C2/tracking (ChatMoss pattern)",
+          "category": "hidden_iframe",
+          "file": "media\\main.html",
+          "line": 13,
+          "evidence": "iframe {\n      width: 0px;\n      height: 0px;\n    }"
+        },
+        {
+          "name": "Iframe loading plaintext HTTP URL",
+          "severity": "high",
+          "description": "Iframe loads plaintext HTTP URL - insecure C2 channel",
+          "category": "hidden_iframe",
+          "file": "media\\main.html",
+          "line": 31,
+          "evidence": "</head>  <body class=\"dark:bg-black\">   <iframe src=\"http://chatmoss-shuju.aihao123.cn/\" frameborder=\"0\"></iframe>   <div id=\"app\">     <style>"
+        },
+        {
+          "name": "Iframe loading external domain",
+          "severity": "medium",
+          "description": "Iframe loads external URL - potential data exfiltration channel",
+          "category": "hidden_iframe",
+          "file": "media\\main.html",
+          "line": 31,
+          "evidence": "</head>  <body class=\"dark:bg-black\">   <iframe src=\"http://chatmoss-shuju.aihao123.cn/\" frameborder=\"0\"></iframe>   <div id=\"app\">     <style>"
+        },
+        {
+          "name": "CSS-hidden iframe detected",
+          "severity": "critical",
+          "description": "CSS rule hides iframe elements + iframe tag present - covert C2/tracking (ChatMoss pattern)",
+          "category": "hidden_iframe",
+          "file": "media\\main.html",
+          "line": 13,
+          "evidence": "iframe {\n      width: 0px;\n      height: 0px;\n    }"
+        }
+      ]
+    },
+    "findings_by_severity": {
+      "high": 13,
+      "low": 23,
+      "medium": 20,
+      "critical": 5
+    },
+    "suppressed_false_positives": 1
+  },
+  "malicious_patterns": [
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "media\\result\\main.js",
+      "line": 7,
+      "evidence": "// document.getElementById('app1').innerHTML = `111${JSON.stringify(message)}`     Char"
+    },
+    {
+      "name": "Document content reading",
+      "severity": "low",
+      "description": "Reads open document content (common but trackable)",
+      "category": "data_access",
+      "file": "out\\extension.js",
+      "line": 39,
+      "evidence": "\u4ef6\u7684\u5185\u5bb9             // const fileContent = editor.document.getText();             // \u83b7\u53d6\u5f53\u524d\u6587\u4ef6\u7684 URI"
+    },
+    {
+      "name": "Document content reading",
+      "severity": "low",
+      "description": "Reads open document content (common but trackable)",
+      "category": "data_access",
+      "file": "out\\extension.js",
+      "line": 82,
+      "evidence": "\u4ef6\u7684\u5185\u5bb9             // const fileContent = editor.document.getText();             // \u83b7\u53d6\u5f53\u524d\u6587\u4ef6\u7684 URI"
+    },
+    {
+      "name": "Document content reading",
+      "severity": "low",
+      "description": "Reads open document content (common but trackable)",
+      "category": "data_access",
+      "file": "out\\extension.js",
+      "line": 129,
+      "evidence": "\u6237\u9009\u62e9\u7684\u6587\u672c\u533a\u57df                 selectedText = editor.document.getText(selection); // \u83b7\u53d6\u9009\u62e9\u533a\u57df\u7684\u6587\u672c\u5185\u5bb9"
+    },
+    {
+      "name": "Document content reading",
+      "severity": "low",
+      "description": "Reads open document content (common but trackable)",
+      "category": "data_access",
+      "file": "out\\extension.js",
+      "line": 191,
+      "evidence": "\u83b7\u53d6\u7528\u6237\u9009\u62e9\u7684\u6587\u672c\u533a\u57df             selectedText = editor.document.getText(selection); // \u83b7\u53d6\u9009\u62e9\u533a\u57df\u7684\u6587\u672c\u5185\u5bb9             s"
+    },
+    {
+      "name": "Workspace file access",
+      "severity": "low",
+      "description": "Accesses workspace files",
+      "category": "data_access",
+      "file": "out\\extension.js",
+      "line": 42,
+      "evidence": ";             const fileContent = yield vscode.workspace.fs.readFile(fileUri);             // \u5c06\u4e8c\u8fdb\u5236\u6570\u636e\u8f6c\u6362\u4e3a Base"
+    },
+    {
+      "name": "Workspace file access",
+      "severity": "low",
+      "description": "Accesses workspace files",
+      "category": "data_access",
+      "file": "out\\extension.js",
+      "line": 85,
+      "evidence": ";             const fileContent = yield vscode.workspace.fs.readFile(fileUri);             // \u5c06\u4e8c\u8fdb\u5236\u6570\u636e\u8f6c\u6362\u4e3a Base"
+    },
+    {
+      "name": "Real-time document change listener",
+      "severity": "medium",
+      "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+      "category": "document_monitoring",
+      "file": "out\\extension.js",
+      "line": 30,
+      "evidence": "ontext.subscriptions.push(vscode.window.onDidChangeActiveTextEditor((editor) => __awaiter(this, void 0, void"
+    },
+    {
+      "name": "Real-time document change listener",
+      "severity": "medium",
+      "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+      "category": "document_monitoring",
+      "file": "out\\extension.js",
+      "line": 74,
+      "evidence": ";     let disposable = vscode.workspace.onDidChangeTextDocument((editor) => __awaiter(this, void 0, void"
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "severity": "medium",
+      "description": "Reads file content using variable path - bulk file harvesting indicator",
+      "category": "workspace_harvesting",
+      "file": "out\\extension.js",
+      "line": 42,
+      "evidence": "st fileContent = yield vscode.workspace.fs.readFile(fileUri);             // \u5c06\u4e8c\u8fdb\u5236\u6570\u636e\u8f6c\u6362\u4e3a Base64 \u5b57\u7b26\u4e32"
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "severity": "medium",
+      "description": "Reads file content using variable path - bulk file harvesting indicator",
+      "category": "workspace_harvesting",
+      "file": "out\\extension.js",
+      "line": 85,
+      "evidence": "st fileContent = yield vscode.workspace.fs.readFile(fileUri);             // \u5c06\u4e8c\u8fdb\u5236\u6570\u636e\u8f6c\u6362\u4e3a Base64 \u5b57\u7b26\u4e32"
+    },
+    {
+      "name": "File content to base64 conversion",
+      "severity": "high",
+      "description": "Converts file content to base64 - data exfiltration preparation (ChatMoss pattern)",
+      "category": "workspace_harvesting",
+      "file": "out\\extension.js",
+      "line": 44,
+      "evidence": "64 \u5b57\u7b26\u4e32             const base64String = Buffer.from(fileContent).toString('base64');             // \u663e\u793a\u4fe1\u606f             // vs"
+    },
+    {
+      "name": "File content to base64 conversion",
+      "severity": "high",
+      "description": "Converts file content to base64 - data exfiltration preparation (ChatMoss pattern)",
+      "category": "workspace_harvesting",
+      "file": "out\\extension.js",
+      "line": 87,
+      "evidence": "64 \u5b57\u7b26\u4e32             const base64String = Buffer.from(fileContent).toString('base64');             // \u663e\u793a\u4fe1\u606f             // vs"
+    },
+    {
+      "name": "VSCode filesystem bulk read",
+      "severity": "medium",
+      "description": "Reads files via VSCode workspace filesystem API",
+      "category": "workspace_harvesting",
+      "file": "out\\extension.js",
+      "line": 42,
+      "evidence": ";             const fileContent = yield vscode.workspace.fs.readFile(fileUri);             // \u5c06\u4e8c\u8fdb\u5236\u6570\u636e\u8f6c\u6362\u4e3a Base"
+    },
+    {
+      "name": "VSCode filesystem bulk read",
+      "severity": "medium",
+      "description": "Reads files via VSCode workspace filesystem API",
+      "category": "workspace_harvesting",
+      "file": "out\\extension.js",
+      "line": 85,
+      "evidence": ";             const fileContent = yield vscode.workspace.fs.readFile(fileUri);             // \u5c06\u4e8c\u8fdb\u5236\u6570\u636e\u8f6c\u6362\u4e3a Base"
+    },
+    {
+      "name": "Base64 encoding of content variable",
+      "severity": "high",
+      "description": "Base64 encodes content/file data - exfiltration preparation",
+      "category": "base64_exfil",
+      "file": "out\\extension.js",
+      "line": 44,
+      "evidence": "64 \u5b57\u7b26\u4e32             const base64String = Buffer.from(fileContent).toString('base64');             // \u663e\u793a\u4fe1"
+    },
+    {
+      "name": "Base64 encoding of content variable",
+      "severity": "high",
+      "description": "Base64 encodes content/file data - exfiltration preparation",
+      "category": "base64_exfil",
+      "file": "out\\extension.js",
+      "line": 87,
+      "evidence": "64 \u5b57\u7b26\u4e32             const base64String = Buffer.from(fileContent).toString('base64');             // \u663e\u793a\u4fe1"
+    },
+    {
+      "name": "Active editor fileName access",
+      "severity": "low",
+      "description": "Accesses the filename/path of the active document",
+      "category": "document_monitoring",
+      "file": "out\\extension.js",
+      "line": 35,
+      "evidence": "\u524d\u6587\u4ef6\u7684\u540d\u79f0             const fileFullPath = editor.document.fileName; // \u5b8c\u6574\u8def\u5f84             handleMessage_1.lo"
+    },
+    {
+      "name": "Active editor fileName access",
+      "severity": "low",
+      "description": "Accesses the filename/path of the active document",
+      "category": "document_monitoring",
+      "file": "out\\extension.js",
+      "line": 41,
+      "evidence": "\u83b7\u53d6\u5f53\u524d\u6587\u4ef6\u7684 URI             const fileUri = editor.document.uri;             const fileContent = yield"
+    },
+    {
+      "name": "Active editor fileName access",
+      "severity": "low",
+      "description": "Accesses the filename/path of the active document",
+      "category": "document_monitoring",
+      "file": "out\\extension.js",
+      "line": 78,
+      "evidence": "\u524d\u6587\u4ef6\u7684\u540d\u79f0             const fileFullPath = editor.document.fileName; // \u5b8c\u6574\u8def\u5f84             handleMessage_1.lo"
+    },
+    {
+      "name": "Active editor fileName access",
+      "severity": "low",
+      "description": "Accesses the filename/path of the active document",
+      "category": "document_monitoring",
+      "file": "out\\extension.js",
+      "line": 84,
+      "evidence": "\u83b7\u53d6\u5f53\u524d\u6587\u4ef6\u7684 URI             const fileUri = editor.document.uri;             const fileContent = yield"
+    },
+    {
+      "name": "File content read on editor change event",
+      "severity": "medium",
+      "description": "Registers handler for editor/document change events",
+      "category": "document_monitoring",
+      "file": "out\\extension.js",
+      "line": 30,
+      "evidence": "ontext.subscriptions.push(vscode.window.onDidChangeActiveTextEditor((editor) => __awaiter(this, void 0, void 0, functio"
+    },
+    {
+      "name": "File content read on editor change event",
+      "severity": "medium",
+      "description": "Registers handler for editor/document change events",
+      "category": "document_monitoring",
+      "file": "out\\extension.js",
+      "line": 74,
+      "evidence": ";     let disposable = vscode.workspace.onDidChangeTextDocument((editor) => __awaiter(this, void 0, void 0, functio"
+    },
+    {
+      "name": "Plaintext HTTP endpoint (not HTTPS)",
+      "severity": "high",
+      "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+      "category": "insecure_endpoint",
+      "file": "out\\command\\zflogin.js",
+      "line": 16,
+      "evidence": "uire(\"../service/zfServe\"); let zfUlr = \"http://www.zhufengpeixun.com/\"; var ButtonType; (function (ButtonTyp"
+    },
+    {
+      "name": "Axios with Authorization header",
+      "severity": "high",
+      "description": "Axios sends data with authorization headers - authenticated remote communication",
+      "category": "insecure_endpoint",
+      "file": "out\\command\\zflogin.js",
+      "line": 34,
+      "evidence": "}         const { data } = yield (0, axios_1.default)({             method: \"get\",             url: `https://api.github.com/user`,             headers: {                 accept: \"application/json\",   "
+    },
+    {
+      "name": "HTTP client library import",
+      "severity": "low",
+      "description": "HTTP client library imported - enables outbound network communication",
+      "category": "insecure_endpoint",
+      "file": "out\\command\\zflogin.js",
+      "line": 13,
+      "evidence": "floginCommand = void 0; const axios_1 = require(\"axios\"); const vscode = require(\"vscode\"); con"
+    },
+    {
+      "name": "HTTP client library import",
+      "severity": "low",
+      "description": "HTTP client library imported - enables outbound network communication",
+      "category": "insecure_endpoint",
+      "file": "out\\service\\index.js",
+      "line": 13,
+      "evidence": "ts.isValidate = void 0; const axios_1 = require(\"axios\"); const dayjs = require(\"dayjs\"); const"
+    },
+    {
+      "name": "IP-based connection",
+      "severity": "high",
+      "description": "Connects to raw IP address (C2 indicator)",
+      "category": "network_exfil",
+      "file": "out\\service\\zfServe.js",
+      "line": 8,
+      "evidence": "zhufengpeixun.com/\"; // const baseURL = \"http://127.0.0.1:7001/\"; exports.instance = axios_1.defa"
+    },
+    {
+      "name": "Plaintext HTTP endpoint (not HTTPS)",
+      "severity": "high",
+      "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+      "category": "insecure_endpoint",
+      "file": "out\\service\\zfServe.js",
+      "line": 6,
+      "evidence": "= require(\"vscode\"); // const baseURL = \"http://daily.zhufengpeixun.com\"; const baseURL = \"http://study.zhufeng"
+    },
+    {
+      "name": "Plaintext HTTP endpoint (not HTTPS)",
+      "severity": "high",
+      "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+      "category": "insecure_endpoint",
+      "file": "out\\service\\zfServe.js",
+      "line": 7,
+      "evidence": "ily.zhufengpeixun.com\"; const baseURL = \"http://study.zhufengpeixun.com/\"; // const baseURL = \"http://127.0.0.1"
+    },
+    {
+      "name": "HTTP client library import",
+      "severity": "low",
+      "description": "HTTP client library imported - enables outbound network communication",
+      "category": "insecure_endpoint",
+      "file": "out\\service\\zfServe.js",
+      "line": 4,
+      "evidence": "orts.instance = void 0; const axios_1 = require(\"axios\"); const vscode_1 = require(\"vscode\"); /"
+    },
+    {
+      "name": "URL from extension configuration",
+      "severity": "medium",
+      "description": "URL constructed from extension configuration - configurable remote endpoint",
+      "category": "insecure_endpoint",
+      "file": "out\\tips\\Commands.js",
+      "line": 29,
+      "evidence": "ur CodeMoss Server\",             value: configuration.get(\"serverUrl\", \"\"),         })             .then((url) => {             if (url) {                 console.debug(\"Set CodeMoss Server URL: \", ur"
+    },
+    {
+      "name": "Axios with Authorization header",
+      "severity": "high",
+      "description": "Axios sends data with authorization headers - authenticated remote communication",
+      "category": "insecure_endpoint",
+      "file": "out\\tips\\TabbyClient.js",
+      "line": 90,
+      "evidence": "const response = yield axios_1.default.post(`${this.tabbyServerUrl}/luomacode-api/code/gen/v1/completions`, request, {                     headers: {                         Authorization: configurati"
+    },
+    {
+      "name": "HTTP client library import",
+      "severity": "low",
+      "description": "HTTP client library imported - enables outbound network communication",
+      "category": "insecure_endpoint",
+      "file": "out\\tips\\TabbyClient.js",
+      "line": 14,
+      "evidence": "_1 = require(\"vscode\"); const axios_1 = require(\"axios\"); const utils_1 = require(\"./utils\"); c"
+    },
+    {
+      "name": "Document content reading",
+      "severity": "low",
+      "description": "Reads open document content (common but trackable)",
+      "category": "data_access",
+      "file": "out\\tips\\TabbyCompletionProvider.js",
+      "line": 168,
+      "evidence": "\u4e00\u4e2a\u65b0\u7684\u4f4d\u7f6e\uff0c\u5b83\u4f4d\u4e8e\u6587\u6863\u7684\u672b\u5c3e         // const text = document.getText(range);         return {             pre"
+    },
+    {
+      "name": "Document content reading",
+      "severity": "low",
+      "description": "Reads open document content (common but trackable)",
+      "category": "data_access",
+      "file": "out\\tips\\TabbyCompletionProvider.js",
+      "line": 170,
+      "evidence": ");         return {             prefix: document.getText(new vscode_1.Range(firstLine, 0, positio"
+    },
+    {
+      "name": "Document content reading",
+      "severity": "low",
+      "description": "Reads open document content (common but trackable)",
+      "category": "data_access",
+      "file": "out\\tips\\TabbyCompletionProvider.js",
+      "line": 171,
+      "evidence": "sition.character)),             suffix: document.getText(new vscode_1.Range(position, new vscode_"
+    },
+    {
+      "name": "Document content reading",
+      "severity": "low",
+      "description": "Reads open document content (common but trackable)",
+      "category": "data_access",
+      "file": "out\\tips\\TabbyCompletionProvider.js",
+      "line": 193,
+      "evidence": "ent, position) {         const suffix = document.getText(new vscode_1.Range(position.line, positi"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "out\\tips\\TabbyCompletionProvider.js",
+      "line": 49,
+      "evidence": "postBody = Object.assign(Object.assign({}, postBody), { select_kind: \"line\" });"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "out\\tips\\TabbyCompletionProvider.js",
+      "line": 52,
+      "evidence": "postBody = Object.assign(Object.assign({}, postBody), { select_kind: \"line\" });"
+    },
+    {
+      "name": "Webview with scripts enabled",
+      "severity": "medium",
+      "description": "Webview with JavaScript enabled (XSS vector if loading external content)",
+      "category": "webview_risk",
+      "file": "out\\utils\\createWebviewPanel.js",
+      "line": 45,
+      "evidence": "\u5728\u7f16\u8f91\u5668\u7684\u54ea\u4e2a\u90e8\u4f4d             {                 enableScripts: true,                 retainContextWhenHidde"
+    },
+    {
+      "name": "Document content reading",
+      "severity": "low",
+      "description": "Reads open document content (common but trackable)",
+      "category": "data_access",
+      "file": "out\\utils\\handleMessage.js",
+      "line": 27,
+      "evidence": "\u83b7\u53d6\u9009\u4e2d\u7684\u6587\u672c         // const selectedText = editor.document.getText(selection);         // \u4f7f\u7528 editor.edit()"
+    },
+    {
+      "name": "Recursive directory reading",
+      "severity": "medium",
+      "description": "Reads directory contents - suspicious when combined with file reading and network",
+      "category": "workspace_harvesting",
+      "file": "out\\utils\\handleMessage.js",
+      "line": 145,
+      "evidence": "}             const items = fs.readdirSync(dir);             for (const item of ite"
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "severity": "medium",
+      "description": "Reads file content using variable path - bulk file harvesting indicator",
+      "category": "workspace_harvesting",
+      "file": "out\\utils\\handleMessage.js",
+      "line": 135,
+      "evidence": "Path)) {             gitignoreContent = fs.readFileSync(gitignorePath, 'utf-8');         }         // \u89e3\u6790 .git"
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "severity": "medium",
+      "description": "Reads file content using variable path - bulk file harvesting indicator",
+      "category": "workspace_harvesting",
+      "file": "out\\utils\\handleMessage.js",
+      "line": 171,
+      "evidence": "s[i];             const content = yield fs.readFileSync(urlPath, 'utf8'); // \u8bfb\u53d6\u6587\u4ef6\u5185\u5bb9             data.pu"
+    },
+    {
+      "name": "Workspace folder enumeration",
+      "severity": "low",
+      "description": "Accesses workspace root folder path",
+      "category": "workspace_harvesting",
+      "file": "out\\utils\\handleMessage.js",
+      "line": 125,
+      "evidence": "* () {         const workspaceFolders = vscode.workspace.workspaceFolders;         if (!workspaceFolders) {"
+    },
+    {
+      "name": "Document content reading",
+      "severity": "low",
+      "description": "Reads open document content (common but trackable)",
+      "category": "data_access",
+      "file": "out\\webview\\chatMoss0ptimize.js",
+      "line": 24,
+      "evidence": "\u83b7\u53d6\u7528\u6237\u9009\u62e9\u7684\u6587\u672c\u533a\u57df             selectedText = editor.document.getText(selection); // \u83b7\u53d6\u9009\u62e9\u533a\u57df\u7684\u6587\u672c\u5185\u5bb9             s"
+    },
+    {
+      "name": "Document content reading",
+      "severity": "low",
+      "description": "Reads open document content (common but trackable)",
+      "category": "data_access",
+      "file": "out\\webview\\chatMossBugCcan.js",
+      "line": 24,
+      "evidence": "\u83b7\u53d6\u7528\u6237\u9009\u62e9\u7684\u6587\u672c\u533a\u57df             selectedText = editor.document.getText(selection); // \u83b7\u53d6\u9009\u62e9\u533a\u57df\u7684\u6587\u672c\u5185\u5bb9             s"
+    },
+    {
+      "name": "Document content reading",
+      "severity": "low",
+      "description": "Reads open document content (common but trackable)",
+      "category": "data_access",
+      "file": "out\\webview\\chatMossExplain.js",
+      "line": 24,
+      "evidence": "\u83b7\u53d6\u7528\u6237\u9009\u62e9\u7684\u6587\u672c\u533a\u57df             selectedText = editor.document.getText(selection); // \u83b7\u53d6\u9009\u62e9\u533a\u57df\u7684\u6587\u672c\u5185\u5bb9             s"
+    },
+    {
+      "name": "Webview with scripts enabled",
+      "severity": "medium",
+      "description": "Webview with JavaScript enabled (XSS vector if loading external content)",
+      "category": "webview_risk",
+      "file": "out\\webview\\openWebview.js",
+      "line": 14,
+      "evidence": "o, // \u663e\u793a\u5728\u7f16\u8f91\u5668\u7684\u54ea\u4e2a\u90e8\u4f4d         {             enableScripts: true,             retainContextWhenHidden: t"
+    },
+    {
+      "name": "Webview with scripts enabled",
+      "severity": "medium",
+      "description": "Webview with JavaScript enabled (XSS vector if loading external content)",
+      "category": "webview_risk",
+      "file": "out\\webview\\proSidebarProvider.js",
+      "line": 36,
+      "evidence": "scripts in the webview                 enableScripts: true,                 localResourceRoots: [t"
+    },
+    {
+      "name": "Webview with scripts enabled",
+      "severity": "medium",
+      "description": "Webview with JavaScript enabled (XSS vector if loading external content)",
+      "category": "webview_risk",
+      "file": "out\\webview\\SidebarProvider.js",
+      "line": 39,
+      "evidence": "scripts in the webview                 enableScripts: true,                 localResourceRoots: [t"
+    },
+    {
+      "name": "Potential data exfiltration: file monitoring + base64 encoding + network",
+      "severity": "critical",
+      "description": "Extension monitors file changes, encodes content, and has network access - potential data exfiltration capability. Review what data is sent and where.",
+      "category": "behavioral_correlation",
+      "file": "out\\extension.js",
+      "line": 0,
+      "evidence": "Real-time document change listener | Base64 encoding of content variable | IP-based connection",
+      "confidence": "HIGH",
+      "attack_type": "code_exfiltration"
+    },
+    {
+      "name": "Potential continuous monitoring: wildcard activation + document events + network",
+      "severity": "critical",
+      "description": "Extension activates on everything, monitors document changes, and has network access - review whether data collection is proportionate to functionality",
+      "category": "behavioral_correlation",
+      "file": "out\\extension.js",
+      "line": 0,
+      "evidence": "activationEvents=[\"*\"] + Real-time document change listener + IP-based connection",
+      "confidence": "HIGH",
+      "attack_type": "continuous_surveillance"
+    },
+    {
+      "name": "Credential exposure risk: auth token handling + plaintext HTTP",
+      "severity": "critical",
+      "description": "Extension handles auth tokens AND uses plaintext HTTP - credentials may be sent unencrypted",
+      "category": "behavioral_correlation",
+      "file": "out\\command\\zflogin.js",
+      "line": 0,
+      "evidence": "Axios with Authorization header + Plaintext HTTP endpoint (not HTTPS)",
+      "confidence": "MEDIUM",
+      "attack_type": "credential_leak"
+    },
+    {
+      "name": "Iframe loading plaintext HTTP URL",
+      "severity": "high",
+      "description": "Iframe loads plaintext HTTP URL - insecure C2 channel",
+      "category": "hidden_iframe",
+      "file": "media\\main.html",
+      "line": 31,
+      "evidence": "</head>  <body class=\"dark:bg-black\">   <iframe src=\"http://chatmoss-shuju.aihao123.cn/\" frameborder=\"0\"></iframe>   <div id=\"app\">     <style>"
+    },
+    {
+      "name": "Iframe loading external domain",
+      "severity": "medium",
+      "description": "Iframe loads external URL - potential data exfiltration channel",
+      "category": "hidden_iframe",
+      "file": "media\\main.html",
+      "line": 31,
+      "evidence": "</head>  <body class=\"dark:bg-black\">   <iframe src=\"http://chatmoss-shuju.aihao123.cn/\" frameborder=\"0\"></iframe>   <div id=\"app\">     <style>"
+    },
+    {
+      "name": "CSS-hidden iframe detected",
+      "severity": "critical",
+      "description": "CSS rule hides iframe elements + iframe tag present - covert C2/tracking (ChatMoss pattern)",
+      "category": "hidden_iframe",
+      "file": "media\\main.html",
+      "line": 13,
+      "evidence": "iframe {\n      width: 0px;\n      height: 0px;\n    }"
+    },
+    {
+      "name": "Iframe loading plaintext HTTP URL",
+      "severity": "high",
+      "description": "Iframe loads plaintext HTTP URL - insecure C2 channel",
+      "category": "hidden_iframe",
+      "file": "media\\main.html",
+      "line": 31,
+      "evidence": "</head>  <body class=\"dark:bg-black\">   <iframe src=\"http://chatmoss-shuju.aihao123.cn/\" frameborder=\"0\"></iframe>   <div id=\"app\">     <style>"
+    },
+    {
+      "name": "Iframe loading external domain",
+      "severity": "medium",
+      "description": "Iframe loads external URL - potential data exfiltration channel",
+      "category": "hidden_iframe",
+      "file": "media\\main.html",
+      "line": 31,
+      "evidence": "</head>  <body class=\"dark:bg-black\">   <iframe src=\"http://chatmoss-shuju.aihao123.cn/\" frameborder=\"0\"></iframe>   <div id=\"app\">     <style>"
+    },
+    {
+      "name": "CSS-hidden iframe detected",
+      "severity": "critical",
+      "description": "CSS rule hides iframe elements + iframe tag present - covert C2/tracking (ChatMoss pattern)",
+      "category": "hidden_iframe",
+      "file": "media\\main.html",
+      "line": 13,
+      "evidence": "iframe {\n      width: 0px;\n      height: 0px;\n    }"
+    }
+  ],
+  "html_analysis": {
+    "findings": [
+      {
+        "name": "Iframe loading plaintext HTTP URL",
+        "severity": "high",
+        "description": "Iframe loads plaintext HTTP URL - insecure C2 channel",
+        "category": "hidden_iframe",
+        "file": "media\\main.html",
+        "line": 31,
+        "evidence": "</head>  <body class=\"dark:bg-black\">   <iframe src=\"http://chatmoss-shuju.aihao123.cn/\" frameborder=\"0\"></iframe>   <div id=\"app\">     <style>"
+      },
+      {
+        "name": "Iframe loading external domain",
+        "severity": "medium",
+        "description": "Iframe loads external URL - potential data exfiltration channel",
+        "category": "hidden_iframe",
+        "file": "media\\main.html",
+        "line": 31,
+        "evidence": "</head>  <body class=\"dark:bg-black\">   <iframe src=\"http://chatmoss-shuju.aihao123.cn/\" frameborder=\"0\"></iframe>   <div id=\"app\">     <style>"
+      },
+      {
+        "name": "CSS-hidden iframe detected",
+        "severity": "critical",
+        "description": "CSS rule hides iframe elements + iframe tag present - covert C2/tracking (ChatMoss pattern)",
+        "category": "hidden_iframe",
+        "file": "media\\main.html",
+        "line": 13,
+        "evidence": "iframe {\n      width: 0px;\n      height: 0px;\n    }"
+      }
+    ],
+    "files_scanned": 2,
+    "iframe_urls": [
+      {
+        "url": "http://chatmoss-shuju.aihao123.cn/",
+        "file": "media\\main.html",
+        "line": 31
+      }
+    ]
+  },
+  "permissions": {
+    "high_risk": [],
+    "medium_risk": [
+      {
+        "permission": "filesystem",
+        "description": "Can read/write files on disk",
+        "evidence": [
+          {
+            "module": "fs",
+            "file": "out\\utils\\createWebviewPanel.js",
+            "line": 14
+          },
+          {
+            "module": "fs",
+            "file": "out\\utils\\handleMessage.js",
+            "line": 14
+          },
+          {
+            "module": "fs",
+            "file": "out\\webview\\openWebview.js",
+            "line": 6
+          },
+          {
+            "module": "fs",
+            "file": "out\\webview\\proSidebarProvider.js",
+            "line": 13
+          },
+          {
+            "module": "fs",
+            "file": "out\\webview\\SidebarProvider.js",
+            "line": 13
+          }
+        ]
+      },
+      {
+        "permission": "network",
+        "description": "Can make network requests",
+        "evidence": [
+          {
+            "module": "axios",
+            "file": "out\\command\\zflogin.js",
+            "line": 13
+          },
+          {
+            "module": "axios",
+            "file": "out\\service\\index.js",
+            "line": 13
+          },
+          {
+            "module": "axios",
+            "file": "out\\service\\zfServe.js",
+            "line": 4
+          },
+          {
+            "module": "axios",
+            "file": "out\\tips\\TabbyClient.js",
+            "line": 14
+          }
+        ]
+      },
+      {
+        "permission": "real_time_document_monitoring",
+        "description": "Monitors text document changes in real time",
+        "finding_count": 8
+      }
+    ],
+    "low_risk": [],
+    "total": 3,
+    "all": [
+      "filesystem",
+      "network",
+      "real_time_document_monitoring"
+    ]
+  },
+  "risk_score": 8.6,
+  "risk_level": "CRITICAL",
+  "risk_breakdown": {
+    "metadata_publisher": 2.0,
+    "supply_chain": 0.6,
+    "code_analysis": 3.0,
+    "behavioral_correlations": 2.0,
+    "infrastructure": 1.0
+  },
+  "module_usage": {
+    "network": [
+      {
+        "module": "axios",
+        "file": "out\\command\\zflogin.js",
+        "line": 13
+      },
+      {
+        "module": "axios",
+        "file": "out\\service\\index.js",
+        "line": 13
+      },
+      {
+        "module": "axios",
+        "file": "out\\service\\zfServe.js",
+        "line": 4
+      },
+      {
+        "module": "axios",
+        "file": "out\\tips\\TabbyClient.js",
+        "line": 14
+      }
+    ],
+    "file_access": [
+      {
+        "module": "fs",
+        "file": "out\\utils\\createWebviewPanel.js",
+        "line": 14
+      },
+      {
+        "module": "fs",
+        "file": "out\\utils\\handleMessage.js",
+        "line": 14
+      },
+      {
+        "module": "fs",
+        "file": "out\\webview\\openWebview.js",
+        "line": 6
+      },
+      {
+        "module": "fs",
+        "file": "out\\webview\\proSidebarProvider.js",
+        "line": 13
+      },
+      {
+        "module": "fs",
+        "file": "out\\webview\\SidebarProvider.js",
+        "line": 13
+      }
+    ]
+  },
+  "external_urls": [
+    {
+      "url": "https://www.yuque.com/settings/profile",
+      "file": "out\\command\\login.js",
+      "line": 14
+    },
+    {
+      "url": "https://www.yuque.com/api/v2",
+      "file": "out\\command\\login.js",
+      "line": 15
+    },
+    {
+      "url": "http://www.zhufengpeixun.com/",
+      "file": "out\\command\\zflogin.js",
+      "line": 16
+    },
+    {
+      "url": "https://www.yuque.com/yuque/developer/doc#684fb2c5",
+      "file": "out\\service\\index.js",
+      "line": 26
+    },
+    {
+      "url": "http://daily.zhufengpeixun.com",
+      "file": "out\\service\\zfServe.js",
+      "line": 6
+    },
+    {
+      "url": "http://study.zhufengpeixun.com/",
+      "file": "out\\service\\zfServe.js",
+      "line": 7
+    }
+  ],
+  "domain_intelligence": [
+    {
+      "domain": "www.yuque.com",
+      "url": "https://www.yuque.com/settings/profile",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "www.zhufengpeixun.com",
+      "url": "http://www.zhufengpeixun.com/",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "daily.zhufengpeixun.com",
+      "url": "http://daily.zhufengpeixun.com",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "study.zhufengpeixun.com",
+      "url": "http://study.zhufengpeixun.com/",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    }
+  ],
+  "virustotal_results": [
+    {
+      "available": true,
+      "domain": "daily.zhufengpeixun.com",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 0,
+        "undetected": 93
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2009-03-23",
+        "age_days": 6166,
+        "age_human": "16 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".com",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/daily.zhufengpeixun.com"
+    },
+    {
+      "available": true,
+      "domain": "www.yuque.com",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 62,
+        "undetected": 31
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2001-11-19",
+        "age_days": 8847,
+        "age_human": "24 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".com",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/www.yuque.com"
+    },
+    {
+      "available": true,
+      "domain": "study.zhufengpeixun.com",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 63,
+        "undetected": 30
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {
+        "Forcepoint ThreatSeeker": "information technology"
+      },
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2009-03-23",
+        "age_days": 6166,
+        "age_human": "16 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".com",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/study.zhufengpeixun.com"
+    },
+    {
+      "available": true,
+      "domain": "www.zhufengpeixun.com",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 61,
+        "undetected": 32
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2009-03-23",
+        "age_days": 6166,
+        "age_human": "16 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".com",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/www.zhufengpeixun.com"
+    }
+  ]
+}

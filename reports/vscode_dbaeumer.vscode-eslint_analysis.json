@@ -1,0 +1,1919 @@
+{
+  "extension_type": "vscode",
+  "name": "ESLint",
+  "identifier": "dbaeumer.vscode-eslint",
+  "extension_id": "dbaeumer.vscode-eslint",
+  "version": "3.0.21",
+  "description": "Integrates ESLint JavaScript into VS Code.",
+  "publisher": "dbaeumer",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "store_metadata": {
+    "available": true,
+    "store": "vscode",
+    "identifier": "dbaeumer.vscode-eslint",
+    "name": "ESLint",
+    "publisher": "Microsoft",
+    "publisher_id": "29859a75-d81b-4f0e-8578-2c80ecee6f99",
+    "publisher_domain": "https://microsoft.com",
+    "publisher_verified": true,
+    "short_description": "Integrates ESLint JavaScript into VS Code.",
+    "version": "3.0.21",
+    "last_updated": "2025-11-13T19:50:57.077Z",
+    "categories": [],
+    "tags": [],
+    "install_count": 48398029,
+    "rating_value": 4.29,
+    "rating_count": 248,
+    "flags": "validated, public",
+    "store_url": "https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint",
+    "risk_signals": {}
+  },
+  "metadata_risk": {
+    "findings": [
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onStartupFinished': Runs every launch - immediate execution",
+        "event": "onStartupFinished"
+      },
+      {
+        "type": "sensitive_contribution",
+        "severity": "medium",
+        "detail": "Contributes 'taskDefinitions': Can define tasks that run shell commands",
+        "contribution": "taskDefinitions"
+      }
+    ],
+    "risk_score": 2,
+    "activation_events": [
+      "onStartupFinished"
+    ],
+    "contributes": [
+      "configuration",
+      "commands",
+      "taskDefinitions",
+      "jsonValidation",
+      "languages"
+    ]
+  },
+  "package_json_deep": {
+    "findings": [
+      {
+        "name": "Publisher-domain mismatch: dbaeumer vs json.schemastore.org",
+        "severity": "medium",
+        "description": "Publisher \"dbaeumer\" does not match operational domain \"json.schemastore.org\"",
+        "category": "publisher_mismatch",
+        "file": "package.json",
+        "line": 0,
+        "evidence": "publisher=dbaeumer, domain=json.schemastore.org"
+      },
+      {
+        "name": "Publisher-domain mismatch: dbaeumer vs eslint.org",
+        "severity": "medium",
+        "description": "Publisher \"dbaeumer\" does not match operational domain \"eslint.org\"",
+        "category": "publisher_mismatch",
+        "file": "package.json",
+        "line": 0,
+        "evidence": "publisher=dbaeumer, domain=eslint.org"
+      }
+    ]
+  },
+  "supply_chain": {
+    "findings": [
+      {
+        "type": "lifecycle_script",
+        "severity": "high",
+        "detail": "'postinstall' script: node ./build/bin/all.js install",
+        "script_name": "postinstall",
+        "script_content": "node ./build/bin/all.js install"
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "low",
+        "package": "webpack",
+        "version": "5.99.9",
+        "cve_id": "GHSA-38r7-794h-5758",
+        "link": "https://github.com/advisories/GHSA-38r7-794h-5758",
+        "detail": "webpack@5.99.9 has known vulnerability GHSA-38r7-794h-5758 \u2014 webpack buildHttp HttpUriPlugin allowedUris bypass via HTTP redirects \u2192 SSRF + cache persistence (fix: >=5.104.0)"
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "low",
+        "package": "webpack",
+        "version": "5.99.9",
+        "cve_id": "GHSA-8fgc-7cc6-rx7x",
+        "link": "https://github.com/advisories/GHSA-8fgc-7cc6-rx7x",
+        "detail": "webpack@5.99.9 has known vulnerability GHSA-8fgc-7cc6-rx7x \u2014 webpack buildHttp: allowedUris allow-list bypass via URL userinfo (@) leading to build-time SSRF behavior (fix: >=5.104.1)"
+      }
+    ],
+    "risk_score": 2,
+    "dependency_count": 0,
+    "dev_dependency_count": 15,
+    "has_node_modules": false,
+    "dependency_vulns": [
+      {
+        "package": "webpack",
+        "version": "5.99.9",
+        "dep_type": "dev",
+        "vulns": [
+          {
+            "id": "GHSA-38r7-794h-5758",
+            "link": "https://github.com/advisories/GHSA-38r7-794h-5758",
+            "summary": "webpack buildHttp HttpUriPlugin allowedUris bypass via HTTP redirects \u2192 SSRF + cache persistence",
+            "severity": "low",
+            "cwe_ids": [
+              "CWE-918"
+            ],
+            "fix_version": "5.104.0",
+            "aliases": [
+              "CVE-2025-68157"
+            ],
+            "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:L/I:L/A:N"
+          },
+          {
+            "id": "GHSA-8fgc-7cc6-rx7x",
+            "link": "https://github.com/advisories/GHSA-8fgc-7cc6-rx7x",
+            "summary": "webpack buildHttp: allowedUris allow-list bypass via URL userinfo (@) leading to build-time SSRF behavior",
+            "severity": "low",
+            "cwe_ids": [
+              "CWE-918"
+            ],
+            "fix_version": "5.104.1",
+            "aliases": [
+              "CVE-2025-68458"
+            ],
+            "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:L/I:L/A:N"
+          }
+        ]
+      }
+    ],
+    "bundled_js_vulns": []
+  },
+  "code_analysis": {
+    "all_findings": [
+      {
+        "name": "Terminal sendText (command execution)",
+        "severity": "high",
+        "description": "Sends commands to terminal with dynamic content",
+        "category": "terminal_hijack",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "it\",cwd:t}),i=await(0,p.findEslint)(t);n.sendText(`${i} --init`),n.show()})):1===e.length?u.w",
+        "path_type": "app"
+      },
+      {
+        "name": "Real-time document change listener",
+        "severity": "medium",
+        "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+        "category": "document_monitoring",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "._listener||(this._listener=a.workspace.onDidChangeTextDocument(this.callback,this)),this._changeData.se",
+        "path_type": "app"
+      },
+      {
+        "name": "Real-time document change listener",
+        "severity": "medium",
+        "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+        "category": "document_monitoring",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "ookCellTextDocument(t,n)})),a.workspace.onDidChangeTextDocument((e=>{if(0===e.contentChanges.length)retur",
+        "path_type": "app"
+      },
+      {
+        "name": "Real-time document change listener",
+        "severity": "medium",
+        "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+        "category": "document_monitoring",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "oid 0)})),e.subscriptions.push(c.window.onDidChangeActiveTextEditor((()=>{x(void 0)})),c.workspace.onDidClose",
+        "path_type": "app"
+      },
+      {
+        "name": "Real-time document change listener",
+        "severity": "medium",
+        "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+        "category": "document_monitoring",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "iveTextEditor?.document,c.push(i.window.onDidChangeActiveTextEditor((e=>{const t=this.activeTextDocument;this",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "upport for command executable\");const a=Object.assign({},t.options);if(a.cwd=a.cwd||e,void 0===o",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "er({id:l.generateUuid(),registerOptions:Object.assign({},{documentSelector:t},{syncKind:n.change",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "er({id:l.generateUuid(),registerOptions:Object.assign({},{documentSelector:t},e)})}}register(e){",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "B(n,e,t);B.filter=ve;const ye=(e,t={})=>Object.assign({},e,t),be=e=>{if(!e||\"object\"!=typeof e||",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "==i.only&&0===a.length)return[];const c=Object.assign({},i,{diagnostics:a}),u=Date.now(),l=await",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "),i=t.documentSelector??e;if(i)return[n,Object.assign({},t,{documentSelector:i})]}else if(u.bool",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "boolean(t)&&!0===t?{documentSelector:e}:Object.assign({},t,{documentSelector:e});return[l.genera",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "boolean(t)&&!0===t?{documentSelector:e}:Object.assign({},t,{documentSelector:e})}getProvider(e){",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "er({id:u.generateUuid(),registerOptions:Object.assign({},e.executeCommandProvider)})}register(e)",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "es.textDocumentSync),this._capabilities=Object.assign({},n.capabilities,{resolvedTextDocumentSyn",
+        "path_type": "app"
+      },
+      {
+        "name": "File content read on editor change event",
+        "severity": "medium",
+        "description": "Registers handler for editor/document change events",
+        "category": "document_monitoring",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "oid 0)})),e.subscriptions.push(c.window.onDidChangeActiveTextEditor((()=>{x(void 0)})),c.workspace.onDidCloseText",
+        "path_type": "app"
+      },
+      {
+        "name": "File open monitoring (onDidOpenTextDocument)",
+        "severity": "low",
+        "description": "Monitors when files are opened in the editor - workspace activity tracking",
+        "category": "workspace_activity_monitoring",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": ",void w(e)}let n=!1;const i=u.workspace.onDidOpenTextDocument((function(t){n||_.check(t)!==d.Validate.",
+        "path_type": "app"
+      },
+      {
+        "name": "File open monitoring (onDidOpenTextDocument)",
+        "severity": "low",
+        "description": "Monitors when files are opened in the editor - workspace activity tracking",
+        "category": "workspace_activity_monitoring",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "tionSent=new a.EventEmitter,a.workspace.onDidOpenTextDocument((e=>{if(e.uri.scheme!==b.CellScheme)retu",
+        "path_type": "app"
+      },
+      {
+        "name": "File save monitoring (onWillSaveTextDocument)",
+        "severity": "low",
+        "description": "Monitors when files are about to be saved - workspace activity tracking",
+        "category": "workspace_activity_monitoring",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "._listener||(this._listener=a.workspace.onWillSaveTextDocument(this.callback,this)),this._selectors.set",
+        "path_type": "app"
+      },
+      {
+        "name": "Workspace folder change monitoring",
+        "severity": "low",
+        "description": "Monitors workspace folder additions/removals - workspace structure tracking",
+        "category": "workspace_activity_monitoring",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "nst t=e.id,n=this._client,i=c.workspace.onDidChangeWorkspaceFolders((e=>{const t=e=>this.doSendEvent(e.added",
+        "path_type": "app"
+      },
+      {
+        "name": "Workspace folder change monitoring",
+        "severity": "low",
+        "description": "Monitors workspace folder additions/removals - workspace structure tracking",
+        "category": "workspace_activity_monitoring",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "ers(e,[]);const t=[];t.push(a.workspace.onDidChangeWorkspaceFolders((e=>this.updateWorkspaceFolders(e.added,",
+        "path_type": "app"
+      },
+      {
+        "name": "Browser-based exfiltration via env.openExternal",
+        "severity": "high",
+        "description": "Opens URL in user browser - can exfiltrate data via URL parameters",
+        "category": "browser_exfil",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "Target.Global):\"readme\"===o.id&&(C=!0,c.env.openExternal(c.Uri.parse(\"https://github.com/microsof",
+        "path_type": "app"
+      },
+      {
+        "name": "Browser-based exfiltration via env.openExternal",
+        "severity": "high",
+        "description": "Opens URL in user browser - can exfiltrate data via URL parameters",
+        "category": "browser_exfil",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "(!0===e.external)return{success:await a.env.openExternal(t)};{const n={};return void 0!==e.select",
+        "path_type": "app"
+      },
+      {
+        "name": "Command execution via ShellExecution/tasks API",
+        "severity": "critical",
+        "description": "Creates shell command via Tasks API - executes commands without child_process",
+        "category": "command_injection",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "lder,\"lint whole folder\",\"eslint\",new a.ShellExecution(`${o} ${r}`,n),\"$eslint-stylish\")}catch{",
+        "path_type": "app"
+      },
+      {
+        "name": "Task provider registration (shell execution)",
+        "severity": "medium",
+        "description": "Registers a task provider that can supply shell execution tasks",
+        "category": "command_injection",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "is.providers.size>0?this.taskProvider=a.tasks.registerTaskProvider(\"eslint\",{provideTasks:()=>this.getTasks",
+        "path_type": "app"
+      },
+      {
+        "name": "Process environment bulk harvesting",
+        "severity": "high",
+        "description": "Enumerates all environment variable names - sensitive info harvesting",
+        "category": "telemetry_abuse",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "turn;const n=Object.create(null);return Object.keys(process.env).forEach((e=>n[e]=process.env[e])),t&&(n",
+        "path_type": "app"
+      },
+      {
+        "name": "Terminal creation (minification-safe)",
+        "severity": "medium",
+        "description": "Creates VSCode terminal - can execute commands",
+        "category": "command_injection",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": ")return;const t=e.uri.fsPath,n=u.window.createTerminal({name:\"ESLint init\",cwd:t}),i=await(0,p.f",
+        "path_type": "app"
+      },
+      {
+        "name": "child_process require (minification-safe)",
+        "severity": "high",
+        "description": "Imports child_process module - shell command execution capability",
+        "category": "command_injection",
+        "file": "client\\out\\extension.js",
+        "line": 1,
+        "evidence": "o={}))},5317:e=>{\"use strict\";e.exports=require(\"child_process\")},5432:(e,t,n)=>{\"use strict\";Object.def",
+        "path_type": "app"
+      },
+      {
+        "name": "Real-time document change listener",
+        "severity": "medium",
+        "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+        "category": "document_monitoring",
+        "file": "server\\out\\eslintServer.js",
+        "line": 1,
+        "evidence": "n this.openHandler&&this.openHandler(e)}onDidChangeTextDocument(e){return this.changeHandler=e,i.Disposa",
+        "path_type": "app"
+      },
+      {
+        "name": "Real-time document change listener",
+        "severity": "medium",
+        "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+        "category": "document_monitoring",
+        "file": "server\\out\\eslintServer.js",
+        "line": 1,
+        "evidence": "onDidChangeContent.fire(i)}))),t.push(e.onDidChangeTextDocument((e=>{const t=e.textDocument,n=e.contentCh",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "server\\out\\eslintServer.js",
+        "line": 1,
+        "evidence": "nc function O(e,t,n){const i=void 0===n?Object.assign(Object.create(null),t.options):Object.assign(Object.create(",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "server\\out\\eslintServer.js",
+        "line": 1,
+        "evidence": "t.assign(Object.create(null),t.options):Object.assign(Object.create(null),t.options,n),o=process.cwd();try{if(t.w",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "server\\out\\eslintServer.js",
+        "line": 1,
+        "evidence": "opeUri:d,section:\"\"}).then((v=>{const b=Object.assign({},v,{silent:!1,library:void 0,resolvedGlo",
+        "path_type": "app"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "medium",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "server\\out\\eslintServer.js",
+        "line": 1,
+        "evidence": "}e.validate=async function(e,t){const n=Object.assign(Object.create(null),t.options);let i;if(Array.isArray(n.fix",
+        "path_type": "app"
+      },
+      {
+        "name": "File open monitoring (onDidOpenTextDocument)",
+        "severity": "low",
+        "description": "Monitors when files are opened in the editor - workspace activity tracking",
+        "category": "workspace_activity_monitoring",
+        "file": "server\\out\\eslintServer.js",
+        "line": 1,
+        "evidence": ";openHandler;changeHandler;closeHandler;onDidOpenTextDocument(e){return this.openHandler=e,i.Disposabl",
+        "path_type": "app"
+      },
+      {
+        "name": "File open monitoring (onDidOpenTextDocument)",
+        "severity": "low",
+        "description": "Monitors when files are opened in the editor - workspace activity tracking",
+        "category": "workspace_activity_monitoring",
+        "file": "server\\out\\eslintServer.js",
+        "line": 1,
+        "evidence": ".Incremental;const t=[];return t.push(e.onDidOpenTextDocument((e=>{const t=e.textDocument,n=this._conf",
+        "path_type": "app"
+      },
+      {
+        "name": "File save monitoring (onWillSaveTextDocument)",
+        "severity": "low",
+        "description": "Monitors when files are about to be saved - workspace activity tracking",
+        "category": "workspace_activity_monitoring",
+        "file": "server\\out\\eslintServer.js",
+        "line": 1,
+        "evidence": "this.closeHandler&&this.closeHandler(e)}onWillSaveTextDocument(){return r.NULL_DISPOSE}onWillSaveTextDo",
+        "path_type": "app"
+      },
+      {
+        "name": "File save monitoring (onWillSaveTextDocument)",
+        "severity": "low",
+        "description": "Monitors when files are about to be saved - workspace activity tracking",
+        "category": "workspace_activity_monitoring",
+        "file": "server\\out\\eslintServer.js",
+        "line": 1,
+        "evidence": "ect.freeze({document:t})))}))),t.push(e.onWillSaveTextDocument((e=>{const t=this._syncedDocuments.get(e",
+        "path_type": "app"
+      },
+      {
+        "name": "Workspace folder change monitoring",
+        "severity": "low",
+        "description": "Monitors workspace folder additions/removals - workspace structure tracking",
+        "category": "workspace_activity_monitoring",
+        "file": "server\\out\\eslintServer.js",
+        "line": 1,
+        "evidence": "orkspace?.workspaceFolders&&b.workspace.onDidChangeWorkspaceFolders((e=>{w()}))}));const T={kind:l.DocumentD",
+        "path_type": "app"
+      },
+      {
+        "name": "Workspace folder change monitoring",
+        "severity": "low",
+        "description": "Monitors workspace folder additions/removals - workspace structure tracking",
+        "category": "workspace_activity_monitoring",
+        "file": "server\\out\\eslintServer.js",
+        "line": 1,
+        "evidence": "est(i.WorkspaceFoldersRequest.type)}get onDidChangeWorkspaceFolders(){if(!this._onDidChangeWorkspaceFolders)",
+        "path_type": "app"
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "server\\out\\eslintServer.js",
+        "line": 1,
+        "evidence": "se if(\"object\"==typeof navigator){let e=navigator.userAgent;r=e.indexOf(\"Windows\")>=0}const s=/^\\w[",
+        "path_type": "app"
+      },
+      {
+        "name": "Process environment bulk harvesting",
+        "severity": "high",
+        "description": "Enumerates all environment variable names - sensitive info harvesting",
+        "category": "telemetry_abuse",
+        "file": "server\\out\\eslintServer.js",
+        "line": 1,
+        "evidence": "let t=\"npm\";const n=Object.create(null);Object.keys(process.env).forEach((e=>n[e]=process.env[e])),n.NO_",
+        "path_type": "app"
+      },
+      {
+        "name": "child_process require (minification-safe)",
+        "severity": "high",
+        "description": "Imports child_process module - shell command execution capability",
+        "category": "command_injection",
+        "file": "server\\out\\eslintServer.js",
+        "line": 1,
+        "evidence": "RangeRequest=o={}))},5317:e=>{e.exports=require(\"child_process\")},5509:(e,t)=>{Object.defineProperty(t,\"",
+        "path_type": "app"
+      },
+      {
+        "name": "Shell execution with user-controlled input (same file)",
+        "severity": "medium",
+        "description": "User input source (QuickPick/InputBox) and shell command execution exist in the same file - user input may reach shell commands. Review whether input is properly sanitized.",
+        "category": "behavioral_correlation",
+        "file": "server\\out\\eslintServer.js",
+        "line": 0,
+        "evidence": "User input + shell execution co-located in: server\\out\\eslintServer.js, client\\out\\extension.js",
+        "confidence": "MEDIUM",
+        "attack_type": "user_input_shell_injection"
+      },
+      {
+        "name": "Local tool integration: workspace monitoring + command execution (no network)",
+        "severity": "low",
+        "description": "Extension monitors workspace activity and executes commands but has NO network access. Consistent with local CLI tool integration. High capability but justified pattern.",
+        "category": "behavioral_correlation",
+        "file": "client\\out\\extension.js",
+        "line": 0,
+        "evidence": "File open monitoring (onDidOpenTextDocument) + Command execution via ShellExecution/tasks API + no network",
+        "confidence": "HIGH",
+        "attack_type": "local_tool_integration"
+      }
+    ],
+    "module_usage": {
+      "os_info": [
+        {
+          "module": "os",
+          "file": "client\\out\\extension.js",
+          "line": 1
+        },
+        {
+          "module": "os",
+          "file": "server\\out\\eslintServer.js",
+          "line": 1
+        }
+      ],
+      "process_execution": [
+        {
+          "module": "child_process",
+          "file": "client\\out\\extension.js",
+          "line": 1
+        },
+        {
+          "module": "child_process",
+          "file": "server\\out\\eslintServer.js",
+          "line": 1
+        }
+      ],
+      "file_access": [
+        {
+          "module": "path",
+          "file": "client\\out\\extension.js",
+          "line": 1
+        },
+        {
+          "module": "fs",
+          "file": "client\\out\\extension.js",
+          "line": 1
+        },
+        {
+          "module": "path",
+          "file": "server\\out\\eslintServer.js",
+          "line": 1
+        },
+        {
+          "module": "fs",
+          "file": "server\\out\\eslintServer.js",
+          "line": 1
+        }
+      ],
+      "crypto": [
+        {
+          "module": "crypto",
+          "file": "client\\out\\extension.js",
+          "line": 1
+        },
+        {
+          "module": "crypto",
+          "file": "server\\out\\eslintServer.js",
+          "line": 1
+        }
+      ],
+      "network": [
+        {
+          "module": "net",
+          "file": "client\\out\\extension.js",
+          "line": 1
+        },
+        {
+          "module": "url",
+          "file": "server\\out\\eslintServer.js",
+          "line": 1
+        },
+        {
+          "module": "net",
+          "file": "server\\out\\eslintServer.js",
+          "line": 1
+        }
+      ]
+    },
+    "external_urls": [
+      {
+        "url": "https://eslint.org/docs/latest/use/configure/rules#report-unused-eslint-disable-comments",
+        "file": "server\\out\\eslintServer.js",
+        "line": 1
+      }
+    ],
+    "file_entropies": {},
+    "files_scanned": 3,
+    "findings_by_category": {
+      "terminal_hijack": [
+        {
+          "name": "Terminal sendText (command execution)",
+          "severity": "high",
+          "description": "Sends commands to terminal with dynamic content",
+          "category": "terminal_hijack",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "it\",cwd:t}),i=await(0,p.findEslint)(t);n.sendText(`${i} --init`),n.show()})):1===e.length?u.w",
+          "path_type": "app"
+        }
+      ],
+      "document_monitoring": [
+        {
+          "name": "Real-time document change listener",
+          "severity": "medium",
+          "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+          "category": "document_monitoring",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "._listener||(this._listener=a.workspace.onDidChangeTextDocument(this.callback,this)),this._changeData.se",
+          "path_type": "app"
+        },
+        {
+          "name": "Real-time document change listener",
+          "severity": "medium",
+          "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+          "category": "document_monitoring",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "ookCellTextDocument(t,n)})),a.workspace.onDidChangeTextDocument((e=>{if(0===e.contentChanges.length)retur",
+          "path_type": "app"
+        },
+        {
+          "name": "Real-time document change listener",
+          "severity": "medium",
+          "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+          "category": "document_monitoring",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "oid 0)})),e.subscriptions.push(c.window.onDidChangeActiveTextEditor((()=>{x(void 0)})),c.workspace.onDidClose",
+          "path_type": "app"
+        },
+        {
+          "name": "Real-time document change listener",
+          "severity": "medium",
+          "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+          "category": "document_monitoring",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "iveTextEditor?.document,c.push(i.window.onDidChangeActiveTextEditor((e=>{const t=this.activeTextDocument;this",
+          "path_type": "app"
+        },
+        {
+          "name": "File content read on editor change event",
+          "severity": "medium",
+          "description": "Registers handler for editor/document change events",
+          "category": "document_monitoring",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "oid 0)})),e.subscriptions.push(c.window.onDidChangeActiveTextEditor((()=>{x(void 0)})),c.workspace.onDidCloseText",
+          "path_type": "app"
+        },
+        {
+          "name": "Real-time document change listener",
+          "severity": "medium",
+          "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+          "category": "document_monitoring",
+          "file": "server\\out\\eslintServer.js",
+          "line": 1,
+          "evidence": "n this.openHandler&&this.openHandler(e)}onDidChangeTextDocument(e){return this.changeHandler=e,i.Disposa",
+          "path_type": "app"
+        },
+        {
+          "name": "Real-time document change listener",
+          "severity": "medium",
+          "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+          "category": "document_monitoring",
+          "file": "server\\out\\eslintServer.js",
+          "line": 1,
+          "evidence": "onDidChangeContent.fire(i)}))),t.push(e.onDidChangeTextDocument((e=>{const t=e.textDocument,n=e.contentCh",
+          "path_type": "app"
+        }
+      ],
+      "prototype_pollution": [
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "upport for command executable\");const a=Object.assign({},t.options);if(a.cwd=a.cwd||e,void 0===o",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "er({id:l.generateUuid(),registerOptions:Object.assign({},{documentSelector:t},{syncKind:n.change",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "er({id:l.generateUuid(),registerOptions:Object.assign({},{documentSelector:t},e)})}}register(e){",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "B(n,e,t);B.filter=ve;const ye=(e,t={})=>Object.assign({},e,t),be=e=>{if(!e||\"object\"!=typeof e||",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "==i.only&&0===a.length)return[];const c=Object.assign({},i,{diagnostics:a}),u=Date.now(),l=await",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "),i=t.documentSelector??e;if(i)return[n,Object.assign({},t,{documentSelector:i})]}else if(u.bool",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "boolean(t)&&!0===t?{documentSelector:e}:Object.assign({},t,{documentSelector:e});return[l.genera",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "boolean(t)&&!0===t?{documentSelector:e}:Object.assign({},t,{documentSelector:e})}getProvider(e){",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "er({id:u.generateUuid(),registerOptions:Object.assign({},e.executeCommandProvider)})}register(e)",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "es.textDocumentSync),this._capabilities=Object.assign({},n.capabilities,{resolvedTextDocumentSyn",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "server\\out\\eslintServer.js",
+          "line": 1,
+          "evidence": "nc function O(e,t,n){const i=void 0===n?Object.assign(Object.create(null),t.options):Object.assign(Object.create(",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "server\\out\\eslintServer.js",
+          "line": 1,
+          "evidence": "t.assign(Object.create(null),t.options):Object.assign(Object.create(null),t.options,n),o=process.cwd();try{if(t.w",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "server\\out\\eslintServer.js",
+          "line": 1,
+          "evidence": "opeUri:d,section:\"\"}).then((v=>{const b=Object.assign({},v,{silent:!1,library:void 0,resolvedGlo",
+          "path_type": "app"
+        },
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "medium",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "server\\out\\eslintServer.js",
+          "line": 1,
+          "evidence": "}e.validate=async function(e,t){const n=Object.assign(Object.create(null),t.options);let i;if(Array.isArray(n.fix",
+          "path_type": "app"
+        }
+      ],
+      "workspace_activity_monitoring": [
+        {
+          "name": "File open monitoring (onDidOpenTextDocument)",
+          "severity": "low",
+          "description": "Monitors when files are opened in the editor - workspace activity tracking",
+          "category": "workspace_activity_monitoring",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": ",void w(e)}let n=!1;const i=u.workspace.onDidOpenTextDocument((function(t){n||_.check(t)!==d.Validate.",
+          "path_type": "app"
+        },
+        {
+          "name": "File open monitoring (onDidOpenTextDocument)",
+          "severity": "low",
+          "description": "Monitors when files are opened in the editor - workspace activity tracking",
+          "category": "workspace_activity_monitoring",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "tionSent=new a.EventEmitter,a.workspace.onDidOpenTextDocument((e=>{if(e.uri.scheme!==b.CellScheme)retu",
+          "path_type": "app"
+        },
+        {
+          "name": "File save monitoring (onWillSaveTextDocument)",
+          "severity": "low",
+          "description": "Monitors when files are about to be saved - workspace activity tracking",
+          "category": "workspace_activity_monitoring",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "._listener||(this._listener=a.workspace.onWillSaveTextDocument(this.callback,this)),this._selectors.set",
+          "path_type": "app"
+        },
+        {
+          "name": "Workspace folder change monitoring",
+          "severity": "low",
+          "description": "Monitors workspace folder additions/removals - workspace structure tracking",
+          "category": "workspace_activity_monitoring",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "nst t=e.id,n=this._client,i=c.workspace.onDidChangeWorkspaceFolders((e=>{const t=e=>this.doSendEvent(e.added",
+          "path_type": "app"
+        },
+        {
+          "name": "Workspace folder change monitoring",
+          "severity": "low",
+          "description": "Monitors workspace folder additions/removals - workspace structure tracking",
+          "category": "workspace_activity_monitoring",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "ers(e,[]);const t=[];t.push(a.workspace.onDidChangeWorkspaceFolders((e=>this.updateWorkspaceFolders(e.added,",
+          "path_type": "app"
+        },
+        {
+          "name": "File open monitoring (onDidOpenTextDocument)",
+          "severity": "low",
+          "description": "Monitors when files are opened in the editor - workspace activity tracking",
+          "category": "workspace_activity_monitoring",
+          "file": "server\\out\\eslintServer.js",
+          "line": 1,
+          "evidence": ";openHandler;changeHandler;closeHandler;onDidOpenTextDocument(e){return this.openHandler=e,i.Disposabl",
+          "path_type": "app"
+        },
+        {
+          "name": "File open monitoring (onDidOpenTextDocument)",
+          "severity": "low",
+          "description": "Monitors when files are opened in the editor - workspace activity tracking",
+          "category": "workspace_activity_monitoring",
+          "file": "server\\out\\eslintServer.js",
+          "line": 1,
+          "evidence": ".Incremental;const t=[];return t.push(e.onDidOpenTextDocument((e=>{const t=e.textDocument,n=this._conf",
+          "path_type": "app"
+        },
+        {
+          "name": "File save monitoring (onWillSaveTextDocument)",
+          "severity": "low",
+          "description": "Monitors when files are about to be saved - workspace activity tracking",
+          "category": "workspace_activity_monitoring",
+          "file": "server\\out\\eslintServer.js",
+          "line": 1,
+          "evidence": "this.closeHandler&&this.closeHandler(e)}onWillSaveTextDocument(){return r.NULL_DISPOSE}onWillSaveTextDo",
+          "path_type": "app"
+        },
+        {
+          "name": "File save monitoring (onWillSaveTextDocument)",
+          "severity": "low",
+          "description": "Monitors when files are about to be saved - workspace activity tracking",
+          "category": "workspace_activity_monitoring",
+          "file": "server\\out\\eslintServer.js",
+          "line": 1,
+          "evidence": "ect.freeze({document:t})))}))),t.push(e.onWillSaveTextDocument((e=>{const t=this._syncedDocuments.get(e",
+          "path_type": "app"
+        },
+        {
+          "name": "Workspace folder change monitoring",
+          "severity": "low",
+          "description": "Monitors workspace folder additions/removals - workspace structure tracking",
+          "category": "workspace_activity_monitoring",
+          "file": "server\\out\\eslintServer.js",
+          "line": 1,
+          "evidence": "orkspace?.workspaceFolders&&b.workspace.onDidChangeWorkspaceFolders((e=>{w()}))}));const T={kind:l.DocumentD",
+          "path_type": "app"
+        },
+        {
+          "name": "Workspace folder change monitoring",
+          "severity": "low",
+          "description": "Monitors workspace folder additions/removals - workspace structure tracking",
+          "category": "workspace_activity_monitoring",
+          "file": "server\\out\\eslintServer.js",
+          "line": 1,
+          "evidence": "est(i.WorkspaceFoldersRequest.type)}get onDidChangeWorkspaceFolders(){if(!this._onDidChangeWorkspaceFolders)",
+          "path_type": "app"
+        }
+      ],
+      "browser_exfil": [
+        {
+          "name": "Browser-based exfiltration via env.openExternal",
+          "severity": "high",
+          "description": "Opens URL in user browser - can exfiltrate data via URL parameters",
+          "category": "browser_exfil",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "Target.Global):\"readme\"===o.id&&(C=!0,c.env.openExternal(c.Uri.parse(\"https://github.com/microsof",
+          "path_type": "app"
+        },
+        {
+          "name": "Browser-based exfiltration via env.openExternal",
+          "severity": "high",
+          "description": "Opens URL in user browser - can exfiltrate data via URL parameters",
+          "category": "browser_exfil",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "(!0===e.external)return{success:await a.env.openExternal(t)};{const n={};return void 0!==e.select",
+          "path_type": "app"
+        }
+      ],
+      "command_injection": [
+        {
+          "name": "Command execution via ShellExecution/tasks API",
+          "severity": "critical",
+          "description": "Creates shell command via Tasks API - executes commands without child_process",
+          "category": "command_injection",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "lder,\"lint whole folder\",\"eslint\",new a.ShellExecution(`${o} ${r}`,n),\"$eslint-stylish\")}catch{",
+          "path_type": "app"
+        },
+        {
+          "name": "Task provider registration (shell execution)",
+          "severity": "medium",
+          "description": "Registers a task provider that can supply shell execution tasks",
+          "category": "command_injection",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "is.providers.size>0?this.taskProvider=a.tasks.registerTaskProvider(\"eslint\",{provideTasks:()=>this.getTasks",
+          "path_type": "app"
+        },
+        {
+          "name": "Terminal creation (minification-safe)",
+          "severity": "medium",
+          "description": "Creates VSCode terminal - can execute commands",
+          "category": "command_injection",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": ")return;const t=e.uri.fsPath,n=u.window.createTerminal({name:\"ESLint init\",cwd:t}),i=await(0,p.f",
+          "path_type": "app"
+        },
+        {
+          "name": "child_process require (minification-safe)",
+          "severity": "high",
+          "description": "Imports child_process module - shell command execution capability",
+          "category": "command_injection",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "o={}))},5317:e=>{\"use strict\";e.exports=require(\"child_process\")},5432:(e,t,n)=>{\"use strict\";Object.def",
+          "path_type": "app"
+        },
+        {
+          "name": "child_process require (minification-safe)",
+          "severity": "high",
+          "description": "Imports child_process module - shell command execution capability",
+          "category": "command_injection",
+          "file": "server\\out\\eslintServer.js",
+          "line": 1,
+          "evidence": "RangeRequest=o={}))},5317:e=>{e.exports=require(\"child_process\")},5509:(e,t)=>{Object.defineProperty(t,\"",
+          "path_type": "app"
+        }
+      ],
+      "telemetry_abuse": [
+        {
+          "name": "Process environment bulk harvesting",
+          "severity": "high",
+          "description": "Enumerates all environment variable names - sensitive info harvesting",
+          "category": "telemetry_abuse",
+          "file": "client\\out\\extension.js",
+          "line": 1,
+          "evidence": "turn;const n=Object.create(null);return Object.keys(process.env).forEach((e=>n[e]=process.env[e])),t&&(n",
+          "path_type": "app"
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "server\\out\\eslintServer.js",
+          "line": 1,
+          "evidence": "se if(\"object\"==typeof navigator){let e=navigator.userAgent;r=e.indexOf(\"Windows\")>=0}const s=/^\\w[",
+          "path_type": "app"
+        },
+        {
+          "name": "Process environment bulk harvesting",
+          "severity": "high",
+          "description": "Enumerates all environment variable names - sensitive info harvesting",
+          "category": "telemetry_abuse",
+          "file": "server\\out\\eslintServer.js",
+          "line": 1,
+          "evidence": "let t=\"npm\";const n=Object.create(null);Object.keys(process.env).forEach((e=>n[e]=process.env[e])),n.NO_",
+          "path_type": "app"
+        }
+      ],
+      "behavioral_correlation": [
+        {
+          "name": "Shell execution with user-controlled input (same file)",
+          "severity": "medium",
+          "description": "User input source (QuickPick/InputBox) and shell command execution exist in the same file - user input may reach shell commands. Review whether input is properly sanitized.",
+          "category": "behavioral_correlation",
+          "file": "server\\out\\eslintServer.js",
+          "line": 0,
+          "evidence": "User input + shell execution co-located in: server\\out\\eslintServer.js, client\\out\\extension.js",
+          "confidence": "MEDIUM",
+          "attack_type": "user_input_shell_injection"
+        },
+        {
+          "name": "Local tool integration: workspace monitoring + command execution (no network)",
+          "severity": "low",
+          "description": "Extension monitors workspace activity and executes commands but has NO network access. Consistent with local CLI tool integration. High capability but justified pattern.",
+          "category": "behavioral_correlation",
+          "file": "client\\out\\extension.js",
+          "line": 0,
+          "evidence": "File open monitoring (onDidOpenTextDocument) + Command execution via ShellExecution/tasks API + no network",
+          "confidence": "HIGH",
+          "attack_type": "local_tool_integration"
+        }
+      ]
+    },
+    "findings_by_severity": {
+      "high": 7,
+      "medium": 24,
+      "low": 13,
+      "critical": 1
+    },
+    "suppressed_false_positives": 0
+  },
+  "malicious_patterns": [
+    {
+      "name": "Terminal sendText (command execution)",
+      "severity": "high",
+      "description": "Sends commands to terminal with dynamic content",
+      "category": "terminal_hijack",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "it\",cwd:t}),i=await(0,p.findEslint)(t);n.sendText(`${i} --init`),n.show()})):1===e.length?u.w",
+      "path_type": "app"
+    },
+    {
+      "name": "Real-time document change listener",
+      "severity": "medium",
+      "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+      "category": "document_monitoring",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "._listener||(this._listener=a.workspace.onDidChangeTextDocument(this.callback,this)),this._changeData.se",
+      "path_type": "app"
+    },
+    {
+      "name": "Real-time document change listener",
+      "severity": "medium",
+      "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+      "category": "document_monitoring",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "ookCellTextDocument(t,n)})),a.workspace.onDidChangeTextDocument((e=>{if(0===e.contentChanges.length)retur",
+      "path_type": "app"
+    },
+    {
+      "name": "Real-time document change listener",
+      "severity": "medium",
+      "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+      "category": "document_monitoring",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "oid 0)})),e.subscriptions.push(c.window.onDidChangeActiveTextEditor((()=>{x(void 0)})),c.workspace.onDidClose",
+      "path_type": "app"
+    },
+    {
+      "name": "Real-time document change listener",
+      "severity": "medium",
+      "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+      "category": "document_monitoring",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "iveTextEditor?.document,c.push(i.window.onDidChangeActiveTextEditor((e=>{const t=this.activeTextDocument;this",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "upport for command executable\");const a=Object.assign({},t.options);if(a.cwd=a.cwd||e,void 0===o",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "er({id:l.generateUuid(),registerOptions:Object.assign({},{documentSelector:t},{syncKind:n.change",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "er({id:l.generateUuid(),registerOptions:Object.assign({},{documentSelector:t},e)})}}register(e){",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "B(n,e,t);B.filter=ve;const ye=(e,t={})=>Object.assign({},e,t),be=e=>{if(!e||\"object\"!=typeof e||",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "==i.only&&0===a.length)return[];const c=Object.assign({},i,{diagnostics:a}),u=Date.now(),l=await",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "),i=t.documentSelector??e;if(i)return[n,Object.assign({},t,{documentSelector:i})]}else if(u.bool",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "boolean(t)&&!0===t?{documentSelector:e}:Object.assign({},t,{documentSelector:e});return[l.genera",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "boolean(t)&&!0===t?{documentSelector:e}:Object.assign({},t,{documentSelector:e})}getProvider(e){",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "er({id:u.generateUuid(),registerOptions:Object.assign({},e.executeCommandProvider)})}register(e)",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "es.textDocumentSync),this._capabilities=Object.assign({},n.capabilities,{resolvedTextDocumentSyn",
+      "path_type": "app"
+    },
+    {
+      "name": "File content read on editor change event",
+      "severity": "medium",
+      "description": "Registers handler for editor/document change events",
+      "category": "document_monitoring",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "oid 0)})),e.subscriptions.push(c.window.onDidChangeActiveTextEditor((()=>{x(void 0)})),c.workspace.onDidCloseText",
+      "path_type": "app"
+    },
+    {
+      "name": "File open monitoring (onDidOpenTextDocument)",
+      "severity": "low",
+      "description": "Monitors when files are opened in the editor - workspace activity tracking",
+      "category": "workspace_activity_monitoring",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": ",void w(e)}let n=!1;const i=u.workspace.onDidOpenTextDocument((function(t){n||_.check(t)!==d.Validate.",
+      "path_type": "app"
+    },
+    {
+      "name": "File open monitoring (onDidOpenTextDocument)",
+      "severity": "low",
+      "description": "Monitors when files are opened in the editor - workspace activity tracking",
+      "category": "workspace_activity_monitoring",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "tionSent=new a.EventEmitter,a.workspace.onDidOpenTextDocument((e=>{if(e.uri.scheme!==b.CellScheme)retu",
+      "path_type": "app"
+    },
+    {
+      "name": "File save monitoring (onWillSaveTextDocument)",
+      "severity": "low",
+      "description": "Monitors when files are about to be saved - workspace activity tracking",
+      "category": "workspace_activity_monitoring",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "._listener||(this._listener=a.workspace.onWillSaveTextDocument(this.callback,this)),this._selectors.set",
+      "path_type": "app"
+    },
+    {
+      "name": "Workspace folder change monitoring",
+      "severity": "low",
+      "description": "Monitors workspace folder additions/removals - workspace structure tracking",
+      "category": "workspace_activity_monitoring",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "nst t=e.id,n=this._client,i=c.workspace.onDidChangeWorkspaceFolders((e=>{const t=e=>this.doSendEvent(e.added",
+      "path_type": "app"
+    },
+    {
+      "name": "Workspace folder change monitoring",
+      "severity": "low",
+      "description": "Monitors workspace folder additions/removals - workspace structure tracking",
+      "category": "workspace_activity_monitoring",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "ers(e,[]);const t=[];t.push(a.workspace.onDidChangeWorkspaceFolders((e=>this.updateWorkspaceFolders(e.added,",
+      "path_type": "app"
+    },
+    {
+      "name": "Browser-based exfiltration via env.openExternal",
+      "severity": "high",
+      "description": "Opens URL in user browser - can exfiltrate data via URL parameters",
+      "category": "browser_exfil",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "Target.Global):\"readme\"===o.id&&(C=!0,c.env.openExternal(c.Uri.parse(\"https://github.com/microsof",
+      "path_type": "app"
+    },
+    {
+      "name": "Browser-based exfiltration via env.openExternal",
+      "severity": "high",
+      "description": "Opens URL in user browser - can exfiltrate data via URL parameters",
+      "category": "browser_exfil",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "(!0===e.external)return{success:await a.env.openExternal(t)};{const n={};return void 0!==e.select",
+      "path_type": "app"
+    },
+    {
+      "name": "Command execution via ShellExecution/tasks API",
+      "severity": "critical",
+      "description": "Creates shell command via Tasks API - executes commands without child_process",
+      "category": "command_injection",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "lder,\"lint whole folder\",\"eslint\",new a.ShellExecution(`${o} ${r}`,n),\"$eslint-stylish\")}catch{",
+      "path_type": "app"
+    },
+    {
+      "name": "Task provider registration (shell execution)",
+      "severity": "medium",
+      "description": "Registers a task provider that can supply shell execution tasks",
+      "category": "command_injection",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "is.providers.size>0?this.taskProvider=a.tasks.registerTaskProvider(\"eslint\",{provideTasks:()=>this.getTasks",
+      "path_type": "app"
+    },
+    {
+      "name": "Process environment bulk harvesting",
+      "severity": "high",
+      "description": "Enumerates all environment variable names - sensitive info harvesting",
+      "category": "telemetry_abuse",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "turn;const n=Object.create(null);return Object.keys(process.env).forEach((e=>n[e]=process.env[e])),t&&(n",
+      "path_type": "app"
+    },
+    {
+      "name": "Terminal creation (minification-safe)",
+      "severity": "medium",
+      "description": "Creates VSCode terminal - can execute commands",
+      "category": "command_injection",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": ")return;const t=e.uri.fsPath,n=u.window.createTerminal({name:\"ESLint init\",cwd:t}),i=await(0,p.f",
+      "path_type": "app"
+    },
+    {
+      "name": "child_process require (minification-safe)",
+      "severity": "high",
+      "description": "Imports child_process module - shell command execution capability",
+      "category": "command_injection",
+      "file": "client\\out\\extension.js",
+      "line": 1,
+      "evidence": "o={}))},5317:e=>{\"use strict\";e.exports=require(\"child_process\")},5432:(e,t,n)=>{\"use strict\";Object.def",
+      "path_type": "app"
+    },
+    {
+      "name": "Real-time document change listener",
+      "severity": "medium",
+      "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+      "category": "document_monitoring",
+      "file": "server\\out\\eslintServer.js",
+      "line": 1,
+      "evidence": "n this.openHandler&&this.openHandler(e)}onDidChangeTextDocument(e){return this.changeHandler=e,i.Disposa",
+      "path_type": "app"
+    },
+    {
+      "name": "Real-time document change listener",
+      "severity": "medium",
+      "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+      "category": "document_monitoring",
+      "file": "server\\out\\eslintServer.js",
+      "line": 1,
+      "evidence": "onDidChangeContent.fire(i)}))),t.push(e.onDidChangeTextDocument((e=>{const t=e.textDocument,n=e.contentCh",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "server\\out\\eslintServer.js",
+      "line": 1,
+      "evidence": "nc function O(e,t,n){const i=void 0===n?Object.assign(Object.create(null),t.options):Object.assign(Object.create(",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "server\\out\\eslintServer.js",
+      "line": 1,
+      "evidence": "t.assign(Object.create(null),t.options):Object.assign(Object.create(null),t.options,n),o=process.cwd();try{if(t.w",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "server\\out\\eslintServer.js",
+      "line": 1,
+      "evidence": "opeUri:d,section:\"\"}).then((v=>{const b=Object.assign({},v,{silent:!1,library:void 0,resolvedGlo",
+      "path_type": "app"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "medium",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "server\\out\\eslintServer.js",
+      "line": 1,
+      "evidence": "}e.validate=async function(e,t){const n=Object.assign(Object.create(null),t.options);let i;if(Array.isArray(n.fix",
+      "path_type": "app"
+    },
+    {
+      "name": "File open monitoring (onDidOpenTextDocument)",
+      "severity": "low",
+      "description": "Monitors when files are opened in the editor - workspace activity tracking",
+      "category": "workspace_activity_monitoring",
+      "file": "server\\out\\eslintServer.js",
+      "line": 1,
+      "evidence": ";openHandler;changeHandler;closeHandler;onDidOpenTextDocument(e){return this.openHandler=e,i.Disposabl",
+      "path_type": "app"
+    },
+    {
+      "name": "File open monitoring (onDidOpenTextDocument)",
+      "severity": "low",
+      "description": "Monitors when files are opened in the editor - workspace activity tracking",
+      "category": "workspace_activity_monitoring",
+      "file": "server\\out\\eslintServer.js",
+      "line": 1,
+      "evidence": ".Incremental;const t=[];return t.push(e.onDidOpenTextDocument((e=>{const t=e.textDocument,n=this._conf",
+      "path_type": "app"
+    },
+    {
+      "name": "File save monitoring (onWillSaveTextDocument)",
+      "severity": "low",
+      "description": "Monitors when files are about to be saved - workspace activity tracking",
+      "category": "workspace_activity_monitoring",
+      "file": "server\\out\\eslintServer.js",
+      "line": 1,
+      "evidence": "this.closeHandler&&this.closeHandler(e)}onWillSaveTextDocument(){return r.NULL_DISPOSE}onWillSaveTextDo",
+      "path_type": "app"
+    },
+    {
+      "name": "File save monitoring (onWillSaveTextDocument)",
+      "severity": "low",
+      "description": "Monitors when files are about to be saved - workspace activity tracking",
+      "category": "workspace_activity_monitoring",
+      "file": "server\\out\\eslintServer.js",
+      "line": 1,
+      "evidence": "ect.freeze({document:t})))}))),t.push(e.onWillSaveTextDocument((e=>{const t=this._syncedDocuments.get(e",
+      "path_type": "app"
+    },
+    {
+      "name": "Workspace folder change monitoring",
+      "severity": "low",
+      "description": "Monitors workspace folder additions/removals - workspace structure tracking",
+      "category": "workspace_activity_monitoring",
+      "file": "server\\out\\eslintServer.js",
+      "line": 1,
+      "evidence": "orkspace?.workspaceFolders&&b.workspace.onDidChangeWorkspaceFolders((e=>{w()}))}));const T={kind:l.DocumentD",
+      "path_type": "app"
+    },
+    {
+      "name": "Workspace folder change monitoring",
+      "severity": "low",
+      "description": "Monitors workspace folder additions/removals - workspace structure tracking",
+      "category": "workspace_activity_monitoring",
+      "file": "server\\out\\eslintServer.js",
+      "line": 1,
+      "evidence": "est(i.WorkspaceFoldersRequest.type)}get onDidChangeWorkspaceFolders(){if(!this._onDidChangeWorkspaceFolders)",
+      "path_type": "app"
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "server\\out\\eslintServer.js",
+      "line": 1,
+      "evidence": "se if(\"object\"==typeof navigator){let e=navigator.userAgent;r=e.indexOf(\"Windows\")>=0}const s=/^\\w[",
+      "path_type": "app"
+    },
+    {
+      "name": "Process environment bulk harvesting",
+      "severity": "high",
+      "description": "Enumerates all environment variable names - sensitive info harvesting",
+      "category": "telemetry_abuse",
+      "file": "server\\out\\eslintServer.js",
+      "line": 1,
+      "evidence": "let t=\"npm\";const n=Object.create(null);Object.keys(process.env).forEach((e=>n[e]=process.env[e])),n.NO_",
+      "path_type": "app"
+    },
+    {
+      "name": "child_process require (minification-safe)",
+      "severity": "high",
+      "description": "Imports child_process module - shell command execution capability",
+      "category": "command_injection",
+      "file": "server\\out\\eslintServer.js",
+      "line": 1,
+      "evidence": "RangeRequest=o={}))},5317:e=>{e.exports=require(\"child_process\")},5509:(e,t)=>{Object.defineProperty(t,\"",
+      "path_type": "app"
+    },
+    {
+      "name": "Shell execution with user-controlled input (same file)",
+      "severity": "medium",
+      "description": "User input source (QuickPick/InputBox) and shell command execution exist in the same file - user input may reach shell commands. Review whether input is properly sanitized.",
+      "category": "behavioral_correlation",
+      "file": "server\\out\\eslintServer.js",
+      "line": 0,
+      "evidence": "User input + shell execution co-located in: server\\out\\eslintServer.js, client\\out\\extension.js",
+      "confidence": "MEDIUM",
+      "attack_type": "user_input_shell_injection"
+    },
+    {
+      "name": "Local tool integration: workspace monitoring + command execution (no network)",
+      "severity": "low",
+      "description": "Extension monitors workspace activity and executes commands but has NO network access. Consistent with local CLI tool integration. High capability but justified pattern.",
+      "category": "behavioral_correlation",
+      "file": "client\\out\\extension.js",
+      "line": 0,
+      "evidence": "File open monitoring (onDidOpenTextDocument) + Command execution via ShellExecution/tasks API + no network",
+      "confidence": "HIGH",
+      "attack_type": "local_tool_integration"
+    }
+  ],
+  "html_analysis": {
+    "findings": [],
+    "files_scanned": 0,
+    "iframe_urls": []
+  },
+  "permissions": {
+    "high_risk": [
+      {
+        "permission": "child_process",
+        "description": "Can execute system commands",
+        "evidence": [
+          {
+            "module": "child_process",
+            "file": "client\\out\\extension.js",
+            "line": 1
+          },
+          {
+            "module": "child_process",
+            "file": "server\\out\\eslintServer.js",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "permission": "terminal_control",
+        "description": "Creates/controls integrated terminals",
+        "finding_count": 1
+      }
+    ],
+    "medium_risk": [
+      {
+        "permission": "filesystem",
+        "description": "Can read/write files on disk",
+        "evidence": [
+          {
+            "module": "path",
+            "file": "client\\out\\extension.js",
+            "line": 1
+          },
+          {
+            "module": "fs",
+            "file": "client\\out\\extension.js",
+            "line": 1
+          },
+          {
+            "module": "path",
+            "file": "server\\out\\eslintServer.js",
+            "line": 1
+          },
+          {
+            "module": "fs",
+            "file": "server\\out\\eslintServer.js",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "permission": "network",
+        "description": "Can make network requests",
+        "evidence": [
+          {
+            "module": "net",
+            "file": "client\\out\\extension.js",
+            "line": 1
+          },
+          {
+            "module": "url",
+            "file": "server\\out\\eslintServer.js",
+            "line": 1
+          },
+          {
+            "module": "net",
+            "file": "server\\out\\eslintServer.js",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "permission": "real_time_document_monitoring",
+        "description": "Monitors text document changes in real time",
+        "finding_count": 7
+      }
+    ],
+    "low_risk": [
+      {
+        "permission": "os_info",
+        "description": "Can read OS information",
+        "evidence": [
+          {
+            "module": "os",
+            "file": "client\\out\\extension.js",
+            "line": 1
+          },
+          {
+            "module": "os",
+            "file": "server\\out\\eslintServer.js",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "permission": "workspace_activity_tracking",
+        "description": "Tracks developer activity (file opens, saves, folder changes, paths)",
+        "finding_count": 11
+      }
+    ],
+    "total": 7,
+    "all": [
+      "child_process",
+      "terminal_control",
+      "filesystem",
+      "network",
+      "real_time_document_monitoring",
+      "os_info",
+      "workspace_activity_tracking"
+    ]
+  },
+  "risk_score": 7.0,
+  "risk_level": "HIGH",
+  "risk_breakdown": {
+    "supply_chain": 5.0,
+    "metadata_publisher": 0.2,
+    "code_analysis": 2.0,
+    "behavioral_correlations": 0.3,
+    "infrastructure": 0,
+    "positive_signals": -0.5
+  },
+  "positive_signals": {
+    "signals": [
+      {
+        "signal": "no_obfuscation",
+        "description": "No code obfuscation or evasion techniques detected",
+        "weight": 0.3
+      },
+      {
+        "signal": "scoped_activation",
+        "description": "Extension activates only on specific events, not wildcard",
+        "weight": 0.2
+      }
+    ],
+    "reduction": 0.5,
+    "count": 2
+  },
+  "risk_classification": {
+    "classification": "MALICIOUS_INDICATORS",
+    "summary": "Multiple suspicious patterns detected alongside high-risk capabilities. Obfuscation, data exfiltration, or credential theft patterns suggest potentially malicious intent. Manual review strongly recommended.",
+    "suspicion_indicators": 2,
+    "positive_signal_count": 2
+  },
+  "module_usage": {
+    "os_info": [
+      {
+        "module": "os",
+        "file": "client\\out\\extension.js",
+        "line": 1
+      },
+      {
+        "module": "os",
+        "file": "server\\out\\eslintServer.js",
+        "line": 1
+      }
+    ],
+    "process_execution": [
+      {
+        "module": "child_process",
+        "file": "client\\out\\extension.js",
+        "line": 1
+      },
+      {
+        "module": "child_process",
+        "file": "server\\out\\eslintServer.js",
+        "line": 1
+      }
+    ],
+    "file_access": [
+      {
+        "module": "path",
+        "file": "client\\out\\extension.js",
+        "line": 1
+      },
+      {
+        "module": "fs",
+        "file": "client\\out\\extension.js",
+        "line": 1
+      },
+      {
+        "module": "path",
+        "file": "server\\out\\eslintServer.js",
+        "line": 1
+      },
+      {
+        "module": "fs",
+        "file": "server\\out\\eslintServer.js",
+        "line": 1
+      }
+    ],
+    "crypto": [
+      {
+        "module": "crypto",
+        "file": "client\\out\\extension.js",
+        "line": 1
+      },
+      {
+        "module": "crypto",
+        "file": "server\\out\\eslintServer.js",
+        "line": 1
+      }
+    ],
+    "network": [
+      {
+        "module": "net",
+        "file": "client\\out\\extension.js",
+        "line": 1
+      },
+      {
+        "module": "url",
+        "file": "server\\out\\eslintServer.js",
+        "line": 1
+      },
+      {
+        "module": "net",
+        "file": "server\\out\\eslintServer.js",
+        "line": 1
+      }
+    ]
+  },
+  "external_urls": [
+    {
+      "url": "https://eslint.org/docs/latest/use/configure/rules#report-unused-eslint-disable-comments",
+      "file": "server\\out\\eslintServer.js",
+      "line": 1
+    }
+  ],
+  "domain_intelligence": [
+    {
+      "domain": "eslint.org",
+      "url": "https://eslint.org/docs/latest/use/configure/rules#report-unused-eslint-disable-comments",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    }
+  ],
+  "virustotal_results": [
+    {
+      "available": true,
+      "domain": "eslint.org",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 62,
+        "undetected": 31
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {
+        "alphaMountain.ai": "Business/Economy, Information Technology (alphaMountain.ai)",
+        "BitDefender": "misc",
+        "Xcitium Verdict Cloud": "web applications",
+        "Sophos": "general business",
+        "Forcepoint ThreatSeeker": "information technology"
+      },
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2013-07-04",
+        "age_days": 4615,
+        "age_human": "12 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".org",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/eslint.org"
+    }
+  ]
+}

@@ -1,0 +1,1261 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threat Intelligence Report - __MSG_appName__</title>
+    <style>
+        :root {
+            --color-critical: #ef4444;
+            --color-high: #f97316;
+            --color-medium: #eab308;
+            --color-low: #22c55e;
+            --color-info: #3b82f6;
+            --color-dark: #0f172a;
+            --color-gray: #94a3b8;
+            --color-light-bg: #1e293b;
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #475569;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+        }
+
+        .report-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--bg-secondary);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Header Section */
+        .report-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 40px 50px;
+            border-bottom: 4px solid #dc2626;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .report-title {
+            flex: 1;
+        }
+        
+        .report-title h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        
+        .report-title .subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+            font-weight: 400;
+        }
+        
+        .classification-badge {
+            background: #dc2626;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        .header-meta {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .meta-item {
+            text-align: center;
+        }
+        
+        .meta-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.7;
+            margin-bottom: 6px;
+        }
+        
+        .meta-value {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        /* Campaign Alert */
+        .campaign-alert {
+            background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
+            padding: 30px 50px;
+            border-left: 6px solid #dc2626;
+            color: white;
+        }
+        
+        .campaign-alert h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .campaign-alert p {
+            margin: 8px 0;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        
+        .campaign-alert .indicators {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .campaign-alert .indicators li {
+            margin: 6px 0;
+            font-size: 14px;
+        }
+        
+        .campaign-reference {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 13px;
+        }
+        
+        .campaign-reference a {
+            color: #fca5a5;
+            text-decoration: none;
+            border-bottom: 1px solid #fca5a5;
+        }
+        
+        /* Executive Summary */
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(234, 179, 8, 0.05) 100%);
+            border-left: 6px solid #eab308;
+            padding: 35px 50px;
+            margin: 0;
+        }
+
+        .executive-summary.critical {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.05) 100%);
+            border-left-color: #ef4444;
+        }
+
+        .executive-summary h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fcd34d;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .executive-summary.critical h2 {
+            color: #fca5a5;
+        }
+
+        .bluf {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.8;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+
+        .executive-summary.critical .bluf {
+            color: var(--text-primary);
+        }
+
+        .key-findings {
+            display: grid;
+            gap: 12px;
+        }
+
+        .finding-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+
+        .finding-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .finding-text {
+            flex: 1;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+        
+        /* Content Sections */
+        .content {
+            padding: 0;
+        }
+
+        .section {
+            padding: 40px 50px;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-card);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 20px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        
+        /* IOC Section */
+        .ioc-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .ioc-category {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .ioc-category-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ioc-list {
+            display: grid;
+            gap: 8px;
+        }
+
+        .ioc-item {
+            padding: 10px 14px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--color-critical);
+            border-radius: 4px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            color: #fca5a5;
+        }
+        
+        /* Domain Intelligence */
+        .domain-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .domain-card.threat-critical {
+            border-left: 4px solid var(--color-critical);
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .domain-card.threat-high {
+            border-left: 4px solid var(--color-high);
+            background: rgba(249, 115, 22, 0.1);
+        }
+
+        .domain-card.threat-medium {
+            border-left: 4px solid var(--color-medium);
+            background: rgba(234, 179, 8, 0.1);
+        }
+
+        .domain-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .domain-name {
+            font-family: 'Monaco', monospace;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .threat-badge {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .threat-badge.critical {
+            background: var(--color-critical);
+            color: white;
+        }
+        
+        .threat-badge.high {
+            background: var(--color-high);
+            color: white;
+        }
+        
+        .threat-badge.medium {
+            background: var(--color-medium);
+            color: white;
+        }
+        
+        .threat-badge.low {
+            background: var(--color-low);
+            color: white;
+        }
+        
+        .threat-badge.benign {
+            background: #10b981;
+            color: white;
+        }
+        
+        .domain-classification {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fca5a5;
+            margin-bottom: 10px;
+        }
+
+        .domain-indicators {
+            display: grid;
+            gap: 6px;
+        }
+
+        .indicator-tag {
+            padding: 6px 10px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 4px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            border-left: 3px solid #ef4444;
+        }
+        
+        /* Technical Details */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .detail-card {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .detail-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .detail-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Threat Analysis - ENHANCED TO SHOW POST DESTINATIONS */
+        .threat-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid #ef4444;
+            border-radius: 6px;
+            padding: 18px;
+            margin-bottom: 12px;
+        }
+
+        .threat-item.high {
+            border-left-color: #ef4444;
+        }
+
+        .threat-item.medium {
+            border-left-color: #eab308;
+        }
+
+        .threat-item.low {
+            border-left-color: #64748b;
+        }
+
+        .threat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .threat-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .threat-severity {
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .threat-severity.high {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+        }
+
+        .threat-severity.medium {
+            background: rgba(234, 179, 8, 0.2);
+            color: #fcd34d;
+        }
+
+        .threat-description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .threat-destination {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 6px;
+            padding: 12px;
+            margin: 10px 0;
+            font-family: 'Monaco', monospace;
+            font-size: 13px;
+        }
+
+        .threat-destination-label {
+            font-weight: 700;
+            color: #fca5a5;
+            margin-bottom: 6px;
+        }
+
+        .threat-destination-url {
+            color: #f87171;
+            word-break: break-all;
+        }
+
+        .threat-metadata {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 12px 0;
+            padding: 12px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+
+        .threat-meta-item {
+            font-size: 13px;
+        }
+
+        .threat-meta-label {
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .threat-meta-value {
+            color: var(--text-primary);
+            font-family: 'Monaco', monospace;
+        }
+
+        .threat-location {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-family: 'Monaco', monospace;
+        }
+
+        .vt-cross-ref {
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(234, 179, 8, 0.1);
+            border-left: 3px solid #eab308;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .vt-cross-ref-icon {
+            color: #fcd34d;
+            font-weight: 700;
+        }
+
+        /* Recommendations */
+        .recommendations {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.05) 100%);
+            border-left: 6px solid #10b981;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .recommendations.critical {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.05) 100%);
+            border-left-color: #ef4444;
+        }
+
+        .recommendations h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #34d399;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .recommendations.critical h3 {
+            color: #fca5a5;
+        }
+
+        .rec-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .rec-item {
+            padding: 12px 16px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-primary);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .recommendations.critical .rec-item {
+            color: var(--text-primary);
+        }
+
+        .rec-icon {
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        /* Footer */
+        .report-footer {
+            background: var(--bg-primary);
+            padding: 30px 50px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 13px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        /* No data states */
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            color: #34d399;
+            font-size: 15px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        
+        /* Enhanced Code Snippets - KOI Style */
+        .code-snippet-container {
+            margin: 15px 0;
+            background: #1e1e1e;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #333;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        
+        .code-snippet-header {
+            background: #2d2d2d;
+            padding: 10px 15px;
+            border-bottom: 1px solid #3a3a3a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .code-snippet-header-dots {
+            display: flex;
+            gap: 6px;
+        }
+        
+        .code-snippet-header-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+        
+        .code-snippet-filename {
+            color: #a0a0a0;
+            font-size: 13px;
+            margin-left: auto;
+            font-family: 'Monaco', monospace;
+        }
+        
+        .code-snippet-body {
+            padding: 20px;
+            overflow-x: auto;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        .code-snippet-body pre {
+            margin: 0;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #d4d4d4;
+        }
+        
+        .code-line {
+            display: block;
+        }
+        
+        .code-line-number {
+            display: inline-block;
+            min-width: 45px;
+            color: #858585;
+            text-align: right;
+            padding-right: 20px;
+            user-select: none;
+            border-right: 1px solid #3a3a3a;
+            margin-right: 15px;
+        }
+        
+        .code-line-content {
+            display: inline;
+        }
+        
+        .code-line-highlight {
+            background: rgba(255, 95, 86, 0.15);
+            display: block;
+            margin: 0 -20px;
+            padding: 0 20px;
+            border-left: 3px solid #ff5f56;
+        }
+        
+        /* Syntax highlighting */
+        .code-keyword { color: #569cd6; font-weight: 600; }
+        .code-function { color: #dcdcaa; }
+        .code-string { color: #ce9178; }
+        .code-comment { color: #6a9955; font-style: italic; }
+        .code-const { color: #4fc1ff; }
+        .code-variable { color: #9cdcfe; }
+        .code-operator { color: #d4d4d4; }
+        .code-punctuation { color: #808080; }
+        
+        /* Subsection */
+        .subsection {
+            padding: 20px 0;
+        }
+
+        /* Finding Cards */
+        .finding-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        /* Alert Styles */
+        .alert {
+            display: flex;
+            gap: 15px;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .alert-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .alert-critical {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+        }
+
+        .alert-high {
+            background: rgba(249, 115, 22, 0.15);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            color: #fdba74;
+        }
+
+        .alert-medium {
+            background: rgba(234, 179, 8, 0.15);
+            border: 1px solid rgba(234, 179, 8, 0.3);
+            color: #fcd34d;
+        }
+
+        .alert-low {
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #86efac;
+        }
+
+        /* Print Styles */
+        @media print {
+            body { background: #1e293b; color: white; }
+            .report-container { box-shadow: none; }
+            .section { page-break-inside: avoid; }
+            .code-snippet-container { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="report-container">
+        <!-- Header -->
+        <div class="report-header">
+            <div class="header-top">
+                <div class="report-title" style="display: flex; align-items: center; gap: 20px;">
+                    <img src="data:image/png;base64,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" alt="Extension Icon" style="width: 64px; height: 64px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+                    <div>
+                        <h1 style="font-size: 24px; margin-bottom: 4px;">__MSG_appName__</h1>
+                        <div class="subtitle" style="font-size: 12px; opacity: 0.7; margin-bottom: 2px;">pndmbpnfolikhfnfnkmjkkpcgkmaibec</div>
+                        <div class="subtitle">Threat Intelligence Report • January 27, 2026 at 22:41 UTC</div>
+                    </div>
+                </div>
+                <div class="classification-badge">CRITICAL RISK</div>
+            </div>
+
+            <div class="header-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Risk Score</div>
+                    <div class="meta-value" style="font-size: 24px; color: #dc2626;">10.0/10</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Threat Class</div>
+                    <div class="meta-value">Suspicious Activity Detected</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Analysis Confidence</div>
+                    <div class="meta-value">72%</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Manifest Version</div>
+                    <div class="meta-value">MV3</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="executive-summary critical">
+            <h2>📋 Executive Summary</h2>
+            <div class="bluf"><strong>BLUF:</strong> 2 domain(s) flagged by security vendors (6 total detections). Potentially suspicious behavior detected. Manual review recommended.</div>
+            <div class="key-findings">
+
+                <div class="finding-item">
+                    <div class="finding-icon">🛡️</div>
+                    <div class="finding-text">VirusTotal: 2 malicious domain(s) detected</div>
+                </div>
+
+            </div>
+        </div>
+<div class="content">
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🔍</div>
+                <div class="section-title">Indicators of Compromise (IOCs)</div>
+            </div>
+            <div class="ioc-grid">
+
+            <div class="ioc-category">
+                <div class="ioc-category-title">📌 Extension Identifier</div>
+                <div class="ioc-list">
+                    <div class="ioc-item">pndmbpnfolikhfnfnkmjkkpcgkmaibec</div>
+                </div>
+            </div>
+
+            <div class="ioc-category">
+                <div class="ioc-category-title">🌐 Malicious Domains (VirusTotal Confirmed)</div>
+                <div class="ioc-list">
+<div class="ioc-item">aiadgenerator.app</div><div class="ioc-item">headlinegenerator.app</div>
+                </div>
+            </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🔐</div>
+                <div class="section-title">Host Permissions & Website Access</div>
+            </div>
+            <div class="subsection">
+
+                <div class="finding-card">
+                    <h3>Permission Scope: MINIMAL</h3>
+                    <p style="color: #84cc16; font-weight: 700; font-size: 18px; margin: 10px 0;">Risk Level: LOW</p>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 15px 0;">
+                        <div>
+                            <p style="font-size: 12px; color: #64748b; margin: 0;">Host Permissions</p>
+                            <p style="font-size: 24px; font-weight: 700; margin: 5px 0;">0</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 12px; color: #64748b; margin: 0;">Content Scripts</p>
+                            <p style="font-size: 24px; font-weight: 700; margin: 5px 0;">0</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 12px; color: #64748b; margin: 0;">Sensitive Categories</p>
+                            <p style="font-size: 24px; font-weight: 700; margin: 5px 0;">0</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 12px; color: #64748b; margin: 0;">Sensitive Domains</p>
+                            <p style="font-size: 24px; font-weight: 700; margin: 5px 0;">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 25px;">Sample Host Permissions</h3>
+                <p style="font-size: 13px; color: #64748b; margin: 10px 0;">Showing first 10 permissions requested by this extension:</p>
+                <div class="finding-card">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🛡️</div>
+                <div class="section-title">VirusTotal Domain Reputation</div>
+            </div>
+<h3 style="color: #ea580c; margin-bottom: 20px; font-size: 20px; font-weight: 700;">⚠️ Domains Flagged by Security Vendors</h3>
+            <div class="domain-card threat-critical">
+                <div class="domain-header">
+                    <div class="domain-name">🚨 aiadgenerator.app</div>
+                    <div class="threat-badge critical">MALICIOUS</div>
+                </div>
+                <div class="domain-classification">⚠️ Flagged by 3 security vendor(s)</div>
+                
+                <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <div style="margin-bottom: 10px;">
+                        <strong>Detection Statistics:</strong>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; font-size: 14px;">
+                        <div>🔴 Malicious: <strong>3</strong></div>
+                        <div>🟡 Suspicious: <strong>0</strong></div>
+                        <div>🟢 Harmless: <strong>60</strong></div>
+                        <div>⚪ Undetected: <strong>29</strong></div>
+                    </div>
+                </div>
+                
+                <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <div style="margin-bottom: 10px;">
+                        <strong>Community Votes:</strong>
+                    </div>
+                    <div style="font-size: 14px;">
+                        👎 Malicious: <strong>0</strong> | 
+                        👍 Harmless: <strong>0</strong>
+                    </div>
+                </div>
+
+                <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <div style="margin-bottom: 10px; color: #f1f5f9;">
+                        <strong>Security Vendors Flagging This Domain:</strong>
+                    </div>
+                    <div style="display: grid; gap: 8px;">
+
+                        <div style="padding: 10px 12px; background: rgba(239, 68, 68, 0.15); border-left: 3px solid #ef4444; border-radius: 4px; font-size: 13px;">
+                            <strong style="color: #f87171;">alphaMountain.ai</strong><span style="color: #94a3b8;">:</span> <span style="color: #fecaca;">malicious</span>
+                        </div>
+
+                        <div style="padding: 10px 12px; background: rgba(239, 68, 68, 0.15); border-left: 3px solid #ef4444; border-radius: 4px; font-size: 13px;">
+                            <strong style="color: #f87171;">Seclookup</strong><span style="color: #94a3b8;">:</span> <span style="color: #fecaca;">malicious</span>
+                        </div>
+
+                        <div style="padding: 10px 12px; background: rgba(239, 68, 68, 0.15); border-left: 3px solid #ef4444; border-radius: 4px; font-size: 13px;">
+                            <strong style="color: #f87171;">SOCRadar</strong><span style="color: #94a3b8;">:</span> <span style="color: #fecaca;">phishing</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div style="margin-top: 15px; font-size: 13px; color: #64748b;">
+                    <a href="https://www.virustotal.com/gui/domain/aiadgenerator.app" target="_blank" style="color: #3b82f6; text-decoration: none;">
+                        🔗 View full VirusTotal report →
+                    </a>
+                </div>
+            </div>
+
+            <div class="domain-card threat-critical">
+                <div class="domain-header">
+                    <div class="domain-name">🚨 headlinegenerator.app</div>
+                    <div class="threat-badge critical">MALICIOUS</div>
+                </div>
+                <div class="domain-classification">⚠️ Flagged by 3 security vendor(s)</div>
+                
+                <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <div style="margin-bottom: 10px;">
+                        <strong>Detection Statistics:</strong>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; font-size: 14px;">
+                        <div>🔴 Malicious: <strong>3</strong></div>
+                        <div>🟡 Suspicious: <strong>0</strong></div>
+                        <div>🟢 Harmless: <strong>61</strong></div>
+                        <div>⚪ Undetected: <strong>28</strong></div>
+                    </div>
+                </div>
+                
+                <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <div style="margin-bottom: 10px;">
+                        <strong>Community Votes:</strong>
+                    </div>
+                    <div style="font-size: 14px;">
+                        👎 Malicious: <strong>0</strong> | 
+                        👍 Harmless: <strong>0</strong>
+                    </div>
+                </div>
+
+                <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <div style="margin-bottom: 10px; color: #f1f5f9;">
+                        <strong>Security Vendors Flagging This Domain:</strong>
+                    </div>
+                    <div style="display: grid; gap: 8px;">
+
+                        <div style="padding: 10px 12px; background: rgba(239, 68, 68, 0.15); border-left: 3px solid #ef4444; border-radius: 4px; font-size: 13px;">
+                            <strong style="color: #f87171;">alphaMountain.ai</strong><span style="color: #94a3b8;">:</span> <span style="color: #fecaca;">malicious</span>
+                        </div>
+
+                        <div style="padding: 10px 12px; background: rgba(239, 68, 68, 0.15); border-left: 3px solid #ef4444; border-radius: 4px; font-size: 13px;">
+                            <strong style="color: #f87171;">Seclookup</strong><span style="color: #94a3b8;">:</span> <span style="color: #fecaca;">malicious</span>
+                        </div>
+
+                        <div style="padding: 10px 12px; background: rgba(239, 68, 68, 0.15); border-left: 3px solid #ef4444; border-radius: 4px; font-size: 13px;">
+                            <strong style="color: #f87171;">SOCRadar</strong><span style="color: #94a3b8;">:</span> <span style="color: #fecaca;">phishing</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div style="margin-top: 15px; font-size: 13px; color: #64748b;">
+                    <a href="https://www.virustotal.com/gui/domain/headlinegenerator.app" target="_blank" style="color: #3b82f6; text-decoration: none;">
+                        🔗 View full VirusTotal report →
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🔍</div>
+                <div class="section-title">Threat Campaign Attribution (OSINT)</div>
+            </div>
+            <div class="subsection">
+
+                <div class="finding-card" style="border-left: 4px solid #dc2626;">
+                    <h3 style="color: #dc2626; margin: 0 0 10px 0;">Attribution Confidence: CONFIRMED</h3>
+                    <p style="font-size: 14px; margin: 0;">CONFIRMED - Extension found in known malicious database</p>
+                </div>
+
+                <div class="alert alert-critical" style="margin: 20px 0;">
+                    <div class="alert-icon">🚨</div>
+                    <div>
+                        <strong style="font-size: 16px;">CONFIRMED THREAT CAMPAIGN</strong><br>
+                        <p style="margin: 10px 0 5px 0; font-size: 14px;"><strong>Campaign:</strong> LayerX Security - Identified Malicious Extensions</p>
+                        <p style="margin: 5px 0; font-size: 14px;"><strong>Threat Actor:</strong> Various / Unknown</p>
+                        <p style="margin: 10px 0 0 0; font-size: 13px;">Collection of malicious Chrome extensions identified through LayerX Security research. These extensions were flagged during security audits and threat research.</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 25px;">OSINT Research Findings</h3>
+
+                <div style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius: 12px; padding: 24px; margin: 15px 0; color: #fff;">
+
+                    <!-- Header with status badge -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+                        <h4 style="margin: 0; font-size: 18px; font-weight: 600; color: #fff;">
+                            <span style="color: #f87171;">⚠</span> Threat Intelligence Report
+                        </h4>
+                        <span style="background: #fef2f2; color: #991b1b; padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid #dc2626;">
+                            CONFIRMED MALICIOUS
+                        </span>
+                    </div>
+
+                    <!-- Extension Info Card -->
+                    <div style="background: rgba(255,255,255,0.08); border-radius: 8px; padding: 16px; margin-bottom: 16px;">
+                        <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Extension Identified</div>
+                        <div style="font-size: 15px; font-weight: 500; color: #f1f5f9;">__MSG_appName__</div>
+                        <div style="font-size: 12px; color: #64748b; margin-top: 4px; font-family: 'Monaco', 'Consolas', monospace;">pndmbpnfolikhfnfnkmjkkpcgkmaibec</div>
+                    </div>
+
+                    <!-- Campaign Attribution -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 16px;">
+                        <div style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 14px; border-left: 3px solid #f87171;">
+                            <div style="font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Campaign</div>
+                            <div style="font-size: 14px; font-weight: 600; color: #fca5a5;">LayerX Security - Identified Malicious Extensions</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 14px; border-left: 3px solid #fbbf24;">
+                            <div style="font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Threat Actor</div>
+                            <div style="font-size: 14px; font-weight: 600; color: #fcd34d;">Various / Unknown</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 14px; border-left: 3px solid #60a5fa;">
+                            <div style="font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Active Period</div>
+                            <div style="font-size: 14px; font-weight: 600; color: #93c5fd;">2024-2025</div>
+                        </div>
+                    </div>
+
+                    <!-- Impact Statistics -->
+                    <div style="background: rgba(239, 68, 68, 0.1); border-radius: 8px; padding: 16px; margin-bottom: 16px; border: 1px solid rgba(239, 68, 68, 0.2);">
+                        <div style="font-size: 11px; color: #fca5a5; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; font-weight: 600;">Impact Assessment</div>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: center;">
+                            <div>
+                                <div style="font-size: 22px; font-weight: 700; color: #f87171;">Unknown</div>
+                                <div style="font-size: 10px; color: #94a3b8; margin-top: 2px;">Total Users Affected</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 22px; font-weight: 700; color: #fbbf24;">Unknown</div>
+                                <div style="font-size: 10px; color: #94a3b8; margin-top: 2px;">This Campaign</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 22px; font-weight: 700; color: #60a5fa;">1</div>
+                                <div style="font-size: 10px; color: #94a3b8; margin-top: 2px;">Known Extensions</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Targets -->
+                    <div style="margin-bottom: 16px;">
+                        <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Targeted Platforms</div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 6px;"><span style="background: rgba(96, 165, 250, 0.2); color: #93c5fd; padding: 4px 10px; border-radius: 4px; font-size: 11px; margin: 2px;">General browser users</span> <span style="background: rgba(96, 165, 250, 0.2); color: #93c5fd; padding: 4px 10px; border-radius: 4px; font-size: 11px; margin: 2px;">Enterprise users</span></div>
+                    </div>
+
+                    <!-- Data Exfiltrated -->
+                    <div style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 14px; margin-bottom: 16px;">
+                        <div style="font-size: 11px; color: #fca5a5; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: 600;">Data Exfiltrated</div>
+                        <ul style="margin: 0; padding-left: 18px; color: #e2e8f0; font-size: 13px; line-height: 1.8;">
+                            <li>Browser data</li>
+                            <li>User credentials</li>
+                            <li>Browsing history</li>
+                        </ul>
+                    </div>
+
+                    <!-- TTPs -->
+                    <div style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 14px;">
+                        <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: 600;">TTPs (MITRE ATT&CK)</div>
+                        <div style="display: grid; gap: 8px; font-size: 12px;">
+
+                            <div style="display: flex; gap: 10px; align-items: baseline;">
+                                <span style="color: #60a5fa; font-weight: 600; min-width: 100px;">Initial Access:</span>
+                                <span style="color: #cbd5e1;">Chrome Web Store</span>
+                            </div>
+
+                            <div style="display: flex; gap: 10px; align-items: baseline;">
+                                <span style="color: #a78bfa; font-weight: 600; min-width: 100px;">Persistence:</span>
+                                <span style="color: #cbd5e1;">Browser extension</span>
+                            </div>
+
+                            <div style="display: flex; gap: 10px; align-items: baseline;">
+                                <span style="color: #f472b6; font-weight: 600; min-width: 100px;">Collection:</span>
+                                <span style="color: #cbd5e1;">Content script injection</span>
+                            </div>
+
+                            <div style="display: flex; gap: 10px; align-items: baseline;">
+                                <span style="color: #fb923c; font-weight: 600; min-width: 100px;">Exfiltration:</span>
+                                <span style="color: #cbd5e1;">HTTP/HTTPS requests</span>
+                            </div>
+
+                            <div style="display: flex; gap: 10px; align-items: baseline;">
+                                <span style="color: #f87171; font-weight: 600; min-width: 100px;">C2:</span>
+                                <span style="color: #cbd5e1;">Various endpoints</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <h3 style="margin-top: 25px;">Threat Intelligence Sources</h3>
+                <p style="font-size: 13px; color: #64748b; margin: 10px 0;">Research verified by the following security sources:</p>
+
+                <div style="padding: 12px; margin: 10px 0; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0;">
+                    <strong style="font-size: 14px;">
+                        <a href="https://www.layerxsecurity.com/" target="_blank" style="color: #2563eb; text-decoration: none;">
+                            LayerX Security - Malicious Browser Extensions Research
+                        </a>
+                    </strong>
+                    <p style="margin: 5px 0 0 0; font-size: 12px; color: #64748b;">Source: LayerX Security</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">📊</div>
+                <div class="section-title">IOC Database Cross-Reference</div>
+            </div>
+            <div class="subsection">
+                <div class="alert alert-critical">
+                    <div class="alert-icon">🚨</div>
+                    <div>
+                        <strong>WARNING:</strong> This extension has been previously flagged in our IOC database<br>
+                        <strong>First Analyzed:</strong> 2026-01-27T17:11:57.784163+00:00<br>
+                        <strong>Risk Score:</strong> 6.0/10
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 20px;">Previous Findings</h3>
+                <div class="finding-card">
+                    <p style="margin: 5px 0; font-size: 13px;"><strong>Malicious Domains:</strong> 2</p>
+                    <div style="margin: 10px 0;">
+<code style="display: block; margin: 3px 0; padding: 6px; background: rgba(239, 68, 68, 0.1); border-radius: 4px; font-size: 12px;">aiadgenerator.app</code><code style="display: block; margin: 3px 0; padding: 6px; background: rgba(239, 68, 68, 0.1); border-radius: 4px; font-size: 12px;">headlinegenerator.app</code>
+                    </div>
+                    <p style="margin: 10px 0 5px 0; font-size: 13px;"><strong>Dangerous Permissions:</strong></p>
+                    <ul style="margin: 0 0 0 20px; font-size: 12px;">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🌐</div>
+                <div class="section-title">Domain Intelligence Analysis</div>
+            </div>
+<div class="no-data">✅ No suspicious domain patterns detected in static analysis</div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">⚙️</div>
+                <div class="section-title">Technical Details</div>
+            </div>
+            <div class="detail-grid">
+                <div class="detail-card">
+                    <div class="detail-label">Extension ID</div>
+                    <div class="detail-value" style="font-family: monospace; font-size: 13px;">pndmbpnfolikhfnfnkmjkkpcgkmaibec</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Version</div>
+                    <div class="detail-value">1.4</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Manifest Version</div>
+                    <div class="detail-value">3</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Permissions</div>
+                    <div class="detail-value">0</div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 15px; color: var(--text-primary);">📋 Dangerous Permissions</h3>
+<div class="no-data">✅ No high-risk permissions detected</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">⚠️</div>
+                <div class="section-title">Threat Analysis</div>
+            </div>
+<div class="no-data">✅ No malicious code patterns detected</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🎯</div>
+                <div class="section-title">Security Recommendations</div>
+            </div>
+            <div class="recommendations critical">
+                <h3>⚠️ Recommended Actions</h3>
+                <div class="rec-list">
+<div class="rec-item"><div class="rec-icon">▸</div><div><strong>Priority 2:</strong> 2 domain(s) flagged by 6 security vendors</div></div><div class="rec-item"><div class="rec-icon">▸</div><div>Manual security review recommended</div></div><div class="rec-item"><div class="rec-icon">▸</div><div>Consider temporary suspension pending investigation</div></div><div class="rec-item"><div class="rec-icon">▸</div><div>Review extension behavior and network activity</div></div><div class="rec-item"><div class="rec-icon">▸</div><div>Evaluate business need vs security risk</div></div>
+                </div>
+            </div>
+        </div>
+</div>
+        <div class="report-footer">
+            <div class="footer-logo">Chrome Extension Security Analyzer</div>
+            <div>Professional Threat Intelligence • Powered by VirusTotal & AST Analysis</div>
+        </div>
+    </div>
+</body>
+</html>

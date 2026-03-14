@@ -1,0 +1,2855 @@
+{
+  "extension_type": "vscode",
+  "name": "C/C++",
+  "identifier": "ms-vscode.cpptools",
+  "extension_id": "ms-vscode.cpptools",
+  "version": "1.31.0",
+  "description": "C/C++ IntelliSense, debugging, and code browsing.",
+  "publisher": "ms-vscode",
+  "engines": {
+    "vscode": "^1.67.0"
+  },
+  "store_metadata": {
+    "available": true,
+    "store": "vscode",
+    "identifier": "ms-vscode.cpptools",
+    "name": "C/C++",
+    "publisher": "Microsoft",
+    "publisher_id": "5f5636e7-69ed-4afe-b5d6-8d231fb3d3ee",
+    "publisher_domain": "https://microsoft.com",
+    "publisher_verified": true,
+    "short_description": "C/C++ IntelliSense, debugging, and code browsing.",
+    "version": "1.31.0",
+    "last_updated": "2026-02-20T01:28:22.763Z",
+    "categories": [],
+    "tags": [],
+    "install_count": 94966189,
+    "rating_value": 3.43,
+    "rating_count": 594,
+    "flags": "validated, public",
+    "store_url": "https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools",
+    "risk_signals": {}
+  },
+  "metadata_risk": {
+    "findings": [
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:extension.pickNativeProcess': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:extension.pickNativeProcess"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:extension.pickRemoteNativeProcess': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:extension.pickRemoteNativeProcess"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:/.vscode/c_cpp_properties.json': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:/.vscode/c_cpp_properties.json"
+      },
+      {
+        "type": "sensitive_contribution",
+        "severity": "medium",
+        "detail": "Contributes 'taskDefinitions': Can define tasks that run shell commands",
+        "contribution": "taskDefinitions"
+      },
+      {
+        "type": "sensitive_contribution",
+        "severity": "medium",
+        "detail": "Contributes 'debuggers': Can inspect running processes and variables (run arbitrary programs)",
+        "contribution": "debuggers"
+      },
+      {
+        "type": "sensitive_contribution",
+        "severity": "medium",
+        "detail": "Contributes 'walkthroughs': Can present guided flows to users",
+        "contribution": "walkthroughs"
+      }
+    ],
+    "risk_score": 6,
+    "activation_events": [
+      "onLanguage:c",
+      "onLanguage:cpp",
+      "onLanguage:cuda-cpp",
+      "onCommand:extension.pickNativeProcess",
+      "onCommand:extension.pickRemoteNativeProcess",
+      "onDebugResolve:cppdbg",
+      "onDebugResolve:cppvsdbg",
+      "workspaceContains:/.vscode/c_cpp_properties.json",
+      "onFileSystem:cpptools-schema"
+    ],
+    "contributes": [
+      "languages",
+      "walkthroughs",
+      "taskDefinitions",
+      "views",
+      "viewsWelcome",
+      "problemMatchers",
+      "configuration",
+      "commands",
+      "keybindings",
+      "debuggers",
+      "breakpoints",
+      "jsonValidation",
+      "menus",
+      "configurationDefaults",
+      "semanticTokenTypes",
+      "semanticTokenModifiers",
+      "semanticTokenScopes",
+      "codeActions",
+      "languageModelTools"
+    ]
+  },
+  "package_json_deep": {
+    "findings": []
+  },
+  "supply_chain": {
+    "findings": [],
+    "risk_score": 0,
+    "dependency_count": 24,
+    "dev_dependency_count": 45,
+    "has_node_modules": false,
+    "dependency_vulns": [],
+    "bundled_js_vulns": []
+  },
+  "code_analysis": {
+    "all_findings": [
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\cs\\ui\\settings.html",
+        "line": 421,
+        "evidence": "son\">Pokud chcete p\u0159epnout na soubor <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Upravit konfigurace v souboru JS"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\cs\\ui\\settings.html",
+        "line": 438,
+        "evidence": "Sense definovan\u00e1 v z\u00e1kladn\u00edm souboru <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Upravit konfigurace v souboru JS"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\cs\\ui\\settings.html",
+        "line": 438,
+        "evidence": "ce konfigurac\u00ed najednou, p\u0159ejd\u011bte na <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Upravit konfigurace v souboru JS"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\de\\ui\\settings.html",
+        "line": 421,
+        "evidence": "id=\"switch.to.json\">Wechseln Sie zur <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Konfigurationen in JSON-Datei be"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\de\\ui\\settings.html",
+        "line": 438,
+        "evidence": "die in der zugrunde liegenden Datei \"<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Konfigurationen in JSON-Datei be"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\de\\ui\\settings.html",
+        "line": 438,
+        "evidence": "itig zu bearbeiten, wechseln Sie zu \"<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Konfigurationen in JSON-Datei be"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\es\\ui\\settings.html",
+        "line": 421,
+        "evidence": "d=\"switch.to.json\">Cambie al archivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar las configuraciones del a"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\es\\ui\\settings.html",
+        "line": 438,
+        "evidence": "IntelliSense definidas en el archivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar las configuraciones del a"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\es\\ui\\settings.html",
+        "line": 438,
+        "evidence": "figuraciones al mismo tiempo, vaya a <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar las configuraciones del a"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\fr\\ui\\settings.html",
+        "line": 421,
+        "evidence": "ch.to.json\">Basculez vers le fichier <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifier les configurations dans"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\fr\\ui\\settings.html",
+        "line": 438,
+        "evidence": "IntelliSense d\u00e9finis dans le fichier <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifier les configurations dans"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\fr\\ui\\settings.html",
+        "line": 438,
+        "evidence": "configurations \u00e0 la fois, acc\u00e9dez \u00e0 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifier les configurations dans"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\it\\ui\\settings.html",
+        "line": 421,
+        "evidence": "-id=\"switch.to.json\">Passare al file <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifica le configurazioni nel f"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\it\\ui\\settings.html",
+        "line": 438,
+        "evidence": "ni di IntelliSense definite nel file <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifica le configurazioni nel f"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\it\\ui\\settings.html",
+        "line": 438,
+        "evidence": "azioni contemporaneamente, passare a <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifica le configurazioni nel f"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ja\\ui\\settings.html",
+        "line": 421,
+        "evidence": "o.json\">\u30d5\u30a1\u30a4\u30eb\u306e\u30ea\u30f3\u30af\u3092\u30af\u30ea\u30c3\u30af\u3059\u308b\u304b\u3001\u6b21\u306e\u30b3\u30de\u30f3\u30c9\u3092\u4f7f\u7528\u3057\u3066\u3001<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \u30d5\u30a1\u30a4\u30eb\u5185\u306e\u69cb\u6210\u306e\u7de8\u96c6\" data-loc-id-ti"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ja\\ui\\settings.html",
+        "line": 438,
+        "evidence": "tions.description\">\u3053\u306e\u30a8\u30c7\u30a3\u30bf\u30fc\u3092\u4f7f\u7528\u3057\u3066\u3001\u57fa\u306b\u306a\u308b <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \u30d5\u30a1\u30a4\u30eb\u5185\u306e\u69cb\u6210\u306e\u7de8\u96c6\" data-loc-id-ti"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ja\\ui\\settings.html",
+        "line": 438,
+        "evidence": "\u306e\u5909\u66f4\u306f\u3001\u9078\u629e\u3057\u305f\u69cb\u6210\u306b\u306e\u307f\u9069\u7528\u3055\u308c\u307e\u3059\u3002\u4e00\u5ea6\u306b\u8907\u6570\u306e\u69cb\u6210\u3092\u7de8\u96c6\u3059\u308b\u306b\u306f\u3001<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \u30d5\u30a1\u30a4\u30eb\u5185\u306e\u69cb\u6210\u306e\u7de8\u96c6\" data-loc-id-ti"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ko\\ui\\settings.html",
+        "line": 421,
+        "evidence": "witch.to.json\">\ud30c\uc77c \ub9c1\ud06c\ub97c \ud074\ub9ad\ud558\uac70\ub098 \uba85\ub839\uc744 \uc0ac\uc6a9\ud558\uc5ec <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \ud30c\uc77c\uc758 \uad6c\uc131 \ud3b8\uc9d1\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ko\\ui\\settings.html",
+        "line": 438,
+        "evidence": "urations.description\">\uc774 \ud3b8\uc9d1\uae30\ub97c \uc0ac\uc6a9\ud558\uc5ec \uae30\ubcf8 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \ud30c\uc77c\uc758 \uad6c\uc131 \ud3b8\uc9d1\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ko\\ui\\settings.html",
+        "line": 438,
+        "evidence": "\uc6a9\uc740 \uc120\ud0dd\ud55c \uad6c\uc131\uc5d0\ub9cc \uc801\uc6a9\ub429\ub2c8\ub2e4. \ud55c \ubc88\uc5d0 \uc5ec\ub7ec \uad6c\uc131\uc744 \ud3b8\uc9d1\ud558\ub824\uba74 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \ud30c\uc77c\uc758 \uad6c\uc131 \ud3b8\uc9d1\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\pl\\ui\\settings.html",
+        "line": 421,
+        "evidence": "d=\"switch.to.json\">Prze\u0142\u0105cz do pliku <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edytuj konfiguracje w pliku JSON"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\pl\\ui\\settings.html",
+        "line": 438,
+        "evidence": "Sense zdefiniowane w \u017ar\u00f3d\u0142owym pliku <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edytuj konfiguracje w pliku JSON"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\pl\\ui\\settings.html",
+        "line": 438,
+        "evidence": "iele konfiguracji naraz, przejd\u017a do: <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edytuj konfiguracje w pliku JSON"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\pt-br\\ui\\settings.html",
+        "line": 421,
+        "evidence": "itch.to.json\">Alterne para o arquivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar as configura\u00e7\u00f5es no arqui"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\pt-br\\ui\\settings.html",
+        "line": 438,
+        "evidence": "do IntelliSense definidas no arquivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar as configura\u00e7\u00f5es no arqui"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\pt-br\\ui\\settings.html",
+        "line": 438,
+        "evidence": "onfigura\u00e7\u00f5es ao mesmo tempo, v\u00e1 para <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar as configura\u00e7\u00f5es no arqui"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ru\\ui\\settings.html",
+        "line": 421,
+        "evidence": "witch.to.json\">\u041f\u0435\u0440\u0435\u043a\u043b\u044e\u0447\u0438\u0442\u0435\u0441\u044c \u043d\u0430 \u0444\u0430\u0439\u043b <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0432 \u0444\u0430\u0439\u043b\u0435 J"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ru\\ui\\settings.html",
+        "line": 438,
+        "evidence": "iSense, \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043d\u044b\u0445 \u0432 \u0431\u0430\u0437\u043e\u0432\u043e\u043c \u0444\u0430\u0439\u043b\u0435 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0432 \u0444\u0430\u0439\u043b\u0435 J"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ru\\ui\\settings.html",
+        "line": 438,
+        "evidence": "\u0430 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0441\u0440\u0430\u0437\u0443 \u043f\u0435\u0440\u0435\u0439\u0434\u0438\u0442\u0435 \u0441\u044e\u0434\u0430: <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0432 \u0444\u0430\u0439\u043b\u0435 J"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\tr\\ui\\settings.html",
+        "line": 421,
+        "evidence": "t\u0131klayarak veya \u015fu komutu kullanarak <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON dosyas\u0131ndaki yap\u0131land\u0131rmala"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\tr\\ui\\settings.html",
+        "line": 438,
+        "evidence": "igurations.description\">Temel al\u0131nan <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON dosyas\u0131ndaki yap\u0131land\u0131rmala"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\tr\\ui\\settings.html",
+        "line": 438,
+        "evidence": "n \u00e7ok yap\u0131land\u0131rmay\u0131 d\u00fczenlemek i\u00e7in <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON dosyas\u0131ndaki yap\u0131land\u0131rmala"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\zh-cn\\ui\\settings.html",
+        "line": 421,
+        "evidence": "=\"switch.to.json\">\u901a\u8fc7\u5355\u51fb\u6587\u4ef6\u94fe\u63a5\u6216\u4f7f\u7528\u4ee5\u4e0b\u547d\u4ee4\u5207\u6362\u5230 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7f16\u8f91 JSON \u6587\u4ef6\u4e2d\u7684\u914d\u7f6e\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\zh-cn\\ui\\settings.html",
+        "line": 438,
+        "evidence": "figurations.description\">\u4f7f\u7528\u6b64\u7f16\u8f91\u5668\u7f16\u8f91\u5728\u57fa\u7840 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7f16\u8f91 JSON \u6587\u4ef6\u4e2d\u7684\u914d\u7f6e\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\zh-cn\\ui\\settings.html",
+        "line": 438,
+        "evidence": "\u7f6e\u3002\u5728\u6b64\u7f16\u8f91\u5668\u4e2d\u6240\u505a\u7684\u66f4\u6539\u4ec5\u9002\u7528\u4e8e\u6240\u9009\u7684\u914d\u7f6e\u3002\u8981\u4e00\u6b21\u7f16\u8f91\u591a\u4e2a\u914d\u7f6e\uff0c\u8bf7\u8f6c\u5230 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7f16\u8f91 JSON \u6587\u4ef6\u4e2d\u7684\u914d\u7f6e\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\zh-tw\\ui\\settings.html",
+        "line": 421,
+        "evidence": "d=\"switch.to.json\">\u6309\u4e00\u4e0b\u6a94\u6848\u9023\u7d50\u6216\u4f7f\u7528\u4ee5\u4e0b\u547d\u4ee4\u5207\u63db\u81f3 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7de8\u8f2f JSON \u6a94\u6848\u4e2d\u7684\u7d44\u614b\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\zh-tw\\ui\\settings.html",
+        "line": 438,
+        "evidence": "figurations.description\">\u4f7f\u7528\u6b64\u7de8\u8f2f\u5668\u4f86\u7de8\u8f2f\u57fa\u790e <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7de8\u8f2f JSON \u6a94\u6848\u4e2d\u7684\u7d44\u614b\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\zh-tw\\ui\\settings.html",
+        "line": 438,
+        "evidence": "\u5728\u6b64\u7de8\u8f2f\u5668\u4e2d\u9032\u884c\u7684\u8b8a\u66f4\u53ea\u6703\u5957\u7528\u5230\u9078\u53d6\u7684\u7d44\u614b\u3002\u82e5\u8981\u4e00\u6b21\u7de8\u8f2f\u591a\u500b\u7d44\u614b\uff0c\u8acb\u524d\u5f80 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7de8\u8f2f JSON \u6a94\u6848\u4e2d\u7684\u7d44\u614b\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "ui\\settings.html",
+        "line": 424,
+        "evidence": "oc-id=\"switch.to.json\">Switch to the <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edit configurations in JSON file"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "ui\\settings.html",
+        "line": 441,
+        "evidence": "e settings defined in the underlying <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edit configurations in JSON file"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "ui\\settings.html",
+        "line": 441,
+        "evidence": "ultiple configurations at once go to <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edit configurations in JSON file"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\cs\\ui\\settings.html",
+        "line": 421,
+        "evidence": "son\">Pokud chcete p\u0159epnout na soubor <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Upravit konfigurace v souboru JS"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\cs\\ui\\settings.html",
+        "line": 438,
+        "evidence": "Sense definovan\u00e1 v z\u00e1kladn\u00edm souboru <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Upravit konfigurace v souboru JS"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\cs\\ui\\settings.html",
+        "line": 438,
+        "evidence": "ce konfigurac\u00ed najednou, p\u0159ejd\u011bte na <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Upravit konfigurace v souboru JS"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\de\\ui\\settings.html",
+        "line": 421,
+        "evidence": "id=\"switch.to.json\">Wechseln Sie zur <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Konfigurationen in JSON-Datei be"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\de\\ui\\settings.html",
+        "line": 438,
+        "evidence": "die in der zugrunde liegenden Datei \"<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Konfigurationen in JSON-Datei be"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\de\\ui\\settings.html",
+        "line": 438,
+        "evidence": "itig zu bearbeiten, wechseln Sie zu \"<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Konfigurationen in JSON-Datei be"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\es\\ui\\settings.html",
+        "line": 421,
+        "evidence": "d=\"switch.to.json\">Cambie al archivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar las configuraciones del a"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\es\\ui\\settings.html",
+        "line": 438,
+        "evidence": "IntelliSense definidas en el archivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar las configuraciones del a"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\es\\ui\\settings.html",
+        "line": 438,
+        "evidence": "figuraciones al mismo tiempo, vaya a <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar las configuraciones del a"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\fr\\ui\\settings.html",
+        "line": 421,
+        "evidence": "ch.to.json\">Basculez vers le fichier <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifier les configurations dans"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\fr\\ui\\settings.html",
+        "line": 438,
+        "evidence": "IntelliSense d\u00e9finis dans le fichier <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifier les configurations dans"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\fr\\ui\\settings.html",
+        "line": 438,
+        "evidence": "configurations \u00e0 la fois, acc\u00e9dez \u00e0 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifier les configurations dans"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\it\\ui\\settings.html",
+        "line": 421,
+        "evidence": "-id=\"switch.to.json\">Passare al file <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifica le configurazioni nel f"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\it\\ui\\settings.html",
+        "line": 438,
+        "evidence": "ni di IntelliSense definite nel file <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifica le configurazioni nel f"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\it\\ui\\settings.html",
+        "line": 438,
+        "evidence": "azioni contemporaneamente, passare a <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifica le configurazioni nel f"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ja\\ui\\settings.html",
+        "line": 421,
+        "evidence": "o.json\">\u30d5\u30a1\u30a4\u30eb\u306e\u30ea\u30f3\u30af\u3092\u30af\u30ea\u30c3\u30af\u3059\u308b\u304b\u3001\u6b21\u306e\u30b3\u30de\u30f3\u30c9\u3092\u4f7f\u7528\u3057\u3066\u3001<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \u30d5\u30a1\u30a4\u30eb\u5185\u306e\u69cb\u6210\u306e\u7de8\u96c6\" data-loc-id-ti"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ja\\ui\\settings.html",
+        "line": 438,
+        "evidence": "tions.description\">\u3053\u306e\u30a8\u30c7\u30a3\u30bf\u30fc\u3092\u4f7f\u7528\u3057\u3066\u3001\u57fa\u306b\u306a\u308b <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \u30d5\u30a1\u30a4\u30eb\u5185\u306e\u69cb\u6210\u306e\u7de8\u96c6\" data-loc-id-ti"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ja\\ui\\settings.html",
+        "line": 438,
+        "evidence": "\u306e\u5909\u66f4\u306f\u3001\u9078\u629e\u3057\u305f\u69cb\u6210\u306b\u306e\u307f\u9069\u7528\u3055\u308c\u307e\u3059\u3002\u4e00\u5ea6\u306b\u8907\u6570\u306e\u69cb\u6210\u3092\u7de8\u96c6\u3059\u308b\u306b\u306f\u3001<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \u30d5\u30a1\u30a4\u30eb\u5185\u306e\u69cb\u6210\u306e\u7de8\u96c6\" data-loc-id-ti"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ko\\ui\\settings.html",
+        "line": 421,
+        "evidence": "witch.to.json\">\ud30c\uc77c \ub9c1\ud06c\ub97c \ud074\ub9ad\ud558\uac70\ub098 \uba85\ub839\uc744 \uc0ac\uc6a9\ud558\uc5ec <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \ud30c\uc77c\uc758 \uad6c\uc131 \ud3b8\uc9d1\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ko\\ui\\settings.html",
+        "line": 438,
+        "evidence": "urations.description\">\uc774 \ud3b8\uc9d1\uae30\ub97c \uc0ac\uc6a9\ud558\uc5ec \uae30\ubcf8 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \ud30c\uc77c\uc758 \uad6c\uc131 \ud3b8\uc9d1\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ko\\ui\\settings.html",
+        "line": 438,
+        "evidence": "\uc6a9\uc740 \uc120\ud0dd\ud55c \uad6c\uc131\uc5d0\ub9cc \uc801\uc6a9\ub429\ub2c8\ub2e4. \ud55c \ubc88\uc5d0 \uc5ec\ub7ec \uad6c\uc131\uc744 \ud3b8\uc9d1\ud558\ub824\uba74 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \ud30c\uc77c\uc758 \uad6c\uc131 \ud3b8\uc9d1\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\pl\\ui\\settings.html",
+        "line": 421,
+        "evidence": "d=\"switch.to.json\">Prze\u0142\u0105cz do pliku <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edytuj konfiguracje w pliku JSON"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\pl\\ui\\settings.html",
+        "line": 438,
+        "evidence": "Sense zdefiniowane w \u017ar\u00f3d\u0142owym pliku <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edytuj konfiguracje w pliku JSON"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\pl\\ui\\settings.html",
+        "line": 438,
+        "evidence": "iele konfiguracji naraz, przejd\u017a do: <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edytuj konfiguracje w pliku JSON"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\pt-br\\ui\\settings.html",
+        "line": 421,
+        "evidence": "itch.to.json\">Alterne para o arquivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar as configura\u00e7\u00f5es no arqui"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\pt-br\\ui\\settings.html",
+        "line": 438,
+        "evidence": "do IntelliSense definidas no arquivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar as configura\u00e7\u00f5es no arqui"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\pt-br\\ui\\settings.html",
+        "line": 438,
+        "evidence": "onfigura\u00e7\u00f5es ao mesmo tempo, v\u00e1 para <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar as configura\u00e7\u00f5es no arqui"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ru\\ui\\settings.html",
+        "line": 421,
+        "evidence": "witch.to.json\">\u041f\u0435\u0440\u0435\u043a\u043b\u044e\u0447\u0438\u0442\u0435\u0441\u044c \u043d\u0430 \u0444\u0430\u0439\u043b <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0432 \u0444\u0430\u0439\u043b\u0435 J"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ru\\ui\\settings.html",
+        "line": 438,
+        "evidence": "iSense, \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043d\u044b\u0445 \u0432 \u0431\u0430\u0437\u043e\u0432\u043e\u043c \u0444\u0430\u0439\u043b\u0435 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0432 \u0444\u0430\u0439\u043b\u0435 J"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ru\\ui\\settings.html",
+        "line": 438,
+        "evidence": "\u0430 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0441\u0440\u0430\u0437\u0443 \u043f\u0435\u0440\u0435\u0439\u0434\u0438\u0442\u0435 \u0441\u044e\u0434\u0430: <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0432 \u0444\u0430\u0439\u043b\u0435 J"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\tr\\ui\\settings.html",
+        "line": 421,
+        "evidence": "t\u0131klayarak veya \u015fu komutu kullanarak <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON dosyas\u0131ndaki yap\u0131land\u0131rmala"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\tr\\ui\\settings.html",
+        "line": 438,
+        "evidence": "igurations.description\">Temel al\u0131nan <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON dosyas\u0131ndaki yap\u0131land\u0131rmala"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\tr\\ui\\settings.html",
+        "line": 438,
+        "evidence": "n \u00e7ok yap\u0131land\u0131rmay\u0131 d\u00fczenlemek i\u00e7in <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON dosyas\u0131ndaki yap\u0131land\u0131rmala"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\zh-cn\\ui\\settings.html",
+        "line": 421,
+        "evidence": "=\"switch.to.json\">\u901a\u8fc7\u5355\u51fb\u6587\u4ef6\u94fe\u63a5\u6216\u4f7f\u7528\u4ee5\u4e0b\u547d\u4ee4\u5207\u6362\u5230 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7f16\u8f91 JSON \u6587\u4ef6\u4e2d\u7684\u914d\u7f6e\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\zh-cn\\ui\\settings.html",
+        "line": 438,
+        "evidence": "figurations.description\">\u4f7f\u7528\u6b64\u7f16\u8f91\u5668\u7f16\u8f91\u5728\u57fa\u7840 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7f16\u8f91 JSON \u6587\u4ef6\u4e2d\u7684\u914d\u7f6e\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\zh-cn\\ui\\settings.html",
+        "line": 438,
+        "evidence": "\u7f6e\u3002\u5728\u6b64\u7f16\u8f91\u5668\u4e2d\u6240\u505a\u7684\u66f4\u6539\u4ec5\u9002\u7528\u4e8e\u6240\u9009\u7684\u914d\u7f6e\u3002\u8981\u4e00\u6b21\u7f16\u8f91\u591a\u4e2a\u914d\u7f6e\uff0c\u8bf7\u8f6c\u5230 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7f16\u8f91 JSON \u6587\u4ef6\u4e2d\u7684\u914d\u7f6e\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\zh-tw\\ui\\settings.html",
+        "line": 421,
+        "evidence": "d=\"switch.to.json\">\u6309\u4e00\u4e0b\u6a94\u6848\u9023\u7d50\u6216\u4f7f\u7528\u4ee5\u4e0b\u547d\u4ee4\u5207\u63db\u81f3 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7de8\u8f2f JSON \u6a94\u6848\u4e2d\u7684\u7d44\u614b\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\zh-tw\\ui\\settings.html",
+        "line": 438,
+        "evidence": "figurations.description\">\u4f7f\u7528\u6b64\u7de8\u8f2f\u5668\u4f86\u7de8\u8f2f\u57fa\u790e <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7de8\u8f2f JSON \u6a94\u6848\u4e2d\u7684\u7d44\u614b\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\zh-tw\\ui\\settings.html",
+        "line": 438,
+        "evidence": "\u5728\u6b64\u7de8\u8f2f\u5668\u4e2d\u9032\u884c\u7684\u8b8a\u66f4\u53ea\u6703\u5957\u7528\u5230\u9078\u53d6\u7684\u7d44\u614b\u3002\u82e5\u8981\u4e00\u6b21\u7de8\u8f2f\u591a\u500b\u7d44\u614b\uff0c\u8acb\u524d\u5f80 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7de8\u8f2f JSON \u6a94\u6848\u4e2d\u7684\u7d44\u614b\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "ui\\settings.html",
+        "line": 424,
+        "evidence": "oc-id=\"switch.to.json\">Switch to the <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edit configurations in JSON file"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "ui\\settings.html",
+        "line": 441,
+        "evidence": "e settings defined in the underlying <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edit configurations in JSON file"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "ui\\settings.html",
+        "line": 441,
+        "evidence": "ultiple configurations at once go to <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edit configurations in JSON file"
+      }
+    ],
+    "module_usage": {},
+    "external_urls": [],
+    "file_entropies": {
+      "dist\\ui\\settings.js": 5.68
+    },
+    "files_scanned": 2,
+    "findings_by_category": {
+      "webview_risk": [
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\cs\\ui\\settings.html",
+          "line": 421,
+          "evidence": "son\">Pokud chcete p\u0159epnout na soubor <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Upravit konfigurace v souboru JS"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\cs\\ui\\settings.html",
+          "line": 438,
+          "evidence": "Sense definovan\u00e1 v z\u00e1kladn\u00edm souboru <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Upravit konfigurace v souboru JS"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\cs\\ui\\settings.html",
+          "line": 438,
+          "evidence": "ce konfigurac\u00ed najednou, p\u0159ejd\u011bte na <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Upravit konfigurace v souboru JS"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\de\\ui\\settings.html",
+          "line": 421,
+          "evidence": "id=\"switch.to.json\">Wechseln Sie zur <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Konfigurationen in JSON-Datei be"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\de\\ui\\settings.html",
+          "line": 438,
+          "evidence": "die in der zugrunde liegenden Datei \"<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Konfigurationen in JSON-Datei be"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\de\\ui\\settings.html",
+          "line": 438,
+          "evidence": "itig zu bearbeiten, wechseln Sie zu \"<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Konfigurationen in JSON-Datei be"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\es\\ui\\settings.html",
+          "line": 421,
+          "evidence": "d=\"switch.to.json\">Cambie al archivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar las configuraciones del a"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\es\\ui\\settings.html",
+          "line": 438,
+          "evidence": "IntelliSense definidas en el archivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar las configuraciones del a"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\es\\ui\\settings.html",
+          "line": 438,
+          "evidence": "figuraciones al mismo tiempo, vaya a <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar las configuraciones del a"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\fr\\ui\\settings.html",
+          "line": 421,
+          "evidence": "ch.to.json\">Basculez vers le fichier <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifier les configurations dans"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\fr\\ui\\settings.html",
+          "line": 438,
+          "evidence": "IntelliSense d\u00e9finis dans le fichier <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifier les configurations dans"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\fr\\ui\\settings.html",
+          "line": 438,
+          "evidence": "configurations \u00e0 la fois, acc\u00e9dez \u00e0 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifier les configurations dans"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\it\\ui\\settings.html",
+          "line": 421,
+          "evidence": "-id=\"switch.to.json\">Passare al file <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifica le configurazioni nel f"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\it\\ui\\settings.html",
+          "line": 438,
+          "evidence": "ni di IntelliSense definite nel file <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifica le configurazioni nel f"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\it\\ui\\settings.html",
+          "line": 438,
+          "evidence": "azioni contemporaneamente, passare a <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifica le configurazioni nel f"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\ja\\ui\\settings.html",
+          "line": 421,
+          "evidence": "o.json\">\u30d5\u30a1\u30a4\u30eb\u306e\u30ea\u30f3\u30af\u3092\u30af\u30ea\u30c3\u30af\u3059\u308b\u304b\u3001\u6b21\u306e\u30b3\u30de\u30f3\u30c9\u3092\u4f7f\u7528\u3057\u3066\u3001<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \u30d5\u30a1\u30a4\u30eb\u5185\u306e\u69cb\u6210\u306e\u7de8\u96c6\" data-loc-id-ti"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\ja\\ui\\settings.html",
+          "line": 438,
+          "evidence": "tions.description\">\u3053\u306e\u30a8\u30c7\u30a3\u30bf\u30fc\u3092\u4f7f\u7528\u3057\u3066\u3001\u57fa\u306b\u306a\u308b <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \u30d5\u30a1\u30a4\u30eb\u5185\u306e\u69cb\u6210\u306e\u7de8\u96c6\" data-loc-id-ti"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\ja\\ui\\settings.html",
+          "line": 438,
+          "evidence": "\u306e\u5909\u66f4\u306f\u3001\u9078\u629e\u3057\u305f\u69cb\u6210\u306b\u306e\u307f\u9069\u7528\u3055\u308c\u307e\u3059\u3002\u4e00\u5ea6\u306b\u8907\u6570\u306e\u69cb\u6210\u3092\u7de8\u96c6\u3059\u308b\u306b\u306f\u3001<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \u30d5\u30a1\u30a4\u30eb\u5185\u306e\u69cb\u6210\u306e\u7de8\u96c6\" data-loc-id-ti"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\ko\\ui\\settings.html",
+          "line": 421,
+          "evidence": "witch.to.json\">\ud30c\uc77c \ub9c1\ud06c\ub97c \ud074\ub9ad\ud558\uac70\ub098 \uba85\ub839\uc744 \uc0ac\uc6a9\ud558\uc5ec <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \ud30c\uc77c\uc758 \uad6c\uc131 \ud3b8\uc9d1\" data-loc-id-titl"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\ko\\ui\\settings.html",
+          "line": 438,
+          "evidence": "urations.description\">\uc774 \ud3b8\uc9d1\uae30\ub97c \uc0ac\uc6a9\ud558\uc5ec \uae30\ubcf8 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \ud30c\uc77c\uc758 \uad6c\uc131 \ud3b8\uc9d1\" data-loc-id-titl"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\ko\\ui\\settings.html",
+          "line": 438,
+          "evidence": "\uc6a9\uc740 \uc120\ud0dd\ud55c \uad6c\uc131\uc5d0\ub9cc \uc801\uc6a9\ub429\ub2c8\ub2e4. \ud55c \ubc88\uc5d0 \uc5ec\ub7ec \uad6c\uc131\uc744 \ud3b8\uc9d1\ud558\ub824\uba74 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \ud30c\uc77c\uc758 \uad6c\uc131 \ud3b8\uc9d1\" data-loc-id-titl"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\pl\\ui\\settings.html",
+          "line": 421,
+          "evidence": "d=\"switch.to.json\">Prze\u0142\u0105cz do pliku <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edytuj konfiguracje w pliku JSON"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\pl\\ui\\settings.html",
+          "line": 438,
+          "evidence": "Sense zdefiniowane w \u017ar\u00f3d\u0142owym pliku <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edytuj konfiguracje w pliku JSON"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\pl\\ui\\settings.html",
+          "line": 438,
+          "evidence": "iele konfiguracji naraz, przejd\u017a do: <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edytuj konfiguracje w pliku JSON"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\pt-br\\ui\\settings.html",
+          "line": 421,
+          "evidence": "itch.to.json\">Alterne para o arquivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar as configura\u00e7\u00f5es no arqui"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\pt-br\\ui\\settings.html",
+          "line": 438,
+          "evidence": "do IntelliSense definidas no arquivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar as configura\u00e7\u00f5es no arqui"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\pt-br\\ui\\settings.html",
+          "line": 438,
+          "evidence": "onfigura\u00e7\u00f5es ao mesmo tempo, v\u00e1 para <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar as configura\u00e7\u00f5es no arqui"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\ru\\ui\\settings.html",
+          "line": 421,
+          "evidence": "witch.to.json\">\u041f\u0435\u0440\u0435\u043a\u043b\u044e\u0447\u0438\u0442\u0435\u0441\u044c \u043d\u0430 \u0444\u0430\u0439\u043b <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0432 \u0444\u0430\u0439\u043b\u0435 J"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\ru\\ui\\settings.html",
+          "line": 438,
+          "evidence": "iSense, \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043d\u044b\u0445 \u0432 \u0431\u0430\u0437\u043e\u0432\u043e\u043c \u0444\u0430\u0439\u043b\u0435 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0432 \u0444\u0430\u0439\u043b\u0435 J"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\ru\\ui\\settings.html",
+          "line": 438,
+          "evidence": "\u0430 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0441\u0440\u0430\u0437\u0443 \u043f\u0435\u0440\u0435\u0439\u0434\u0438\u0442\u0435 \u0441\u044e\u0434\u0430: <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0432 \u0444\u0430\u0439\u043b\u0435 J"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\tr\\ui\\settings.html",
+          "line": 421,
+          "evidence": "t\u0131klayarak veya \u015fu komutu kullanarak <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON dosyas\u0131ndaki yap\u0131land\u0131rmala"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\tr\\ui\\settings.html",
+          "line": 438,
+          "evidence": "igurations.description\">Temel al\u0131nan <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON dosyas\u0131ndaki yap\u0131land\u0131rmala"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\tr\\ui\\settings.html",
+          "line": 438,
+          "evidence": "n \u00e7ok yap\u0131land\u0131rmay\u0131 d\u00fczenlemek i\u00e7in <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON dosyas\u0131ndaki yap\u0131land\u0131rmala"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\zh-cn\\ui\\settings.html",
+          "line": 421,
+          "evidence": "=\"switch.to.json\">\u901a\u8fc7\u5355\u51fb\u6587\u4ef6\u94fe\u63a5\u6216\u4f7f\u7528\u4ee5\u4e0b\u547d\u4ee4\u5207\u6362\u5230 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7f16\u8f91 JSON \u6587\u4ef6\u4e2d\u7684\u914d\u7f6e\" data-loc-id-titl"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\zh-cn\\ui\\settings.html",
+          "line": 438,
+          "evidence": "figurations.description\">\u4f7f\u7528\u6b64\u7f16\u8f91\u5668\u7f16\u8f91\u5728\u57fa\u7840 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7f16\u8f91 JSON \u6587\u4ef6\u4e2d\u7684\u914d\u7f6e\" data-loc-id-titl"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\zh-cn\\ui\\settings.html",
+          "line": 438,
+          "evidence": "\u7f6e\u3002\u5728\u6b64\u7f16\u8f91\u5668\u4e2d\u6240\u505a\u7684\u66f4\u6539\u4ec5\u9002\u7528\u4e8e\u6240\u9009\u7684\u914d\u7f6e\u3002\u8981\u4e00\u6b21\u7f16\u8f91\u591a\u4e2a\u914d\u7f6e\uff0c\u8bf7\u8f6c\u5230 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7f16\u8f91 JSON \u6587\u4ef6\u4e2d\u7684\u914d\u7f6e\" data-loc-id-titl"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\zh-tw\\ui\\settings.html",
+          "line": 421,
+          "evidence": "d=\"switch.to.json\">\u6309\u4e00\u4e0b\u6a94\u6848\u9023\u7d50\u6216\u4f7f\u7528\u4ee5\u4e0b\u547d\u4ee4\u5207\u63db\u81f3 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7de8\u8f2f JSON \u6a94\u6848\u4e2d\u7684\u7d44\u614b\" data-loc-id-titl"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\zh-tw\\ui\\settings.html",
+          "line": 438,
+          "evidence": "figurations.description\">\u4f7f\u7528\u6b64\u7de8\u8f2f\u5668\u4f86\u7de8\u8f2f\u57fa\u790e <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7de8\u8f2f JSON \u6a94\u6848\u4e2d\u7684\u7d44\u614b\" data-loc-id-titl"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\zh-tw\\ui\\settings.html",
+          "line": 438,
+          "evidence": "\u5728\u6b64\u7de8\u8f2f\u5668\u4e2d\u9032\u884c\u7684\u8b8a\u66f4\u53ea\u6703\u5957\u7528\u5230\u9078\u53d6\u7684\u7d44\u614b\u3002\u82e5\u8981\u4e00\u6b21\u7de8\u8f2f\u591a\u500b\u7d44\u614b\uff0c\u8acb\u524d\u5f80 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7de8\u8f2f JSON \u6a94\u6848\u4e2d\u7684\u7d44\u614b\" data-loc-id-titl"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "ui\\settings.html",
+          "line": 424,
+          "evidence": "oc-id=\"switch.to.json\">Switch to the <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edit configurations in JSON file"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "ui\\settings.html",
+          "line": 441,
+          "evidence": "e settings defined in the underlying <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edit configurations in JSON file"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "ui\\settings.html",
+          "line": 441,
+          "evidence": "ultiple configurations at once go to <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edit configurations in JSON file"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\cs\\ui\\settings.html",
+          "line": 421,
+          "evidence": "son\">Pokud chcete p\u0159epnout na soubor <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Upravit konfigurace v souboru JS"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\cs\\ui\\settings.html",
+          "line": 438,
+          "evidence": "Sense definovan\u00e1 v z\u00e1kladn\u00edm souboru <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Upravit konfigurace v souboru JS"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\cs\\ui\\settings.html",
+          "line": 438,
+          "evidence": "ce konfigurac\u00ed najednou, p\u0159ejd\u011bte na <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Upravit konfigurace v souboru JS"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\de\\ui\\settings.html",
+          "line": 421,
+          "evidence": "id=\"switch.to.json\">Wechseln Sie zur <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Konfigurationen in JSON-Datei be"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\de\\ui\\settings.html",
+          "line": 438,
+          "evidence": "die in der zugrunde liegenden Datei \"<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Konfigurationen in JSON-Datei be"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\de\\ui\\settings.html",
+          "line": 438,
+          "evidence": "itig zu bearbeiten, wechseln Sie zu \"<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Konfigurationen in JSON-Datei be"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\es\\ui\\settings.html",
+          "line": 421,
+          "evidence": "d=\"switch.to.json\">Cambie al archivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar las configuraciones del a"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\es\\ui\\settings.html",
+          "line": 438,
+          "evidence": "IntelliSense definidas en el archivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar las configuraciones del a"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\es\\ui\\settings.html",
+          "line": 438,
+          "evidence": "figuraciones al mismo tiempo, vaya a <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar las configuraciones del a"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\fr\\ui\\settings.html",
+          "line": 421,
+          "evidence": "ch.to.json\">Basculez vers le fichier <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifier les configurations dans"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\fr\\ui\\settings.html",
+          "line": 438,
+          "evidence": "IntelliSense d\u00e9finis dans le fichier <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifier les configurations dans"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\fr\\ui\\settings.html",
+          "line": 438,
+          "evidence": "configurations \u00e0 la fois, acc\u00e9dez \u00e0 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifier les configurations dans"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\it\\ui\\settings.html",
+          "line": 421,
+          "evidence": "-id=\"switch.to.json\">Passare al file <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifica le configurazioni nel f"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\it\\ui\\settings.html",
+          "line": 438,
+          "evidence": "ni di IntelliSense definite nel file <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifica le configurazioni nel f"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\it\\ui\\settings.html",
+          "line": 438,
+          "evidence": "azioni contemporaneamente, passare a <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifica le configurazioni nel f"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\ja\\ui\\settings.html",
+          "line": 421,
+          "evidence": "o.json\">\u30d5\u30a1\u30a4\u30eb\u306e\u30ea\u30f3\u30af\u3092\u30af\u30ea\u30c3\u30af\u3059\u308b\u304b\u3001\u6b21\u306e\u30b3\u30de\u30f3\u30c9\u3092\u4f7f\u7528\u3057\u3066\u3001<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \u30d5\u30a1\u30a4\u30eb\u5185\u306e\u69cb\u6210\u306e\u7de8\u96c6\" data-loc-id-ti"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\ja\\ui\\settings.html",
+          "line": 438,
+          "evidence": "tions.description\">\u3053\u306e\u30a8\u30c7\u30a3\u30bf\u30fc\u3092\u4f7f\u7528\u3057\u3066\u3001\u57fa\u306b\u306a\u308b <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \u30d5\u30a1\u30a4\u30eb\u5185\u306e\u69cb\u6210\u306e\u7de8\u96c6\" data-loc-id-ti"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\ja\\ui\\settings.html",
+          "line": 438,
+          "evidence": "\u306e\u5909\u66f4\u306f\u3001\u9078\u629e\u3057\u305f\u69cb\u6210\u306b\u306e\u307f\u9069\u7528\u3055\u308c\u307e\u3059\u3002\u4e00\u5ea6\u306b\u8907\u6570\u306e\u69cb\u6210\u3092\u7de8\u96c6\u3059\u308b\u306b\u306f\u3001<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \u30d5\u30a1\u30a4\u30eb\u5185\u306e\u69cb\u6210\u306e\u7de8\u96c6\" data-loc-id-ti"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\ko\\ui\\settings.html",
+          "line": 421,
+          "evidence": "witch.to.json\">\ud30c\uc77c \ub9c1\ud06c\ub97c \ud074\ub9ad\ud558\uac70\ub098 \uba85\ub839\uc744 \uc0ac\uc6a9\ud558\uc5ec <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \ud30c\uc77c\uc758 \uad6c\uc131 \ud3b8\uc9d1\" data-loc-id-titl"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\ko\\ui\\settings.html",
+          "line": 438,
+          "evidence": "urations.description\">\uc774 \ud3b8\uc9d1\uae30\ub97c \uc0ac\uc6a9\ud558\uc5ec \uae30\ubcf8 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \ud30c\uc77c\uc758 \uad6c\uc131 \ud3b8\uc9d1\" data-loc-id-titl"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\ko\\ui\\settings.html",
+          "line": 438,
+          "evidence": "\uc6a9\uc740 \uc120\ud0dd\ud55c \uad6c\uc131\uc5d0\ub9cc \uc801\uc6a9\ub429\ub2c8\ub2e4. \ud55c \ubc88\uc5d0 \uc5ec\ub7ec \uad6c\uc131\uc744 \ud3b8\uc9d1\ud558\ub824\uba74 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \ud30c\uc77c\uc758 \uad6c\uc131 \ud3b8\uc9d1\" data-loc-id-titl"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\pl\\ui\\settings.html",
+          "line": 421,
+          "evidence": "d=\"switch.to.json\">Prze\u0142\u0105cz do pliku <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edytuj konfiguracje w pliku JSON"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\pl\\ui\\settings.html",
+          "line": 438,
+          "evidence": "Sense zdefiniowane w \u017ar\u00f3d\u0142owym pliku <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edytuj konfiguracje w pliku JSON"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\pl\\ui\\settings.html",
+          "line": 438,
+          "evidence": "iele konfiguracji naraz, przejd\u017a do: <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edytuj konfiguracje w pliku JSON"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\pt-br\\ui\\settings.html",
+          "line": 421,
+          "evidence": "itch.to.json\">Alterne para o arquivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar as configura\u00e7\u00f5es no arqui"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\pt-br\\ui\\settings.html",
+          "line": 438,
+          "evidence": "do IntelliSense definidas no arquivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar as configura\u00e7\u00f5es no arqui"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\pt-br\\ui\\settings.html",
+          "line": 438,
+          "evidence": "onfigura\u00e7\u00f5es ao mesmo tempo, v\u00e1 para <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar as configura\u00e7\u00f5es no arqui"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\ru\\ui\\settings.html",
+          "line": 421,
+          "evidence": "witch.to.json\">\u041f\u0435\u0440\u0435\u043a\u043b\u044e\u0447\u0438\u0442\u0435\u0441\u044c \u043d\u0430 \u0444\u0430\u0439\u043b <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0432 \u0444\u0430\u0439\u043b\u0435 J"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\ru\\ui\\settings.html",
+          "line": 438,
+          "evidence": "iSense, \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043d\u044b\u0445 \u0432 \u0431\u0430\u0437\u043e\u0432\u043e\u043c \u0444\u0430\u0439\u043b\u0435 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0432 \u0444\u0430\u0439\u043b\u0435 J"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\ru\\ui\\settings.html",
+          "line": 438,
+          "evidence": "\u0430 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0441\u0440\u0430\u0437\u0443 \u043f\u0435\u0440\u0435\u0439\u0434\u0438\u0442\u0435 \u0441\u044e\u0434\u0430: <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0432 \u0444\u0430\u0439\u043b\u0435 J"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\tr\\ui\\settings.html",
+          "line": 421,
+          "evidence": "t\u0131klayarak veya \u015fu komutu kullanarak <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON dosyas\u0131ndaki yap\u0131land\u0131rmala"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\tr\\ui\\settings.html",
+          "line": 438,
+          "evidence": "igurations.description\">Temel al\u0131nan <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON dosyas\u0131ndaki yap\u0131land\u0131rmala"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\tr\\ui\\settings.html",
+          "line": 438,
+          "evidence": "n \u00e7ok yap\u0131land\u0131rmay\u0131 d\u00fczenlemek i\u00e7in <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON dosyas\u0131ndaki yap\u0131land\u0131rmala"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\zh-cn\\ui\\settings.html",
+          "line": 421,
+          "evidence": "=\"switch.to.json\">\u901a\u8fc7\u5355\u51fb\u6587\u4ef6\u94fe\u63a5\u6216\u4f7f\u7528\u4ee5\u4e0b\u547d\u4ee4\u5207\u6362\u5230 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7f16\u8f91 JSON \u6587\u4ef6\u4e2d\u7684\u914d\u7f6e\" data-loc-id-titl"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\zh-cn\\ui\\settings.html",
+          "line": 438,
+          "evidence": "figurations.description\">\u4f7f\u7528\u6b64\u7f16\u8f91\u5668\u7f16\u8f91\u5728\u57fa\u7840 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7f16\u8f91 JSON \u6587\u4ef6\u4e2d\u7684\u914d\u7f6e\" data-loc-id-titl"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\zh-cn\\ui\\settings.html",
+          "line": 438,
+          "evidence": "\u7f6e\u3002\u5728\u6b64\u7f16\u8f91\u5668\u4e2d\u6240\u505a\u7684\u66f4\u6539\u4ec5\u9002\u7528\u4e8e\u6240\u9009\u7684\u914d\u7f6e\u3002\u8981\u4e00\u6b21\u7f16\u8f91\u591a\u4e2a\u914d\u7f6e\uff0c\u8bf7\u8f6c\u5230 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7f16\u8f91 JSON \u6587\u4ef6\u4e2d\u7684\u914d\u7f6e\" data-loc-id-titl"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\zh-tw\\ui\\settings.html",
+          "line": 421,
+          "evidence": "d=\"switch.to.json\">\u6309\u4e00\u4e0b\u6a94\u6848\u9023\u7d50\u6216\u4f7f\u7528\u4ee5\u4e0b\u547d\u4ee4\u5207\u63db\u81f3 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7de8\u8f2f JSON \u6a94\u6848\u4e2d\u7684\u7d44\u614b\" data-loc-id-titl"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\zh-tw\\ui\\settings.html",
+          "line": 438,
+          "evidence": "figurations.description\">\u4f7f\u7528\u6b64\u7de8\u8f2f\u5668\u4f86\u7de8\u8f2f\u57fa\u790e <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7de8\u8f2f JSON \u6a94\u6848\u4e2d\u7684\u7d44\u614b\" data-loc-id-titl"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "dist\\html\\zh-tw\\ui\\settings.html",
+          "line": 438,
+          "evidence": "\u5728\u6b64\u7de8\u8f2f\u5668\u4e2d\u9032\u884c\u7684\u8b8a\u66f4\u53ea\u6703\u5957\u7528\u5230\u9078\u53d6\u7684\u7d44\u614b\u3002\u82e5\u8981\u4e00\u6b21\u7de8\u8f2f\u591a\u500b\u7d44\u614b\uff0c\u8acb\u524d\u5f80 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7de8\u8f2f JSON \u6a94\u6848\u4e2d\u7684\u7d44\u614b\" data-loc-id-titl"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "ui\\settings.html",
+          "line": 424,
+          "evidence": "oc-id=\"switch.to.json\">Switch to the <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edit configurations in JSON file"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "ui\\settings.html",
+          "line": 441,
+          "evidence": "e settings defined in the underlying <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edit configurations in JSON file"
+        },
+        {
+          "name": "command: URI link in webview",
+          "severity": "high",
+          "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+          "category": "webview_risk",
+          "file": "ui\\settings.html",
+          "line": 441,
+          "evidence": "ultiple configurations at once go to <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edit configurations in JSON file"
+        }
+      ]
+    },
+    "findings_by_severity": {
+      "high": 84
+    },
+    "suppressed_false_positives": 0
+  },
+  "malicious_patterns": [
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\cs\\ui\\settings.html",
+      "line": 421,
+      "evidence": "son\">Pokud chcete p\u0159epnout na soubor <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Upravit konfigurace v souboru JS"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\cs\\ui\\settings.html",
+      "line": 438,
+      "evidence": "Sense definovan\u00e1 v z\u00e1kladn\u00edm souboru <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Upravit konfigurace v souboru JS"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\cs\\ui\\settings.html",
+      "line": 438,
+      "evidence": "ce konfigurac\u00ed najednou, p\u0159ejd\u011bte na <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Upravit konfigurace v souboru JS"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\de\\ui\\settings.html",
+      "line": 421,
+      "evidence": "id=\"switch.to.json\">Wechseln Sie zur <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Konfigurationen in JSON-Datei be"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\de\\ui\\settings.html",
+      "line": 438,
+      "evidence": "die in der zugrunde liegenden Datei \"<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Konfigurationen in JSON-Datei be"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\de\\ui\\settings.html",
+      "line": 438,
+      "evidence": "itig zu bearbeiten, wechseln Sie zu \"<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Konfigurationen in JSON-Datei be"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\es\\ui\\settings.html",
+      "line": 421,
+      "evidence": "d=\"switch.to.json\">Cambie al archivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar las configuraciones del a"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\es\\ui\\settings.html",
+      "line": 438,
+      "evidence": "IntelliSense definidas en el archivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar las configuraciones del a"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\es\\ui\\settings.html",
+      "line": 438,
+      "evidence": "figuraciones al mismo tiempo, vaya a <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar las configuraciones del a"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\fr\\ui\\settings.html",
+      "line": 421,
+      "evidence": "ch.to.json\">Basculez vers le fichier <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifier les configurations dans"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\fr\\ui\\settings.html",
+      "line": 438,
+      "evidence": "IntelliSense d\u00e9finis dans le fichier <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifier les configurations dans"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\fr\\ui\\settings.html",
+      "line": 438,
+      "evidence": "configurations \u00e0 la fois, acc\u00e9dez \u00e0 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifier les configurations dans"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\it\\ui\\settings.html",
+      "line": 421,
+      "evidence": "-id=\"switch.to.json\">Passare al file <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifica le configurazioni nel f"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\it\\ui\\settings.html",
+      "line": 438,
+      "evidence": "ni di IntelliSense definite nel file <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifica le configurazioni nel f"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\it\\ui\\settings.html",
+      "line": 438,
+      "evidence": "azioni contemporaneamente, passare a <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifica le configurazioni nel f"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\ja\\ui\\settings.html",
+      "line": 421,
+      "evidence": "o.json\">\u30d5\u30a1\u30a4\u30eb\u306e\u30ea\u30f3\u30af\u3092\u30af\u30ea\u30c3\u30af\u3059\u308b\u304b\u3001\u6b21\u306e\u30b3\u30de\u30f3\u30c9\u3092\u4f7f\u7528\u3057\u3066\u3001<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \u30d5\u30a1\u30a4\u30eb\u5185\u306e\u69cb\u6210\u306e\u7de8\u96c6\" data-loc-id-ti"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\ja\\ui\\settings.html",
+      "line": 438,
+      "evidence": "tions.description\">\u3053\u306e\u30a8\u30c7\u30a3\u30bf\u30fc\u3092\u4f7f\u7528\u3057\u3066\u3001\u57fa\u306b\u306a\u308b <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \u30d5\u30a1\u30a4\u30eb\u5185\u306e\u69cb\u6210\u306e\u7de8\u96c6\" data-loc-id-ti"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\ja\\ui\\settings.html",
+      "line": 438,
+      "evidence": "\u306e\u5909\u66f4\u306f\u3001\u9078\u629e\u3057\u305f\u69cb\u6210\u306b\u306e\u307f\u9069\u7528\u3055\u308c\u307e\u3059\u3002\u4e00\u5ea6\u306b\u8907\u6570\u306e\u69cb\u6210\u3092\u7de8\u96c6\u3059\u308b\u306b\u306f\u3001<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \u30d5\u30a1\u30a4\u30eb\u5185\u306e\u69cb\u6210\u306e\u7de8\u96c6\" data-loc-id-ti"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\ko\\ui\\settings.html",
+      "line": 421,
+      "evidence": "witch.to.json\">\ud30c\uc77c \ub9c1\ud06c\ub97c \ud074\ub9ad\ud558\uac70\ub098 \uba85\ub839\uc744 \uc0ac\uc6a9\ud558\uc5ec <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \ud30c\uc77c\uc758 \uad6c\uc131 \ud3b8\uc9d1\" data-loc-id-titl"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\ko\\ui\\settings.html",
+      "line": 438,
+      "evidence": "urations.description\">\uc774 \ud3b8\uc9d1\uae30\ub97c \uc0ac\uc6a9\ud558\uc5ec \uae30\ubcf8 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \ud30c\uc77c\uc758 \uad6c\uc131 \ud3b8\uc9d1\" data-loc-id-titl"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\ko\\ui\\settings.html",
+      "line": 438,
+      "evidence": "\uc6a9\uc740 \uc120\ud0dd\ud55c \uad6c\uc131\uc5d0\ub9cc \uc801\uc6a9\ub429\ub2c8\ub2e4. \ud55c \ubc88\uc5d0 \uc5ec\ub7ec \uad6c\uc131\uc744 \ud3b8\uc9d1\ud558\ub824\uba74 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \ud30c\uc77c\uc758 \uad6c\uc131 \ud3b8\uc9d1\" data-loc-id-titl"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\pl\\ui\\settings.html",
+      "line": 421,
+      "evidence": "d=\"switch.to.json\">Prze\u0142\u0105cz do pliku <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edytuj konfiguracje w pliku JSON"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\pl\\ui\\settings.html",
+      "line": 438,
+      "evidence": "Sense zdefiniowane w \u017ar\u00f3d\u0142owym pliku <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edytuj konfiguracje w pliku JSON"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\pl\\ui\\settings.html",
+      "line": 438,
+      "evidence": "iele konfiguracji naraz, przejd\u017a do: <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edytuj konfiguracje w pliku JSON"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\pt-br\\ui\\settings.html",
+      "line": 421,
+      "evidence": "itch.to.json\">Alterne para o arquivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar as configura\u00e7\u00f5es no arqui"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\pt-br\\ui\\settings.html",
+      "line": 438,
+      "evidence": "do IntelliSense definidas no arquivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar as configura\u00e7\u00f5es no arqui"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\pt-br\\ui\\settings.html",
+      "line": 438,
+      "evidence": "onfigura\u00e7\u00f5es ao mesmo tempo, v\u00e1 para <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar as configura\u00e7\u00f5es no arqui"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\ru\\ui\\settings.html",
+      "line": 421,
+      "evidence": "witch.to.json\">\u041f\u0435\u0440\u0435\u043a\u043b\u044e\u0447\u0438\u0442\u0435\u0441\u044c \u043d\u0430 \u0444\u0430\u0439\u043b <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0432 \u0444\u0430\u0439\u043b\u0435 J"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\ru\\ui\\settings.html",
+      "line": 438,
+      "evidence": "iSense, \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043d\u044b\u0445 \u0432 \u0431\u0430\u0437\u043e\u0432\u043e\u043c \u0444\u0430\u0439\u043b\u0435 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0432 \u0444\u0430\u0439\u043b\u0435 J"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\ru\\ui\\settings.html",
+      "line": 438,
+      "evidence": "\u0430 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0441\u0440\u0430\u0437\u0443 \u043f\u0435\u0440\u0435\u0439\u0434\u0438\u0442\u0435 \u0441\u044e\u0434\u0430: <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0432 \u0444\u0430\u0439\u043b\u0435 J"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\tr\\ui\\settings.html",
+      "line": 421,
+      "evidence": "t\u0131klayarak veya \u015fu komutu kullanarak <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON dosyas\u0131ndaki yap\u0131land\u0131rmala"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\tr\\ui\\settings.html",
+      "line": 438,
+      "evidence": "igurations.description\">Temel al\u0131nan <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON dosyas\u0131ndaki yap\u0131land\u0131rmala"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\tr\\ui\\settings.html",
+      "line": 438,
+      "evidence": "n \u00e7ok yap\u0131land\u0131rmay\u0131 d\u00fczenlemek i\u00e7in <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON dosyas\u0131ndaki yap\u0131land\u0131rmala"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\zh-cn\\ui\\settings.html",
+      "line": 421,
+      "evidence": "=\"switch.to.json\">\u901a\u8fc7\u5355\u51fb\u6587\u4ef6\u94fe\u63a5\u6216\u4f7f\u7528\u4ee5\u4e0b\u547d\u4ee4\u5207\u6362\u5230 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7f16\u8f91 JSON \u6587\u4ef6\u4e2d\u7684\u914d\u7f6e\" data-loc-id-titl"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\zh-cn\\ui\\settings.html",
+      "line": 438,
+      "evidence": "figurations.description\">\u4f7f\u7528\u6b64\u7f16\u8f91\u5668\u7f16\u8f91\u5728\u57fa\u7840 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7f16\u8f91 JSON \u6587\u4ef6\u4e2d\u7684\u914d\u7f6e\" data-loc-id-titl"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\zh-cn\\ui\\settings.html",
+      "line": 438,
+      "evidence": "\u7f6e\u3002\u5728\u6b64\u7f16\u8f91\u5668\u4e2d\u6240\u505a\u7684\u66f4\u6539\u4ec5\u9002\u7528\u4e8e\u6240\u9009\u7684\u914d\u7f6e\u3002\u8981\u4e00\u6b21\u7f16\u8f91\u591a\u4e2a\u914d\u7f6e\uff0c\u8bf7\u8f6c\u5230 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7f16\u8f91 JSON \u6587\u4ef6\u4e2d\u7684\u914d\u7f6e\" data-loc-id-titl"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\zh-tw\\ui\\settings.html",
+      "line": 421,
+      "evidence": "d=\"switch.to.json\">\u6309\u4e00\u4e0b\u6a94\u6848\u9023\u7d50\u6216\u4f7f\u7528\u4ee5\u4e0b\u547d\u4ee4\u5207\u63db\u81f3 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7de8\u8f2f JSON \u6a94\u6848\u4e2d\u7684\u7d44\u614b\" data-loc-id-titl"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\zh-tw\\ui\\settings.html",
+      "line": 438,
+      "evidence": "figurations.description\">\u4f7f\u7528\u6b64\u7de8\u8f2f\u5668\u4f86\u7de8\u8f2f\u57fa\u790e <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7de8\u8f2f JSON \u6a94\u6848\u4e2d\u7684\u7d44\u614b\" data-loc-id-titl"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\zh-tw\\ui\\settings.html",
+      "line": 438,
+      "evidence": "\u5728\u6b64\u7de8\u8f2f\u5668\u4e2d\u9032\u884c\u7684\u8b8a\u66f4\u53ea\u6703\u5957\u7528\u5230\u9078\u53d6\u7684\u7d44\u614b\u3002\u82e5\u8981\u4e00\u6b21\u7de8\u8f2f\u591a\u500b\u7d44\u614b\uff0c\u8acb\u524d\u5f80 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7de8\u8f2f JSON \u6a94\u6848\u4e2d\u7684\u7d44\u614b\" data-loc-id-titl"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "ui\\settings.html",
+      "line": 424,
+      "evidence": "oc-id=\"switch.to.json\">Switch to the <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edit configurations in JSON file"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "ui\\settings.html",
+      "line": 441,
+      "evidence": "e settings defined in the underlying <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edit configurations in JSON file"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "ui\\settings.html",
+      "line": 441,
+      "evidence": "ultiple configurations at once go to <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edit configurations in JSON file"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\cs\\ui\\settings.html",
+      "line": 421,
+      "evidence": "son\">Pokud chcete p\u0159epnout na soubor <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Upravit konfigurace v souboru JS"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\cs\\ui\\settings.html",
+      "line": 438,
+      "evidence": "Sense definovan\u00e1 v z\u00e1kladn\u00edm souboru <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Upravit konfigurace v souboru JS"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\cs\\ui\\settings.html",
+      "line": 438,
+      "evidence": "ce konfigurac\u00ed najednou, p\u0159ejd\u011bte na <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Upravit konfigurace v souboru JS"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\de\\ui\\settings.html",
+      "line": 421,
+      "evidence": "id=\"switch.to.json\">Wechseln Sie zur <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Konfigurationen in JSON-Datei be"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\de\\ui\\settings.html",
+      "line": 438,
+      "evidence": "die in der zugrunde liegenden Datei \"<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Konfigurationen in JSON-Datei be"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\de\\ui\\settings.html",
+      "line": 438,
+      "evidence": "itig zu bearbeiten, wechseln Sie zu \"<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Konfigurationen in JSON-Datei be"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\es\\ui\\settings.html",
+      "line": 421,
+      "evidence": "d=\"switch.to.json\">Cambie al archivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar las configuraciones del a"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\es\\ui\\settings.html",
+      "line": 438,
+      "evidence": "IntelliSense definidas en el archivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar las configuraciones del a"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\es\\ui\\settings.html",
+      "line": 438,
+      "evidence": "figuraciones al mismo tiempo, vaya a <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar las configuraciones del a"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\fr\\ui\\settings.html",
+      "line": 421,
+      "evidence": "ch.to.json\">Basculez vers le fichier <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifier les configurations dans"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\fr\\ui\\settings.html",
+      "line": 438,
+      "evidence": "IntelliSense d\u00e9finis dans le fichier <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifier les configurations dans"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\fr\\ui\\settings.html",
+      "line": 438,
+      "evidence": "configurations \u00e0 la fois, acc\u00e9dez \u00e0 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifier les configurations dans"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\it\\ui\\settings.html",
+      "line": 421,
+      "evidence": "-id=\"switch.to.json\">Passare al file <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifica le configurazioni nel f"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\it\\ui\\settings.html",
+      "line": 438,
+      "evidence": "ni di IntelliSense definite nel file <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifica le configurazioni nel f"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\it\\ui\\settings.html",
+      "line": 438,
+      "evidence": "azioni contemporaneamente, passare a <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifica le configurazioni nel f"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\ja\\ui\\settings.html",
+      "line": 421,
+      "evidence": "o.json\">\u30d5\u30a1\u30a4\u30eb\u306e\u30ea\u30f3\u30af\u3092\u30af\u30ea\u30c3\u30af\u3059\u308b\u304b\u3001\u6b21\u306e\u30b3\u30de\u30f3\u30c9\u3092\u4f7f\u7528\u3057\u3066\u3001<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \u30d5\u30a1\u30a4\u30eb\u5185\u306e\u69cb\u6210\u306e\u7de8\u96c6\" data-loc-id-ti"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\ja\\ui\\settings.html",
+      "line": 438,
+      "evidence": "tions.description\">\u3053\u306e\u30a8\u30c7\u30a3\u30bf\u30fc\u3092\u4f7f\u7528\u3057\u3066\u3001\u57fa\u306b\u306a\u308b <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \u30d5\u30a1\u30a4\u30eb\u5185\u306e\u69cb\u6210\u306e\u7de8\u96c6\" data-loc-id-ti"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\ja\\ui\\settings.html",
+      "line": 438,
+      "evidence": "\u306e\u5909\u66f4\u306f\u3001\u9078\u629e\u3057\u305f\u69cb\u6210\u306b\u306e\u307f\u9069\u7528\u3055\u308c\u307e\u3059\u3002\u4e00\u5ea6\u306b\u8907\u6570\u306e\u69cb\u6210\u3092\u7de8\u96c6\u3059\u308b\u306b\u306f\u3001<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \u30d5\u30a1\u30a4\u30eb\u5185\u306e\u69cb\u6210\u306e\u7de8\u96c6\" data-loc-id-ti"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\ko\\ui\\settings.html",
+      "line": 421,
+      "evidence": "witch.to.json\">\ud30c\uc77c \ub9c1\ud06c\ub97c \ud074\ub9ad\ud558\uac70\ub098 \uba85\ub839\uc744 \uc0ac\uc6a9\ud558\uc5ec <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \ud30c\uc77c\uc758 \uad6c\uc131 \ud3b8\uc9d1\" data-loc-id-titl"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\ko\\ui\\settings.html",
+      "line": 438,
+      "evidence": "urations.description\">\uc774 \ud3b8\uc9d1\uae30\ub97c \uc0ac\uc6a9\ud558\uc5ec \uae30\ubcf8 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \ud30c\uc77c\uc758 \uad6c\uc131 \ud3b8\uc9d1\" data-loc-id-titl"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\ko\\ui\\settings.html",
+      "line": 438,
+      "evidence": "\uc6a9\uc740 \uc120\ud0dd\ud55c \uad6c\uc131\uc5d0\ub9cc \uc801\uc6a9\ub429\ub2c8\ub2e4. \ud55c \ubc88\uc5d0 \uc5ec\ub7ec \uad6c\uc131\uc744 \ud3b8\uc9d1\ud558\ub824\uba74 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \ud30c\uc77c\uc758 \uad6c\uc131 \ud3b8\uc9d1\" data-loc-id-titl"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\pl\\ui\\settings.html",
+      "line": 421,
+      "evidence": "d=\"switch.to.json\">Prze\u0142\u0105cz do pliku <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edytuj konfiguracje w pliku JSON"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\pl\\ui\\settings.html",
+      "line": 438,
+      "evidence": "Sense zdefiniowane w \u017ar\u00f3d\u0142owym pliku <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edytuj konfiguracje w pliku JSON"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\pl\\ui\\settings.html",
+      "line": 438,
+      "evidence": "iele konfiguracji naraz, przejd\u017a do: <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edytuj konfiguracje w pliku JSON"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\pt-br\\ui\\settings.html",
+      "line": 421,
+      "evidence": "itch.to.json\">Alterne para o arquivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar as configura\u00e7\u00f5es no arqui"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\pt-br\\ui\\settings.html",
+      "line": 438,
+      "evidence": "do IntelliSense definidas no arquivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar as configura\u00e7\u00f5es no arqui"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\pt-br\\ui\\settings.html",
+      "line": 438,
+      "evidence": "onfigura\u00e7\u00f5es ao mesmo tempo, v\u00e1 para <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar as configura\u00e7\u00f5es no arqui"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\ru\\ui\\settings.html",
+      "line": 421,
+      "evidence": "witch.to.json\">\u041f\u0435\u0440\u0435\u043a\u043b\u044e\u0447\u0438\u0442\u0435\u0441\u044c \u043d\u0430 \u0444\u0430\u0439\u043b <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0432 \u0444\u0430\u0439\u043b\u0435 J"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\ru\\ui\\settings.html",
+      "line": 438,
+      "evidence": "iSense, \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043d\u044b\u0445 \u0432 \u0431\u0430\u0437\u043e\u0432\u043e\u043c \u0444\u0430\u0439\u043b\u0435 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0432 \u0444\u0430\u0439\u043b\u0435 J"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\ru\\ui\\settings.html",
+      "line": 438,
+      "evidence": "\u0430 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0441\u0440\u0430\u0437\u0443 \u043f\u0435\u0440\u0435\u0439\u0434\u0438\u0442\u0435 \u0441\u044e\u0434\u0430: <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0432 \u0444\u0430\u0439\u043b\u0435 J"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\tr\\ui\\settings.html",
+      "line": 421,
+      "evidence": "t\u0131klayarak veya \u015fu komutu kullanarak <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON dosyas\u0131ndaki yap\u0131land\u0131rmala"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\tr\\ui\\settings.html",
+      "line": 438,
+      "evidence": "igurations.description\">Temel al\u0131nan <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON dosyas\u0131ndaki yap\u0131land\u0131rmala"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\tr\\ui\\settings.html",
+      "line": 438,
+      "evidence": "n \u00e7ok yap\u0131land\u0131rmay\u0131 d\u00fczenlemek i\u00e7in <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON dosyas\u0131ndaki yap\u0131land\u0131rmala"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\zh-cn\\ui\\settings.html",
+      "line": 421,
+      "evidence": "=\"switch.to.json\">\u901a\u8fc7\u5355\u51fb\u6587\u4ef6\u94fe\u63a5\u6216\u4f7f\u7528\u4ee5\u4e0b\u547d\u4ee4\u5207\u6362\u5230 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7f16\u8f91 JSON \u6587\u4ef6\u4e2d\u7684\u914d\u7f6e\" data-loc-id-titl"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\zh-cn\\ui\\settings.html",
+      "line": 438,
+      "evidence": "figurations.description\">\u4f7f\u7528\u6b64\u7f16\u8f91\u5668\u7f16\u8f91\u5728\u57fa\u7840 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7f16\u8f91 JSON \u6587\u4ef6\u4e2d\u7684\u914d\u7f6e\" data-loc-id-titl"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\zh-cn\\ui\\settings.html",
+      "line": 438,
+      "evidence": "\u7f6e\u3002\u5728\u6b64\u7f16\u8f91\u5668\u4e2d\u6240\u505a\u7684\u66f4\u6539\u4ec5\u9002\u7528\u4e8e\u6240\u9009\u7684\u914d\u7f6e\u3002\u8981\u4e00\u6b21\u7f16\u8f91\u591a\u4e2a\u914d\u7f6e\uff0c\u8bf7\u8f6c\u5230 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7f16\u8f91 JSON \u6587\u4ef6\u4e2d\u7684\u914d\u7f6e\" data-loc-id-titl"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\zh-tw\\ui\\settings.html",
+      "line": 421,
+      "evidence": "d=\"switch.to.json\">\u6309\u4e00\u4e0b\u6a94\u6848\u9023\u7d50\u6216\u4f7f\u7528\u4ee5\u4e0b\u547d\u4ee4\u5207\u63db\u81f3 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7de8\u8f2f JSON \u6a94\u6848\u4e2d\u7684\u7d44\u614b\" data-loc-id-titl"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\zh-tw\\ui\\settings.html",
+      "line": 438,
+      "evidence": "figurations.description\">\u4f7f\u7528\u6b64\u7de8\u8f2f\u5668\u4f86\u7de8\u8f2f\u57fa\u790e <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7de8\u8f2f JSON \u6a94\u6848\u4e2d\u7684\u7d44\u614b\" data-loc-id-titl"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "dist\\html\\zh-tw\\ui\\settings.html",
+      "line": 438,
+      "evidence": "\u5728\u6b64\u7de8\u8f2f\u5668\u4e2d\u9032\u884c\u7684\u8b8a\u66f4\u53ea\u6703\u5957\u7528\u5230\u9078\u53d6\u7684\u7d44\u614b\u3002\u82e5\u8981\u4e00\u6b21\u7de8\u8f2f\u591a\u500b\u7d44\u614b\uff0c\u8acb\u524d\u5f80 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7de8\u8f2f JSON \u6a94\u6848\u4e2d\u7684\u7d44\u614b\" data-loc-id-titl"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "ui\\settings.html",
+      "line": 424,
+      "evidence": "oc-id=\"switch.to.json\">Switch to the <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edit configurations in JSON file"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "ui\\settings.html",
+      "line": 441,
+      "evidence": "e settings defined in the underlying <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edit configurations in JSON file"
+    },
+    {
+      "name": "command: URI link in webview",
+      "severity": "high",
+      "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+      "category": "webview_risk",
+      "file": "ui\\settings.html",
+      "line": 441,
+      "evidence": "ultiple configurations at once go to <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edit configurations in JSON file"
+    }
+  ],
+  "html_analysis": {
+    "findings": [
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\cs\\ui\\settings.html",
+        "line": 421,
+        "evidence": "son\">Pokud chcete p\u0159epnout na soubor <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Upravit konfigurace v souboru JS"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\cs\\ui\\settings.html",
+        "line": 438,
+        "evidence": "Sense definovan\u00e1 v z\u00e1kladn\u00edm souboru <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Upravit konfigurace v souboru JS"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\cs\\ui\\settings.html",
+        "line": 438,
+        "evidence": "ce konfigurac\u00ed najednou, p\u0159ejd\u011bte na <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Upravit konfigurace v souboru JS"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\de\\ui\\settings.html",
+        "line": 421,
+        "evidence": "id=\"switch.to.json\">Wechseln Sie zur <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Konfigurationen in JSON-Datei be"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\de\\ui\\settings.html",
+        "line": 438,
+        "evidence": "die in der zugrunde liegenden Datei \"<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Konfigurationen in JSON-Datei be"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\de\\ui\\settings.html",
+        "line": 438,
+        "evidence": "itig zu bearbeiten, wechseln Sie zu \"<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Konfigurationen in JSON-Datei be"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\es\\ui\\settings.html",
+        "line": 421,
+        "evidence": "d=\"switch.to.json\">Cambie al archivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar las configuraciones del a"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\es\\ui\\settings.html",
+        "line": 438,
+        "evidence": "IntelliSense definidas en el archivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar las configuraciones del a"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\es\\ui\\settings.html",
+        "line": 438,
+        "evidence": "figuraciones al mismo tiempo, vaya a <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar las configuraciones del a"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\fr\\ui\\settings.html",
+        "line": 421,
+        "evidence": "ch.to.json\">Basculez vers le fichier <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifier les configurations dans"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\fr\\ui\\settings.html",
+        "line": 438,
+        "evidence": "IntelliSense d\u00e9finis dans le fichier <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifier les configurations dans"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\fr\\ui\\settings.html",
+        "line": 438,
+        "evidence": "configurations \u00e0 la fois, acc\u00e9dez \u00e0 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifier les configurations dans"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\it\\ui\\settings.html",
+        "line": 421,
+        "evidence": "-id=\"switch.to.json\">Passare al file <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifica le configurazioni nel f"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\it\\ui\\settings.html",
+        "line": 438,
+        "evidence": "ni di IntelliSense definite nel file <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifica le configurazioni nel f"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\it\\ui\\settings.html",
+        "line": 438,
+        "evidence": "azioni contemporaneamente, passare a <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Modifica le configurazioni nel f"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ja\\ui\\settings.html",
+        "line": 421,
+        "evidence": "o.json\">\u30d5\u30a1\u30a4\u30eb\u306e\u30ea\u30f3\u30af\u3092\u30af\u30ea\u30c3\u30af\u3059\u308b\u304b\u3001\u6b21\u306e\u30b3\u30de\u30f3\u30c9\u3092\u4f7f\u7528\u3057\u3066\u3001<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \u30d5\u30a1\u30a4\u30eb\u5185\u306e\u69cb\u6210\u306e\u7de8\u96c6\" data-loc-id-ti"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ja\\ui\\settings.html",
+        "line": 438,
+        "evidence": "tions.description\">\u3053\u306e\u30a8\u30c7\u30a3\u30bf\u30fc\u3092\u4f7f\u7528\u3057\u3066\u3001\u57fa\u306b\u306a\u308b <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \u30d5\u30a1\u30a4\u30eb\u5185\u306e\u69cb\u6210\u306e\u7de8\u96c6\" data-loc-id-ti"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ja\\ui\\settings.html",
+        "line": 438,
+        "evidence": "\u306e\u5909\u66f4\u306f\u3001\u9078\u629e\u3057\u305f\u69cb\u6210\u306b\u306e\u307f\u9069\u7528\u3055\u308c\u307e\u3059\u3002\u4e00\u5ea6\u306b\u8907\u6570\u306e\u69cb\u6210\u3092\u7de8\u96c6\u3059\u308b\u306b\u306f\u3001<a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \u30d5\u30a1\u30a4\u30eb\u5185\u306e\u69cb\u6210\u306e\u7de8\u96c6\" data-loc-id-ti"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ko\\ui\\settings.html",
+        "line": 421,
+        "evidence": "witch.to.json\">\ud30c\uc77c \ub9c1\ud06c\ub97c \ud074\ub9ad\ud558\uac70\ub098 \uba85\ub839\uc744 \uc0ac\uc6a9\ud558\uc5ec <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \ud30c\uc77c\uc758 \uad6c\uc131 \ud3b8\uc9d1\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ko\\ui\\settings.html",
+        "line": 438,
+        "evidence": "urations.description\">\uc774 \ud3b8\uc9d1\uae30\ub97c \uc0ac\uc6a9\ud558\uc5ec \uae30\ubcf8 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \ud30c\uc77c\uc758 \uad6c\uc131 \ud3b8\uc9d1\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ko\\ui\\settings.html",
+        "line": 438,
+        "evidence": "\uc6a9\uc740 \uc120\ud0dd\ud55c \uad6c\uc131\uc5d0\ub9cc \uc801\uc6a9\ub429\ub2c8\ub2e4. \ud55c \ubc88\uc5d0 \uc5ec\ub7ec \uad6c\uc131\uc744 \ud3b8\uc9d1\ud558\ub824\uba74 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON \ud30c\uc77c\uc758 \uad6c\uc131 \ud3b8\uc9d1\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\pl\\ui\\settings.html",
+        "line": 421,
+        "evidence": "d=\"switch.to.json\">Prze\u0142\u0105cz do pliku <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edytuj konfiguracje w pliku JSON"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\pl\\ui\\settings.html",
+        "line": 438,
+        "evidence": "Sense zdefiniowane w \u017ar\u00f3d\u0142owym pliku <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edytuj konfiguracje w pliku JSON"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\pl\\ui\\settings.html",
+        "line": 438,
+        "evidence": "iele konfiguracji naraz, przejd\u017a do: <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edytuj konfiguracje w pliku JSON"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\pt-br\\ui\\settings.html",
+        "line": 421,
+        "evidence": "itch.to.json\">Alterne para o arquivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar as configura\u00e7\u00f5es no arqui"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\pt-br\\ui\\settings.html",
+        "line": 438,
+        "evidence": "do IntelliSense definidas no arquivo <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar as configura\u00e7\u00f5es no arqui"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\pt-br\\ui\\settings.html",
+        "line": 438,
+        "evidence": "onfigura\u00e7\u00f5es ao mesmo tempo, v\u00e1 para <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Editar as configura\u00e7\u00f5es no arqui"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ru\\ui\\settings.html",
+        "line": 421,
+        "evidence": "witch.to.json\">\u041f\u0435\u0440\u0435\u043a\u043b\u044e\u0447\u0438\u0442\u0435\u0441\u044c \u043d\u0430 \u0444\u0430\u0439\u043b <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0432 \u0444\u0430\u0439\u043b\u0435 J"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ru\\ui\\settings.html",
+        "line": 438,
+        "evidence": "iSense, \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043d\u044b\u0445 \u0432 \u0431\u0430\u0437\u043e\u0432\u043e\u043c \u0444\u0430\u0439\u043b\u0435 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0432 \u0444\u0430\u0439\u043b\u0435 J"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\ru\\ui\\settings.html",
+        "line": 438,
+        "evidence": "\u0430 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0441\u0440\u0430\u0437\u0443 \u043f\u0435\u0440\u0435\u0439\u0434\u0438\u0442\u0435 \u0441\u044e\u0434\u0430: <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0439 \u0432 \u0444\u0430\u0439\u043b\u0435 J"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\tr\\ui\\settings.html",
+        "line": 421,
+        "evidence": "t\u0131klayarak veya \u015fu komutu kullanarak <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON dosyas\u0131ndaki yap\u0131land\u0131rmala"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\tr\\ui\\settings.html",
+        "line": 438,
+        "evidence": "igurations.description\">Temel al\u0131nan <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON dosyas\u0131ndaki yap\u0131land\u0131rmala"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\tr\\ui\\settings.html",
+        "line": 438,
+        "evidence": "n \u00e7ok yap\u0131land\u0131rmay\u0131 d\u00fczenlemek i\u00e7in <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"JSON dosyas\u0131ndaki yap\u0131land\u0131rmala"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\zh-cn\\ui\\settings.html",
+        "line": 421,
+        "evidence": "=\"switch.to.json\">\u901a\u8fc7\u5355\u51fb\u6587\u4ef6\u94fe\u63a5\u6216\u4f7f\u7528\u4ee5\u4e0b\u547d\u4ee4\u5207\u6362\u5230 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7f16\u8f91 JSON \u6587\u4ef6\u4e2d\u7684\u914d\u7f6e\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\zh-cn\\ui\\settings.html",
+        "line": 438,
+        "evidence": "figurations.description\">\u4f7f\u7528\u6b64\u7f16\u8f91\u5668\u7f16\u8f91\u5728\u57fa\u7840 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7f16\u8f91 JSON \u6587\u4ef6\u4e2d\u7684\u914d\u7f6e\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\zh-cn\\ui\\settings.html",
+        "line": 438,
+        "evidence": "\u7f6e\u3002\u5728\u6b64\u7f16\u8f91\u5668\u4e2d\u6240\u505a\u7684\u66f4\u6539\u4ec5\u9002\u7528\u4e8e\u6240\u9009\u7684\u914d\u7f6e\u3002\u8981\u4e00\u6b21\u7f16\u8f91\u591a\u4e2a\u914d\u7f6e\uff0c\u8bf7\u8f6c\u5230 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7f16\u8f91 JSON \u6587\u4ef6\u4e2d\u7684\u914d\u7f6e\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\zh-tw\\ui\\settings.html",
+        "line": 421,
+        "evidence": "d=\"switch.to.json\">\u6309\u4e00\u4e0b\u6a94\u6848\u9023\u7d50\u6216\u4f7f\u7528\u4ee5\u4e0b\u547d\u4ee4\u5207\u63db\u81f3 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7de8\u8f2f JSON \u6a94\u6848\u4e2d\u7684\u7d44\u614b\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\zh-tw\\ui\\settings.html",
+        "line": 438,
+        "evidence": "figurations.description\">\u4f7f\u7528\u6b64\u7de8\u8f2f\u5668\u4f86\u7de8\u8f2f\u57fa\u790e <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7de8\u8f2f JSON \u6a94\u6848\u4e2d\u7684\u7d44\u614b\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "dist\\html\\zh-tw\\ui\\settings.html",
+        "line": 438,
+        "evidence": "\u5728\u6b64\u7de8\u8f2f\u5668\u4e2d\u9032\u884c\u7684\u8b8a\u66f4\u53ea\u6703\u5957\u7528\u5230\u9078\u53d6\u7684\u7d44\u614b\u3002\u82e5\u8981\u4e00\u6b21\u7de8\u8f2f\u591a\u500b\u7d44\u614b\uff0c\u8acb\u524d\u5f80 <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"\u7de8\u8f2f JSON \u6a94\u6848\u4e2d\u7684\u7d44\u614b\" data-loc-id-titl"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "ui\\settings.html",
+        "line": 424,
+        "evidence": "oc-id=\"switch.to.json\">Switch to the <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edit configurations in JSON file"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "ui\\settings.html",
+        "line": 441,
+        "evidence": "e settings defined in the underlying <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edit configurations in JSON file"
+      },
+      {
+        "name": "command: URI link in webview",
+        "severity": "high",
+        "description": "Anchor/link uses VS Code command: URI inside webview/HTML - can trigger arbitrary commands from rendered content",
+        "category": "webview_risk",
+        "file": "ui\\settings.html",
+        "line": 441,
+        "evidence": "ultiple configurations at once go to <a href=\"command:C_Cpp.ConfigurationEditJSON\" title=\"Edit configurations in JSON file"
+      }
+    ],
+    "files_scanned": 14,
+    "iframe_urls": []
+  },
+  "permissions": {
+    "high_risk": [
+      {
+        "permission": "debugger",
+        "description": "Contributes a debugger (can inspect process state)"
+      }
+    ],
+    "medium_risk": [],
+    "low_risk": [],
+    "total": 1,
+    "all": [
+      "debugger"
+    ]
+  },
+  "risk_score": 1.3,
+  "risk_level": "MINIMAL",
+  "risk_breakdown": {
+    "supply_chain": 0.0,
+    "metadata_publisher": 0.6,
+    "code_analysis": 2.0,
+    "behavioral_correlations": 0,
+    "infrastructure": 0.2,
+    "positive_signals": -1.5
+  },
+  "positive_signals": {
+    "signals": [
+      {
+        "signal": "no_network_access",
+        "description": "Extension has no network capabilities - data stays local",
+        "weight": 0.5
+      },
+      {
+        "signal": "no_obfuscation",
+        "description": "No code obfuscation or evasion techniques detected",
+        "weight": 0.3
+      },
+      {
+        "signal": "no_credential_access",
+        "description": "No access to credential files, SSH keys, or token stores",
+        "weight": 0.3
+      },
+      {
+        "signal": "scoped_activation",
+        "description": "Extension activates only on specific events, not wildcard",
+        "weight": 0.2
+      },
+      {
+        "signal": "no_exfiltration_pattern",
+        "description": "No compound attack patterns detected",
+        "weight": 0.2
+      }
+    ],
+    "reduction": 1.5,
+    "count": 5
+  },
+  "risk_classification": {
+    "classification": "BENIGN",
+    "summary": "Low-risk extension with minimal sensitive capabilities.",
+    "suspicion_indicators": 0,
+    "positive_signal_count": 5
+  },
+  "module_usage": {},
+  "external_urls": [],
+  "domain_intelligence": [],
+  "virustotal_results": []
+}

@@ -1,0 +1,327 @@
+{
+  "extension_type": "vscode",
+  "name": "Jumper for VSCode",
+  "identifier": "homerours.jumper-vscode",
+  "extension_id": "homerours.jumper-vscode",
+  "version": "0.1.2",
+  "description": "Fast file and directory navigation with frecency algorithm. Quick jump to frequently and recently used files or directories. Fuzzy finder with smart ranking.",
+  "publisher": "homerours",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "store_metadata": {
+    "available": true,
+    "store": "vscode",
+    "identifier": "homerours.jumper-vscode",
+    "name": "Jumper for VSCode",
+    "publisher": "homerours",
+    "publisher_id": "69490003-be1f-4d8e-be90-b74ffdc1101c",
+    "publisher_domain": null,
+    "publisher_verified": false,
+    "short_description": "Fast file and directory navigation with frecency algorithm. Quick jump to frequently and recently used files or directories. Fuzzy finder with smart ranking.",
+    "version": "0.1.2",
+    "last_updated": "2026-02-08T22:33:09.283Z",
+    "categories": [],
+    "tags": [],
+    "install_count": 2,
+    "rating_value": 5.0,
+    "rating_count": 1,
+    "flags": "validated, public",
+    "store_url": "https://marketplace.visualstudio.com/items?itemName=homerours.jumper-vscode",
+    "risk_signals": {
+      "low_adoption": true,
+      "unverified_publisher": true,
+      "few_ratings": true
+    }
+  },
+  "metadata_risk": {
+    "findings": [
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onStartupFinished': Activates immediately after VS Code starts",
+        "event": "onStartupFinished"
+      },
+      {
+        "type": "unverified_publisher",
+        "severity": "medium",
+        "detail": "Publisher domain is not verified"
+      },
+      {
+        "type": "low_adoption",
+        "severity": "medium",
+        "detail": "Low install count (<500)"
+      },
+      {
+        "type": "few_ratings",
+        "severity": "low",
+        "detail": "Very few ratings (<5)"
+      }
+    ],
+    "risk_score": 3,
+    "activation_events": [
+      "onStartupFinished"
+    ],
+    "contributes": [
+      "commands",
+      "keybindings",
+      "configuration"
+    ]
+  },
+  "package_json_deep": {
+    "findings": []
+  },
+  "supply_chain": {
+    "findings": [],
+    "risk_score": 0,
+    "dependency_count": 0,
+    "dev_dependency_count": 3,
+    "has_node_modules": false
+  },
+  "code_analysis": {
+    "all_findings": [
+      {
+        "name": "Workspace file access",
+        "severity": "low",
+        "description": "Accesses workspace files",
+        "category": "data_access",
+        "file": "extension.js",
+        "line": 144,
+        "evidence": "b(fileUri) {     const document = await vscode.workspace.openTextDocument(fileUri);     await vscode.window.showT"
+      },
+      {
+        "name": "Workspace file access",
+        "severity": "low",
+        "description": "Accesses workspace files",
+        "category": "data_access",
+        "file": "extension.js",
+        "line": 206,
+        "evidence": "tory(dirPath) {     const files = await vscode.workspace.findFiles(         new vscode.RelativePattern(dir"
+      },
+      {
+        "name": "Real-time document change listener",
+        "severity": "medium",
+        "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+        "category": "document_monitoring",
+        "file": "extension.js",
+        "line": 302,
+        "evidence": "bscriptions.push(         vscode.window.onDidChangeActiveTextEditor(editor => {             if (editor?.docu"
+      },
+      {
+        "name": "Workspace folder enumeration",
+        "severity": "low",
+        "description": "Accesses workspace root folder path",
+        "category": "workspace_harvesting",
+        "file": "extension.js",
+        "line": 319,
+        "evidence": "activation     const workspaceFolders = vscode.workspace.workspaceFolders;     if (workspaceFolders) {         wo"
+      },
+      {
+        "name": "Active editor fileName access",
+        "severity": "low",
+        "description": "Accesses the filename/path of the active document",
+        "category": "document_monitoring",
+        "file": "extension.js",
+        "line": 304,
+        "evidence": "{                 debouncedEditorUpdate(editor.document.fileName);             }         })     );"
+      }
+    ],
+    "module_usage": {
+      "process_execution": [
+        {
+          "module": "child_process",
+          "file": "extension.js",
+          "line": 2
+        }
+      ],
+      "file_access": [
+        {
+          "module": "path",
+          "file": "extension.js",
+          "line": 4
+        }
+      ]
+    },
+    "external_urls": [],
+    "file_entropies": {},
+    "files_scanned": 1,
+    "findings_by_category": {
+      "data_access": [
+        {
+          "name": "Workspace file access",
+          "severity": "low",
+          "description": "Accesses workspace files",
+          "category": "data_access",
+          "file": "extension.js",
+          "line": 144,
+          "evidence": "b(fileUri) {     const document = await vscode.workspace.openTextDocument(fileUri);     await vscode.window.showT"
+        },
+        {
+          "name": "Workspace file access",
+          "severity": "low",
+          "description": "Accesses workspace files",
+          "category": "data_access",
+          "file": "extension.js",
+          "line": 206,
+          "evidence": "tory(dirPath) {     const files = await vscode.workspace.findFiles(         new vscode.RelativePattern(dir"
+        }
+      ],
+      "document_monitoring": [
+        {
+          "name": "Real-time document change listener",
+          "severity": "medium",
+          "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+          "category": "document_monitoring",
+          "file": "extension.js",
+          "line": 302,
+          "evidence": "bscriptions.push(         vscode.window.onDidChangeActiveTextEditor(editor => {             if (editor?.docu"
+        },
+        {
+          "name": "Active editor fileName access",
+          "severity": "low",
+          "description": "Accesses the filename/path of the active document",
+          "category": "document_monitoring",
+          "file": "extension.js",
+          "line": 304,
+          "evidence": "{                 debouncedEditorUpdate(editor.document.fileName);             }         })     );"
+        }
+      ],
+      "workspace_harvesting": [
+        {
+          "name": "Workspace folder enumeration",
+          "severity": "low",
+          "description": "Accesses workspace root folder path",
+          "category": "workspace_harvesting",
+          "file": "extension.js",
+          "line": 319,
+          "evidence": "activation     const workspaceFolders = vscode.workspace.workspaceFolders;     if (workspaceFolders) {         wo"
+        }
+      ]
+    },
+    "findings_by_severity": {
+      "low": 4,
+      "medium": 1
+    },
+    "suppressed_false_positives": 0
+  },
+  "malicious_patterns": [
+    {
+      "name": "Workspace file access",
+      "severity": "low",
+      "description": "Accesses workspace files",
+      "category": "data_access",
+      "file": "extension.js",
+      "line": 144,
+      "evidence": "b(fileUri) {     const document = await vscode.workspace.openTextDocument(fileUri);     await vscode.window.showT"
+    },
+    {
+      "name": "Workspace file access",
+      "severity": "low",
+      "description": "Accesses workspace files",
+      "category": "data_access",
+      "file": "extension.js",
+      "line": 206,
+      "evidence": "tory(dirPath) {     const files = await vscode.workspace.findFiles(         new vscode.RelativePattern(dir"
+    },
+    {
+      "name": "Real-time document change listener",
+      "severity": "medium",
+      "description": "Monitors text document changes in real time - common in AI assistants, review data destinations",
+      "category": "document_monitoring",
+      "file": "extension.js",
+      "line": 302,
+      "evidence": "bscriptions.push(         vscode.window.onDidChangeActiveTextEditor(editor => {             if (editor?.docu"
+    },
+    {
+      "name": "Workspace folder enumeration",
+      "severity": "low",
+      "description": "Accesses workspace root folder path",
+      "category": "workspace_harvesting",
+      "file": "extension.js",
+      "line": 319,
+      "evidence": "activation     const workspaceFolders = vscode.workspace.workspaceFolders;     if (workspaceFolders) {         wo"
+    },
+    {
+      "name": "Active editor fileName access",
+      "severity": "low",
+      "description": "Accesses the filename/path of the active document",
+      "category": "document_monitoring",
+      "file": "extension.js",
+      "line": 304,
+      "evidence": "{                 debouncedEditorUpdate(editor.document.fileName);             }         })     );"
+    }
+  ],
+  "html_analysis": {
+    "findings": [],
+    "files_scanned": 0,
+    "iframe_urls": []
+  },
+  "permissions": {
+    "high_risk": [
+      {
+        "permission": "child_process",
+        "description": "Can execute system commands",
+        "evidence": [
+          {
+            "module": "child_process",
+            "file": "extension.js",
+            "line": 2
+          }
+        ]
+      }
+    ],
+    "medium_risk": [
+      {
+        "permission": "filesystem",
+        "description": "Can read/write files on disk",
+        "evidence": [
+          {
+            "module": "path",
+            "file": "extension.js",
+            "line": 4
+          }
+        ]
+      },
+      {
+        "permission": "real_time_document_monitoring",
+        "description": "Monitors text document changes in real time",
+        "finding_count": 2
+      }
+    ],
+    "low_risk": [],
+    "total": 3,
+    "all": [
+      "child_process",
+      "filesystem",
+      "real_time_document_monitoring"
+    ]
+  },
+  "risk_score": 0.6,
+  "risk_level": "MINIMAL",
+  "risk_breakdown": {
+    "metadata_publisher": 0.6,
+    "supply_chain": 0.0,
+    "code_analysis": 0.0,
+    "behavioral_correlations": 0,
+    "infrastructure": 0
+  },
+  "module_usage": {
+    "process_execution": [
+      {
+        "module": "child_process",
+        "file": "extension.js",
+        "line": 2
+      }
+    ],
+    "file_access": [
+      {
+        "module": "path",
+        "file": "extension.js",
+        "line": 4
+      }
+    ]
+  },
+  "external_urls": [],
+  "domain_intelligence": [],
+  "virustotal_results": []
+}

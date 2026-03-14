@@ -1,0 +1,201 @@
+{
+  "extension_type": "vscode",
+  "name": "isort",
+  "identifier": "ms-python.isort",
+  "extension_id": "ms-python.isort",
+  "version": "2025.1.13251007",
+  "description": "Import organization support for Python files using isort.",
+  "publisher": "ms-python",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "store_metadata": {
+    "available": true,
+    "store": "vscode",
+    "identifier": "ms-python.isort",
+    "name": "isort",
+    "publisher": "Microsoft",
+    "publisher_id": "998b010b-e2af-44a5-a6cd-0b5fd3b9b6f8",
+    "publisher_domain": "https://microsoft.com",
+    "publisher_verified": true,
+    "short_description": "Import organization support for Python files using isort.",
+    "version": "2025.1.13251007",
+    "last_updated": "2025-11-21T10:17:25.993Z",
+    "categories": [],
+    "tags": [],
+    "install_count": 25199161,
+    "rating_value": 2.54,
+    "rating_count": 37,
+    "flags": "validated, public, preview",
+    "store_url": "https://marketplace.visualstudio.com/items?itemName=ms-python.isort",
+    "risk_signals": {}
+  },
+  "metadata_risk": {
+    "findings": [
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:pyproject.toml': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:pyproject.toml"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'workspaceContains:.isort': Auto-runs when repo opened - can trigger on any workspace",
+        "event": "workspaceContains:.isort"
+      }
+    ],
+    "risk_score": 2,
+    "activation_events": [
+      "onLanguage:python",
+      "workspaceContains:pyproject.toml",
+      "workspaceContains:.isort"
+    ],
+    "contributes": [
+      "languages",
+      "configuration",
+      "commands"
+    ]
+  },
+  "package_json_deep": {
+    "findings": []
+  },
+  "supply_chain": {
+    "findings": [
+      {
+        "type": "dependency_vulnerability",
+        "severity": "low",
+        "package": "webpack",
+        "version": "5.101.3",
+        "cve_id": "GHSA-38r7-794h-5758",
+        "link": "https://github.com/advisories/GHSA-38r7-794h-5758",
+        "detail": "webpack@5.101.3 has known vulnerability GHSA-38r7-794h-5758 \u2014 webpack buildHttp HttpUriPlugin allowedUris bypass via HTTP redirects \u2192 SSRF + cache persistence (fix: >=5.104.0)"
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "low",
+        "package": "webpack",
+        "version": "5.101.3",
+        "cve_id": "GHSA-8fgc-7cc6-rx7x",
+        "link": "https://github.com/advisories/GHSA-8fgc-7cc6-rx7x",
+        "detail": "webpack@5.101.3 has known vulnerability GHSA-8fgc-7cc6-rx7x \u2014 webpack buildHttp: allowedUris allow-list bypass via URL userinfo (@) leading to build-time SSRF behavior (fix: >=5.104.1)"
+      }
+    ],
+    "risk_score": 0,
+    "dependency_count": 3,
+    "dev_dependency_count": 28,
+    "has_node_modules": false,
+    "dependency_vulns": [
+      {
+        "package": "webpack",
+        "version": "5.101.3",
+        "dep_type": "dev",
+        "vulns": [
+          {
+            "id": "GHSA-38r7-794h-5758",
+            "link": "https://github.com/advisories/GHSA-38r7-794h-5758",
+            "summary": "webpack buildHttp HttpUriPlugin allowedUris bypass via HTTP redirects \u2192 SSRF + cache persistence",
+            "severity": "low",
+            "cwe_ids": [
+              "CWE-918"
+            ],
+            "fix_version": "5.104.0",
+            "aliases": [
+              "CVE-2025-68157"
+            ],
+            "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:L/I:L/A:N"
+          },
+          {
+            "id": "GHSA-8fgc-7cc6-rx7x",
+            "link": "https://github.com/advisories/GHSA-8fgc-7cc6-rx7x",
+            "summary": "webpack buildHttp: allowedUris allow-list bypass via URL userinfo (@) leading to build-time SSRF behavior",
+            "severity": "low",
+            "cwe_ids": [
+              "CWE-918"
+            ],
+            "fix_version": "5.104.1",
+            "aliases": [
+              "CVE-2025-68458"
+            ],
+            "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:L/I:L/A:N"
+          }
+        ]
+      }
+    ],
+    "bundled_js_vulns": []
+  },
+  "code_analysis": {
+    "all_findings": [],
+    "module_usage": {},
+    "external_urls": [],
+    "file_entropies": {},
+    "files_scanned": 2,
+    "findings_by_category": {},
+    "findings_by_severity": {},
+    "suppressed_false_positives": 0
+  },
+  "malicious_patterns": [],
+  "html_analysis": {
+    "findings": [],
+    "files_scanned": 0,
+    "iframe_urls": []
+  },
+  "permissions": {
+    "high_risk": [],
+    "medium_risk": [],
+    "low_risk": [],
+    "total": 0,
+    "all": []
+  },
+  "risk_score": 5.0,
+  "risk_level": "MEDIUM",
+  "risk_breakdown": {
+    "supply_chain": 5.0,
+    "metadata_publisher": 0.2,
+    "code_analysis": 0,
+    "behavioral_correlations": 0,
+    "infrastructure": 0,
+    "positive_signals": -1.5
+  },
+  "positive_signals": {
+    "signals": [
+      {
+        "signal": "no_network_access",
+        "description": "Extension has no network capabilities - data stays local",
+        "weight": 0.5
+      },
+      {
+        "signal": "no_obfuscation",
+        "description": "No code obfuscation or evasion techniques detected",
+        "weight": 0.3
+      },
+      {
+        "signal": "no_credential_access",
+        "description": "No access to credential files, SSH keys, or token stores",
+        "weight": 0.3
+      },
+      {
+        "signal": "scoped_activation",
+        "description": "Extension activates only on specific events, not wildcard",
+        "weight": 0.2
+      },
+      {
+        "signal": "no_exfiltration_pattern",
+        "description": "No compound attack patterns detected",
+        "weight": 0.2
+      }
+    ],
+    "reduction": 1.5,
+    "count": 5
+  },
+  "risk_classification": {
+    "classification": "STANDARD_RISK",
+    "summary": "Moderate capabilities detected. Extension uses some sensitive APIs but no strong indicators of malicious intent.",
+    "suspicion_indicators": 0,
+    "positive_signal_count": 5
+  },
+  "module_usage": {},
+  "external_urls": [],
+  "domain_intelligence": [],
+  "virustotal_results": []
+}

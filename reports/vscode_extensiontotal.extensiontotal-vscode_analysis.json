@@ -1,0 +1,1044 @@
+{
+  "extension_type": "vscode",
+  "name": "Koidex - IDE Extension Security",
+  "identifier": "extensiontotal.extensiontotal-vscode",
+  "extension_id": "extensiontotal.extensiontotal-vscode",
+  "version": "2.0.0",
+  "description": "Analyze suspicious VS-based IDE extensions, navigate the extension jungle, and detect harmful code, risky access, and other security vulnerabilities.",
+  "publisher": "extensiontotal",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "store_metadata": {
+    "available": true,
+    "store": "vscode",
+    "identifier": "extensiontotal.extensiontotal-vscode",
+    "name": "Koidex - IDE Extension Security",
+    "publisher": "Koidex",
+    "publisher_id": "7af221e0-e5a8-4572-b8cd-3a446357f56a",
+    "publisher_domain": "https://www.koi.ai/",
+    "publisher_verified": true,
+    "short_description": "Analyze suspicious VS-based IDE extensions, navigate the extension jungle, and detect harmful code, risky access, and other security vulnerabilities.",
+    "version": "2.0.0",
+    "last_updated": "2026-02-09T19:18:32.63Z",
+    "categories": [],
+    "tags": [],
+    "install_count": 4681,
+    "rating_value": 4.2,
+    "rating_count": 5,
+    "flags": "validated, public",
+    "store_url": "https://marketplace.visualstudio.com/items?itemName=extensiontotal.extensiontotal-vscode",
+    "risk_signals": {}
+  },
+  "metadata_risk": {
+    "findings": [
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onStartupFinished': Runs every launch - immediate execution",
+        "event": "onStartupFinished"
+      },
+      {
+        "type": "risky_activation",
+        "severity": "medium",
+        "detail": "Activation event 'onCommand:Koidex.scan': Runs when command triggered - user/shortcut driven",
+        "event": "onCommand:Koidex.scan"
+      },
+      {
+        "type": "sensitive_contribution",
+        "severity": "medium",
+        "detail": "Contributes 'viewsContainers': Webview views - remote HTML/JS possible",
+        "contribution": "viewsContainers"
+      }
+    ],
+    "risk_score": 3,
+    "activation_events": [
+      "onStartupFinished",
+      "onCommand:Koidex.scan"
+    ],
+    "contributes": [
+      "viewsWelcome",
+      "viewsContainers",
+      "views",
+      "configuration",
+      "commands"
+    ]
+  },
+  "package_json_deep": {
+    "findings": [
+      {
+        "name": "No repository link in package.json",
+        "severity": "low",
+        "description": "No repository URL - reduces transparency and auditability",
+        "category": "package_json_no_repository",
+        "file": "package.json",
+        "line": 0,
+        "evidence": "repository field missing or empty"
+      },
+      {
+        "name": "Publisher-domain mismatch: extensiontotal vs dex.koi.security",
+        "severity": "medium",
+        "description": "Publisher \"extensiontotal\" does not match operational domain \"dex.koi.security\"",
+        "category": "publisher_mismatch",
+        "file": "package.json",
+        "line": 0,
+        "evidence": "publisher=extensiontotal, domain=dex.koi.security"
+      }
+    ]
+  },
+  "supply_chain": {
+    "findings": [],
+    "risk_score": 0,
+    "dependency_count": 0,
+    "dev_dependency_count": 9,
+    "has_node_modules": false,
+    "dependency_vulns": [],
+    "bundled_js_vulns": []
+  },
+  "code_analysis": {
+    "all_findings": [
+      {
+        "name": "Secret storage access",
+        "severity": "medium",
+        "description": "Accesses VS Code secret storage API",
+        "category": "credential_theft",
+        "file": "out\\AuthManager.js",
+        "line": 38,
+        "evidence": "this.currentToken = await this.context.secrets.get(this.SECRET_NAME);     }     async setT",
+        "path_type": "app"
+      },
+      {
+        "name": "Secret storage access",
+        "severity": "medium",
+        "description": "Accesses VS Code secret storage API",
+        "category": "credential_theft",
+        "file": "out\\AuthManager.js",
+        "line": 41,
+        "evidence": "ken(token) {         await this.context.secrets.store(this.SECRET_NAME, token);         this.",
+        "path_type": "app"
+      },
+      {
+        "name": "Secret storage access",
+        "severity": "medium",
+        "description": "Accesses VS Code secret storage API",
+        "category": "credential_theft",
+        "file": "out\\AuthManager.js",
+        "line": 46,
+        "evidence": "earToken() {         await this.context.secrets.delete(this.SECRET_NAME);         this.current",
+        "path_type": "app"
+      },
+      {
+        "name": "Browser-based exfiltration via env.openExternal",
+        "severity": "high",
+        "description": "Opens URL in user browser - can exfiltrate data via URL parameters",
+        "category": "browser_exfil",
+        "file": "out\\AuthManager.js",
+        "line": 91,
+        "evidence": "e = vscode.env.uriScheme;         await vscode.env.openExternal(vscode.Uri.parse(`${KOIDEX_LOGIN_URL}/${",
+        "path_type": "app"
+      },
+      {
+        "name": "Browser-based exfiltration via env.openExternal",
+        "severity": "high",
+        "description": "Opens URL in user browser - can exfiltrate data via URL parameters",
+        "category": "browser_exfil",
+        "file": "out\\AuthManager.js",
+        "line": 100,
+        "evidence": "ccessfully logged out.\");         await vscode.env.openExternal(vscode.Uri.parse(KOIDEX_LOGOUT_URL));",
+        "path_type": "app"
+      },
+      {
+        "name": "Browser-based exfiltration via env.openExternal",
+        "severity": "high",
+        "description": "Opens URL in user browser - can exfiltrate data via URL parameters",
+        "category": "browser_exfil",
+        "file": "out\\extension.js",
+        "line": 98,
+        "evidence": "{             return;         }         vscode.env.openExternal(vscode.Uri.parse(`https://dex.koi.securi",
+        "path_type": "app"
+      },
+      {
+        "name": "Persistent state storage (globalState)",
+        "severity": "medium",
+        "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+        "category": "persistence",
+        "file": "out\\ExtensionResultProvider.js",
+        "line": 36,
+        "evidence": "let savedResults = JSON.parse(this.context.globalState.get(`koidex-scan-results`, \"[]\"));         t",
+        "path_type": "app"
+      },
+      {
+        "name": "Persistent state storage (globalState)",
+        "severity": "medium",
+        "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+        "category": "persistence",
+        "file": "out\\ExtensionResultProvider.js",
+        "line": 45,
+        "evidence": "this.results = {};             this.context.globalState.update(`koidex-scan-results`, undefined);",
+        "path_type": "app"
+      },
+      {
+        "name": "Persistent state storage (globalState)",
+        "severity": "medium",
+        "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+        "category": "persistence",
+        "file": "out\\ExtensionResultProvider.js",
+        "line": 65,
+        "evidence": "risk: r.risk,         }));         this.context.globalState.update(`koidex-scan-results`, JSON.stringify(re",
+        "path_type": "app"
+      },
+      {
+        "name": "Browser-based exfiltration via env.openExternal",
+        "severity": "high",
+        "description": "Opens URL in user browser - can exfiltrate data via URL parameters",
+        "category": "browser_exfil",
+        "file": "out\\scanExtensions.js",
+        "line": 168,
+        "evidence": "ion === \"Contact Us\") {                 vscode.env.openExternal(vscode.Uri.parse(\"https://www.koi.ai/cha",
+        "path_type": "app"
+      },
+      {
+        "name": "Browser-based exfiltration via env.openExternal",
+        "severity": "high",
+        "description": "Opens URL in user browser - can exfiltrate data via URL parameters",
+        "category": "browser_exfil",
+        "file": "out\\scanExtensions.js",
+        "line": 253,
+        "evidence": "on === \"View Report\") {                 vscode.env.openExternal(vscode.Uri.parse(`https://dex.koi.securi",
+        "path_type": "app"
+      },
+      {
+        "name": "Persistent state storage (globalState)",
+        "severity": "medium",
+        "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+        "category": "persistence",
+        "file": "out\\scanExtensions.js",
+        "line": 41,
+        "evidence": "ache(context, extensionId) {     return context.globalState.get(`koidex-cache-${extensionId}`, null); }",
+        "path_type": "app"
+      },
+      {
+        "name": "Persistent state storage (globalState)",
+        "severity": "medium",
+        "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+        "category": "persistence",
+        "file": "out\\scanExtensions.js",
+        "line": 44,
+        "evidence": "ache(context, extensionId, cache) {     context.globalState.update(`koidex-cache-${extensionId}`, cache);",
+        "path_type": "app"
+      },
+      {
+        "name": "Persistent state storage (globalState)",
+        "severity": "medium",
+        "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+        "category": "persistence",
+        "file": "out\\scanExtensions.js",
+        "line": 45,
+        "evidence": "sionId}`, cache);     const cachedIds = context.globalState.get(`koidex-cached-ids`, []);     if (!cache",
+        "path_type": "app"
+      },
+      {
+        "name": "Persistent state storage (globalState)",
+        "severity": "medium",
+        "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+        "category": "persistence",
+        "file": "out\\scanExtensions.js",
+        "line": 48,
+        "evidence": "cachedIds.push(extensionId);         context.globalState.update(`koidex-cached-ids`, cachedIds);     } }",
+        "path_type": "app"
+      },
+      {
+        "name": "Persistent state storage (globalState)",
+        "severity": "medium",
+        "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+        "category": "persistence",
+        "file": "out\\scanExtensions.js",
+        "line": 52,
+        "evidence": "ntExtensionIds) {     const cachedIds = context.globalState.get(`koidex-cached-ids`, []);     const rema",
+        "path_type": "app"
+      },
+      {
+        "name": "Persistent state storage (globalState)",
+        "severity": "medium",
+        "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+        "category": "persistence",
+        "file": "out\\scanExtensions.js",
+        "line": 59,
+        "evidence": ");         }         else {             context.globalState.update(`koidex-cache-${cachedId}`, undefined);",
+        "path_type": "app"
+      },
+      {
+        "name": "Persistent state storage (globalState)",
+        "severity": "medium",
+        "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+        "category": "persistence",
+        "file": "out\\scanExtensions.js",
+        "line": 60,
+        "evidence": "e-${cachedId}`, undefined);             context.globalState.update(`alerted-${cachedId}`, undefined);",
+        "path_type": "app"
+      },
+      {
+        "name": "Persistent state storage (globalState)",
+        "severity": "medium",
+        "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+        "category": "persistence",
+        "file": "out\\scanExtensions.js",
+        "line": 63,
+        "evidence": "edId}`, undefined);         }     }     context.globalState.update(`koidex-cached-ids`, remainingIds); } fu",
+        "path_type": "app"
+      },
+      {
+        "name": "Persistent state storage (globalState)",
+        "severity": "medium",
+        "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+        "category": "persistence",
+        "file": "out\\scanExtensions.js",
+        "line": 244,
+        "evidence": "a.risk >= 7) {         let lastTagged = context.globalState.get(`alerted-${extensionId}`, \"no\");",
+        "path_type": "app"
+      },
+      {
+        "name": "Persistent state storage (globalState)",
+        "severity": "medium",
+        "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+        "category": "persistence",
+        "file": "out\\scanExtensions.js",
+        "line": 256,
+        "evidence": "}`));             }         });         context.globalState.update(`alerted-${extensionId}`, \"yes\");",
+        "path_type": "app"
+      },
+      {
+        "name": "Installed extensions enumeration",
+        "severity": "medium",
+        "description": "Enumerates all installed extensions - reconnaissance for extension hijacking",
+        "category": "reconnaissance",
+        "file": "out\\scanExtensions.js",
+        "line": 78,
+        "evidence": "return;     }     const extensions = vscode.extensions.all.filter((extension) => !extension.id.sta",
+        "path_type": "app"
+      },
+      {
+        "name": "Webview with scripts enabled",
+        "severity": "medium",
+        "description": "Webview with JavaScript enabled (XSS vector if loading external content)",
+        "category": "webview_risk",
+        "file": "out\\WelcomeViewProvider.js",
+        "line": 40,
+        "evidence": "iewView.webview.options = {             enableScripts: true,             localResourceRoots: [this.",
+        "path_type": "app"
+      }
+    ],
+    "module_usage": {
+      "network": [
+        {
+          "module": "https",
+          "file": "out\\utils.js",
+          "line": 9
+        }
+      ]
+    },
+    "external_urls": [
+      {
+        "url": "https://dex.koi.security/auth/extension-login",
+        "file": "out\\AuthManager.js",
+        "line": 28
+      },
+      {
+        "url": "https://dex.koi.security/auth/logout?returnTo=https://dex.koi.security/auth/logged-out",
+        "file": "out\\AuthManager.js",
+        "line": 29
+      },
+      {
+        "url": "https://www.koi.ai/chat-with-us",
+        "file": "out\\scanExtensions.js",
+        "line": 168
+      }
+    ],
+    "file_entropies": {},
+    "files_scanned": 9,
+    "findings_by_category": {
+      "credential_theft": [
+        {
+          "name": "Secret storage access",
+          "severity": "medium",
+          "description": "Accesses VS Code secret storage API",
+          "category": "credential_theft",
+          "file": "out\\AuthManager.js",
+          "line": 38,
+          "evidence": "this.currentToken = await this.context.secrets.get(this.SECRET_NAME);     }     async setT",
+          "path_type": "app"
+        },
+        {
+          "name": "Secret storage access",
+          "severity": "medium",
+          "description": "Accesses VS Code secret storage API",
+          "category": "credential_theft",
+          "file": "out\\AuthManager.js",
+          "line": 41,
+          "evidence": "ken(token) {         await this.context.secrets.store(this.SECRET_NAME, token);         this.",
+          "path_type": "app"
+        },
+        {
+          "name": "Secret storage access",
+          "severity": "medium",
+          "description": "Accesses VS Code secret storage API",
+          "category": "credential_theft",
+          "file": "out\\AuthManager.js",
+          "line": 46,
+          "evidence": "earToken() {         await this.context.secrets.delete(this.SECRET_NAME);         this.current",
+          "path_type": "app"
+        }
+      ],
+      "browser_exfil": [
+        {
+          "name": "Browser-based exfiltration via env.openExternal",
+          "severity": "high",
+          "description": "Opens URL in user browser - can exfiltrate data via URL parameters",
+          "category": "browser_exfil",
+          "file": "out\\AuthManager.js",
+          "line": 91,
+          "evidence": "e = vscode.env.uriScheme;         await vscode.env.openExternal(vscode.Uri.parse(`${KOIDEX_LOGIN_URL}/${",
+          "path_type": "app"
+        },
+        {
+          "name": "Browser-based exfiltration via env.openExternal",
+          "severity": "high",
+          "description": "Opens URL in user browser - can exfiltrate data via URL parameters",
+          "category": "browser_exfil",
+          "file": "out\\AuthManager.js",
+          "line": 100,
+          "evidence": "ccessfully logged out.\");         await vscode.env.openExternal(vscode.Uri.parse(KOIDEX_LOGOUT_URL));",
+          "path_type": "app"
+        },
+        {
+          "name": "Browser-based exfiltration via env.openExternal",
+          "severity": "high",
+          "description": "Opens URL in user browser - can exfiltrate data via URL parameters",
+          "category": "browser_exfil",
+          "file": "out\\extension.js",
+          "line": 98,
+          "evidence": "{             return;         }         vscode.env.openExternal(vscode.Uri.parse(`https://dex.koi.securi",
+          "path_type": "app"
+        },
+        {
+          "name": "Browser-based exfiltration via env.openExternal",
+          "severity": "high",
+          "description": "Opens URL in user browser - can exfiltrate data via URL parameters",
+          "category": "browser_exfil",
+          "file": "out\\scanExtensions.js",
+          "line": 168,
+          "evidence": "ion === \"Contact Us\") {                 vscode.env.openExternal(vscode.Uri.parse(\"https://www.koi.ai/cha",
+          "path_type": "app"
+        },
+        {
+          "name": "Browser-based exfiltration via env.openExternal",
+          "severity": "high",
+          "description": "Opens URL in user browser - can exfiltrate data via URL parameters",
+          "category": "browser_exfil",
+          "file": "out\\scanExtensions.js",
+          "line": 253,
+          "evidence": "on === \"View Report\") {                 vscode.env.openExternal(vscode.Uri.parse(`https://dex.koi.securi",
+          "path_type": "app"
+        }
+      ],
+      "persistence": [
+        {
+          "name": "Persistent state storage (globalState)",
+          "severity": "medium",
+          "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+          "category": "persistence",
+          "file": "out\\ExtensionResultProvider.js",
+          "line": 36,
+          "evidence": "let savedResults = JSON.parse(this.context.globalState.get(`koidex-scan-results`, \"[]\"));         t",
+          "path_type": "app"
+        },
+        {
+          "name": "Persistent state storage (globalState)",
+          "severity": "medium",
+          "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+          "category": "persistence",
+          "file": "out\\ExtensionResultProvider.js",
+          "line": 45,
+          "evidence": "this.results = {};             this.context.globalState.update(`koidex-scan-results`, undefined);",
+          "path_type": "app"
+        },
+        {
+          "name": "Persistent state storage (globalState)",
+          "severity": "medium",
+          "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+          "category": "persistence",
+          "file": "out\\ExtensionResultProvider.js",
+          "line": 65,
+          "evidence": "risk: r.risk,         }));         this.context.globalState.update(`koidex-scan-results`, JSON.stringify(re",
+          "path_type": "app"
+        },
+        {
+          "name": "Persistent state storage (globalState)",
+          "severity": "medium",
+          "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+          "category": "persistence",
+          "file": "out\\scanExtensions.js",
+          "line": 41,
+          "evidence": "ache(context, extensionId) {     return context.globalState.get(`koidex-cache-${extensionId}`, null); }",
+          "path_type": "app"
+        },
+        {
+          "name": "Persistent state storage (globalState)",
+          "severity": "medium",
+          "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+          "category": "persistence",
+          "file": "out\\scanExtensions.js",
+          "line": 44,
+          "evidence": "ache(context, extensionId, cache) {     context.globalState.update(`koidex-cache-${extensionId}`, cache);",
+          "path_type": "app"
+        },
+        {
+          "name": "Persistent state storage (globalState)",
+          "severity": "medium",
+          "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+          "category": "persistence",
+          "file": "out\\scanExtensions.js",
+          "line": 45,
+          "evidence": "sionId}`, cache);     const cachedIds = context.globalState.get(`koidex-cached-ids`, []);     if (!cache",
+          "path_type": "app"
+        },
+        {
+          "name": "Persistent state storage (globalState)",
+          "severity": "medium",
+          "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+          "category": "persistence",
+          "file": "out\\scanExtensions.js",
+          "line": 48,
+          "evidence": "cachedIds.push(extensionId);         context.globalState.update(`koidex-cached-ids`, cachedIds);     } }",
+          "path_type": "app"
+        },
+        {
+          "name": "Persistent state storage (globalState)",
+          "severity": "medium",
+          "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+          "category": "persistence",
+          "file": "out\\scanExtensions.js",
+          "line": 52,
+          "evidence": "ntExtensionIds) {     const cachedIds = context.globalState.get(`koidex-cached-ids`, []);     const rema",
+          "path_type": "app"
+        },
+        {
+          "name": "Persistent state storage (globalState)",
+          "severity": "medium",
+          "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+          "category": "persistence",
+          "file": "out\\scanExtensions.js",
+          "line": 59,
+          "evidence": ");         }         else {             context.globalState.update(`koidex-cache-${cachedId}`, undefined);",
+          "path_type": "app"
+        },
+        {
+          "name": "Persistent state storage (globalState)",
+          "severity": "medium",
+          "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+          "category": "persistence",
+          "file": "out\\scanExtensions.js",
+          "line": 60,
+          "evidence": "e-${cachedId}`, undefined);             context.globalState.update(`alerted-${cachedId}`, undefined);",
+          "path_type": "app"
+        },
+        {
+          "name": "Persistent state storage (globalState)",
+          "severity": "medium",
+          "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+          "category": "persistence",
+          "file": "out\\scanExtensions.js",
+          "line": 63,
+          "evidence": "edId}`, undefined);         }     }     context.globalState.update(`koidex-cached-ids`, remainingIds); } fu",
+          "path_type": "app"
+        },
+        {
+          "name": "Persistent state storage (globalState)",
+          "severity": "medium",
+          "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+          "category": "persistence",
+          "file": "out\\scanExtensions.js",
+          "line": 244,
+          "evidence": "a.risk >= 7) {         let lastTagged = context.globalState.get(`alerted-${extensionId}`, \"no\");",
+          "path_type": "app"
+        },
+        {
+          "name": "Persistent state storage (globalState)",
+          "severity": "medium",
+          "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+          "category": "persistence",
+          "file": "out\\scanExtensions.js",
+          "line": 256,
+          "evidence": "}`));             }         });         context.globalState.update(`alerted-${extensionId}`, \"yes\");",
+          "path_type": "app"
+        }
+      ],
+      "reconnaissance": [
+        {
+          "name": "Installed extensions enumeration",
+          "severity": "medium",
+          "description": "Enumerates all installed extensions - reconnaissance for extension hijacking",
+          "category": "reconnaissance",
+          "file": "out\\scanExtensions.js",
+          "line": 78,
+          "evidence": "return;     }     const extensions = vscode.extensions.all.filter((extension) => !extension.id.sta",
+          "path_type": "app"
+        }
+      ],
+      "webview_risk": [
+        {
+          "name": "Webview with scripts enabled",
+          "severity": "medium",
+          "description": "Webview with JavaScript enabled (XSS vector if loading external content)",
+          "category": "webview_risk",
+          "file": "out\\WelcomeViewProvider.js",
+          "line": 40,
+          "evidence": "iewView.webview.options = {             enableScripts: true,             localResourceRoots: [this.",
+          "path_type": "app"
+        }
+      ]
+    },
+    "findings_by_severity": {
+      "medium": 18,
+      "high": 5
+    },
+    "suppressed_false_positives": 1
+  },
+  "malicious_patterns": [
+    {
+      "name": "Secret storage access",
+      "severity": "medium",
+      "description": "Accesses VS Code secret storage API",
+      "category": "credential_theft",
+      "file": "out\\AuthManager.js",
+      "line": 38,
+      "evidence": "this.currentToken = await this.context.secrets.get(this.SECRET_NAME);     }     async setT",
+      "path_type": "app"
+    },
+    {
+      "name": "Secret storage access",
+      "severity": "medium",
+      "description": "Accesses VS Code secret storage API",
+      "category": "credential_theft",
+      "file": "out\\AuthManager.js",
+      "line": 41,
+      "evidence": "ken(token) {         await this.context.secrets.store(this.SECRET_NAME, token);         this.",
+      "path_type": "app"
+    },
+    {
+      "name": "Secret storage access",
+      "severity": "medium",
+      "description": "Accesses VS Code secret storage API",
+      "category": "credential_theft",
+      "file": "out\\AuthManager.js",
+      "line": 46,
+      "evidence": "earToken() {         await this.context.secrets.delete(this.SECRET_NAME);         this.current",
+      "path_type": "app"
+    },
+    {
+      "name": "Browser-based exfiltration via env.openExternal",
+      "severity": "high",
+      "description": "Opens URL in user browser - can exfiltrate data via URL parameters",
+      "category": "browser_exfil",
+      "file": "out\\AuthManager.js",
+      "line": 91,
+      "evidence": "e = vscode.env.uriScheme;         await vscode.env.openExternal(vscode.Uri.parse(`${KOIDEX_LOGIN_URL}/${",
+      "path_type": "app"
+    },
+    {
+      "name": "Browser-based exfiltration via env.openExternal",
+      "severity": "high",
+      "description": "Opens URL in user browser - can exfiltrate data via URL parameters",
+      "category": "browser_exfil",
+      "file": "out\\AuthManager.js",
+      "line": 100,
+      "evidence": "ccessfully logged out.\");         await vscode.env.openExternal(vscode.Uri.parse(KOIDEX_LOGOUT_URL));",
+      "path_type": "app"
+    },
+    {
+      "name": "Browser-based exfiltration via env.openExternal",
+      "severity": "high",
+      "description": "Opens URL in user browser - can exfiltrate data via URL parameters",
+      "category": "browser_exfil",
+      "file": "out\\extension.js",
+      "line": 98,
+      "evidence": "{             return;         }         vscode.env.openExternal(vscode.Uri.parse(`https://dex.koi.securi",
+      "path_type": "app"
+    },
+    {
+      "name": "Persistent state storage (globalState)",
+      "severity": "medium",
+      "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+      "category": "persistence",
+      "file": "out\\ExtensionResultProvider.js",
+      "line": 36,
+      "evidence": "let savedResults = JSON.parse(this.context.globalState.get(`koidex-scan-results`, \"[]\"));         t",
+      "path_type": "app"
+    },
+    {
+      "name": "Persistent state storage (globalState)",
+      "severity": "medium",
+      "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+      "category": "persistence",
+      "file": "out\\ExtensionResultProvider.js",
+      "line": 45,
+      "evidence": "this.results = {};             this.context.globalState.update(`koidex-scan-results`, undefined);",
+      "path_type": "app"
+    },
+    {
+      "name": "Persistent state storage (globalState)",
+      "severity": "medium",
+      "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+      "category": "persistence",
+      "file": "out\\ExtensionResultProvider.js",
+      "line": 65,
+      "evidence": "risk: r.risk,         }));         this.context.globalState.update(`koidex-scan-results`, JSON.stringify(re",
+      "path_type": "app"
+    },
+    {
+      "name": "Browser-based exfiltration via env.openExternal",
+      "severity": "high",
+      "description": "Opens URL in user browser - can exfiltrate data via URL parameters",
+      "category": "browser_exfil",
+      "file": "out\\scanExtensions.js",
+      "line": 168,
+      "evidence": "ion === \"Contact Us\") {                 vscode.env.openExternal(vscode.Uri.parse(\"https://www.koi.ai/cha",
+      "path_type": "app"
+    },
+    {
+      "name": "Browser-based exfiltration via env.openExternal",
+      "severity": "high",
+      "description": "Opens URL in user browser - can exfiltrate data via URL parameters",
+      "category": "browser_exfil",
+      "file": "out\\scanExtensions.js",
+      "line": 253,
+      "evidence": "on === \"View Report\") {                 vscode.env.openExternal(vscode.Uri.parse(`https://dex.koi.securi",
+      "path_type": "app"
+    },
+    {
+      "name": "Persistent state storage (globalState)",
+      "severity": "medium",
+      "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+      "category": "persistence",
+      "file": "out\\scanExtensions.js",
+      "line": 41,
+      "evidence": "ache(context, extensionId) {     return context.globalState.get(`koidex-cache-${extensionId}`, null); }",
+      "path_type": "app"
+    },
+    {
+      "name": "Persistent state storage (globalState)",
+      "severity": "medium",
+      "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+      "category": "persistence",
+      "file": "out\\scanExtensions.js",
+      "line": 44,
+      "evidence": "ache(context, extensionId, cache) {     context.globalState.update(`koidex-cache-${extensionId}`, cache);",
+      "path_type": "app"
+    },
+    {
+      "name": "Persistent state storage (globalState)",
+      "severity": "medium",
+      "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+      "category": "persistence",
+      "file": "out\\scanExtensions.js",
+      "line": 45,
+      "evidence": "sionId}`, cache);     const cachedIds = context.globalState.get(`koidex-cached-ids`, []);     if (!cache",
+      "path_type": "app"
+    },
+    {
+      "name": "Persistent state storage (globalState)",
+      "severity": "medium",
+      "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+      "category": "persistence",
+      "file": "out\\scanExtensions.js",
+      "line": 48,
+      "evidence": "cachedIds.push(extensionId);         context.globalState.update(`koidex-cached-ids`, cachedIds);     } }",
+      "path_type": "app"
+    },
+    {
+      "name": "Persistent state storage (globalState)",
+      "severity": "medium",
+      "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+      "category": "persistence",
+      "file": "out\\scanExtensions.js",
+      "line": 52,
+      "evidence": "ntExtensionIds) {     const cachedIds = context.globalState.get(`koidex-cached-ids`, []);     const rema",
+      "path_type": "app"
+    },
+    {
+      "name": "Persistent state storage (globalState)",
+      "severity": "medium",
+      "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+      "category": "persistence",
+      "file": "out\\scanExtensions.js",
+      "line": 59,
+      "evidence": ");         }         else {             context.globalState.update(`koidex-cache-${cachedId}`, undefined);",
+      "path_type": "app"
+    },
+    {
+      "name": "Persistent state storage (globalState)",
+      "severity": "medium",
+      "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+      "category": "persistence",
+      "file": "out\\scanExtensions.js",
+      "line": 60,
+      "evidence": "e-${cachedId}`, undefined);             context.globalState.update(`alerted-${cachedId}`, undefined);",
+      "path_type": "app"
+    },
+    {
+      "name": "Persistent state storage (globalState)",
+      "severity": "medium",
+      "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+      "category": "persistence",
+      "file": "out\\scanExtensions.js",
+      "line": 63,
+      "evidence": "edId}`, undefined);         }     }     context.globalState.update(`koidex-cached-ids`, remainingIds); } fu",
+      "path_type": "app"
+    },
+    {
+      "name": "Persistent state storage (globalState)",
+      "severity": "medium",
+      "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+      "category": "persistence",
+      "file": "out\\scanExtensions.js",
+      "line": 244,
+      "evidence": "a.risk >= 7) {         let lastTagged = context.globalState.get(`alerted-${extensionId}`, \"no\");",
+      "path_type": "app"
+    },
+    {
+      "name": "Persistent state storage (globalState)",
+      "severity": "medium",
+      "description": "Uses globalState for persistent cross-session storage - can persist C2 config",
+      "category": "persistence",
+      "file": "out\\scanExtensions.js",
+      "line": 256,
+      "evidence": "}`));             }         });         context.globalState.update(`alerted-${extensionId}`, \"yes\");",
+      "path_type": "app"
+    },
+    {
+      "name": "Installed extensions enumeration",
+      "severity": "medium",
+      "description": "Enumerates all installed extensions - reconnaissance for extension hijacking",
+      "category": "reconnaissance",
+      "file": "out\\scanExtensions.js",
+      "line": 78,
+      "evidence": "return;     }     const extensions = vscode.extensions.all.filter((extension) => !extension.id.sta",
+      "path_type": "app"
+    },
+    {
+      "name": "Webview with scripts enabled",
+      "severity": "medium",
+      "description": "Webview with JavaScript enabled (XSS vector if loading external content)",
+      "category": "webview_risk",
+      "file": "out\\WelcomeViewProvider.js",
+      "line": 40,
+      "evidence": "iewView.webview.options = {             enableScripts: true,             localResourceRoots: [this.",
+      "path_type": "app"
+    }
+  ],
+  "html_analysis": {
+    "findings": [],
+    "files_scanned": 0,
+    "iframe_urls": []
+  },
+  "permissions": {
+    "high_risk": [
+      {
+        "permission": "credential_access",
+        "description": "Accesses credential files/stores",
+        "finding_count": 3
+      }
+    ],
+    "medium_risk": [
+      {
+        "permission": "network",
+        "description": "Can make network requests",
+        "evidence": [
+          {
+            "module": "https",
+            "file": "out\\utils.js",
+            "line": 9
+          }
+        ]
+      }
+    ],
+    "low_risk": [],
+    "total": 2,
+    "all": [
+      "credential_access",
+      "network"
+    ]
+  },
+  "risk_score": 4.1,
+  "risk_level": "CRITICAL",
+  "risk_breakdown": {
+    "supply_chain": 0.0,
+    "metadata_publisher": 0.3,
+    "code_analysis": 1.5,
+    "behavioral_correlations": 0,
+    "infrastructure": 0,
+    "positive_signals": -0.7
+  },
+  "positive_signals": {
+    "signals": [
+      {
+        "signal": "no_obfuscation",
+        "description": "No code obfuscation or evasion techniques detected",
+        "weight": 0.3
+      },
+      {
+        "signal": "scoped_activation",
+        "description": "Extension activates only on specific events, not wildcard",
+        "weight": 0.2
+      },
+      {
+        "signal": "no_exfiltration_pattern",
+        "description": "No compound attack patterns detected",
+        "weight": 0.2
+      }
+    ],
+    "reduction": 0.7,
+    "count": 3
+  },
+  "risk_classification": {
+    "classification": "BENIGN",
+    "summary": "Low-risk extension with minimal sensitive capabilities.",
+    "suspicion_indicators": 3,
+    "positive_signal_count": 3
+  },
+  "module_usage": {
+    "network": [
+      {
+        "module": "https",
+        "file": "out\\utils.js",
+        "line": 9
+      }
+    ]
+  },
+  "external_urls": [
+    {
+      "url": "https://dex.koi.security/auth/extension-login",
+      "file": "out\\AuthManager.js",
+      "line": 28
+    },
+    {
+      "url": "https://dex.koi.security/auth/logout?returnTo=https://dex.koi.security/auth/logged-out",
+      "file": "out\\AuthManager.js",
+      "line": 29
+    },
+    {
+      "url": "https://www.koi.ai/chat-with-us",
+      "file": "out\\scanExtensions.js",
+      "line": 168
+    }
+  ],
+  "domain_intelligence": [
+    {
+      "domain": "dex.koi.security",
+      "url": "https://dex.koi.security/auth/extension-login",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "www.koi.ai",
+      "url": "https://www.koi.ai/chat-with-us",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    }
+  ],
+  "virustotal_results": [
+    {
+      "available": true,
+      "domain": "www.koi.ai",
+      "known": true,
+      "threat_level": "MALICIOUS",
+      "reputation": 0,
+      "stats": {
+        "malicious": 1,
+        "suspicious": 0,
+        "harmless": 58,
+        "undetected": 35
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [
+        {
+          "vendor": "SOCRadar",
+          "result": "malware"
+        }
+      ],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2017-12-16",
+        "age_days": 3009,
+        "age_human": "8 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".ai",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/www.koi.ai"
+    },
+    {
+      "available": true,
+      "domain": "dex.koi.security",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 59,
+        "undetected": 35
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2024-12-26",
+        "age_days": 442,
+        "age_human": "1 year",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".security",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/dex.koi.security"
+    }
+  ]
+}

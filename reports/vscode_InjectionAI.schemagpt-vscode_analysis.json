@@ -1,0 +1,759 @@
+{
+  "extension_type": "vscode",
+  "name": "SchemaGPT",
+  "identifier": "InjectionAI.schemagpt-vscode",
+  "extension_id": "InjectionAI.schemagpt-vscode",
+  "version": "1.1.8",
+  "description": "Talk to your database in plain English. AI converts your questions to SQL instantly.",
+  "publisher": "InjectionAI",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "store_metadata": {
+    "available": true,
+    "store": "vscode",
+    "identifier": "InjectionAI.schemagpt-vscode",
+    "name": "SchemaGPT",
+    "publisher": "InjectionAI",
+    "publisher_id": "bae0ec3d-32fb-434d-a92f-4cfabe0f55bf",
+    "publisher_domain": null,
+    "publisher_verified": false,
+    "short_description": "Talk to your database in plain English. AI converts your questions to SQL instantly.",
+    "version": "1.1.8",
+    "last_updated": "2026-02-08T19:45:50.913Z",
+    "categories": [],
+    "tags": [],
+    "install_count": 1,
+    "rating_value": 5.0,
+    "rating_count": 1,
+    "flags": "validated, public",
+    "store_url": "https://marketplace.visualstudio.com/items?itemName=InjectionAI.schemagpt-vscode",
+    "risk_signals": {
+      "low_adoption": true,
+      "unverified_publisher": true,
+      "few_ratings": true
+    }
+  },
+  "metadata_risk": {
+    "findings": [
+      {
+        "type": "unverified_publisher",
+        "severity": "medium",
+        "detail": "Publisher domain is not verified"
+      },
+      {
+        "type": "low_adoption",
+        "severity": "medium",
+        "detail": "Low install count (<500)"
+      },
+      {
+        "type": "few_ratings",
+        "severity": "low",
+        "detail": "Very few ratings (<5)"
+      }
+    ],
+    "risk_score": 2,
+    "activation_events": [
+      "onCommand:schemaGPT.askQuestion",
+      "onCommand:schemaGPT.connectDatabase",
+      "onCommand:schemaGPT.disconnectDatabase"
+    ],
+    "contributes": [
+      "commands",
+      "configuration",
+      "viewsContainers",
+      "views",
+      "menus"
+    ]
+  },
+  "package_json_deep": {
+    "findings": []
+  },
+  "supply_chain": {
+    "findings": [],
+    "risk_score": 0,
+    "dependency_count": 6,
+    "dev_dependency_count": 8,
+    "has_node_modules": false
+  },
+  "code_analysis": {
+    "all_findings": [
+      {
+        "name": "HTTP POST with sensitive data",
+        "severity": "medium",
+        "description": "Sends data via HTTP POST request",
+        "category": "network_exfil",
+        "file": "out\\DBCopilot.js",
+        "line": 132,
+        "evidence": "on server)                 resp = await fetch(this.proxyUrl, {                     method: 'POST',                     headers: {"
+      },
+      {
+        "name": "Workspace folder enumeration",
+        "severity": "low",
+        "description": "Accesses workspace root folder path",
+        "category": "workspace_harvesting",
+        "file": "out\\managers\\ConfigurationManager.js",
+        "line": 46,
+        "evidence": "kspace() {     const workspaceFolders = vscode.workspace.workspaceFolders;     if (workspaceFolders && workspaceF"
+      },
+      {
+        "name": "Webview with scripts enabled",
+        "severity": "medium",
+        "description": "Webview with JavaScript enabled (XSS vector if loading external content)",
+        "category": "webview_risk",
+        "file": "out\\providers\\QueryProvider.js",
+        "line": 115,
+        "evidence": "uery Results', vscode.ViewColumn.One, { enableScripts: true });         panel.webview.html = this.g"
+      }
+    ],
+    "module_usage": {
+      "file_access": [
+        {
+          "module": "fs",
+          "file": "out\\extension.js",
+          "line": 1
+        },
+        {
+          "module": "path",
+          "file": "out\\extension.js",
+          "line": 1
+        },
+        {
+          "module": "fs",
+          "file": "out\\extension.js",
+          "line": 14
+        },
+        {
+          "module": "stream",
+          "file": "out\\extension.js",
+          "line": 14
+        },
+        {
+          "module": "path",
+          "file": "out\\extension.js",
+          "line": 14
+        },
+        {
+          "module": "stream",
+          "file": "out\\extension.js",
+          "line": 14
+        },
+        {
+          "module": "path",
+          "file": "out\\extension.js",
+          "line": 15
+        },
+        {
+          "module": "fs",
+          "file": "out\\extension.js",
+          "line": 15
+        },
+        {
+          "module": "path",
+          "file": "out\\managers\\ConfigurationManager.js",
+          "line": 39
+        },
+        {
+          "module": "fs",
+          "file": "out\\managers\\ConfigurationManager.js",
+          "line": 40
+        }
+      ],
+      "os_info": [
+        {
+          "module": "os",
+          "file": "out\\extension.js",
+          "line": 1
+        }
+      ],
+      "crypto": [
+        {
+          "module": "crypto",
+          "file": "out\\extension.js",
+          "line": 1
+        },
+        {
+          "module": "crypto",
+          "file": "out\\extension.js",
+          "line": 14
+        },
+        {
+          "module": "crypto",
+          "file": "out\\extension.js",
+          "line": 14
+        }
+      ],
+      "network": [
+        {
+          "module": "dns",
+          "file": "out\\extension.js",
+          "line": 14
+        },
+        {
+          "module": "net",
+          "file": "out\\extension.js",
+          "line": 14
+        },
+        {
+          "module": "tls",
+          "file": "out\\extension.js",
+          "line": 14
+        },
+        {
+          "module": "net",
+          "file": "out\\extension.js",
+          "line": 14
+        }
+      ]
+    },
+    "external_urls": [
+      {
+        "url": "https://api.groq.com/openai/v1/chat/completions",
+        "file": "out\\DBCopilot.js",
+        "line": 111
+      },
+      {
+        "url": "https://api.openai.com/v1/chat/completions",
+        "file": "out\\DBCopilot.js",
+        "line": 113
+      },
+      {
+        "url": "https://api.groq.com/openai/v1/chat/completions",
+        "file": "out\\DBCopilot.js",
+        "line": 115
+      },
+      {
+        "url": "https://github.com/motdotla/dotenv#readme",
+        "file": "out\\extension.js",
+        "line": 1
+      },
+      {
+        "url": "https://dotenvx.com",
+        "file": "out\\extension.js",
+        "line": 1
+      },
+      {
+        "url": "https://ai-db-nppk.onrender.com/api/v1/ai/completions",
+        "file": "out\\managers\\ConfigurationManager.js",
+        "line": 155
+      }
+    ],
+    "file_entropies": {},
+    "files_scanned": 8,
+    "findings_by_category": {
+      "network_exfil": [
+        {
+          "name": "HTTP POST with sensitive data",
+          "severity": "medium",
+          "description": "Sends data via HTTP POST request",
+          "category": "network_exfil",
+          "file": "out\\DBCopilot.js",
+          "line": 132,
+          "evidence": "on server)                 resp = await fetch(this.proxyUrl, {                     method: 'POST',                     headers: {"
+        }
+      ],
+      "workspace_harvesting": [
+        {
+          "name": "Workspace folder enumeration",
+          "severity": "low",
+          "description": "Accesses workspace root folder path",
+          "category": "workspace_harvesting",
+          "file": "out\\managers\\ConfigurationManager.js",
+          "line": 46,
+          "evidence": "kspace() {     const workspaceFolders = vscode.workspace.workspaceFolders;     if (workspaceFolders && workspaceF"
+        }
+      ],
+      "webview_risk": [
+        {
+          "name": "Webview with scripts enabled",
+          "severity": "medium",
+          "description": "Webview with JavaScript enabled (XSS vector if loading external content)",
+          "category": "webview_risk",
+          "file": "out\\providers\\QueryProvider.js",
+          "line": 115,
+          "evidence": "uery Results', vscode.ViewColumn.One, { enableScripts: true });         panel.webview.html = this.g"
+        }
+      ]
+    },
+    "findings_by_severity": {
+      "medium": 2,
+      "low": 1
+    },
+    "suppressed_false_positives": 0
+  },
+  "malicious_patterns": [
+    {
+      "name": "HTTP POST with sensitive data",
+      "severity": "medium",
+      "description": "Sends data via HTTP POST request",
+      "category": "network_exfil",
+      "file": "out\\DBCopilot.js",
+      "line": 132,
+      "evidence": "on server)                 resp = await fetch(this.proxyUrl, {                     method: 'POST',                     headers: {"
+    },
+    {
+      "name": "Workspace folder enumeration",
+      "severity": "low",
+      "description": "Accesses workspace root folder path",
+      "category": "workspace_harvesting",
+      "file": "out\\managers\\ConfigurationManager.js",
+      "line": 46,
+      "evidence": "kspace() {     const workspaceFolders = vscode.workspace.workspaceFolders;     if (workspaceFolders && workspaceF"
+    },
+    {
+      "name": "Webview with scripts enabled",
+      "severity": "medium",
+      "description": "Webview with JavaScript enabled (XSS vector if loading external content)",
+      "category": "webview_risk",
+      "file": "out\\providers\\QueryProvider.js",
+      "line": 115,
+      "evidence": "uery Results', vscode.ViewColumn.One, { enableScripts: true });         panel.webview.html = this.g"
+    }
+  ],
+  "html_analysis": {
+    "findings": [],
+    "files_scanned": 0,
+    "iframe_urls": []
+  },
+  "permissions": {
+    "high_risk": [],
+    "medium_risk": [
+      {
+        "permission": "filesystem",
+        "description": "Can read/write files on disk",
+        "evidence": [
+          {
+            "module": "fs",
+            "file": "out\\extension.js",
+            "line": 1
+          },
+          {
+            "module": "path",
+            "file": "out\\extension.js",
+            "line": 1
+          },
+          {
+            "module": "fs",
+            "file": "out\\extension.js",
+            "line": 14
+          },
+          {
+            "module": "stream",
+            "file": "out\\extension.js",
+            "line": 14
+          },
+          {
+            "module": "path",
+            "file": "out\\extension.js",
+            "line": 14
+          },
+          {
+            "module": "stream",
+            "file": "out\\extension.js",
+            "line": 14
+          },
+          {
+            "module": "path",
+            "file": "out\\extension.js",
+            "line": 15
+          },
+          {
+            "module": "fs",
+            "file": "out\\extension.js",
+            "line": 15
+          },
+          {
+            "module": "path",
+            "file": "out\\managers\\ConfigurationManager.js",
+            "line": 39
+          },
+          {
+            "module": "fs",
+            "file": "out\\managers\\ConfigurationManager.js",
+            "line": 40
+          }
+        ]
+      },
+      {
+        "permission": "network",
+        "description": "Can make network requests",
+        "evidence": [
+          {
+            "module": "dns",
+            "file": "out\\extension.js",
+            "line": 14
+          },
+          {
+            "module": "net",
+            "file": "out\\extension.js",
+            "line": 14
+          },
+          {
+            "module": "tls",
+            "file": "out\\extension.js",
+            "line": 14
+          },
+          {
+            "module": "net",
+            "file": "out\\extension.js",
+            "line": 14
+          }
+        ]
+      }
+    ],
+    "low_risk": [
+      {
+        "permission": "os_info",
+        "description": "Can read OS information",
+        "evidence": [
+          {
+            "module": "os",
+            "file": "out\\extension.js",
+            "line": 1
+          }
+        ]
+      }
+    ],
+    "total": 3,
+    "all": [
+      "filesystem",
+      "network",
+      "os_info"
+    ]
+  },
+  "risk_score": 0.4,
+  "risk_level": "MINIMAL",
+  "risk_breakdown": {
+    "metadata_publisher": 0.4,
+    "supply_chain": 0.0,
+    "code_analysis": 0.0,
+    "behavioral_correlations": 0,
+    "infrastructure": 0
+  },
+  "module_usage": {
+    "file_access": [
+      {
+        "module": "fs",
+        "file": "out\\extension.js",
+        "line": 1
+      },
+      {
+        "module": "path",
+        "file": "out\\extension.js",
+        "line": 1
+      },
+      {
+        "module": "fs",
+        "file": "out\\extension.js",
+        "line": 14
+      },
+      {
+        "module": "stream",
+        "file": "out\\extension.js",
+        "line": 14
+      },
+      {
+        "module": "path",
+        "file": "out\\extension.js",
+        "line": 14
+      },
+      {
+        "module": "stream",
+        "file": "out\\extension.js",
+        "line": 14
+      },
+      {
+        "module": "path",
+        "file": "out\\extension.js",
+        "line": 15
+      },
+      {
+        "module": "fs",
+        "file": "out\\extension.js",
+        "line": 15
+      },
+      {
+        "module": "path",
+        "file": "out\\managers\\ConfigurationManager.js",
+        "line": 39
+      },
+      {
+        "module": "fs",
+        "file": "out\\managers\\ConfigurationManager.js",
+        "line": 40
+      }
+    ],
+    "os_info": [
+      {
+        "module": "os",
+        "file": "out\\extension.js",
+        "line": 1
+      }
+    ],
+    "crypto": [
+      {
+        "module": "crypto",
+        "file": "out\\extension.js",
+        "line": 1
+      },
+      {
+        "module": "crypto",
+        "file": "out\\extension.js",
+        "line": 14
+      },
+      {
+        "module": "crypto",
+        "file": "out\\extension.js",
+        "line": 14
+      }
+    ],
+    "network": [
+      {
+        "module": "dns",
+        "file": "out\\extension.js",
+        "line": 14
+      },
+      {
+        "module": "net",
+        "file": "out\\extension.js",
+        "line": 14
+      },
+      {
+        "module": "tls",
+        "file": "out\\extension.js",
+        "line": 14
+      },
+      {
+        "module": "net",
+        "file": "out\\extension.js",
+        "line": 14
+      }
+    ]
+  },
+  "external_urls": [
+    {
+      "url": "https://api.groq.com/openai/v1/chat/completions",
+      "file": "out\\DBCopilot.js",
+      "line": 111
+    },
+    {
+      "url": "https://api.openai.com/v1/chat/completions",
+      "file": "out\\DBCopilot.js",
+      "line": 113
+    },
+    {
+      "url": "https://api.groq.com/openai/v1/chat/completions",
+      "file": "out\\DBCopilot.js",
+      "line": 115
+    },
+    {
+      "url": "https://github.com/motdotla/dotenv#readme",
+      "file": "out\\extension.js",
+      "line": 1
+    },
+    {
+      "url": "https://dotenvx.com",
+      "file": "out\\extension.js",
+      "line": 1
+    },
+    {
+      "url": "https://ai-db-nppk.onrender.com/api/v1/ai/completions",
+      "file": "out\\managers\\ConfigurationManager.js",
+      "line": 155
+    }
+  ],
+  "domain_intelligence": [
+    {
+      "domain": "api.groq.com",
+      "url": "https://api.groq.com/openai/v1/chat/completions",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "api.openai.com",
+      "url": "https://api.openai.com/v1/chat/completions",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "github.com",
+      "url": "https://github.com/motdotla/dotenv#readme",
+      "threat_level": "BENIGN",
+      "confidence": 95,
+      "classification": "Legitimate Infrastructure",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": true,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "dotenvx.com",
+      "url": "https://dotenvx.com",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "ai-db-nppk.onrender.com",
+      "url": "https://ai-db-nppk.onrender.com/api/v1/ai/completions",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    }
+  ],
+  "virustotal_results": [
+    {
+      "available": true,
+      "domain": "ai-db-nppk.onrender.com",
+      "known": false,
+      "message": "Domain not found in VirusTotal database"
+    },
+    {
+      "available": true,
+      "domain": "api.openai.com",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 64,
+        "undetected": 29
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {
+        "alphaMountain.ai": "Business/Economy, Information Technology (alphaMountain.ai)",
+        "BitDefender": "computersandsoftware",
+        "Dr.Web": "chats",
+        "Sophos": "information technology",
+        "Forcepoint ThreatSeeker": "generative ai - text and code"
+      },
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2007-01-19",
+        "age_days": 6959,
+        "age_human": "19 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".com",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/api.openai.com"
+    },
+    {
+      "available": true,
+      "domain": "api.groq.com",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 62,
+        "undetected": 31
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2007-07-22",
+        "age_days": 6776,
+        "age_human": "18 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".com",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/api.groq.com"
+    },
+    {
+      "available": true,
+      "domain": "dotenvx.com",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 62,
+        "undetected": 31
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2023-11-20",
+        "age_days": 811,
+        "age_human": "2 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".com",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/dotenvx.com"
+    }
+  ]
+}

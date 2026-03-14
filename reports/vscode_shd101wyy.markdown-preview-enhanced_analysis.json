@@ -1,0 +1,1549 @@
+{
+  "extension_type": "vscode",
+  "name": "Markdown Preview Enhanced",
+  "identifier": "shd101wyy.markdown-preview-enhanced",
+  "extension_id": "shd101wyy.markdown-preview-enhanced",
+  "version": "0.8.20",
+  "description": "Markdown Preview Enhanced ported to vscode",
+  "publisher": "shd101wyy",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "store_metadata": {
+    "available": true,
+    "store": "vscode",
+    "identifier": "shd101wyy.markdown-preview-enhanced",
+    "name": "Markdown Preview Enhanced",
+    "publisher": "Yiyi Wang",
+    "publisher_id": "deac4ec9-08f5-4752-aa45-c6f09e1f615d",
+    "publisher_domain": null,
+    "publisher_verified": false,
+    "short_description": "Markdown Preview Enhanced ported to vscode",
+    "version": "0.8.20",
+    "last_updated": "2025-11-01T12:22:12.14Z",
+    "categories": [],
+    "tags": [],
+    "install_count": 8595165,
+    "rating_value": 4.36,
+    "rating_count": 135,
+    "flags": "validated, public",
+    "store_url": "https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced",
+    "risk_signals": {
+      "unverified_publisher": true
+    }
+  },
+  "metadata_risk": {
+    "findings": [
+      {
+        "type": "sensitive_contribution",
+        "severity": "medium",
+        "detail": "Contributes 'customEditors': Webview-based editors - XSS/phishing surface",
+        "contribution": "customEditors"
+      },
+      {
+        "type": "known_vulnerable_extension",
+        "severity": "critical",
+        "detail": "shd101wyy.markdown-preview-enhanced is affected by CVE-2025-65716: Markdown Preview Enhanced vulnerability allows crafted Markdown to execute arbitrary JavaScript in the preview iframe, enabling localhost port scanning and potential data exfiltration.",
+        "identifier": "shd101wyy.markdown-preview-enhanced",
+        "cve": "CVE-2025-65716",
+        "reference": "https://www.ox.security/blog/cve-2025-65716-markdown-preview-enhanced-vscode-vulnerability/",
+        "risk_context": "localhost_exposure",
+        "mitigation_note": "Vulnerability requires opening a crafted Markdown file. Risk is limited to dev environments. Update to latest version."
+      }
+    ],
+    "risk_score": 8,
+    "activation_events": [
+      "onLanguage:markdown",
+      "onLanguage:quarto"
+    ],
+    "contributes": [
+      "commands",
+      "configuration",
+      "customEditors",
+      "keybindings",
+      "menus"
+    ]
+  },
+  "package_json_deep": {
+    "findings": [
+      {
+        "name": "Suspicious URL in package.json config: markdown-preview-enhanced.mathRenderingOnlineService",
+        "severity": "medium",
+        "description": "Hardcoded URL in config default: markdown-preview-enhanced.mathRenderingOnlineService",
+        "category": "package_json_suspicious_url",
+        "file": "package.json",
+        "line": 0,
+        "evidence": "markdown-preview-enhanced.mathRenderingOnlineService default = https://latex.codecogs.com/gif.latex"
+      },
+      {
+        "name": "Suspicious URL in package.json config: markdown-preview-enhanced.mathjaxV3ScriptSrc",
+        "severity": "medium",
+        "description": "Hardcoded URL in config default: markdown-preview-enhanced.mathjaxV3ScriptSrc",
+        "category": "package_json_suspicious_url",
+        "file": "package.json",
+        "line": 0,
+        "evidence": "markdown-preview-enhanced.mathjaxV3ScriptSrc default = https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+      },
+      {
+        "name": "Suspicious URL in package.json config: markdown-preview-enhanced.krokiServer",
+        "severity": "medium",
+        "description": "Hardcoded URL in config default: markdown-preview-enhanced.krokiServer",
+        "category": "package_json_suspicious_url",
+        "file": "package.json",
+        "line": 0,
+        "evidence": "markdown-preview-enhanced.krokiServer default = https://kroki.io"
+      }
+    ]
+  },
+  "supply_chain": {
+    "findings": [
+      {
+        "type": "lifecycle_script",
+        "severity": "info",
+        "detail": "'prepare' script: husky install",
+        "script_name": "prepare",
+        "script_content": "husky install"
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "low",
+        "package": "webpack",
+        "version": "5.88.2",
+        "cve_id": "GHSA-38r7-794h-5758",
+        "link": "https://github.com/advisories/GHSA-38r7-794h-5758",
+        "detail": "webpack@5.88.2 has known vulnerability GHSA-38r7-794h-5758 \u2014 webpack buildHttp HttpUriPlugin allowedUris bypass via HTTP redirects \u2192 SSRF + cache persistence (fix: >=5.104.0)"
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "medium",
+        "package": "webpack",
+        "version": "5.88.2",
+        "cve_id": "GHSA-4vvj-4cpr-p986",
+        "link": "https://github.com/advisories/GHSA-4vvj-4cpr-p986",
+        "detail": "webpack@5.88.2 has known vulnerability GHSA-4vvj-4cpr-p986 \u2014 Webpack's AutoPublicPathRuntimeModule has a DOM Clobbering Gadget that leads to XSS (fix: >=5.94.0)"
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "low",
+        "package": "webpack",
+        "version": "5.88.2",
+        "cve_id": "GHSA-8fgc-7cc6-rx7x",
+        "link": "https://github.com/advisories/GHSA-8fgc-7cc6-rx7x",
+        "detail": "webpack@5.88.2 has known vulnerability GHSA-8fgc-7cc6-rx7x \u2014 webpack buildHttp: allowedUris allow-list bypass via URL userinfo (@) leading to build-time SSRF behavior (fix: >=5.104.1)"
+      }
+    ],
+    "risk_score": 2,
+    "dependency_count": 5,
+    "dev_dependency_count": 22,
+    "has_node_modules": false,
+    "dependency_vulns": [
+      {
+        "package": "webpack",
+        "version": "5.88.2",
+        "dep_type": "dev",
+        "vulns": [
+          {
+            "id": "GHSA-38r7-794h-5758",
+            "link": "https://github.com/advisories/GHSA-38r7-794h-5758",
+            "summary": "webpack buildHttp HttpUriPlugin allowedUris bypass via HTTP redirects \u2192 SSRF + cache persistence",
+            "severity": "low",
+            "cwe_ids": [
+              "CWE-918"
+            ],
+            "fix_version": "5.104.0",
+            "aliases": [
+              "CVE-2025-68157"
+            ],
+            "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:L/I:L/A:N"
+          },
+          {
+            "id": "GHSA-4vvj-4cpr-p986",
+            "link": "https://github.com/advisories/GHSA-4vvj-4cpr-p986",
+            "summary": "Webpack's AutoPublicPathRuntimeModule has a DOM Clobbering Gadget that leads to XSS",
+            "severity": "medium",
+            "cwe_ids": [
+              "CWE-79"
+            ],
+            "fix_version": "5.94.0",
+            "aliases": [
+              "CVE-2024-43788"
+            ],
+            "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:H"
+          },
+          {
+            "id": "GHSA-8fgc-7cc6-rx7x",
+            "link": "https://github.com/advisories/GHSA-8fgc-7cc6-rx7x",
+            "summary": "webpack buildHttp: allowedUris allow-list bypass via URL userinfo (@) leading to build-time SSRF behavior",
+            "severity": "low",
+            "cwe_ids": [
+              "CWE-918"
+            ],
+            "fix_version": "5.104.1",
+            "aliases": [
+              "CVE-2025-68458"
+            ],
+            "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:L/I:L/A:N"
+          }
+        ]
+      }
+    ],
+    "bundled_js_vulns": []
+  },
+  "code_analysis": {
+    "all_findings": [
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "crossnote\\dependencies\\reveal\\js\\reveal.js",
+        "line": 8,
+        "evidence": ",mpeg:\"video/mpeg\",webm:\"video/webm\"},u=navigator.userAgent,g=/(iphone|ipod|ipad|android)/gi.test(u",
+        "path_type": "dependency",
+        "dependency_suppressed": true,
+        "original_severity": "low"
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "crossnote\\dependencies\\reveal\\js\\reveal.js",
+        "line": 8,
+        "evidence": "|ipad|android)/gi.test(u)||\"MacIntel\"===navigator.platform&&navigator.maxTouchPoints>1;/chrome/i.t",
+        "path_type": "dependency",
+        "dependency_suppressed": true,
+        "original_severity": "low"
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "crossnote\\dependencies\\reveal\\lib\\js\\head.min.js",
+        "line": 2,
+        "evidence": "rWidth||c.clientWidth;e=n.outerWidth||n.screen.width;u.screen.innerWidth=t;u.screen.outerWid",
+        "path_type": "dependency",
+        "dependency_suppressed": true,
+        "original_severity": "low"
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "crossnote\\dependencies\\reveal\\lib\\js\\head.min.js",
+        "line": 2,
+        "evidence": "ight||c.clientHeight;o=n.outerHeight||n.screen.height;u.screen.innerHeight=f;u.screen.outerHe",
+        "path_type": "dependency",
+        "dependency_suppressed": true,
+        "original_severity": "low"
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "crossnote\\dependencies\\reveal\\lib\\js\\head.min.js",
+        "line": 2,
+        "evidence": "\"root\"+i.section)}});u.screen={height:n.screen.height,width:n.screen.width};tt();b=0;n.addEve",
+        "path_type": "dependency",
+        "dependency_suppressed": true,
+        "original_severity": "low"
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "crossnote\\dependencies\\reveal\\lib\\js\\head.min.js",
+        "line": 2,
+        "evidence": ".screen={height:n.screen.height,width:n.screen.width};tt();b=0;n.addEventListener?n.addEvent",
+        "path_type": "dependency",
+        "dependency_suppressed": true,
+        "original_severity": "low"
+      },
+      {
+        "name": "File reading via createReadStream",
+        "severity": "info",
+        "description": "Reads files via stream - bypasses readFile/readFileSync detection",
+        "category": "workspace_harvesting",
+        "file": "crossnote\\dependencies\\reveal\\plugin\\multiplex\\index.js",
+        "line": 35,
+        "evidence": "nt-Type': 'text/html'});  \tvar stream = fs.createReadStream(opts.baseDir + '/index.html'); \tstream.o",
+        "path_type": "dependency",
+        "dependency_suppressed": true,
+        "original_severity": "medium"
+      },
+      {
+        "name": "Local HTTP server creation",
+        "severity": "low",
+        "description": "Creates local HTTP server - potential remote control endpoint",
+        "category": "local_server",
+        "file": "crossnote\\dependencies\\reveal\\plugin\\multiplex\\index.js",
+        "line": 9,
+        "evidence": "= express.static; var server    \t= http.createServer(app);  io = io(server);  var opts = { \tp",
+        "path_type": "dependency",
+        "dependency_suppressed": true,
+        "original_severity": "high"
+      },
+      {
+        "name": "Bulk file reading with variable path",
+        "severity": "info",
+        "description": "Reads file content using variable path - bulk file harvesting indicator",
+        "category": "workspace_harvesting",
+        "file": "crossnote\\dependencies\\reveal\\plugin\\notes-server\\index.js",
+        "line": 49,
+        "evidence": "es/:socketId', function( req, res ) {  \tfs.readFile( opts.baseDir + 'plugin/notes-server/notes.ht",
+        "path_type": "dependency",
+        "dependency_suppressed": true,
+        "original_severity": "medium"
+      },
+      {
+        "name": "Localhost HTTP access from extension code",
+        "severity": "info",
+        "description": "Accesses localhost HTTP services from extension code - review for port scan or local file exfiltration behavior",
+        "category": "localhost_access",
+        "file": "crossnote\\dependencies\\reveal\\plugin\\notes-server\\index.js",
+        "line": 64,
+        "evidence": "eset = '\\033[0m';  var slidesLocation = 'http://localhost' + ( opts.port ? ( ':' + opts.port ) :",
+        "path_type": "dependency",
+        "dependency_suppressed": true,
+        "original_severity": "medium"
+      },
+      {
+        "name": "File reading via createReadStream",
+        "severity": "info",
+        "description": "Reads files via stream - bypasses readFile/readFileSync detection",
+        "category": "workspace_harvesting",
+        "file": "crossnote\\dependencies\\reveal\\plugin\\notes-server\\index.js",
+        "line": 43,
+        "evidence": "00, { 'Content-Type': 'text/html' } ); \tfs.createReadStream( opts.baseDir + '/index.html' ).pipe( re",
+        "path_type": "dependency",
+        "dependency_suppressed": true,
+        "original_severity": "medium"
+      },
+      {
+        "name": "Local HTTP server creation",
+        "severity": "low",
+        "description": "Creates local HTTP server - potential remote control endpoint",
+        "category": "local_server",
+        "file": "crossnote\\dependencies\\reveal\\plugin\\notes-server\\index.js",
+        "line": 9,
+        "evidence": "= express.static; var server    = http.createServer(app);  io = io(server);  var opts = { \tp",
+        "path_type": "dependency",
+        "dependency_suppressed": true,
+        "original_severity": "high"
+      },
+      {
+        "name": "Plaintext HTTP endpoint (not HTTPS)",
+        "severity": "low",
+        "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+        "category": "insecure_endpoint",
+        "file": "crossnote\\dependencies\\reveal\\plugin\\print-pdf\\print-pdf.js",
+        "line": 5,
+        "evidence": "*  * Example:  * phantomjs print-pdf.js \"http://revealjs.com?print-pdf\" reveal-demo.pdf  *  * @autho",
+        "path_type": "dependency",
+        "dependency_suppressed": true,
+        "original_severity": "high"
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "crossnote\\dependencies\\reveal\\plugin\\zoom\\plugin.js",
+        "line": 11,
+        "evidence": "defaultModifier = /Linux/.test( window.navigator.platform ) ? 'ctrl' : 'alt';  \t\t\tvar modifier =",
+        "path_type": "dependency",
+        "dependency_suppressed": true,
+        "original_severity": "low"
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "crossnote\\dependencies\\reveal\\plugin\\zoom\\zoom.js",
+        "line": 4,
+        "evidence": ",(function(o){var n=/Linux/.test(window.navigator.platform)?\"ctrl\":\"alt\",i=(e.getConfig().zoomKey?",
+        "path_type": "dependency",
+        "dependency_suppressed": true,
+        "original_severity": "low"
+      },
+      {
+        "name": "User/device fingerprinting",
+        "severity": "low",
+        "description": "Browser/device fingerprinting APIs used",
+        "category": "telemetry_abuse",
+        "file": "crossnote\\dependencies\\reveal\\plugin\\zoom-js\\zoom.js",
+        "line": 7,
+        "evidence": "defaultModifier = /Linux/.test( window.navigator.platform ) ? 'ctrl' : 'alt';  \t\t\tvar modifier =",
+        "path_type": "dependency",
+        "dependency_suppressed": true,
+        "original_severity": "low"
+      },
+      {
+        "name": "Unsafe Object.assign with user input",
+        "severity": "info",
+        "description": "Object.assign with potentially untrusted source",
+        "category": "prototype_pollution",
+        "file": "crossnote\\dependencies\\vega-embed\\vega-embed.min.js",
+        "line": 6,
+        "evidence": "nProperty.call(e,\"default\")?e.default:e}Object.assign({},S,C,{JsonPatchError:m,deepClone:h,escap",
+        "path_type": "dependency",
+        "dependency_suppressed": true,
+        "original_severity": "medium"
+      },
+      {
+        "name": "eval() usage",
+        "severity": "low",
+        "description": "Dynamic code execution via eval()",
+        "category": "code_execution",
+        "file": "crossnote\\dependencies\\wavedrom\\wavedrom.min.js",
+        "line": 2,
+        "evidence": "\"textarea\"===TheTextBox.type)try{source=eval(\"(\"+TheTextBox.value+\")\")}catch(e){retur",
+        "path_type": "dependency",
+        "dependency_suppressed": true,
+        "original_severity": "high"
+      },
+      {
+        "name": "eval() usage",
+        "severity": "low",
+        "description": "Dynamic code execution via eval()",
+        "category": "code_execution",
+        "file": "crossnote\\dependencies\\wavedrom\\wavedrom.min.js",
+        "line": 2,
+        "evidence": "catch(e){return erra(e)}else try{source=eval(\"(\"+TheTextBox.innerHTML+\")\")}catch(e){r",
+        "path_type": "dependency",
+        "dependency_suppressed": true,
+        "original_severity": "high"
+      },
+      {
+        "name": "Plaintext HTTP endpoint (not HTTPS)",
+        "severity": "low",
+        "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+        "category": "insecure_endpoint",
+        "file": "crossnote\\dependencies\\wavedrom\\wavedrom.min.js",
+        "line": 2,
+        "evidence": "iming diagram in your browser\",homepage:\"http://wavedrom.com\",author:\"alex.drom@gmail.com\",license:\"",
+        "path_type": "dependency",
+        "dependency_suppressed": true,
+        "original_severity": "high"
+      },
+      {
+        "name": "Webview innerHTML assignment",
+        "severity": "high",
+        "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+        "category": "webview_risk",
+        "file": "crossnote\\webview\\backlinks.js",
+        "line": 5,
+        "evidence": "/www.w3.org/2000/svg\"||\"innerHTML\"in e)e.innerHTML=t;else{for(cn=cn||document.createElement",
+        "path_type": "app"
+      },
+      {
+        "name": "constructor.prototype access",
+        "severity": "medium",
+        "description": "Accessing constructor.prototype (potential prototype pollution)",
+        "category": "prototype_pollution",
+        "file": "crossnote\\webview\\backlinks.js",
+        "line": 5,
+        "evidence": "ue\",r=Object.getOwnPropertyDescriptor(e.constructor.prototype,t),n=\"\"+e[t];if(!e.hasOwnProperty(t)&&t",
+        "path_type": "app"
+      },
+      {
+        "name": "Device fingerprinting + exfiltration: hardware/environment profiling + network",
+        "severity": "high",
+        "description": "Extension collects device hardware information (CPU, memory, network interfaces) and/or environment variables combined with network access - potential device fingerprinting and environment reconnaissance exfiltration.",
+        "category": "behavioral_correlation",
+        "file": "crossnote\\dependencies\\reveal\\js\\reveal.js",
+        "line": 0,
+        "evidence": "User/device fingerprinting + Plaintext HTTP endpoint (not HTTPS)",
+        "confidence": "HIGH",
+        "attack_type": "fingerprint_exfil"
+      },
+      {
+        "name": "Remote Automation Agent: shell exec + local server + remote orchestration",
+        "severity": "critical",
+        "description": "Extension can execute shell commands AND runs a local server or communicates with a remote orchestration backend. This is the architecture of a remote automation agent - the machine becomes a worker node controlled by an external server.",
+        "category": "behavioral_correlation",
+        "file": "crossnote\\dependencies\\wavedrom\\wavedrom.min.js",
+        "line": 0,
+        "evidence": "eval() usage + Local HTTP server creation + Plaintext HTTP endpoint (not HTTPS)",
+        "confidence": "HIGH",
+        "attack_type": "remote_agent"
+      }
+    ],
+    "module_usage": {
+      "network": [
+        {
+          "module": "http",
+          "file": "crossnote\\dependencies\\reveal\\plugin\\multiplex\\index.js",
+          "line": 1
+        },
+        {
+          "module": "http",
+          "file": "crossnote\\dependencies\\reveal\\plugin\\notes-server\\index.js",
+          "line": 1
+        }
+      ],
+      "file_access": [
+        {
+          "module": "fs",
+          "file": "crossnote\\dependencies\\reveal\\plugin\\multiplex\\index.js",
+          "line": 3
+        },
+        {
+          "module": "fs",
+          "file": "crossnote\\dependencies\\reveal\\plugin\\notes-server\\index.js",
+          "line": 3
+        }
+      ],
+      "crypto": [
+        {
+          "module": "crypto",
+          "file": "crossnote\\dependencies\\reveal\\plugin\\multiplex\\index.js",
+          "line": 5
+        }
+      ]
+    },
+    "external_urls": [
+      {
+        "url": "https://twitter.com/",
+        "file": "crossnote\\dependencies\\remarkable\\remarkable.js",
+        "line": 4
+      },
+      {
+        "url": "http://revealjs.com?print-pdf",
+        "file": "crossnote\\dependencies\\reveal\\plugin\\print-pdf\\print-pdf.js",
+        "line": 5
+      },
+      {
+        "url": "https://vega.github.io/editor/",
+        "file": "crossnote\\dependencies\\vega-embed\\vega-embed.min.js",
+        "line": 6
+      },
+      {
+        "url": "https://vega.github.io/schema/vega/v5.json",
+        "file": "crossnote\\dependencies\\vega-lite\\vega-lite.min.js",
+        "line": 1
+      },
+      {
+        "url": "http://wavedrom.com",
+        "file": "crossnote\\dependencies\\wavedrom\\wavedrom.min.js",
+        "line": 2
+      },
+      {
+        "url": "https://github.com/wavedrom/wavedrom.git",
+        "file": "crossnote\\dependencies\\wavedrom\\wavedrom.min.js",
+        "line": 2
+      },
+      {
+        "url": "https://github.com/wavedrom/wavedrom/issues",
+        "file": "crossnote\\dependencies\\wavedrom\\wavedrom.min.js",
+        "line": 2
+      },
+      {
+        "url": "https://reactjs.org/docs/error-decoder.html?invariant=",
+        "file": "crossnote\\webview\\backlinks.js",
+        "line": 1
+      }
+    ],
+    "file_entropies": {
+      "crossnote\\dependencies\\remarkable\\remarkable.js": 5.58,
+      "crossnote\\dependencies\\vega-embed\\vega-embed.min.js": 5.57
+    },
+    "files_scanned": 30,
+    "findings_by_category": {
+      "telemetry_abuse": [
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "crossnote\\dependencies\\reveal\\js\\reveal.js",
+          "line": 8,
+          "evidence": ",mpeg:\"video/mpeg\",webm:\"video/webm\"},u=navigator.userAgent,g=/(iphone|ipod|ipad|android)/gi.test(u",
+          "path_type": "dependency",
+          "dependency_suppressed": true,
+          "original_severity": "low"
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "crossnote\\dependencies\\reveal\\js\\reveal.js",
+          "line": 8,
+          "evidence": "|ipad|android)/gi.test(u)||\"MacIntel\"===navigator.platform&&navigator.maxTouchPoints>1;/chrome/i.t",
+          "path_type": "dependency",
+          "dependency_suppressed": true,
+          "original_severity": "low"
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "crossnote\\dependencies\\reveal\\lib\\js\\head.min.js",
+          "line": 2,
+          "evidence": "rWidth||c.clientWidth;e=n.outerWidth||n.screen.width;u.screen.innerWidth=t;u.screen.outerWid",
+          "path_type": "dependency",
+          "dependency_suppressed": true,
+          "original_severity": "low"
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "crossnote\\dependencies\\reveal\\lib\\js\\head.min.js",
+          "line": 2,
+          "evidence": "ight||c.clientHeight;o=n.outerHeight||n.screen.height;u.screen.innerHeight=f;u.screen.outerHe",
+          "path_type": "dependency",
+          "dependency_suppressed": true,
+          "original_severity": "low"
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "crossnote\\dependencies\\reveal\\lib\\js\\head.min.js",
+          "line": 2,
+          "evidence": "\"root\"+i.section)}});u.screen={height:n.screen.height,width:n.screen.width};tt();b=0;n.addEve",
+          "path_type": "dependency",
+          "dependency_suppressed": true,
+          "original_severity": "low"
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "crossnote\\dependencies\\reveal\\lib\\js\\head.min.js",
+          "line": 2,
+          "evidence": ".screen={height:n.screen.height,width:n.screen.width};tt();b=0;n.addEventListener?n.addEvent",
+          "path_type": "dependency",
+          "dependency_suppressed": true,
+          "original_severity": "low"
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "crossnote\\dependencies\\reveal\\plugin\\zoom\\plugin.js",
+          "line": 11,
+          "evidence": "defaultModifier = /Linux/.test( window.navigator.platform ) ? 'ctrl' : 'alt';  \t\t\tvar modifier =",
+          "path_type": "dependency",
+          "dependency_suppressed": true,
+          "original_severity": "low"
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "crossnote\\dependencies\\reveal\\plugin\\zoom\\zoom.js",
+          "line": 4,
+          "evidence": ",(function(o){var n=/Linux/.test(window.navigator.platform)?\"ctrl\":\"alt\",i=(e.getConfig().zoomKey?",
+          "path_type": "dependency",
+          "dependency_suppressed": true,
+          "original_severity": "low"
+        },
+        {
+          "name": "User/device fingerprinting",
+          "severity": "low",
+          "description": "Browser/device fingerprinting APIs used",
+          "category": "telemetry_abuse",
+          "file": "crossnote\\dependencies\\reveal\\plugin\\zoom-js\\zoom.js",
+          "line": 7,
+          "evidence": "defaultModifier = /Linux/.test( window.navigator.platform ) ? 'ctrl' : 'alt';  \t\t\tvar modifier =",
+          "path_type": "dependency",
+          "dependency_suppressed": true,
+          "original_severity": "low"
+        }
+      ],
+      "workspace_harvesting": [
+        {
+          "name": "File reading via createReadStream",
+          "severity": "info",
+          "description": "Reads files via stream - bypasses readFile/readFileSync detection",
+          "category": "workspace_harvesting",
+          "file": "crossnote\\dependencies\\reveal\\plugin\\multiplex\\index.js",
+          "line": 35,
+          "evidence": "nt-Type': 'text/html'});  \tvar stream = fs.createReadStream(opts.baseDir + '/index.html'); \tstream.o",
+          "path_type": "dependency",
+          "dependency_suppressed": true,
+          "original_severity": "medium"
+        },
+        {
+          "name": "Bulk file reading with variable path",
+          "severity": "info",
+          "description": "Reads file content using variable path - bulk file harvesting indicator",
+          "category": "workspace_harvesting",
+          "file": "crossnote\\dependencies\\reveal\\plugin\\notes-server\\index.js",
+          "line": 49,
+          "evidence": "es/:socketId', function( req, res ) {  \tfs.readFile( opts.baseDir + 'plugin/notes-server/notes.ht",
+          "path_type": "dependency",
+          "dependency_suppressed": true,
+          "original_severity": "medium"
+        },
+        {
+          "name": "File reading via createReadStream",
+          "severity": "info",
+          "description": "Reads files via stream - bypasses readFile/readFileSync detection",
+          "category": "workspace_harvesting",
+          "file": "crossnote\\dependencies\\reveal\\plugin\\notes-server\\index.js",
+          "line": 43,
+          "evidence": "00, { 'Content-Type': 'text/html' } ); \tfs.createReadStream( opts.baseDir + '/index.html' ).pipe( re",
+          "path_type": "dependency",
+          "dependency_suppressed": true,
+          "original_severity": "medium"
+        }
+      ],
+      "local_server": [
+        {
+          "name": "Local HTTP server creation",
+          "severity": "low",
+          "description": "Creates local HTTP server - potential remote control endpoint",
+          "category": "local_server",
+          "file": "crossnote\\dependencies\\reveal\\plugin\\multiplex\\index.js",
+          "line": 9,
+          "evidence": "= express.static; var server    \t= http.createServer(app);  io = io(server);  var opts = { \tp",
+          "path_type": "dependency",
+          "dependency_suppressed": true,
+          "original_severity": "high"
+        },
+        {
+          "name": "Local HTTP server creation",
+          "severity": "low",
+          "description": "Creates local HTTP server - potential remote control endpoint",
+          "category": "local_server",
+          "file": "crossnote\\dependencies\\reveal\\plugin\\notes-server\\index.js",
+          "line": 9,
+          "evidence": "= express.static; var server    = http.createServer(app);  io = io(server);  var opts = { \tp",
+          "path_type": "dependency",
+          "dependency_suppressed": true,
+          "original_severity": "high"
+        }
+      ],
+      "localhost_access": [
+        {
+          "name": "Localhost HTTP access from extension code",
+          "severity": "info",
+          "description": "Accesses localhost HTTP services from extension code - review for port scan or local file exfiltration behavior",
+          "category": "localhost_access",
+          "file": "crossnote\\dependencies\\reveal\\plugin\\notes-server\\index.js",
+          "line": 64,
+          "evidence": "eset = '\\033[0m';  var slidesLocation = 'http://localhost' + ( opts.port ? ( ':' + opts.port ) :",
+          "path_type": "dependency",
+          "dependency_suppressed": true,
+          "original_severity": "medium"
+        }
+      ],
+      "insecure_endpoint": [
+        {
+          "name": "Plaintext HTTP endpoint (not HTTPS)",
+          "severity": "low",
+          "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+          "category": "insecure_endpoint",
+          "file": "crossnote\\dependencies\\reveal\\plugin\\print-pdf\\print-pdf.js",
+          "line": 5,
+          "evidence": "*  * Example:  * phantomjs print-pdf.js \"http://revealjs.com?print-pdf\" reveal-demo.pdf  *  * @autho",
+          "path_type": "dependency",
+          "dependency_suppressed": true,
+          "original_severity": "high"
+        },
+        {
+          "name": "Plaintext HTTP endpoint (not HTTPS)",
+          "severity": "low",
+          "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+          "category": "insecure_endpoint",
+          "file": "crossnote\\dependencies\\wavedrom\\wavedrom.min.js",
+          "line": 2,
+          "evidence": "iming diagram in your browser\",homepage:\"http://wavedrom.com\",author:\"alex.drom@gmail.com\",license:\"",
+          "path_type": "dependency",
+          "dependency_suppressed": true,
+          "original_severity": "high"
+        }
+      ],
+      "prototype_pollution": [
+        {
+          "name": "Unsafe Object.assign with user input",
+          "severity": "info",
+          "description": "Object.assign with potentially untrusted source",
+          "category": "prototype_pollution",
+          "file": "crossnote\\dependencies\\vega-embed\\vega-embed.min.js",
+          "line": 6,
+          "evidence": "nProperty.call(e,\"default\")?e.default:e}Object.assign({},S,C,{JsonPatchError:m,deepClone:h,escap",
+          "path_type": "dependency",
+          "dependency_suppressed": true,
+          "original_severity": "medium"
+        },
+        {
+          "name": "constructor.prototype access",
+          "severity": "medium",
+          "description": "Accessing constructor.prototype (potential prototype pollution)",
+          "category": "prototype_pollution",
+          "file": "crossnote\\webview\\backlinks.js",
+          "line": 5,
+          "evidence": "ue\",r=Object.getOwnPropertyDescriptor(e.constructor.prototype,t),n=\"\"+e[t];if(!e.hasOwnProperty(t)&&t",
+          "path_type": "app"
+        }
+      ],
+      "code_execution": [
+        {
+          "name": "eval() usage",
+          "severity": "low",
+          "description": "Dynamic code execution via eval()",
+          "category": "code_execution",
+          "file": "crossnote\\dependencies\\wavedrom\\wavedrom.min.js",
+          "line": 2,
+          "evidence": "\"textarea\"===TheTextBox.type)try{source=eval(\"(\"+TheTextBox.value+\")\")}catch(e){retur",
+          "path_type": "dependency",
+          "dependency_suppressed": true,
+          "original_severity": "high"
+        },
+        {
+          "name": "eval() usage",
+          "severity": "low",
+          "description": "Dynamic code execution via eval()",
+          "category": "code_execution",
+          "file": "crossnote\\dependencies\\wavedrom\\wavedrom.min.js",
+          "line": 2,
+          "evidence": "catch(e){return erra(e)}else try{source=eval(\"(\"+TheTextBox.innerHTML+\")\")}catch(e){r",
+          "path_type": "dependency",
+          "dependency_suppressed": true,
+          "original_severity": "high"
+        }
+      ],
+      "webview_risk": [
+        {
+          "name": "Webview innerHTML assignment",
+          "severity": "high",
+          "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+          "category": "webview_risk",
+          "file": "crossnote\\webview\\backlinks.js",
+          "line": 5,
+          "evidence": "/www.w3.org/2000/svg\"||\"innerHTML\"in e)e.innerHTML=t;else{for(cn=cn||document.createElement",
+          "path_type": "app"
+        }
+      ],
+      "behavioral_correlation": [
+        {
+          "name": "Device fingerprinting + exfiltration: hardware/environment profiling + network",
+          "severity": "high",
+          "description": "Extension collects device hardware information (CPU, memory, network interfaces) and/or environment variables combined with network access - potential device fingerprinting and environment reconnaissance exfiltration.",
+          "category": "behavioral_correlation",
+          "file": "crossnote\\dependencies\\reveal\\js\\reveal.js",
+          "line": 0,
+          "evidence": "User/device fingerprinting + Plaintext HTTP endpoint (not HTTPS)",
+          "confidence": "HIGH",
+          "attack_type": "fingerprint_exfil"
+        },
+        {
+          "name": "Remote Automation Agent: shell exec + local server + remote orchestration",
+          "severity": "critical",
+          "description": "Extension can execute shell commands AND runs a local server or communicates with a remote orchestration backend. This is the architecture of a remote automation agent - the machine becomes a worker node controlled by an external server.",
+          "category": "behavioral_correlation",
+          "file": "crossnote\\dependencies\\wavedrom\\wavedrom.min.js",
+          "line": 0,
+          "evidence": "eval() usage + Local HTTP server creation + Plaintext HTTP endpoint (not HTTPS)",
+          "confidence": "HIGH",
+          "attack_type": "remote_agent"
+        }
+      ]
+    },
+    "findings_by_severity": {
+      "low": 15,
+      "info": 5,
+      "high": 2,
+      "medium": 1,
+      "critical": 1
+    },
+    "suppressed_false_positives": 29
+  },
+  "malicious_patterns": [
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "crossnote\\dependencies\\reveal\\js\\reveal.js",
+      "line": 8,
+      "evidence": ",mpeg:\"video/mpeg\",webm:\"video/webm\"},u=navigator.userAgent,g=/(iphone|ipod|ipad|android)/gi.test(u",
+      "path_type": "dependency",
+      "dependency_suppressed": true,
+      "original_severity": "low"
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "crossnote\\dependencies\\reveal\\js\\reveal.js",
+      "line": 8,
+      "evidence": "|ipad|android)/gi.test(u)||\"MacIntel\"===navigator.platform&&navigator.maxTouchPoints>1;/chrome/i.t",
+      "path_type": "dependency",
+      "dependency_suppressed": true,
+      "original_severity": "low"
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "crossnote\\dependencies\\reveal\\lib\\js\\head.min.js",
+      "line": 2,
+      "evidence": "rWidth||c.clientWidth;e=n.outerWidth||n.screen.width;u.screen.innerWidth=t;u.screen.outerWid",
+      "path_type": "dependency",
+      "dependency_suppressed": true,
+      "original_severity": "low"
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "crossnote\\dependencies\\reveal\\lib\\js\\head.min.js",
+      "line": 2,
+      "evidence": "ight||c.clientHeight;o=n.outerHeight||n.screen.height;u.screen.innerHeight=f;u.screen.outerHe",
+      "path_type": "dependency",
+      "dependency_suppressed": true,
+      "original_severity": "low"
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "crossnote\\dependencies\\reveal\\lib\\js\\head.min.js",
+      "line": 2,
+      "evidence": "\"root\"+i.section)}});u.screen={height:n.screen.height,width:n.screen.width};tt();b=0;n.addEve",
+      "path_type": "dependency",
+      "dependency_suppressed": true,
+      "original_severity": "low"
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "crossnote\\dependencies\\reveal\\lib\\js\\head.min.js",
+      "line": 2,
+      "evidence": ".screen={height:n.screen.height,width:n.screen.width};tt();b=0;n.addEventListener?n.addEvent",
+      "path_type": "dependency",
+      "dependency_suppressed": true,
+      "original_severity": "low"
+    },
+    {
+      "name": "File reading via createReadStream",
+      "severity": "info",
+      "description": "Reads files via stream - bypasses readFile/readFileSync detection",
+      "category": "workspace_harvesting",
+      "file": "crossnote\\dependencies\\reveal\\plugin\\multiplex\\index.js",
+      "line": 35,
+      "evidence": "nt-Type': 'text/html'});  \tvar stream = fs.createReadStream(opts.baseDir + '/index.html'); \tstream.o",
+      "path_type": "dependency",
+      "dependency_suppressed": true,
+      "original_severity": "medium"
+    },
+    {
+      "name": "Local HTTP server creation",
+      "severity": "low",
+      "description": "Creates local HTTP server - potential remote control endpoint",
+      "category": "local_server",
+      "file": "crossnote\\dependencies\\reveal\\plugin\\multiplex\\index.js",
+      "line": 9,
+      "evidence": "= express.static; var server    \t= http.createServer(app);  io = io(server);  var opts = { \tp",
+      "path_type": "dependency",
+      "dependency_suppressed": true,
+      "original_severity": "high"
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "severity": "info",
+      "description": "Reads file content using variable path - bulk file harvesting indicator",
+      "category": "workspace_harvesting",
+      "file": "crossnote\\dependencies\\reveal\\plugin\\notes-server\\index.js",
+      "line": 49,
+      "evidence": "es/:socketId', function( req, res ) {  \tfs.readFile( opts.baseDir + 'plugin/notes-server/notes.ht",
+      "path_type": "dependency",
+      "dependency_suppressed": true,
+      "original_severity": "medium"
+    },
+    {
+      "name": "Localhost HTTP access from extension code",
+      "severity": "info",
+      "description": "Accesses localhost HTTP services from extension code - review for port scan or local file exfiltration behavior",
+      "category": "localhost_access",
+      "file": "crossnote\\dependencies\\reveal\\plugin\\notes-server\\index.js",
+      "line": 64,
+      "evidence": "eset = '\\033[0m';  var slidesLocation = 'http://localhost' + ( opts.port ? ( ':' + opts.port ) :",
+      "path_type": "dependency",
+      "dependency_suppressed": true,
+      "original_severity": "medium"
+    },
+    {
+      "name": "File reading via createReadStream",
+      "severity": "info",
+      "description": "Reads files via stream - bypasses readFile/readFileSync detection",
+      "category": "workspace_harvesting",
+      "file": "crossnote\\dependencies\\reveal\\plugin\\notes-server\\index.js",
+      "line": 43,
+      "evidence": "00, { 'Content-Type': 'text/html' } ); \tfs.createReadStream( opts.baseDir + '/index.html' ).pipe( re",
+      "path_type": "dependency",
+      "dependency_suppressed": true,
+      "original_severity": "medium"
+    },
+    {
+      "name": "Local HTTP server creation",
+      "severity": "low",
+      "description": "Creates local HTTP server - potential remote control endpoint",
+      "category": "local_server",
+      "file": "crossnote\\dependencies\\reveal\\plugin\\notes-server\\index.js",
+      "line": 9,
+      "evidence": "= express.static; var server    = http.createServer(app);  io = io(server);  var opts = { \tp",
+      "path_type": "dependency",
+      "dependency_suppressed": true,
+      "original_severity": "high"
+    },
+    {
+      "name": "Plaintext HTTP endpoint (not HTTPS)",
+      "severity": "low",
+      "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+      "category": "insecure_endpoint",
+      "file": "crossnote\\dependencies\\reveal\\plugin\\print-pdf\\print-pdf.js",
+      "line": 5,
+      "evidence": "*  * Example:  * phantomjs print-pdf.js \"http://revealjs.com?print-pdf\" reveal-demo.pdf  *  * @autho",
+      "path_type": "dependency",
+      "dependency_suppressed": true,
+      "original_severity": "high"
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "crossnote\\dependencies\\reveal\\plugin\\zoom\\plugin.js",
+      "line": 11,
+      "evidence": "defaultModifier = /Linux/.test( window.navigator.platform ) ? 'ctrl' : 'alt';  \t\t\tvar modifier =",
+      "path_type": "dependency",
+      "dependency_suppressed": true,
+      "original_severity": "low"
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "crossnote\\dependencies\\reveal\\plugin\\zoom\\zoom.js",
+      "line": 4,
+      "evidence": ",(function(o){var n=/Linux/.test(window.navigator.platform)?\"ctrl\":\"alt\",i=(e.getConfig().zoomKey?",
+      "path_type": "dependency",
+      "dependency_suppressed": true,
+      "original_severity": "low"
+    },
+    {
+      "name": "User/device fingerprinting",
+      "severity": "low",
+      "description": "Browser/device fingerprinting APIs used",
+      "category": "telemetry_abuse",
+      "file": "crossnote\\dependencies\\reveal\\plugin\\zoom-js\\zoom.js",
+      "line": 7,
+      "evidence": "defaultModifier = /Linux/.test( window.navigator.platform ) ? 'ctrl' : 'alt';  \t\t\tvar modifier =",
+      "path_type": "dependency",
+      "dependency_suppressed": true,
+      "original_severity": "low"
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "severity": "info",
+      "description": "Object.assign with potentially untrusted source",
+      "category": "prototype_pollution",
+      "file": "crossnote\\dependencies\\vega-embed\\vega-embed.min.js",
+      "line": 6,
+      "evidence": "nProperty.call(e,\"default\")?e.default:e}Object.assign({},S,C,{JsonPatchError:m,deepClone:h,escap",
+      "path_type": "dependency",
+      "dependency_suppressed": true,
+      "original_severity": "medium"
+    },
+    {
+      "name": "eval() usage",
+      "severity": "low",
+      "description": "Dynamic code execution via eval()",
+      "category": "code_execution",
+      "file": "crossnote\\dependencies\\wavedrom\\wavedrom.min.js",
+      "line": 2,
+      "evidence": "\"textarea\"===TheTextBox.type)try{source=eval(\"(\"+TheTextBox.value+\")\")}catch(e){retur",
+      "path_type": "dependency",
+      "dependency_suppressed": true,
+      "original_severity": "high"
+    },
+    {
+      "name": "eval() usage",
+      "severity": "low",
+      "description": "Dynamic code execution via eval()",
+      "category": "code_execution",
+      "file": "crossnote\\dependencies\\wavedrom\\wavedrom.min.js",
+      "line": 2,
+      "evidence": "catch(e){return erra(e)}else try{source=eval(\"(\"+TheTextBox.innerHTML+\")\")}catch(e){r",
+      "path_type": "dependency",
+      "dependency_suppressed": true,
+      "original_severity": "high"
+    },
+    {
+      "name": "Plaintext HTTP endpoint (not HTTPS)",
+      "severity": "low",
+      "description": "Plaintext HTTP URL (not HTTPS) - data sent unencrypted",
+      "category": "insecure_endpoint",
+      "file": "crossnote\\dependencies\\wavedrom\\wavedrom.min.js",
+      "line": 2,
+      "evidence": "iming diagram in your browser\",homepage:\"http://wavedrom.com\",author:\"alex.drom@gmail.com\",license:\"",
+      "path_type": "dependency",
+      "dependency_suppressed": true,
+      "original_severity": "high"
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "severity": "high",
+      "description": "Direct innerHTML assignment with dynamic content (XSS vulnerability)",
+      "category": "webview_risk",
+      "file": "crossnote\\webview\\backlinks.js",
+      "line": 5,
+      "evidence": "/www.w3.org/2000/svg\"||\"innerHTML\"in e)e.innerHTML=t;else{for(cn=cn||document.createElement",
+      "path_type": "app"
+    },
+    {
+      "name": "constructor.prototype access",
+      "severity": "medium",
+      "description": "Accessing constructor.prototype (potential prototype pollution)",
+      "category": "prototype_pollution",
+      "file": "crossnote\\webview\\backlinks.js",
+      "line": 5,
+      "evidence": "ue\",r=Object.getOwnPropertyDescriptor(e.constructor.prototype,t),n=\"\"+e[t];if(!e.hasOwnProperty(t)&&t",
+      "path_type": "app"
+    },
+    {
+      "name": "Device fingerprinting + exfiltration: hardware/environment profiling + network",
+      "severity": "high",
+      "description": "Extension collects device hardware information (CPU, memory, network interfaces) and/or environment variables combined with network access - potential device fingerprinting and environment reconnaissance exfiltration.",
+      "category": "behavioral_correlation",
+      "file": "crossnote\\dependencies\\reveal\\js\\reveal.js",
+      "line": 0,
+      "evidence": "User/device fingerprinting + Plaintext HTTP endpoint (not HTTPS)",
+      "confidence": "HIGH",
+      "attack_type": "fingerprint_exfil"
+    },
+    {
+      "name": "Remote Automation Agent: shell exec + local server + remote orchestration",
+      "severity": "critical",
+      "description": "Extension can execute shell commands AND runs a local server or communicates with a remote orchestration backend. This is the architecture of a remote automation agent - the machine becomes a worker node controlled by an external server.",
+      "category": "behavioral_correlation",
+      "file": "crossnote\\dependencies\\wavedrom\\wavedrom.min.js",
+      "line": 0,
+      "evidence": "eval() usage + Local HTTP server creation + Plaintext HTTP endpoint (not HTTPS)",
+      "confidence": "HIGH",
+      "attack_type": "remote_agent"
+    }
+  ],
+  "html_analysis": {
+    "findings": [],
+    "files_scanned": 3,
+    "iframe_urls": []
+  },
+  "permissions": {
+    "high_risk": [],
+    "medium_risk": [
+      {
+        "permission": "filesystem",
+        "description": "Can read/write files on disk",
+        "evidence": [
+          {
+            "module": "fs",
+            "file": "crossnote\\dependencies\\reveal\\plugin\\multiplex\\index.js",
+            "line": 3
+          },
+          {
+            "module": "fs",
+            "file": "crossnote\\dependencies\\reveal\\plugin\\notes-server\\index.js",
+            "line": 3
+          }
+        ]
+      },
+      {
+        "permission": "network",
+        "description": "Can make network requests",
+        "evidence": [
+          {
+            "module": "http",
+            "file": "crossnote\\dependencies\\reveal\\plugin\\multiplex\\index.js",
+            "line": 1
+          },
+          {
+            "module": "http",
+            "file": "crossnote\\dependencies\\reveal\\plugin\\notes-server\\index.js",
+            "line": 1
+          }
+        ]
+      }
+    ],
+    "low_risk": [],
+    "total": 2,
+    "all": [
+      "filesystem",
+      "network"
+    ]
+  },
+  "risk_score": 7.5,
+  "risk_level": "HIGH",
+  "risk_breakdown": {
+    "supply_chain": 5.0,
+    "metadata_publisher": 0.8,
+    "code_analysis": 0.7,
+    "behavioral_correlations": 1.1,
+    "infrastructure": 0.1,
+    "positive_signals": -0.3
+  },
+  "positive_signals": {
+    "signals": [
+      {
+        "signal": "no_credential_access",
+        "description": "No access to credential files, SSH keys, or token stores",
+        "weight": 0.3
+      }
+    ],
+    "reduction": 0.3,
+    "count": 1
+  },
+  "risk_classification": {
+    "classification": "MALICIOUS_INDICATORS",
+    "summary": "Multiple suspicious patterns detected alongside high-risk capabilities. Obfuscation, data exfiltration, or credential theft patterns suggest potentially malicious intent. Manual review strongly recommended.",
+    "suspicion_indicators": 3,
+    "positive_signal_count": 1
+  },
+  "module_usage": {
+    "network": [
+      {
+        "module": "http",
+        "file": "crossnote\\dependencies\\reveal\\plugin\\multiplex\\index.js",
+        "line": 1
+      },
+      {
+        "module": "http",
+        "file": "crossnote\\dependencies\\reveal\\plugin\\notes-server\\index.js",
+        "line": 1
+      }
+    ],
+    "file_access": [
+      {
+        "module": "fs",
+        "file": "crossnote\\dependencies\\reveal\\plugin\\multiplex\\index.js",
+        "line": 3
+      },
+      {
+        "module": "fs",
+        "file": "crossnote\\dependencies\\reveal\\plugin\\notes-server\\index.js",
+        "line": 3
+      }
+    ],
+    "crypto": [
+      {
+        "module": "crypto",
+        "file": "crossnote\\dependencies\\reveal\\plugin\\multiplex\\index.js",
+        "line": 5
+      }
+    ]
+  },
+  "external_urls": [
+    {
+      "url": "https://twitter.com/",
+      "file": "crossnote\\dependencies\\remarkable\\remarkable.js",
+      "line": 4
+    },
+    {
+      "url": "http://revealjs.com?print-pdf",
+      "file": "crossnote\\dependencies\\reveal\\plugin\\print-pdf\\print-pdf.js",
+      "line": 5
+    },
+    {
+      "url": "https://vega.github.io/editor/",
+      "file": "crossnote\\dependencies\\vega-embed\\vega-embed.min.js",
+      "line": 6
+    },
+    {
+      "url": "https://vega.github.io/schema/vega/v5.json",
+      "file": "crossnote\\dependencies\\vega-lite\\vega-lite.min.js",
+      "line": 1
+    },
+    {
+      "url": "http://wavedrom.com",
+      "file": "crossnote\\dependencies\\wavedrom\\wavedrom.min.js",
+      "line": 2
+    },
+    {
+      "url": "https://github.com/wavedrom/wavedrom.git",
+      "file": "crossnote\\dependencies\\wavedrom\\wavedrom.min.js",
+      "line": 2
+    },
+    {
+      "url": "https://github.com/wavedrom/wavedrom/issues",
+      "file": "crossnote\\dependencies\\wavedrom\\wavedrom.min.js",
+      "line": 2
+    },
+    {
+      "url": "https://reactjs.org/docs/error-decoder.html?invariant=",
+      "file": "crossnote\\webview\\backlinks.js",
+      "line": 1
+    }
+  ],
+  "domain_intelligence": [
+    {
+      "domain": "twitter.com",
+      "url": "https://twitter.com/",
+      "threat_level": "BENIGN",
+      "confidence": 95,
+      "classification": "Legitimate Infrastructure",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": true,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "revealjs.com",
+      "url": "http://revealjs.com?print-pdf",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "vega.github.io",
+      "url": "https://vega.github.io/editor/",
+      "threat_level": "BENIGN",
+      "confidence": 95,
+      "classification": "Legitimate Infrastructure",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": true,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "wavedrom.com",
+      "url": "http://wavedrom.com",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "github.com",
+      "url": "https://github.com/wavedrom/wavedrom.git",
+      "threat_level": "BENIGN",
+      "confidence": 95,
+      "classification": "Legitimate Infrastructure",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": true,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "reactjs.org",
+      "url": "https://reactjs.org/docs/error-decoder.html?invariant=",
+      "threat_level": "BENIGN",
+      "confidence": 95,
+      "classification": "Legitimate Infrastructure",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": true,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    }
+  ],
+  "virustotal_results": [
+    {
+      "available": true,
+      "domain": "reactjs.org",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 62,
+        "undetected": 31
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2013-05-29",
+        "age_days": 4651,
+        "age_human": "12 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".org",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/reactjs.org"
+    },
+    {
+      "available": true,
+      "domain": "vega.github.io",
+      "known": true,
+      "skipped": true,
+      "threat_level": "CLEAN",
+      "message": "Known safe domain (skipped VT check)",
+      "malicious": 0,
+      "suspicious": 0,
+      "harmless": 1,
+      "undetected": 0,
+      "reputation": 100,
+      "malicious_vendors": [],
+      "suspicious_vendors": []
+    },
+    {
+      "available": true,
+      "domain": "wavedrom.com",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 63,
+        "undetected": 30
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2014-08-07",
+        "age_days": 4216,
+        "age_human": "11 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".com",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/wavedrom.com"
+    },
+    {
+      "available": true,
+      "domain": "revealjs.com",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 62,
+        "undetected": 31
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2013-03-17",
+        "age_days": 4724,
+        "age_human": "12 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".com",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/revealjs.com"
+    },
+    {
+      "available": true,
+      "domain": "twitter.com",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 93,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 64,
+        "undetected": 29
+      },
+      "votes": {
+        "malicious": 8,
+        "harmless": 33
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2000-01-21",
+        "age_days": 9528,
+        "age_human": "26 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".com",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/twitter.com"
+    }
+  ]
+}

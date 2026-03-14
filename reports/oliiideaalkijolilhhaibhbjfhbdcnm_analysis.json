@@ -1,0 +1,399 @@
+{
+  "extension_id": "oliiideaalkijolilhhaibhbjfhbdcnm",
+  "name": "Link shortener",
+  "version": "2.6",
+  "manifest_version": 3,
+  "description": "Use a url link shortener to easily create short links for sites, chats, and emails. Quickly shorten a long URL for easy sharing",
+  "icon_base64": "data:image/png;base64,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",
+  "permissions": {
+    "total": 1,
+    "high_risk": [],
+    "medium_risk": [],
+    "low_risk": [
+      "tabs"
+    ],
+    "all": [
+      "tabs"
+    ],
+    "details": {
+      "tabs": {
+        "score": 0,
+        "description": "tabs",
+        "risk": "LOW - Standard permission"
+      }
+    }
+  },
+  "malicious_patterns": [
+    {
+      "name": "localStorage Access",
+      "severity": "low",
+      "description": "Accesses browser local storage",
+      "technique": "Data persistence",
+      "file": "js\\link_shortener_frontend.js",
+      "line": 68,
+      "context": "\n  var short_url = window.localStorage.getItem(url_storage_key);\n"
+    },
+    {
+      "name": "localStorage Access",
+      "severity": "low",
+      "description": "Accesses browser local storage",
+      "technique": "Data persistence",
+      "file": "js\\link_shortener_frontend.js",
+      "line": 144,
+      "context": "\n      window.localStorage.setItem(url_storage_key, short_url);\n    }"
+    }
+  ],
+  "external_scripts": [
+    {
+      "url": "https://u99.pro/welcome",
+      "file": "js\\link_shortener_background.js",
+      "line": 15
+    },
+    {
+      "url": "https://u99.pro/uninstall",
+      "file": "js\\link_shortener_background.js",
+      "line": 32
+    },
+    {
+      "url": "https://tinyurl.com/api-create.php",
+      "file": "js\\link_shortener_frontend.js",
+      "line": 86
+    }
+  ],
+  "obfuscation_indicators": {
+    "js\\link_shortener_background.js": {
+      "is_obfuscated": true,
+      "entropy": 4.988161614629674,
+      "hex_escapes": 0,
+      "unicode_escapes": 0,
+      "long_variables": 0,
+      "single_letter_ratio": 0.031578947368421054
+    },
+    "js\\link_shortener_frontend.js": {
+      "is_obfuscated": true,
+      "entropy": 4.97415063757075,
+      "hex_escapes": 0,
+      "unicode_escapes": 0,
+      "long_variables": 0,
+      "single_letter_ratio": 0.026865671641791045
+    },
+    "lib\\jquery\\jquery-3.7.1.min.js": {
+      "is_obfuscated": true,
+      "entropy": 5.262536918435756,
+      "hex_escapes": 12,
+      "unicode_escapes": 5,
+      "long_variables": 0,
+      "single_letter_ratio": 0.49279263113822597
+    }
+  },
+  "settings_overrides": {
+    "has_overrides": false,
+    "search_hijacking": null,
+    "homepage_hijacking": null,
+    "startup_hijacking": null,
+    "newtab_hijacking": null,
+    "severity": "NONE"
+  },
+  "campaign_attribution": null,
+  "domain_analysis": [],
+  "virustotal_results": [
+    {
+      "available": true,
+      "domain": "u99.pro",
+      "known": true,
+      "threat_level": "MALICIOUS",
+      "reputation": 0,
+      "stats": {
+        "malicious": 3,
+        "suspicious": 0,
+        "harmless": 61,
+        "undetected": 28
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {
+        "alphaMountain.ai": "Malicious (alphaMountain.ai)"
+      },
+      "malicious_vendors": [
+        {
+          "vendor": "alphaMountain.ai",
+          "result": "malicious"
+        },
+        {
+          "vendor": "Seclookup",
+          "result": "malicious"
+        },
+        {
+          "vendor": "SOCRadar",
+          "result": "phishing"
+        }
+      ],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2024-09-23",
+        "age_days": 491,
+        "age_human": "1 year",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".pro",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/u99.pro"
+    },
+    {
+      "available": true,
+      "domain": "tinyurl.com",
+      "known": true,
+      "threat_level": "MALICIOUS",
+      "reputation": -132,
+      "stats": {
+        "malicious": 1,
+        "suspicious": 0,
+        "harmless": 65,
+        "undetected": 26
+      },
+      "votes": {
+        "malicious": 20,
+        "harmless": 5
+      },
+      "categories": {
+        "alphaMountain.ai": "URL Redirect (alphaMountain.ai)",
+        "BitDefender": "computersandsoftware",
+        "Sophos": "information technology",
+        "Forcepoint ThreatSeeker": "web hosting"
+      },
+      "malicious_vendors": [
+        {
+          "vendor": "Phishing Database",
+          "result": "phishing"
+        }
+      ],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2002-01-27",
+        "age_days": 8766,
+        "age_human": "24 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".com",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/tinyurl.com"
+    }
+  ],
+  "ast_results": {
+    "files_analyzed": 3,
+    "network_calls": [],
+    "data_exfiltration": [],
+    "chrome_api_abuse": [
+      {
+        "api": "chrome.tabs.create",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 14
+      },
+      {
+        "api": "chrome.tabs",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 14
+      },
+      {
+        "api": "chrome.tabs.query",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 16
+      },
+      {
+        "api": "chrome.tabs",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 16
+      }
+    ],
+    "obfuscation": [],
+    "suspicious_patterns": []
+  },
+  "risk_score": 6.1,
+  "risk_level": "HIGH",
+  "store_metadata": {
+    "available": true,
+    "extension_id": "oliiideaalkijolilhhaibhbjfhbdcnm",
+    "store_url": "https://chrome.google.com/webstore/detail/oliiideaalkijolilhhaibhbjfhbdcnm",
+    "has_privacy_policy": true,
+    "privacy_policy_url": "https://myaccount.google.com/privacypolicy?hl=en-US",
+    "has_chrome_warning": false,
+    "risk_signals": {
+      "abandoned": false,
+      "new_extension": false,
+      "low_adoption": true,
+      "policy_violation": false,
+      "unverified_author": true,
+      "no_privacy_policy": false
+    }
+  },
+  "host_permissions": {
+    "host_permissions": [],
+    "content_scripts": [],
+    "web_accessible_resources": [],
+    "all_urls_access": false,
+    "sensitive_access": {},
+    "risk_assessment": {
+      "overall_risk": "LOW",
+      "risk_factors": [],
+      "risk_score": 0
+    },
+    "permission_scope": "MINIMAL",
+    "statistics": {
+      "total_host_permissions": 0,
+      "total_content_scripts": 0,
+      "total_sensitive_categories": 0,
+      "total_sensitive_domains": 0,
+      "has_all_urls": false
+    }
+  },
+  "domain_intelligence": [
+    {
+      "domain": "u99.pro",
+      "url": "https://u99.pro/welcome",
+      "threat_level": "MEDIUM",
+      "confidence": 40,
+      "classification": null,
+      "risk_score": 4,
+      "indicators": [
+        {
+          "type": "NRD_INDICATORS",
+          "description": "Possible newly registered domain",
+          "severity": "MEDIUM",
+          "reasons": [
+            "Numbers in unusual positions"
+          ]
+        }
+      ],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "tinyurl.com",
+      "url": "https://tinyurl.com/api-create.php",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    }
+  ],
+  "advanced_detection": {
+    "csp_manipulation": [],
+    "dom_event_injection": [],
+    "websocket_c2": [],
+    "delayed_activation": [],
+    "obfuscation": [],
+    "summary": {
+      "total_findings": 0,
+      "critical_findings": 0,
+      "high_findings": 0,
+      "verdict": "CLEAN"
+    }
+  },
+  "pii_classification": {
+    "classifications": [
+      {
+        "category": "PERSONAL_INFO",
+        "risk": "HIGH",
+        "severity_score": 8,
+        "description": "Privacy violation, doxxing, targeted attacks",
+        "impact": "Exposure of personally identifiable information",
+        "detected_via": "chrome_api",
+        "matched_api": "tabs"
+      },
+      {
+        "category": "BROWSING_HISTORY",
+        "risk": "HIGH",
+        "severity_score": 7,
+        "description": "User profiling, privacy violation, surveillance",
+        "impact": "Complete browsing behavior exposed for profiling and tracking",
+        "detected_via": "chrome_api",
+        "matched_api": "tabs"
+      },
+      {
+        "category": "EMAIL_CONTENT",
+        "risk": "HIGH",
+        "severity_score": 7,
+        "description": "Privacy breach, corporate espionage, blackmail",
+        "impact": "Sensitive communications exposed",
+        "detected_via": "chrome_api",
+        "matched_api": "tabs"
+      },
+      {
+        "category": "FORM_DATA",
+        "risk": "MEDIUM",
+        "severity_score": 6,
+        "description": "Data harvesting, profiling",
+        "impact": "User input across all websites captured",
+        "detected_via": "chrome_api",
+        "matched_api": "tabs"
+      }
+    ],
+    "overall_risk": "HIGH",
+    "total_severity_score": 28,
+    "data_types_count": 4,
+    "recommendation": {
+      "action": "QUARANTINE AND INVESTIGATE",
+      "priority": "P1 - High",
+      "rationale": "Extension accesses 4 type(s) of sensitive personal data. Requires immediate investigation and likely removal.",
+      "next_steps": [
+        "Disable extension immediately",
+        "Review extension permissions",
+        "Check network logs for data exfiltration",
+        "Consider reporting to security team",
+        "Evaluate business need vs risk"
+      ]
+    },
+    "destination": "https://u99.pro/welcome"
+  },
+  "threat_attribution": {
+    "available": true,
+    "extension_id": "oliiideaalkijolilhhaibhbjfhbdcnm",
+    "extension_name": "Link shortener",
+    "attribution_found": false,
+    "campaign_name": null,
+    "campaign_description": null,
+    "threat_actor": null,
+    "confidence": "LOW",
+    "source_articles": [],
+    "osint_summary": "\n## OSINT Analysis - MENTIONS FOUND\n\n**Extension Identified:** Link shortener (ID: oliiideaalkijolilhhaibhbjfhbdcnm)\n\n**Confidence Level:** LOW (mentions found but no clear malicious indicators)\n\n**Evidence Found:**\n- 1 articles mention this extension ID\n- No explicit malicious keywords detected\n\n**Recommendation:**\nExtension found in web searches. Review the source articles for context.\n",
+    "chrome_store_url": "https://chromewebstore.google.com/detail/oliiideaalkijolilhhaibhbjfhbdcnm",
+    "google_search_url": "https://www.google.com/search?q=oliiideaalkijolilhhaibhbjfhbdcnm+malware+threat",
+    "search_performed": true,
+    "web_search_performed": true,
+    "web_mentions_found": true,
+    "keywords_found": []
+  }
+}

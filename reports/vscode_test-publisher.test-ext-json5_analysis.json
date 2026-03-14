@@ -1,0 +1,130 @@
+{
+  "extension_type": "vscode",
+  "name": "Test Extension (json5 vulnerable)",
+  "identifier": "test-publisher.test-ext-json5",
+  "extension_id": "test-publisher.test-ext-json5",
+  "version": "0.1.0",
+  "description": "Fixture extension with json5@2.2.1 for analyzer testing",
+  "publisher": "test-publisher",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "store_metadata": {
+    "available": true,
+    "name": "Test Extension (json5 vulnerable)",
+    "publisher": "test-publisher",
+    "version": "0.1.0"
+  },
+  "metadata_risk": {
+    "findings": [],
+    "risk_score": 0,
+    "activation_events": [],
+    "contributes": []
+  },
+  "package_json_deep": {
+    "findings": []
+  },
+  "supply_chain": {
+    "findings": [
+      {
+        "type": "bundled_node_modules",
+        "severity": "info",
+        "detail": "1 bundled packages (0.2 MB)",
+        "count": 1,
+        "size_mb": 0.2
+      },
+      {
+        "type": "dependency_vulnerability",
+        "severity": "high",
+        "package": "json5",
+        "version": "2.2.1",
+        "cve_id": "GHSA-9c47-m6qq-7p4h",
+        "link": "https://github.com/advisories/GHSA-9c47-m6qq-7p4h",
+        "detail": "json5@2.2.1 has known vulnerability GHSA-9c47-m6qq-7p4h"
+      }
+    ],
+    "risk_score": 0.5,
+    "dependency_count": 1,
+    "dev_dependency_count": 0,
+    "has_node_modules": true,
+    "dependency_vulns": [
+      {
+        "package": "json5",
+        "version": "2.2.1",
+        "vulns": [
+          {
+            "id": "GHSA-9c47-m6qq-7p4h",
+            "link": "https://github.com/advisories/GHSA-9c47-m6qq-7p4h"
+          }
+        ]
+      }
+    ]
+  },
+  "code_analysis": {
+    "all_findings": [],
+    "module_usage": {},
+    "external_urls": [],
+    "file_entropies": {},
+    "files_scanned": 1,
+    "findings_by_category": {},
+    "findings_by_severity": {},
+    "suppressed_false_positives": 0
+  },
+  "malicious_patterns": [],
+  "html_analysis": {
+    "findings": [],
+    "files_scanned": 0,
+    "iframe_urls": []
+  },
+  "permissions": {
+    "high_risk": [],
+    "medium_risk": [],
+    "low_risk": [],
+    "total": 0,
+    "all": []
+  },
+  "risk_score": 0,
+  "risk_level": "LOW",
+  "risk_breakdown": {
+    "metadata_publisher": 0.0,
+    "supply_chain": 1.0,
+    "code_analysis": 0,
+    "behavioral_correlations": 0,
+    "infrastructure": 0,
+    "positive_signals": -1.3
+  },
+  "positive_signals": {
+    "signals": [
+      {
+        "signal": "no_network_access",
+        "description": "Extension has no network capabilities - data stays local",
+        "weight": 0.5
+      },
+      {
+        "signal": "no_obfuscation",
+        "description": "No code obfuscation or evasion techniques detected",
+        "weight": 0.3
+      },
+      {
+        "signal": "no_credential_access",
+        "description": "No access to credential files, SSH keys, or token stores",
+        "weight": 0.3
+      },
+      {
+        "signal": "no_exfiltration_pattern",
+        "description": "No compound attack patterns detected",
+        "weight": 0.2
+      }
+    ],
+    "reduction": 1.3,
+    "count": 4
+  },
+  "risk_classification": {
+    "classification": "BENIGN",
+    "summary": "Low-risk extension with minimal sensitive capabilities.",
+    "suspicion_indicators": 0,
+    "positive_signal_count": 4
+  },
+  "module_usage": {},
+  "external_urls": []
+}

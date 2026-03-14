@@ -1,0 +1,788 @@
+{
+  "extension_id": "oelcnhfgpdjeocflhhfecinnpjojeokp",
+  "name": "QuikProxy",
+  "version": "2.0.2",
+  "manifest_version": 3,
+  "permissions": {
+    "total": 4,
+    "high_risk": [
+      "proxy"
+    ],
+    "medium_risk": [],
+    "low_risk": [
+      "storage",
+      "activeTab",
+      "*://*.aliyuncs.com/*"
+    ],
+    "all": [
+      "storage",
+      "proxy",
+      "activeTab",
+      "*://*.aliyuncs.com/*"
+    ],
+    "details": {
+      "storage": {
+        "score": 0,
+        "description": "storage",
+        "risk": "LOW - Standard permission"
+      },
+      "proxy": {
+        "score": 8,
+        "description": "Can change proxy settings",
+        "risk": "HIGH - Can route traffic through attacker servers"
+      },
+      "activeTab": {
+        "score": 0,
+        "description": "activeTab",
+        "risk": "LOW - Standard permission"
+      },
+      "*://*.aliyuncs.com/*": {
+        "score": 0,
+        "description": "*://*.aliyuncs.com/*",
+        "risk": "LOW - Standard permission"
+      }
+    }
+  },
+  "malicious_patterns": [
+    {
+      "name": "Keyboard Event Listener",
+      "severity": "medium",
+      "description": "Registers keyboard event listeners (review for legitimacy - may be for shortcuts or malicious keylogging)",
+      "technique": "Input monitoring",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 12690,
+      "context": "          document.addEventListener(\"touchstart\", notifyFocusReasonPointer);\n          document.addEventListener(\"keydown\", notifyFocusReasonKeydown);\n        }"
+    },
+    {
+      "name": "Keyboard Event Listener",
+      "severity": "medium",
+      "description": "Registers keyboard event listeners (review for legitimacy - may be for shortcuts or malicious keylogging)",
+      "technique": "Input monitoring",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 12740,
+      "context": "        if (registeredEscapeHandlers.length === 0) {\n          document.addEventListener(\"keydown\", cachedHandler);\n        }"
+    },
+    {
+      "name": "Keyboard Event Listener",
+      "severity": "medium",
+      "description": "Registers keyboard event listeners (review for legitimacy - may be for shortcuts or malicious keylogging)",
+      "technique": "Input monitoring",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 12851,
+      "context": "          if (forwardRef2) {\n            forwardRef2.addEventListener(\"keydown\", onKeydown);\n            forwardRef2.addEventListener(\"focusin\", onFocusIn);"
+    }
+  ],
+  "external_scripts": [
+    {
+      "url": "https://vuejs.org/error-reference/#runtime-${type}`;",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 2003
+    },
+    {
+      "url": "http://www.w3.org/2000/svg",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 6719
+    },
+    {
+      "url": "http://www.w3.org/1998/Math/MathML",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 6720
+    },
+    {
+      "url": "http://www.w3.org/1999/xlink",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 7212
+    },
+    {
+      "url": "http://www.w3.org/2000/svg",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 10621
+    },
+    {
+      "url": "http://www.w3.org/2000/svg",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 10637
+    },
+    {
+      "url": "http://www.w3.org/2000/svg",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 10653
+    },
+    {
+      "url": "http://www.w3.org/2000/svg",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 10669
+    },
+    {
+      "url": "http://www.w3.org/2000/svg",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 10689
+    },
+    {
+      "url": "http://www.w3.org/2000/svg",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 10705
+    },
+    {
+      "url": "http://www.w3.org/2000/svg",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 10725
+    },
+    {
+      "url": "http://www.w3.org/2000/svg",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 10741
+    },
+    {
+      "url": "http://www.w3.org/2000/svg",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 10757
+    },
+    {
+      "url": "http://www.w3.org/2000/svg",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 10777
+    },
+    {
+      "url": "http://www.w3.org/2000/svg",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 10793
+    },
+    {
+      "url": "http://www.w3.org/2000/svg",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 10809
+    },
+    {
+      "url": "http://www.w3.org/2000/svg",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 10825
+    },
+    {
+      "url": "http://www.w3.org/2000/svg",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 10841
+    },
+    {
+      "url": "http://www.w3.org/2000/svg",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 10857
+    },
+    {
+      "url": "http://www.w3.org/2000/svg",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 10877
+    },
+    {
+      "url": "http://www.w3.org/2000/svg",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 10893
+    },
+    {
+      "url": "http://www.w3.org/2000/svg",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 10913
+    },
+    {
+      "url": "http://www.w3.org/2000/svg",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 10929
+    },
+    {
+      "url": "https://element-plus.org/en-US/component/button.html#button-attributes",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 14771
+    },
+    {
+      "url": "https://element-plus.org/en-US/component/checkbox.html",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 16233
+    },
+    {
+      "url": "https://element-plus.org/en-US/component/checkbox.html",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 16240
+    },
+    {
+      "url": "https://element-plus.org/en-US/component/checkbox.html",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 16247
+    },
+    {
+      "url": "https://element-plus.org/en-US/component/dialog.html#slots",
+      "file": "proxy\\dist\\assets\\index-926f69bc.js",
+      "line": 17312
+    }
+  ],
+  "obfuscation_indicators": {
+    "util\\shortcut.js": {
+      "is_obfuscated": true,
+      "entropy": 4.676258205417822,
+      "hex_escapes": 0,
+      "unicode_escapes": 0,
+      "long_variables": 0,
+      "single_letter_ratio": 0.09433962264150944
+    },
+    "proxy\\dist\\assets\\index-926f69bc.js": {
+      "is_obfuscated": true,
+      "entropy": 4.585647664228847,
+      "hex_escapes": 1,
+      "unicode_escapes": 4,
+      "long_variables": 29,
+      "single_letter_ratio": 0.06423518886124081
+    }
+  },
+  "settings_overrides": {
+    "has_overrides": false,
+    "search_hijacking": null,
+    "homepage_hijacking": null,
+    "startup_hijacking": null,
+    "newtab_hijacking": null,
+    "severity": "NONE"
+  },
+  "campaign_attribution": null,
+  "domain_analysis": [],
+  "virustotal_results": [
+    {
+      "available": true,
+      "domain": "vuejs.org",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 64,
+        "undetected": 28
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2013-12-07",
+        "age_days": 4433,
+        "age_human": "12 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".org",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/vuejs.org"
+    },
+    {
+      "available": true,
+      "domain": "www.w3.org",
+      "known": true,
+      "threat_level": "SUSPICIOUS",
+      "reputation": -45,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 65,
+        "undetected": 27
+      },
+      "votes": {
+        "malicious": 6,
+        "harmless": 1
+      },
+      "categories": {
+        "BitDefender": "computersandsoftware",
+        "Sophos": "information technology",
+        "Forcepoint ThreatSeeker": "information technology"
+      },
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "1994-07-06",
+        "age_days": 11528,
+        "age_human": "31 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".org",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/www.w3.org"
+    },
+    {
+      "available": true,
+      "domain": "element-plus.org",
+      "known": true,
+      "threat_level": "CLEAN",
+      "reputation": 0,
+      "stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 63,
+        "undetected": 29
+      },
+      "votes": {
+        "malicious": 0,
+        "harmless": 0
+      },
+      "categories": {},
+      "malicious_vendors": [],
+      "suspicious_vendors": [],
+      "domain_age": {
+        "creation_date": "2020-08-05",
+        "age_days": 2001,
+        "age_human": "5 years",
+        "risk_level": "SAFE",
+        "risk_score": 0,
+        "description": "Established domain"
+      },
+      "tld_risk": {
+        "is_high_risk": false,
+        "tld": ".org",
+        "risk_score": 0,
+        "description": "Standard TLD"
+      },
+      "combined_risk_score": 0,
+      "url": "https://www.virustotal.com/gui/domain/element-plus.org"
+    }
+  ],
+  "ast_results": {
+    "files_analyzed": 3,
+    "network_calls": [
+      {
+        "type": "fetch",
+        "url": "<variable: link>",
+        "method": "GET",
+        "body_source": null,
+        "line": 44,
+        "evidence": "        return fetchOpts;\n      }\n      function processPreload(link) {\n        if (link.ep)\n          return;\n        link.ep = true;\n        const fetchOpts = getFetchOpts(link);\n        fetch(link.href, fetchOpts);\n      }\n    })();\n    /**\n    * @vue/shared v3.5.13\n    * (c) 2018-present Yuxi (Evan) You and Vue contributors"
+      },
+      {
+        "type": "fetch",
+        "url": "<variable: link.href>",
+        "method": "GET",
+        "body_source": null,
+        "line": 45,
+        "evidence": "      }\n      function processPreload(link) {\n        if (link.ep)\n          return;\n        link.ep = true;\n        const fetchOpts = getFetchOpts(link);\n        fetch(link.href, fetchOpts);\n      }\n    })();\n    /**\n    * @vue/shared v3.5.13\n    * (c) 2018-present Yuxi (Evan) You and Vue contributors\n    * @license MIT"
+      },
+      {
+        "type": "fetch",
+        "url": "<variable: mfaURL>",
+        "method": "GET",
+        "body_source": null,
+        "line": 24268,
+        "evidence": "    async function getDefaultAuthList() {\n      let mfaURL = \"/mfa.json\";\n      {\n        mfaURL = chrome.runtime.getURL(\"vue/mfa.json\");\n      }\n      try {\n        const response = await fetch(mfaURL);\n        return await response.json();\n      } catch (error) {\n        return [];\n      }\n    }\n    function loadPac(pacUrl, callback) {"
+      },
+      {
+        "type": "fetch",
+        "url": "Unknown",
+        "method": "GET",
+        "body_source": null,
+        "line": 24278,
+        "evidence": "      }\n    }\n    function loadPac(pacUrl, callback) {\n      if (!(pacUrl + \"\").trim().toLowerCase().startsWith(\"http\")) {\n        pacUrl = chrome.runtime.getURL(\"proxy/pac/\" + pacUrl + \".pac\");\n      }\n      fetch(pacUrl).then((response) => {\n        return response.text();\n      }).then((text) => {\n        var config = {\n          mode: \"pac_script\",\n          pacScript: {\n            data: text\n          }\n        };\n        chrome.proxy.settings.set({\n          value: config,\n          scope: \"regular\"\n        }, callback);\n      });\n    }\n    function setStorage(key, value) {\n      window.localStorage[key] = JSON.stringify(value);\n    }\n    function getStorage(key) {\n      let result = null;"
+      },
+      {
+        "type": "fetch",
+        "url": "Unknown",
+        "method": "GET",
+        "body_source": null,
+        "line": 24278,
+        "evidence": "      }\n    }\n    function loadPac(pacUrl, callback) {\n      if (!(pacUrl + \"\").trim().toLowerCase().startsWith(\"http\")) {\n        pacUrl = chrome.runtime.getURL(\"proxy/pac/\" + pacUrl + \".pac\");\n      }\n      fetch(pacUrl).then((response) => {\n        return response.text();\n      }).then((text) => {\n        var config = {\n          mode: \"pac_script\",\n          pacScript: {\n            data: text\n          }\n        };"
+      },
+      {
+        "type": "fetch",
+        "url": "<variable: pacUrl>",
+        "method": "GET",
+        "body_source": null,
+        "line": 24278,
+        "evidence": "      }\n    }\n    function loadPac(pacUrl, callback) {\n      if (!(pacUrl + \"\").trim().toLowerCase().startsWith(\"http\")) {\n        pacUrl = chrome.runtime.getURL(\"proxy/pac/\" + pacUrl + \".pac\");\n      }\n      fetch(pacUrl).then((response) => {\n        return response.text();\n      }).then((text) => {\n        var config = {\n          mode: \"pac_script\",\n          pacScript: {\n            data: text"
+      },
+      {
+        "type": "fetch",
+        "url": "<variable: loadData>",
+        "method": "GET",
+        "body_source": null,
+        "line": 24911,
+        "evidence": "          importBtn.click();\n        },\n        importRemote() {\n          if (!this.importAuth.url) {\n            return ElNotification.error(\"请先配置网络地址\");\n          }\n          fetch(this.importAuth.url).then((response) => response.text()).then(this.loadData);\n        },\n        loadData(authData) {\n          try {\n            const res = JSON.parse(authData);\n            console.log(\"加载文件完成, 内容为:\", res);\n            if (Array.isArray(res)) {"
+      },
+      {
+        "type": "fetch",
+        "url": "Unknown",
+        "method": "GET",
+        "body_source": null,
+        "line": 24911,
+        "evidence": "          importBtn.click();\n        },\n        importRemote() {\n          if (!this.importAuth.url) {\n            return ElNotification.error(\"请先配置网络地址\");\n          }\n          fetch(this.importAuth.url).then((response) => response.text()).then(this.loadData);\n        },\n        loadData(authData) {\n          try {\n            const res = JSON.parse(authData);\n            console.log(\"加载文件完成, 内容为:\", res);\n            if (Array.isArray(res)) {"
+      },
+      {
+        "type": "fetch",
+        "url": "<variable: importAuth.url>",
+        "method": "GET",
+        "body_source": null,
+        "line": 24911,
+        "evidence": "          importBtn.click();\n        },\n        importRemote() {\n          if (!this.importAuth.url) {\n            return ElNotification.error(\"请先配置网络地址\");\n          }\n          fetch(this.importAuth.url).then((response) => response.text()).then(this.loadData);\n        },\n        loadData(authData) {\n          try {\n            const res = JSON.parse(authData);\n            console.log(\"加载文件完成, 内容为:\", res);\n            if (Array.isArray(res)) {"
+      }
+    ],
+    "data_exfiltration": [],
+    "chrome_api_abuse": [
+      {
+        "api": "chrome.tabs.move",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 9
+      },
+      {
+        "api": "chrome.tabs",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 9
+      },
+      {
+        "api": "chrome.tabs.update",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 10
+      },
+      {
+        "api": "chrome.tabs",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 10
+      },
+      {
+        "api": "chrome.tabs.query",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 6
+      },
+      {
+        "api": "chrome.tabs",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 6
+      },
+      {
+        "api": "chrome.tabs.onCreated.addListener",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 2
+      },
+      {
+        "api": "chrome.tabs.onCreated",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 2
+      },
+      {
+        "api": "chrome.tabs",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 2
+      },
+      {
+        "api": "chrome.tabs.query",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 18
+      },
+      {
+        "api": "chrome.tabs",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 18
+      },
+      {
+        "api": "chrome.tabs.query",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 23
+      },
+      {
+        "api": "chrome.tabs",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 23
+      },
+      {
+        "api": "chrome.tabs.remove",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 33
+      },
+      {
+        "api": "chrome.tabs",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 33
+      },
+      {
+        "api": "chrome.tabs.remove",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 43
+      },
+      {
+        "api": "chrome.tabs",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 43
+      },
+      {
+        "api": "chrome.tabs.remove",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 53
+      },
+      {
+        "api": "chrome.tabs",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 53
+      },
+      {
+        "api": "chrome.tabs.duplicate",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 58
+      },
+      {
+        "api": "chrome.tabs",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 58
+      },
+      {
+        "api": "chrome.runtime.sendMessage",
+        "type": "Message Passing",
+        "severity": "medium",
+        "description": "Sends messages to background script",
+        "line": 24166
+      },
+      {
+        "api": "chrome.tabs",
+        "type": "Tab Access",
+        "severity": "high",
+        "description": "Accesses tab information",
+        "line": 24835
+      }
+    ],
+    "obfuscation": [],
+    "suspicious_patterns": [
+      {
+        "type": "Dynamic Code Execution",
+        "pattern": "Function",
+        "severity": "high",
+        "line": 8111,
+        "evidence": "        cssVarBlockName\n      };\n    };\n    var freeGlobal = typeof global == \"object\" && global && global.Object === Object && global;\n    const freeGlobal$1 = freeGlobal;\n    var freeSelf = typeof self == \"object\" && self && self.Object === Object && self;\n    var root = freeGlobal$1 || freeSelf || Function(\"return this\")();\n    const root$1 = root;\n    var Symbol$1 = root$1.Symbol;\n    const Symbol$2 = Symbol$1;\n    var objectProto$e = Object.prototype;\n    var hasOwnProperty$b = objectProto$e.hasOwnProperty;\n    var nativeObjectToString$1 = objectProto$e.toString;"
+      },
+      {
+        "type": "Dynamic Code Execution",
+        "pattern": "Function",
+        "severity": "high",
+        "line": 8111,
+        "evidence": "        cssVarBlockName\n      };\n    };\n    var freeGlobal = typeof global == \"object\" && global && global.Object === Object && global;\n    const freeGlobal$1 = freeGlobal;\n    var freeSelf = typeof self == \"object\" && self && self.Object === Object && self;\n    var root = freeGlobal$1 || freeSelf || Function(\"return this\")();\n    const root$1 = root;\n    var Symbol$1 = root$1.Symbol;\n    const Symbol$2 = Symbol$1;\n    var objectProto$e = Object.prototype;\n    var hasOwnProperty$b = objectProto$e.hasOwnProperty;\n    var nativeObjectToString$1 = objectProto$e.toString;"
+      }
+    ]
+  },
+  "risk_score": 2.3,
+  "risk_level": "LOW",
+  "store_metadata": {
+    "available": true,
+    "extension_id": "oelcnhfgpdjeocflhhfecinnpjojeokp",
+    "store_url": "https://chrome.google.com/webstore/detail/oelcnhfgpdjeocflhhfecinnpjojeokp",
+    "has_privacy_policy": true,
+    "privacy_policy_url": "https://database-client.com/proxy-privacy.html",
+    "has_chrome_warning": false,
+    "risk_signals": {
+      "abandoned": false,
+      "new_extension": false,
+      "low_adoption": true,
+      "policy_violation": false,
+      "unverified_author": true,
+      "no_privacy_policy": false
+    }
+  },
+  "host_permissions": {
+    "host_permissions": [
+      {
+        "pattern": "*://*.aliyuncs.com/*",
+        "scheme": "*",
+        "host": "aliyuncs.com",
+        "path": "/*",
+        "wildcard_subdomain": true,
+        "wildcard_path": true,
+        "risk_level": "MEDIUM",
+        "description": "Access to all subdomains of aliyuncs.com (all pages)",
+        "category": "other"
+      }
+    ],
+    "content_scripts": [],
+    "web_accessible_resources": [],
+    "all_urls_access": false,
+    "sensitive_access": {},
+    "risk_assessment": {
+      "overall_risk": "LOW",
+      "risk_factors": [],
+      "risk_score": 0
+    },
+    "permission_scope": "MINIMAL",
+    "statistics": {
+      "total_host_permissions": 1,
+      "total_content_scripts": 0,
+      "total_sensitive_categories": 0,
+      "total_sensitive_domains": 0,
+      "has_all_urls": false
+    }
+  },
+  "domain_intelligence": [
+    {
+      "domain": "vuejs.org",
+      "url": "https://vuejs.org/error-reference/#runtime-${type}`;",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "www.w3.org",
+      "url": "http://www.w3.org/2000/svg",
+      "threat_level": "MEDIUM",
+      "confidence": 40,
+      "classification": null,
+      "risk_score": 4,
+      "indicators": [
+        {
+          "type": "NRD_INDICATORS",
+          "description": "Possible newly registered domain",
+          "severity": "MEDIUM",
+          "reasons": [
+            "Numbers in unusual positions"
+          ]
+        }
+      ],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    },
+    {
+      "domain": "element-plus.org",
+      "url": "https://element-plus.org/en-US/component/button.html#button-attributes",
+      "threat_level": "BENIGN",
+      "confidence": 0,
+      "classification": "Unknown but no indicators",
+      "risk_score": 0,
+      "indicators": [],
+      "is_legitimate": false,
+      "is_c2": false,
+      "is_dga": false,
+      "is_typosquat": false,
+      "reputation": "UNKNOWN"
+    }
+  ],
+  "advanced_detection": {
+    "csp_manipulation": [],
+    "dom_event_injection": [],
+    "websocket_c2": [],
+    "delayed_activation": [],
+    "obfuscation": [],
+    "summary": {
+      "total_findings": 0,
+      "critical_findings": 0,
+      "high_findings": 0,
+      "verdict": "CLEAN"
+    }
+  },
+  "pii_classification": {
+    "classifications": [],
+    "overall_risk": "LOW",
+    "total_severity_score": 0,
+    "data_types_count": 0,
+    "recommendation": {
+      "action": "REVIEW PERIODICALLY",
+      "priority": "P3 - Low",
+      "rationale": "Extension has limited data access. Standard monitoring sufficient.",
+      "next_steps": [
+        "Review permissions periodically",
+        "Monitor for permission changes",
+        "Keep extension updated",
+        "Watch for unusual behavior"
+      ]
+    },
+    "destination": "https://vuejs.org/error-reference/#runtime-${type}`;"
+  },
+  "threat_attribution": {
+    "available": true,
+    "extension_id": "oelcnhfgpdjeocflhhfecinnpjojeokp",
+    "extension_name": "QuikProxy",
+    "attribution_found": true,
+    "campaign_name": "DarkSpectre / ZoomStealer",
+    "campaign_description": "Corporate espionage campaign targeting video conferencing platforms. Part of DarkSpectre threat actor operations affecting 8.8 million users worldwide.",
+    "threat_actor": "DarkSpectre (Chinese state-sponsored APT)",
+    "confidence": "CONFIRMED",
+    "source_articles": [
+      {
+        "title": "DarkSpectre Browser Extension Campaigns Exposed After Impacting 8.8 Million Users Worldwide",
+        "url": "https://thehackernews.com/2025/12/darkspectre-browser-extension-campaigns.html",
+        "source": "The Hacker News",
+        "date": "2024-12"
+      },
+      {
+        "title": "DarkSpectre: Unmasking the Threat Actor Behind 8.8 Million Infected Browsers",
+        "url": "https://www.koi.ai/blog/darkspectre-unmasking-the-threat-actor-behind-7-8-million-infected-browsers",
+        "source": "Koi Security",
+        "date": "2024-12"
+      },
+      {
+        "title": "Zoom Stealer browser extensions harvest corporate meeting intelligence",
+        "url": "https://www.bleepingcomputer.com/news/security/zoom-stealer-browser-extensions-harvest-corporate-meeting-intelligence/",
+        "source": "BleepingComputer",
+        "date": "2024-12"
+      }
+    ],
+    "osint_summary": "\n## OSINT Analysis - CONFIRMED MALICIOUS EXTENSION\n\n**Extension Identified:** QuikProxy (ID: oelcnhfgpdjeocflhhfecinnpjojeokp)\n**Database Status:** CONFIRMED MALICIOUS\n**Severity:** CRITICAL\n\n**Campaign Attribution:** DarkSpectre / ZoomStealer\n**Threat Actor:** DarkSpectre (Chinese state-sponsored APT)\n\n**Campaign Overview:**\nCorporate espionage campaign targeting video conferencing platforms. Part of DarkSpectre threat actor operations affecting 8.8 million users worldwide.\n\n**Active Period:** 2018-2025\n\n**Impact:**\n- Total users affected: 8,800,000\n- This campaign: 2,200,000 users\n- Known extensions in campaign: 19\n\n**Targets:**\n- Zoom\n- Microsoft Teams\n- Google Meet\n- Webex\n- GoToMeeting\n\n**Data Exfiltrated:**\n- Meeting URLs with embedded passwords\n- Meeting IDs and topics\n- Scheduled meeting times\n- Registration status\n- Participant information\n- Chrome cookies\n- Browser history\n\n**C2 Infrastructure:**\n- meetingtv.us\n- webinartv.us\n- us-central1-webinarstvus.cloudfunctions.net\n- zoomcorder.firebaseio.com\n\n**TTPs (MITRE ATT&CK):**\n- Initial Access: Malicious browser extension\n- Persistence: Extension auto-update\n- Collection: Content script injection on video conferencing sites\n- Exfiltration: WebSocket connections to Firebase\n- C2: Google Cloud Functions endpoints\n",
+    "chrome_store_url": "https://chromewebstore.google.com/detail/oelcnhfgpdjeocflhhfecinnpjojeokp",
+    "google_search_url": "https://www.google.com/search?q=oelcnhfgpdjeocflhhfecinnpjojeokp+malware+threat",
+    "search_performed": true,
+    "database_match": true,
+    "extension_status": "confirmed_malicious",
+    "severity": "CRITICAL"
+  }
+}
