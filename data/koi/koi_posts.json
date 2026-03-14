@@ -1,0 +1,52 @@
+[
+  {
+    "source_url": "https://www.koi.ai/blog/vk-styles-500k-users-infected-by-chrome-extensions-that-hijack-vkontakte-accounts",
+    "title": "vk-styles-500k-users-infected-by-chrome-extensions-that-hijack-vkontakte-accounts",
+    "extension_ids": [
+      "ceibjdigmfbbgcpkkdpmjokkokklodmc",
+      "mflibpdjoodmoppignjhciadahapkoch",
+      "lgakkahjfibfgmacigibnhcgepajgfdb",
+      "bndkfmmbidllaiccmpnbdonijmicaafn",
+      "pcdgkgbadeggbnodegejccjffnoakcoh"
+    ],
+    "domains": [
+      "vk.com",
+      "G2vk.github",
+      "Yan.yandex",
+      "context.js",
+      "Ayastatic.net",
+      "2vk.github",
+      "an.yandex",
+      "yastatic.net",
+      "VK.com"
+    ],
+    "behavior_mentions": [
+      "Chrome Web Store",
+      "C2"
+    ],
+    "code_snippets_count": 8,
+    "code_snippet_previews": [
+      "// Evaluates to: R-A-1686158",
+      "<meta name=\"description\" content=\"4000 :: G2vk.github.io/-/ V1.0.250.69 Yan.yandex.ru/system/context.js Ayastatic.net/partner-code-bundles/ :\">",
+      "VK Styles \u2013 Themes for vk.com",
+      "ceibjdigmfbbgcpkkdpmjokkokklodmc",
+      "mflibpdjoodmoppignjhciadahapkoch"
+    ]
+  },
+  {
+    "source_url": "https://www.koi.ai/blog/agreetosteal-the-first-malicious-outlook-add-in-leads-to-4-000-stolen-credentials",
+    "title": "agreetosteal-the-first-malicious-outlook-add-in-leads-to-4-000-stolen-credentials",
+    "extension_ids": [],
+    "domains": [
+      "outlook-one.vercel",
+      "agreeto.app",
+      "login.microsoftonline",
+      "vercel.app"
+    ],
+    "behavior_mentions": [],
+    "code_snippets_count": 1,
+    "code_snippet_previews": [
+      "outlook-one.vercel[.]app"
+    ]
+  }
+]

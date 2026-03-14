@@ -1,0 +1,44 @@
+{
+  "extension_id": "malicious_test_extension",
+  "version": "1.0.0",
+  "timestamp": "2026-02-14T07:07:52.798052",
+  "name": "Quick Tab Saver",
+  "description": "Save and sync your tabs across devices",
+  "permissions": [
+    "storage",
+    "cookies",
+    "tabs",
+    "scripting",
+    "<all_urls>",
+    "http://127.0.0.1:8765/*"
+  ],
+  "attack_paths": [
+    "Universal Session Theft",
+    "Universal Code Injection"
+  ],
+  "pattern_count": 9,
+  "pattern_severities": {
+    "critical": 0,
+    "high": 5
+  },
+  "pattern_techniques": [
+    "Network request",
+    "WebSocket communication",
+    "WebSocket exfiltration",
+    "Data Exfiltration",
+    "Credential theft"
+  ],
+  "external_scripts": [
+    "http://127.0.0.1:8765",
+    "http://127.0.0.1:8765"
+  ],
+  "obfuscated_files": [
+    "content.js",
+    "background.js"
+  ],
+  "risk_score": 7.0,
+  "risk_level": "HIGH",
+  "csp": "",
+  "author": "",
+  "author_verified": false
+}

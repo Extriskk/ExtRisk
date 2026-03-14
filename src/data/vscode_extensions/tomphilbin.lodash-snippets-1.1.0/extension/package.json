@@ -1,0 +1,75 @@
+{
+  "name": "lodash-snippets",
+  "displayName": "Lodash Snippets",
+  "description": "Lodash Snippets for Visual Studio Code.",
+  "version": "1.1.0",
+  "publisher": "tomphilbin",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tomphilbin/lodash-snippets.git"
+  },
+  "author": "Tom Philbin",
+  "scripts": {
+    "fmt": "prettier --single-quote --trailing-comma all --write \"src/**/*.js\"",
+    "lint": "eslint src/**/*.js index.js",
+    "start": "node index.js",
+    "test": "jest",
+    "vscode:prepublish": "node index.js"
+  },
+  "pre-commit": [
+    "fmt",
+    "lint",
+    "test"
+  ],
+  "devDependencies": {
+    "eslint": "3.18.0",
+    "eslint-config-airbnb": "14.1.0",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-jsx-a11y": "4.0.0",
+    "eslint-plugin-react": "6.9.0",
+    "jest": "19.0.2",
+    "jsdoc": "3.4.3",
+    "lodash": "4.17.4",
+    "lodash.filter": "4.6.0",
+    "lodash.map": "4.6.0",
+    "lodash.reduce": "4.6.0",
+    "pre-commit": "1.2.2",
+    "prettier": "0.22.0",
+    "winston": "2.3.1"
+  },
+  "engines": {
+    "vscode": "0.10.10"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "keywords": [
+    "Javascript",
+    "Typescript",
+    "Lo-Dash",
+    "lodash",
+    "snippets"
+  ],
+  "icon": "lodash-icon.png",
+  "contributes": {
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./snippets.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./snippets.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./snippets.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./snippets.json"
+      }
+    ]
+  }
+}

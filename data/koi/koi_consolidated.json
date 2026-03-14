@@ -1,0 +1,59 @@
+{
+  "extension_ids": [
+    "ceibjdigmfbbgcpkkdpmjokkokklodmc",
+    "mflibpdjoodmoppignjhciadahapkoch",
+    "lgakkahjfibfgmacigibnhcgepajgfdb",
+    "bndkfmmbidllaiccmpnbdonijmicaafn",
+    "pcdgkgbadeggbnodegejccjffnoakcoh"
+  ],
+  "domains": [
+    "vk.com",
+    "G2vk.github",
+    "Yan.yandex",
+    "context.js",
+    "Ayastatic.net",
+    "2vk.github",
+    "an.yandex",
+    "yastatic.net",
+    "VK.com",
+    "outlook-one.vercel",
+    "agreeto.app",
+    "login.microsoftonline",
+    "vercel.app"
+  ],
+  "posts": [
+    {
+      "title": "vk-styles-500k-users-infected-by-chrome-extensions-that-hijack-vkontakte-accounts",
+      "url": "https://www.koi.ai/blog/vk-styles-500k-users-infected-by-chrome-extensions-that-hijack-vkontakte-accounts",
+      "extension_ids": [
+        "ceibjdigmfbbgcpkkdpmjokkokklodmc",
+        "mflibpdjoodmoppignjhciadahapkoch",
+        "lgakkahjfibfgmacigibnhcgepajgfdb",
+        "bndkfmmbidllaiccmpnbdonijmicaafn",
+        "pcdgkgbadeggbnodegejccjffnoakcoh"
+      ],
+      "domains": [
+        "vk.com",
+        "G2vk.github",
+        "Yan.yandex",
+        "context.js",
+        "Ayastatic.net",
+        "2vk.github",
+        "an.yandex",
+        "yastatic.net",
+        "VK.com"
+      ]
+    },
+    {
+      "title": "agreetosteal-the-first-malicious-outlook-add-in-leads-to-4-000-stolen-credentials",
+      "url": "https://www.koi.ai/blog/agreetosteal-the-first-malicious-outlook-add-in-leads-to-4-000-stolen-credentials",
+      "extension_ids": [],
+      "domains": [
+        "outlook-one.vercel",
+        "agreeto.app",
+        "login.microsoftonline",
+        "vercel.app"
+      ]
+    }
+  ]
+}

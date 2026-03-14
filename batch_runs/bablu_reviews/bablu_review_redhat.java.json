@@ -1,0 +1,365 @@
+{
+  "extension_id": "redhat.java",
+  "reviewed_at": "2026-02-22T07:49:27Z",
+  "report_json": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_redhat.java_analysis.json",
+  "extraction_path": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\data\\vscode_extensions\\redhat.java-1.53.2026022008\\extension",
+  "main_js_files": [
+    "dist/540.extension.js",
+    "dist/changeSignature.js",
+    "dist/dashboard.js",
+    "dist/extension.js",
+    "dist/vendors-node_modules_node-fetch_lib_index_mjs.extension.js",
+    "vscode.proposed.documentPaste.d.ts"
+  ],
+  "risk_score_reported": 7.3,
+  "risk_level_reported": "HIGH",
+  "findings_verified": [
+    {
+      "name": "Webview innerHTML assignment",
+      "file": "dist/changeSignature.js",
+      "line": 1480,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "onst t=document.createElement(\"style\");t.innerHTML=\".control { cursor: text !important; }\",",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/changeSignature.js",
+      "line": 470,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "open\",void 0),M([function(e,t,n){return Object.assign({},n,{get:function(){return v.trackVolatil",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/changeSignature.js",
+      "line": 1480,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "efinition=new L(this.type,Object.assign(Object.assign({},e),{name:this.name}))}tagFor(e){return",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/changeSignature.js",
+      "line": 1480,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "((t,n)=>e.createElement(l,Object.assign(Object.assign({},t),{__forwardedRef:n}),null==t?void 0:t",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "new Function() constructor",
+      "file": "dist/changeSignature.js",
+      "line": 2,
+      "severity": "high",
+      "category": "code_execution",
+      "evidence": "This)return globalThis;try{return this||new Function(\"return this\")()}catch(e){if(\"object\"==t",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "new Function() constructor",
+      "file": "dist/changeSignature.js",
+      "line": 2,
+      "severity": "high",
+      "category": "code_execution",
+      "evidence": "=typeof window)return window;try{return new Function(\"return this\")()}catch(e){return{}}}();v",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "file": "dist/changeSignature.js",
+      "line": 2,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "onst i=document.createElement(\"style\");i.innerHTML=t[r],i.className=n,e.append(i)}super.add",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "file": "dist/changeSignature.js",
+      "line": 2,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "){e=document.createElement(\"template\"),e.innerHTML=m.createHTML(t);const n=e.content.firstE",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/changeSignature.js",
+      "line": 2,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "===t.shadowOptions?void 0:Object.assign(Object.assign({},D),t.shadowOptions),this.elementOptions",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/changeSignature.js",
+      "line": 2,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "id 0===t.elementOptions?N:Object.assign(Object.assign({},N),t.elementOptions),this.styles=void 0",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/changeSignature.js",
+      "line": 2,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": ".freeze({createContainer:e=>new ge(null,Object.assign({},G.default,e)),findResponsibleContainer(",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/changeSignature.js",
+      "line": 2,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "iner:(e,t)=>e?e.$$container$$||new ge(e,Object.assign({},G.default,t,{parentLocator:J.findParent",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/changeSignature.js",
+      "line": 2,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "indParentContainer})):Z||(Z=new ge(null,Object.assign({},G.default,t,{parentLocator:()=>null})))",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/changeSignature.js",
+      "line": 2,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "(e,t)}createChild(e){return new ge(null,Object.assign({},this.config,e,{parentLocator:()=>this})",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/changeSignature.js",
+      "line": 2,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "inition=n,this.definition=Object.assign(Object.assign({},this.elementDefinition),this.overrideDe",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "file": "dist/changeSignature.js",
+      "line": 2,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "svg\"!==e.namespaceURI||\"innerHTML\"in e)e.innerHTML=t;else{for((fe=fe||document.createElemen",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/changeSignature.js",
+      "line": 2,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "}),\"abcdefghijklmnopqrst\"===Object.keys(Object.assign({},r)).join(\"\")}catch(e){return!1}}()?Obje",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "constructor.prototype access",
+      "file": "dist/changeSignature.js",
+      "line": 2,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "ue\",n=Object.getOwnPropertyDescriptor(e.constructor.prototype,t),r=\"\"+e[t];if(!e.hasOwnProperty(t)&&v",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Function() constructor without new keyword",
+      "file": "dist/changeSignature.js",
+      "line": 2,
+      "severity": "high",
+      "category": "code_execution",
+      "evidence": "elf&&self.Object===Object&&self,o=r||i||Function(\"return this\")();e.exports=o},1420(e,t,n)",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI string usage",
+      "file": "dist/dashboard.js",
+      "line": 2,
+      "severity": "high",
+      "category": "command_uri",
+      "evidence": "dren:[(0,r.jsx)(\"a\",Object.assign({href:\"command:java.dashboard.refresh\",className:\"toolbarItem\",tabIndex:-1},{c",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI string usage",
+      "file": "dist/dashboard.js",
+      "line": 2,
+      "severity": "high",
+      "category": "command_uri",
+      "evidence": "})})),(0,r.jsx)(\"a\",Object.assign({href:\"command:java.dashboard.dumpState\",className:\"toolbarItem\",tabIndex:-1},{c",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "file": "dist/dashboard.js",
+      "line": 2,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "svg\"!==e.namespaceURI||\"innerHTML\"in e)e.innerHTML=t;else{for((he=he||document.createElemen",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/dashboard.js",
+      "line": 2,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "}),\"abcdefghijklmnopqrst\"===Object.keys(Object.assign({},r)).join(\"\")}catch(e){return!1}}()?Obje",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "constructor.prototype access",
+      "file": "dist/dashboard.js",
+      "line": 2,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "ue\",n=Object.getOwnPropertyDescriptor(e.constructor.prototype,t),r=\"\"+e[t];if(!e.hasOwnProperty(t)&&v",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    }
+  ],
+  "metadata_findings": [
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'workspaceContains:pom.xml': Auto-runs when repo opened - can trigger on any workspace",
+      "event": "workspaceContains:pom.xml"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'workspaceContains:*/pom.xml': Auto-runs when repo opened - can trigger on any workspace",
+      "event": "workspaceContains:*/pom.xml"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'workspaceContains:build.gradle': Auto-runs when repo opened - can trigger on any workspace",
+      "event": "workspaceContains:build.gradle"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'workspaceContains:*/build.gradle': Auto-runs when repo opened - can trigger on any workspace",
+      "event": "workspaceContains:*/build.gradle"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'workspaceContains:settings.gradle': Auto-runs when repo opened - can trigger on any workspace",
+      "event": "workspaceContains:settings.gradle"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'workspaceContains:*/settings.gradle': Auto-runs when repo opened - can trigger on any workspace",
+      "event": "workspaceContains:*/settings.gradle"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'workspaceContains:build.gradle.kts': Auto-runs when repo opened - can trigger on any workspace",
+      "event": "workspaceContains:build.gradle.kts"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'workspaceContains:*/build.gradle.kts': Auto-runs when repo opened - can trigger on any workspace",
+      "event": "workspaceContains:*/build.gradle.kts"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'workspaceContains:settings.gradle.kts': Auto-runs when repo opened - can trigger on any workspace",
+      "event": "workspaceContains:settings.gradle.kts"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'workspaceContains:*/settings.gradle.kts': Auto-runs when repo opened - can trigger on any workspace",
+      "event": "workspaceContains:*/settings.gradle.kts"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'workspaceContains:.classpath': Auto-runs when repo opened - can trigger on any workspace",
+      "event": "workspaceContains:.classpath"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'workspaceContains:*/.classpath': Auto-runs when repo opened - can trigger on any workspace",
+      "event": "workspaceContains:*/.classpath"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onCommand:_java.templateVariables': Runs when command triggered - user/shortcut driven",
+      "event": "onCommand:_java.templateVariables"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onCommand:_java.metadataFilesGeneration': Runs when command triggered - user/shortcut driven",
+      "event": "onCommand:_java.metadataFilesGeneration"
+    },
+    {
+      "type": "sensitive_contribution",
+      "severity": "medium",
+      "detail": "Contributes 'customEditors': Webview-based editors - XSS/phishing surface",
+      "contribution": "customEditors"
+    }
+  ],
+  "supply_chain_findings": [
+    {
+      "type": "dependency_vulnerability",
+      "severity": "high",
+      "package": "tar",
+      "version": "7.5.7",
+      "cve_id": "GHSA-83g3-92jg-28cx",
+      "link": "https://github.com/advisories/GHSA-83g3-92jg-28cx",
+      "detail": "tar@7.5.7 has known vulnerability GHSA-83g3-92jg-28cx \u2014 Arbitrary File Read/Write via Hardlink Target Escape Through Symlink Chain in node-tar Extraction (fix: >=7.5.8)"
+    }
+  ],
+  "package_json_deep_findings": [],
+  "corrections": [],
+  "gaps": [],
+  "risk_score_feedback": null
+}

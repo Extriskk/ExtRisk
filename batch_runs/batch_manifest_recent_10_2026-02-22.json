@@ -1,0 +1,77 @@
+{
+  "cohort": "recent_10",
+  "cohort_path": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\data\\cohorts\\recent_10.json",
+  "run_date": "2026-02-22T07:22:02Z",
+  "extensions": [
+    {
+      "id": "eamodio.gitlens",
+      "success": true,
+      "report_json": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_eamodio.gitlens_analysis.json",
+      "report_html": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_eamodio.gitlens_threat_analysis_report.html",
+      "extraction_path": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\data\\vscode_extensions\\eamodio.gitlens-2026.2.2104\\extension"
+    },
+    {
+      "id": "redhat.vscode-yaml",
+      "success": true,
+      "report_json": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_redhat.vscode-yaml_analysis.json",
+      "report_html": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_redhat.vscode-yaml_threat_analysis_report.html",
+      "extraction_path": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\data\\vscode_extensions\\redhat.vscode-yaml-1.21.2026021808\\extension"
+    },
+    {
+      "id": "GitHub.copilot-chat",
+      "success": true,
+      "report_json": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_GitHub.copilot-chat_analysis.json",
+      "report_html": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_GitHub.copilot-chat_threat_analysis_report.html",
+      "extraction_path": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\data\\vscode_extensions\\GitHub.copilot-chat-0.38.2026022002\\extension"
+    },
+    {
+      "id": "ms-dotnettools.csdevkit",
+      "success": true,
+      "report_json": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_ms-dotnettools.csdevkit_analysis.json",
+      "report_html": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_ms-dotnettools.csdevkit_threat_analysis_report.html",
+      "extraction_path": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\data\\vscode_extensions\\ms-dotnettools.csdevkit-2.13.9\\extension"
+    },
+    {
+      "id": "ms-python.isort",
+      "success": true,
+      "report_json": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_ms-python.isort_analysis.json",
+      "report_html": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_ms-python.isort_threat_analysis_report.html",
+      "extraction_path": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\data\\vscode_extensions\\ms-python.isort-2025.1.13251007\\extension"
+    },
+    {
+      "id": "redhat.java",
+      "success": true,
+      "report_json": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_redhat.java_analysis.json",
+      "report_html": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_redhat.java_threat_analysis_report.html",
+      "extraction_path": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\data\\vscode_extensions\\redhat.java-1.53.2026022008\\extension"
+    },
+    {
+      "id": "ms-vscode.cmake-tools",
+      "success": true,
+      "report_json": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_ms-vscode.cmake-tools_analysis.json",
+      "report_html": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_ms-vscode.cmake-tools_threat_analysis_report.html",
+      "extraction_path": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\data\\vscode_extensions\\ms-vscode.cmake-tools-1.23.15\\extension"
+    },
+    {
+      "id": "ms-vscode.makefile-tools",
+      "success": true,
+      "report_json": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_ms-vscode.makefile-tools_analysis.json",
+      "report_html": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_ms-vscode.makefile-tools_threat_analysis_report.html",
+      "extraction_path": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\data\\vscode_extensions\\ms-vscode.makefile-tools-0.13.23\\extension"
+    },
+    {
+      "id": "GitHub.vscode-pull-request-github",
+      "success": true,
+      "report_json": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_GitHub.vscode-pull-request-github_analysis.json",
+      "report_html": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_GitHub.vscode-pull-request-github_threat_analysis_report.html",
+      "extraction_path": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\data\\vscode_extensions\\GitHub.vscode-pull-request-github-0.129.2026022004\\extension"
+    },
+    {
+      "id": "ms-vscode.cpptools",
+      "success": true,
+      "report_json": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_ms-vscode.cpptools_analysis.json",
+      "report_html": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_ms-vscode.cpptools_threat_analysis_report.html",
+      "extraction_path": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\data\\vscode_extensions\\ms-vscode.cpptools-1.31.0\\extension"
+    }
+  ]
+}

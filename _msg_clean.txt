@@ -1,0 +1,11 @@
+V6: Store metadata, first-party, detection library, VK Styles, generic attribution
+
+- Chrome Web Store: fetch from chromewebstore.google.com; parse author, version, users, featured, trader
+- Trusted publisher list and first-party badge; positive_reduction cap 2.5 for trusted; malice floor when critical code
+- data/known_malicious_extensions.json: VK Styles campaign (5 extension IDs)
+- data/detection_artefacts.json: standard detection artefacts per campaign
+- New patterns: meta-tag C2, computed R-A- ID, remixsec/CSRF cookie; INJECT-002 window 500 chars
+- Attribution and sources use generic labels (Security research); docs/DETECTION_LIBRARY.md
+- .gitignore: allow detection library files; ignore data caches and generated dirs
+
+

@@ -1,0 +1,16 @@
+{
+  "name": "recent_10",
+  "description": "Recently updated VSCode extensions from marketplace (top 10 by lastUpdated)",
+  "extension_ids": [
+    "eamodio.gitlens",
+    "redhat.vscode-yaml",
+    "GitHub.copilot-chat",
+    "ms-dotnettools.csdevkit",
+    "ms-python.isort",
+    "redhat.java",
+    "ms-vscode.cmake-tools",
+    "ms-vscode.makefile-tools",
+    "GitHub.vscode-pull-request-github",
+    "ms-vscode.cpptools"
+  ]
+}

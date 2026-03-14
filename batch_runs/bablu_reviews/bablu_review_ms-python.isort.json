@@ -1,0 +1,51 @@
+{
+  "extension_id": "ms-python.isort",
+  "reviewed_at": "2026-02-22T07:49:27Z",
+  "report_json": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_ms-python.isort_analysis.json",
+  "extraction_path": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\data\\vscode_extensions\\ms-python.isort-2025.1.13251007\\extension",
+  "main_js_files": [
+    "dist/extension.js",
+    "eslint.config.mjs"
+  ],
+  "risk_score_reported": 5.0,
+  "risk_level_reported": "MEDIUM",
+  "findings_verified": [],
+  "metadata_findings": [
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'workspaceContains:pyproject.toml': Auto-runs when repo opened - can trigger on any workspace",
+      "event": "workspaceContains:pyproject.toml"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'workspaceContains:.isort': Auto-runs when repo opened - can trigger on any workspace",
+      "event": "workspaceContains:.isort"
+    }
+  ],
+  "supply_chain_findings": [
+    {
+      "type": "dependency_vulnerability",
+      "severity": "low",
+      "package": "webpack",
+      "version": "5.101.3",
+      "cve_id": "GHSA-38r7-794h-5758",
+      "link": "https://github.com/advisories/GHSA-38r7-794h-5758",
+      "detail": "webpack@5.101.3 has known vulnerability GHSA-38r7-794h-5758 \u2014 webpack buildHttp HttpUriPlugin allowedUris bypass via HTTP redirects \u2192 SSRF + cache persistence (fix: >=5.104.0)"
+    },
+    {
+      "type": "dependency_vulnerability",
+      "severity": "low",
+      "package": "webpack",
+      "version": "5.101.3",
+      "cve_id": "GHSA-8fgc-7cc6-rx7x",
+      "link": "https://github.com/advisories/GHSA-8fgc-7cc6-rx7x",
+      "detail": "webpack@5.101.3 has known vulnerability GHSA-8fgc-7cc6-rx7x \u2014 webpack buildHttp: allowedUris allow-list bypass via URL userinfo (@) leading to build-time SSRF behavior (fix: >=5.104.1)"
+    }
+  ],
+  "package_json_deep_findings": [],
+  "corrections": [],
+  "gaps": [],
+  "risk_score_feedback": null
+}

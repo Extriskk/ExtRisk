@@ -1,0 +1,12 @@
+{
+  "name": "chrome-extension-security-analyzer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Retire.js is used by the analyzer for VSCode bundled JS vulnerability scanning.",
+  "scripts": {
+    "postinstall": "node -e \"console.log('Retire.js installed. Run the analyzer with: python src/analyzer.py <id> --vscode')\""
+  },
+  "devDependencies": {
+    "retire": "^3.0.0"
+  }
+}

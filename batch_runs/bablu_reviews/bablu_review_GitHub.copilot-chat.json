@@ -1,0 +1,490 @@
+{
+  "extension_id": "GitHub.copilot-chat",
+  "reviewed_at": "2026-02-22T07:49:27Z",
+  "report_json": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_GitHub.copilot-chat_analysis.json",
+  "extraction_path": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\data\\vscode_extensions\\GitHub.copilot-chat-0.38.2026022002\\extension",
+  "main_js_files": [
+    "dist/cli.js",
+    "dist/copilotCLIShim.js",
+    "dist/copilotDebugCommand.js",
+    "dist/diffWorker.js",
+    "dist/extension.js",
+    "dist/suggestionsPanelWebview.js",
+    "dist/tfidfWorker.js",
+    "dist/tikTokenizerWorker.js",
+    "dist/worker2.js"
+  ],
+  "risk_score_reported": 2.1,
+  "risk_level_reported": "LOW",
+  "findings_verified": [
+    {
+      "name": "User/device fingerprinting",
+      "file": "dist/copilotCLIShim.js",
+      "line": 1,
+      "severity": "low",
+      "category": "telemetry_abuse",
+      "evidence": "else typeof navigator==\"object\"&&!ke?(L=navigator.userAgent,G=L.indexOf(\"Windows\")>=0,H=L.indexOf(\"",
+      "verdict": "TP",
+      "notes": "Legitimate telemetry/fingerprinting in app code."
+    },
+    {
+      "name": "User/device fingerprinting",
+      "file": "dist/copilotCLIShim.js",
+      "line": 1,
+      "severity": "low",
+      "category": "telemetry_abuse",
+      "evidence": "=L?.indexOf(\"Mobi\")>=0,re=!0,F=B()||R,z=navigator.language.toLowerCase(),ne=z):console.error(\"Unab",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Shell option via truthy coercion (shell: !0 or shell: 1)",
+      "file": "dist/copilotCLIShim.js",
+      "line": 3,
+      "severity": "high",
+      "category": "evasion_technique",
+      "evidence": "V.spawnSync)(\"copilot --version\",{env:X,shell:!0,encoding:\"utf8\"});if(e.error||e.status!",
+      "verdict": "TP",
+      "notes": "Legitimate shell use for CLI check (Copilot)."
+    },
+    {
+      "name": "child_process require (minification-safe)",
+      "file": "dist/copilotCLIShim.js",
+      "line": 1,
+      "severity": "high",
+      "category": "command_injection",
+      "evidence": "t\",{value:e,enumerable:!0}):n,e));var V=require(\"child_process\"),ue=Le(require(\"readline\"));function B()",
+      "verdict": "TP",
+      "notes": "child_process import present."
+    },
+    {
+      "name": "User/device fingerprinting",
+      "file": "dist/copilotDebugCommand.js",
+      "line": 1,
+      "severity": "low",
+      "category": "telemetry_abuse",
+      "evidence": "else typeof navigator==\"object\"&&!Me?(y=navigator.userAgent,U=y.indexOf(\"Windows\")>=0,H=y.indexOf(\"",
+      "verdict": "TP",
+      "notes": "Legitimate telemetry/fingerprinting in app code."
+    },
+    {
+      "name": "User/device fingerprinting",
+      "file": "dist/copilotDebugCommand.js",
+      "line": 1,
+      "severity": "low",
+      "category": "telemetry_abuse",
+      "evidence": "=y?.indexOf(\"Mobi\")>=0,ne=!0,j=Y()||k,T=navigator.language.toLowerCase(),te=T):console.error(\"Unab",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "node: prefix module import",
+      "file": "dist/copilotDebugCommand.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "evasion_technique",
+      "evidence": ":!0}):n,e));var me=require(\"crypto\"),xe=require(\"node:net\"),Ce=require(\"os\"),K=Le(require(\"readlin",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "child_process require (minification-safe)",
+      "file": "dist/copilotDebugCommand.js",
+      "line": 1,
+      "severity": "high",
+      "category": "command_injection",
+      "evidence": "sep,yt=b?p.delimiter:m.delimiter;var fe=require(\"child_process\"),de=(e,t)=>{let n,i=!1,o=[t];if(e){let[r",
+      "verdict": "TP",
+      "notes": "child_process import present."
+    },
+    {
+      "name": "new Function() constructor",
+      "file": "dist/suggestionsPanelWebview.js",
+      "line": 1,
+      "severity": "high",
+      "category": "code_execution",
+      "evidence": "eof window<\"u\")return window;try{return new Function(\"return this\")()}catch{return{}}}();nt.t",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "file": "dist/suggestionsPanelWebview.js",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "){c=document.createElement(\"template\"),c.innerHTML=g.createHTML(d);let k=c.content.firstEle",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "file": "dist/suggestionsPanelWebview.js",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "{let i=document.createElement(\"style\");i.innerHTML=e[o],i.className=n,t.append(i)}super.add",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "file": "dist/suggestionsPanelWebview.js",
+      "line": 214,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "t,\"template\",null);try{u.documentElement.innerHTML=tr?jt:T}catch{}}let L=u.body||u.document",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "file": "dist/suggestionsPanelWebview.js",
+      "line": 215,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "();break}});function Cs(r){As(r),ce&&(ce.innerHTML=r.solutions.map((t,e)=>{let n=t.citation",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "file": "dist/suggestionsPanelWebview.js",
+      "line": 222,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "er\");if(!(!t||!e))if(r.percentage>=100)e.innerHTML=`${r.solutions.length} Suggestions`;else",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/suggestionsPanelWebview.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "adowOptions===null?void 0:Object.assign(Object.assign({},Hn),e.shadowOptions),this.elementOption",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/suggestionsPanelWebview.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "lementOptions===void 0?Un:Object.assign(Object.assign({},Un),e.elementOptions),this.styles=e.sty",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/suggestionsPanelWebview.js",
+      "line": 41,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "({createContainer(r){return new Gt(null,Object.assign({},xr.default,r))},findResponsibleContaine",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/suggestionsPanelWebview.js",
+      "line": 41,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "r,t){return r?r.$$container$$||new Gt(r,Object.assign({},xr.default,t,{parentLocator:w.findParen",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/suggestionsPanelWebview.js",
+      "line": 41,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "dParentContainer})):Qn||(Qn=new Gt(null,Object.assign({},xr.default,t,{parentLocator:()=>null}))",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/suggestionsPanelWebview.js",
+      "line": 41,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "t(t,e)}createChild(t){return new r(null,Object.assign({},this.config,t,{parentLocator:()=>this})",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/suggestionsPanelWebview.js",
+      "line": 41,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "inition=n,this.definition=Object.assign(Object.assign({},this.elementDefinition),this.overrideDe",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/suggestionsPanelWebview.js",
+      "line": 85,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "efinition=new J(this.type,Object.assign(Object.assign({},t),{name:this.name}))}tagFor(t){return",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "User/device fingerprinting",
+      "file": "dist/tfidfWorker.js",
+      "line": 41,
+      "severity": "low",
+      "category": "telemetry_abuse",
+      "evidence": "lse typeof navigator==\"object\"&&!Fu?(Ye=navigator.userAgent,qn=Ye.indexOf(\"Windows\")>=0,Kn=Ye.index",
+      "verdict": "TP",
+      "notes": "Legitimate telemetry/fingerprinting in app code."
+    },
+    {
+      "name": "User/device fingerprinting",
+      "file": "dist/tfidfWorker.js",
+      "line": 41,
+      "severity": "low",
+      "category": "telemetry_abuse",
+      "evidence": "indexOf(\"Mobi\")>=0,ci=!0,jn=li()||Qt,Vn=navigator.language.toLowerCase(),ho=Vn):console.error(\"Una",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "file": "dist/tfidfWorker.js",
+      "line": 6,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "===i.__html||p.__html===t.innerHTML)||(t.innerHTML=p.__html),e.__k=[];else if(i&&(t.innerHT",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "file": "dist/tfidfWorker.js",
+      "line": 6,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "nerHTML=p.__html),e.__k=[];else if(i&&(t.innerHTML=\"\"),pe(t,J(f)?f:[f],e,n,o,v===\"foreignOb",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Localhost HTTP access from extension code",
+      "file": "dist/tfidfWorker.js",
+      "line": 7,
+      "severity": "medium",
+      "category": "localhost_access",
+      "evidence": "e(e,t){let r=e,i=t,s=new URL(r.url||\"/\",\"http://localhost\"),o=`/${this.serverToken}`;switch(s.pat",
+      "verdict": "FP",
+      "notes": "Allowlisted CDN/infra domain."
+    },
+    {
+      "name": "User/device fingerprinting",
+      "file": "dist/tfidfWorker.js",
+      "line": 4,
+      "severity": "low",
+      "category": "telemetry_abuse",
+      "evidence": "lse typeof navigator==\"object\"&&!F1?(st=navigator.userAgent,En=st.indexOf(\"Windows\")>=0,In=st.index",
+      "verdict": "TP",
+      "notes": "Legitimate telemetry/fingerprinting in app code."
+    },
+    {
+      "name": "User/device fingerprinting",
+      "file": "dist/tfidfWorker.js",
+      "line": 4,
+      "severity": "low",
+      "category": "telemetry_abuse",
+      "evidence": "}\"]},\"_\"))||v.LANGUAGE_DEFAULT,pr=yn,Bi=navigator.language):console.error(\"Unable to resolve platf",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "User/device fingerprinting",
+      "file": "dist/tfidfWorker.js",
+      "line": 18,
+      "severity": "low",
+      "category": "telemetry_abuse",
+      "evidence": "isWindows=()=>{if(typeof navigator<\"u\"&&navigator.platform){let n=navigator.platform.toLowerCase()",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "User/device fingerprinting",
+      "file": "dist/tfidfWorker.js",
+      "line": 18,
+      "severity": "low",
+      "category": "telemetry_abuse",
+      "evidence": "avigator<\"u\"&&navigator.platform){let n=navigator.platform.toLowerCase();return n===\"win32\"||n===\"",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "eval() usage",
+      "file": "dist/worker2.js",
+      "line": 1,
+      "severity": "high",
+      "category": "code_execution",
+      "evidence": "gs}) => { ${body} };`;ASM_CONSTS[start]=eval(func)}if(\"__start_em_asm\"in moduleExport",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "eval() usage",
+      "file": "dist/worker2.js",
+      "line": 1,
+      "severity": "high",
+      "category": "code_execution",
+      "evidence": "Args}) => ${body};`;moduleExports[name]=eval(func)}for(var name in moduleExports)if(n",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/worker2.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "uleOptions){return initPromise||(Module=Object.assign({},Module,moduleOptions),initPromise=new P",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/worker2.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "esolveInitPromise=>{var moduleOverrides=Object.assign({},Module),arguments_=[],thisProgram=\"./th",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "file": "dist/worker2.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "workspace_harvesting",
+      "evidence": "?new URL(e):nodePath.normalize(e);var t=fs.readFileSync(e);return t},readAsync=(e,t=!0)=>(e=isFil",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "file": "dist/worker2.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "workspace_harvesting",
+      "evidence": "dePath.normalize(e),new Promise((r,n)=>{fs.readFile(e,t?void 0:\"utf8\",(s,o)=>{s?n(s):r(t?o.bu",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "User/device fingerprinting",
+      "file": "dist/worker2.js",
+      "line": 10,
+      "severity": "low",
+      "category": "telemetry_abuse",
+      "evidence": "lse typeof navigator==\"object\"&&!_r?(ee=navigator.userAgent,Pe=ee.indexOf(\"Windows\")>=0,Fe=ee.index",
+      "verdict": "TP",
+      "notes": "Legitimate telemetry/fingerprinting in app code."
+    },
+    {
+      "name": "User/device fingerprinting",
+      "file": "dist/worker2.js",
+      "line": 10,
+      "severity": "low",
+      "category": "telemetry_abuse",
+      "evidence": "indexOf(\"Mobi\")>=0,ot=!0,Ne=We()||fe,Re=navigator.language.toLowerCase(),st=Re):console.error(\"Una",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    }
+  ],
+  "metadata_findings": [
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onStartupFinished': Runs every launch - immediate execution",
+      "event": "onStartupFinished"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onUri': Activates on custom URI scheme (can be triggered externally)",
+      "event": "onUri"
+    },
+    {
+      "type": "sensitive_contribution",
+      "severity": "medium",
+      "detail": "Contributes 'terminal': Can create and control integrated terminals (command execution risk)",
+      "contribution": "terminal"
+    },
+    {
+      "type": "sensitive_contribution",
+      "severity": "medium",
+      "detail": "Contributes 'debuggers': Can inspect running processes and variables (run arbitrary programs)",
+      "contribution": "debuggers"
+    },
+    {
+      "type": "sensitive_contribution",
+      "severity": "medium",
+      "detail": "Contributes 'viewsContainers': Webview views - remote HTML/JS possible",
+      "contribution": "viewsContainers"
+    },
+    {
+      "type": "sensitive_contribution",
+      "severity": "medium",
+      "detail": "Contributes 'walkthroughs': Can present guided flows to users",
+      "contribution": "walkthroughs"
+    }
+  ],
+  "supply_chain_findings": [
+    {
+      "type": "bundled_node_modules",
+      "severity": "info",
+      "detail": "2 bundled packages (21.9 MB)",
+      "count": 2,
+      "size_mb": 21.9
+    }
+  ],
+  "package_json_deep_findings": [
+    {
+      "name": "Publisher-domain mismatch: github vs www.youtube.com",
+      "severity": "medium",
+      "description": "Publisher \"github\" does not match operational domain \"www.youtube.com\"",
+      "category": "publisher_mismatch",
+      "file": "package.json",
+      "line": 0,
+      "evidence": "publisher=github, domain=www.youtube.com"
+    },
+    {
+      "name": "Publisher-domain mismatch: github vs vscodewalkthroughs.z1.web.core.windows.net",
+      "severity": "medium",
+      "description": "Publisher \"github\" does not match operational domain \"vscodewalkthroughs.z1.web.core.windows.net\"",
+      "category": "publisher_mismatch",
+      "file": "package.json",
+      "line": 0,
+      "evidence": "publisher=github, domain=vscodewalkthroughs.z1.web.core.windows.net"
+    },
+    {
+      "name": "Publisher-domain mismatch: github vs twitter.com",
+      "severity": "medium",
+      "description": "Publisher \"github\" does not match operational domain \"twitter.com\"",
+      "category": "publisher_mismatch",
+      "file": "package.json",
+      "line": 0,
+      "evidence": "publisher=github, domain=twitter.com"
+    }
+  ],
+  "corrections": [],
+  "gaps": [],
+  "risk_score_feedback": null
+}

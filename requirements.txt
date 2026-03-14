@@ -1,0 +1,37 @@
+# Core dependencies
+# For VSCode bundled-JS scanning (Retire.js), also run: npm install
+requests==2.31.0
+beautifulsoup4==4.12.2
+pyyaml==6.0.1
+
+# Web framework (FastAPI for web interface)
+fastapi==0.109.0
+uvicorn==0.27.0
+python-multipart==0.0.6
+
+# Data storage
+sqlalchemy==2.0.25
+psycopg2-binary==2.9.9
+alembic==1.13.1
+
+# Job queue
+redis==5.0.1
+rq==1.16.1
+
+# Utilities
+tqdm==4.66.1
+colorama==0.4.6
+python-dotenv==1.0.0
+
+# Reporting
+jinja2==3.1.2
+markdown==3.5.1
+
+# Windows-compatible file type detection
+python-magic-bin==0.4.14; sys_platform == 'win32'
+
+# JavaScript AST parsing
+esprima==4.0.1
+
+# Dynamic analysis (optional - also run: playwright install chromium)
+playwright>=1.40.0

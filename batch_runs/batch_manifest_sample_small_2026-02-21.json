@@ -1,0 +1,21 @@
+{
+  "cohort": "sample_small",
+  "cohort_path": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\data\\cohorts\\sample_small.json",
+  "run_date": "2026-02-21T20:07:29Z",
+  "extensions": [
+    {
+      "id": "ms-python.python",
+      "success": false,
+      "report_json": null,
+      "report_html": null,
+      "extraction_path": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\data\\vscode_extensions\\ms-python.python-2026.2.2026021801\\extension"
+    },
+    {
+      "id": "dbaeumer.vscode-eslint",
+      "success": false,
+      "report_json": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_dbaeumer.vscode-eslint_analysis.json",
+      "report_html": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_dbaeumer.vscode-eslint_threat_analysis_report.html",
+      "extraction_path": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\data\\vscode_extensions\\dbaeumer.vscode-eslint-3.0.21\\extension"
+    }
+  ]
+}

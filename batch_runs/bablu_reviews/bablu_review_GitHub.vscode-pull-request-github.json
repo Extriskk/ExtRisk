@@ -1,0 +1,123 @@
+{
+  "extension_id": "GitHub.vscode-pull-request-github",
+  "reviewed_at": "2026-02-22T07:49:28Z",
+  "report_json": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_GitHub.vscode-pull-request-github_analysis.json",
+  "extraction_path": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\data\\vscode_extensions\\GitHub.vscode-pull-request-github-0.129.2026022004\\extension",
+  "main_js_files": [
+    ".vscode-test.mjs",
+    "dist/browser/extension",
+    "dist/extension.js",
+    "dist/webview-create-pr-view-new.js",
+    "dist/webview-open-pr-view.js",
+    "dist/webview-pr-description.js",
+    "eslint.config.mjs"
+  ],
+  "risk_score_reported": 1.1,
+  "risk_level_reported": "MINIMAL",
+  "findings_verified": [
+    {
+      "name": "Webview innerHTML assignment",
+      "file": "dist/webview-create-pr-view-new.js",
+      "line": 900,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "namespaceURI!==So.svg||\"innerHTML\"in e)e.innerHTML=t;else{for(Yn=Yn||document.createElement",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "constructor.prototype access",
+      "file": "dist/webview-create-pr-view-new.js",
+      "line": 900,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "ue\",n=Object.getOwnPropertyDescriptor(e.constructor.prototype,t),r=\"\"+e[t];if(!e.hasOwnProperty(t)&&t",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/webview-create-pr-view-new.js",
+      "line": 906,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "orEach(function(D){I[D]=D}),Object.keys(Object.assign({},I)).join(\"\")===\"abcdefghijklmnopqrst\"}c",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "file": "dist/webview-open-pr-view.js",
+      "line": 572,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "namespaceURI!==Wi.svg||\"innerHTML\"in e)e.innerHTML=t;else{for(Qr=Qr||document.createElement",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "constructor.prototype access",
+      "file": "dist/webview-open-pr-view.js",
+      "line": 572,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "ue\",n=Object.getOwnPropertyDescriptor(e.constructor.prototype,t),r=\"\"+e[t];if(!e.hasOwnProperty(t)&&t",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/webview-open-pr-view.js",
+      "line": 776,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "orEach(function(V){F[V]=V}),Object.keys(Object.assign({},F)).join(\"\")===\"abcdefghijklmnopqrst\"}c",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Clipboard write access",
+      "file": "dist/webview-open-pr-view.js",
+      "line": 791,
+      "severity": "medium",
+      "category": "clipboard_access",
+      "evidence": "e:\"icon-button\",onClick:i(()=>navigator.clipboard.writeText(Vt),\"onClick\")},copyIcon):null,U?React.c",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    }
+  ],
+  "metadata_findings": [
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onStartupFinished': Runs every launch - immediate execution",
+      "event": "onStartupFinished"
+    },
+    {
+      "type": "sensitive_contribution",
+      "severity": "medium",
+      "detail": "Contributes 'viewsContainers': Webview views - remote HTML/JS possible",
+      "contribution": "viewsContainers"
+    }
+  ],
+  "supply_chain_findings": [
+    {
+      "type": "lifecycle_script",
+      "severity": "high",
+      "detail": "'postinstall' script: yarn update-dts",
+      "script_name": "postinstall",
+      "script_content": "yarn update-dts"
+    },
+    {
+      "type": "lifecycle_script",
+      "severity": "info",
+      "detail": "'prepare' script: husky install",
+      "script_name": "prepare",
+      "script_content": "husky install"
+    }
+  ],
+  "package_json_deep_findings": [],
+  "corrections": [],
+  "gaps": [],
+  "risk_score_feedback": null
+}

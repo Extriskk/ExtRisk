@@ -1,0 +1,7 @@
+node_modules/
+npm-debug.log*
+
+snippets.json
+lodash-snippets-*.VSIX
+
+.DS_Store

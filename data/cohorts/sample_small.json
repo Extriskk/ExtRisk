@@ -1,0 +1,11 @@
+{
+  "name": "sample_small",
+  "description": "Small sample cohort for testing the batch pipeline (5 extensions)",
+  "extension_ids": [
+    "ms-python.python",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "ritwickdey.LiveServer",
+    "shd101wyy.markdown-preview-enhanced"
+  ]
+}

@@ -1,0 +1,68 @@
+[
+  {
+    "source_url": "https://layerxsecurity.com/blog/layerx-announces-the-first-dedicated-solution-for-agentic-browser-protection/",
+    "title": "LayerX Announces The First Dedicated Solution for Agentic Browser Protection",
+    "extension_ids": [],
+    "domains": [],
+    "ttps": [],
+    "code_snippets_count": 0,
+    "code_snippet_previews": [],
+    "auth_token_mentions": []
+  },
+  {
+    "source_url": "https://layerxsecurity.com/blog/aiframe-fake-ai-assistant-extensions-targeting-260000-chrome-users-via-injected-iframes/",
+    "title": "Company News\n\u201cAiFrame\u201d-  Fake AI Assistant Extensions Targeting 260,000 Chrome Users via injected iframes\nContributors: Dar Kahllon As generative AI tools like ChatGPT, Claude, Gemini, and Grok become",
+    "extension_ids": [
+      "nlhpidbjmmffhoogcennoiopekbiglbp",
+      "fppbiomdkfbhgjjdmojlogeceejinadg",
+      "gghdfkafnhfpaooiolhncejnlgglhkhe",
+      "gcfianbpjcfkafpiadmheejkokcmdkjl",
+      "djhjckkfgancelbmgcamjimgphaphjdl",
+      "llojfncgbabajmdglnkbhmiebiinohek",
+      "cgmmcoandmabammnhfnjcakdeejbfimn",
+      "phiphcloddhmndjbdedgfbglhpkjcffh",
+      "pgfibniplgcnccdnkhblpmmlfodijppg",
+      "nkgbfengofophpmonladgaldioelckbe",
+      "gcdfailafdfjbailcdcbjmeginhncjkb",
+      "ebmmjmakencgmgoijdfnbailknaaiffh",
+      "baonbjckakcpgliaafcodddkoednpjgf",
+      "fdlagfnfaheppaigholhoojabfaapnhb",
+      "gnaekhndaddbimfllbgmecjijbbfpabc",
+      "hgnjolbjpjmhepcbjgeeallnamkjnfgi",
+      "lodlcpnbppgipaimgbjgniokjcnpiiad",
+      "cmpmhhjahlioglkleiofbjodhhiejhei",
+      "bilfflcophfehljhpnklmcelkoiffapb",
+      "cicjlpmjmimeoempffghfglndokjihhn",
+      "ckneindgfbjnbbiggcmnjeofelhflhaj",
+      "dbclhjpifdfkofnmjfpheiondafpkoed",
+      "ecikmpoikkcelnakpgaeplcjoickgacj",
+      "kepibgehhljlecgaeihhnmibnmikbnga",
+      "ckicoadchmmndbakbokhapncehanaeni",
+      "fnjinbdmidgjkpmlihcginjipjaoapol",
+      "gohgeedemmaohocbaccllpkabadoogpl",
+      "flnecpdpbhdblkpnegekobahlijbmfok",
+      "acaeafediijmccnjlokgcdiojiljfpbe",
+      "kblengdlefjpjkekanpoidgoghdngdgl",
+      "idhknpoceajhnjokpnbicildeoligdgh",
+      "fpmkabpaklbhbhegegapfkenkmpipick"
+    ],
+    "domains": [
+      "claude.tapnetic",
+      "mail.google",
+      "Tapnetic.pro",
+      "VirusTotal.com",
+      "tapnetic.pro"
+    ],
+    "ttps": [
+      "LX4.003\n \u2013 Script Execution",
+      "LX10.012\n \u2013 Web Communication Data Collection",
+      "LX10.005\n \u2013 Collect User\u2019s Information",
+      "LX11.004\n \u2013 Establish Network Connection",
+      "LX11.005\n \u2013 Web Service-Based C2",
+      "LX12.001\n \u2013 Data Exfiltration"
+    ],
+    "code_snippets_count": 0,
+    "code_snippet_previews": [],
+    "auth_token_mentions": []
+  }
+]

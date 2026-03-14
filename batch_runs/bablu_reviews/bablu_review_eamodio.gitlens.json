@@ -1,0 +1,2253 @@
+{
+  "extension_id": "eamodio.gitlens",
+  "reviewed_at": "2026-02-22T07:49:27Z",
+  "report_json": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_eamodio.gitlens_analysis.json",
+  "extraction_path": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\data\\vscode_extensions\\eamodio.gitlens-2026.2.2104\\extension",
+  "main_js_files": [
+    "dist/ai.js",
+    "dist/annotations.js",
+    "dist/browser/gitlens.js",
+    "dist/codelens.js",
+    "dist/gitlens.js",
+    "dist/integrations.js",
+    "dist/lib-encoding.js",
+    "dist/mcp.js",
+    "dist/telemetry.js",
+    "dist/webview-commitDetails.js",
+    "dist/webview-composer.js",
+    "dist/webview-graph.js",
+    "dist/webview-home.js",
+    "dist/webview-patchDetails.js",
+    "dist/webview-rebase.js",
+    "dist/webview-settings.js",
+    "dist/webview-timeline.js"
+  ],
+  "risk_score_reported": 4.8,
+  "risk_level_reported": "LOW",
+  "findings_verified": [
+    {
+      "name": "Localhost HTTP access from extension code",
+      "file": "dist/ai.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "localhost_access",
+      "evidence": "34),r=i(6732),u=i(9857),s=i(4805);let d=\"http://localhost:11434\";let OllamaProvider=class OllamaProvide",
+      "verdict": "FP",
+      "notes": "Allowlisted CDN/infra domain."
+    },
+    {
+      "name": "Document content reading",
+      "file": "dist/annotations.js",
+      "line": 1,
+      "severity": "low",
+      "category": "data_access",
+      "evidence": "ontents(this.trackedDocument.uri,a,this.editor.document.getText()),this.container.git.getDiffForFile(thi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Active editor fileName access",
+      "file": "dist/annotations.js",
+      "line": 1,
+      "severity": "low",
+      "category": "document_monitoring",
+      "evidence": "ges.registerHoverProvider({pattern:this.editor.document.uri.fsPath},{provideHover:(t,r,o)=>this.pro",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Active editor fileName access",
+      "file": "dist/annotations.js",
+      "line": 1,
+      "severity": "low",
+      "category": "document_monitoring",
+      "evidence": "notations.over\")&&0!==r.character||this.editor.document.uri.toString()!==t.uri.toString())return;le",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Active editor fileName access",
+      "file": "dist/annotations.js",
+      "line": 1,
+      "severity": "low",
+      "category": "document_monitoring",
+      "evidence": "ges.registerHoverProvider({pattern:this.editor.document.uri.fsPath},{provideHover:(e,t,r)=>this.pro",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Base64 encoded blocks",
+      "file": "dist/integrations.js",
+      "line": 823,
+      "severity": "medium",
+      "category": "obfuscation",
+      "evidence": "t this.ensureProviderTokenAndFunction(e,\"getBitbucketPullRequestsAuthoredByUserForWorkspaceFn\"),o=s.accessToken;try{return(await i.get",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 817,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": ",e,o),[]}}getProjectId(e,t,r,i,s,o){let{accessToken:a}=t,n=`${a}|${r}/${i}`,u=this._project",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 823,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "rn}}async graphql(e,t,r,o,n,u,l){let c,{accessToken:h}=t;try{let t=(0,p.u)(`[GITLAB] POST $",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 823,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": ",r}}async request(e,t,r,o,n,u,l){let c,{accessToken:h}=t,g=`${r??\"https://gitlab.com/api\"}/",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 823,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "instanceof a.QI))throw new a.AL(r);let{accessToken:o,...n}=t;switch(r.status){case 404:cas",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 823,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "turn[];let e=this._autolinks?.get(this._session.accessToken);if(null!=e)return e;let t=[],r=this._o",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 823,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "et t=[],r=this._organizations.get(this._session.accessToken);if(null!=r)for(let e of r){let r=this.",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 823,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "of r){let r=this._projects.get(`${this._session.accessToken}:${e.id}`);if(null!=r)for(let i of r){l",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 823,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "nks??=new Map,this._autolinks.set(this._session.accessToken,t),t}async getProviderAccountForResourc",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 823,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "getProviderResourcesForUser(e,t=!1){let{accessToken:r}=e;if(this._organizations??=new Map,n",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 823,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "viderProjectsForResources(e,t,r=!1){let{accessToken:i}=e;this._projects??=new Map;let s=[];",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 823,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "his.container.storage.get(`jira:${this._session.accessToken}:organizations`),t=this.container.stora",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 823,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "his.container.storage.get(`jira:${this._session.accessToken}:projects`),r=e?.data?.map(e=>({...e}))",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 823,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "s.container.storage.store(`jira:${this._session.accessToken}:organizations`,{v:1,timestamp:Date.now",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 823,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "?=new Map,this._organizations.set(this._session.accessToken,r),null==t&&r?.length&&(i=await this.ge",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 823,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "s.container.storage.store(`jira:${this._session.accessToken}:projects`,{v:1,timestamp:Date.now(),da",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 823,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "ojects??=new Map,i??[])){let e=`${this._session.accessToken}:${s.resourceId}`,t=this._projects.get(",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 823,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "turn[];let e=this._autolinks?.get(this._session.accessToken);if(null!=e)return e;let t=await this.g",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 823,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "nks??=new Map,this._autolinks.set(this._session.accessToken,r),r}_organizations;async getOrganizati",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 823,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "tions;async getOrganization(e,t=!1){let{accessToken:r}=e;if(this._organizations??=new Map,n",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 823,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "et(r)}_teams;async getTeams(e,t=!1){let{accessToken:r}=e;if(this._teams??=new Map,null==thi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/integrations.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "gn(i?{method:e,url:i}:{url:e},r)}else r=Object.assign({},t);r.headers=(i=r.headers)?Object.keys(",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/integrations.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "(r.headers);let s=function e(t,r){let i=Object.assign({},t);return Object.keys(r).forEach(s=>{(f",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/integrations.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "||\"/\").replace(/:([a-z]\\w+)/g,\"{$1}\"),o=Object.assign({},e.headers),a=l(e,[\"method\",\"baseUrl\",\"u",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/integrations.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "n r&&(this.response=r.response);const i=Object.assign({},r.request);r.request.headers.authorizat",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/integrations.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "quest.headers.authorization&&(i.headers=Object.assign({},r.request.headers,{authorization:r.requ",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "file": "dist/integrations.js",
+      "line": 666,
+      "severity": "medium",
+      "category": "workspace_harvesting",
+      "evidence": "ateVirtualUri(e,t,r);return a.workspace.fs.readFile(i)}async getTreeEntryForRevision(e,t,r){i",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "User/device fingerprinting",
+      "file": "dist/integrations.js",
+      "line": 1,
+      "severity": "low",
+      "category": "telemetry_abuse",
+      "evidence": "peof navigator&&\"userAgent\"in navigator?navigator.userAgent:\"object\"==typeof process&&void 0!==proc",
+      "verdict": "TP",
+      "notes": "Legitimate telemetry/fingerprinting in app code."
+    },
+    {
+      "name": "Browser-based exfiltration via env.openExternal",
+      "file": "dist/integrations.js",
+      "line": 1,
+      "severity": "high",
+      "category": "browser_exfil",
+      "evidence": "(e)}),r.onDidTriggerButton(t=>{t===o&&i.env.openExternal(i.Uri.parse(`https://${e.domain}/setting",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Browser-based exfiltration via env.openExternal",
+      "file": "dist/integrations.js",
+      "line": 1,
+      "severity": "high",
+      "category": "browser_exfil",
+      "evidence": "(e)}),r.onDidTriggerButton(t=>{t===o&&i.env.openExternal(i.Uri.parse(`https://${e.domain}/-/profi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "n=t?{method:\"POST\",body:JSON.stringify({access_token:t})}:{method:\"GET\"},u=await this.connec",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "guredIntegrationService.getSessionId(e),accessToken:t,scopes:e?.scopes??[],account:{id:\"\",l",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "guredIntegrationService.getSessionId(e),accessToken:t,scopes:e?.scopes??[],account:{id:\"\",l",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "[]}}async request(e,t,r,a,u,l,c){let h,{accessToken:g,...m}=t,v=r?`${r}/${a}`:a;try{let t=(",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": ";async getProviderCurrentAccount(e){let{accessToken:t}=e;if(this._accounts??=new Map,null==",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "is._session)return;let e=(0,i.Fx)(this._session.accessToken),t=this.container.storage.get(`${this.s",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "unts??=new Map,this._accounts.set(this._session.accessToken,r)}providerOnDisconnect(){this._account",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "rn}}async request(e,t,r,o,n,u,l){let d,{accessToken:p,...g}=t,m=`${r}/${o}`;try{let t=(0,h.",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "nected?this.disconnect({silent:!0}):(t?.accessToken!==this._session?.accessToken&&(this._se",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "t:!0}):(t?.accessToken!==this._session?.accessToken&&(this._session=void 0),super.refresh()",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": ",\"client_secret=[REDACTED]\").replace(/\\baccess_token=\\w+/g,\"access_token=[REDACTED]\"),this.r",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "ACTED]\").replace(/\\baccess_token=\\w+/g,\"access_token=[REDACTED]\"),this.request=i}};var b={he",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 596,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "p;async getEnterpriseVersion(e,t,r){let{accessToken:i}=t,s=this._enterpriseVersions.get(i);",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 596,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "??void 0}async graphql(e,t,r,i,s,o){let{accessToken:a,...n}=t;try{let t;if(null!=o){if(o.is",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 596,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "throw r}}async request(e,t,r,i,s,o){let{accessToken:a}=t;try{if(null!=o){if(o.isCancellatio",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 596,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "rtError\"===r.name)throw new E.AL(r);let{accessToken:s,...o}=t;switch(r.status){case 404:cas",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/integrations.js",
+      "line": 596,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "erpriseAvatarUrl(e,t,r,i,s){s=s??16;let{accessToken:o}=t,a=await this.getEnterpriseVersion(",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Hex-encoded strings",
+      "file": "dist/lib-encoding.js",
+      "line": 1,
+      "severity": "high",
+      "category": "obfuscation",
+      "evidence": "63:\"cp863\",cp864:{type:\"_sbcs\",chars:`\\0\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\t \\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Hex-encoded strings",
+      "file": "dist/lib-encoding.js",
+      "line": 2,
+      "severity": "high",
+      "category": "obfuscation",
+      "evidence": "\\x02\\x03\\x04\\x05\\x06\\x07\\x08\t \\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$\u066a&'()*+,-./0123456789:;<=>?@ABCDEFG",
+      "verdict": "TP",
+      "notes": "Evidence fragment found at cited line."
+    },
+    {
+      "name": "Hex-encoded strings",
+      "file": "dist/lib-encoding.js",
+      "line": 3,
+      "severity": "high",
+      "category": "obfuscation",
+      "evidence": "07\\x08\t \\x0b\\x0c\\r\\x0e\\x0f\\x10\u1ee8\u1ef0\u1ef2\u1ef6\u1ef8\\xdd\u1ef4\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFG",
+      "verdict": "TP",
+      "notes": "Evidence fragment found at cited line."
+    },
+    {
+      "name": "Hex-encoded strings",
+      "file": "dist/lib-encoding.js",
+      "line": 4,
+      "severity": "high",
+      "category": "obfuscation",
+      "evidence": "s:`\\0\\x01\u1eb2\\x03\\x04\u1eb4\u1eaa\\x07\\x08\t \\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\u1ef6\\x15\\x16\\x17\\x18\u1ef8\\x1a\\x1b\\x1c\\x1d\u1ef4\\x1f",
+      "verdict": "TP",
+      "notes": "Evidence fragment found at cited line."
+    },
+    {
+      "name": "Hex-encoded strings",
+      "file": "dist/lib-encoding.js",
+      "line": 4,
+      "severity": "high",
+      "category": "obfuscation",
+      "evidence": "xfd\u1ee3\u1eee`},iso646cn:{type:\"_sbcs\",chars:`\\0\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\t \\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Hex-encoded strings",
+      "file": "dist/lib-encoding.js",
+      "line": 5,
+      "severity": "high",
+      "category": "obfuscation",
+      "evidence": "\\x02\\x03\\x04\\x05\\x06\\x07\\x08\t \\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#\\xa5%&'()*+,-./0123456789:;<=>?@ABCD",
+      "verdict": "TP",
+      "notes": "Evidence fragment found at cited line."
+    },
+    {
+      "name": "Hex-encoded strings",
+      "file": "dist/lib-encoding.js",
+      "line": 5,
+      "severity": "high",
+      "category": "obfuscation",
+      "evidence": "\ufffd\ufffd\ufffd\ufffd\ufffd`},iso646jp:{type:\"_sbcs\",chars:`\\0\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\t \\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Hex-encoded strings",
+      "file": "dist/lib-encoding.js",
+      "line": 6,
+      "severity": "high",
+      "category": "obfuscation",
+      "evidence": "\\x02\\x03\\x04\\x05\\x06\\x07\\x08\t \\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFG",
+      "verdict": "TP",
+      "notes": "Evidence fragment found at cited line."
+    },
+    {
+      "name": "High entropy file",
+      "file": "dist/lib-encoding.js",
+      "line": 0,
+      "severity": "medium",
+      "category": "obfuscation",
+      "evidence": "Shannon entropy: 11.13 (threshold: 6.5)",
+      "verdict": "NEEDS_REVIEW",
+      "notes": "Could not read line or line out of range."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/telemetry.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "ength||0!==Object.keys(i).length)return Object.assign({},ef(r),ef(t))}(n)),agentFactory:eo({keep",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/telemetry.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "{let i,s,o;const a=(i={sampler:ty()},(o=Object.assign({},s=tS(),i,t)).generalLimits=Object.assig",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/telemetry.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "ct.assign({},s=tS(),i,t)).generalLimits=Object.assign({},s.generalLimits,t.generalLimits||{}),o.",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/telemetry.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "imits,t.generalLimits||{}),o.spanLimits=Object.assign({},s.spanLimits,t.spanLimits||{}),o);this.",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/telemetry.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "a;if(o=t,a=r,!(eJ(o)&&eJ(a)))return r;s=Object.assign({},t);let u=Object.keys(r);for(let o=0,a=u",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/telemetry.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "(t,e.shift(),0,r);return t}({},tS(),((t=Object.assign({},e.spanLimits)).attributeCountLimit=e.sp",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/telemetry.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT\")??tT,Object.assign({},e,{spanLimits:t})));this._resource=r.re",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/telemetry.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": ",[eT]:ew[eT],[eb]:ew[eb]}),this._config=Object.assign({},r,{resource:this._resource});const i=[]",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Localhost HTTP access from extension code",
+      "file": "dist/telemetry.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "localhost_access",
+      "evidence": "mpression:\"none\",headers:async()=>r,url:\"http://localhost:4318/\"+t},agentFactory:eo({keepAlive:!0})},{",
+      "verdict": "FP",
+      "notes": "Allowlisted CDN/infra domain."
+    },
+    {
+      "name": "Clipboard write access",
+      "file": "dist/webview-commitDetails.js",
+      "line": 2,
+      "severity": "medium",
+      "category": "clipboard_access",
+      "evidence": "he clipboard\":\"\"}`,e,t);if(o===t){s.env.clipboard.writeText(l.deepLinkUrl),i=!0;continue}o===e&&(0,R",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Clipboard write access",
+      "file": "dist/webview-commitDetails.js",
+      "line": 3,
+      "severity": "medium",
+      "category": "clipboard_access",
+      "evidence": "t.message}):(0,u.kk)(this.commit)?s.env.clipboard.writeText(this.commit.stashName):(0,k.RS)(\"gitlens",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Clipboard write access",
+      "file": "dist/webview-commitDetails.js",
+      "line": 3,
+      "severity": "medium",
+      "category": "clipboard_access",
+      "evidence": "itFromContextOrParams(e);null!=t&&s.env.clipboard.writeText(i.path)}async copyRelativePath(e){let[t,",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Clipboard write access",
+      "file": "dist/webview-commitDetails.js",
+      "line": 3,
+      "severity": "medium",
+      "category": "clipboard_access",
+      "evidence": "getRelativePath(i.uri,t.repoPath);s.env.clipboard.writeText(o)}async copyPatch(e){let t,[i,o]=await",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Clipboard write access",
+      "file": "dist/webview-graph.js",
+      "line": 3,
+      "severity": "medium",
+      "category": "clipboard_access",
+      "evidence": "bviewItemValue;t=r}null!=t&&await i.env.clipboard.writeText(t)}copyMessage(e){let t=this.getGraphIte",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Clipboard write access",
+      "file": "dist/webview-patchDetails.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "clipboard_access",
+      "evidence": "ntext.draft?.draftType===\"cloud\"&&a.env.clipboard.writeText(this._context.draft.deepLinkUrl)}async g",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Clipboard write access",
+      "file": "dist/webview-patchDetails.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "clipboard_access",
+      "evidence": "he clipboard\":\"\"}`,e,i);if(s===i){a.env.clipboard.writeText(t.deepLinkUrl),r=!0;continue}s===e&&(0,g",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Document content reading",
+      "file": "dist/webview-rebase.js",
+      "line": 2,
+      "severity": "low",
+      "category": "data_access",
+      "evidence": "n)return this._parsedCache;let e=p(this.document.getText()),t=b(e.entries);return this._parsedCac",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Real-time document change listener",
+      "file": "dist/webview-rebase.js",
+      "line": 5,
+      "severity": "medium",
+      "category": "document_monitoring",
+      "evidence": "t(i),this._disposables.push(s.workspace.onDidChangeTextDocument(e=>{!this._closing&&e.document===i&&e.co",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Bulk file reading with variable path",
+      "file": "dist/webview-rebase.js",
+      "line": 2,
+      "severity": "medium",
+      "category": "workspace_harvesting",
+      "evidence": "TextDecoder().decode(await s.workspace.fs.readFile(t));if(!i.trim())return;return{entries:p(",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "file": "dist/webviews/lib-billboard.js",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "(){this.textContent=\"\"}function B(){this.innerHTML=\"\"}function Y(){this.nextSibling&&this.p",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "file": "dist/webviews/lib-billboard.js",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ion(){var e=t.apply(this,arguments);this.innerHTML=null==e?\"\":e}}:function(t){return functi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "file": "dist/webviews/lib-billboard.js",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "\":e}}:function(t){return function(){this.innerHTML=t}})(t)):this.node().innerHTML},raise:fu",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Function() constructor without new keyword",
+      "file": "dist/webviews/lib-billboard.js",
+      "line": 1,
+      "severity": "high",
+      "category": "code_execution",
+      "evidence": ");var iu={},ih={};function id(t){return Function(\"d\",\"return {\"+t.map(function(t,e){return",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Function() constructor without new keyword",
+      "file": "dist/webviews/lib-billboard.js",
+      "line": 5,
+      "severity": "high",
+      "category": "code_execution",
+      "evidence": "ull!==self&&self.Object===Object&&self||Function(\"return this\")(),ow=null==oT?void 0:oT.do",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "file": "dist/webviews/lib-billboard.js",
+      "line": 20,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "electorAll(\"text\").forEach(function(t){t.innerHTML=\"\"}),d=s.serializeToString(c),(f=ow.crea",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "file": "dist/webviews/settings.js",
+      "line": 815,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ment.createElement(\"option\");n.value=o,n.innerHTML=r,this.state.scope===o&&(n.selected=!0),",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "file": "dist/webviews/settings.js",
+      "line": 815,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "c rich Linear autolinks are enabled.'),t.innerHTML=`${a}<br/>${c}`}renderAutolinks(){let t=",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "file": "dist/webviews/settings.js",
+      "line": 897,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ength??0,void 0,!0,!a)),a&&n.push(o()),t.innerHTML=n.join(\"\")}};function rZ(t){return\"true\"",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "file": "dist/webviews/settings.js",
+      "line": 3,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "r=t2.createElement(\"template\");return r.innerHTML=t,r}};function ip(t,o,r=t,n){if(o===ia)r",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/webviews/settings.js",
+      "line": 155,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "Case();iI.has(o)?iI.set(o,Object.assign(Object.assign({},iI.get(o)),t)):iI.set(o,t),a||(a=t)}),i",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/webviews/settings.js",
+      "line": 169,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "etAttribute(\"data-current-placement\",n),Object.assign(this.popup.style,{left:`${t}px`,top:`${o}px`",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/webviews/settings.js",
+      "line": 169,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "x`:\"\",n=\"number\"==typeof o?`${o}px`:\"\");Object.assign(this.arrowEl.style,{top:n,right:h,bottom:u,l",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "User/device fingerprinting",
+      "file": "dist/webviews/settings.js",
+      "line": 1,
+      "severity": "low",
+      "category": "telemetry_abuse",
+      "evidence": "platform:\"object\"==typeof navigator&&(t=navigator.userAgent.indexOf(\"Windows\")>=0);let u=/^\\w[\\w\\d+",
+      "verdict": "TP",
+      "notes": "Legitimate telemetry/fingerprinting in app code."
+    },
+    {
+      "name": "User/device fingerprinting",
+      "file": "dist/webviews/settings.js",
+      "line": 155,
+      "severity": "low",
+      "category": "telemetry_abuse",
+      "evidence": "\"ltr\",iN=document.documentElement.lang||navigator.language,t.observe(document.documentElement,{att",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "User/device fingerprinting",
+      "file": "dist/webviews/settings.js",
+      "line": 155,
+      "severity": "low",
+      "category": "telemetry_abuse",
+      "evidence": "\"ltr\",iN=document.documentElement.lang||navigator.language),[...iR.keys()].map(t=>{\"function\"==typ",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "String.fromCharCode array building",
+      "file": "dist/webviews/settings.js",
+      "line": 1,
+      "severity": "high",
+      "category": "obfuscation",
+      "evidence": "for(var r=\"\",n=0;n<t.length;n+=16384)r+=String.fromCharCode.apply(null,t.subarray(n,n+16384));return r}if",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/webviews/settings.js",
+      "line": 1,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "Debug\",m[m.Trace=5]=\"Trace\",m);let ef=[\"accessToken\",\"password\",\"token\"],em=new class Logge",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI string usage",
+      "file": "dist/webviews/timeline.js",
+      "line": 3392,
+      "severity": "high",
+      "category": "command_uri",
+      "evidence": "appearance=\"toolbar\" \t\t\t\t\t\t\t\t\thref=\"command:gitlens.views.timeline.openInTab\" \t\t\t\t\t\t\t\t\ttooltip=\"Open in Editor\"",
+      "verdict": "TP",
+      "notes": "Evidence fragment found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/webviews/timeline.js",
+      "line": 1434,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "etAttribute(\"data-current-placement\",r),Object.assign(this.popup.style,{left:`${e}px`,top:`${t}px`",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/webviews/timeline.js",
+      "line": 1434,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "x`:\"\",r=\"number\"==typeof t?`${t}px`:\"\");Object.assign(this.arrowEl.style,{top:r,right:a,bottom:c,l",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Clipboard write access",
+      "file": "dist/webviews/timeline.js",
+      "line": 1542,
+      "severity": "medium",
+      "category": "clipboard_access",
+      "evidence": "imer(),this.content)try{await navigator.clipboard.writeText(this.content),this.label=this.copiedLabe",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Webview innerHTML assignment",
+      "file": "dist/webviews/timeline.js",
+      "line": 3,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "o=en.createElement(\"template\");return o.innerHTML=e,o}};function eS(e,t,o=e,r){if(t===ex)r",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Unsafe Object.assign with user input",
+      "file": "dist/webviews/timeline.js",
+      "line": 1077,
+      "severity": "medium",
+      "category": "prototype_pollution",
+      "evidence": "Case();rf.has(t)?rf.set(t,Object.assign(Object.assign({},rf.get(t)),e)):rf.set(t,e),s||(s=e)}),r",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "User/device fingerprinting",
+      "file": "dist/webviews/timeline.js",
+      "line": 3,
+      "severity": "low",
+      "category": "telemetry_abuse",
+      "evidence": "e=navigator?.userAgentData?.platform,tt=navigator.userAgent;\"Linux\"===te||tt.includes(\"Linux\"),\"mac",
+      "verdict": "TP",
+      "notes": "Legitimate telemetry/fingerprinting in app code."
+    },
+    {
+      "name": "User/device fingerprinting",
+      "file": "dist/webviews/timeline.js",
+      "line": 3,
+      "severity": "low",
+      "category": "telemetry_abuse",
+      "evidence": "platform:\"object\"==typeof navigator&&(e=navigator.userAgent.indexOf(\"Windows\")>=0);let c=/^\\w[\\w\\d+",
+      "verdict": "TP",
+      "notes": "Legitimate telemetry/fingerprinting in app code."
+    },
+    {
+      "name": "User/device fingerprinting",
+      "file": "dist/webviews/timeline.js",
+      "line": 1077,
+      "severity": "low",
+      "category": "telemetry_abuse",
+      "evidence": "\"ltr\",rb=document.documentElement.lang||navigator.language,e.observe(document.documentElement,{att",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "User/device fingerprinting",
+      "file": "dist/webviews/timeline.js",
+      "line": 1077,
+      "severity": "low",
+      "category": "telemetry_abuse",
+      "evidence": "\"ltr\",rb=document.documentElement.lang||navigator.language),[...ru.keys()].map(e=>{\"function\"==typ",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Function() constructor without new keyword",
+      "file": "dist/webviews/timeline.js",
+      "line": 1,
+      "severity": "high",
+      "category": "code_execution",
+      "evidence": "This)return globalThis;try{return this||Function(\"return this\")()}catch{if(\"object\"==typeo",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "Dynamic import() for code loading",
+      "file": "dist/webviews/timeline.js",
+      "line": 1,
+      "severity": "high",
+      "category": "code_execution",
+      "evidence": "0;if(0!==o)if(o)t.push(o[1]);else{var r=import(C.p+C.u(e)).then(c,t=>{throw 0!==a[e]&&(a",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "String.fromCharCode array building",
+      "file": "dist/webviews/timeline.js",
+      "line": 3,
+      "severity": "high",
+      "category": "obfuscation",
+      "evidence": "for(var o=\"\",r=0;r<e.length;r+=16384)o+=String.fromCharCode.apply(null,e.subarray(r,r+16384));return o}if",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "OAuth token extraction from session",
+      "file": "dist/webviews/timeline.js",
+      "line": 3,
+      "severity": "medium",
+      "category": "identity_harvesting",
+      "evidence": "Debug\",g[g.Trace=5]=\"Trace\",g);let tI=[\"accessToken\",\"password\",\"token\"],tL=new class Logge",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "=\"secondary\" title=\"Open User Settings\" href=\"command:workbench.action.openGlobalSettings\">User Settings</a></p></div><div class=\"",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "<a class=\"command\" title=\"Run command\" href=\"command:gitlens.toggleLineBlame\">GitLens: Toggle Line Blame Annotations<",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.currentLine%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "<a class=\"command\" title=\"Run command\" href=\"command:gitlens.toggleCodeLens\">GitLens: Toggle Git CodeLens</a> comman",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.codeLens%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.statusBar%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.hovers%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.fileAnnotations%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"command hidden\" title=\"Run command\" href=\"command:gitlens.toggleFileBlame\" data-visibility=\"blame.toggleMode =wind",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.blame%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"command hidden\" title=\"Run command\" href=\"command:gitlens.toggleFileChanges\" data-visibility=\"changes.toggleMode =wi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "\"secondary UI\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.changes%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"command hidden\" title=\"Run command\" href=\"command:gitlens.toggleFileHeatmap\" data-visibility=\"heatmap.toggleMode =wi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.heatmap%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "d--show-view\" title=\"Show Commit Graph\" href=\"command:gitlens.showGraph\">Commit Graph</a> to visualize, explore,",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.graph%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "how-view\" title=\"Show View in Side Bar\" href=\"command:gitlens.showCommitsView\">Commits view</a> to visualize, explore,",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.views.commits%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "how-view\" title=\"Show View in Side Bar\" href=\"command:gitlens.showCommitDetailsView\">Inspect view</a> to see rich details fo",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.views.commitDetails%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "how-view\" title=\"Show View in Side Bar\" href=\"command:gitlens.showRepositoriesView\">Repositories view</a>, hidden by defaul",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.views.repositories%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "how-view\" title=\"Show View in Side Bar\" href=\"command:gitlens.showFileHistoryView\">File History view</a> to visualize, nav",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.views.fileHistory%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "how-view\" title=\"Show View in Side Bar\" href=\"command:gitlens.showLineHistoryView\">Line History view</a>, hidden by defaul",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.views.lineHistory%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "how-view\" title=\"Show View in Side Bar\" href=\"command:gitlens.showBranchesView\">Branches view</a> to visualize, explore",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.views.branches%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "how-view\" title=\"Show View in Side Bar\" href=\"command:gitlens.showRemotesView\">Remotes view</a> to visualize, explore,",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.views.remotes%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "how-view\" title=\"Show View in Side Bar\" href=\"command:gitlens.showStashesView\">Stashes view</a> to visualize, explore,",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.views.stashes%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "how-view\" title=\"Show View in Side Bar\" href=\"command:gitlens.showTagsView\">Tags view</a> to visualize, explore, an",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.views.tags%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "how-view\" title=\"Show View in Side Bar\" href=\"command:gitlens.showWorktreesView\">Worktrees view</a> to visualize, explor",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.views.worktrees%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "how-view\" title=\"Show View in Side Bar\" href=\"command:gitlens.showContributorsView\">Contributors view</a>, hidden by defaul",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.views.contributors%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "how-view\" title=\"Show View in Side Bar\" href=\"command:gitlens.showSearchAndCompareView\">Search &amp; Compare view</a> to search",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.views.searchAndCompare%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.autolinks%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.default%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.menus%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ommand\" title=\"Open Keyboard Shortcuts\" href=\"command:workbench.action.openGlobalKeybindings\">Keyboard Shortcuts</a> editor</span></d",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ommand\" title=\"Open Keyboard Shortcuts\" href=\"command:workbench.action.openGlobalKeybindings\">Keyboard Shortcuts</a> editor to see th",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "<a class=\"command\" title=\"Run command\" href=\"command:gitlens.switchMode\">GitLens: Switch Mode</a> command to qui",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "<a class=\"command\" title=\"Run command\" href=\"command:gitlens.toggleReviewMode\">GitLens: Toggle Review Mode</a> command",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "<a class=\"command\" title=\"Run command\" href=\"command:gitlens.toggleZenMode\">GitLens: Toggle Zen Mode</a> command to",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.modes%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "=\"secondary\" title=\"Open User Settings\" href=\"command:workbench.action.openGlobalSettings\">User Settings</a></p></div><div class=\"",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "<a class=\"command\" title=\"Run command\" href=\"command:gitlens.toggleLineBlame\">GitLens: Toggle Line Blame Annotations<",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.currentLine%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "<a class=\"command\" title=\"Run command\" href=\"command:gitlens.toggleCodeLens\">GitLens: Toggle Git CodeLens</a> comman",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.codeLens%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.statusBar%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.hovers%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.fileAnnotations%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"command hidden\" title=\"Run command\" href=\"command:gitlens.toggleFileBlame\" data-visibility=\"blame.toggleMode =wind",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.blame%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"command hidden\" title=\"Run command\" href=\"command:gitlens.toggleFileChanges\" data-visibility=\"changes.toggleMode =wi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "\"secondary UI\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.changes%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"command hidden\" title=\"Run command\" href=\"command:gitlens.toggleFileHeatmap\" data-visibility=\"heatmap.toggleMode =wi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.heatmap%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "d--show-view\" title=\"Show Commit Graph\" href=\"command:gitlens.showGraph\">Commit Graph</a> to visualize, explore,",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.graph%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "how-view\" title=\"Show View in Side Bar\" href=\"command:gitlens.showCommitsView\">Commits view</a> to visualize, explore,",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.views.commits%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "how-view\" title=\"Show View in Side Bar\" href=\"command:gitlens.showCommitDetailsView\">Inspect view</a> to see rich details fo",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.views.commitDetails%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "how-view\" title=\"Show View in Side Bar\" href=\"command:gitlens.showRepositoriesView\">Repositories view</a>, hidden by defaul",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.views.repositories%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "how-view\" title=\"Show View in Side Bar\" href=\"command:gitlens.showFileHistoryView\">File History view</a> to visualize, nav",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.views.fileHistory%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "how-view\" title=\"Show View in Side Bar\" href=\"command:gitlens.showLineHistoryView\">Line History view</a>, hidden by defaul",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.views.lineHistory%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "how-view\" title=\"Show View in Side Bar\" href=\"command:gitlens.showBranchesView\">Branches view</a> to visualize, explore",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.views.branches%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "how-view\" title=\"Show View in Side Bar\" href=\"command:gitlens.showRemotesView\">Remotes view</a> to visualize, explore,",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.views.remotes%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "how-view\" title=\"Show View in Side Bar\" href=\"command:gitlens.showStashesView\">Stashes view</a> to visualize, explore,",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.views.stashes%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "how-view\" title=\"Show View in Side Bar\" href=\"command:gitlens.showTagsView\">Tags view</a> to visualize, explore, an",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.views.tags%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "how-view\" title=\"Show View in Side Bar\" href=\"command:gitlens.showWorktreesView\">Worktrees view</a> to visualize, explor",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.views.worktrees%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "how-view\" title=\"Show View in Side Bar\" href=\"command:gitlens.showContributorsView\">Contributors view</a>, hidden by defaul",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.views.contributors%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "how-view\" title=\"Show View in Side Bar\" href=\"command:gitlens.showSearchAndCompareView\">Search &amp; Compare view</a> to search",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.views.searchAndCompare%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.autolinks%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.default%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.menus%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ommand\" title=\"Open Keyboard Shortcuts\" href=\"command:workbench.action.openGlobalKeybindings\">Keyboard Shortcuts</a> editor</span></d",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ommand\" title=\"Open Keyboard Shortcuts\" href=\"command:workbench.action.openGlobalKeybindings\">Keyboard Shortcuts</a> editor to see th",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "<a class=\"command\" title=\"Run command\" href=\"command:gitlens.switchMode\">GitLens: Switch Mode</a> command to qui",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "<a class=\"command\" title=\"Run command\" href=\"command:gitlens.toggleReviewMode\">GitLens: Toggle Review Mode</a> command",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "<a class=\"command\" title=\"Run command\" href=\"command:gitlens.toggleZenMode\">GitLens: Toggle Zen Mode</a> command to",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    },
+    {
+      "name": "command: URI link in webview",
+      "file": "dist/webviews/settings.html",
+      "line": 1,
+      "severity": "high",
+      "category": "webview_risk",
+      "evidence": "ss=\"secondary\" title=\"Open Settings UI\" href=\"command:workbench.action.openSettings?%22gitlens.modes%22\">Settings UI</a> and search for <b><i>gi",
+      "verdict": "TP",
+      "notes": "Evidence found at cited line."
+    }
+  ],
+  "metadata_findings": [
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onUri': Activates on custom URI scheme (can be triggered externally)",
+      "event": "onUri"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onStartupFinished': Runs every launch - immediate execution",
+      "event": "onStartupFinished"
+    },
+    {
+      "type": "sensitive_contribution",
+      "severity": "medium",
+      "detail": "Contributes 'customEditors': Webview-based editors - XSS/phishing surface",
+      "contribution": "customEditors"
+    },
+    {
+      "type": "sensitive_contribution",
+      "severity": "medium",
+      "detail": "Contributes 'viewsContainers': Webview views - remote HTML/JS possible",
+      "contribution": "viewsContainers"
+    },
+    {
+      "type": "sensitive_contribution",
+      "severity": "medium",
+      "detail": "Contributes 'walkthroughs': Can present guided flows to users",
+      "contribution": "walkthroughs"
+    }
+  ],
+  "supply_chain_findings": [
+    {
+      "type": "potential_scope_squat",
+      "severity": "medium",
+      "package": "@lit/react",
+      "similar_to": "react",
+      "detail": "Scoped package \"@lit/react\" wraps popular name \"react\" - verify publisher"
+    },
+    {
+      "type": "potential_typosquat",
+      "severity": "high",
+      "package": "lit",
+      "similar_to": "got",
+      "edit_distance": 2,
+      "detail": "\"lit\" is suspiciously similar to \"got\" (edit distance: 2)"
+    },
+    {
+      "type": "lifecycle_script",
+      "severity": "info",
+      "detail": "'prepare' script: husky",
+      "script_name": "prepare",
+      "script_content": "husky"
+    }
+  ],
+  "package_json_deep_findings": [
+    {
+      "name": "Publisher-domain mismatch: eamodio vs gitkraken.com",
+      "severity": "medium",
+      "description": "Publisher \"eamodio\" does not match operational domain \"gitkraken.com\"",
+      "category": "publisher_mismatch",
+      "file": "package.json",
+      "line": 0,
+      "evidence": "publisher=eamodio, domain=gitkraken.com"
+    },
+    {
+      "name": "Publisher-domain mismatch: eamodio vs en.wikipedia.org",
+      "severity": "medium",
+      "description": "Publisher \"eamodio\" does not match operational domain \"en.wikipedia.org\"",
+      "category": "publisher_mismatch",
+      "file": "package.json",
+      "line": 0,
+      "evidence": "publisher=eamodio, domain=en.wikipedia.org"
+    },
+    {
+      "name": "Publisher-domain mismatch: eamodio vs momentjs.com",
+      "severity": "medium",
+      "description": "Publisher \"eamodio\" does not match operational domain \"momentjs.com\"",
+      "category": "publisher_mismatch",
+      "file": "package.json",
+      "line": 0,
+      "evidence": "publisher=eamodio, domain=momentjs.com"
+    },
+    {
+      "name": "Publisher-domain mismatch: eamodio vs {your-resource-name}.openai.azure.com",
+      "severity": "medium",
+      "description": "Publisher \"eamodio\" does not match operational domain \"{your-resource-name}.openai.azure.com\"",
+      "category": "publisher_mismatch",
+      "file": "package.json",
+      "line": 0,
+      "evidence": "publisher=eamodio, domain={your-resource-name}.openai.azure.com"
+    },
+    {
+      "name": "Publisher-domain mismatch: eamodio vs git-scm.com",
+      "severity": "medium",
+      "description": "Publisher \"eamodio\" does not match operational domain \"git-scm.com\"",
+      "category": "publisher_mismatch",
+      "file": "package.json",
+      "line": 0,
+      "evidence": "publisher=eamodio, domain=git-scm.com"
+    },
+    {
+      "name": "Publisher-domain mismatch: eamodio vs help.gitkraken.com",
+      "severity": "medium",
+      "description": "Publisher \"eamodio\" does not match operational domain \"help.gitkraken.com\"",
+      "category": "publisher_mismatch",
+      "file": "package.json",
+      "line": 0,
+      "evidence": "publisher=eamodio, domain=help.gitkraken.com"
+    },
+    {
+      "name": "Publisher-domain mismatch: eamodio vs slack.gitkraken.com",
+      "severity": "medium",
+      "description": "Publisher \"eamodio\" does not match operational domain \"slack.gitkraken.com\"",
+      "category": "publisher_mismatch",
+      "file": "package.json",
+      "line": 0,
+      "evidence": "publisher=eamodio, domain=slack.gitkraken.com"
+    }
+  ],
+  "corrections": [],
+  "gaps": [],
+  "risk_score_feedback": null
+}

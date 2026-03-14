@@ -1,0 +1,218 @@
+{
+  "extension_id": "ms-vscode.cmake-tools",
+  "reviewed_at": "2026-02-22T07:49:28Z",
+  "report_json": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\reports\\vscode_ms-vscode.cmake-tools_analysis.json",
+  "extraction_path": "C:\\Users\\user2\\Documents\\GitHub\\chrome-extension-security-analyzer\\data\\vscode_extensions\\ms-vscode.cmake-tools-1.23.15\\extension",
+  "main_js_files": [
+    "dist/main.js"
+  ],
+  "risk_score_reported": 5.0,
+  "risk_level_reported": "MEDIUM",
+  "findings_verified": [],
+  "metadata_findings": [
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onCommand:cmake.cacheVariable': Runs when command triggered - user/shortcut driven",
+      "event": "onCommand:cmake.cacheVariable"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onCommand:cmake.activeFolderName': Runs when command triggered - user/shortcut driven",
+      "event": "onCommand:cmake.activeFolderName"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onCommand:cmake.activeFolderPath': Runs when command triggered - user/shortcut driven",
+      "event": "onCommand:cmake.activeFolderPath"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onCommand:cmake.activeConfigurePresetName': Runs when command triggered - user/shortcut driven",
+      "event": "onCommand:cmake.activeConfigurePresetName"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onCommand:cmake.activeBuildPresetName': Runs when command triggered - user/shortcut driven",
+      "event": "onCommand:cmake.activeBuildPresetName"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onCommand:cmake.activeTestPresetName': Runs when command triggered - user/shortcut driven",
+      "event": "onCommand:cmake.activeTestPresetName"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onCommand:cmake.activePackagePresetName': Runs when command triggered - user/shortcut driven",
+      "event": "onCommand:cmake.activePackagePresetName"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onCommand:cmake.activeWorkflowPresetName': Runs when command triggered - user/shortcut driven",
+      "event": "onCommand:cmake.activeWorkflowPresetName"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onCommand:cmake.buildTargetName': Runs when command triggered - user/shortcut driven",
+      "event": "onCommand:cmake.buildTargetName"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onCommand:cmake.launchTargetPath': Runs when command triggered - user/shortcut driven",
+      "event": "onCommand:cmake.launchTargetPath"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onCommand:cmake.launchTargetDirectory': Runs when command triggered - user/shortcut driven",
+      "event": "onCommand:cmake.launchTargetDirectory"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onCommand:cmake.launchTargetFilename': Runs when command triggered - user/shortcut driven",
+      "event": "onCommand:cmake.launchTargetFilename"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onCommand:cmake.launchTargetName': Runs when command triggered - user/shortcut driven",
+      "event": "onCommand:cmake.launchTargetName"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onCommand:cmake.getLaunchTargetPath': Runs when command triggered - user/shortcut driven",
+      "event": "onCommand:cmake.getLaunchTargetPath"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onCommand:cmake.getLaunchTargetDirectory': Runs when command triggered - user/shortcut driven",
+      "event": "onCommand:cmake.getLaunchTargetDirectory"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onCommand:cmake.getLaunchTargetFilename': Runs when command triggered - user/shortcut driven",
+      "event": "onCommand:cmake.getLaunchTargetFilename"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onCommand:cmake.getlaunchTargetName': Runs when command triggered - user/shortcut driven",
+      "event": "onCommand:cmake.getlaunchTargetName"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onCommand:cmake.buildType': Runs when command triggered - user/shortcut driven",
+      "event": "onCommand:cmake.buildType"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onCommand:cmake.buildDirectory': Runs when command triggered - user/shortcut driven",
+      "event": "onCommand:cmake.buildDirectory"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onCommand:cmake.executableTargets': Runs when command triggered - user/shortcut driven",
+      "event": "onCommand:cmake.executableTargets"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onCommand:cmake.buildKit': Runs when command triggered - user/shortcut driven",
+      "event": "onCommand:cmake.buildKit"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'onCommand:cmake.tasksBuildCommand': Runs when command triggered - user/shortcut driven",
+      "event": "onCommand:cmake.tasksBuildCommand"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'workspaceContains:CMakeLists.txt': Auto-runs when repo opened - can trigger on any workspace",
+      "event": "workspaceContains:CMakeLists.txt"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'workspaceContains:*/CMakeLists.txt': Auto-runs when repo opened - can trigger on any workspace",
+      "event": "workspaceContains:*/CMakeLists.txt"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'workspaceContains:*/*/CMakeLists.txt': Auto-runs when repo opened - can trigger on any workspace",
+      "event": "workspaceContains:*/*/CMakeLists.txt"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'workspaceContains:*/*/*/CMakeLists.txt': Auto-runs when repo opened - can trigger on any workspace",
+      "event": "workspaceContains:*/*/*/CMakeLists.txt"
+    },
+    {
+      "type": "risky_activation",
+      "severity": "medium",
+      "detail": "Activation event 'workspaceContains:.vscode/cmake-kits.json': Auto-runs when repo opened - can trigger on any workspace",
+      "event": "workspaceContains:.vscode/cmake-kits.json"
+    },
+    {
+      "type": "sensitive_contribution",
+      "severity": "medium",
+      "detail": "Contributes 'taskDefinitions': Can define tasks that run shell commands",
+      "contribution": "taskDefinitions"
+    },
+    {
+      "type": "sensitive_contribution",
+      "severity": "medium",
+      "detail": "Contributes 'debuggers': Can inspect running processes and variables (run arbitrary programs)",
+      "contribution": "debuggers"
+    },
+    {
+      "type": "sensitive_contribution",
+      "severity": "medium",
+      "detail": "Contributes 'viewsContainers': Webview views - remote HTML/JS possible",
+      "contribution": "viewsContainers"
+    }
+  ],
+  "supply_chain_findings": [
+    {
+      "type": "dependency_vulnerability",
+      "severity": "medium",
+      "package": "ajv",
+      "version": "7.1.0",
+      "cve_id": "GHSA-2g4f-4pwh-qvx6",
+      "link": "https://github.com/advisories/GHSA-2g4f-4pwh-qvx6",
+      "detail": "ajv@7.1.0 has known vulnerability GHSA-2g4f-4pwh-qvx6 \u2014 ajv has ReDoS when using `$data` option (fix: >=8.18.0)"
+    },
+    {
+      "type": "dependency_vulnerability",
+      "severity": "high",
+      "package": "parse-git-config",
+      "version": "3.0.0",
+      "cve_id": "GHSA-8g77-54rh-46hx",
+      "link": "https://github.com/advisories/GHSA-8g77-54rh-46hx",
+      "detail": "parse-git-config@3.0.0 has known vulnerability GHSA-8g77-54rh-46hx \u2014 Prototype Pollution Vulnerability in parse-git-config"
+    }
+  ],
+  "package_json_deep_findings": [],
+  "corrections": [],
+  "gaps": [],
+  "risk_score_feedback": null
+}
