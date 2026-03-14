@@ -21,11 +21,14 @@ RUN npm install --production
 COPY src/ src/
 COPY api/ api/
 COPY web/ web/
+COPY scripts/ scripts/
 COPY config.json.template config.json
 
 # Create directories
 RUN mkdir -p reports downloads
 
-# Default: run API server
+# Start script (migrations + uvicorn; uses PORT from env for Render)
+RUN chmod +x scripts/start.sh
+
 EXPOSE 8000
-CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "scripts/start.sh"]

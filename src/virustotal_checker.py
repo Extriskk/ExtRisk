@@ -9,6 +9,7 @@ PERFORMANCE OPTIMIZATIONS:
 """
 
 import json
+import os
 import requests
 import time
 from pathlib import Path
@@ -89,9 +90,12 @@ class VirusTotalChecker:
         self._cache_ttl_suspicious = 1  # Suspicious/malicious rechecked hourly
     
     def _load_api_key(self):
-        """Load API key from config file"""
-        config_path = Path("config.json")
+        """Load API key from VT_API_KEY env (Render/cloud) or config.json."""
+        api_key = os.environ.get("VT_API_KEY", "").strip()
+        if api_key:
+            return api_key
 
+        config_path = Path("config.json")
         if not config_path.exists():
             print("[!] Warning: config.json not found. VirusTotal checks disabled.")
             return None

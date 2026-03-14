@@ -1,0 +1,31 @@
+# Git and env
+.git
+.gitignore
+.venv
+venv
+env
+__pycache__
+*.pyc
+.pytest_cache
+.coverage
+htmlcov
+
+# Local data and outputs (not needed in image)
+data/
+downloads/
+reports/
+batch_runs/
+central_store/
+
+# Config with secrets — use template in image; mount real config at run
+config.json
+
+# Docs and dev (optional, keeps image smaller)
+docs/
+ai-context/
+*.md
+!README.md
+
+# IDE and misc
+.cursor
+*.mdc
