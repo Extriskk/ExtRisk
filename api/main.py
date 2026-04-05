@@ -18,7 +18,7 @@ PROJECT_ROOT = Path(__file__).parent.parent.resolve()
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from api.database import engine, Base
-from api.routes import analyze, reports, extensions, web
+from api.routes import analyze, reports, extensions, web, npm_analyze
 
 
 @asynccontextmanager
@@ -52,6 +52,7 @@ app.include_router(analyze.router)
 app.include_router(reports.router)
 app.include_router(extensions.router)
 app.include_router(web.router)
+app.include_router(npm_analyze.router)
 
 
 @app.get("/", tags=["health"])

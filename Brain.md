@@ -19,6 +19,7 @@ When planning or changing anything non‑trivial, **start here first**.
 - **6. Batch / Bablu / central store scripts (`scripts/`)**
 - **7. Support libraries & utilities**
 - **8. Tests & fixtures**
+- **9. Developer tooling (code-review-graph, npm-mal-scan)**
 
 Use these section numbers when referring to components (e.g. “see 2.2.1”).
 
@@ -425,6 +426,16 @@ Use these section numbers when referring to components (e.g. “see 2.2.1”).
 
 - **`tests/regenerate_report.py`**
   - `main()` – helper to regenerate reports for test fixtures.
+
+---
+
+## 9. Developer tooling (code-review-graph, npm-mal-scan)
+
+- **code-review-graph (Cursor MCP)**  
+  Indexes this Python/JS codebase so assistants can query callers, tests, and review context with fewer tokens. Setup: `pip install -r requirements-dev.txt`, then `python -m code_review_graph install --platform cursor` and `python -m code_review_graph build` from repo root (on Windows, use `python -m …` if the `code-review-graph` command is not found). Agent guidance lives in `AGENTS.md` and `.cursorrules`; MCP config is `.cursor/mcp.json` (use the same Python that has the package installed).
+
+- **npm-mal-scan (npm registry package scanner)**  
+  Optional **npm-mal-scan** integration for analyzing npm packages (malware / supply-chain heuristics), separate from Retire.js bundled-JS scanning. Resolve path via `tools/npm-mal-scan` (submodule/junction), sibling `../npm-project`, or `NPM_MAL_SCAN_ROOT`. Entry: `src/npm_mal_scan_runner.py` (forwards argv to the Node CLI after `npm run build` in the scanner repo). See `tools/npm-mal-scan/README.md`.
 
 ---
 

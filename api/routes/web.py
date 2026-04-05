@@ -3,9 +3,11 @@ Public webapp UI for Extension Risk Intelligence (mounted at /app).
 Replicates extension-analyser UI/UX: landing, summary, full report with nav.
 Flow unchanged: cached result or new scan → persist → show (summary then full report).
 """
+import html as html_module
 import json
 from pathlib import Path
 from typing import Optional
+from urllib.parse import quote
 
 from fastapi import APIRouter, Form, Query
 from fastapi.responses import HTMLResponse, RedirectResponse
@@ -149,6 +151,23 @@ body::before {
   color: var(--text-muted); pointer-events: none;
 }
 
+/* Store pills + primary CTA on one row (wraps on narrow screens) */
+.store-toolbar {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 12px 16px; margin-bottom: 18px;
+}
+.store-toolbar .store-selector {
+  display: flex; gap: 6px; flex-wrap: wrap; flex: 1; min-width: 0; margin-bottom: 0;
+}
+.store-toolbar .scan-cta {
+  display: flex; flex-direction: column; align-items: flex-end; gap: 6px;
+  flex-shrink: 0;
+}
+@media (max-width: 520px) {
+  .store-toolbar .scan-cta { align-items: stretch; width: 100%; }
+  .store-toolbar .scan-cta .btn-primary { width: 100%; justify-content: center; }
+}
+
 .store-selector {
   display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px;
 }
@@ -166,6 +185,7 @@ body::before {
 }
 
 .examples { margin-bottom: 18px; }
+.examples.hidden { display: none; }
 .examples span { font-size: 11px; color: var(--text-muted); margin-right: 6px; }
 .chip {
   display: inline-block; padding: 3px 10px; margin: 2px 4px 2px 0;
@@ -237,16 +257,31 @@ code { font-family: var(--mono); font-size: 0.92em; }
 .elapsed { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
 
 .recent { margin-top: 28px; border-top: 1px solid var(--border); padding-top: 16px; }
-.recent-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 10px; }
-.recent-list { list-style: none; margin: 0; padding: 0; }
+.recent-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 12px; }
+.recent-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
 .recent-item {
-  display: flex; align-items: center; gap: 10px;
-  padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.03);
-  font-size: 12px;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 11px 14px; font-size: 12px;
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  transition: background 0.15s, border-color 0.15s;
 }
-.recent-item:last-child { border-bottom: none; }
-.recent-item a { color: var(--accent); text-decoration: none; font-family: var(--mono); font-size: 11px; }
+.recent-item:hover { background: rgba(56,189,248,0.06); border-color: rgba(56,189,248,0.2); }
+.recent-item.recent-item-npm { border-left-color: var(--accent-purple); }
+.recent-item.recent-item-npm:hover { background: rgba(167,139,250,0.06); border-color: rgba(167,139,250,0.2); }
+.recent-item .recent-main { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
+.recent-item a { color: var(--accent); text-decoration: none; font-family: var(--mono); font-size: 11px; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .recent-item a:hover { text-decoration: underline; }
+.recent-source {
+  font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+  padding: 3px 8px; border-radius: 999px; flex-shrink: 0;
+  background: rgba(56,189,248,0.12); color: var(--accent); border: 1px solid rgba(56,189,248,0.25);
+}
+.recent-source.recent-source-npm {
+  background: rgba(167,139,250,0.12); color: var(--accent-purple); border-color: rgba(167,139,250,0.28);
+}
 .risk-badge {
   display: inline-block; padding: 2px 8px; border-radius: 999px;
   font-size: 10px; font-weight: 700; text-transform: uppercase;
@@ -408,8 +443,31 @@ def _recent_scans_html() -> str:
             badge_cls = _risk_badge_class(r.risk_level)
             score_str = f"{r.risk_score:.1f}" if r.risk_score else "?"
             when = r.scanned_at.strftime("%b %d, %H:%M") if r.scanned_at else ""
-            items += f"""<li class="recent-item">
-              <a href="/app/reports/{ext_id}/summary">{display_id}</a>
+            enc = quote(ext_id, safe="")
+            ext_row = db.query(Extension).filter(Extension.id == ext_id).first()
+            bt = (ext_row.browser_type or "").lower() if ext_row else ""
+            is_npm = bt == "npm"
+            row_cls = "recent-item recent-item-npm" if is_npm else "recent-item recent-item-ext"
+            if is_npm:
+                src_label = "npm"
+                src_cls = "recent-source recent-source-npm"
+            elif bt == "vscode":
+                src_label = "VSCode"
+                src_cls = "recent-source"
+            elif bt == "edge":
+                src_label = "Edge"
+                src_cls = "recent-source"
+            elif bt == "chrome":
+                src_label = "Chrome"
+                src_cls = "recent-source"
+            else:
+                src_label = "Scan"
+                src_cls = "recent-source"
+            items += f"""<li class="{row_cls}">
+              <div class="recent-main">
+                <span class="{src_cls}">{src_label}</span>
+                <a href="/app/reports/{enc}/summary" title="{html_module.escape(ext_id, quote=True)}">{display_id}</a>
+              </div>
               <span class="risk-badge {badge_cls}">{r.risk_level or '?'} {score_str}</span>
               <span class="hint" style="margin-left:auto">{when}</span>
             </li>"""
@@ -495,7 +553,7 @@ def landing_page() -> HTMLResponse:
     body = f"""
     <div class="brand">ExtRisk Intel</div>
     <div class="tagline">
-      Deep security analysis for Chrome, Edge &amp; VSCode extensions.<br>
+      Deep security analysis for Chrome, Edge &amp; VSCode extensions and <strong>npm registry</strong> packages.<br>
       Get a risk score, threat findings, and remediation guidance in under a minute.
     </div>
 
@@ -520,39 +578,46 @@ def landing_page() -> HTMLResponse:
 
     <form id="analyze-form" method="post" action="/app/analyze">
 
-      <div class="field-label">Extension identifier</div>
+      <div class="field-label" id="target-field-label">Extension identifier</div>
       <div class="input-wrap">
         <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input type="text" id="ext-input" name="extension_id" placeholder="Paste extension ID or publisher.name" required autocomplete="off"/>
+        <input type="text" id="scan-target-input" name="extension_id" placeholder="Paste extension ID or publisher.name" required autocomplete="off"/>
       </div>
 
-      <div class="examples">
+      <div class="examples examples-ext" id="examples-ext">
         <span>Try:</span>
         <span class="chip" data-id="cjpalhdlnbpafiamejdnhcphjbkeiagm" data-store="chrome">uBlock Origin</span>
         <span class="chip" data-id="dknlfmjaanfblgfdfebhijalfmhmjjjo" data-store="chrome">dknlf...mjjjo</span>
         <span class="chip" data-id="shd101wyy.markdown-preview-enhanced" data-store="vscode">Markdown Preview</span>
       </div>
-
-      <div class="field-label">Extension store</div>
-      <input type="hidden" id="store-input" name="store" value="chrome"/>
-      <div class="store-selector">
-        <button type="button" class="store-pill active" data-store="chrome">Chrome</button>
-        <button type="button" class="store-pill" data-store="edge">Edge</button>
-        <button type="button" class="store-pill" data-store="vscode">VSCode</button>
-        <button type="button" class="store-pill" data-store="openvsx">Open VSX</button>
+      <div class="examples examples-npm hidden" id="examples-npm">
+        <span>Try:</span>
+        <span class="chip" data-npm="lodash@4.17.21" data-store="npm">lodash</span>
+        <span class="chip" data-npm="left-pad@1.3.0" data-store="npm">left-pad</span>
       </div>
 
-      <div class="actions-row">
-        <button type="submit" id="submit-btn" class="btn btn-primary">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Run security analysis
-        </button>
-        <span class="hint">Cached reports load instantly.</span>
+      <div class="field-label">Store or registry</div>
+      <input type="hidden" id="store-input" name="store" value="chrome"/>
+      <div class="store-toolbar">
+        <div class="store-selector">
+          <button type="button" class="store-pill active" data-store="chrome">Chrome</button>
+          <button type="button" class="store-pill" data-store="edge">Edge</button>
+          <button type="button" class="store-pill" data-store="vscode">VSCode</button>
+          <button type="button" class="store-pill" data-store="openvsx">Open VSX</button>
+          <button type="button" class="store-pill" data-store="npm">npm registry</button>
+        </div>
+        <div class="scan-cta">
+          <button type="submit" id="submit-btn" class="btn btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span id="submit-btn-label">Run security analysis</span>
+          </button>
+          <span class="hint" id="scan-hint">Cached reports load instantly.</span>
+        </div>
       </div>
     </form>
 
     <div id="progress-panel" class="progress-panel">
-      <div class="steps">
+      <div class="steps" id="progress-steps">
         <div class="step active" id="step-0"><span class="dot"></span><br>Metadata</div>
         <div class="step" id="step-1"><span class="dot"></span><br>Download</div>
         <div class="step" id="step-2"><span class="dot"></span><br>Analysis</div>
@@ -567,32 +632,91 @@ def landing_page() -> HTMLResponse:
     (function() {{
       var pills = document.querySelectorAll('.store-pill');
       var storeInput = document.getElementById('store-input');
+      var mainInput = document.getElementById('scan-target-input');
+      var labelEl = document.getElementById('target-field-label');
+      var exExt = document.getElementById('examples-ext');
+      var exNpm = document.getElementById('examples-npm');
+      var btnLabel = document.getElementById('submit-btn-label');
+      var hintEl = document.getElementById('scan-hint');
+      var form = document.getElementById('analyze-form');
+      var step1 = document.getElementById('step-1');
+
+      function applyStoreMode(store) {{
+        if (store === 'npm') {{
+          labelEl.textContent = 'npm package';
+          mainInput.placeholder = 'e.g. lodash@4.17.21 or @types/node@20.1.0';
+          mainInput.setAttribute('name', 'package_spec');
+          storeInput.removeAttribute('name');
+          exExt.classList.add('hidden');
+          exNpm.classList.remove('hidden');
+          btnLabel.textContent = 'Run npm-mal-scan';
+          hintEl.innerHTML = 'Reports under <code>reports/npm_packages/</code> · cached when unchanged.';
+          if (step1) step1.innerHTML = '<span class="dot"></span><br>Registry';
+        }} else {{
+          labelEl.textContent = 'Extension identifier';
+          mainInput.placeholder = 'Paste extension ID or publisher.name';
+          mainInput.setAttribute('name', 'extension_id');
+          storeInput.setAttribute('name', 'store');
+          exExt.classList.remove('hidden');
+          exNpm.classList.add('hidden');
+          btnLabel.textContent = 'Run security analysis';
+          hintEl.textContent = 'Cached reports load instantly.';
+          if (step1) step1.innerHTML = '<span class="dot"></span><br>Download';
+        }}
+      }}
+
       pills.forEach(function(p) {{
         p.addEventListener('click', function() {{
           pills.forEach(function(x) {{ x.classList.remove('active'); }});
           p.classList.add('active');
           storeInput.value = p.dataset.store;
+          applyStoreMode(p.dataset.store);
         }});
       }});
-      var chips = document.querySelectorAll('.chip');
-      var extInput = document.getElementById('ext-input');
+
+      var chips = document.querySelectorAll('.chip[data-id], .chip[data-npm]');
       chips.forEach(function(c) {{
         c.addEventListener('click', function() {{
-          extInput.value = c.dataset.id;
-          if (c.dataset.store) {{
-            storeInput.value = c.dataset.store;
+          if (c.dataset.npm) {{
+            mainInput.value = c.dataset.npm;
+            var st = c.dataset.store || 'npm';
+            storeInput.value = st;
             pills.forEach(function(x) {{ x.classList.remove('active'); }});
-            document.querySelector('.store-pill[data-store="' + c.dataset.store + '"]').classList.add('active');
+            var tp = document.querySelector('.store-pill[data-store="' + st + '"]');
+            if (tp) tp.classList.add('active');
+            applyStoreMode(st);
+          }} else if (c.dataset.id) {{
+            mainInput.value = c.dataset.id;
+            if (c.dataset.store) {{
+              storeInput.value = c.dataset.store;
+              pills.forEach(function(x) {{ x.classList.remove('active'); }});
+              var t = document.querySelector('.store-pill[data-store="' + c.dataset.store + '"]');
+              if (t) t.classList.add('active');
+              applyStoreMode(c.dataset.store);
+            }}
           }}
         }});
       }});
-      var form = document.getElementById('analyze-form');
+
+      applyStoreMode(storeInput.value);
+
       var panel = document.getElementById('progress-panel');
       var btn = document.getElementById('submit-btn');
       form.addEventListener('submit', function() {{
+        var store = storeInput.value;
+        if (store === 'npm') {{
+          form.action = '/app/npm/analyze';
+          mainInput.setAttribute('name', 'package_spec');
+          storeInput.removeAttribute('name');
+        }} else {{
+          form.action = '/app/analyze';
+          mainInput.setAttribute('name', 'extension_id');
+          storeInput.setAttribute('name', 'store');
+        }}
         panel.classList.add('visible');
         btn.disabled = true;
-        btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Analyzing&hellip;';
+        var busy = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ';
+        btn.innerHTML = busy + (store === 'npm' ? 'Scanning\\u2026' : 'Analyzing\\u2026');
         var start = Date.now();
         var stepTimings = [0, 4000, 10000, 25000];
         var steps = document.querySelectorAll('.step');
@@ -624,6 +748,12 @@ def analyze_extension(
         return _render_error("Invalid input", "Extension ID is required.", back_link="/app/")
 
     browser = store.lower().strip() or "chrome"
+    if browser == "npm":
+        return _render_error(
+            "Wrong form target",
+            "npm package scans use the npm registry tab. Go back, choose npm registry, then submit again.",
+            back_link="/app/",
+        )
     if browser in ("chrome", "edge"):
         ext_id = ext_id.lower()
 
@@ -673,6 +803,61 @@ def analyze_extension(
     return RedirectResponse(url=f"/app/reports/{ext_id}/summary", status_code=303)
 
 
+@router.post("/npm/analyze")
+def analyze_npm_package(package_spec: str = Form(...)):
+    from npm_mal_scan_service import (
+        npm_extension_id,
+        run_npm_package_scan,
+        validate_npm_package_spec,
+    )
+    from api.report_store import persist_scan_result_to_db
+
+    spec = (package_spec or "").strip()
+    verr = validate_npm_package_spec(spec)
+    if verr:
+        return _render_error("Invalid package", verr, back_link="/app/")
+
+    ext_id = npm_extension_id(spec)
+
+    db = SessionLocal()
+    try:
+        existing = (
+            db.query(ScanResult)
+            .filter(ScanResult.extension_id == ext_id)
+            .order_by(ScanResult.scanned_at.desc())
+            .first()
+        )
+        if existing:
+            enc = quote(ext_id, safe="")
+            return RedirectResponse(
+                url=f"/app/reports/{enc}/summary?cached=1", status_code=303
+            )
+    finally:
+        db.close()
+
+    output = run_npm_package_scan(spec, settings.REPORTS_DIR, timeout=settings.JOB_TIMEOUT)
+
+    if not output.success:
+        return _render_error(
+            "npm-mal-scan failed",
+            output.error or "The scanner could not complete.",
+            back_link="/app/",
+        )
+
+    persist_scan_result_to_db(
+        extension_id=output.extension_id,
+        browser_type="npm",
+        results=output.results,
+        json_report_path=output.json_report_path,
+        html_report_path=output.html_report_path,
+        extension_dir=None,
+        version_hash=output.version_hash,
+    )
+
+    enc = quote(ext_id, safe="")
+    return RedirectResponse(url=f"/app/reports/{enc}/summary", status_code=303)
+
+
 @router.get("/reports/{extension_id}/summary", response_class=HTMLResponse)
 def report_summary(
     extension_id: str,
@@ -705,6 +890,35 @@ def report_summary(
         when = result.scanned_at.strftime("%Y-%m-%d %H:%M UTC") if result.scanned_at else "?"
         findings_html = _build_findings_html(result)
         cached_badge = '<span class="pill" style="margin-left:auto">Loaded from cache</span>' if cached else ""
+        enc_id = quote(ext_id, safe="")
+        is_npm = ext_id.startswith("npkg:")
+        rescan_npm = ""
+        if is_npm:
+            raw_spec = ext_id[5:]
+            safe_spec = html_module.escape(raw_spec, quote=True)
+            rescan_npm = f"""
+          <form method="post" action="/app/npm/analyze" style="display:inline">
+            <input type="hidden" name="package_spec" value="{safe_spec}"/>
+            <button type="submit" class="btn btn-secondary">Re-scan</button>
+          </form>"""
+        rescan_ext = ""
+        if not is_npm:
+            safe_eid = html_module.escape(ext_id, quote=True)
+            rescan_ext = f"""
+          <form method="post" action="/app/analyze" style="display:inline">
+            <input type="hidden" name="extension_id" value="{safe_eid}"/>
+            <input type="hidden" name="store" value="chrome"/>
+            <button type="submit" class="btn btn-secondary">Re-scan</button>
+          </form>"""
+
+        h2_display = html_module.escape(ext_id[5:] if is_npm else ext_id)
+        npm_source_row = ""
+        if is_npm:
+            npm_source_row = f"""
+            <div class="meta-row" style="margin-top:8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+              <span class="recent-source recent-source-npm">npm registry</span>
+              <span class="hint">npm-mal-scan · Report id <code>{html_module.escape(ext_id)}</code></span>
+            </div>"""
 
         body = f"""
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
@@ -720,9 +934,10 @@ def report_summary(
             <div class="gauge-label"><span class="risk-badge {badge_cls}">{level}</span></div>
           </div>
           <div class="meta-block">
-            <h2>{ext_id}</h2>
-            <div class="meta-row">Version: <strong>{version}</strong></div>
+            <h2 style="margin-bottom:6px;">{h2_display}</h2>
+            <div class="meta-row">Version: <strong>{html_module.escape(version)}</strong></div>
             <div class="meta-row">Scanned: {when}</div>
+            {npm_source_row}
           </div>
         </div>
 
@@ -748,12 +963,8 @@ def report_summary(
         {findings_html}
 
         <div class="actions-row" style="margin-top:20px;">
-          <a href="/app/reports/{ext_id}" class="btn btn-primary">View full report</a>
-          <form method="post" action="/app/analyze" style="display:inline">
-            <input type="hidden" name="extension_id" value="{ext_id}"/>
-            <input type="hidden" name="store" value="chrome"/>
-            <button type="submit" class="btn btn-secondary">Re-scan</button>
-          </form>
+          <a href="/app/reports/{enc_id}" class="btn btn-primary">View full report</a>
+          {rescan_npm if is_npm else rescan_ext}
         </div>
         """
         return _render_page(body, title=f"ExtRisk Intel — {ext_id}")
@@ -796,15 +1007,19 @@ def view_report(extension_id: str) -> HTMLResponse:
             except Exception:
                 ext = None
             browser_type = (ext.browser_type if ext else "chrome") or "chrome"
+            output = None
             if browser_type == "vscode":
                 store = ScanStore.VSCODE
             elif browser_type == "edge":
                 store = ScanStore.EDGE
+            elif browser_type == "npm":
+                store = None
             else:
                 store = ScanStore.CHROME
-            scan_service = ScanService(settings.REPORTS_DIR)
-            scan_request = ScanRequest(extension_id=ext_id, store=store, fast_mode=False)
-            output = scan_service.run(scan_request)
+            if browser_type != "npm" and store is not None:
+                scan_service = ScanService(settings.REPORTS_DIR)
+                scan_request = ScanRequest(extension_id=ext_id, store=store, fast_mode=False)
+                output = scan_service.run(scan_request)
             if output and output.success and output.html_report_path:
                 regen_path = Path(output.html_report_path)
                 if regen_path.exists():
@@ -816,10 +1031,11 @@ def view_report(extension_id: str) -> HTMLResponse:
                     db.commit()
 
         if not html_content:
+            enc = quote(ext_id, safe="")
             return _render_error(
                 "Report unavailable",
                 "The HTML report file is missing or could not be loaded.",
-                back_link=f"/app/reports/{ext_id}/summary",
+                back_link=f"/app/reports/{enc}/summary",
             )
 
         level = result.risk_level or "?"

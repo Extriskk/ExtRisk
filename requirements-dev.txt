@@ -1,0 +1,6 @@
+# Optional developer tooling (not required for core analyzer).
+# code-review-graph: Cursor MCP knowledge graph for lower-token code exploration.
+# After install, run: python -m code_review_graph install --platform cursor
+#   then: python -m code_review_graph build
+# (Use "python -m …" on Windows when the code-review-graph script is not on PATH.)
+code-review-graph>=2.0

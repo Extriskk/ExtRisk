@@ -39,6 +39,11 @@ _msg_clean.txt
 
 # Node deps (reinstall with npm install)
 node_modules/
+tools/npm-mal-scan/node_modules/
+
+# code-review-graph local graph DB (see .code-review-graph/.gitignore)
+.code-review-graph/*
+!.code-review-graph/.gitignore
 
 # Dynamic IOC database
 iocs.json
@@ -55,6 +60,7 @@ NUL
 !.cursor/rules/**
 !.cursor/skills/
 !.cursor/skills/**
+!.cursor/mcp.json
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

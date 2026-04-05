@@ -80,6 +80,59 @@ def run_scan(job_id: str) -> None:
                 db.commit()
                 _last_commit[0] = now
 
+        # npm-mal-scan (registry package heuristics)
+        if job.browser_type == "npm":
+            from api.npm_scan_finalize import commit_npm_scan_to_job
+            from npm_mal_scan_service import (
+                NPKG_PREFIX,
+                npm_spec_from_extension_id,
+                run_npm_package_scan,
+                validate_npm_package_spec,
+            )
+
+            if not job.extension_id.lower().startswith(NPKG_PREFIX):
+                job.status = "error"
+                job.error_message = "Invalid npm job: extension_id must start with npkg:"
+                job.completed_at = datetime.now(timezone.utc)
+                db.commit()
+                return
+
+            spec = npm_spec_from_extension_id(job.extension_id)
+            verr = validate_npm_package_spec(spec)
+            if verr:
+                job.status = "error"
+                job.error_message = verr[:2000]
+                job.completed_at = datetime.now(timezone.utc)
+                db.commit()
+                return
+
+            job.progress_message = "Running npm-mal-scan..."
+            db.commit()
+
+            scan_output = run_npm_package_scan(
+                spec, settings.REPORTS_DIR, timeout=settings.JOB_TIMEOUT
+            )
+
+            if not scan_output.success:
+                job.status = "error"
+                job.error_message = scan_output.error or "npm-mal-scan failed."
+                job.completed_at = datetime.now(timezone.utc)
+                db.commit()
+                return
+
+            job_pk = job.id
+            try:
+                commit_npm_scan_to_job(db, job, scan_output)
+            except Exception as e:
+                db.rollback()
+                job_row = db.query(ScanJob).filter(ScanJob.id == job_pk).first()
+                if job_row:
+                    job_row.status = "error"
+                    job_row.error_message = str(e)[:2000]
+                    job_row.completed_at = datetime.now(timezone.utc)
+                    db.commit()
+            return
+
         # Build scan request and run through ScanService
         if job.browser_type == "vscode":
             store = ScanStore.VSCODE

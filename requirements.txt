@@ -5,9 +5,11 @@ beautifulsoup4==4.12.2
 pyyaml==6.0.1
 
 # Web framework (FastAPI for web interface)
-fastapi==0.109.0
-uvicorn==0.27.0
-python-multipart==0.0.6
+# FastAPI 0.109.x is incompatible with Starlette 1.x (Router no longer accepts on_startup).
+# Pin a current pair so `pip install -r requirements.txt` works alongside Starlette>=0.46 (e.g. from MCP tools).
+fastapi==0.135.3
+uvicorn==0.34.0
+python-multipart==0.0.20
 
 # Data storage (default: SQLite; Postgres for Render/production)
 sqlalchemy>=2.0.36

@@ -9,6 +9,14 @@ from pydantic import BaseModel, Field
 
 # ── Request schemas ──────────────────────────────────────────────────
 
+class NpmAnalyzeRequest(BaseModel):
+    package_spec: str = Field(
+        ...,
+        description="npm package with optional version, e.g. lodash@4.17.21 or @types/node@20.1.0",
+        examples=["lodash@4.17.21"],
+    )
+
+
 class AnalyzeRequest(BaseModel):
     extension_id: str = Field(
         ...,

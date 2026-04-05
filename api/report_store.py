@@ -80,6 +80,7 @@ def persist_scan_result_to_db(
     json_report_path: Optional[str] = None,
     html_report_path: Optional[str] = None,
     extension_dir: Optional[str] = None,
+    version_hash: Optional[str] = None,
 ) -> bool:
     """
     Persist a completed scan result into the API database so the Report API
@@ -91,11 +92,12 @@ def persist_scan_result_to_db(
 
     Args:
         extension_id: Extension ID (Chrome 32-char or publisher.name for VSCode).
-        browser_type: "chrome", "edge", or "vscode".
+        browser_type: "chrome", "edge", "vscode", or "npm".
         results: Full analysis results dict (for summary fields).
         json_report_path: Path to the JSON report file (content stored in DB).
         html_report_path: Path to the HTML report file (content stored in DB).
         extension_dir: Optional path to unpacked extension for version_hash.
+        version_hash: If set, used instead of hashing manifest/package.json (e.g. npm spec).
 
     Returns:
         True if persisted, False if skipped or failed.
@@ -126,7 +128,10 @@ def persist_scan_result_to_db(
         else:
             threat_classification = str(threat_classification or "")
 
-        version_hash = _compute_version_hash(extension_dir) if extension_dir else ""
+        if version_hash is not None:
+            version_hash = version_hash.strip()
+        else:
+            version_hash = _compute_version_hash(extension_dir) if extension_dir else ""
 
         report_json_content = None
         if json_report_path:
